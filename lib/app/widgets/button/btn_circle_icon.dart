@@ -38,7 +38,7 @@ class BtnCircleIcon extends StatelessWidget {
 
     if (type == BtnCircleIconType.gray) {
       finalIconColor = context.textTheme.bodyMedium!.color!;
-      finalBackgroundColor = context.themeColor.grayOpacity5;
+      finalBackgroundColor = context.theme.hintColor.withOpacity(0.5);
     }
     if (type == BtnCircleIconType.primary) {
       finalIconColor = context.theme.primaryColor;

@@ -48,7 +48,7 @@ class _IosDateTimePickerState extends State<IosDateTimePicker> {
               children: [
                 Btn(
                   btnType: BtnType.TEXT,
-                  label: 'cancel'.tr,
+                  label: 'cancel',
                   onPressed: () {
                     context.router.pop();
                   },
@@ -56,7 +56,7 @@ class _IosDateTimePickerState extends State<IosDateTimePicker> {
                 Gaps.spacer,
                 Btn(
                   btnType: BtnType.TEXT,
-                  label: 'pick'.tr,
+                  label: 'pick',
                   onPressed: () {
                     context.router.pop(pickedDate);
                   },

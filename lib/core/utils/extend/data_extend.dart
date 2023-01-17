@@ -42,7 +42,7 @@ extension DataExtendNum on num? {
     return this.isNullOrEmpty() ? '0' : (this! > 99 ? '99+' : this.toString());
   }
 
-  String? intValidator() => this == null ? 'inputErrorMsg'.tr : null;
+  String? intValidator() => this == null ? 'inputErrorMsg' : null;
 
   String? toStringHideZero() => this != null ? (this == 0 ? null : this.toString()) : null;
 
@@ -101,7 +101,7 @@ extension DataExtendString on String {
   }
 
   String toPeriodFullStr() {
-    return '${'walletPeriod'.tr} ${(toPeriodStr())}';
+    return '${'walletPeriod'} ${(toPeriodStr())}';
   }
 }
 
@@ -136,7 +136,7 @@ extension DataExtendStringNullAble on String? {
 
   String? get withRequiredMark => this == null ? null : '$this *';
 
-  String? get withMustRequiredMsg => this == null ? null : '$this ${'invalidFill'.tr}';
+  String? get withMustRequiredMsg => this == null ? null : '$this ${'invalidFill'}';
 
   String? toAreaUnit() {
     if (this.isNullOrEmpty()) return null;
@@ -155,7 +155,7 @@ extension DataExtendStringNullAble on String? {
   }
 
   List<String>? getStrFromEnumTr<E extends Enum>(List<E> values) {
-    return this.isNullOrEmpty() ? null : this?.split(',').mapAsList((strIndex) => int.tryParse(strIndex)).filter((item) => item != null).mapAsList((index) => values.getOrNull(index ?? -1)?.name.tr ?? '');
+    return this.isNullOrEmpty() ? null : this?.split(',').mapAsList((strIndex) => int.tryParse(strIndex)).filter((item) => item != null).mapAsList((index) => values.getOrNull(index ?? -1)?.name ?? '');
   }
 
   T isEmptyOrValue<T>(T value) {
@@ -195,7 +195,7 @@ extension DataExtendStringNullAble on String? {
 
   bool isNotNullOrEmpty() => !isNullOrEmpty();
 
-  String? stringValidator() => this.isNullOrEmpty() ? 'inputErrorMsg'.tr : null;
+  String? stringValidator() => this.isNullOrEmpty() ? 'inputErrorMsg' : null;
 
   String get toPhoneFormattedStr => this.isNullOrEmpty() ? '' : (MaskTemplate.phoneMask.getMaskedString(this ?? ''));
 

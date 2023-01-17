@@ -3,6 +3,8 @@ export 'dart:async';
 export 'dart:convert';
 export 'dart:io';
 
+
+export 'package:get_it/get_it.dart';
 export 'package:animate_do/animate_do.dart';
 export 'package:animated_text_kit/animated_text_kit.dart';
 export 'package:antdesign_icons/antdesign_icons.dart';

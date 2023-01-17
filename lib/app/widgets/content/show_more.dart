@@ -46,7 +46,7 @@ class ShowMoreState extends State<ShowMore> {
         widget.moreBtnBuilder != null
             ? widget.moreBtnBuilder!(true, _showLess)
             : Btn(
-                label: 'viewLess'.tr,
+                label: 'viewLess',
                 btnType: BtnType.TEXT,
                 onPressed: _showLess,
               ).py8()
@@ -59,7 +59,7 @@ class ShowMoreState extends State<ShowMore> {
         widget.moreBtnBuilder != null
             ? widget.moreBtnBuilder!(false, _showMore)
             : Btn(
-                label: 'viewMore'.tr,
+                label: 'viewMore',
                 btnType: BtnType.TEXT,
                 onPressed: _showMore,
               )

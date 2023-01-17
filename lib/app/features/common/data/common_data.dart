@@ -5,6 +5,25 @@ part 'common_data.g.dart';
 enum ItemDetailStatus { initial, loading, success, error }
 
 @JsonSerializable(ignoreUnannotated: false)
+class FCMTokenReq {
+  final String? deviceID;
+  final String? deviceToken;
+  final String? type;
+
+  const FCMTokenReq({
+    this.deviceID,
+    this.deviceToken,
+    this.type,
+  });
+
+  factory FCMTokenReq.fromJson(Map<String, dynamic> json) =>
+      _$FCMTokenReqFromJson(json);
+
+  Map<String, dynamic> toJson() => _$FCMTokenReqToJson(this);
+}
+
+
+@JsonSerializable(ignoreUnannotated: false)
 class RangeValueModel<T> {
   @_Converter()
   final T? start;

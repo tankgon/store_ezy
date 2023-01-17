@@ -32,10 +32,10 @@ extension DioErrorExtend on Object? {
     if (object is DioError) {
       final dioError = object;
       if (dioError.response?.statusCode == 401) {
-        return 'pleaseLogin'.tr;
+        return 'pleaseLogin';
       }
       if (dioError.error.toString().contains('Failed host lookup')) {
-        return 'reconnectMsg'.tr;
+        return 'reconnectMsg';
       }
       final errorCode = dioError.response?.data['errorCode'] as String?;
       if (errorCode != null) {
@@ -47,10 +47,10 @@ extension DioErrorExtend on Object? {
           final timeDifferStr = TimeUtils.getTimeDifferStr(today, expired);
           logger.i('timeDifferStr $timeDifferStr');
 
-          return errorCode.tr.replaceFirst('<time>', timeDifferStr ?? 'fewMinus'.tr);
+          return errorCode.replaceFirst('<time>', timeDifferStr ?? 'fewMinus');
         }
 
-        return errorCode.tr;
+        return errorCode;
       }
     }
     if (kDebugMode || AppConfig.IN_DEV || Get.find<UserSecureStorage>().developerMode == true) {
@@ -59,6 +59,6 @@ extension DioErrorExtend on Object? {
       }
       return '$object';
     }
-    return 'errorPleaseRetry'.tr;
+    return 'errorPleaseRetry';
   }
 }

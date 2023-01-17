@@ -16,7 +16,7 @@ class BtnViewList extends StatelessWidget {
       padding: EdgeInsets.zero,
       btnType: BtnType.TEXT,
       fontWeight: FontWeight.w700,
-      label: '${'viewList'.tr} (${count ?? 0})',
+      label: '${'viewList'} (${count ?? 0})',
       onPressed: onPressed,
     );
   }

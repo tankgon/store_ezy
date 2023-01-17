@@ -112,7 +112,7 @@ class CardItemV2 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (hasTag) _buildTag(context).pb4().pt8(),
-              titleWidget ?? title?.text.headline5(context).letterSpacing(-0.2).maxLines(width != null ? 1 : 3).color(context.themeColor.dark1).ellipsis.make() ?? Gaps.empty,
+              titleWidget ?? title?.text.headline5(context).letterSpacing(-0.2).maxLines(width != null ? 1 : 3).ellipsis.make() ?? Gaps.empty,
             ],
           ).pOnly(top: hasTag ? 0 : 4).expand(),
           titleTrailing ?? Gaps.empty,
@@ -179,17 +179,17 @@ class CardItemV2 extends StatelessWidget {
           _ImgTag(
             showing: isBest,
             icon: Assets.icons.icItemPopular.image(width: 16),
-            label: 'best'.tr,
+            label: 'best',
           ),
         if (isHot)
           _ImgTag(
             showing: isHot,
             icon: Assets.icons.icItemHot.svg(width: 16),
-            label: 'hot'.tr,
+            label: 'hot',
           ),
       ].withDivider(
         ContainerCircle(
-          color: context.themeColor.gray4,
+          color: context.themeColor.divider,
           size: 4,
         ).px8(),
       ),

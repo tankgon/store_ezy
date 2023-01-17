@@ -4,18 +4,9 @@ import 'package:reactive_forms/reactive_forms.dart';
 
 enum BtnType {
   PRIMARY,
-  SUCCESS,
-  GRAY_PRIMARY,
   DELETE,
-  GHOST_DELETE,
   GHOST,
-  GHOST_ORGANGE,
-  GHOST_PRIMARY,
   GHOST_SUCCESS,
-  GHOST_BODY,
-  GHOST_GRAY_BORDER,
-  GHOST_GRAY,
-  GHOST_BLACK,
   TEXT,
 }
 
@@ -24,7 +15,6 @@ class Btn extends StatelessWidget {
     Key? key,
     this.btnType,
     this.padding,
-    this.primaryColor,
     this.elevation,
     this.child,
     this.label,
@@ -62,7 +52,6 @@ class Btn extends StatelessWidget {
   final ButtonStyle? style;
 
   // Set Style properties
-  final Color? primaryColor;
   final Color? borderColor;
   final double? borderWidth;
   final EdgeInsetsGeometry? padding;
@@ -89,141 +78,41 @@ class Btn extends StatelessWidget {
       switch (btnType) {
         case BtnType.PRIMARY:
         case null:
-          finalStyle = AppButton.primaryStyle(context,
-              props: BtnStyleProps(
-                primaryColor: primaryColor,
-                padding: padding,
-                elevation: elevation,
-                borderColor: borderColor,
-                borderWidth: borderWidth,
-              ));
-          break;
-        case BtnType.SUCCESS:
-          finalStyle = AppButton.successStyle(context,
-              props: BtnStyleProps(
-                primaryColor: primaryColor,
-                padding: padding,
-                elevation: elevation,
-                borderColor: borderColor,
-                borderWidth: borderWidth,
-              ));
-          break;
-        case BtnType.GRAY_PRIMARY:
-          finalStyle = AppButton.grayPrimaryStyle(context,
-              props: BtnStyleProps(
-                primaryColor: primaryColor,
-                padding: padding,
-                elevation: elevation,
-                borderColor: borderColor,
-                borderWidth: borderWidth,
-              ));
+          finalStyle = AppButton.primaryStyle(
+            context,
+          );
           break;
         case BtnType.GHOST:
-          finalStyle = AppButton.ghostStyle(context,
-              props: BtnStyleProps(
-                primaryColor: primaryColor,
-                padding: padding,
-                borderColor: borderColor,
-                borderWidth: borderWidth,
-              ));
-          break;
-        case BtnType.GHOST_PRIMARY:
-          finalStyle = AppButton.ghostPrimaryStyle(context,
-              props: BtnStyleProps(
-                primaryColor: primaryColor,
-                padding: padding,
-                borderColor: borderColor,
-                borderWidth: borderWidth,
-              ));
-          break;
-        case BtnType.GHOST_ORGANGE:
-          finalStyle = AppButton.ghostOrangeStyle(context,
-              props: BtnStyleProps(
-                primaryColor: primaryColor,
-                padding: padding,
-                borderColor: borderColor,
-                borderWidth: borderWidth,
-              ));
-          break;
-        case BtnType.GHOST_BODY:
-          finalStyle = AppButton.ghostStyle(context,
-              props: BtnStyleProps(
-                textColor: context.textTheme.bodyText2!.color,
-                borderRadius: Dimens.rad_max,
-                padding: Dimens.edge_btn_wide,
-                borderColor: borderColor ?? context.textTheme.bodyText2!.color,
-                borderWidth: borderWidth,
-              ));
-          break;
-        case BtnType.GHOST_GRAY_BORDER:
-          finalStyle = AppButton.ghostStyle(context,
-              props: BtnStyleProps(
-                primaryColor: primaryColor,
-                padding: padding,
-                textColor: context.theme.primaryColor,
-                borderColor: borderColor ?? context.themeColor.divider,
-                borderWidth: borderWidth,
-              ));
-          break;
-        case BtnType.GHOST_GRAY:
-          finalStyle = AppButton.ghostStyle(context,
-              props: BtnStyleProps(
-                primaryColor: primaryColor,
-                padding: padding,
-                textColor: context.textTheme.bodyText2!.color,
-                borderColor: borderColor ?? context.theme.dividerColor,
-                borderWidth: borderWidth,
-              ));
-          break;
-        case BtnType.GHOST_BLACK:
-          finalStyle = AppButton.ghostStyle(context,
-              props: BtnStyleProps(
-                primaryColor: primaryColor,
-                padding: padding,
-                textColor: Colors.black,
-                borderColor: borderColor ?? Colors.black,
-                borderWidth: borderWidth,
-              ));
-          break;
-        case BtnType.GHOST_DELETE:
-          finalFontWeight = fontWeight ?? FontWeight.w600;
-          finalStyle = AppButton.ghostStyle(context,
-              props: BtnStyleProps(
-                padding: padding,
-                textColor: context.theme.errorColor,
-                borderColor: borderColor ?? context.theme.errorColor,
-                borderWidth: borderWidth,
-              ));
+          finalStyle = AppButton.ghostStyle(
+            context,
+          );
           break;
         case BtnType.GHOST_SUCCESS:
-          finalStyle = AppButton.ghostStyle(context,
-              props: BtnStyleProps(
-                primaryColor: primaryColor ?? context.theme.onPrimary(),
-                padding: padding,
-                textColor: context.themeColor.successColor,
-                borderColor: borderColor ?? context.themeColor.successColor,
-                borderWidth: borderWidth,
-              ));
+          finalStyle = AppButton.ghostStyle(
+            context,
+            props: BtnStyleProps(
+              primaryColor: primaryColor ?? context.theme.onPrimary(),
+              padding: padding,
+              textColor: context.themeColor.successColor,
+              borderColor: borderColor ?? context.themeColor.successColor,
+              borderWidth: borderWidth,
+            ),
+          );
           break;
         case BtnType.DELETE:
-          finalStyle = AppButton.deleteStyle(context,
-              props: BtnStyleProps(
-                primaryColor: primaryColor,
-                padding: padding,
-                textColor: context.textTheme.bodyText2!.color,
-                borderColor: borderColor ?? context.theme.dividerColor,
-                borderWidth: borderWidth,
-              ));
+          finalStyle = AppButton.primaryStyle(context);
           break;
         case BtnType.TEXT:
-          finalStyle = AppButton.textStyle(context,
-              props: BtnStyleProps(
-                primaryColor: primaryColor,
-                padding: padding,
-                elevation: elevation,
-                borderColor: borderColor,
-                borderWidth: borderWidth,
-              ));
+          finalStyle = AppButton.textStyle(
+            context,
+            props: BtnStyleProps(
+              primaryColor: primaryColor,
+              padding: padding,
+              elevation: elevation,
+              borderColor: borderColor,
+              borderWidth: borderWidth,
+            ),
+          );
           finalFontWeight = fontWeight ?? FontWeight.w500;
           break;
       }
@@ -235,16 +124,16 @@ class Btn extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: matchParent ? MainAxisSize.max : MainAxisSize.min,
       children: [
-        leading != null ? leading!.marginOnly(right: 4) : Gaps.empty,
+        if (leading != null) leading!.marginOnly(right: 4) else Gaps.empty,
         Flexible(child: childWidget ?? Gaps.empty),
-        trailing != null ? trailing!.marginOnly(left: 4) : Gaps.empty,
+        if (trailing != null) trailing!.marginOnly(left: 4) else Gaps.empty,
       ],
     );
 
     var isDisable = false;
     if (isSubmit) {
       final form = ReactiveForm.of(context);
-      isDisable = form?.valid ?? false ? false : true;
+      isDisable = form?.valid ?? false;
     }
     isDisable = isDisable || !(enable ?? true);
 
@@ -255,7 +144,10 @@ class Btn extends StatelessWidget {
         minSize: 0,
         child: Stack(
           alignment: Alignment.center,
-          children: [_buildLoading(context), (btnBody).opacity(value: loading ? 0 : 1)],
+          children: [
+            _buildLoading(context),
+            btnBody.opacity(value: loading ? 0 : 1),
+          ],
         ),
       );
     }
@@ -265,7 +157,10 @@ class Btn extends StatelessWidget {
       style: finalStyle,
       child: Stack(
         alignment: Alignment.center,
-        children: [_buildLoading(context), (btnBody).opacity(value: loading ? 0 : 1)],
+        children: [
+          _buildLoading(context),
+          btnBody.opacity(value: loading ? 0 : 1),
+        ],
       ),
     );
   }

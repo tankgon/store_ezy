@@ -57,7 +57,7 @@ class BottomSheetRadioSelect<T> extends StatelessWidget {
                     Btn(
                       btnType: BtnType.TEXT,
                       fontWeight: FontWeight.w600,
-                      label: 'done'.tr,
+                      label: 'done',
                       onPressed: () {
                         var item = context.read<BottomSheetSelectCubit<T>>().state;
                         if (item == null) {

@@ -35,7 +35,7 @@ class RowHeader extends StatelessWidget {
                   Gaps.empty),
           GestureDetector(
               onTap: onTap,
-              child: action.tr.text.base.colorPrimary(context).make())
+              child: action.text.base.colorPrimary(context).make())
         ],
       ),
     );

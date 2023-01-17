@@ -5,7 +5,7 @@ extension DropdownMenuItemExt on List<DropdownMenuItem>{
     return [
       DropdownMenuItem(
         value: null,
-        child: (alterNativeTitle ?? 'all'.tr).text.make(),
+        child: (alterNativeTitle ?? 'all').text.make(),
       ),
       ...this as List<DropdownMenuItem<T>>
     ];

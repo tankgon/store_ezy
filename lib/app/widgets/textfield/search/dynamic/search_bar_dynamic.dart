@@ -77,7 +77,7 @@ class SearchBarDynamicWrapper extends StatelessWidget {
                       children: [
                         const SearchBarDynamic().expand(),
                         CardCupertinoEffect(
-                          child: 'cancel'.tr.text.make().pLeft8().py12(),
+                          child: 'cancel'.text.make().pLeft8().py12(),
                           onPressed: () => context.read<SearchBarDynamicCubit>().activeChange(isActive: false),
                         ).pLeft8()
                       ],

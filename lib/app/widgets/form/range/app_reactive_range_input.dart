@@ -81,13 +81,13 @@ class AppReactiveRangeInput extends StatelessWidget {
         Row(
           children: [
             TextFieldReactive<int>(
-              hintText: 'from'.tr,
+              hintText: 'from',
               keyboardType: TextInputType.number,
               formControlName: startKey,
             ).expand(),
             Gaps.hGap8,
             TextFieldReactive<int>(
-              hintText: 'to'.tr,
+              hintText: 'to',
               keyboardType: TextInputType.number,
               formControlName: endKey,
             ).expand(),
@@ -101,7 +101,7 @@ class AppReactiveRangeInput extends StatelessWidget {
             }
             return Gaps.empty;
           },
-          child: 'startEndValueOrderError'.tr.text.colorError(context).make().pt4(),
+          child: 'startEndValueOrderError'.text.colorError(context).make().pt4(),
         )
       ],
     );

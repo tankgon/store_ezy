@@ -25,6 +25,7 @@ export 'package:ez_store/all_file/theme_import.dart';
 
 // Resource
 export 'package:ez_store/all_file/resources_import.dart';
+export 'package:app_ui/app_ui.dart';
 
 // Constants & Values
 export 'package:ez_store/all_file/values_import.dart';

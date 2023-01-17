@@ -25,7 +25,7 @@ class BtnFilter extends StatelessWidget {
       onPressed: onPressed,
       child: Row(
         children: [
-          if (showActiveText && isActive) 'filtering'.tr.text.colorAction(context).make().pRight4(),
+          if (showActiveText && isActive) 'filtering'.text.colorAction(context).make().pRight4(),
           if (isActive)
             Assets.icons.filterLineActive.svg(
               height: iconSize,

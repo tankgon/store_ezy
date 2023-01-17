@@ -3,6 +3,7 @@
 import 'dart:math' as math;
 
 import 'package:ez_store/all_file/all_file.dart';
+import 'package:ez_store/core/theme/app_theme_extension.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 bool canPop(BuildContext context) => ModalRoute.of(context)?.canPop ?? false;
@@ -119,18 +120,8 @@ extension VxTextBuilderExtend on VxTextBuilder {
     return this;
   }
 
-  VxTextBuilder colorN3(BuildContext context) {
-    velocityColor = context.themeColor.n3;
-    return this;
-  }
-
   VxTextBuilder colorWarning(BuildContext context) {
     velocityColor = context.themeColor.warningColor;
-    return this;
-  }
-
-  VxTextBuilder colorPending(BuildContext context) {
-    velocityColor = context.themeColor.warningColor1;
     return this;
   }
 
@@ -155,7 +146,7 @@ extension VxTextBuilderExtend on VxTextBuilder {
   }
 
   VxTextBuilder colorLink(BuildContext context) {
-    velocityColor = context.themeColorText.textLink;
+    velocityColor = context.themeColor.textLink;
     return this;
   }
 
@@ -164,38 +155,8 @@ extension VxTextBuilderExtend on VxTextBuilder {
     return this;
   }
 
-  VxTextBuilder colorGrey(BuildContext context) {
-    velocityColor = context.themeColor.gray;
-    return this;
-  }
-
   VxTextBuilder colorText(BuildContext context) {
-    velocityColor = context.themeColorText.text;
-    return this;
-  }
-
-  VxTextBuilder colorGray(BuildContext context) {
-    velocityColor = context.themeColorText.textGray;
-    return this;
-  }
-
-  VxTextBuilder colorGray5(BuildContext context) {
-    velocityColor = context.themeColor.gray5;
-    return this;
-  }
-
-  VxTextBuilder colorN7(BuildContext context) {
-    velocityColor = context.themeColor.n7;
-    return this;
-  }
-
-  VxTextBuilder colorGrayLight(BuildContext context) {
-    velocityColor = context.themeColor.grayLight;
-    return this;
-  }
-
-  VxTextBuilder colorActionGray(BuildContext context) {
-    velocityColor = context.themeColor.actionColorGray;
+    velocityColor = context.themeColor.text;
     return this;
   }
 

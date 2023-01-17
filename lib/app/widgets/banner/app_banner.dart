@@ -42,7 +42,7 @@ class AppBanner<T> extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                       horizontal: Dimens.pad_XS2, vertical: Dimens.pad_XS3),
                   decoration: BoxDecoration(
-                      color: context.themeColorText.textGray,
+                      color: context.theme.hintColor,
                       borderRadius: const BorderRadius.only(
                           topRight: Radius.circular(Dimens.rad_XS),
                           bottomRight: Radius.circular(Dimens.rad_XS))),

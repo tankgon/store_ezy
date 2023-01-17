@@ -30,7 +30,7 @@ class BtnSearchWithClear extends StatelessWidget {
           padding: Dimens.edge_x_XS2,
           btnType: BtnType.TEXT,
           leading: const Icon(CupertinoIcons.search),
-          label: 'find'.tr,
+          label: 'find',
           onPressed: () {
             searchPressed(context, controller.text);
             AppUtils.dismissKeyboard(context);

@@ -124,7 +124,7 @@ class DialogUtils {
             );
             delete.call();
           },
-          child: Text(deleteLabel ?? 'confirm'.tr),
+          child: Text(deleteLabel ?? 'confirm'),
         ));
       } else if (showAction) {
         action.add(Btn(
@@ -133,7 +133,7 @@ class DialogUtils {
             Navigator.of(context, rootNavigator: true).pop(DialogReturnMsg.ok);
             positive?.call();
           },
-          child: Text(positiveLabel ?? 'OK'.tr),
+          child: Text(positiveLabel ?? 'OK'),
         ));
       }
       return action;
@@ -190,7 +190,7 @@ class DialogUtils {
             Navigator.of(context, rootNavigator: true).pop(DialogReturnMsg.cancel);
             negative.call();
           },
-          child: Text(negativeLabel ?? 'close'.tr),
+          child: Text(negativeLabel ?? 'close'),
         ));
       }
 
@@ -201,7 +201,7 @@ class DialogUtils {
             delete.call();
           },
           isDestructiveAction: true,
-          child: Text(negativeLabel ?? 'confirm'.tr),
+          child: Text(negativeLabel ?? 'confirm'),
         ));
       } else {
         action.add(CupertinoDialogAction(
@@ -209,7 +209,7 @@ class DialogUtils {
             Navigator.of(context).pop(DialogReturnMsg.ok);
             positive?.call();
           },
-          child: Text(positiveLabel ?? 'OK'.tr),
+          child: Text(positiveLabel ?? 'OK'),
         ).objectCenter());
       }
       return action;

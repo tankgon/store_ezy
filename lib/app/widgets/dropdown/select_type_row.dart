@@ -1,6 +1,4 @@
 import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/core/utils/bottom_sheet_utils.dart';
-import 'package:ez_store/app/widgets/button/btn_forward_detail.dart';
 import 'package:ez_store/app/widgets/dropdown/bottom_sheet/bottom_sheet_radio_select.dart';
 
 class SelectTypeRowHorizontal<T> extends StatelessWidget {
@@ -54,7 +52,7 @@ class SelectTypeRowHorizontal<T> extends StatelessWidget {
             controlName: controlName,
             builder: (child, value) {
               if (value == null) {
-                return 'all'.tr.text.end.make();
+                return 'all'.text.end.make();
               }
               final title = getItemTitle(value);
               if (title is Widget) {
@@ -65,8 +63,8 @@ class SelectTypeRowHorizontal<T> extends StatelessWidget {
               return Gaps.empty;
             },
           ).expand(),
-          const BtnForwardDetail(
-            padding: Dimens.edge_x_XS2,
+          const Icon(
+            Icons.arrow_forward_ios_outlined,
           ),
         ],
       ).minHeight(Dimens.minRowHeight),
@@ -209,7 +207,7 @@ class SelectTypeRowHorizontalDropdown<T> extends StatelessWidget {
                 decoration: AppDecor.grayBorder(context),
                 child: Row(
                   children: [
-                    title.text.colorGray5(context).make(),
+                    title.text.make(),
                     Expanded(
                       child: getItemStr(value).text.end.make(),
                     ),

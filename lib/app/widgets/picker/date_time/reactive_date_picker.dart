@@ -31,7 +31,7 @@ class AppDatePickerReactive extends StatelessWidget {
         return AppDatePicker(
           mode: mode ?? DateTimePickerType.date,
           initialTime: value?.toLocal(),
-          label: hint ?? 'pickTime'.tr,
+          label: hint ?? 'pickTime',
           maximumDate: maximumDate,
           minimumDate: minimumDate,
           validDateFunc: validDateFunc,

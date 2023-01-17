@@ -10,7 +10,7 @@ class BtnCloseCircleWhite extends StatelessWidget {
 
   factory BtnCloseCircleWhite.white(BuildContext context) =>
       BtnCloseCircleWhite(
-        backgroundColor: context.themeColor.grayOpacity5,
+        backgroundColor: context.theme.hintColor.withOpacity(0.5),
         iconColor: context.themeText.text.color,
       );
 
@@ -25,7 +25,7 @@ class BtnCloseCircleWhite extends StatelessWidget {
       width: size,
       child: BtnCircleIcon(
         Icons.close,
-        backgroundColor: backgroundColor ?? context.themeColor.gray5,
+        backgroundColor: backgroundColor ?? context.theme.hintColor,
         iconColor: iconColor ?? context.themeText.text.color,
         padding: Dimens.edge_XS3,
         onPressed: () {

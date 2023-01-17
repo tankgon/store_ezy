@@ -19,7 +19,7 @@ class ChipItem extends StatelessWidget {
     if (local is String) {
       finalChild = local.text.medium
           .color(
-            isSelected ? context.theme.primaryColor : context.themeColorText.text,
+            isSelected ? context.theme.primaryColor : context.themeColor.text,
           )
           .make();
     } else if (local is Widget) {
@@ -33,7 +33,7 @@ class ChipItem extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(Dimens.rad_max),
-          color: isSelected ? context.themeColor.blue1 : context.themeColor.conditionItem,
+          color: isSelected ? context.theme.primaryColor : context.themeColor.divider,
         ),
         alignment: Alignment.center,
         child: Padding(

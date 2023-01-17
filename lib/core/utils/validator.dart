@@ -82,12 +82,12 @@ class AppValidator {
     return AppValidator.validatingStringForm(
       map: [
         ValidatorPair(
-          msg: 'phoneNotValid'.tr,
+          msg: 'phoneNotValid',
           formControlName: formControlName,
           validatorFunction: Validators.pattern(AppValidator.phoneNumberVnRegex),
         ),
         ValidatorPair(
-          msg: 'phoneNotValid'.tr,
+          msg: 'phoneNotValid',
           formControlName: formControlName,
           validatorFunction: Validators.required,
         )
@@ -100,12 +100,12 @@ class AppValidator {
     return AppValidator.validatingStringForm(
       map: [
         ValidatorPair(
-          msg: 'emailNotValid'.tr,
+          msg: 'emailNotValid',
           formControlName: formControlName,
           validatorFunction: Validators.email,
         ),
         ValidatorPair(
-          msg: 'emailNotValid'.tr,
+          msg: 'emailNotValid',
           formControlName: formControlName,
           validatorFunction: Validators.required,
         ),

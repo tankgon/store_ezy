@@ -176,7 +176,7 @@ class TimeUtils {
     } else if (diffInDay >= 7) {
       return dateToStrLocale(date, format: dateFormat ?? formatSimpleDate);
     } else if (diffInDay == 1) {
-      return 'yesterday'.tr;
+      return 'yesterday';
     } else if (diffInDay > 1 && diffInDay < 7) {
       return dateToStrLocale(date, format: formatUserDayOfWeek);
     }
@@ -277,11 +277,11 @@ class TimeUtils {
     final checkDate = DateTime(d.year, d.month, d.day);
     final time = dateToStrLocale(d, format: formatSimpleHour);
     if (checkDate == today) {
-      return '${'today'.tr} ${time}';
+      return '${'today'} ${time}';
     } else if (checkDate == yesterday) {
-      return '${'yesterday'.tr} ${time}';
+      return '${'yesterday'} ${time}';
     } else if (checkDate == tomorrow) {
-      return '${'tomorrow'.tr} ${time}';
+      return '${'tomorrow'} ${time}';
     }
 
     return dateToStrLocale(d, format: _userDayTimeFormat);

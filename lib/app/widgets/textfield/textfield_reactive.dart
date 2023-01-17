@@ -85,7 +85,7 @@ class _TextFieldReactiveState<T> extends State<TextFieldReactive<T>> {
     var finalValidationMessages = widget.validationMessages;
     if (widget.isOnlyRequired ?? false) {
       finalValidationMessages = (control) => {
-            ValidationMessage.required: 'fillRequired'.tr,
+            ValidationMessage.required: 'fillRequired',
           };
     }
     var inputStylePropsFinal = (widget.inputStyleProps ?? const InputStyleProps()).copyWith(

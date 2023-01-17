@@ -19,7 +19,7 @@ class BtnFormClose extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Btn(
-      btnType: btnType ?? BtnType.GHOST_GRAY_BORDER,
+      btnType: btnType,
       padding: padding ?? Dimens.edge_btn_wide,
       onPressed: !enable
           ? null
@@ -28,7 +28,7 @@ class BtnFormClose extends StatelessWidget {
                   .pop(DialogReturnMsg.cancel);
               negative?.call();
             },
-      label: negativeLabel ?? 'close'.tr,
+      label: negativeLabel ?? 'close',
     );
   }
 }

@@ -15,7 +15,7 @@ class FileItemDownloadAbleBrowser extends StatelessWidget {
     return CardCupertinoEffect(
       onPressed: () => LauncherUtils.showURL(url),
       child: Container(
-        color: context.themeColor.grayBackground,
+        color: context.themeColor.divider,
         child: FileDemo(
           extension: FileUtils.getExtensionFormPath(url),
           name: FileUtils.getNameFormPath(url),

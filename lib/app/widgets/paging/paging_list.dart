@@ -223,7 +223,7 @@ class PageErrorNotify extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (!AppConfig.IN_DEV) {
-      return 'contentIsUpdating'.tr.text.make().pDefault().centered();
+      return 'contentIsUpdating'.text.make().pDefault().centered();
     }
     return error.getServerErrorMsg().text.make().pDefault().centered();
   }
@@ -234,7 +234,7 @@ class PageEmptyNotify extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 'contentIsUpdating'.tr.text.make().pDefault().centered();
+    return 'contentIsUpdating'.text.make().pDefault().centered();
   }
 }
 
@@ -246,9 +246,9 @@ class ContentNotFound extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var titleStr = title ?? 'connectNotFound'.tr;
+    var titleStr = title ?? 'connectNotFound';
     if (itemTitle != null) {
-      titleStr = 'NotFoundItem'.tr.replaceFirst('<item>', itemTitle?.toLowerCase() ?? '');
+      titleStr = 'NotFoundItem'.replaceFirst('<item>', itemTitle?.toLowerCase() ?? '');
     }
     return titleStr.text.make().pDefault().centered();
   }

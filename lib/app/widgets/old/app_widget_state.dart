@@ -15,7 +15,7 @@ abstract class AppWidgetState<S extends StatefulWidget> extends State<S> {
         content: Text(message),
         actions: [
           CupertinoDialogAction(
-            child: Text('cancel'.tr),
+            child: Text('cancel'),
             isDefaultAction: true,
             onPressed: () => Navigator.of(dialogContext).pop(),
           ),

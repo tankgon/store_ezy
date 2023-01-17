@@ -10,7 +10,7 @@ class BtnSeeAll extends StatelessWidget {
   Widget build(BuildContext context) {
     return Btn(
       btnType: BtnType.TEXT,
-      label: 'seeAll'.tr,
+      label: 'seeAll',
       padding: padding,
       onPressed: onPressed,
     );

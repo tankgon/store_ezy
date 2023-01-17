@@ -22,7 +22,7 @@ class ConfirmActionBar extends StatelessWidget {
         const BtnFormClose().expand(flex: matchParent ? 1 : 0),
         Gaps.hGap16,
         Btn(
-          label: 'confirm'.tr,
+          label: 'confirm',
           loading: onConfirmLoading,
           padding: Dimens.edge_btn_wide,
           onPressed: onConfirmPressed,
@@ -67,7 +67,7 @@ class ConfirmActionBarV2 extends StatelessWidget {
           flex: confirmBtnMatchWidth ? 1 : 0,
           child: Obx(
             () => Btn(
-              label: 'confirm'.tr,
+              label: 'confirm',
               loading: onConfirmLoadingLD.value,
               padding: Dimens.edge_btn_wide,
               isSubmit: isSubmit,

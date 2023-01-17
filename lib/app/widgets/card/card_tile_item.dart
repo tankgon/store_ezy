@@ -167,10 +167,10 @@ class CardTileItem extends StatelessWidget {
         children: [
           _ImgTag(
             showing: isHot,
-            color: context.themeColor.red,
-            label: 'hot'.tr,
+            color: context.themeColor.error,
+            label: 'hot',
           ),
-          _ImgTag(showing: isBest, color: context.themeColor.green, label: 'best'.tr),
+          _ImgTag(showing: isBest, color: context.themeColor.successColor, label: 'best'),
           ...?otherTag.mapAsList<Widget>(
             (key, value) => _ImgTag(
               showing: true,

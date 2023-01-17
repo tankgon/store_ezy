@@ -70,7 +70,7 @@ class _BottomSheetRadioSelectReactiveState<T> extends State<BottomSheetRadioSele
                     widget.title?.text.headline6(context).make().pxDefault().expand() ?? Gaps.spacer,
                     Btn(
                       btnType: BtnType.TEXT,
-                      label: 'finish'.tr,
+                      label: 'finish',
                       onPressed: () {
                         final item = context.getControl<T>(widget.controlName)?.value;
                         if (item == null) {
