@@ -1,6 +1,5 @@
 import 'package:ez_store/all_file/all_file.dart';
 import 'package:ez_store/app/widgets/container/container_circle.dart';
-import 'package:ez_store/app/widgets/item_action/item_action.dart';
 
 class CardItemV2 extends StatelessWidget {
   const CardItemV2({
@@ -158,12 +157,6 @@ class CardItemV2 extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (showLike) ItemAction.like(context, count: likeCount),
-        ItemAction.comment(
-          context,
-          count: commentCount,
-          onPressed: commentPressed,
-        ),
         actionLeading ?? Gaps.empty,
         Gaps.spacer,
         actionTrailing ?? Gaps.empty

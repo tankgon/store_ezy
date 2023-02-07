@@ -47,7 +47,6 @@ class FileDemo extends StatelessWidget {
                         .text
                         .center
                         .size(Dimens.text_XS2)
-                        .colorGray5(context)
                         .make(),
                   ).expand(),
                 ],
@@ -77,7 +76,7 @@ class FileDemo extends StatelessWidget {
                     .ellipsis
                     .make()
                     .pb4(),
-              (fileSize ?? '').text.textMidXS.colorGray5(context).make(),
+              (fileSize ?? '').text.textMidXS.make(),
               if (indicator != null)
                 Align(
                   alignment:

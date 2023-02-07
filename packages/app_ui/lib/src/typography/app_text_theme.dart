@@ -26,7 +26,7 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
   static AppTextThemeExtension dark = AppTextThemeExtension(
     text: defaultText,
     textHint: defaultText.copyWith(
-      color: AppTextThemeExtension.dark.textHint.color,
+      color: Colors.grey,
     ),
     textHeadline: defaultText.copyWith(
       fontSize: Dimens.text_XL3,
@@ -38,7 +38,7 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
   static final AppTextThemeExtension light = AppTextThemeExtension(
     text: defaultText,
     textHint: defaultText.copyWith(
-      color: AppTextThemeExtension.dark.textHint.color,
+      color: Colors.grey,
     ),
     textHeadline: defaultText.copyWith(
       fontSize: Dimens.text_XL3,

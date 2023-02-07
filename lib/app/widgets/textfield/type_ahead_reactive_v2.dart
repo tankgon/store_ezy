@@ -4,7 +4,7 @@ import 'package:reactive_forms/reactive_forms.dart';
 
 class TypeAheadReactiveV2<T> extends StatefulWidget {
   const TypeAheadReactiveV2(
-      {Key? key,
+      {super.key,
       required this.formControlName,
       required this.suggestionsCallback,
       this.hideOnLoading,
@@ -20,8 +20,7 @@ class TypeAheadReactiveV2<T> extends StatefulWidget {
       this.showErrors,
       this.enable,
       this.backgroundColor,
-      this.controller})
-      : super(key: key);
+      this.controller});
 
   final TextEditingController? controller;
   final String formControlName;
@@ -54,8 +53,7 @@ class _TypeAheadReactiveV2State<T> extends State<TypeAheadReactiveV2<T>> {
   @override
   void initState() {
     callOnBuild(() {
-      var control = ReactiveForm.of(context)
-          ?.findControl(widget.formControlName) as FormControl<T>?;
+      var control = ReactiveForm.of(context)?.findControl(widget.formControlName) as FormControl<T>?;
       valueChangeListener?.cancel();
       valueChangeListener = control?.valueChanges.listen((value) {
         if (value != null) {
@@ -91,19 +89,21 @@ class _TypeAheadReactiveV2State<T> extends State<TypeAheadReactiveV2<T>> {
         scrollPadding: widget.scrollPadding ?? const EdgeInsets.all(20.0),
         onChanged: widget.onChanged,
         autofocus: false,
-        decoration: AppTextField.primaryStyle(context,
-            inputStyleProps: InputStyleProps(
+        decoration: AppTextField.primaryStyle(
+          context,
+          inputStyleProps: InputStyleProps(
+            backgroundColor: widget.enable == false ? context.theme.hintColor.withOpacity(0.05) : widget.backgroundColor,
+            inputDecoration: InputDecoration(
               hintText: widget.hintText,
-              backgroundColor: widget.enable == false
-                  ? context.theme.hintColor.withOpacity(0.05)
-                  : widget.backgroundColor,
               suffixIcon: widget.showDropDown == true
                   ? const Icon(
                       Icons.keyboard_arrow_down,
                       size: Dimens.ic,
                     ).pRight8()
                   : null,
-            )),
+            ),
+          ),
+        ),
       ),
       suggestionsCallback: widget.suggestionsCallback,
       noItemsFoundBuilder: (_) => Gaps.empty,

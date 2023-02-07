@@ -41,7 +41,7 @@ class DioModule extends DisposableInterface {
     }
 
     // Check token
-    final storage = Get.find<UserSecureStorage>();
+    final storage = getIt<UserSecureStorage>();
     if (storage.user != null) {
       addToken(storage.user!.token);
     }
@@ -57,7 +57,7 @@ class DioModule extends DisposableInterface {
       if (error.response?.statusCode == 401) {
         logger.i('interceptor 401');
 
-        final storage = Get.find<UserSecureStorage>();
+        final storage = getIt<UserSecureStorage>();
         storage.notifyUnAuthorized();
       }
 

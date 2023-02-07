@@ -6,15 +6,14 @@
 // https://opensource.org/licenses/MIT.
 
 import 'package:ez_store/all_file/all_file.dart';
-
-import 'package:ez_store/app/app_routes/app_auto_route.gr.dart';
 import 'package:ez_store/app/app_routes/app_routes.dart';
-import 'package:ez_store/app/features/auth/bloc/auth_bloc.dart';
+import 'package:ez_store/app/features/auth/view/bloc/auth_bloc.dart';
+import 'package:ez_store/app/features/auth/view/widget/auth_listener.dart';
+import 'package:ez_store/app/features/notification/core/service/notification_utils.dart';
 import 'package:ez_store/app/widgets/app/dismiss_keyboard.dart';
 import 'package:ez_store/l10n/l10n.dart';
+import 'package:ez_store/services/firebase_notification_service.dart';
 import 'package:ez_store/services/user_secure_storage_service.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_portal/flutter_portal.dart';
@@ -66,12 +65,12 @@ class App extends StatelessWidget {
               );
             },
             themeMode: ThemeMode.light,
-            theme: AppTheme.getTheme(isDark: false),
+            theme: AppTheme.getTheme(),
             darkTheme: AppTheme.getTheme(isDark: true),
             debugShowCheckedModeBanner: false,
             routerDelegate: appRouter.delegate(
               initialRoutes: [
-                const HomeRoute(),
+                const MainRoute(),
               ],
             ),
             routeInformationParser: appRouter.defaultRouteParser(),
@@ -92,14 +91,13 @@ class App extends StatelessWidget {
       message: F.name,
       color: Colors.green.withOpacity(0.6),
       textStyle: const TextStyle(
-        fontWeight: BaseFontWe,
+        fontWeight: BaseFontWeight.semiBold,
         fontSize: 10.0,
       ),
       child: child,
     );
   }
 }
-
 
 class _AppWidget extends StatefulWidget {
   const _AppWidget({super.key, required this.appRouter, required this.child});
@@ -116,11 +114,10 @@ class _AppWidgetState extends State<_AppWidget> {
   void initState() {
     super.initState();
 
-    FirebaseNotificationService.instance.init(
-      notificationPressedCallBack: _onNotificationClick,
-      filterMessage: _filterNotification,
-    );
-
+    // FirebaseNotificationService.instance.init(
+    //   notificationPressedCallBack: _onNotificationClick,
+    //   filterMessage: _filterNotification,
+    // );
   }
 
   @override
@@ -130,108 +127,53 @@ class _AppWidgetState extends State<_AppWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamListener(
-      stream: Get.find<UserSecureStorage>().unAuthorized.stream,
-      onData: (unAuthorized) {
-        if (unAuthorized == true && Get.find<AppAutoRoute>().current.name != UserProfileRoute.name) {
-          context.read<AuthBloc>().add(UnAuthenticatedEvent());
-        }
-      },
-      child: Builder(builder: (context) {
-        return BlocListener<CheckConsultantApproveCubit, CheckConsultantApproveState>(
-          listener: (context, state) {
-            if (state is CheckConsultantApproveStatusChange) {
-              context.read<AuthBloc>().add(AuthFetchUserEvent());
-            }
-          },
-          child: BlocConsumer<AuthBloc, AuthState>(
-            listener: _onAuthStateChange,
-            builder: (context, state) {
-              return ScrollConfiguration(
-                behavior: const ScrollBehaviorDefault(),
-                child: DynamicLinkListener(
-                  router: widget.appRouter,
-                  child: widget.child,
-                ),
-              );
-            },
-          ),
-        );
-      }),
+    return AuthListener(
+      child: ScrollConfiguration(
+        behavior: const ScrollBehaviorDefault(),
+        child: widget.child,
+      ),
     );
   }
 
-  void _onAuthStateChange(BuildContext context, AuthState state) {
-    if (state is AuthenticatedState) {
-      context.read<CheckConsultantApproveCubit>().startListening();
-
-      if (!state.isRefresh) {
-        String msg;
-        if (state.firstTimeLoginEver) {
-          msg = 'welcomeNewUser'.tr.replaceFirst('<user_name>', state.data.userModel?.contactName ?? '');
-        } else {
-          msg = 'welcomeUser'.tr.replaceFirst('<user_name>', state.data.userModel?.contactName ?? '');
-        }
-        ToastUtils.showToast(context: context, msg: msg, duration: const Duration(seconds: 3));
-      }
-    } else if (state is UnAuthenticatedState) {
-      context.read<CheckConsultantApproveCubit>().stopListening();
-
-      if (state.openSignInPage) {
-        widget.appRouter.push(SignInRoute());
-        return;
-      }
-
-      if (state.showToast) {
-        ToastUtils.showToast(
-          context: context,
-          msg: 'AL0016'.tr,
-          duration: const Duration(seconds: 3),
-        );
-      }
-    }
-  }
-
   Future<void> _onNotificationClick(Map<String, dynamic>? data) async {
-    try {
-      final isNavigate = await NotificationUtils.navigateToPage(
-        router: widget.appRouter,
-        urlObject: UrlObjectModel.fromJson(data ?? {}),
-        data: data,
-        currentUser: Get.find<UserSecureStorage>().user,
-      );
-      final messageID = castOrNull<String>(data?['messageID']);
-      if (!isNavigate) {
-        if (widget.appRouter.current.name != NotificationMainRoute.name) {
-          widget.appRouter.push(const NotificationMainRoute());
-        }
-        if (messageID.isNotNullOrEmpty() == true) {
-          widget.appRouter.push(
-            NotificationDetailRoute(
-              item: NotificationDetailModel(
-                messageID: messageID,
-              ),
-            ),
-          );
-        }
-      } else {
-        await Get.find<NotificationRepo>().notificationMarkAsRead(messageID: messageID);
-      }
-    } catch (e) {
-      logger.e(e);
-    }
+    // try {
+    //   final isNavigate = await NotificationUtils.navigateToPage(
+    //     router: widget.appRouter,
+    //     data: data,
+    //     currentUser: getIt<UserSecureStorage>().user,
+    //   );
+    //   final messageID = castOrNull<String>(data?['messageID']);
+    //   if (!isNavigate) {
+    //     if (widget.appRouter.current.name != NotificationMainRoute.name) {
+    //       widget.appRouter.push(const NotificationMainRoute());
+    //     }
+    //     if (messageID.isNotNullOrEmpty() == true) {
+    //       widget.appRouter.push(
+    //         NotificationDetailRoute(
+    //           item: NotificationDetailModel(
+    //             messageID: messageID,
+    //           ),
+    //         ),
+    //       );
+    //     }
+    //   } else {
+    //     await getIt<NotificationRepo>().notificationMarkAsRead(messageID: messageID);
+    //   }
+    // } catch (e) {
+    //   logger.e(e);
+    // }
   }
 
   bool _filterNotification(Map<String, dynamic>? jsonData) {
     // logger.i('currentChatPageID $currentChatPageID');
 
     if (jsonData != null) {
-      if (jsonData['type'] == NotificationType.SEND_MESSAGE.name) {
-        // var currentConversationID = Hive.box(AppConstant.KEY_BOX_SETTING)
-        //     .get(AppConstant.KEY_CONVERSATION_ID);
-        //
-        // return false;
-      }
+      // if (jsonData['type'] == NotificationType.SEND_MESSAGE.name) {
+      //   // var currentConversationID = Hive.box(AppConstant.KEY_BOX_SETTING)
+      //   //     .get(AppConstant.KEY_CONVERSATION_ID);
+      //   //
+      //   // return false;
+      // }
     }
     return true;
   }

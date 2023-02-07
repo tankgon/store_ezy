@@ -83,7 +83,7 @@ class UnderLineTabBarWrapper extends StatelessWidget {
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                  color: defaultLineColor ?? context.themeColor.grayBackground,
+                  color: defaultLineColor ?? Colors.grey,
                   width: defaultLineWidth ?? 3,
                 ),
               ),

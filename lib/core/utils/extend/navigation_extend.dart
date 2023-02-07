@@ -1,7 +1,7 @@
 import 'package:ez_store/all_file/all_file.dart';
 
 extension BuildContextRootExtend on BuildContext {
-  // BuildContext get rootContext => Get.find<AppAutoRoute>().rootContext ?? this;
+  // BuildContext get rootContext => getIt<AppAutoRoute>().rootContext ?? this;
 }
 
 extension AutoRouteExtend on StackRouter {

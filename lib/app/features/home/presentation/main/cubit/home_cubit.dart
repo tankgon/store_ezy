@@ -8,7 +8,7 @@ class HomeCubit extends Cubit<HomeState> {
   FutureOr<void> fetchItem() async {
     emit(state.copyWith(status: ItemDetailStatus.loading));
     try {
-      // final item = await Get.find<ApproveRepo>().getProgramForApprove(programID: item.programID ?? '');
+      // final item = await getIt<ApproveRepo>().getProgramForApprove(programID: item.programID ?? '');
       emit(
         state.copyWith(
           status: ItemDetailStatus.success,

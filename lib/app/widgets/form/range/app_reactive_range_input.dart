@@ -80,14 +80,22 @@ class AppReactiveRangeInput extends StatelessWidget {
         Gaps.vGap8,
         Row(
           children: [
-            TextFieldReactive<int>(
-              hintText: 'from',
+            AppTextFieldReactive<int>(
+              inputStyleProps: const InputStyleProps(
+                inputDecoration: InputDecoration(
+                  hintText: 'from',
+                ),
+              ),
               keyboardType: TextInputType.number,
               formControlName: startKey,
             ).expand(),
             Gaps.hGap8,
-            TextFieldReactive<int>(
-              hintText: 'to',
+            AppTextFieldReactive<int>(
+              inputStyleProps: const InputStyleProps(
+                inputDecoration: InputDecoration(
+                  hintText: 'to',
+                ),
+              ),
               keyboardType: TextInputType.number,
               formControlName: endKey,
             ).expand(),

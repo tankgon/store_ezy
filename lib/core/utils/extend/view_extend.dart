@@ -3,7 +3,6 @@
 import 'dart:math' as math;
 
 import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/core/theme/app_theme_extension.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 bool canPop(BuildContext context) => ModalRoute.of(context)?.canPop ?? false;

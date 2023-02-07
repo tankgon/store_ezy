@@ -1,19 +1,17 @@
 import 'package:ez_store/all_file/all_file.dart';
 import 'package:ez_store/app/widgets/button/actions/btn_clear.dart';
+import 'package:ez_store/app/widgets/button/custom/btn_eye.dart';
 import 'package:flutter/services.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-class TextFieldReactive<T> extends StatefulWidget {
-  const TextFieldReactive({
+class AppTextFieldReactive<T> extends StatefulWidget {
+  const AppTextFieldReactive({
     super.key,
     this.formControlName,
     this.keyboardType,
     this.validationMessages,
     this.textInputAction,
     this.decoration,
-    this.hintText,
-    this.labelText,
-    this.isOnlyRequired,
     this.showErrors,
     this.obscureText,
     this.inputFormatters,
@@ -27,8 +25,6 @@ class TextFieldReactive<T> extends StatefulWidget {
     this.showClear,
     this.textStyle,
     this.maxLength,
-    this.hideCounter,
-    this.enable,
     this.onSubmitted,
     this.textCapitalization = TextCapitalization.none,
     this.textAlign,
@@ -38,6 +34,7 @@ class TextFieldReactive<T> extends StatefulWidget {
 
   final FormControl<T>? formControl;
   final String? formControlName;
+
   final ControlValueAccessor<T, String>? valueAccessor;
   final TextStyle? textStyle;
   final TextInputType? keyboardType;
@@ -60,18 +57,14 @@ class TextFieldReactive<T> extends StatefulWidget {
 
   // Customize
   final InputStyleProps? inputStyleProps;
-  final String? hintText;
-  final String? labelText;
-  final bool? isOnlyRequired;
+
   final bool? showClear;
-  final bool? hideCounter;
-  final bool? enable;
 
   @override
-  State<TextFieldReactive<T>> createState() => _TextFieldReactiveState<T>();
+  State<AppTextFieldReactive<T>> createState() => _AppTextFieldReactiveState<T>();
 }
 
-class _TextFieldReactiveState<T> extends State<TextFieldReactive<T>> {
+class _AppTextFieldReactiveState<T> extends State<AppTextFieldReactive<T>> {
   bool _passwordVisible = false;
 
   @override
@@ -82,47 +75,38 @@ class _TextFieldReactiveState<T> extends State<TextFieldReactive<T>> {
 
   @override
   Widget build(BuildContext context) {
-    var finalValidationMessages = widget.validationMessages;
-    if (widget.isOnlyRequired ?? false) {
-      finalValidationMessages = (control) => {
-            ValidationMessage.required: 'fillRequired',
-          };
-    }
-    var inputStylePropsFinal = (widget.inputStyleProps ?? const InputStyleProps()).copyWith(
-      hintText: widget.hintText,
-      labelText: widget.labelText,
-      enable: widget.enable,
-    );
+    var props = widget.inputStyleProps ?? const InputStyleProps();
 
     if (widget.showClear ?? false) {
-      inputStylePropsFinal = inputStylePropsFinal.copyWith(suffixIcon: _buildClearBtn(context));
+      props = props.copyWith(
+        inputDecoration: props.inputDecoration?.copyWith(
+          suffixIcon: _buildClearBtn(context),
+        ),
+      );
     }
     if (widget.obscureText ?? false) {
-      inputStylePropsFinal = inputStylePropsFinal.copyWith(
-        suffixIcon: PasswordEyeBtn(
-          passwordVisible: _passwordVisible,
-          onPasswordVisibleChanged: (value) {
-            setState(
-              () {
-                _passwordVisible = value;
-              },
-            );
-          },
-        ).pRight12(),
+      props = props.copyWith(
+        inputDecoration: props.inputDecoration?.copyWith(
+          suffixIcon: BtnEyeActive(
+            passwordVisible: _passwordVisible,
+            onPasswordVisibleChanged: (value) {
+              setState(
+                    () {
+                  _passwordVisible = value;
+                },
+              );
+            },
+          ).pRight12(),
+        ),
       );
     }
     if ((widget.readOnly ?? false) && widget.onTap == null) {
-      inputStylePropsFinal = inputStylePropsFinal.copyWith(
-        backgroundColor: widget.readOnlyBackground ?? context.themeColor.grayBackground,
+      props = props.copyWith(
+        backgroundColor: widget.readOnlyBackground ?? Colors.grey.shade500,
       );
     }
-    if (widget.hideCounter ?? false) {
-      inputStylePropsFinal = inputStylePropsFinal.copyWith(
-        counter: Gaps.empty,
-      );
-    }
-    if (widget.enable == false) {
-      inputStylePropsFinal = inputStylePropsFinal.copyWith(
+    if (props.inputDecoration?.enabled == false) {
+      props = props.copyWith(
         backgroundColor: context.theme.hintColor.withOpacity(0.05),
       );
     }
@@ -131,7 +115,7 @@ class _TextFieldReactiveState<T> extends State<TextFieldReactive<T>> {
       showErrors: widget.showErrors ?? ((control) => false),
       style: widget.textStyle,
       valueAccessor: widget.valueAccessor,
-      textAlign: widget.textAlign ?? (inputStylePropsFinal.labelText != null ? TextAlign.end : TextAlign.start),
+      textAlign: widget.textAlign ?? (props.inputDecoration?.labelText != null ? TextAlign.end : TextAlign.start),
       textCapitalization: widget.textCapitalization,
       onSubmitted: widget.onSubmitted,
       obscureText: _passwordVisible ?? false,
@@ -140,17 +124,16 @@ class _TextFieldReactiveState<T> extends State<TextFieldReactive<T>> {
       inputFormatters: widget.inputFormatters,
       keyboardType: widget.keyboardType,
       maxLength: widget.maxLength,
-      validationMessages: finalValidationMessages,
       textInputAction: widget.textInputAction ?? TextInputAction.next,
       minLines: widget.minLines,
-      maxLines: widget.obscureText == true ? 1 : widget.maxLines,
-      readOnly: widget.enable == false ? true : (widget.readOnly ?? false),
+      maxLines: widget.obscureText ?? false ? 1 : widget.maxLines,
+      readOnly: props.inputDecoration?.enabled == false ? true : (widget.readOnly ?? false),
       onTap: widget.onTap,
       focusNode: widget.focusNode,
       decoration: widget.decoration ??
           AppTextField.primaryStyle(
             context,
-            inputStyleProps: inputStylePropsFinal,
+            inputStyleProps: props,
           ),
     );
   }
@@ -165,26 +148,6 @@ class _TextFieldReactiveState<T> extends State<TextFieldReactive<T>> {
 
     return BtnClear(
       onPressed: () => formControlFinal?.value = null,
-    );
-  }
-}
-
-class PasswordEyeBtn extends StatelessWidget {
-  const PasswordEyeBtn({super.key, required this.passwordVisible, required this.onPasswordVisibleChanged});
-
-  final bool passwordVisible;
-  final ValueChanged<bool> onPasswordVisibleChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    return CardCupertinoEffect(
-      child: Icon(
-        passwordVisible ? Icons.visibility : Icons.visibility_off,
-        color: context.themeColor.darkGray,
-      ),
-      onPressed: () {
-        onPasswordVisibleChanged(!passwordVisible);
-      },
     );
   }
 }

@@ -19,7 +19,7 @@ class TabRounded extends StatefulWidget {
 class _TabRoundedState extends State<TabRounded> {
   @override
   Widget build(BuildContext context) {
-    final gray = context.themeColorText.textHint;
+    final gray = Colors.grey;
     final primaryColor = context.theme.primaryColor;
 
     return Container(
@@ -29,7 +29,7 @@ class _TabRoundedState extends State<TabRounded> {
         border: Border.all(
           color: widget.isSelected
               ? primaryColor
-              : context.themeColorText.textHintLight,
+              : Colors.grey,
           width: 1,
         ),
         color: widget.isSelected ? primaryColor : Colors.transparent,

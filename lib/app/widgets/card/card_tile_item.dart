@@ -1,5 +1,4 @@
 import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/widgets/item_action/item_action.dart';
 import 'package:ez_store/app/widgets/layout/inkwell_card.dart';
 
 class CardTileItem extends StatelessWidget {
@@ -149,9 +148,7 @@ class CardTileItem extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         actionLeading ?? Gaps.empty,
-        if (showLike) ItemAction.like(context, count: likeCount),
         Gaps.hGap12,
-        ItemAction.comment(context, count: commentCount),
         Gaps.spacer,
         actionTrailing ?? Gaps.empty,
       ],

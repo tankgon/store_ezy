@@ -4,7 +4,7 @@ import 'package:reactive_forms/reactive_forms.dart';
 
 class TypeAheadStringReactive extends StatefulWidget {
   const TypeAheadStringReactive({
-    Key? key,
+    super.key,
     this.formControlName,
     required this.suggestionsCallback,
     this.hideOnLoading,
@@ -16,7 +16,7 @@ class TypeAheadStringReactive extends StatefulWidget {
     this.showErrors,
     this.enable,
     this.backgroundColor,
-  }) : super(key: key);
+  });
 
   final String? formControlName;
   final String? hintText;
@@ -32,8 +32,7 @@ class TypeAheadStringReactive extends StatefulWidget {
   final Color? backgroundColor;
 
   @override
-  State<TypeAheadStringReactive> createState() =>
-      _TypeAheadStringReactiveState();
+  State<TypeAheadStringReactive> createState() => _TypeAheadStringReactiveState();
 }
 
 class _TypeAheadStringReactiveState extends State<TypeAheadStringReactive> {
@@ -48,8 +47,7 @@ class _TypeAheadStringReactiveState extends State<TypeAheadStringReactive> {
   }
 
   FormControl<String>? formControl(BuildContext context) {
-    return (ReactiveForm.of(context)?.findControl(widget.formControlName!)
-        as FormControl<String>?);
+    return ReactiveForm.of(context)?.findControl(widget.formControlName!) as FormControl<String>?;
   }
 
   @override
@@ -68,19 +66,21 @@ class _TypeAheadStringReactiveState extends State<TypeAheadStringReactive> {
           controller.selection = previousSelection;
         },
         autofocus: false,
-        decoration: AppTextField.primaryStyle(context,
-            inputStyleProps: InputStyleProps(
+        decoration: AppTextField.primaryStyle(
+          context,
+          inputStyleProps: InputStyleProps(
+            backgroundColor: widget.enable == false ? context.theme.hintColor.withOpacity(0.05) : widget.backgroundColor,
+            inputDecoration: InputDecoration(
               hintText: widget.hintText,
-              backgroundColor: widget.enable == false
-                  ? context.theme.hintColor.withOpacity(0.05)
-                  : widget.backgroundColor,
               suffixIcon: widget.showDropDown == true
                   ? const Icon(
-                      Icons.keyboard_arrow_down,
-                      size: Dimens.ic,
-                    ).pRight8()
+                Icons.keyboard_arrow_down,
+                size: Dimens.ic,
+              ).pRight8()
                   : null,
-            )),
+            )
+          ),
+        ),
       ),
       hideOnLoading: widget.hideOnLoading ?? true,
       // getImmediateSuggestions: true,

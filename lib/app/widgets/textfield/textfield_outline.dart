@@ -4,7 +4,7 @@ enum TextFieldOutlineState { NORMAL, NOT_EMPTY, NOT_VALID }
 
 class TextFieldOutline extends StatefulWidget {
   const TextFieldOutline({
-    Key? key,
+    super.key,
     this.onFieldSubmitted,
     this.onEditingComplete,
     this.autoFocus = false,
@@ -49,7 +49,7 @@ class TextFieldOutline extends StatefulWidget {
     this.keepClearOnUnFocus,
     this.suffixMaxWidth,
     this.focusedBorder,
-  }) : super(key: key);
+  });
 
   final TextStyle? textStyle;
   final TextStyle? labelStyle;
@@ -267,10 +267,11 @@ class _TextFieldOutlineState extends State<TextFieldOutline> {
     final borderRadius = BorderRadius.circular(widget.radius);
 
     final border = OutlineInputBorder(
-        borderRadius: borderRadius,
-        borderSide: BorderSide(
-          color: widget.borderColor ?? context.themeColor.grayOpacity5,
-        ));
+      borderRadius: borderRadius,
+      borderSide: BorderSide(
+        color: widget.borderColor ?? Colors.grey,
+      ),
+    );
 
     return InputDecoration(
         helperText: widget.helperText,
@@ -340,12 +341,12 @@ class _TextFieldOutlineState extends State<TextFieldOutline> {
 
 class _PrefixIcon extends StatelessWidget {
   const _PrefixIcon({
-    Key? key,
+    super.key,
     required this.iconPadding,
     required this.iconData,
     required this.iconSize,
     // required this.colorItem,
-  }) : super(key: key);
+  });
 
   final EdgeInsetsGeometry? iconPadding;
   final IconData? iconData;
@@ -368,9 +369,9 @@ class _PrefixIcon extends StatelessWidget {
 
 class BtnInputClear extends StatelessWidget {
   const BtnInputClear({
-    Key? key,
+    super.key,
     required this.onPress,
-  }) : super(key: key);
+  });
 
   final VoidCallback? onPress;
 
@@ -380,7 +381,7 @@ class BtnInputClear extends StatelessWidget {
       Icons.clear,
       onPressed: onPress,
       backgroundColor: Colors.transparent,
-      iconColor: context.themeColorText.textHint,
+      iconColor: Colors.grey,
     );
   }
 }

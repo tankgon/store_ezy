@@ -14,7 +14,7 @@ class TagList<T> extends StatelessWidget {
           .map(
             (e) => TagItemRow(
               title: getTagTitle(e),
-              color: context.themeColor.gray5,
+              color: Colors.grey,
             ),
           )
           .toList(),

@@ -53,7 +53,7 @@ extension DioErrorExtend on Object? {
         return errorCode;
       }
     }
-    if (kDebugMode || AppConfig.IN_DEV || Get.find<UserSecureStorage>().developerMode == true) {
+    if (kDebugMode || AppConfig.IN_DEV || getIt<UserSecureStorage>().developerMode == true) {
       if (object is PlatformException) {
         return '${(object as PlatformException).message} \n\n\n---\n\n\n ${(object as PlatformException).stacktrace} \n\n\n---\n\n\n $object';
       }

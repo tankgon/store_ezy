@@ -37,11 +37,8 @@ class Avatar extends StatelessWidget {
 
     Widget img;
     if (src.isNullOrEmpty()) {
-      img = FittedBox(
-        child: AppIcon.userAvatar(
-          context,
-          color: iconColor,
-        ),
+      img = const FittedBox(
+        child: Icon(Icons.account_circle_rounded),
       );
     } else {
       img = Img(

@@ -15,14 +15,10 @@ class AppWebView extends StatefulWidget {
 class AppWebViewState extends State<AppWebView> with WidgetsBindingObserver {
   bool onError = false;
   final isLoading = true.obs;
-  WebViewController? _controller;
 
   @override
   void initState() {
     super.initState();
-    if (Platform.isAndroid) {
-      WebView.platform = AndroidWebView();
-    }
     WidgetsBinding.instance.addObserver(this);
   }
 
@@ -35,13 +31,11 @@ class AppWebViewState extends State<AppWebView> with WidgetsBindingObserver {
   @override
   void deactivate() {
     super.deactivate();
-    _controller?.reload();
   }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.paused) {
-      _controller?.reload();
     }
   }
 
@@ -51,28 +45,6 @@ class AppWebViewState extends State<AppWebView> with WidgetsBindingObserver {
       return (widget.errorMsg ?? getServerErrorMsg()).text.make().centered();
     }
 
-    return Obx(() => AppTopLayout.loadingOnTop(
-          isLoading: isLoading.value,
-          loadingType: AppTopLayoutLoadingType.iosLoading,
-          child: WebView(
-            javascriptMode: JavascriptMode.unrestricted,
-            onWebViewCreated: (controller) => _controller = controller,
-            key: ObjectKey(widget.url),
-            allowsInlineMediaPlayback: true,
-            initialUrl: widget.url,
-            onPageFinished: (url) => isLoading.value = false,
-            onWebResourceError: (e) {
-              logger.e(e);
-              setState(() {
-                onError = true;
-              });
-            },
-            gestureRecognizers: {}..add(
-                Factory<VerticalDragGestureRecognizer>(
-                  () => VerticalDragGestureRecognizer(),
-                ),
-              ),
-          ),
-        ));
+    return Gaps.empty;
   }
 }

@@ -16,7 +16,7 @@
 //     F.SOCKET_URL,
 //     OptionBuilder()
 //         .setTransports(['websocket']) // for Flutter or Dart VM
-//         // .setExtraHeaders({'token': Get.find<UserSecureStorage>().token})
+//         // .setExtraHeaders({'token': getIt<UserSecureStorage>().token})
 //         .enableReconnection()
 //         .setReconnectionAttempts(1000)
 //         .setReconnectionDelay(1000)

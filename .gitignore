@@ -1,3 +1,6 @@
+# Pakcage Import
+/packages/**
+
 # Miscellaneous
 *.class
 *.lock

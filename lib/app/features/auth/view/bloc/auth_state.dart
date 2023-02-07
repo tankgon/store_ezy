@@ -1,7 +1,20 @@
 part of 'auth_bloc.dart';
 
 class AuthData {
+
+  const AuthData({
+    this.userModel,
+  });
+
   final UserModel? userModel;
+
+//<editor-fold desc="Data Methods">
+
+  factory AuthData.fromMap(Map<String, dynamic> map) {
+    return AuthData(
+      userModel: map['userModel'] as UserModel,
+    );
+  }
 
   AuthData updateUser({
     UserModel? userModel,
@@ -10,12 +23,6 @@ class AuthData {
       userModel: userModel,
     );
   }
-
-//<editor-fold desc="Data Methods">
-
-  const AuthData({
-    this.userModel,
-  });
 
   @override
   bool operator ==(Object other) => identical(this, other) || (other is AuthData && runtimeType == other.runtimeType && userModel == other.userModel);
@@ -42,51 +49,44 @@ class AuthData {
     };
   }
 
-  factory AuthData.fromMap(Map<String, dynamic> map) {
-    return AuthData(
-      userModel: map['userModel'] as UserModel,
-    );
-  }
-
 //</editor-fold>
 }
 
 @immutable
 abstract class AuthState {
-  final AuthData data;
-
   const AuthState(this.data);
+
+  final AuthData data;
 }
 
 class AuthInitialState extends AuthState {
-  const AuthInitialState(AuthData data) : super(data);
+  const AuthInitialState(super.data);
 }
 
 class AuthLoadingState extends AuthState {
-  const AuthLoadingState(AuthData data) : super(data);
+  const AuthLoadingState(super.data);
 }
 
 class UnAuthenticatedState extends AuthState {
+  const UnAuthenticatedState(super.data, {this.showToast = false, this.openSignInPage = false});
+
   final bool openSignInPage;
   final bool showToast;
-
-  const UnAuthenticatedState(AuthData data,
-      {this.showToast = false, this.openSignInPage = false})
-      : super(data);
 }
 
 class AuthenticatedStateFail extends AuthState {
-  final String err;
+  const AuthenticatedStateFail(super.data, {required this.err});
 
-  const AuthenticatedStateFail(AuthData data, {required this.err})
-      : super(data);
+  final String err;
 }
 
 class AuthenticatedState extends AuthState {
+  const AuthenticatedState(
+    super.data, {
+    this.isRefresh = false,
+    this.firstTimeLoginEver = false,
+  });
+
   final bool firstTimeLoginEver;
   final bool isRefresh;
-
-  const AuthenticatedState(AuthData data,
-      {this.isRefresh = false, this.firstTimeLoginEver = false})
-      : super(data);
 }

@@ -5,7 +5,7 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import
+// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -264,6 +264,78 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/warning_ic.svg
   SvgGenImage get warningIc => const SvgGenImage('assets/icons/warning_ic.svg');
+
+  /// List of all assets
+  List<dynamic> get values => [
+        apple,
+        areaOutline,
+        avatarFill,
+        bathtub,
+        bed,
+        birealIc,
+        bookMark,
+        cartOutline,
+        check,
+        compass,
+        dot,
+        doubleDown,
+        exitUp,
+        facebook,
+        fileIc,
+        filterLine,
+        filterLineActive,
+        google,
+        handsakeOutline,
+        icBadgeCoins,
+        icBiAcademy,
+        icBiAcademyV2,
+        icBiAcademyV3,
+        icBiAcademyV4,
+        icBiAdsV3,
+        icBiAdsV4,
+        icBiAward,
+        icBiAwardV2,
+        icBiCare,
+        icBiCareV2,
+        icBiCareV3,
+        icBiCareV4,
+        icBiGifts,
+        icBiGiftsV2,
+        icBiJoyV3,
+        icBiJoyV4,
+        icBiWallet,
+        icBiWalletV2,
+        icBireal,
+        icBirealGray,
+        icChatGroup,
+        icChatGroupCustomer,
+        icGiftColor,
+        icHappyBirthday,
+        icItemHot,
+        icItemPopular,
+        icRCircle,
+        icScan,
+        icStartColor,
+        icUsedColor,
+        icVnpay,
+        icWalletBox,
+        icWalletBoxHead,
+        icWalletBoxOpened,
+        likeThumb,
+        likedThumb,
+        locationPin,
+        nearMeOutline,
+        newsPaper,
+        notiBell,
+        pinLeft,
+        radioSelected,
+        radioUnselected,
+        sntgLogo,
+        successIc,
+        toiletSeatOutline,
+        vr360,
+        warningIc
+      ];
 }
 
 class $AssetsIconsProfileGen {
@@ -372,6 +444,36 @@ class $AssetsIconsProfileGen {
   /// File path: assets/icons/profile/ic_wallet.svg
   SvgGenImage get icWallet =>
       const SvgGenImage('assets/icons/profile/ic_wallet.svg');
+
+  /// List of all assets
+  List<dynamic> get values => [
+        icAboutSnt,
+        icBamChild,
+        icBooking,
+        icCalculate,
+        icConsultantInfo,
+        icConsulting,
+        icCustomerManage,
+        icDeposit,
+        icDirectManager,
+        icDollar,
+        icFeedback,
+        icInbox,
+        icJoinedProgram,
+        icLove,
+        icPrivacy,
+        icProductBought,
+        icProfile,
+        icProjectView,
+        icReport,
+        icReportBugs,
+        icSubordinate,
+        icSurvey,
+        icTerm,
+        icUtterfly,
+        icVersion,
+        icWallet
+      ];
 }
 
 class Assets {
@@ -438,6 +540,8 @@ class AssetGenImage {
     );
   }
 
+  ImageProvider provider() => AssetImage(_assetName);
+
   String get path => _assetName;
 
   String get keyName => _assetName;
@@ -485,9 +589,11 @@ class SvgGenImage {
       excludeFromSemantics: excludeFromSemantics,
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
-      theme: theme,
+      theme: theme!,
     );
   }
 
   String get path => _assetName;
+
+  String get keyName => _assetName;
 }

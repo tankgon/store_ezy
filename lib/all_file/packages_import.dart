@@ -24,7 +24,6 @@ export 'package:flutter/foundation.dart';
 export 'package:flutter/gestures.dart';
 export 'package:flutter/material.dart' hide Path;
 export 'package:flutter_bloc/flutter_bloc.dart' hide EventHandler;
-export 'package:flutter_html/flutter_html.dart' hide OnTap, NavigationDelegate, NavigationRequest, NavigationDecision;
 export 'package:flutter_spinkit/flutter_spinkit.dart';
 export 'package:flutter_svg/flutter_svg.dart';
 export 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -55,4 +54,3 @@ export 'package:velocity_x/velocity_x.dart'
         VxMarqueeExtension,
         CenterExtension,
         VxCenterBuilderExtension;
-export 'package:webview_flutter/webview_flutter.dart';

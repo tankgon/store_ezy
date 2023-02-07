@@ -91,7 +91,7 @@ class _AppDatePickerState extends State<AppDatePicker> {
             ).expand(),
             Icon(
               Icons.calendar_today_rounded,
-              color: context.themeColor.gray5,
+              color: Colors.grey.shade500,
             ),
           ],
         ).p12(),

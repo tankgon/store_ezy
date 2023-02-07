@@ -28,7 +28,7 @@ class AppSwitch extends StatelessWidget {
       padding: 2,
       toggleSize: 16,
       activeColor: context.themeColor.successColor,
-      inactiveColor: inactiveColor ?? context.themeColor.actionColorGray,
+      inactiveColor: inactiveColor ?? Colors.grey,
       onToggle: (value) => onToggle?.call(value),
     );
   }

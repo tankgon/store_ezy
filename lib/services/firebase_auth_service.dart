@@ -97,7 +97,7 @@
 //
 //   void _updateTokenForGraphqlClient(String? token) {
 //     if (token?.isNullOrEmpty() == false) {
-//       Get.find<GraphqlClientService>().updateGuestToken(token: token);
+//       getIt<GraphqlClientService>().updateGuestToken(token: token);
 //     }
 //   }
 //
@@ -107,7 +107,7 @@
 //       String? token = await firebaseUserLD.value?.getIdToken();
 //       if(setCurToken(token: token)){
 //         graphqlProvider.accessTokenChange(token: token);
-//         // Get.find<GraphqlClientService>().updateAccessToken(token: token);
+//         // getIt<GraphqlClientService>().updateAccessToken(token: token);
 //       }
 //     }
 //   }
@@ -126,7 +126,7 @@
 //       var token = await firebaseUserLD.value?.getIdToken();
 //       if(setCurToken(token: token)){
 //         graphqlProvider.accessTokenChangeWithoutMigrate(token);
-//         // Get.find<GraphqlClientService>().updateAccessTokenWithoutMigrate(token: token);
+//         // getIt<GraphqlClientService>().updateAccessTokenWithoutMigrate(token: token);
 //         return Future.value();
 //       }
 //     }else{
@@ -143,7 +143,7 @@
 //   //       // await _addToken(user);
 //   //       var token = await user.getIdToken();
 //   //       logger.i('USER CHANGE: token change $token');
-//   //       // Get.find<GraphqlClientModule>().updateAccessToken(token: token);
+//   //       // getIt<GraphqlClientModule>().updateAccessToken(token: token);
 //   //     } else {
 //   //       // print('AuthController.idTokenChanges => cancel');
 //   //       // tokenChangeStream?.cancel();
@@ -430,9 +430,9 @@
 //   }
 //
 //   void _clearData() {
-//     // Get.find<UserController>().clearUserData();
+//     // getIt<UserController>().clearUserData();
 //     // _userController.clearUserData();
-//     // Get.find<DioModule>().removeToken();
+//     // getIt<DioModule>().removeToken();
 //     // tokenChangeStream?.cancel();
 //     // print('AuthController.tokenChangeStream => cancel');
 //     // logger.i('AuthController.tokenChangeStream => cancel');
@@ -448,7 +448,7 @@
 //
 //   Future<void> _addToken(User user) async {
 //     var token = await user.getIdToken();
-//     // Get.find<DioModule>().addToken(token);
+//     // getIt<DioModule>().addToken(token);
 //   }
 //
 //   Future<String> getToken() async {

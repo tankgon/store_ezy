@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class AppTheme {
-  static ThemeData getTheme({bool isDark = false, required String fontFamily}) {
+  static ThemeData getTheme({bool isDark = false, String? fontFamily}) {
     final colorScheme = AppColorExtension.colorSchemaFrom(isDark: isDark);
     final onPrimarySurfaceColor = isDark ? colorScheme.onSurface : colorScheme.onPrimary;
 

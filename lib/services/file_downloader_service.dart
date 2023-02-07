@@ -65,7 +65,7 @@
 //     _bindBackgroundIsolate();
 //
 //     var localPath = await findLocalPath();
-//     var token = Get.find<UserSecureStorage>().token;
+//     var token = getIt<UserSecureStorage>().token;
 //     final taskId = await FlutterDownloader.enqueue(
 //       url: url ?? '',
 //       savedDir: localPath ?? '/',

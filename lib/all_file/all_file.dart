@@ -3,6 +3,7 @@
 export 'package:ez_store/all_file/packages_import.dart';
 
 // Navigation
+export 'package:ez_store/app/app_routes/app_routes.gr.dart';
 
 // Widget
 export 'package:ez_store/all_file/widget_import.dart';

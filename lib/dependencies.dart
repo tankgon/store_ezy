@@ -1,5 +1,4 @@
 import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/app_routes/app_auto_route.gr.dart';
 import 'package:ez_store/firebase_options.dart';
 import 'package:ez_store/firebase_options_dev.dart';
 import 'package:ez_store/firebase_options_stag.dart';
@@ -10,6 +9,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:logger_and_error/logger/logger_custom.dart';
+
+import 'app/app_routes/app_routes.gr.dart';
 
 final getIt = GetIt.instance;
 

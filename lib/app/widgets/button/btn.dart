@@ -87,38 +87,24 @@ class Btn extends StatelessWidget {
             context,
           );
           break;
-        case BtnType.GHOST_SUCCESS:
-          finalStyle = AppButton.ghostStyle(
-            context,
-            props: BtnStyleProps(
-              primaryColor: primaryColor ?? context.theme.onPrimary(),
-              padding: padding,
-              textColor: context.themeColor.successColor,
-              borderColor: borderColor ?? context.themeColor.successColor,
-              borderWidth: borderWidth,
-            ),
-          );
-          break;
         case BtnType.DELETE:
           finalStyle = AppButton.primaryStyle(context);
           break;
-        case BtnType.TEXT:
-          finalStyle = AppButton.textStyle(
+        default:
+          finalStyle = AppButton.primaryStyle(
             context,
-            props: BtnStyleProps(
-              primaryColor: primaryColor,
-              padding: padding,
-              elevation: elevation,
-              borderColor: borderColor,
-              borderWidth: borderWidth,
-            ),
           );
-          finalFontWeight = fontWeight ?? FontWeight.w500;
           break;
+
       }
     }
 
-    final childWidget = label == null ? child : label?.text.color(btnType == BtnType.TEXT ? primaryColor : null).fontWeight(finalFontWeight).size(fontSize ?? context.textTheme.bodyText2!.fontSize).make();
+    final childWidget = label == null
+        ? child
+        : label?.text
+            .fontWeight(finalFontWeight)
+            .size(fontSize ?? context.textTheme.bodyText2!.fontSize)
+            .make();
 
     final btnBody = Row(
       mainAxisAlignment: MainAxisAlignment.center,

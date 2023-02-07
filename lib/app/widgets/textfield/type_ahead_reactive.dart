@@ -3,20 +3,20 @@ import 'package:reactive_flutter_typeahead/reactive_flutter_typeahead.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class TypeAheadReactive<D, V> extends StatelessWidget {
-  TypeAheadReactive(
-      {Key? key,
-      this.formControlName,
-      required this.suggestionsCallback,
-      this.hideOnLoading,
-      this.hintText,
-      this.showDropDown = false,
-      this.onSuggestionSelected,
-      this.stringify,
-      this.onChanged,
-      this.debounceDuration = const Duration(milliseconds: 300),
-      TextEditingController? controller,
-      this.itemBuilder})
-      : super(key: key) {
+  TypeAheadReactive({
+    super.key,
+    this.formControlName,
+    required this.suggestionsCallback,
+    this.hideOnLoading,
+    this.hintText,
+    this.showDropDown = false,
+    this.onSuggestionSelected,
+    this.stringify,
+    this.onChanged,
+    this.debounceDuration = const Duration(milliseconds: 300),
+    TextEditingController? controller,
+    this.itemBuilder,
+  }) {
     _controller = controller ?? TextEditingController();
   }
 
@@ -44,16 +44,20 @@ class TypeAheadReactive<D, V> extends StatelessWidget {
         controller: _controller,
         onChanged: onChanged,
         autofocus: false,
-        decoration: AppTextField.primaryStyle(context,
-            inputStyleProps: InputStyleProps(
+        decoration: AppTextField.primaryStyle(
+          context,
+          inputStyleProps: InputStyleProps(
+            inputDecoration: InputDecoration(
               hintText: hintText,
-              suffixIcon: showDropDown == true
+              suffixIcon: showDropDown ?? false
                   ? const Icon(
                       Icons.keyboard_arrow_down,
                       size: Dimens.ic,
                     ).pRight8()
                   : null,
-            )),
+            ),
+          ),
+        ),
       ),
       hideOnLoading: hideOnLoading ?? true,
       // getImmediateSuggestions: true,
@@ -62,9 +66,7 @@ class TypeAheadReactive<D, V> extends StatelessWidget {
       noItemsFoundBuilder: (_) => Gaps.empty,
       onSuggestionSelected: (item) {
         _controller?.text = stringify?.call(item) ?? item.toString();
-        (ReactiveForm.of(context)?.findControl(formControlName!)
-                as FormControl<V>?)
-            ?.value = item;
+        (ReactiveForm.of(context)?.findControl(formControlName!) as FormControl<V>?)?.value = item;
         onSuggestionSelected?.call(item);
       },
       itemBuilder: itemBuilder ??

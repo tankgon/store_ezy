@@ -47,7 +47,11 @@ class AppDropDown<T> extends StatelessWidget {
           decoration: AppTextField.primaryStyle(
             context,
             inputStyleProps: inputStyleProps ??
-                const InputStyleProps(contentPadding: Dimens.edge_y_default),
+                const InputStyleProps(
+                  inputDecoration: InputDecoration(
+                      contentPadding: Dimens.edge_y_default,
+                  ),
+                ),
           ),
         ),
       ),

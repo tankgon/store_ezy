@@ -23,7 +23,6 @@ class FilterActionBar<T> extends StatelessWidget {
         BlocBuilder<FilterDataCubit<T>, FilterDataState<T>>(
           builder: (context, state) {
             return Btn(
-              btnType: BtnType.GRAY_PRIMARY,
               label: 'cancelFilter',
               onPressed: cubit.isActive ? () => _clear(context) : null,
             );

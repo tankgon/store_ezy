@@ -34,7 +34,7 @@ class SearchBar extends StatelessWidget {
     return TextFieldOutline(
       controller: controller,
       hintText: 'search',
-      backgroundColor: backgroundColor ?? context.themeColor.gray6,
+      backgroundColor: backgroundColor ?? Colors.grey.shade600,
       borderColor: borderColor,
       focusedBorder: focusedBorder,
       borderWidth: 0,

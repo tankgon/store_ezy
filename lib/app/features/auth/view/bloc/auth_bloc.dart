@@ -7,9 +7,9 @@ part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(const AuthInitialState(AuthData())) {
-    _userSecureStorage = Get.find<UserSecureStorage>();
-    // _authRepo = Get.find<AuthRepo>();
-    // _userRepo = userRepo ?? Get.find<UserRepo>();
+    _userSecureStorage = getIt<UserSecureStorage>();
+    // _authRepo = getIt<AuthRepo>();
+    // _userRepo = userRepo ?? getIt<UserRepo>();
 
     on<AuthFirstLoadUserEvent>(_onFirstLoadAuthEvent);
     on<AuthFetchUserEvent>(_onAuthFetchUserEvent);
@@ -120,7 +120,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> removeUserInfo() async {
-    Get.find<DioModule>().removeToken();
+    getIt<DioModule>().removeToken();
     await _userSecureStorage.clear();
     // SocketIOService.instance.clearToken();
     // FirebaseNotificationService.instance.removeToken();
@@ -130,7 +130,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     _userSecureStorage.setToken(token);
     _userSecureStorage.unAuthorized.value = false;
     // SocketIOService.instance.setToken(token: token);
-    Get.find<DioModule>().addToken(token);
+    getIt<DioModule>().addToken(token);
 
     if (avatar.isNotNullOrEmpty()) {
       // await _userRepo.updateUserAvatarStr(

@@ -44,7 +44,7 @@ class RadioBtnReactive<T> extends StatelessWidget {
       child: ReactiveStatusListenableBuilder(
           formControl: _formControl,
           builder: (context, control, child) {
-            bool isActive = control.value == value ? true : false;
+            final isActive = control.value == value;
             return Container(
               decoration: castOrNull(_getBorder(context, isActive)),
               child: Row(
@@ -52,14 +52,12 @@ class RadioBtnReactive<T> extends StatelessWidget {
                 mainAxisAlignment:
                     mainAxisAlignment ?? MainAxisAlignment.center,
                 children: [
-                  type == RadioBtnType.dot
-                      ? ReactiveRadio<T>(
+                  if (type == RadioBtnType.dot) ReactiveRadio<T>(
                           formControl: _formControl,
                           value: value,
                           materialTapTargetSize:
                               MaterialTapTargetSize.shrinkWrap,
-                        )
-                      : SizedBox(
+                        ) else SizedBox(
                           width: showBorder ? 14 : 6,
                         ),
                   Flexible(
@@ -80,12 +78,12 @@ class RadioBtnReactive<T> extends StatelessWidget {
     );
   }
 
-  _getBorder(BuildContext context, bool isActive) {
+  BoxDecoration _getBorder(BuildContext context, bool isActive) {
     Color borderColor;
     if (isActive) {
       borderColor = type == RadioBtnType.dot
           ? context.theme.primaryColor
-          : context.themeColor.lightBlue;
+          : context.themeColor.lightPrimary;
     } else {
       borderColor = showBorder
           ? (inActiveBorderColor ?? context.themeColor.divider)
@@ -98,13 +96,13 @@ class RadioBtnReactive<T> extends StatelessWidget {
               color: borderColor,
             ),
             color: isActive && type == RadioBtnType.rec
-                ? context.themeColor.lightBlue
+                ? context.themeColor.lightPrimary
                 : Colors.transparent,
             borderRadius: BorderRadius.circular(Dimens.rad_XS),
           )
         : BoxDecoration(
             color: isActive && type == RadioBtnType.rec
-                ? context.themeColor.lightBlue
+                ? context.themeColor.lightPrimary
                 : Colors.transparent,
           );
   }
