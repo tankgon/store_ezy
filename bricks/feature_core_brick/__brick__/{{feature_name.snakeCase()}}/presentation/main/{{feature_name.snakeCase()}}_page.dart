@@ -57,7 +57,7 @@ class {{feature_name.pascalCase()}}Page extends StatelessWidget {
 
   void _onStateChanged(BuildContext context, {{feature_name.pascalCase()}}State state) {
     if (state.status == ItemDetailStatus.error) {
-      DialogUtils.showAlertDialog(context, content: state.errorMsg);
+      DialogUtils.showMaterialDialog(context: context, content: state.errorMsg);
     }
   }
 }

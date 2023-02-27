@@ -30,7 +30,6 @@ Future<void> _appService() async {
   logger = LoggerCustom(logEnable: AppConfig.SHOW_LOG);
 
   await Hive.initFlutter();
-  await Hive.openBox(AppConstant.KEY_BOX_SETTING);
 
   // Firebase
   switch (F.appFlavor) {

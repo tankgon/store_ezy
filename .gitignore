@@ -1,5 +1,5 @@
 # Pakcage Import
-/packages/**
+#/packages/**
 
 # Miscellaneous
 *.class

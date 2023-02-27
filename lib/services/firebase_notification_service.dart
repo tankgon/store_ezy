@@ -1,3 +1,4 @@
+import 'package:app_utils/view/app_info_utils.dart';
 import 'package:ez_store/all_file/all_file.dart';
 import 'package:ez_store/firebase_options.dart';
 import 'package:ez_store/firebase_options_dev.dart';
@@ -78,8 +79,8 @@ class FirebaseNotificationService {
     await _setupMessageListener(filterMessage: filterMessage);
     await setupInteractedMessage(callBack: notificationPressedCallBack);
 
-    _firebaseMessaging.getToken().then((value) async {
-      final deviceID = await AppUtils.getDeviceID();
+    await _firebaseMessaging.getToken().then((value) async {
+      final deviceID = await AppInfoUtils.getDeviceID();
       logger.i('FirebaseMessaging Token: ${value?.toString() ?? ''}');
       logger.i('deviceID Token: ${deviceID?.toString() ?? ''}');
     });
@@ -137,7 +138,9 @@ class FirebaseNotificationService {
       if (payload != null) {
         try {
           final payloadJson = await jsonDecode(payload);
-          onPressedCallback.call(castOrNull(payloadJson));
+          if (payloadJson is Map<String, dynamic>?) {
+            onPressedCallback.call(payloadJson);
+          }
         } catch (e, trace) {
           logger.e(e.toString(), e, trace);
         }
@@ -198,15 +201,15 @@ class FirebaseNotificationService {
 
   String? getStringFromLocKey(String? locKey, List<String>? locArgs) {
     String? rs;
-    if (locKey.isNotNullOrEmpty()) {
-      rs = locKey;
-
-      final replaceCode = Platform.isIOS ? '%@' : r'%1$s';
-      locArgs?.forEach((arg) {
-        rs = rs?.replaceFirst(replaceCode, arg);
-      });
+    if (locKey == null || locKey.isEmpty) {
+      return rs;
     }
-    return rs;
+    rs = locKey;
+
+    final replaceCode = Platform.isIOS ? '%@' : r'%1$s';
+    locArgs?.forEach((arg) {
+      rs = rs?.replaceFirst(replaceCode, arg);
+    });
   }
 
   Future<void> _setupMessageListener({
@@ -269,7 +272,7 @@ class FirebaseNotificationService {
   }
 
   Future<void> subscribeToTopic(String topicName) async {
-    _firebaseMessaging.subscribeToTopic(topicName);
+    return _firebaseMessaging.subscribeToTopic(topicName);
   }
 
   void _onMessageClick(

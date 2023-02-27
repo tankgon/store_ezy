@@ -1,0 +1,20 @@
+import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
+import 'package:app_ui_kit/components/button/btn.dart';
+
+class BtnMoreText extends StatelessWidget {
+  const BtnMoreText({Key? key, this.onPressed, required this.isMore, this.padding}) : super(key: key);
+
+  final VoidCallback? onPressed;
+  final bool isMore;
+  final EdgeInsetsGeometry? padding;
+
+  @override
+  Widget build(BuildContext context) {
+    return Btn(
+      label: isMore ? 'viewLess': 'viewMore',
+      btnType: BtnType.TEXT,
+      padding: padding ?? Dimens.edge_zero,
+      onPressed: onPressed,
+    );
+  }
+}

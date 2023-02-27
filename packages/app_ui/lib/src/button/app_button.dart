@@ -1,8 +1,8 @@
 import 'package:app_ui/src/layout/dimens.dart';
 import 'package:flutter/material.dart';
 
-class AppButton {
-  AppButton._();
+class AppButtonStyle {
+  AppButtonStyle._();
 
   static const double defaultRadius = Dimens.rad;
   static const double defaultElevation = Dimens.elevation_zero;

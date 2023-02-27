@@ -7,6 +7,7 @@ export 'package:ez_store/app/app_routes/app_routes.gr.dart';
 
 // Widget
 export 'package:ez_store/all_file/widget_import.dart';
+export 'package:app_ui_kit/app_ui_kit.dart';
 
 // Controller
 export 'package:ez_store/all_file/controllers_import.dart';
@@ -17,12 +18,6 @@ export 'package:ez_store/all_file/models_import.dart';
 
 // Service
 export 'package:ez_store/all_file/services_import.dart';
-
-// Bloc
-export 'package:ez_store/all_file/blocs_import.dart';
-
-// Theme
-export 'package:ez_store/all_file/theme_import.dart';
 
 // Resource
 export 'package:ez_store/all_file/resources_import.dart';

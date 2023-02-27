@@ -3,7 +3,6 @@ import 'package:ez_store/app/features/auth/view/bloc/auth_bloc.dart';
 import 'package:ez_store/app/features/notification/core/service/notification_utils.dart';
 import 'package:ez_store/app/features/notification/data/model/notification_model.dart';
 import 'package:ez_store/app/features/notification/presentation/detail/cubit/notification_detail_cubit.dart';
-import 'package:ez_store/app/widgets/container/container_circle.dart';
 
 class NotificationItemRow extends StatelessWidget {
   const NotificationItemRow({super.key, required this.item});
@@ -93,7 +92,7 @@ class NotificationItemRow extends StatelessWidget {
 
   void _onStateChanged(BuildContext context, NotificationDetailState state) {
     if (state.status == ItemDetailStatus.error) {
-      DialogUtils.showAlertDialog(context, content: state.errorMsg);
+      DialogUtils.showMaterialDialog(context: context, content: state.errorMsg);
     }
   }
 }

@@ -38,9 +38,6 @@ class _NotificationMainBodyState extends State<NotificationMainBody> {
       child: PagingList<NotificationDetailModel>(
         pagingController: _pagingController,
         padding: Dimens.edgePage(context),
-        noItemsFoundIndicatorBuilder: (context) => ContentNotFound(
-          itemTitle: 'notification'.tr,
-        ),
         itemBuilder: (context, item, index) {
           return NotificationItemRow(
             key: ObjectKey(item),

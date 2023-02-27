@@ -3,15 +3,10 @@ export 'dart:async';
 export 'dart:convert';
 export 'dart:io';
 
-
-export 'package:get_it/get_it.dart';
 export 'package:animate_do/animate_do.dart';
 export 'package:animated_text_kit/animated_text_kit.dart';
 export 'package:antdesign_icons/antdesign_icons.dart';
 export 'package:auto_route/auto_route.dart';
-export 'package:ez_store/core/utils/app_map_utils.dart';
-export 'package:ez_store/core/utils/dialog_utils.dart';
-export 'package:ez_store/services/socket_io_service.dart';
 export 'package:bloc/bloc.dart' hide EventHandler;
 export 'package:breakpoint/breakpoint.dart';
 export 'package:cached_network_image/cached_network_image.dart';
@@ -20,6 +15,7 @@ export 'package:device_info_plus/device_info_plus.dart';
 //// *** Third Party Packages ***
 export 'package:dio/dio.dart' hide Headers, MultipartFile;
 export 'package:equatable/equatable.dart';
+export 'package:ez_store/services/socket_io_service.dart';
 export 'package:flutter/foundation.dart';
 export 'package:flutter/gestures.dart';
 export 'package:flutter/material.dart' hide Path;
@@ -33,8 +29,10 @@ export 'package:get/get_navigation/get_navigation.dart' hide Transition;
 export 'package:get/get_rx/get_rx.dart' hide StringExtension, IntExtension, BoolExtension;
 export 'package:get/get_state_manager/get_state_manager.dart';
 export 'package:get/utils.dart';
+export 'package:get_it/get_it.dart';
 export 'package:hive_flutter/hive_flutter.dart';
 export 'package:json_annotation/json_annotation.dart';
+export 'package:loader_overlay/loader_overlay.dart';
 export 'package:overlay_support/overlay_support.dart';
 export 'package:package_info_plus/package_info_plus.dart';
 export 'package:retrofit/http.dart' hide Path;

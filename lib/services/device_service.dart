@@ -1,3 +1,4 @@
+import 'package:app_utils/view/app_info_utils.dart';
 import 'package:ez_store/all_file/all_file.dart';
 import 'package:ez_store/services/firebase_notification_service.dart';
 
@@ -6,7 +7,7 @@ class DeviceService {
 
   Future<FCMTokenReq> getFCMTokenReq() async {
     try {
-      final deviceID = await AppUtils.getDeviceID();
+      final deviceID = await AppInfoUtils.getDeviceID();
       final fcmToken = await FirebaseNotificationService.instance.getFCMToken();
 
       return Future.value(

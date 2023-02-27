@@ -42,9 +42,9 @@ extension DioErrorExtend on Object? {
         if (errorCode == 'ER0040' || errorCode == 'ER0023') {
           final todayStr = dioError.response?.data['today'] as String?;
           final expiredBlockStr = dioError.response?.data['expiredBlock'] as String?;
-          final today = TimeUtils.strUtcToDateLocale(todayStr);
-          final expired = TimeUtils.strUtcToDateLocale(expiredBlockStr);
-          final timeDifferStr = TimeUtils.getTimeDifferStr(today, expired);
+          final today = TimeService().strUtcToDateLocale(todayStr);
+          final expired = TimeService().strUtcToDateLocale(expiredBlockStr);
+          final timeDifferStr = TimeService().getTimeDifferStr(today, expired);
           logger.i('timeDifferStr $timeDifferStr');
 
           return errorCode.replaceFirst('<time>', timeDifferStr ?? 'fewMinus');

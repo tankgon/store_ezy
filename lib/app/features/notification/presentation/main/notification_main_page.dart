@@ -26,7 +26,7 @@ class NotificationMainPage extends StatelessWidget {
 
   void _onStateChanged(BuildContext context, NotificationMainState state) {
     if (state.status == ItemDetailStatus.error) {
-      DialogUtils.showAlertDialog(context, content: state.errorMsg);
+      DialogUtils.showMaterialDialog(context: context, content: state.errorMsg);
     }
   }
 }
