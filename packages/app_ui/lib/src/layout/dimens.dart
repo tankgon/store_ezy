@@ -12,9 +12,8 @@ class Dimens {
   static const double minRowHeight_S = 48.0;
   static const double minRowHeight = 52.0;
 
-  static const double text_XS2 = 10.0;
-  static const double text_XS = 12.0;
-  static const double text_mid_XS = 13.0;
+  static const double text_XS2 = 12.0;
+  static const double text_XS = 13.0;
   static const double text_S = 14.0;
   static const double text_mid_S = 15.0;
   static const double text = 16.0;

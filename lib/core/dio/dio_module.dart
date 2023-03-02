@@ -9,7 +9,7 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 /// It will also contain the base url and all other Dio option
 ///
 
-class DioModule extends DisposableInterface {
+class DioModule {
   DioModule();
 
   Dio? _dio;
@@ -20,7 +20,7 @@ class DioModule extends DisposableInterface {
     }
 
     logger.i('**** Dio create');
-    BaseOptions options = BaseOptions(
+    final options = BaseOptions(
       baseUrl: F.SERVER_URL,
       connectTimeout: 11000,
       receiveTimeout: 11000,
@@ -51,20 +51,24 @@ class DioModule extends DisposableInterface {
     return _dio!;
   }
 
-  // TODO Add token to Interceptor
   void addTokenInterceptor() {
-    dio.interceptors.add(InterceptorsWrapper(onError: (error, handler) async {
-      if (error.response?.statusCode == 401) {
-        logger.i('interceptor 401');
+    dio.interceptors.add(
+      InterceptorsWrapper(
+        onError: (error, handler) async {
+          if (error.response?.statusCode == 401) {
+            logger.i('interceptor 401');
 
-        final storage = getIt<UserSecureStorage>();
-        storage.notifyUnAuthorized();
-      }
+            final storage = getIt<UserSecureStorage>();
+            await storage.notifyUnAuthorized();
+          }
 
-      return handler.next(error);
-    }, onResponse: (response, handler) {
-      return handler.next(response);
-    }));
+          return handler.next(error);
+        },
+        onResponse: (response, handler) {
+          return handler.next(response);
+        },
+      ),
+    );
   }
 
   void addToken(String? token) {

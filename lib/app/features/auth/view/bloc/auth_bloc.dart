@@ -128,7 +128,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> setUserInfo({required String token, String? avatar}) async {
     _userSecureStorage.setToken(token);
-    _userSecureStorage.unAuthorized.value = false;
+    _userSecureStorage.notifyAuthorized();
     // SocketIOService.instance.setToken(token: token);
     getIt<DioModule>().addToken(token);
 

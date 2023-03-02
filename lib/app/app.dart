@@ -3,9 +3,7 @@ import 'package:app_ui_kit/components/app/scroll_behavior_default.dart';
 import 'package:ez_store/all_file/all_file.dart';
 import 'package:ez_store/app/features/auth/view/bloc/auth_bloc.dart';
 import 'package:ez_store/app/features/auth/view/widget/auth_listener.dart';
-import 'package:ez_store/l10n/l10n.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -22,12 +20,9 @@ class App extends StatelessWidget {
         statusBarIconBrightness: Brightness.dark,
       ),
       child: MaterialApp.router(
-        localizationsDelegates: const [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: AppLocalizations.supportedLocales,
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
         title: F.title,
         builder: (context, child) {
           return _flavorBanner(
@@ -38,8 +33,13 @@ class App extends StatelessWidget {
           );
         },
         themeMode: ThemeMode.light,
-        theme: AppTheme.getTheme(),
-        darkTheme: AppTheme.getTheme(isDark: true),
+        theme: AppTheme.getTheme(
+          fontFamily: 'Inter',
+        ),
+        darkTheme: AppTheme.getTheme(
+          isDark: true,
+          fontFamily: 'Inter',
+        ),
         debugShowCheckedModeBanner: false,
         routerDelegate: appRouter.delegate(
           initialRoutes: [

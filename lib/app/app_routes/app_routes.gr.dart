@@ -16,7 +16,7 @@ import 'package:flutter/material.dart' as _i6;
 
 import '../../all_file/all_file.dart' as _i7;
 import '../features/home/presentation/main/home_page.dart' as _i4;
-import '../features/main/view/main_page.dart' as _i1;
+import '../features/main/presentation/main_page.dart' as _i1;
 import '../features/notification/data/model/notification_model.dart' as _i8;
 import '../features/notification/presentation/detail/notification_detail_page.dart'
     as _i3;

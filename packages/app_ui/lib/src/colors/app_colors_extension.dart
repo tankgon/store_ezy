@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 extension AppThemeContextExtend on BuildContext {
@@ -21,6 +20,16 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
     required this.infoColor,
     required this.actionColor,
     required this.actionColorInactive,
+    required this.grey,
+    required this.blue,
+    required this.cyan,
+    required this.red,
+    required this.purple,
+    required this.yellow,
+    required this.green,
+    required this.orange,
+    required this.pink,
+    required this.itemBackground,
   });
 
   final Color text;
@@ -41,6 +50,17 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
   final Color actionColor;
   final Color actionColorInactive;
 
+  final Color itemBackground;
+  final Color grey;
+  final Color blue;
+  final Color cyan;
+  final Color red;
+  final Color purple;
+  final Color yellow;
+  final Color green;
+  final Color orange;
+  final Color pink;
+
   static const AppColorExtension dark = AppColorExtension(
     text: Color(0xff000000),
     textLink: Color(0xFF1890ff),
@@ -55,6 +75,16 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
     infoColor: Color(0xFF1890ff),
     actionColor: Color(0xFF1890ff),
     actionColorInactive: Color(0xFF70787d),
+    grey: Color(0xFF5F5F5F),
+    blue: Color(0xFF4A8CEF),
+    cyan: Color(0xFF5EDFE8),
+    red: Color(0xFFE92323),
+    purple: Color(0xFFB55BED),
+    yellow: Color(0xFFF9B83B),
+    green: Color(0xFF44C542),
+    orange: Color(0xFFFB822A),
+    pink: Color(0xFFFF66B9),
+    itemBackground: Color(0xFFF4F4F4),
   );
 
   static const AppColorExtension light = AppColorExtension(
@@ -71,6 +101,16 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
     infoColor: Color(0xFF1890ff),
     actionColor: Color(0xFF1890ff),
     actionColorInactive: Color(0xFF70787d),
+    grey: Color(0xFF5F5F5F),
+    blue: Color(0xFF4A8CEF),
+    cyan: Color(0xFF5EDFE8),
+    red: Color(0xFFE92323),
+    purple: Color(0xFFB55BED),
+    yellow: Color(0xFFF9B83B),
+    green: Color(0xFF44C542),
+    orange: Color(0xFFFB822A),
+    pink: Color(0xFFFF66B9),
+    itemBackground: Color(0xFFF4F4F4),
   );
 
   @override
@@ -89,6 +129,16 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
       infoColor: infoColor,
       actionColor: actionColor,
       actionColorInactive: actionColorInactive,
+      grey: grey,
+      blue: blue,
+      cyan: cyan,
+      red: red,
+      purple: purple,
+      yellow: yellow,
+      green: green,
+      orange: orange,
+      pink: pink,
+      itemBackground: itemBackground,
     );
   }
 
@@ -111,6 +161,16 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
       infoColor: Color.lerp(infoColor, other.infoColor, t) ?? infoColor,
       actionColor: Color.lerp(actionColor, other.actionColor, t) ?? actionColor,
       actionColorInactive: Color.lerp(actionColorInactive, other.actionColorInactive, t) ?? actionColorInactive,
+      grey: Color.lerp(grey, other.grey, t) ?? grey,
+      blue: Color.lerp(blue, other.blue, t) ?? blue,
+      cyan: Color.lerp(cyan, other.cyan, t) ?? cyan,
+      red: Color.lerp(red, other.red, t) ?? red,
+      purple: Color.lerp(purple, other.purple, t) ?? purple,
+      yellow: Color.lerp(yellow, other.yellow, t) ?? yellow,
+      green: Color.lerp(green, other.green, t) ?? green,
+      orange: Color.lerp(orange, other.orange, t) ?? orange,
+      pink: Color.lerp(pink, other.pink, t) ?? pink,
+      itemBackground: Color.lerp(itemBackground, other.itemBackground, t) ?? itemBackground,
     );
   }
 
@@ -129,7 +189,7 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
 
 const ColorScheme _colorScheme = ColorScheme(
   brightness: Brightness.light,
-  primary: Color(0xFF1A92FF),
+  primary: Color(0xFF19AAEB),
   onPrimary: Color(0xFFffffff),
   primaryContainer: Color(0xFFb7eaff),
   onPrimaryContainer: Color(0xFF001f2a),
@@ -156,7 +216,7 @@ const ColorScheme _colorScheme = ColorScheme(
 
 const ColorScheme _colorSchemeDark = ColorScheme(
   brightness: Brightness.light,
-  primary: Color(0xFF1A92FF),
+  primary: Color(0xFF19AAEB),
   onPrimary: Color(0xFFffffff),
   primaryContainer: Color(0xFFb7eaff),
   onPrimaryContainer: Color(0xFF001f2a),

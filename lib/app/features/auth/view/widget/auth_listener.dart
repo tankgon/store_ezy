@@ -10,24 +10,11 @@ class AuthListener extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamListener(
-      stream: getIt<UserSecureStorage>().unAuthorized.stream,
-      onData: (unAuthorized) {
-        // TODO(Logout-Event): Check Logout event when 401
-        // if (unAuthorized == true && getIt<AppAutoRoute>().current.name != UserProfileRoute.name) {
-        //   context.read<AuthBloc>().add(UnAuthenticatedEvent());
-        // }
+    return BlocConsumer<AuthBloc, AuthState>(
+      listener: _onAuthStateChange,
+      builder: (context, state) {
+        return child;
       },
-      child: Builder(
-        builder: (context) {
-          return BlocConsumer<AuthBloc, AuthState>(
-            listener: _onAuthStateChange,
-            builder: (context, state) {
-              return child;
-            },
-          );
-        },
-      ),
     );
   }
 
@@ -36,9 +23,9 @@ class AuthListener extends StatelessWidget {
       if (!state.isRefresh) {
         String msg;
         if (state.firstTimeLoginEver) {
-          msg = 'welcomeNewUser'.tr.replaceFirst('<user_name>', 'contactName');
+          msg = 'welcomeNewUser'.tr().replaceFirst('<user_name>', 'contactName');
         } else {
-          msg = 'welcomeUser'.tr.replaceFirst('<user_name>', 'contactName');
+          msg = 'welcomeUser'.tr().replaceFirst('<user_name>', 'contactName');
         }
         ToastUtils.showToast(context: context, msg: msg, duration: const Duration(seconds: 3));
       }
@@ -51,7 +38,7 @@ class AuthListener extends StatelessWidget {
       if (state.showToast) {
         ToastUtils.showToast(
           context: context,
-          msg: 'logout'.tr,
+          msg: 'logout'.tr(),
           duration: const Duration(seconds: 3),
         );
       }

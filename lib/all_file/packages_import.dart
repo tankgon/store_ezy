@@ -23,12 +23,6 @@ export 'package:flutter_bloc/flutter_bloc.dart' hide EventHandler;
 export 'package:flutter_spinkit/flutter_spinkit.dart';
 export 'package:flutter_svg/flutter_svg.dart';
 export 'package:font_awesome_flutter/font_awesome_flutter.dart';
-export 'package:get/get_core/get_core.dart';
-export 'package:get/get_instance/get_instance.dart';
-export 'package:get/get_navigation/get_navigation.dart' hide Transition;
-export 'package:get/get_rx/get_rx.dart' hide StringExtension, IntExtension, BoolExtension;
-export 'package:get/get_state_manager/get_state_manager.dart';
-export 'package:get/utils.dart';
 export 'package:get_it/get_it.dart';
 export 'package:hive_flutter/hive_flutter.dart';
 export 'package:json_annotation/json_annotation.dart';
@@ -40,6 +34,7 @@ export 'package:url_launcher/url_launcher.dart';
 export 'package:velocity_x/velocity_x.dart'
     show
         VelocityXRichTextExtension,
+        VxContextExtensions,
         VelocityXTextSpanExtension,
         VxNumExtension,
         VxObjectExtensions,
@@ -52,3 +47,8 @@ export 'package:velocity_x/velocity_x.dart'
         VxMarqueeExtension,
         CenterExtension,
         VxCenterBuilderExtension;
+
+export 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
+export 'package:ez_store/generated/locale_keys.g.dart';
+export 'package:flutter_localizations/flutter_localizations.dart';
+export 'package:easy_localization/easy_localization.dart' hide TextDirection;

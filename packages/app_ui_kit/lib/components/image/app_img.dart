@@ -3,8 +3,8 @@ import 'package:app_ui_kit/components/skeleton/app_Shimmer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_svg/svg.dart';
 
-class Img extends StatelessWidget {
-  const Img(
+class AppImg extends StatelessWidget {
+  const AppImg(
     this.src, {
     Key? key,
     this.fit = BoxFit.fitWidth,

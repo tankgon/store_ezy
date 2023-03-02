@@ -80,8 +80,6 @@ extension ListWidgetExtend<T extends Widget> on List<T> {
 extension VxTextBuilderExtend on VxTextBuilder {
   VxTextBuilder get textXS => size(Dimens.text_XS);
 
-  VxTextBuilder get textMidXS => size(Dimens.text_mid_XS);
-
   VxTextBuilder get textS => size(Dimens.text_S);
 
   VxTextBuilder get textSMid => size(Dimens.text_mid_S);
@@ -348,7 +346,7 @@ extension WidgetExtend on Widget {
     );
   }
 
-  ConstrainedBox minWidth({Key? key, double minWidth = 430}) {
+  ConstrainedBox minWidth(double minWidth, {Key? key}) {
     return ConstrainedBox(
       key: key,
       constraints: BoxConstraints(minWidth: minWidth),

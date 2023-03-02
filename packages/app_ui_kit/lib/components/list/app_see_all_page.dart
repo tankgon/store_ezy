@@ -1,5 +1,5 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
-import 'package:app_ui_kit/components/app_bar/base_app_bar.dart';
+import 'package:app_ui_kit/components/app_bar/app_app_bar.dart';
 import 'package:app_ui_kit/components/paging/app_paging_controller.dart';
 import 'package:app_ui_kit/components/paging/paging_list.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
@@ -26,7 +26,7 @@ class AppSeeAllPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BaseAppBar(
+      appBar: AppAppBar(
         title: title,
       ),
       body: SafeArea(

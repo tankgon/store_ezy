@@ -1,0 +1,15 @@
+{
+  "homePage": {
+    "title": "Home"
+  },
+  "appName": "MulStore",
+  "mainPage": {
+    "home": "Home",
+    "order": "Orders",
+    "message": "Message",
+    "account": "Account"
+  },
+  "common": {
+    "Search": "Search"
+  }
+}

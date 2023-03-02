@@ -35,18 +35,33 @@ class _HomeBottomBar extends StatelessWidget {
     return CupertinoTabBar(
       currentIndex: tabsRouter.activeIndex,
       onTap: tabsRouter.setActiveIndex,
-      inactiveColor: const Color(0xFF717171),
+      inactiveColor: context.themeColor.grey.neutral(),
       height: kToolbarHeight,
+      backgroundColor: context.theme.colorScheme.surface,
       items: [
         _buildBottomBarItem(
           context: context,
-          icon: Icons.home_filled,
-          label: 'home'.tr,
+          icon: PhosphorIcons.house,
+          activeIcon: PhosphorIcons.house_fill,
+          label: LocaleKeys.mainPage_home.tr(),
         ),
         _buildBottomBarItem(
           context: context,
-          icon: Icons.favorite,
-          label: 'news'.tr,
+          icon: PhosphorIcons.tray,
+          activeIcon: PhosphorIcons.tray_fill,
+          label: LocaleKeys.mainPage_order.tr(),
+        ),
+        _buildBottomBarItem(
+          context: context,
+          icon: PhosphorIcons.chat_circle_text,
+          activeIcon: PhosphorIcons.chat_circle_text_fill,
+          label: LocaleKeys.mainPage_message.tr(),
+        ),
+        _buildBottomBarItem(
+          context: context,
+          icon: PhosphorIcons.user,
+          activeIcon: PhosphorIcons.user_fill,
+          label: LocaleKeys.mainPage_account.tr(),
         ),
       ],
     );
@@ -112,4 +127,23 @@ class _HomeBottomBar extends StatelessWidget {
         width: iconSize,
         color: isActive ? context.theme.primaryColor : const Color(0xFF6F6F6F),
       );
+}
+
+class TopIndicator extends Decoration {
+  @override
+  BoxPainter createBoxPainter([VoidCallback? onChanged]) {
+    return _TopIndicatorBox();
+  }
+}
+
+class _TopIndicatorBox extends BoxPainter {
+  @override
+  void paint(Canvas canvas, Offset offset, ImageConfiguration cfg) {
+    final paint = Paint()
+      ..color = Colors.red
+      ..strokeWidth = 5
+      ..isAntiAlias = true;
+
+    canvas.drawLine(offset, Offset(cfg.size!.width + offset.dx, 0), paint);
+  }
 }

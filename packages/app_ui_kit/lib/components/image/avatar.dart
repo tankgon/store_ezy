@@ -1,5 +1,5 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
-import 'package:app_ui_kit/components/image/img.dart';
+import 'package:app_ui_kit/components/image/app_img.dart';
 import 'package:app_ui_kit/components/skeleton/app_Shimmer.dart';
 
 class Avatar extends StatelessWidget {
@@ -43,7 +43,7 @@ class Avatar extends StatelessWidget {
         child: Icon(Icons.account_circle_rounded),
       );
     } else {
-      img = Img(
+      img = AppImg(
         src,
         fit: fit,
       );

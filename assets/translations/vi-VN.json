@@ -1,0 +1,15 @@
+{
+  "homePage": {
+    "title": "Trang chủ"
+  },
+  "appName": "MulStore",
+  "mainPage": {
+    "home": "Trang chủ",
+    "order": "Đơn hàng",
+    "message": "Tin nhăn",
+    "account": "Tài khoản"
+  },
+  "common": {
+    "Search": "Tìm kím"
+  }
+}

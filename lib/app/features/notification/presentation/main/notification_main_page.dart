@@ -13,9 +13,13 @@ class NotificationMainPage extends StatelessWidget {
         return BlocListener<NotificationMainCubit, NotificationMainState>(
           listener: _onStateChanged,
           child: Scaffold(
-            appBar: BaseAppBar(
-              title: 'notification'.tr,
-              centerTitle: true,
+            appBar: AppAppBar(
+              title: 'notification'.tr(),
+              args: const AppBarArgs(
+                centerTitle: true,
+                elevation: 0,
+                titleSpacing: 0,
+              )
             ),
             body: const NotificationMainBody(),
           ),

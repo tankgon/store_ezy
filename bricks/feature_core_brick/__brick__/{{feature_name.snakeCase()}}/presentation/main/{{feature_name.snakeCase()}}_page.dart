@@ -74,10 +74,11 @@ class _PageBodyLoading extends StatelessWidget {
         // if (state.status == ItemDetailStatus.error) {
         //   return SimpleErrorText(errorMsg: state.errorMsg ?? '');
         // }
+        final isLoading = state.status == ItemDetailStatus.loading || state.status == ItemDetailStatus.initial;
 
         return AppTopLayout.loadingOnTop(
           loadingType: AppTopLayoutLoadingType.iosLoading,
-          isLoading: state.status == ItemDetailStatus.loading || state.status == ItemDetailStatus.initial,
+          isLoading: isLoading,
           child: child,
         );
       },

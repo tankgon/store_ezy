@@ -1,7 +1,7 @@
 import 'package:app_ui/src/colors/app_colors_extension.dart';
 import 'package:app_ui/src/layout/dimens.dart';
 import 'package:app_ui/src/typography/app_text_theme.dart';
-import 'package:app_ui/src/typography/app_textfield.dart';
+import 'package:app_ui/src/typography/app_textfield_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
@@ -12,6 +12,7 @@ class AppTheme {
     final onPrimarySurfaceColor = isDark ? colorScheme.onSurface : colorScheme.onPrimary;
 
     final textTheme = AppTextThemeExtension.getTextTheme(isDark: isDark);
+    final appColor = AppColorExtension.form(isDark);
     return ThemeData(
       fontFamily: fontFamily,
       cupertinoOverrideTheme: CupertinoThemeData(
@@ -22,17 +23,25 @@ class AppTheme {
       primaryColor: colorScheme.primary,
       canvasColor: colorScheme.background,
       scaffoldBackgroundColor: colorScheme.background,
-      bottomAppBarColor: colorScheme.surface,
       cardColor: colorScheme.surface,
       dividerColor: colorScheme.onSurface.withOpacity(0.12),
-      backgroundColor: colorScheme.background,
       dialogBackgroundColor: colorScheme.background,
       indicatorColor: onPrimarySurfaceColor,
-      errorColor: colorScheme.error,
       textTheme: textTheme,
       inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        contentPadding: Dimens.edge_zero,
+        fillColor: appColor.itemBackground,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppTextField.defaultRadius),
+          borderRadius: BorderRadius.circular(AppTextFieldTheme.defaultRadius),
+          borderSide: BorderSide.none,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppTextFieldTheme.defaultRadius),
+          borderSide: BorderSide(
+            color: colorScheme.primary,
+            width: AppTextFieldTheme.defaultBorderWidth,
+          ),
         ),
       ),
       applyElevationOverlayColor: isDark,
@@ -40,6 +49,10 @@ class AppTheme {
       dividerTheme: DividerThemeData(
         color: AppColorExtension.form(isDark).divider,
         thickness: 1,
+      ),
+      appBarTheme: AppBarTheme(
+        color: colorScheme.surface,
+        elevation: 0.5,
       ),
       tabBarTheme: TabBarTheme(
         indicator: RectangularIndicator(

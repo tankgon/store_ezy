@@ -14,13 +14,14 @@ class UserSecureStorage {
   }
 
   void dispose() {
-    userLD.close();
+    _unAuthorizedController.close();
   }
 
   late Box _box;
 
-  final Rx<UserModel?> userLD = Rx<UserModel?>(null);
-  final Rx<bool> unAuthorized = Rx<bool>(false);
+  UserModel? userData;
+  final StreamController<bool> _unAuthorizedController = StreamController<bool>.broadcast();
+  Stream<bool> get unAuthorizedStream => _unAuthorizedController.stream;
 
   String? _token;
   String? _socialAvatar;
@@ -37,7 +38,7 @@ class UserSecureStorage {
   Future<void> clear() async {
     _token = null;
     _socialAvatar = null;
-    userLD.value = null;
+    userData = null;
     _unAuthorizedState = null;
     await _box.put(tokenKey, null);
     await _box.put(socialAvatarKey, null);
@@ -50,17 +51,27 @@ class UserSecureStorage {
       return;
     }
 
-    unAuthorized.value = true;
-    await _box.put(unAuthorizeKey, unAuthorized.value);
+    _unAuthorizedController.add(true);
+    await _box.put(unAuthorizeKey, true);
+  }
+
+  Future<void> notifyAuthorized() async {
+    _unAuthorizedState = _box.get(unAuthorizeKey, defaultValue: null) as bool?;
+    if (_unAuthorizedState == false) {
+      return;
+    }
+
+    _unAuthorizedController.add(false);
+    await _box.put(unAuthorizeKey, false);
   }
 
   Future<void> setUserModel(UserModel user) async {
     logger.i('setUserModel $user');
-    userLD.value = user;
+    userData = user;
   }
 
   UserModel? get user {
-    return userLD.value;
+    return userData;
   }
 
   Future<void> setSocialAvatar(String? socialAvatar) async {

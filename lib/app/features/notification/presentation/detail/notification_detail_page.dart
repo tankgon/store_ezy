@@ -20,8 +20,8 @@ class NotificationDetailPage extends StatelessWidget {
         return BlocListener<NotificationDetailCubit, NotificationDetailState>(
           listener: _onStateChanged,
           child: Scaffold(
-            appBar: BaseAppBar(
-              title: 'notification'.tr,
+            appBar: AppAppBar(
+              title: 'notification'.tr(),
             ),
             body: const _PageBodyLoading(
               body: NotificationDetailBody(),

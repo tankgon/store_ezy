@@ -1,6 +1,6 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 import 'package:app_ui_kit/components/card/card_cupertino_effect.dart';
-import 'package:app_ui_kit/components/image/img.dart';
+import 'package:app_ui_kit/components/image/app_img.dart';
 
 class CardTileItem extends StatelessWidget {
   const CardTileItem({
@@ -133,7 +133,7 @@ class CardTileItem extends StatelessWidget {
           fit: StackFit.expand,
           alignment: Alignment.bottomLeft,
           children: [
-            Img(
+            AppImg(
               imgSrc,
               fit: BoxFit.cover,
             ),
