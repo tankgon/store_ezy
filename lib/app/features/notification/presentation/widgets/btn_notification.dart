@@ -16,7 +16,7 @@ class NotificationBtn extends StatelessWidget {
       },
       builder: (context, state) {
         // if (state is! AuthenticatedState) {
-        //   return Gaps.empty;
+        //   return const SizedBox.shrink();
         // }
         return BadgedCount(
           icon: Icon(

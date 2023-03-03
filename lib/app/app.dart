@@ -28,7 +28,7 @@ class App extends StatelessWidget {
           return _flavorBanner(
             child: _AppWidget(
               appRouter: appRouter,
-              child: child ?? Gaps.empty,
+              child: child ?? const SizedBox.shrink(),
             ),
           );
         },
@@ -62,7 +62,7 @@ class App extends StatelessWidget {
       message: F.name,
       color: Colors.green.withOpacity(0.6),
       textStyle: const TextStyle(
-        fontWeight: BaseFontWeight.semiBold,
+        fontWeight: FontWeight.w600,
         fontSize: 10,
       ),
       child: child,

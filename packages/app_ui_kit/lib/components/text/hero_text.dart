@@ -15,7 +15,7 @@ class TextHero extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (child == null) {
-      return Gaps.empty;
+      return const SizedBox.shrink();
     }
     return Hero(
       flightShuttleBuilder: _flightShuttleBuilder,

@@ -12,7 +12,7 @@ class BtnMoreArrow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Btn(
       btnType: BtnType.TEXT,
-      padding: padding ?? Dimens.edge_zero,
+      padding: padding ?? EdgeInsets.zero,
       child: isMore
           ? const Icon(Icons.keyboard_arrow_up)
           : const Icon(Icons.keyboard_arrow_down),

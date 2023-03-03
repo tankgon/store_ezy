@@ -114,11 +114,11 @@ class CardTileItem extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: titleCrossAxis ?? CrossAxisAlignment.center,
           children: [
-            title?.text.bold.letterSpacing(-0.2).maxLines(2).ellipsis.make().expand() ?? Gaps.spacer,
-            titleTrailing ?? Gaps.empty,
+            title?.text.bold.letterSpacing(-0.2).maxLines(2).ellipsis.make().expand() ?? const Spacer(),
+            titleTrailing ?? const SizedBox.shrink(),
           ],
         ),
-        child ?? Gaps.empty,
+        child ?? const SizedBox.shrink(),
         _buildBottom(context),
       ],
     );
@@ -148,10 +148,10 @@ class CardTileItem extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        actionLeading ?? Gaps.empty,
+        actionLeading ?? const SizedBox.shrink(),
         Gaps.hGap12,
-        Gaps.spacer,
-        actionTrailing ?? Gaps.empty,
+        const Spacer(),
+        actionTrailing ?? const SizedBox.shrink(),
       ],
     ).pt8();
   }
@@ -196,7 +196,7 @@ class _ImgTag extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (!showing) return Gaps.empty;
+    if (!showing) return const SizedBox.shrink();
 
     return Container(
       height: 24,
@@ -211,7 +211,7 @@ class _ImgTag extends StatelessWidget {
           bottomRight: Radius.circular(6),
         ),
       ),
-      child: label.text.colorOnPrimary(context).size(Dimens.text_S).bold.make().objectCenter(),
+      child: label.text.colorOnPrimary(context).size(context.textS).bold.make().objectCenter(),
     ).py2();
   }
 }

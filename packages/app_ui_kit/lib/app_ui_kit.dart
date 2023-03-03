@@ -17,3 +17,5 @@ export 'components/stream/stream_listener.dart';
 export 'components/textfield/app_text_field.dart';
 
 export 'components/paging/paging_components.dart';
+
+export 'package:app_ui_kit/components/button/primary/app_button.dart';

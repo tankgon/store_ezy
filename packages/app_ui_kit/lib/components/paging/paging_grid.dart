@@ -126,7 +126,7 @@ class _PagingGridState<V> extends State<PagingGrid<V>> {
 
   @override
   Widget build(BuildContext context) {
-    if (isEmpty) return Gaps.empty;
+    if (isEmpty) return const SizedBox.shrink();
 
     Widget pagedListView;
 
@@ -169,11 +169,11 @@ class _PagingGridState<V> extends State<PagingGrid<V>> {
         noItemsFoundIndicatorBuilder: (context) {
           widget.onEmpty?.call();
           if (widget.noItemsFoundIndicatorBuilder != null) {
-            return widget.noItemsFoundIndicatorBuilder?.call(context) ?? Gaps.empty;
+            return widget.noItemsFoundIndicatorBuilder?.call(context) ?? const SizedBox.shrink();
           }
           return context.pagingConfigData.emptyBuilder(context);
         },
-        noMoreItemsIndicatorBuilder: widget.noMoreItemsIndicatorBuilder ?? (_) => Gaps.empty,
+        noMoreItemsIndicatorBuilder: widget.noMoreItemsIndicatorBuilder ?? (_) => const SizedBox.shrink(),
       ),
     );
   }
@@ -199,11 +199,11 @@ class _PagingGridState<V> extends State<PagingGrid<V>> {
         noItemsFoundIndicatorBuilder: (context) {
           widget.onEmpty?.call();
           if (widget.noItemsFoundIndicatorBuilder != null) {
-            return widget.noItemsFoundIndicatorBuilder?.call(context) ?? Gaps.empty;
+            return widget.noItemsFoundIndicatorBuilder?.call(context) ?? const SizedBox.shrink();
           }
           return context.pagingConfigData.emptyBuilder(context);
         },
-        noMoreItemsIndicatorBuilder: widget.noMoreItemsIndicatorBuilder ?? (_) => Gaps.empty,
+        noMoreItemsIndicatorBuilder: widget.noMoreItemsIndicatorBuilder ?? (_) => const SizedBox.shrink(),
       ),
     );
   }

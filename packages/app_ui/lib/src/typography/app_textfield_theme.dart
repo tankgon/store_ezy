@@ -1,7 +1,5 @@
-import 'package:app_ui/src/colors/app_colors_extension.dart';
-import 'package:app_ui/src/layout/dimens.dart';
-import 'package:app_ui/src/typography/app_text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:app_ui/src/all_file.dart';
 
 class AppTextFieldTheme {
   static const double defaultRadius = Dimens.rad_XS;
@@ -12,8 +10,11 @@ class AppTextFieldTheme {
   static InputDecoration primaryStyle(
     BuildContext context,
   ) {
-    return const InputDecoration().applyDefaults(Theme.of(context).inputDecorationTheme).copyWith(
-          // Icons
+    return const InputDecoration()
+        .applyDefaults(
+          Theme.of(context).inputDecorationTheme,
+        )
+        .copyWith(
           prefixIconConstraints: const BoxConstraints(
             minWidth: 45,
             maxWidth: 62,

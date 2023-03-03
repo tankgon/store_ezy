@@ -1,6 +1,6 @@
+import 'package:app_ui/app_ui.dart';
+import 'package:app_ui/src/all_file.dart';
 import 'package:app_ui/src/colors/app_colors_extension.dart';
-import 'package:app_ui/src/layout/dimens.dart';
-import 'package:app_ui/src/typography/font_weights.dart';
 import 'package:flutter/material.dart';
 
 extension AppThemeTextContextExtend on BuildContext {
@@ -12,24 +12,25 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
   const AppTextThemeExtension({
     required this.text,
     required this.textHint,
-    required this.textLarge,
+    required this.titleLarge,
+    required this.headlineSmall,
+    required this.titleMedium,
+    required this.bodySmall,
+    required this.labelLarge,
   });
+
+  final TextStyle text;
+  final TextStyle textHint;
+
+  final TextStyle titleLarge; // H6
+  final TextStyle headlineSmall; // H5
+  final TextStyle titleMedium; // Subtitle
+  final TextStyle bodySmall; // Caption
+  final TextStyle labelLarge; // Button
 
   static TextStyle defaultText = TextStyle(
     color: AppColorExtension.light.text,
-    fontSize: Dimens.text,
-  );
-
-  static AppTextThemeExtension dark = AppTextThemeExtension(
-    text: defaultText,
-    textHint: defaultText.copyWith(
-      color: Colors.grey,
-    ),
-    textLarge: defaultText.copyWith(
-      fontSize: Dimens.text_XL3,
-      fontStyle: FontStyle.normal,
-      fontWeight: BaseFontWeight.bold,
-    ),
+    fontSize: FontSizeService().text,
   );
 
   static final AppTextThemeExtension light = AppTextThemeExtension(
@@ -37,23 +38,71 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
     textHint: defaultText.copyWith(
       color: Colors.grey,
     ),
-    textLarge: defaultText.copyWith(
-      fontSize: Dimens.text_XL3,
-      fontStyle: FontStyle.normal,
-      fontWeight: BaseFontWeight.bold,
+    titleLarge: defaultText.copyWith(
+      fontSize: FontSizeService().text_XL5,
+      fontWeight: FontWeight.w800,
+      color: AppColorExtension.light.greyDarkest,
+    ),
+    headlineSmall: defaultText.copyWith(
+      fontSize: FontSizeService().text_XL,
+      fontWeight: FontWeight.w600,
+      color: AppColorExtension.light.greyDark,
+    ),
+    titleMedium: defaultText.copyWith(
+      fontWeight: FontWeight.w600,
+      color: AppColorExtension.light.greyDark,
+    ),
+    bodySmall: defaultText.copyWith(
+      fontSize: FontSizeService().text_S,
+      fontWeight: FontWeight.w500,
+      color: AppColorExtension.light.greyDark,
+    ),
+    labelLarge: defaultText.copyWith(
+      fontWeight: FontWeight.w500,
+      color: AppColorExtension.light.greyDark,
     ),
   );
 
-  final TextStyle text;
-  final TextStyle textHint;
-  final TextStyle textLarge;
+  static AppTextThemeExtension dark = AppTextThemeExtension(
+    text: defaultText,
+    textHint: defaultText.copyWith(
+      color: Colors.grey,
+    ),
+    titleLarge: defaultText.copyWith(
+      fontSize: FontSizeService().text_XL5,
+      fontWeight: FontWeight.w800,
+      color: AppColorExtension.light.greyDarkest,
+    ),
+    headlineSmall: defaultText.copyWith(
+      fontSize: FontSizeService().text_XL,
+      fontWeight: FontWeight.w600,
+      color: AppColorExtension.light.greyDark,
+    ),
+    titleMedium: defaultText.copyWith(
+      fontWeight: FontWeight.w600,
+      color: AppColorExtension.light.greyDark,
+    ),
+    bodySmall: defaultText.copyWith(
+      fontSize: FontSizeService().text_S,
+      fontWeight: FontWeight.w500,
+      color: AppColorExtension.light.greyDark,
+    ),
+    labelLarge: defaultText.copyWith(
+      fontWeight: FontWeight.w500,
+      color: AppColorExtension.light.greyDark,
+    ),
+  );
 
   @override
   AppTextThemeExtension copyWith({TextStyle? textStyle, TextStyle? danger}) {
     return AppTextThemeExtension(
       text: textStyle ?? text,
       textHint: textStyle ?? textHint,
-      textLarge: textStyle ?? textLarge,
+      titleLarge: textStyle ?? titleLarge,
+      headlineSmall: textStyle ?? headlineSmall,
+      titleMedium: textStyle ?? titleMedium,
+      bodySmall: textStyle ?? bodySmall,
+      labelLarge: textStyle ?? labelLarge,
     );
   }
 
@@ -65,7 +114,11 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
     return AppTextThemeExtension(
       text: TextStyle.lerp(text, other.text, t) ?? text,
       textHint: TextStyle.lerp(textHint, other.textHint, t) ?? textHint,
-      textLarge: TextStyle.lerp(textLarge, other.textLarge, t) ?? textLarge,
+      titleLarge: TextStyle.lerp(titleLarge, other.titleLarge, t) ?? titleLarge,
+      headlineSmall: TextStyle.lerp(headlineSmall, other.headlineSmall, t) ?? headlineSmall,
+      titleMedium: TextStyle.lerp(titleMedium, other.titleMedium, t) ?? titleMedium,
+      bodySmall: TextStyle.lerp(bodySmall, other.bodySmall, t) ?? bodySmall,
+      labelLarge: TextStyle.lerp(labelLarge, other.labelLarge, t) ?? labelLarge,
     );
   }
 
@@ -78,11 +131,20 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
   }
 
   static TextTheme getTextTheme({bool isDark = false}) {
-    final body = AppTextThemeExtension.form(isDark).text;
-    final large = AppTextThemeExtension.form(isDark).textLarge;
+    final textThemeExtension = AppTextThemeExtension.form(isDark);
     return TextTheme(
-      bodyMedium: body,
-      bodyLarge: large,
+      bodyMedium: textThemeExtension.text,
+
+      // H6
+      titleLarge: textThemeExtension.titleLarge,
+      // H5
+      headlineSmall: textThemeExtension.headlineSmall,
+      // Subtitle
+      titleMedium: textThemeExtension.titleMedium,
+      // Caption
+      bodySmall: textThemeExtension.bodySmall,
+      // Button
+      labelLarge: textThemeExtension.labelLarge,
     );
   }
 }

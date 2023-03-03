@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 import 'package:app_ui_kit/components/button/btn.dart';
 import 'package:app_ui_kit/components/dialog/dialog_config.dart';
 import 'package:app_utils/all_file/app_utils_all_file.dart';
@@ -121,13 +122,11 @@ class DialogUtils {
               (content != null
                   ? Text(
                       content,
-                      style: context.textTheme.bodyMedium!.copyWith(
-                        fontSize: Dimens.text,
-                      ),
+                      style: context.textTheme.bodyMedium,
                     )
                   : null),
           actions: action,
-          buttonPadding: action.isEmpty ? Dimens.edge_zero : null,
+          buttonPadding: action.isEmpty ? EdgeInsets.zero : null,
           contentPadding: contentPadding ?? const EdgeInsets.fromLTRB(18.0, 16.0, 18.0, 18.0),
         );
       },

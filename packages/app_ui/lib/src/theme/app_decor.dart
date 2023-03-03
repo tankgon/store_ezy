@@ -1,5 +1,5 @@
-import 'package:app_ui/src/layout/dimens.dart';
 import 'package:flutter/material.dart';
+import 'package:app_ui/src/all_file.dart';
 
 class AppDecor {
   static BoxDecoration bottomShadowDecor({Color surfaceColor = Colors.transparent}) {

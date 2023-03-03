@@ -12,8 +12,8 @@ class NotificationDetailBody extends StatelessWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              state.item.title?.text.semiBold.make() ?? Gaps.empty,
-              state.item.content?.text.make() ?? Gaps.empty,
+              state.item.title?.text.semiBold.make() ?? const SizedBox.shrink(),
+              state.item.content?.text.make() ?? const SizedBox.shrink(),
             ].withDivider(Gaps.vGap8),
           );
         },

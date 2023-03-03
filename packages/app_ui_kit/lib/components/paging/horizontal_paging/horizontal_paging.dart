@@ -54,12 +54,12 @@ class HorizontalPaging<T> extends StatelessWidget {
             itemBuilder: (context, index) {
               final item = listData.getOrNull(index) as T?;
               if (item == null) {
-                return Gaps.empty;
+                return const SizedBox.shrink();
               }
               return itemBuilder(context, item, index);
             },
             separatorBuilder:
-                separatorBuilder ?? (context, index) => Gaps.empty,
+                separatorBuilder ?? (context, index) => const SizedBox.shrink(),
             itemCount: listData?.length ?? 0,
           );
         },
@@ -99,8 +99,8 @@ class HorizontalPagingIndicator extends StatelessWidget {
                     state.currentPage,
                     state.totalPage,
                   ].joinWithoutNull('/')?.text.center.make().expand() ??
-                  Gaps.spacer,
-            if (!showPage) Gaps.spacer,
+                  const Spacer(),
+            if (!showPage) const Spacer(),
             CupertinoButton(
               padding: EdgeInsets.zero,
               onPressed:

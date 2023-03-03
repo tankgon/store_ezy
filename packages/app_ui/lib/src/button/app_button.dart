@@ -1,10 +1,11 @@
-import 'package:app_ui/src/layout/dimens.dart';
+
+import 'package:app_ui/src/all_file.dart';
 import 'package:flutter/material.dart';
 
 class AppButtonStyle {
   AppButtonStyle._();
 
-  static const double defaultRadius = Dimens.rad;
+  static const double defaultRadius = Dimens.rad_XS;
   static const double defaultElevation = Dimens.elevation_zero;
   static const EdgeInsets defaultPadding = EdgeInsets.symmetric(horizontal: Dimens.pad_XL, vertical: Dimens.pad_XS);
   static const double defaultOpacity = 0.2;

@@ -6,13 +6,13 @@ extension PriceDataExtendNum on num? {
     return '${PriceService().strToNumberFormat(toString())}';
   }
 
-  String? get toPrice => PriceService().strToPriceStr(this?.toString());
+  String? get toShortPrice => PriceService().strToPriceStr(this?.toString());
 
   String? get toPriceTwoFraction => PriceService().strToPriceStr(this?.toString(), numberFormat: PriceService().twoFractionPriceFormat);
 
   String? get billionToFullPrice => this == null ? null : (this! * 1000000000).toString();
 
-  String? get toFullFormattedPrice => PriceService().strToFullFormattedPriceStr(toString());
+  String? get toPrice => PriceService().strToFullFormattedPriceStr(toString());
 }
 
 extension PriceDataExtendString on String? {
@@ -24,17 +24,16 @@ extension PriceDataExtendString on String? {
     return isNotNullOrEmpty() ? '${PriceService().strToNumberParse(this)}' : null;
   }
 
-  String? get toPrice => PriceService().strToPriceStr(this);
+  String? get toShortPrice => PriceService().strToPriceStr(this);
 
   String get toPriceWithZero => PriceService().strToPriceStr(this) ?? '0';
 
-  String? get toFullFormattedPrice => PriceService().strToFullFormattedPriceStr(this);
+  String? get toPrice => PriceService().strToFullFormattedPriceStr(this);
 
   String? get toPriceTwoFraction => PriceService().strToPriceStr(this, numberFormat: PriceService().twoFractionPriceFormat);
 }
 
 class PriceService {
-  // singleton
   static final PriceService _singleton = PriceService._internal();
 
   factory PriceService() {

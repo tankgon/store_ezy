@@ -25,6 +25,8 @@ dependencies:
 
   app_ui:
     path: ../app_ui
+  app_values:
+    path: ../app_values
   app_utils:
     path: ../app_utils
 

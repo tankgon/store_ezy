@@ -2,8 +2,6 @@
 import 'package:flutter/material.dart';
 
 class Dimens {
-  Dimens._();
-
   static const EdgeInsets bottomMinimum = EdgeInsets.symmetric(vertical: pad_XS2);
   static const EdgeInsets bottomMinimum_L = EdgeInsets.symmetric(vertical: pad_L);
   static const EdgeInsets bottomMinimum_XL = EdgeInsets.symmetric(vertical: pad_XL3);
@@ -12,31 +10,18 @@ class Dimens {
   static const double minRowHeight_S = 48.0;
   static const double minRowHeight = 52.0;
 
-  static const double text_XS2 = 12.0;
-  static const double text_XS = 13.0;
-  static const double text_S = 14.0;
-  static const double text_mid_S = 15.0;
-  static const double text = 16.0;
-  static const double text_L_mid = 17.0;
-  static const double text_L = 18.0;
-  static const double text_XL = 20.0;
-  static const double text_XL2 = 22.0;
-  static const double text_XL3 = 25.0;
-  static const double text_XL4 = 28.0;
-  static const double text_XL5 = 32.0;
-  static const double text_XL6 = 36.0;
-
   static const double ic_XS4 = 8.0;
-  static const double ic_XS3 = 12.0;
-  static const double ic_XS2 = 16.0;
-  static const double ic_XS = 18.0;
+  static const double ic_XS2 = 12.0;
+  static const double ic_XS = 16.0;
   static const double ic_S = 20.0;
   static const double ic = 24.0;
   static const double ic_L = 28.0;
   static const double ic_XL = 32.0;
-  static const double ic_XL2 = 38.0;
-  static const double ic_XL3 = 42.0;
-  static const double ic_XL4 = 52.0;
+  static const double ic_XL2 = 36.0;
+  static const double ic_XL3 = 40.0;
+  static const double ic_XL4 = 44.0;
+  static const double ic_XL5 = 48.0;
+  static const double ic_XL6 = 52.0;
 
   static const double pad_default = 16.0;
 
@@ -52,20 +37,6 @@ class Dimens {
   static const double pad_XL3 = 28.0;
   static const double pad_XL4 = 34.0;
 
-  static const EdgeInsets edge_btn_wide_XL = EdgeInsets.symmetric(horizontal: 28, vertical: 4);
-
-  static const EdgeInsets edge_btn_wide_L = EdgeInsets.symmetric(horizontal: 24, vertical: 4);
-
-  static const EdgeInsets edge_btn_wide = EdgeInsets.symmetric(horizontal: 20, vertical: 4);
-
-  static const EdgeInsets edge_btn_wide_S = EdgeInsets.symmetric(horizontal: 16, vertical: 4);
-
-  static const EdgeInsets edge_btn_wide_XS = EdgeInsets.symmetric(horizontal: 12, vertical: 4);
-
-  static const EdgeInsets edge_btn_wide_XS2 = EdgeInsets.symmetric(horizontal: 8, vertical: 4);
-
-  static const EdgeInsets edge_zero = EdgeInsets.all(0);
-
   static const EdgeInsets edge_default = EdgeInsets.all(pad_default);
 
   static EdgeInsets edgePage(BuildContext context) =>
@@ -76,14 +47,6 @@ class Dimens {
             .padding
             .bottom,
       );
-
-  static EdgeInsets edge_default_except_right() => edge_default.copyWith(right: 0);
-
-  static EdgeInsets edge_default_except_left() => edge_default.copyWith(left: 0);
-
-  static EdgeInsets edge_default_except_top() => edge_default.copyWith(top: 0);
-
-  static EdgeInsets edge_default_except_bottom() => edge_default.copyWith(bottom: 0);
 
   static const EdgeInsets edge_y_default = EdgeInsets.symmetric(vertical: pad_default);
   static const EdgeInsets edge_x_default = EdgeInsets.symmetric(horizontal: pad_default);

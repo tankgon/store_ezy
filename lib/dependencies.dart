@@ -65,7 +65,13 @@ Future<void> _appService() async {
 Future<void> _appDataProvider() async {
   getIt.registerSingleton<DioModule>(DioModule());
 
-  // ######
+  // Init Price Service
+  PriceService().init();
+  FontSizeService().init(
+    baseFontSize: 14,
+  );
+
+  // Init User Secure Storage And Device Service
   final userSecureStorage = UserSecureStorage();
   await userSecureStorage.init();
   getIt

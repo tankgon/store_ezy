@@ -15,8 +15,12 @@ class SearchBar extends StatelessWidget {
           borderRadius: Dimens.rad_border_circular,
           borderSide: BorderSide.none,
         ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: Dimens.rad_border_circular,
+          borderSide: context.theme.inputDecorationTheme.focusedBorder!.borderSide,
+        ),
         hintText: LocaleKeys.common_Search.tr(),
-        prefixIcon: const Icon(PhosphorIcons.magnifying_glass).pLeft4(),
+        prefixIcon: const Icon(PhosphorIcons.magnifying_glass).pl4(),
         suffixIcon: const Icon(PhosphorIcons.qr_code),
       ),
     );

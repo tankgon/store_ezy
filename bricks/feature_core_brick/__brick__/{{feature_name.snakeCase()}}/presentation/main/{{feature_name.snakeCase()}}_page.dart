@@ -16,7 +16,7 @@ class {{feature_name.pascalCase()}}Page extends StatelessWidget {
               listener: _onStateChanged,
               builder: (context, state) {
                 return Scaffold(
-                  appBar: BaseAppBar(
+                  appBar: AppAppBar(
                       title: 'title',
                     ),
                   body: const {{feature_name.pascalCase()}}Body(),
@@ -36,7 +36,7 @@ class {{feature_name.pascalCase()}}Page extends StatelessWidget {
             return BlocListener<{{feature_name.pascalCase()}}Cubit, {{feature_name.pascalCase()}}State>(
               listener: _onStateChanged,
               child: Scaffold(
-                appBar: BaseAppBar(
+                appBar: AppAppBar(
                     title: 'title',
                   ),
                 body: const _PageBodyLoading(

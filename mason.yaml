@@ -10,8 +10,8 @@ bricks:
 
 # Feature Brick
 # Create:
-# mason make feature_brick  --feature_name home_feature_gird --folder_name feature_gird --state_management cubit
+# mason make feature_brick  --feature_name product_item --folder_name item --state_management cubit
 
 # Feature Core Brick
 # Create:
-# mason make feature_core_brick  --feature_name search --state_management cubit
+# mason make feature_core_brick  --feature_name product --state_management cubit

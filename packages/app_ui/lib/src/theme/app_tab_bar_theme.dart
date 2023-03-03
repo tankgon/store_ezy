@@ -1,8 +1,8 @@
 
 import 'package:app_ui/src/colors/app_colors_extension.dart';
-import 'package:app_ui/src/layout/dimens.dart';
 import 'package:flutter/material.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
+import 'package:app_ui/src/all_file.dart';
 
 class AppTabBarTheme {
   AppTabBarTheme._();

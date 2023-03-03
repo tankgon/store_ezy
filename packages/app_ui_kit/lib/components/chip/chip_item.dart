@@ -26,7 +26,7 @@ class ChipItem extends StatelessWidget {
     } else if (local is Widget) {
       finalChild = local;
     } else {
-      finalChild = Gaps.empty;
+      finalChild = const SizedBox.shrink();
     }
 
     return CardCupertinoEffect(
@@ -38,7 +38,10 @@ class ChipItem extends StatelessWidget {
         ),
         alignment: Alignment.center,
         child: Padding(
-          padding: Dimens.edge_btn_wide_XS,
+          padding: const EdgeInsets.symmetric(
+            horizontal: Dimens.pad_XS,
+            vertical: Dimens.pad_XS3,
+          ),
           child: finalChild,
         ),
       ),

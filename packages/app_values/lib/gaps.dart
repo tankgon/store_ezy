@@ -1,5 +1,5 @@
 
-import 'package:app_ui/src/values/dimens.dart';
+import 'package:app_values/Dimens.dart';
 import 'package:flutter/material.dart';
 
 /// interval
@@ -42,21 +42,12 @@ class Gaps {
   static const Widget line = Divider();
 
   static const Widget vLine = SizedBox(
-    width: 0.6,
+    width: 0.5,
     height: 24.0,
     child: VerticalDivider(),
   );
 
-  static const Widget empty = SizedBox.shrink();
-
   static Widget bottomSpacing(BuildContext context) => SizedBox(height: MediaQuery.of(context).padding.bottom);
-
-  static const Widget spacer = Spacer();
-
-  static const Widget dividerHalf = Divider(
-    height: 0.5,
-    thickness: 0.5,
-  );
 
   static const Widget divider = Divider(
     height: 1,

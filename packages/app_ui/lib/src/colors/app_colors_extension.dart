@@ -7,6 +7,17 @@ extension AppThemeContextExtend on BuildContext {
 @immutable
 class AppColorExtension extends ThemeExtension<AppColorExtension> {
   const AppColorExtension({
+    required this.greyDarkest,
+    required this.greyDark,
+    required this.greyLight,
+    required this.greyNeutral,
+    required this.greyLighter,
+    required this.primaryDarkest,
+    required this.primaryDark,
+    required this.primary,
+    required this.primaryLight,
+    required this.primaryNeutral,
+    required this.primaryLighter,
     required this.text,
     required this.textLink,
     required this.lightPrimary,
@@ -29,7 +40,6 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
     required this.green,
     required this.orange,
     required this.pink,
-    required this.itemBackground,
   });
 
   final Color text;
@@ -50,8 +60,20 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
   final Color actionColor;
   final Color actionColorInactive;
 
-  final Color itemBackground;
+  final Color greyDarkest;
+  final Color greyDark;
   final Color grey;
+  final Color greyLight;
+  final Color greyNeutral;
+  final Color greyLighter;
+
+  final Color primaryDarkest;
+  final Color primaryDark;
+  final Color primary;
+  final Color primaryLight;
+  final Color primaryNeutral;
+  final Color primaryLighter;
+
   final Color blue;
   final Color cyan;
   final Color red;
@@ -62,9 +84,9 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
   final Color pink;
 
   static const AppColorExtension dark = AppColorExtension(
-    text: Color(0xff000000),
+    text: Color(0xff5F5F5F),
     textLink: Color(0xFF1890ff),
-    divider: Color(0xFF70787d),
+    divider: Color(0xFFF4F4F4),
     lightPrimary: Color(0xffb3daff),
     rating: Color(0xFFFD8205),
     sharedLink: Color(0xFF4A9B60),
@@ -75,7 +97,6 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
     infoColor: Color(0xFF1890ff),
     actionColor: Color(0xFF1890ff),
     actionColorInactive: Color(0xFF70787d),
-    grey: Color(0xFF5F5F5F),
     blue: Color(0xFF4A8CEF),
     cyan: Color(0xFF5EDFE8),
     red: Color(0xFFE92323),
@@ -84,13 +105,27 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
     green: Color(0xFF44C542),
     orange: Color(0xFFFB822A),
     pink: Color(0xFFFF66B9),
-    itemBackground: Color(0xFFF4F4F4),
+
+    greyDarkest: Color(0xFF121212),
+    greyDark: Color(0xFF333333),
+    grey: Color(0xFF5F5F5F),
+    greyLight: Color(0xFF808080),
+    greyNeutral: Color(0xFFB7B7B7),
+    greyLighter: Color(0xFFDCDCDC),
+
+    primaryDarkest: Color(0xFF004767),
+    primaryDark: Color(0xFF0284BE),
+    primary: Color(0xFF19AAEB),
+    primaryLight: Color(0xFF4BC6FD),
+    primaryNeutral: Color(0xFF9BE0FF),
+    primaryLighter: Color(0xFFE8F8FF),
+
   );
 
   static const AppColorExtension light = AppColorExtension(
-    text: Color(0xff000000),
+    text: Color(0xff5F5F5F),
     textLink: Color(0xFF1890ff),
-    divider: Color(0xFF70787d),
+    divider: Color(0xFFF4F4F4),
     lightPrimary: Color(0xffb3daff),
     rating: Color(0xFFFD8205),
     sharedLink: Color(0xFF4A9B60),
@@ -101,7 +136,6 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
     infoColor: Color(0xFF1890ff),
     actionColor: Color(0xFF1890ff),
     actionColorInactive: Color(0xFF70787d),
-    grey: Color(0xFF5F5F5F),
     blue: Color(0xFF4A8CEF),
     cyan: Color(0xFF5EDFE8),
     red: Color(0xFFE92323),
@@ -110,7 +144,20 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
     green: Color(0xFF44C542),
     orange: Color(0xFFFB822A),
     pink: Color(0xFFFF66B9),
-    itemBackground: Color(0xFFF4F4F4),
+
+    greyDarkest: Color(0xFF121212),
+    greyDark: Color(0xFF333333),
+    grey: Color(0xFF5F5F5F),
+    greyLight: Color(0xFF808080),
+    greyNeutral: Color(0xFFB7B7B7),
+    greyLighter: Color(0xFFDCDCDC),
+
+    primaryDarkest: Color(0xFF004767),
+    primaryDark: Color(0xFF0284BE),
+    primary: Color(0xFF19AAEB),
+    primaryLight: Color(0xFF4BC6FD),
+    primaryNeutral: Color(0xFF9BE0FF),
+    primaryLighter: Color(0xFFE8F8FF),
   );
 
   @override
@@ -129,7 +176,6 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
       infoColor: infoColor,
       actionColor: actionColor,
       actionColorInactive: actionColorInactive,
-      grey: grey,
       blue: blue,
       cyan: cyan,
       red: red,
@@ -138,7 +184,20 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
       green: green,
       orange: orange,
       pink: pink,
-      itemBackground: itemBackground,
+
+      greyDarkest: greyDarkest,
+      greyDark: greyDark,
+      grey: grey,
+      greyLight: greyLight,
+      greyNeutral: greyNeutral,
+      greyLighter: greyLighter,
+
+      primaryDarkest: primaryDarkest,
+      primaryDark: primaryDark,
+      primary: primary,
+      primaryLight: primaryLight,
+      primaryNeutral: primaryNeutral,
+      primaryLighter: primaryLighter,
     );
   }
 
@@ -161,7 +220,6 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
       infoColor: Color.lerp(infoColor, other.infoColor, t) ?? infoColor,
       actionColor: Color.lerp(actionColor, other.actionColor, t) ?? actionColor,
       actionColorInactive: Color.lerp(actionColorInactive, other.actionColorInactive, t) ?? actionColorInactive,
-      grey: Color.lerp(grey, other.grey, t) ?? grey,
       blue: Color.lerp(blue, other.blue, t) ?? blue,
       cyan: Color.lerp(cyan, other.cyan, t) ?? cyan,
       red: Color.lerp(red, other.red, t) ?? red,
@@ -170,7 +228,21 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
       green: Color.lerp(green, other.green, t) ?? green,
       orange: Color.lerp(orange, other.orange, t) ?? orange,
       pink: Color.lerp(pink, other.pink, t) ?? pink,
-      itemBackground: Color.lerp(itemBackground, other.itemBackground, t) ?? itemBackground,
+
+      greyDark: Color.lerp(greyDark, other.greyDark, t) ?? greyDark,
+      greyDarkest: Color.lerp(greyDarkest, other.greyDarkest, t) ?? greyDarkest,
+      grey: Color.lerp(grey, other.grey, t) ?? grey,
+      greyLight: Color.lerp(greyLight, other.greyLight, t) ?? greyLight,
+      greyNeutral: Color.lerp(greyNeutral, other.greyNeutral, t) ?? greyNeutral,
+      greyLighter: Color.lerp(greyLighter, other.greyLighter, t) ?? greyLighter,
+
+      primary: Color.lerp(primary, other.primary, t) ?? primary,
+      primaryDark: Color.lerp(primaryDark, other.primaryDark, t) ?? primaryDark,
+      primaryDarkest: Color.lerp(primaryDarkest, other.primaryDarkest, t) ?? primaryDarkest,
+      primaryLight: Color.lerp(primaryLight, other.primaryLight, t) ?? primaryLight,
+      primaryNeutral: Color.lerp(primaryNeutral, other.primaryNeutral, t) ?? primaryNeutral,
+      primaryLighter: Color.lerp(primaryLighter, other.primaryLighter, t) ?? primaryLighter,
+
     );
   }
 
@@ -193,7 +265,7 @@ const ColorScheme _colorScheme = ColorScheme(
   onPrimary: Color(0xFFffffff),
   primaryContainer: Color(0xFFb7eaff),
   onPrimaryContainer: Color(0xFF001f2a),
-  secondary: Color(0xFF4c616b),
+  secondary: Color(0xFF44C542),
   onSecondary: Color(0xFFffffff),
   secondaryContainer: Color(0xFFcfe6f1),
   onSecondaryContainer: Color(0xFF071e26),
@@ -220,7 +292,7 @@ const ColorScheme _colorSchemeDark = ColorScheme(
   onPrimary: Color(0xFFffffff),
   primaryContainer: Color(0xFFb7eaff),
   onPrimaryContainer: Color(0xFF001f2a),
-  secondary: Color(0xFF4c616b),
+  secondary: Color(0xFF44C542),
   onSecondary: Color(0xFFffffff),
   secondaryContainer: Color(0xFFcfe6f1),
   onSecondaryContainer: Color(0xFF071e26),

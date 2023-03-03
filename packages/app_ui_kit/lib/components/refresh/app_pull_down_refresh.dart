@@ -40,7 +40,7 @@ class _AppPullDownRefreshState extends State<AppPullDownRefresh> {
             AnimatedBuilder(
               animation: controller,
               builder: (BuildContext context, _) {
-                return !controller.isIdle ? const CupertinoActivityIndicator() : Gaps.empty;
+                return !controller.isIdle ? const CupertinoActivityIndicator() : const SizedBox.shrink();
               },
             ).objectTopCenter(),
             child,

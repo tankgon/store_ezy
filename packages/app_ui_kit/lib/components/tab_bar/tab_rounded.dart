@@ -39,14 +39,14 @@ class _TabRoundedState extends State<TabRounded> {
                 widget.isSelected ? Theme.of(context).onPrimary() : gray,
               )
               .bold
-              .size(Dimens.text_S)
+              .textS
               .maxLines(2)
               .center
               .make()
               .maxWidth(maxWidth: 120)
               .px12()
               .objectCenter() ??
-          Gaps.empty,
+          const SizedBox.shrink(),
     );
   }
 }

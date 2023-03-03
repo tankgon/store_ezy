@@ -11,5 +11,7 @@ abstract class  LocaleKeys {
   static const mainPage = 'mainPage';
   static const common_Search = 'common.Search';
   static const common = 'common';
+  static const product_Buy = 'product.Buy';
+  static const product = 'product';
 
 }

@@ -21,30 +21,6 @@ class AppSafeArea extends _AppSafeArea {
           minimum: minimum,
           showDivider: showDivider,
         );
-
-  factory AppSafeArea.bottom({
-    required Widget child,
-    EdgeInsets? minimum,
-    bool? showDivider,
-  }) {
-    return AppSafeArea(
-      child: child,
-      top: false,
-      bottom: true,
-      left: false,
-      right: false,
-      minimum: minimum ?? Dimens.bottomMinimum,
-      showDivider: showDivider,
-    );
-  }
-
-  factory AppSafeArea.bottomDivider({
-    required Widget child,
-    EdgeInsets? minimum,
-    bool? showDivider,
-  }) {
-    return AppSafeArea.bottom(child: child, minimum: minimum, showDivider: true,);
-  }
 }
 
 class _AppSafeArea extends StatelessWidget {
@@ -70,7 +46,7 @@ class _AppSafeArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var safeArea = SafeArea(
-      minimum: minimum ?? Dimens.edge_zero,
+      minimum: minimum ?? EdgeInsets.zero,
       top: top ?? true,
       bottom: bottom ?? true,
       left: left ?? true,
@@ -82,7 +58,7 @@ class _AppSafeArea extends StatelessWidget {
       return Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Gaps.divider,
+          const Divider(),
           safeArea,
         ],
       ).backgroundColor(context.theme.colorScheme.surface);

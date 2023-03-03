@@ -130,7 +130,7 @@ class _PagingListState<V> extends State<PagingList<V>> {
 
   @override
   Widget build(BuildContext context) {
-    if (isEmpty) return Gaps.empty;
+    if (isEmpty) return const SizedBox.shrink();
 
     Widget pagedListView;
     Widget finalWidget;
@@ -179,16 +179,16 @@ class _PagingListState<V> extends State<PagingList<V>> {
           noItemsFoundIndicatorBuilder: (context) {
             widget.onEmpty?.call();
             if (widget.noItemsFoundIndicatorBuilder != null) {
-              return widget.noItemsFoundIndicatorBuilder?.call(context) ?? Gaps.empty;
+              return widget.noItemsFoundIndicatorBuilder?.call(context) ?? const SizedBox.shrink();
             }
             return context.pagingConfigData.errorBuilder(context, _pagingController.error);
           },
-          noMoreItemsIndicatorBuilder: widget.noMoreItemsIndicatorBuilder ?? (_) => Gaps.empty,
+          noMoreItemsIndicatorBuilder: widget.noMoreItemsIndicatorBuilder ?? (_) => const SizedBox.shrink(),
         ),
         separatorBuilder: widget.separatorBuilder == null
-            ? (_, index) => Gaps.empty
+            ? (_, index) => const SizedBox.shrink()
             : (context, index) {
-                return (index + 1) == _pagingController.itemList?.length ? Gaps.empty : (widget.separatorBuilder?.call(context, index) ?? Gaps.empty);
+                return (index + 1) == _pagingController.itemList?.length ? const SizedBox.shrink() : (widget.separatorBuilder?.call(context, index) ?? const SizedBox.shrink());
               },
       ),
     );
@@ -214,16 +214,16 @@ class _PagingListState<V> extends State<PagingList<V>> {
           noItemsFoundIndicatorBuilder: (context) {
             widget.onEmpty?.call();
             if (widget.noItemsFoundIndicatorBuilder != null) {
-              return widget.noItemsFoundIndicatorBuilder?.call(context) ?? Gaps.empty;
+              return widget.noItemsFoundIndicatorBuilder?.call(context) ?? const SizedBox.shrink();
             }
             return context.pagingConfigData.emptyBuilder(context);
           },
-          noMoreItemsIndicatorBuilder: widget.noMoreItemsIndicatorBuilder ?? (_) => Gaps.empty,
+          noMoreItemsIndicatorBuilder: widget.noMoreItemsIndicatorBuilder ?? (_) => const SizedBox.shrink(),
         ),
         separatorBuilder: widget.separatorBuilder == null
-            ? (_, index) => Gaps.empty
+            ? (_, index) => const SizedBox.shrink()
             : (context, index) {
-                return (index + 1) == _pagingController.itemList?.length ? Gaps.empty : (widget.separatorBuilder?.call(context, index) ?? Gaps.empty);
+                return (index + 1) == _pagingController.itemList?.length ? const SizedBox.shrink() : (widget.separatorBuilder?.call(context, index) ?? const SizedBox.shrink());
               },
       ),
     );

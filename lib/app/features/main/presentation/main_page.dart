@@ -35,7 +35,7 @@ class _HomeBottomBar extends StatelessWidget {
     return CupertinoTabBar(
       currentIndex: tabsRouter.activeIndex,
       onTap: tabsRouter.setActiveIndex,
-      inactiveColor: context.themeColor.grey.neutral(),
+      inactiveColor: context.themeColor.greyNeutral,
       height: kToolbarHeight,
       backgroundColor: context.theme.colorScheme.surface,
       items: [
@@ -77,7 +77,7 @@ class _HomeBottomBar extends StatelessWidget {
     final activeIconW = _getIconWidget(context, activeIcon) ?? _getIconWidget(context, icon, isActive: true);
 
     return BottomNavigationBarItem(
-      icon: iconW ?? Gaps.empty,
+      icon: iconW ?? const SizedBox.shrink(),
       activeIcon: activeIconW,
       label: label,
     );

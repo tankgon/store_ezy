@@ -8,17 +8,20 @@ class HomeFeatureGirdBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PagingGrid(
-      padding: padding,
-      scrollDirection: Axis.horizontal,
-      itemBuilder: (context, item, index) => const HomeFeatureItem(),
-      fetchListData: context.read<HomeFeatureGirdCubit>().fetchList,
-      firstPageProgressIndicatorBuilder: (context) => const _HomeGirdLoading(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 1.23,
-        mainAxisSpacing: 11,
-        crossAxisSpacing: 24,
+    return SizedBox(
+      height: 208,
+      child: PagingGrid(
+        padding: padding,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, item, index) => const HomeFeatureItem(),
+        fetchListData: context.read<HomeFeatureGirdCubit>().fetchList,
+        firstPageProgressIndicatorBuilder: (context) => const _HomeGirdLoading(),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 1.23,
+          mainAxisSpacing: 11,
+          crossAxisSpacing: 24,
+        ),
       ),
     );
   }
@@ -29,6 +32,7 @@ class HomeFeatureItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final maxLines = 2;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -37,8 +41,8 @@ class HomeFeatureItem extends StatelessWidget {
           fit: BoxFit.contain,
         ).expand(),
         SizedBox(
-          height: context.themeText.text.fontSize! * 2,
-          child: 'Chăm sóc sức khỏe'.text.textS.center.medium.make(),
+          height: context.textS * 1.3 * maxLines,
+          child: 'Chăm sóc sức khỏe'.text.textS.center.medium.maxLines(maxLines).make(),
         ),
       ].withDivider(Gaps.vGap8),
     );

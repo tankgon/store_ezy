@@ -6,7 +6,7 @@ class AppSliverBar {
     return SliverAppBar(
       expandedHeight: expandedHeight,
       stretch: true,
-      leading: Gaps.empty,
+      leading: const SizedBox.shrink(),
       stretchTriggerOffset: stretchTriggerOffset ?? 150,
       backgroundColor: Colors.transparent,
       flexibleSpace: FlexibleSpaceBar(
@@ -24,7 +24,7 @@ class AppSliverBar {
       stretch: true,
       excludeHeaderSemantics: true,
       snap: false,
-      leading: Gaps.empty,
+      leading: const SizedBox.shrink(),
       stretchTriggerOffset: stretchTriggerOffset ?? 150,
       backgroundColor: Colors.transparent,
 

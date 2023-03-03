@@ -1,5 +1,5 @@
+import 'package:app_ui/src/all_file.dart';
 import 'package:app_ui/src/colors/app_colors_extension.dart';
-import 'package:app_ui/src/layout/dimens.dart';
 import 'package:app_ui/src/typography/app_text_theme.dart';
 import 'package:app_ui/src/typography/app_textfield_theme.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,8 +12,10 @@ class AppTheme {
     final onPrimarySurfaceColor = isDark ? colorScheme.onSurface : colorScheme.onPrimary;
 
     final textTheme = AppTextThemeExtension.getTextTheme(isDark: isDark);
+    final textExtensionTheme = AppTextThemeExtension.form(isDark);
     final appColor = AppColorExtension.form(isDark);
     return ThemeData(
+      colorScheme: colorScheme,
       fontFamily: fontFamily,
       cupertinoOverrideTheme: CupertinoThemeData(
         primaryColor: colorScheme.primary,
@@ -24,14 +26,14 @@ class AppTheme {
       canvasColor: colorScheme.background,
       scaffoldBackgroundColor: colorScheme.background,
       cardColor: colorScheme.surface,
-      dividerColor: colorScheme.onSurface.withOpacity(0.12),
+      dividerColor: appColor.divider,
       dialogBackgroundColor: colorScheme.background,
       indicatorColor: onPrimarySurfaceColor,
       textTheme: textTheme,
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        contentPadding: Dimens.edge_zero,
-        fillColor: appColor.itemBackground,
+        contentPadding: EdgeInsets.zero,
+        fillColor: appColor.divider,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppTextFieldTheme.defaultRadius),
           borderSide: BorderSide.none,
@@ -53,6 +55,7 @@ class AppTheme {
       appBarTheme: AppBarTheme(
         color: colorScheme.surface,
         elevation: 0.5,
+        titleTextStyle: textExtensionTheme.titleLarge,
       ),
       tabBarTheme: TabBarTheme(
         indicator: RectangularIndicator(

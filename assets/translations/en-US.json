@@ -11,5 +11,8 @@
   },
   "common": {
     "Search": "Search"
+  },
+  "product": {
+    "Buy": "Buy"
   }
 }

@@ -36,7 +36,7 @@ class BtnBack extends StatelessWidget {
   Widget build(BuildContext context) {
     if (checkCanPop == true) {
       if (!isShowBtnBack(context)) {
-        return Gaps.empty;
+        return const SizedBox.shrink();
       }
     }
 

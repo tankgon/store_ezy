@@ -13,7 +13,7 @@ class BtnMoreText extends StatelessWidget {
     return Btn(
       label: isMore ? 'viewLess': 'viewMore',
       btnType: BtnType.TEXT,
-      padding: padding ?? Dimens.edge_zero,
+      padding: padding ?? EdgeInsets.zero,
       onPressed: onPressed,
     );
   }

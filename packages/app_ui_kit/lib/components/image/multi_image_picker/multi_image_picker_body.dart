@@ -38,7 +38,7 @@
 //       formControlName: fileKey,
 //       builder: (context, control, child) {
 //         final listFile = control.value as List<dynamic>?;
-//         if (listFile.isNullOrEmpty()) return Gaps.empty;
+//         if (listFile.isNullOrEmpty()) return const SizedBox.shrink();
 //
 //         // var imageList = listFile.filterAsList(FileUtils.isImage);
 //
@@ -79,17 +79,17 @@
 //
 //   @override
 //   Widget build(BuildContext context) {
-//     if (list.isNullOrEmpty()) return Gaps.empty;
+//     if (list.isNullOrEmpty()) return const SizedBox.shrink();
 //
 //     return SizedBox(
 //       height: height,
 //       child: ListView.separated(
-//         padding: Dimens.edge_zero,
+//         padding: EdgeInsets.zero,
 //         scrollDirection: Axis.horizontal,
 //         itemCount: list?.length ?? 0,
 //         itemBuilder: (context, index) {
 //           var file = list.getOrNull(index);
-//           if (file == null) return Gaps.empty;
+//           if (file == null) return const SizedBox.shrink();
 //
 //           return Stack(
 //             alignment: Alignment.topRight,

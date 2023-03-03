@@ -103,7 +103,7 @@ class Btn extends StatelessWidget {
       children: [
         if (leading != null)
           leading!,
-        Flexible(child: childWidget ?? Gaps.empty),
+        Flexible(child: childWidget ?? const SizedBox.shrink()),
         if (trailing != null)
           trailing!,
       ],
@@ -149,6 +149,6 @@ class Btn extends StatelessWidget {
               color: loadingColor ?? Theme.of(context).colorScheme.onPrimary,
             ),
           )
-        : Gaps.empty;
+        : const SizedBox.shrink();
   }
 }

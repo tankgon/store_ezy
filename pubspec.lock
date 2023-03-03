@@ -86,6 +86,13 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  app_values:
+    dependency: "direct main"
+    description:
+      path: "packages/app_values"
+      relative: true
+    source: path
+    version: "0.0.1"
   archive:
     dependency: transitive
     description:

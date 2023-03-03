@@ -28,7 +28,7 @@ class AppRadioButton<T> extends StatelessWidget {
     } else if (titleLocal is String) {
       titleWidget = Text(titleLocal);
     } else {
-      titleWidget = Gaps.empty;
+      titleWidget = const SizedBox.shrink();
     }
 
     return CardCupertinoEffect(
