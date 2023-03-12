@@ -1,18 +1,57 @@
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
 
+extension ColorVxTextBuilderExtend on VxTextBuilder {
 
-extension VioletColorSystem on Color {
-  
-  Color darkest() => withOpacity(1);
+  VxTextBuilder colorDarkest(BuildContext context) {
+    velocityColor = context.themeColor.greyDarkest;
+    return this;
+  }
 
-  Color dark() => withOpacity(0.8);
+  VxTextBuilder colorDark(BuildContext context) {
+    velocityColor = context.themeColor.greyDark;
+    return this;
+  }
 
-  Color normal() => withOpacity(0.6);
+  VxTextBuilder colorNeutral(BuildContext context) {
+    velocityColor = context.themeColor.greyNeutral;
+    return this;
+  }
 
-  Color light() => withOpacity(0.4);
+  VxTextBuilder colorLight(BuildContext context) {
+    velocityColor = context.themeColor.greyLight;
+    return this;
+  }
 
-  Color neutral() => withOpacity(0.2);
+  VxTextBuilder colorLighter(BuildContext context) {
+    velocityColor = context.themeColor.greyLighter;
+    return this;
+  }
 
-  Color lightest() => withOpacity(0.1);
-  
+  VxTextBuilder colorPrimaryDarkest(BuildContext context) {
+    velocityColor = context.themeColor.primaryDarkest;
+    return this;
+  }
+
+  VxTextBuilder colorPrimaryDark(BuildContext context) {
+    velocityColor = context.themeColor.primaryDark;
+    return this;
+  }
+
+  VxTextBuilder colorPrimaryNeutral(BuildContext context) {
+    velocityColor = context.themeColor.primaryNeutral;
+    return this;
+  }
+
+  VxTextBuilder colorPrimaryLight(BuildContext context) {
+    velocityColor = context.themeColor.primaryLight;
+    return this;
+  }
+
+  VxTextBuilder colorPrimaryLighter(BuildContext context) {
+    velocityColor = context.themeColor.primaryLighter;
+    return this;
+  }
+
 }

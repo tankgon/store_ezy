@@ -10,8 +10,8 @@ bricks:
 
 # Feature Brick
 # Create:
-# mason make feature_brick  --feature_name product_item --folder_name item --state_management cubit
+# mason make feature_brick  --feature_name distributor_rating --folder_name rating --state_management cubit
 
 # Feature Core Brick
 # Create:
-# mason make feature_core_brick  --feature_name product --state_management cubit
+# mason make feature_core_brick  --feature_name distributor --state_management cubit

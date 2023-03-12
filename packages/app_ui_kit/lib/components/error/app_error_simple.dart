@@ -1,4 +1,4 @@
-import 'package:ez_store/all_file/all_file.dart';
+import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 
 class AppErrorSimple extends StatelessWidget {
   const AppErrorSimple({super.key, required this.errorMsg});

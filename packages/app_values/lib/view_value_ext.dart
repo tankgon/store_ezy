@@ -60,6 +60,27 @@ extension VxTextBuilderExtend on VxTextBuilder {
 
   VxTextBuilder get textXL5 => size(FontSizeService().text_XL5);
 
+
+  VxTextBuilder titleMedium(BuildContext context) {
+    return textStyle(context.titleMedium);
+  }
+
+  VxTextBuilder titleLarge(BuildContext context) {
+    return textStyle(context.titleLarge);
+  }
+
+  VxTextBuilder headlineSmall(BuildContext context) {
+    return textStyle(context.headlineSmall);
+  }
+
+  VxTextBuilder bodySmall(BuildContext context) {
+    return textStyle(context.bodySmall);
+  }
+
+  VxTextBuilder labelLarge(BuildContext context) {
+    return textStyle(context.labelLarge);
+  }
+
   VxTextBuilder colorPrimary(BuildContext context) {
     velocityColor = Theme.of(context).primaryColor;
     return this;

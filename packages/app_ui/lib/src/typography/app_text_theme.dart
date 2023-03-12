@@ -44,18 +44,16 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
       color: AppColorExtension.light.greyDarkest,
     ),
     headlineSmall: defaultText.copyWith(
-      fontSize: FontSizeService().text_XL,
       fontWeight: FontWeight.w600,
-      color: AppColorExtension.light.greyDark,
+      color: AppColorExtension.light.greyDarkest,
     ),
     titleMedium: defaultText.copyWith(
-      fontWeight: FontWeight.w600,
-      color: AppColorExtension.light.greyDark,
+      fontWeight: FontWeight.w500,
+      color: AppColorExtension.light.greyDarkest,
     ),
     bodySmall: defaultText.copyWith(
       fontSize: FontSizeService().text_S,
-      fontWeight: FontWeight.w500,
-      color: AppColorExtension.light.greyDark,
+      color: AppColorExtension.light.grey,
     ),
     labelLarge: defaultText.copyWith(
       fontWeight: FontWeight.w500,
@@ -76,16 +74,15 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
     headlineSmall: defaultText.copyWith(
       fontSize: FontSizeService().text_XL,
       fontWeight: FontWeight.w600,
-      color: AppColorExtension.light.greyDark,
+      color: AppColorExtension.light.greyDarkest,
     ),
     titleMedium: defaultText.copyWith(
-      fontWeight: FontWeight.w600,
-      color: AppColorExtension.light.greyDark,
+      fontWeight: FontWeight.w500,
+      color: AppColorExtension.light.greyDarkest,
     ),
     bodySmall: defaultText.copyWith(
       fontSize: FontSizeService().text_S,
-      fontWeight: FontWeight.w500,
-      color: AppColorExtension.light.greyDark,
+      color: AppColorExtension.light.grey,
     ),
     labelLarge: defaultText.copyWith(
       fontWeight: FontWeight.w500,
@@ -133,7 +130,9 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
   static TextTheme getTextTheme({bool isDark = false}) {
     final textThemeExtension = AppTextThemeExtension.form(isDark);
     return TextTheme(
-      bodyMedium: textThemeExtension.text,
+      bodyMedium: textThemeExtension.text.copyWith(
+        height: 1.3,
+      ),
 
       // H6
       titleLarge: textThemeExtension.titleLarge,

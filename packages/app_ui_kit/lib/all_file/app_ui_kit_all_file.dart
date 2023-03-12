@@ -17,6 +17,7 @@ export 'package:velocity_x/velocity_x.dart'
     VxTransformExtension,
     VxWidgetsExtension,
     VxTextExtensions,
+    VxContextExtensions,
     // StringExtension,
     VxPaddingExtensions,
     VxMarqueeExtension,

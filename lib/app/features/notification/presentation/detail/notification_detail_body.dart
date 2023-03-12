@@ -6,7 +6,7 @@ class NotificationDetailBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollViewSliver.withPadding(
+    return AppScrollBody.withSpacing(
       child: BlocBuilder<NotificationDetailCubit, NotificationDetailState>(
         builder: (context, state) {
           return Column(

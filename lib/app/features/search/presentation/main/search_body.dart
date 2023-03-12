@@ -7,7 +7,7 @@ class SearchBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollViewSliver(
+    return AppScrollBody(
       child: BlocBuilder<SearchCubit, SearchState>(
         builder: (context, state) {
           final item = state.item;

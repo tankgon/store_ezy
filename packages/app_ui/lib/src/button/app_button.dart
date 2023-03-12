@@ -1,40 +1,37 @@
-
 import 'package:app_ui/src/all_file.dart';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
 
-class AppButtonStyle {
-  AppButtonStyle._();
+class AppButtonTheme {
+  AppButtonTheme._();
 
   static const double defaultRadius = Dimens.rad_XS;
   static const double defaultElevation = Dimens.elevation_zero;
-  static const EdgeInsets defaultPadding = EdgeInsets.symmetric(horizontal: Dimens.pad_XL, vertical: Dimens.pad_XS);
   static const double defaultOpacity = 0.2;
   static const double defaultBorderWidth = 1;
 
-  static ButtonStyle primaryStyle(BuildContext context, {BtnStyleProps? props}) {
+  static ButtonStyle primaryStyle(
+    BuildContext context, {
+    AppButtonStyle? props,
+  }) {
     return ElevatedButton.styleFrom(
+      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       foregroundColor: Theme.of(context).colorScheme.onPrimary,
       backgroundColor: Theme.of(context).primaryColor,
-      padding: defaultPadding,
+      padding: context.theme.buttonTheme.padding,
       elevation: defaultElevation,
-      shape: RoundedRectangleBorder(
-        side: const BorderSide(
-          color: Colors.transparent,
-          width: 0,
-        ),
-        borderRadius: BorderRadius.circular(
-          defaultRadius,
-        ),
-      ),
       shadowColor: Colors.transparent,
     ).merge(props);
   }
 
-  static ButtonStyle ghostStyle(BuildContext context, {BtnStyleProps? props}) {
+  static ButtonStyle ghostStyle(
+    BuildContext context, {
+    AppButtonStyle? props,
+  }) {
     final styleFrom = ElevatedButton.styleFrom(
+      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       foregroundColor: Theme.of(context).primaryColor,
       backgroundColor: Theme.of(context).colorScheme.onPrimary,
-      padding: defaultPadding,
       elevation: defaultElevation,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(defaultRadius),
@@ -61,18 +58,10 @@ class AppButtonStyle {
   }
 }
 
-class BtnStyleProps extends ButtonStyle {
-  const BtnStyleProps({
+class AppButtonStyle extends ButtonStyle {
+  const AppButtonStyle({
     super.foregroundColor,
     super.padding,
     super.elevation,
   });
-
-  static BtnStyleProps create({
-    Color? foregroundColor,
-  }) {
-    return BtnStyleProps(
-      foregroundColor: MaterialStateProperty.resolveWith((states) => foregroundColor),
-    );
-  }
 }

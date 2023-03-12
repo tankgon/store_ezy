@@ -9,7 +9,7 @@ class {{feature_name.pascalCase()}}Body {{#isBloc}}extends StatelessWidget{{/isB
   Widget build(BuildContext context) {
     return BlocBuilder<{{feature_name.pascalCase()}}Bloc, {{feature_name.pascalCase()}}State>(
       builder: (context, state) {
-        return SingleChildScrollViewSliver(
+        return AppScrollBody(
           child: Column(
             children: [
 
@@ -21,7 +21,7 @@ class {{feature_name.pascalCase()}}Body {{#isBloc}}extends StatelessWidget{{/isB
   }{{/isBloc}}{{#isCubit}}
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollViewSliver(
+    return AppScrollBody(
       child: BlocBuilder<{{feature_name.pascalCase()}}Cubit, {{feature_name.pascalCase()}}State>(
         builder: (context, state) {
           final item = state.item;
@@ -36,7 +36,7 @@ class {{feature_name.pascalCase()}}Body {{#isBloc}}extends StatelessWidget{{/isB
   }{{/isCubit}}{{#isNone}}
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollViewSliver(
+    return AppScrollBody(
           child: Column(
             children: [
 

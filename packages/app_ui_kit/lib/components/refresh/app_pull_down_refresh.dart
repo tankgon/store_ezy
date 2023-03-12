@@ -9,11 +9,13 @@ class AppPullDownRefresh extends StatefulWidget {
     required this.child,
     required this.refresh,
     this.enable = true,
+    this.indicatorAlignment = Alignment.topCenter,
   });
 
   final Widget child;
   final void Function() refresh;
   final bool enable;
+  final AlignmentGeometry indicatorAlignment;
 
   @override
   State<AppPullDownRefresh> createState() => _AppPullDownRefreshState();
@@ -37,12 +39,15 @@ class _AppPullDownRefreshState extends State<AppPullDownRefresh> {
       ) {
         return Stack(
           children: <Widget>[
-            AnimatedBuilder(
-              animation: controller,
-              builder: (BuildContext context, _) {
-                return !controller.isIdle ? const CupertinoActivityIndicator() : const SizedBox.shrink();
-              },
-            ).objectTopCenter(),
+            Align(
+              alignment: widget.indicatorAlignment,
+              child: AnimatedBuilder(
+                animation: controller,
+                builder: (BuildContext context, _) {
+                  return !controller.isIdle ? const CupertinoActivityIndicator() : const SizedBox.shrink();
+                },
+              ),
+            ).pDefault(),
             child,
           ],
         );

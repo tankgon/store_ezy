@@ -51,7 +51,7 @@ extension ThemeExtend on ThemeData {
 
 }
 
-extension ListWidgetExtend<T extends Widget> on List<T> {
+extension ListWidgetExtend<T extends Widget?> on List<T> {
   List<Widget> withDivider(Widget divider, {bool showLast = false, bool showFirst = false}) {
     if (isEmpty || length == 0) return [];
 
@@ -60,8 +60,10 @@ extension ListWidgetExtend<T extends Widget> on List<T> {
       rs.add(divider);
     }
     forEach((element) {
-      rs.add(element);
-      rs.add(divider);
+      if (element != null) {
+        rs.add(element);
+        rs.add(divider);
+      }
     });
     if (!showLast) {
       rs.removeLast();

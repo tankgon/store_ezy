@@ -1,4 +1,5 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class AppBarTitleText extends StatelessWidget {
   const AppBarTitleText({
@@ -19,7 +20,7 @@ class AppBarTitleText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return title.textAuto
-        .textStyle(context.themeText.titleLarge)
+        .textStyle(context.textTheme.titleLarge)
         .minFontSize(context.textS)
         .maxLines(titleMaxLine ?? 1)
         .align(textAlign ?? TextAlign.start)

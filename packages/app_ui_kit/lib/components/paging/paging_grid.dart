@@ -1,12 +1,11 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 import 'package:app_ui_kit/components/paging/paging_config.dart';
+import 'package:app_ui_kit/components/paging/paging_list.dart';
 import 'package:app_ui_kit/components/refresh/app_pull_down_refresh.dart';
 import 'package:flutter/foundation.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 import 'app_paging_controller.dart';
-
-typedef PagingGridFetchFunc<T> = Future<List<T>> Function(int offset, int limit);
 
 class PagingGrid<T> extends StatefulWidget {
   const PagingGrid({
@@ -42,7 +41,7 @@ class PagingGrid<T> extends StatefulWidget {
 
   final int pageSize;
   final ItemWidgetBuilder<T> itemBuilder;
-  final PagingGridFetchFunc<T> fetchListData;
+  final PagingListFetchFunc<T> fetchListData;
   final IndexedWidgetBuilder? separatorBuilder;
   final WidgetBuilder? noItemsFoundIndicatorBuilder;
   final WidgetBuilder? noMoreItemsIndicatorBuilder;
@@ -148,6 +147,7 @@ class _PagingGridState<V> extends State<PagingGrid<V>> {
     }
 
     return AppPullDownRefresh(
+      indicatorAlignment: widget.scrollDirection == Axis.vertical ? Alignment.topCenter : Alignment.centerLeft,
       enable: widget.enablePullDown,
       refresh: _pagingController.refresh,
       child: pagedListView,

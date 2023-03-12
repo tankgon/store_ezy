@@ -4,7 +4,6 @@ export 'dart:convert';
 export 'dart:io';
 
 export 'package:animate_do/animate_do.dart';
-export 'package:animated_text_kit/animated_text_kit.dart';
 export 'package:antdesign_icons/antdesign_icons.dart';
 export 'package:auto_route/auto_route.dart';
 export 'package:bloc/bloc.dart' hide EventHandler;
@@ -27,7 +26,6 @@ export 'package:get_it/get_it.dart';
 export 'package:hive_flutter/hive_flutter.dart';
 export 'package:json_annotation/json_annotation.dart';
 export 'package:loader_overlay/loader_overlay.dart';
-export 'package:overlay_support/overlay_support.dart';
 export 'package:package_info_plus/package_info_plus.dart';
 export 'package:retrofit/http.dart' hide Path;
 export 'package:url_launcher/url_launcher.dart';

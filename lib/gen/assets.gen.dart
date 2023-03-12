@@ -5,7 +5,7 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
+// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -239,6 +239,7 @@ class $AssetsIconsGen {
   /// File path: assets/icons/pin_left.svg
   SvgGenImage get pinLeft => const SvgGenImage('assets/icons/pin_left.svg');
 
+  $AssetsIconsProductGen get product => const $AssetsIconsProductGen();
   $AssetsIconsProfileGen get profile => const $AssetsIconsProfileGen();
 
   /// File path: assets/icons/radio_selected.svg
@@ -336,6 +337,38 @@ class $AssetsIconsGen {
         vr360,
         warningIc
       ];
+}
+
+class $AssetsTranslationsGen {
+  const $AssetsTranslationsGen();
+
+  /// File path: assets/translations/en-US.json
+  String get enUS => 'assets/translations/en-US.json';
+
+  /// File path: assets/translations/vi-VN.json
+  String get viVN => 'assets/translations/vi-VN.json';
+
+  /// List of all assets
+  List<String> get values => [enUS, viVN];
+}
+
+class $AssetsIconsProductGen {
+  const $AssetsIconsProductGen();
+
+  /// File path: assets/icons/product/authentic_100.svg
+  SvgGenImage get authentic100 =>
+      const SvgGenImage('assets/icons/product/authentic_100.svg');
+
+  /// File path: assets/icons/product/free_shipping.svg
+  SvgGenImage get freeShipping =>
+      const SvgGenImage('assets/icons/product/free_shipping.svg');
+
+  /// File path: assets/icons/product/return_in_datys.svg
+  SvgGenImage get returnInDatys =>
+      const SvgGenImage('assets/icons/product/return_in_datys.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [authentic100, freeShipping, returnInDatys];
 }
 
 class $AssetsIconsProfileGen {
@@ -480,6 +513,7 @@ class Assets {
   Assets._();
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
+  static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();
 }
 
 class AssetGenImage {
@@ -563,13 +597,14 @@ class SvgGenImage {
     AlignmentGeometry alignment = Alignment.center,
     bool allowDrawingOutsideViewBox = false,
     WidgetBuilder? placeholderBuilder,
-    Color? color,
-    BlendMode colorBlendMode = BlendMode.srcIn,
     String? semanticsLabel,
     bool excludeFromSemantics = false,
-    Clip clipBehavior = Clip.hardEdge,
-    bool cacheColorFilter = false,
-    SvgTheme? theme,
+    SvgTheme theme = const SvgTheme(),
+    ColorFilter? colorFilter,
+    @deprecated Color? color,
+    @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
+    @deprecated Clip? clipBehavior,
+    @deprecated bool cacheColorFilter = false,
   }) {
     return SvgPicture.asset(
       _assetName,
@@ -583,13 +618,14 @@ class SvgGenImage {
       alignment: alignment,
       allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
       placeholderBuilder: placeholderBuilder,
-      color: color,
-      colorBlendMode: colorBlendMode,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
+      theme: theme,
+      colorFilter: colorFilter,
+      color: color,
+      colorBlendMode: colorBlendMode,
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
-      theme: theme!,
     );
   }
 

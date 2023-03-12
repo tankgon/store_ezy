@@ -1,23 +1,34 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 
-class SingleChildScrollViewSliver extends StatelessWidget {
-  const SingleChildScrollViewSliver({
+class AppScrollBody extends StatelessWidget {
+  const AppScrollBody({
     super.key,
     required this.child,
     this.hasScrollBody,
-    this.withPadding,
+    this.topSpacing,
+    this.bottomSpacing,
   });
 
-  const SingleChildScrollViewSliver.withPadding({
+  const AppScrollBody.withSpacing({
     super.key,
     required this.child,
     this.hasScrollBody,
-    this.withPadding = true,
+    this.topSpacing = true,
+    this.bottomSpacing = true,
+  });
+
+  const AppScrollBody.withBottomSpacing({
+    super.key,
+    required this.child,
+    this.hasScrollBody,
+    this.topSpacing = false,
+    this.bottomSpacing = true,
   });
 
   final Widget child;
   final bool? hasScrollBody;
-  final bool? withPadding;
+  final bool? topSpacing;
+  final bool? bottomSpacing;
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +38,9 @@ class SingleChildScrollViewSliver extends StatelessWidget {
         SliverToBoxAdapter(
           child: Column(
             children: [
-              if (withPadding ?? false) Gaps.vGap16,
+              if (topSpacing ?? false) Gaps.vGap16,
               child,
-              if (withPadding ?? false) Gaps.bottomSpacing(context),
+              if (bottomSpacing ?? false) Gaps.bottomSpacing(context),
             ],
           ),
         ),

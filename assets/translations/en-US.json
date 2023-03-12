@@ -10,9 +10,32 @@
     "account": "Account"
   },
   "common": {
-    "Search": "Search"
+    "Search": "Search",
+    "SeeAll": "More",
+    "Authentic": "Authentic",
+    "Desciption": "Description",
+    "Note": "Note",
+    "FreeNShipping": "Free shipping",
+    "ReturnInNDays": "Return in\n{} days",
+    "ReadMore": "Read more",
+    "ReadLess": "Read less"
   },
   "product": {
-    "Buy": "Buy"
+    "Buy": "Buy",
+    "PopularProducts": "Popular products",
+    "HotDeals": "Hot deals",
+    "NewProducts": "New products",
+    "Category": "Category",
+    "Packing": "Packing",
+    "OriginOrBrand": "Origin/Brand",
+    "Uses": "Uses",
+    "SameDistributor": "From this distributor",
+    "SameProductType": "Same product type"
+  },
+  "discount": {
+    "Promotions": "Promotions"
+  },
+  "distributor": {
+    "Rating": "Distributor rating"
   }
 }

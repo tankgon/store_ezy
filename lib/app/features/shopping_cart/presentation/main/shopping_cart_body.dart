@@ -7,7 +7,7 @@ class ShoppingCartBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollViewSliver(
+    return AppScrollBody(
       child: BlocBuilder<ShoppingCartCubit, ShoppingCartState>(
         builder: (context, state) {
           final item = state.item;

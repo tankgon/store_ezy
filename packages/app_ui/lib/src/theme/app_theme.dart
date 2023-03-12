@@ -1,3 +1,4 @@
+import 'package:app_ui/app_ui.dart';
 import 'package:app_ui/src/all_file.dart';
 import 'package:app_ui/src/colors/app_colors_extension.dart';
 import 'package:app_ui/src/typography/app_text_theme.dart';
@@ -30,6 +31,15 @@ class AppTheme {
       dialogBackgroundColor: colorScheme.background,
       indicatorColor: onPrimarySurfaceColor,
       textTheme: textTheme,
+      iconTheme: IconThemeData(color: appColor.grey),
+      iconButtonTheme: IconButtonThemeData(
+        style: ButtonStyle(
+          iconColor: MaterialStateProperty.all(appColor.greyDark),
+          overlayColor: MaterialStateProperty.all(Colors.transparent),
+          padding: MaterialStateProperty.all(EdgeInsets.zero),
+          minimumSize: MaterialStateProperty.all(Size.zero),
+        ),
+      ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         contentPadding: EdgeInsets.zero,
@@ -44,6 +54,17 @@ class AppTheme {
             color: colorScheme.primary,
             width: AppTextFieldTheme.defaultBorderWidth,
           ),
+        ),
+      ),
+      buttonTheme: ButtonThemeData(
+        padding: const EdgeInsets.symmetric(
+          vertical: 10,
+          horizontal: 12,
+        ),
+        buttonColor: colorScheme.primary,
+        textTheme: ButtonTextTheme.primary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppButtonTheme.defaultRadius),
         ),
       ),
       applyElevationOverlayColor: isDark,

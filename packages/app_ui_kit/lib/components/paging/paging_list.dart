@@ -153,6 +153,7 @@ class _PagingListState<V> extends State<PagingList<V>> {
     }
 
     return AppPullDownRefresh(
+      indicatorAlignment: widget.scrollDirection == Axis.vertical ? Alignment.topCenter : Alignment.centerLeft,
       enable: widget.enablePullDown,
       refresh: () {
         if (widget.onPullDown != null) {

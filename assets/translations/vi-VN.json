@@ -10,9 +10,32 @@
     "account": "Tài khoản"
   },
   "common": {
-    "Search": "Tìm kím"
+    "Search": "Tìm kím",
+    "SeeAll": "Xem tất cả",
+    "Authentic": "Chính hãng",
+    "Desciption": "Mô tả",
+    "Note": "Ghi chú",
+    "FreeNShipping": "Miễn phí\nvận chuyển",
+    "ReturnInNDays": "Đổi trả trong\n{} ngày",
+    "ReadMore": "Xem thêm",
+    "ReadLess": "Thu gọn"
   },
   "product": {
-    "Buy": "Chọn mua"
+    "Buy": "Chọn mua",
+    "PopularProducts": "Sản phẩm nỗi bật",
+    "HotDeals": "Giá tốt hôm nay",
+    "NewProducts": "Sản phẩm mới",
+    "Category": "Danh mục",
+    "Packing": "Quy cách",
+    "OriginOrBrand": "Xuất xứ/thương hiệu",
+    "Uses": "Công dụng",
+    "SameDistributor": "Cùng nhà phân phối",
+    "SameProductType": "Sản phẩm tương tự"
+  },
+  "discount": {
+    "Promotions": "Chương trình khuyến mãi"
+  },
+  "distributor": {
+    "Rating": "Đánh giá của nhà cung cấp"
   }
 }

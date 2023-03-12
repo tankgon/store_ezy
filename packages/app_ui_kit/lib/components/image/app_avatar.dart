@@ -2,10 +2,10 @@ import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 import 'package:app_ui_kit/components/image/app_img.dart';
 import 'package:app_ui_kit/components/skeleton/app_Shimmer.dart';
 
-class Avatar extends StatelessWidget {
-  const Avatar(
-    this.src, {
+class AppAvatar extends StatelessWidget {
+  const AppAvatar({
     Key? key,
+    this.src,
     this.height = 50,
     this.fit = BoxFit.cover,
     this.background,
@@ -64,6 +64,7 @@ class Avatar extends StatelessWidget {
         color: color,
         shape: BoxShape.circle,
         border: border,
+        borderWidth: 2,
       );
     } else {
       boxDecoration = BoxDecoration(
@@ -73,15 +74,12 @@ class Avatar extends StatelessWidget {
       );
     }
 
-    return SizedBox(
-      height: height,
-      child: AspectRatio(
-        aspectRatio: 1,
-        child: Container(
-          decoration: boxDecoration,
-          clipBehavior: Clip.hardEdge,
-          child: img.cornerRadius(Dimens.rad_max),
-        ),
+    return SizedBox.square(
+      dimension: height,
+      child: Container(
+        decoration: boxDecoration,
+        clipBehavior: Clip.hardEdge,
+        child: img.cornerRadius(Dimens.rad_max),
       ),
     );
   }

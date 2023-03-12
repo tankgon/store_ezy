@@ -117,7 +117,7 @@ class AppDecor {
         width: 1,
         color: Theme.of(context).dividerColor,
       ),
-      borderRadius: borderRadius ?? Dimens.rad_border_circular_S,
+      borderRadius: borderRadius ?? Dimens.rad_border_circular,
     );
   }
 
@@ -127,7 +127,7 @@ class AppDecor {
         width: 1,
         color: Theme.of(context).colorScheme.primary,
       ),
-      borderRadius: borderRadius ?? Dimens.rad_border_circular_S,
+      borderRadius: borderRadius ?? Dimens.rad_border_circular,
     );
   }
 }

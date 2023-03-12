@@ -5,6 +5,7 @@ export 'data/data_extend.dart';
 export 'data/price/price_service.dart';
 
 export 'view/navigation_extend.dart';
+export 'view/view_utils.dart';
 export 'view/view_extend.dart';
 export 'view/toast_utils.dart';
 
