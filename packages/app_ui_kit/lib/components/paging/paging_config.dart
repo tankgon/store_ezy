@@ -42,7 +42,7 @@ class PagingConfiguration extends InheritedWidget {
   final PagingConfigData configData;
 
   static PagingConfigData of(BuildContext context) {
-    var configWidget = context.dependOnInheritedWidgetOfExactType<PagingConfiguration>();
+    final configWidget = context.dependOnInheritedWidgetOfExactType<PagingConfiguration>();
     return configWidget?.configData ?? PagingConfigData();
   }
 

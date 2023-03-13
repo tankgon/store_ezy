@@ -111,10 +111,10 @@ class AppDecor {
     );
   }
 
-  static BoxDecoration grayBorder(BuildContext context, {BorderRadiusGeometry? borderRadius}) {
+  static BoxDecoration grayBorder(BuildContext context, {BorderRadiusGeometry? borderRadius, double? borderWidth}) {
     return BoxDecoration(
       border: Border.all(
-        width: 1,
+        width: borderWidth ?? 1,
         color: Theme.of(context).dividerColor,
       ),
       borderRadius: borderRadius ?? Dimens.rad_border_circular,

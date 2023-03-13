@@ -3,13 +3,13 @@ import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 part 'paging_number_state.dart';
 
 class PagingNumberResult {
-  final List<dynamic> listData;
-  final int? total;
-
   const PagingNumberResult({
     required this.listData,
     this.total,
   });
+
+  final List<dynamic> listData;
+  final int? total;
 }
 
 class PagingNumberCubit extends Cubit<PagingNumberState> {
@@ -66,9 +66,9 @@ class PagingNumberCubit extends Cubit<PagingNumberState> {
         (page - 1) * pageSize,
         pageSize,
       );
-      var listDataNew = {...state.listData};
+      final listDataNew = {...state.listData};
       listDataNew[page] = rs.listData;
-      var totalPage = rs.total != null ? ((rs.total ?? 0) / pageSize).ceil() : null;
+      final totalPage = rs.total != null ? ((rs.total ?? 0) / pageSize).ceil() : null;
       emit(
         state.copyWith(
           status: PagingNumberStatus.success,
@@ -101,7 +101,7 @@ class PagingNumberCubit extends Cubit<PagingNumberState> {
 
   List<T>? getListDataOfCurrentPage<T>() {
     try {
-      var listDynamicType = getListDataOfPage(state.currentPage);
+      final listDynamicType = getListDataOfPage(state.currentPage);
       return listDynamicType?.cast<T>();
     } catch (e) {
       log('$e', error: e);
@@ -119,7 +119,7 @@ class PagingNumberCubit extends Cubit<PagingNumberState> {
       currentPage: 1,
       totalPage: null,
       status: PagingNumberStatus.initial,
-    ));
+    ),);
     fetchPage(page: 1, needRefresh: true);
   }
 }

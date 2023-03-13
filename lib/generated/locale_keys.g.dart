@@ -33,6 +33,7 @@ abstract class  LocaleKeys {
   static const discount_Promotions = 'discount.Promotions';
   static const discount = 'discount';
   static const distributor_Rating = 'distributor.Rating';
+  static const distributor_Popular = 'distributor.Popular';
   static const distributor = 'distributor';
 
 }

@@ -1,53 +1,55 @@
 import 'package:ez_store/all_file/all_file.dart';
+import 'package:ez_store/app/features/distributor/presentation/item/distributor_item.dart';
+import 'package:ez_store/app/features/distributor/presentation/item/distributor_item_layout_1.dart';
 import 'package:ez_store/app/features/product/data/model/product_base_model.dart';
 import 'package:ez_store/app/features/product/presentation/item/layout_tile/product_item_tile_layout_1.dart';
 import 'package:ez_store/app/features/product/presentation/item/product_item.dart';
 import 'package:ez_store/app/features/product/presentation/item/layout/product_item_layout_1.dart';
 
-class ProductGridVer extends StatelessWidget {
-  const ProductGridVer({
+class DistributorGridVer extends StatelessWidget {
+  const DistributorGridVer({
     super.key,
     required this.fetchListData,
     this.padding,
     this.layoutName,
-    this.spacing = Dimens.pad_XS2,
+    this.spacing = Dimens.pad_default,
     this.shrinkWrap,
     this.physics,
-    this.isSliver,
+    this.onlyOnePage,
   });
 
-  static ProductGridVer demo({bool? shrinkWrap, ScrollPhysics? physics, bool? isSliver}) {
-    return ProductGridVer(
+  static DistributorGridVer demo({bool shrinkWrap = false, ScrollPhysics? physics, bool? onlyOnePage}){
+    return DistributorGridVer(
       shrinkWrap: shrinkWrap,
       physics: physics,
-      isSliver: isSliver,
+      onlyOnePage: onlyOnePage,
       fetchListData: (page, pageSize) {
-        return Future.value(List.generate(15, (index) => index).map((e) => ProductModel()).toList());
+        return Future.value(List.generate(8, (index) => index).map((e) => Object()).toList());
       },
     );
   }
 
-  final PagingListFetchFunc<ProductModel> fetchListData;
+  final PagingListFetchFunc<dynamic> fetchListData;
   final EdgeInsets? padding;
   final String? layoutName;
   final double spacing;
 
-  final bool? isSliver;
   final bool? shrinkWrap;
   final ScrollPhysics? physics;
+  final bool? onlyOnePage;
 
   @override
   Widget build(BuildContext context) {
     var aspectRatio = 1.0;
-    const crossAxisCount = 2;
-    if (layoutName == null || layoutName == (ProductItemLayout1).toString()) {
-      aspectRatio = ProductItemLayout1.width / ProductItemLayout1.height;
+    const crossAxisCount = 4;
+    if (layoutName == null || layoutName == (DistributorItemLayout1).toString()) {
+      aspectRatio = DistributorItemLayout1.width / DistributorItemLayout1.height;
     }
 
-    return PagingGrid<ProductModel>(
+    return PagingGrid<dynamic>(
       shrinkWrap: shrinkWrap ?? false,
       physics: physics,
-      isSliver: isSliver ?? false,
+      onlyOnePage: onlyOnePage ?? false,
       padding: padding ?? const EdgeInsets.symmetric(horizontal: 16),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,
@@ -55,9 +57,9 @@ class ProductGridVer extends StatelessWidget {
         crossAxisSpacing: spacing,
         childAspectRatio: aspectRatio,
       ),
-      itemBuilder: (context, item, index) => ProductItem(
+      itemBuilder: (context, item, index) => DistributorItem(
         item: item,
-        layoutName: layoutName ?? (ProductItemLayout1).toString(),
+        layoutName: layoutName ?? (DistributorItemLayout1).toString(),
       ),
       fetchListData: fetchListData,
     );

@@ -36,6 +36,7 @@
     "Promotions": "Promotions"
   },
   "distributor": {
-    "Rating": "Distributor rating"
+    "Rating": "Distributor rating",
+    "Popular": "Popular distributors"
   }
 }

@@ -36,6 +36,7 @@
     "Promotions": "Chương trình khuyến mãi"
   },
   "distributor": {
-    "Rating": "Đánh giá của nhà cung cấp"
+    "Rating": "Đánh giá của nhà cung cấp",
+    "Popular": "Nhà cung cấp nỗi bật"
   }
 }

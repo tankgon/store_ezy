@@ -10,14 +10,14 @@ typedef HozItemWidgetBuilder<ItemType> = Widget Function(
 
 class HorizontalPaging<T> extends StatelessWidget {
   const HorizontalPaging({
-    Key? key,
+    super.key,
     required this.itemBuilder,
     this.separatorBuilder,
     this.shrinkWrap = false,
     this.padding,
     this.physics,
     this.onPageChange,
-  }) : super(key: key);
+  });
 
   final HozItemWidgetBuilder<T> itemBuilder;
   final IndexedWidgetBuilder? separatorBuilder;
@@ -40,7 +40,7 @@ class HorizontalPaging<T> extends StatelessWidget {
       },
       child: BlocBuilder<PagingNumberCubit, PagingNumberState>(
         builder: (context, state) {
-          var listData =
+          final listData =
               context.read<PagingNumberCubit>().getCurrentPageListData();
           if (state.status == PagingNumberStatus.loading) {
             return const Center(
@@ -69,13 +69,13 @@ class HorizontalPaging<T> extends StatelessWidget {
 }
 
 class HorizontalPagingIndicator extends StatelessWidget {
-  const HorizontalPagingIndicator({Key? key}) : super(key: key);
+  const HorizontalPagingIndicator({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PagingNumberCubit, PagingNumberState>(
       builder: (context, state) {
-        var showPage = state.totalPage != 0 &&
+        final showPage = state.totalPage != 0 &&
             (context
                         .read<PagingNumberCubit>()
                         .getCurrentPageListData()

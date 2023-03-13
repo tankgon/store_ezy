@@ -1,4 +1,6 @@
 import 'package:ez_store/all_file/all_file.dart';
+import 'package:ez_store/app/features/distributor/presentation/list/distributor_grid_hoz.dart';
+import 'package:ez_store/app/features/distributor/presentation/list/distributor_grid_ver.dart';
 import 'package:ez_store/app/features/home/presentation/feature_gird/home_feature_gird_page.dart';
 import 'package:ez_store/app/features/product/data/model/product_base_model.dart';
 import 'package:ez_store/app/features/product/presentation/list/product_grid_hoz.dart';
@@ -36,8 +38,21 @@ class HomeBody extends StatelessWidget {
                 ),
               ),
               SectionContainer(
-                title: LocaleKeys.product_PopularProducts.tr(),
+                title: LocaleKeys.product_HotDeals.tr(),
                 child: ProductGridHoz.demo(),
+              ),
+              SectionContainer(
+                title: LocaleKeys.product_NewProducts.tr(),
+                child: ProductGridHoz.demo(),
+              ),
+              SectionContainer(
+                title: LocaleKeys.distributor_Popular.tr(),
+                space: Dimens.pad_L,
+                child: DistributorGridVer.demo(
+                  shrinkWrap: true,
+                  onlyOnePage: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                ),
               ),
             ].withDivider(const AppDivider().py16()),
           ),

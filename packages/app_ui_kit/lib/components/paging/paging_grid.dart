@@ -16,7 +16,6 @@ class PagingGrid<T> extends StatefulWidget {
     this.shrinkWrap = false,
     required this.itemBuilder,
     required this.fetchListData,
-    this.separatorBuilder,
     this.pageSize = 20,
     this.pagingController,
     this.onlyOnePage = false,
@@ -42,7 +41,6 @@ class PagingGrid<T> extends StatefulWidget {
   final int pageSize;
   final ItemWidgetBuilder<T> itemBuilder;
   final PagingListFetchFunc<T> fetchListData;
-  final IndexedWidgetBuilder? separatorBuilder;
   final WidgetBuilder? noItemsFoundIndicatorBuilder;
   final WidgetBuilder? noMoreItemsIndicatorBuilder;
   final WidgetBuilder? firstPageProgressIndicatorBuilder;
@@ -158,14 +156,15 @@ class _PagingGridState<V> extends State<PagingGrid<V>> {
     return PagedSliverGrid<int, V>(
       gridDelegate: widget.gridDelegate,
       pagingController: _pagingController,
+      showNewPageErrorIndicatorAsGridChild: false,
+      showNoMoreItemsIndicatorAsGridChild: false,
+      showNewPageProgressIndicatorAsGridChild: false,
       builderDelegate: PagedChildBuilderDelegate<V>(
         itemBuilder: widget.itemBuilder,
         firstPageProgressIndicatorBuilder: widget.firstPageProgressIndicatorBuilder ?? context.pagingConfigData.progressIndicatorBuilder,
         newPageProgressIndicatorBuilder: widget.newPageProgressIndicatorBuilder ?? context.pagingConfigData.progressIndicatorBuilder,
-        firstPageErrorIndicatorBuilder: (_) =>
-            context.pagingConfigData.errorBuilder(context, _pagingController.error),
-        newPageErrorIndicatorBuilder: (_) =>
-            context.pagingConfigData.errorBuilder(context, _pagingController.error),
+        firstPageErrorIndicatorBuilder: (_) => context.pagingConfigData.errorBuilder(context, _pagingController.error),
+        newPageErrorIndicatorBuilder: (_) => context.pagingConfigData.errorBuilder(context, _pagingController.error),
         noItemsFoundIndicatorBuilder: (context) {
           widget.onEmpty?.call();
           if (widget.noItemsFoundIndicatorBuilder != null) {
@@ -173,7 +172,7 @@ class _PagingGridState<V> extends State<PagingGrid<V>> {
           }
           return context.pagingConfigData.emptyBuilder(context);
         },
-        noMoreItemsIndicatorBuilder: widget.noMoreItemsIndicatorBuilder ?? (_) => const SizedBox.shrink(),
+        noMoreItemsIndicatorBuilder: widget.noMoreItemsIndicatorBuilder,
       ),
     );
   }
@@ -187,15 +186,16 @@ class _PagingGridState<V> extends State<PagingGrid<V>> {
       physics: widget.physics,
       shrinkWrap: widget.shrinkWrap,
       padding: widget.padding,
+      showNewPageErrorIndicatorAsGridChild: false,
+      showNoMoreItemsIndicatorAsGridChild: false,
+      showNewPageProgressIndicatorAsGridChild: false,
       pagingController: _pagingController,
       builderDelegate: PagedChildBuilderDelegate<V>(
         itemBuilder: widget.itemBuilder,
         firstPageProgressIndicatorBuilder: widget.firstPageProgressIndicatorBuilder ?? context.pagingConfigData.progressIndicatorBuilder,
         newPageProgressIndicatorBuilder: widget.newPageProgressIndicatorBuilder ?? context.pagingConfigData.progressIndicatorBuilder,
-        firstPageErrorIndicatorBuilder: (_) =>
-            context.pagingConfigData.errorBuilder(context, _pagingController.error),
-        newPageErrorIndicatorBuilder: (_) =>
-            context.pagingConfigData.errorBuilder(context, _pagingController.error),
+        firstPageErrorIndicatorBuilder: (_) => context.pagingConfigData.errorBuilder(context, _pagingController.error),
+        newPageErrorIndicatorBuilder: (_) => context.pagingConfigData.errorBuilder(context, _pagingController.error),
         noItemsFoundIndicatorBuilder: (context) {
           widget.onEmpty?.call();
           if (widget.noItemsFoundIndicatorBuilder != null) {
@@ -203,9 +203,8 @@ class _PagingGridState<V> extends State<PagingGrid<V>> {
           }
           return context.pagingConfigData.emptyBuilder(context);
         },
-        noMoreItemsIndicatorBuilder: widget.noMoreItemsIndicatorBuilder ?? (_) => const SizedBox.shrink(),
+        noMoreItemsIndicatorBuilder: widget.noMoreItemsIndicatorBuilder,
       ),
     );
   }
 }
-
