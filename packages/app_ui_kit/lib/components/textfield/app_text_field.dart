@@ -3,45 +3,64 @@ import 'package:app_ui_kit/components/textfield/extension/text_input_delay_exten
 
 class AppTextField extends StatefulWidget {
   const AppTextField({
-    Key? key,
-    this.userStopTypingDelay,
+    super.key,
+    this.userStopTypingDelay = const Duration(milliseconds: 1000),
     this.controller,
     this.focusNode,
     this.onChanged,
     this.onUserStopTyping,
     this.decoration,
-  }) : super(key: key);
+    this.keyboardType,
+    this.textAlign = TextAlign.start,
+    this.textInputAction,
+    this.onLostFocus,
+  });
 
   final TextEditingController? controller;
   final FocusNode? focusNode;
+  final ValueChanged<String>? onLostFocus;
 
   final ValueChanged<String>? onChanged;
 
-  final Duration? userStopTypingDelay;
+  final Duration userStopTypingDelay;
   final ValueChanged<String>? onUserStopTyping;
 
   final InputDecoration? decoration;
+
+  final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
+  final TextAlign textAlign;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
 }
 
 class _AppTextFieldState extends State<AppTextField> with TextFiledInputDelayCallBack {
-  late FocusNode _focusNode;
+  FocusNode? _focusNode;
   late TextEditingController _controller;
-  final _fieldKey = GlobalKey<FormFieldState>();
 
   @override
   void initState() {
     _controller = widget.controller ?? TextEditingController();
-    _focusNode = widget.focusNode ?? FocusNode();
+    _focusInit();
     super.initState();
+  }
+
+  void _focusInit() {
+    if (widget.onLostFocus != null) {
+      _focusNode = widget.focusNode ?? FocusNode();
+      _focusNode?.addListener(() {
+        if (!(_focusNode?.hasFocus ?? false)) {
+          widget.onLostFocus?.call(_controller.text);
+        }
+      });
+    }
   }
 
   @override
   void dispose() {
     if (widget.focusNode == null) {
-      _focusNode.dispose();
+      _focusNode?.dispose();
     }
     if (widget.controller == null) {
       _controller.dispose();
@@ -52,10 +71,10 @@ class _AppTextFieldState extends State<AppTextField> with TextFiledInputDelayCal
   void _onTextChange() {
     widget.onChanged?.call(_controller.text);
 
-    if (widget.userStopTypingDelay != null) {
+    if (widget.onUserStopTyping != null) {
       // wait for user to stop typing
       onTextChangeDelayCallBack(
-        userStopTypingDelay: widget.userStopTypingDelay!,
+        userStopTypingDelay: widget.userStopTypingDelay,
         onUserStopTyping: () {
           widget.onUserStopTyping?.call(_controller.text);
         },
@@ -66,12 +85,14 @@ class _AppTextFieldState extends State<AppTextField> with TextFiledInputDelayCal
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      key: _fieldKey,
       onChanged: (val) {
         _onTextChange();
       },
+      textInputAction: widget.textInputAction,
       controller: _controller,
       focusNode: _focusNode,
+      keyboardType: widget.keyboardType,
+      textAlign: widget.textAlign,
       decoration: widget.decoration ?? AppTextFieldTheme.primaryStyle(context),
     );
   }

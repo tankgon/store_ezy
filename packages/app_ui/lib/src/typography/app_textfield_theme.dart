@@ -28,4 +28,22 @@ class AppTextFieldTheme {
           ),
         );
   }
+
+  static InputDecoration none(
+    BuildContext context,
+  ) {
+    return const InputDecoration()
+        .applyDefaults(
+          Theme.of(context).inputDecorationTheme,
+        )
+        .copyWith(
+          hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context).hintColor,
+              ),
+          contentPadding: EdgeInsets.zero,
+          isDense: true,
+          border: InputBorder.none,
+          focusedBorder: InputBorder.none,
+        );
+  }
 }

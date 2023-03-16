@@ -1,8 +1,9 @@
 import 'package:ez_store/all_file/all_file.dart';
 import 'package:ez_store/app/features/distributor/presentation/item/distributor_item.dart';
-import 'package:ez_store/app/features/distributor/presentation/item/distributor_item_layout_1.dart';
+import 'package:ez_store/app/features/distributor/presentation/item/layout/distributor_item_layout.dart';
+import 'package:ez_store/app/features/distributor/presentation/item/layout/distributor_item_layout_1.dart';
 import 'package:ez_store/app/features/product/data/model/product_base_model.dart';
-import 'package:ez_store/app/features/product/presentation/item/layout_tile/product_item_tile_layout_1.dart';
+import 'package:ez_store/app/features/product/presentation/item/layout/product_item_tile_layout_1.dart';
 import 'package:ez_store/app/features/product/presentation/item/product_item.dart';
 import 'package:ez_store/app/features/product/presentation/item/layout/product_item_layout_1.dart';
 
@@ -11,11 +12,11 @@ class DistributorGridVer extends StatelessWidget {
     super.key,
     required this.fetchListData,
     this.padding,
-    this.layoutName,
     this.spacing = Dimens.pad_default,
     this.shrinkWrap,
     this.physics,
     this.onlyOnePage,
+    this.layoutType = DistributorItemLayoutType.layout1,
   });
 
   static DistributorGridVer demo({bool shrinkWrap = false, ScrollPhysics? physics, bool? onlyOnePage}){
@@ -31,7 +32,7 @@ class DistributorGridVer extends StatelessWidget {
 
   final PagingListFetchFunc<dynamic> fetchListData;
   final EdgeInsets? padding;
-  final String? layoutName;
+  final DistributorItemLayoutType layoutType;
   final double spacing;
 
   final bool? shrinkWrap;
@@ -42,9 +43,7 @@ class DistributorGridVer extends StatelessWidget {
   Widget build(BuildContext context) {
     var aspectRatio = 1.0;
     const crossAxisCount = 4;
-    if (layoutName == null || layoutName == (DistributorItemLayout1).toString()) {
-      aspectRatio = DistributorItemLayout1.width / DistributorItemLayout1.height;
-    }
+    aspectRatio = layoutType.size.width / layoutType.size.height;
 
     return PagingGrid<dynamic>(
       shrinkWrap: shrinkWrap ?? false,
@@ -59,7 +58,7 @@ class DistributorGridVer extends StatelessWidget {
       ),
       itemBuilder: (context, item, index) => DistributorItem(
         item: item,
-        layoutName: layoutName ?? (DistributorItemLayout1).toString(),
+        layoutType: layoutType,
       ),
       fetchListData: fetchListData,
     );

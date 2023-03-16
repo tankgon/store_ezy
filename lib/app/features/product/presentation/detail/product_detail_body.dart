@@ -1,5 +1,6 @@
 import 'package:ez_store/all_file/all_file.dart';
 import 'package:ez_store/app/features/distributor/presentation/item/distributor_item.dart';
+import 'package:ez_store/app/features/distributor/presentation/item/layout/distributor_item_layout.dart';
 import 'package:ez_store/app/features/distributor/presentation/rating/distributor_rating.dart';
 import 'package:ez_store/app/features/product/presentation/detail/cubit/product_detail_cubit.dart';
 import 'package:ez_store/app/features/product/presentation/detail/widget/core_feature.dart';
@@ -34,7 +35,9 @@ class ProductDetailBody extends StatelessWidget {
                   ),
                   ...[
                     const ProductTitleHeader(),
-                    DistributorItem(),
+                    DistributorItem(
+                      layoutType: DistributorItemLayoutType.layoutSimpleInfo1,
+                    ),
                     DistributorRatingSimple(),
                     ProductHeightLight(),
                     ProductDetailAttribute().pDefault(),

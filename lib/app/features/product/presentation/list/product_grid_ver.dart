@@ -1,6 +1,7 @@
 import 'package:ez_store/all_file/all_file.dart';
 import 'package:ez_store/app/features/product/data/model/product_base_model.dart';
-import 'package:ez_store/app/features/product/presentation/item/layout_tile/product_item_tile_layout_1.dart';
+import 'package:ez_store/app/features/product/presentation/item/layout/product_item_layout.dart';
+import 'package:ez_store/app/features/product/presentation/item/layout/product_item_tile_layout_1.dart';
 import 'package:ez_store/app/features/product/presentation/item/product_item.dart';
 import 'package:ez_store/app/features/product/presentation/item/layout/product_item_layout_1.dart';
 
@@ -9,7 +10,7 @@ class ProductGridVer extends StatelessWidget {
     super.key,
     required this.fetchListData,
     this.padding,
-    this.layoutName,
+    this.layoutType = ProductItemLayoutType.layout1,
     this.spacing = Dimens.pad_XS2,
     this.shrinkWrap,
     this.physics,
@@ -29,7 +30,7 @@ class ProductGridVer extends StatelessWidget {
 
   final PagingListFetchFunc<ProductModel> fetchListData;
   final EdgeInsets? padding;
-  final String? layoutName;
+  final ProductItemLayoutType layoutType;
   final double spacing;
 
   final bool? isSliver;
@@ -40,9 +41,7 @@ class ProductGridVer extends StatelessWidget {
   Widget build(BuildContext context) {
     var aspectRatio = 1.0;
     const crossAxisCount = 2;
-    if (layoutName == null || layoutName == (ProductItemLayout1).toString()) {
-      aspectRatio = ProductItemLayout1.width / ProductItemLayout1.height;
-    }
+    aspectRatio = layoutType.size.width / layoutType.size.height;
 
     return PagingGrid<ProductModel>(
       shrinkWrap: shrinkWrap ?? false,
@@ -57,7 +56,7 @@ class ProductGridVer extends StatelessWidget {
       ),
       itemBuilder: (context, item, index) => ProductItem(
         item: item,
-        layoutName: layoutName ?? (ProductItemLayout1).toString(),
+        layoutType: layoutType,
       ),
       fetchListData: fetchListData,
     );

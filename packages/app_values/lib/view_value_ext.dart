@@ -60,7 +60,6 @@ extension VxTextBuilderExtend on VxTextBuilder {
 
   VxTextBuilder get textXL5 => size(FontSizeService().text_XL5);
 
-
   VxTextBuilder titleMedium(BuildContext context) {
     return textStyle(context.titleMedium);
   }
@@ -126,7 +125,7 @@ extension WidgetExtend on Widget {
       );
 
   // 430 screen width on mobile
-  ConstrainedBox maxWidth({Key? key, double maxWidth = 430}) {
+  ConstrainedBox maxWidth(double maxWidth, {Key? key}) {
     return ConstrainedBox(
       key: key,
       constraints: BoxConstraints(maxWidth: maxWidth),
@@ -607,5 +606,4 @@ extension WidgetExtend on Widget {
         padding: const EdgeInsets.only(bottom: 26),
         child: this,
       );
-
 }

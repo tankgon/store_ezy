@@ -43,7 +43,7 @@ class _TabRoundedState extends State<TabRounded> {
               .maxLines(2)
               .center
               .make()
-              .maxWidth(maxWidth: 120)
+              .maxWidth(120)
               .px12()
               .objectCenter() ??
           const SizedBox.shrink(),

@@ -1,4 +1,6 @@
 import 'package:ez_store/all_file/all_file.dart';
+import 'package:ez_store/app/features/product/presentation/item/layout/product_item_layout.dart';
+import 'package:ez_store/app/features/product/presentation/item/product_item_args.dart';
 import 'package:ez_store/app/features/product/presentation/widget/product_discount.dart';
 import 'package:ez_store/app/features/product/presentation/widget/product_price_with_type.dart';
 
@@ -13,6 +15,7 @@ class ProductItemTileLayout1 extends StatelessWidget {
     this.listedPrice,
     this.onAddToCart,
     this.onPressed,
+    this.args = const ProductItemArgs(),
   });
 
   const ProductItemTileLayout1.demo({
@@ -25,10 +28,8 @@ class ProductItemTileLayout1 extends StatelessWidget {
     this.listedPrice = '200000',
     this.onAddToCart,
     this.onPressed,
+    this.args = const ProductItemArgs(),
   });
-
-  static const double height = 120;
-  static const double width = 310;
 
   final dynamic img;
   final String? title;
@@ -39,13 +40,15 @@ class ProductItemTileLayout1 extends StatelessWidget {
   final VoidCallback? onAddToCart;
   final VoidCallback? onPressed;
 
+  final ProductItemArgs args;
+
   @override
   Widget build(BuildContext context) {
     return CardCupertinoEffect(
       onPressed: onPressed,
       child: Container(
-        width: width,
-        height: height,
+        width: ProductItemLayoutType.layoutTile1.size.width,
+        height: ProductItemLayoutType.layoutTile1.size.height,
         decoration: AppDecor.grayBorder(
           context,
         ),

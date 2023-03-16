@@ -1,5 +1,6 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 import 'package:app_ui_kit/components/card/card_cupertino_effect.dart';
+import 'package:flutter/cupertino.dart';
 
 class AppTileText extends StatelessWidget {
   const AppTileText({
@@ -35,7 +36,7 @@ class AppTileText extends StatelessWidget {
                 ].withDivider(Gaps.vGap4),
               ).expand(),
               const Icon(
-                Icons.arrow_forward_ios_rounded,
+                CupertinoIcons.right_chevron,
               ),
             ].withDivider(Gaps.hGap12),
           ),

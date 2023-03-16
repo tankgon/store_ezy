@@ -1,5 +1,6 @@
 import 'package:ez_store/all_file/all_file.dart';
 import 'package:ez_store/app/features/product/data/model/product_base_model.dart';
+import 'package:ez_store/app/features/product/presentation/item/layout/product_item_layout.dart';
 import 'package:ez_store/app/features/product/presentation/item/product_item.dart';
 import 'package:ez_store/app/features/product/presentation/item/layout/product_item_layout_1.dart';
 
@@ -8,7 +9,7 @@ class ProductListHoz extends StatelessWidget {
     super.key,
     this.fetchListData,
     this.padding,
-    this.layoutName,
+    this.layoutType = ProductItemLayoutType.layout1,
   });
 
   static ProductListHoz demo(){
@@ -21,17 +22,16 @@ class ProductListHoz extends StatelessWidget {
 
   final PagingListFetchFunc<ProductModel>? fetchListData;
   final EdgeInsets? padding;
-  final String? layoutName;
+  final ProductItemLayoutType layoutType;
 
   @override
   Widget build(BuildContext context) {
-    final layoutHeight = ProductItemLayout1.height;
     return SizedBox(
-      height: layoutHeight,
+      height: layoutType.size.height,
       child: PagingList<ProductModel>(
         itemBuilder: (context, item, index) => ProductItem(
           item: item,
-          layoutName: layoutName,
+          layoutType: layoutType,
         ),
         padding: padding ?? const EdgeInsets.symmetric(horizontal: 16),
         separatorBuilder: (context, index) => const SizedBox(width: 8),

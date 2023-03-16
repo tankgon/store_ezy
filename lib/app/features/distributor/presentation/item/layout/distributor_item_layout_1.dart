@@ -19,9 +19,6 @@ class DistributorItemLayout1 extends StatelessWidget {
     this.onPressed,
   });
 
-  static const double width = 74;
-  static const double height = 88;
-
   final String name;
   final String? avatar;
   final String? type;

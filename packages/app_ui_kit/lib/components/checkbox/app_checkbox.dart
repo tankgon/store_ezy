@@ -2,7 +2,7 @@ import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 
 class AppCheckBox extends StatefulWidget {
   const AppCheckBox({
-    Key? key,
+    super.key,
     this.label,
     this.onChanged,
     this.initialValue,
@@ -11,7 +11,7 @@ class AppCheckBox extends StatefulWidget {
     this.tristate = false,
     this.dense,
     this.enabled,
-  }) : super(key: key);
+  });
 
   // factory min visualDensity
   factory AppCheckBox.minPadding({
@@ -71,7 +71,7 @@ class _AppCheckBoxState extends State<AppCheckBox> {
     if (labelLocal is Widget) {
       labelWidget = labelLocal;
     } else if (labelLocal is String) {
-      labelWidget = (labelLocal).text.make();
+      labelWidget = labelLocal.text.make();
     }
 
     if (labelLocal == null) {

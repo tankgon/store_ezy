@@ -15,7 +15,7 @@ class ShoppingCartBtn extends StatelessWidget {
       ),
       count: 9,
       onPressed: () {
-        context.pushRoute(const NotificationMainRoute());
+        context.pushRoute(const ShoppingCartRoute());
       },
     );
   }

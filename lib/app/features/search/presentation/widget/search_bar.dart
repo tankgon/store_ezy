@@ -10,6 +10,7 @@ class SearchBar extends StatelessWidget {
     return SizedBox(
       height: 42,
       child: AppTextField(
+        textInputAction: TextInputAction.search,
         decoration: AppTextFieldTheme.primaryStyle(
           context,
         ).copyWith(

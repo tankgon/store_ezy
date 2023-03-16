@@ -71,7 +71,11 @@ class App extends StatelessWidget {
 }
 
 class _AppWidget extends StatelessWidget {
-  const _AppWidget({super.key, required this.appRouter, required this.child});
+  const _AppWidget({
+    super.key,
+    required this.appRouter,
+    required this.child,
+  });
 
   final AppAutoRoute appRouter;
   final Widget child;

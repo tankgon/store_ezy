@@ -1,13 +1,14 @@
 import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/distributor/presentation/item/distributor_simple_info_layout_1.dart';
+import 'package:ez_store/app/features/distributor/presentation/item/layout/distributor_item_layout.dart';
+import 'package:ez_store/app/features/distributor/presentation/item/layout/distributor_simple_info_layout_1.dart';
 import 'package:ez_store/app/features/distributor/presentation/item/cubit/distributor_item_cubit.dart';
-import 'package:ez_store/app/features/distributor/presentation/item/distributor_item_layout_1.dart';
+import 'package:ez_store/app/features/distributor/presentation/item/layout/distributor_item_layout_1.dart';
 
 class DistributorItem extends StatelessWidget {
-  const DistributorItem({super.key, this.item, this.layoutName});
+  const DistributorItem({super.key, this.item, this.layoutType});
 
   final dynamic item;
-  final String? layoutName;
+  final DistributorItemLayoutType? layoutType;
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +19,13 @@ class DistributorItem extends StatelessWidget {
           listener: _onStateChanged,
           child: Builder(
             builder: (context) {
-              if (layoutName == (DistributorItemLayout1).toString()) {
+              if (layoutType == DistributorItemLayoutType.layout1) {
                 return DistributorItemLayout1.demo();
               }
-              return DistributorSimpleInfoLayout1.demo();
+              if (layoutType == DistributorItemLayoutType.layoutSimpleInfo1) {
+                return DistributorSimpleInfoLayout1.demo();
+              }
+              return const SizedBox.shrink();
             },
           ),
         );

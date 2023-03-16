@@ -56,6 +56,22 @@ class AppButtonTheme {
         )
         .merge(props);
   }
+
+  static ButtonStyle none(
+      BuildContext context, {
+        AppButtonStyle? props,
+      }) {
+    return ElevatedButton.styleFrom(
+      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      foregroundColor: Theme.of(context).textTheme.bodyMedium?.color ?? Colors.black,
+      backgroundColor: Theme.of(context).colorScheme.onPrimary,
+      padding: EdgeInsets.zero,
+      elevation: defaultElevation,
+      shadowColor: Colors.transparent,
+      side: BorderSide.none,
+      minimumSize: Size.zero,
+    ).merge(props);
+  }
 }
 
 class AppButtonStyle extends ButtonStyle {
