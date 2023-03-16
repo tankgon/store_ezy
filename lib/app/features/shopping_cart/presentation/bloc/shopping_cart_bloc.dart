@@ -13,19 +13,22 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     on<ShoppingCartRemoveItemEvent>(_onRemoveItem);
   }
 
-  FutureOr<void> _onInitial(ShoppingCartInitialEvent event, Emitter<ShoppingCartState> emit) {
-
-  }
+  FutureOr<void> _onInitial(ShoppingCartInitialEvent event, Emitter<ShoppingCartState> emit) {}
 
   FutureOr<void> _onFetch(ShoppingCartFetchEvent event, Emitter<ShoppingCartState> emit) {
-
+    emit(
+      state.copyWith(
+        status: ShoppingCartStatus.loaded,
+        items: [
+          ProductModel(id: '1'),
+          ProductModel(id: '2'),
+          ProductModel(id: '3'),
+        ],
+      ),
+    );
   }
 
-  FutureOr<void> _onAddItem(ShoppingCartAddItemEvent event, Emitter<ShoppingCartState> emit) {
+  FutureOr<void> _onAddItem(ShoppingCartAddItemEvent event, Emitter<ShoppingCartState> emit) {}
 
-  }
-
-  FutureOr<void> _onRemoveItem(ShoppingCartRemoveItemEvent event, Emitter<ShoppingCartState> emit) {
-
-  }
+  FutureOr<void> _onRemoveItem(ShoppingCartRemoveItemEvent event, Emitter<ShoppingCartState> emit) {}
 }

@@ -28,7 +28,7 @@ class NotificationMainCubit extends Cubit<NotificationMainState> {
     //     );
     //     return;
     //   } catch (e) {
-    //     logger.e(e);
+    //     log(e.toString(), error: e);
     //   }
     // }
     //

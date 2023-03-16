@@ -43,6 +43,7 @@
     "SelectedNItem": "Selected ({} items)",
     "TotalPrice": "Total price",
     "NItem": "{} items",
-    "Buy": "Buy"
+    "Buy": "Buy",
+    "ShoppingCart": "Cart"
   }
 }

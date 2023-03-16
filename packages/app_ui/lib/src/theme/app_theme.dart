@@ -67,6 +67,15 @@ class AppTheme {
           borderRadius: BorderRadius.circular(AppButtonTheme.defaultRadius),
         ),
       ),
+      checkboxTheme: CheckboxThemeData(
+        fillColor: MaterialStateProperty.all(colorScheme.primary),
+        side: BorderSide(
+          color: appColor.greyLight,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(Dimens.rad_XS2),
+        ),
+      ),
       applyElevationOverlayColor: isDark,
       hintColor: AppTextThemeExtension.form(isDark).textHint.color,
       dividerTheme: DividerThemeData(

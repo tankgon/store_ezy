@@ -39,6 +39,7 @@ abstract class  LocaleKeys {
   static const shoppingCart_TotalPrice = 'shoppingCart.TotalPrice';
   static const shoppingCart_NItem = 'shoppingCart.NItem';
   static const shoppingCart_Buy = 'shoppingCart.Buy';
+  static const shoppingCart_ShoppingCart = 'shoppingCart.ShoppingCart';
   static const shoppingCart = 'shoppingCart';
 
 }

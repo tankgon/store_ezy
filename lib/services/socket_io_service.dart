@@ -80,7 +80,7 @@
 //         var notification = NotificationModel.fromJson(map);
 //         onChange(notification);
 //       } catch (e) {
-//         logger.e(e);
+//         log(e.toString(), error: e);
 //       }
 //     });
 //   }
@@ -101,7 +101,7 @@
 //           }
 //         }
 //       } catch (e) {
-//         logger.e(e);
+//         log(e.toString(), error: e);
 //       }
 //       if (notification != null && data != null) {
 //         onChange(notification, data);
@@ -150,7 +150,7 @@
 //         );
 //       }
 //     } catch (e) {
-//       logger.e(e);
+//       log(e.toString(), error: e);
 //     }
 //     return null;
 //   }

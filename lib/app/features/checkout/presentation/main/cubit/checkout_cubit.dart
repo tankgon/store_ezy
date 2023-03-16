@@ -1,9 +1,9 @@
 import 'package:ez_store/all_file/all_file.dart';
 
-part 'search_state.dart';
+part 'checkout_state.dart';
 
-class SearchCubit extends Cubit<SearchState> {
-  SearchCubit({dynamic? item}) : super(SearchState(item: item));
+class CheckoutCubit extends Cubit<CheckoutState> {
+  CheckoutCubit({dynamic? item}) : super(CheckoutState(item: item));
 
   FutureOr<void> fetchItem() async {
     emit(state.copyWith(status: ItemDetailStatus.loading));

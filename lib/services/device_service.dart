@@ -19,7 +19,7 @@ class DeviceService {
       );
     } catch (e) {
       if (kDebugMode) {
-        logger.e(e);
+        log(e.toString(), error: e);
         return Future.error(e);
       } else {
         return Future.value(

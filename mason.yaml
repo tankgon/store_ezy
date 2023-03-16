@@ -14,4 +14,4 @@ bricks:
 
 # Feature Core Brick
 # Create:
-# mason make feature_core_brick  --feature_name distributor --state_management cubit
+# mason make feature_core_brick  --feature_name checkout --state_management cubit

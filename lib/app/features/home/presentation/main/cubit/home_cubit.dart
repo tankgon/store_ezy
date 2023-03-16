@@ -16,7 +16,7 @@ class HomeCubit extends Cubit<HomeState> {
         )
       );
     } catch (e) {
-      logger.e(e);
+      log(e.toString(), error: e);
       emit(
         state.copyWith(
           status: ItemDetailStatus.error,

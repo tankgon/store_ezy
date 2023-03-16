@@ -59,6 +59,6 @@ class AppAppBarTitleText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return title.textAuto.textStyle(Theme.of(context).textTheme.titleLarge).minFontSize(FontSizeService().text_S).maxLines(args?.maxLine ?? 1).align(args?.textAlign ?? TextAlign.start).color(args?.color).ellipsis.make();
+    return title.textAuto.textStyle(Theme.of(context).textTheme.titleLarge).minFontSize(FontSizeService().text_S).maxLines(args?.maxLine ?? 1).align(args?.textAlign ?? TextAlign.start).color(args?.color).ellipsis.semiBold.make();
   }
 }

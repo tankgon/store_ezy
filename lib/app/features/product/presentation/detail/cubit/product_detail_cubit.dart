@@ -16,7 +16,7 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
         )
       );
     } catch (e) {
-      logger.e(e);
+      log(e.toString(), error: e);
       emit(
         state.copyWith(
           status: ItemDetailStatus.error,

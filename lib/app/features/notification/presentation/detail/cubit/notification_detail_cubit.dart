@@ -20,7 +20,7 @@ class NotificationDetailCubit extends Cubit<NotificationDetailState> {
       //   status: ItemDetailStatus.success,
       // ));
     } catch (e) {
-      logger.e(e);
+      log(e.toString(), error: e);
       emit(
         state.copyWith(
           status: ItemDetailStatus.error,
@@ -39,7 +39,7 @@ class NotificationDetailCubit extends Cubit<NotificationDetailState> {
         item: state.item.copyWith(hasRead: true),
       ));
     } catch (e) {
-      logger.e(e);
+      log(e.toString(), error: e);
     }
   }
 }

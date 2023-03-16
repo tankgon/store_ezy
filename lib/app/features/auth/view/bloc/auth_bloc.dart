@@ -1,3 +1,4 @@
+
 import 'package:ez_store/all_file/all_file.dart';
 import 'package:ez_store/services/user_secure_storage_service.dart';
 
@@ -37,7 +38,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         ));
       }
     } catch (e) {
-      logger.e(e);
+      log(e.toString(), error: e);
       emit(AuthenticatedStateFail(state.data, err: e.getServerErrorMsg()));
     }
   }
@@ -57,7 +58,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       //   isRefresh: true,
       // ));
     } catch (e) {
-      logger.e(e);
+      log(e.toString(), error: e);
       emit(AuthenticatedStateFail(state.data, err: e.getServerErrorMsg()));
     }
   }
@@ -90,7 +91,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       //   ),
       // );
     } catch (e) {
-      logger.e(e);
+      log(e.toString(), error: e);
       emit(AuthenticatedStateFail(state.data, err: e.getServerErrorMsg()));
     }
   }
@@ -101,7 +102,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         try {
           // await _authRepo.logout();
         } catch (e) {
-          logger.e(e);
+          log(e.toString(), error: e);
         }
       }
       await removeUserInfo();
@@ -114,7 +115,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         showToast: event.showToast,
       ));
     } catch (e) {
-      logger.e(e);
+      log(e.toString(), error: e);
       emit(AuthenticatedStateFail(state.data, err: e.getServerErrorMsg()));
     }
   }

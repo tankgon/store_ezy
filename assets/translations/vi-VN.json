@@ -43,6 +43,7 @@
     "SelectedNItem": "Đã chọn ({} sản phẩm)",
     "TotalPrice": "Tổng tiền",
     "NItem": "{} sản phẩm",
-    "Buy": "Mua hàng"
+    "Buy": "Mua hàng",
+    "ShoppingCart": "Giỏ hàng"
   }
 }

@@ -16,7 +16,7 @@ class {{feature_name.pascalCase()}}Cubit extends Cubit<{{feature_name.pascalCase
         )
       );
     } catch (e) {
-      logger.e(e);
+      log(e.toString(), error: e);
       emit(
         state.copyWith(
           status: ItemDetailStatus.error,
