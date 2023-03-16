@@ -61,23 +61,23 @@ extension VxTextBuilderExtend on VxTextBuilder {
   VxTextBuilder get textXL5 => size(FontSizeService().text_XL5);
 
   VxTextBuilder titleMedium(BuildContext context) {
-    return textStyle(context.titleMedium);
+    return textStyle(context.theme.textTheme.titleMedium);
   }
 
   VxTextBuilder titleLarge(BuildContext context) {
-    return textStyle(context.titleLarge);
+    return textStyle(context.theme.textTheme.titleLarge);
   }
 
   VxTextBuilder headlineSmall(BuildContext context) {
-    return textStyle(context.headlineSmall);
+    return textStyle(context.theme.textTheme.headlineSmall);
   }
 
   VxTextBuilder bodySmall(BuildContext context) {
-    return textStyle(context.bodySmall);
+    return textStyle(context.theme.textTheme.bodySmall);
   }
 
   VxTextBuilder labelLarge(BuildContext context) {
-    return textStyle(context.labelLarge);
+    return textStyle(context.theme.textTheme.labelLarge);
   }
 
   VxTextBuilder colorPrimary(BuildContext context) {

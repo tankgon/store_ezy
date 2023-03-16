@@ -1,4 +1,5 @@
 import 'package:ez_store/all_file/all_file.dart';
+import 'package:ez_store/app/features/shopping_cart/presentation/bottom_bar/shopping_cart_bottom_bar.dart';
 import 'package:ez_store/app/features/shopping_cart/presentation/main/shopping_cart_body.dart';
 import 'package:ez_store/app/features/shopping_cart/presentation/main/cubit/shopping_cart_cubit.dart';
 
@@ -19,6 +20,7 @@ class ShoppingCartPage extends StatelessWidget {
                     title: 'title',
                   ),
                 body: ShoppingCartBody(),
+                bottomNavigationBar: ShoppingCartBottomBar(),
               ),
             );
           }

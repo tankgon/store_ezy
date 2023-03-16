@@ -38,5 +38,11 @@
   "distributor": {
     "Rating": "Distributor rating",
     "Popular": "Popular distributors"
+  },
+  "shoppingCart": {
+    "SelectedNItem": "Selected ({} items)",
+    "TotalPrice": "Total price",
+    "NItem": "{} items",
+    "Buy": "Buy"
   }
 }

@@ -1,17 +1,18 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 
 class AppPrice extends StatelessWidget {
-  const AppPrice({super.key, required this.price, this.style});
+  const AppPrice({super.key, required this.price, this.style, this.color});
 
   final String? price;
   final TextStyle? style;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
     return price?.toPrice?.text.semiBold
             .textStyle(style)
             .color(
-              context.theme.colorScheme.secondary,
+              color ?? context.theme.colorScheme.secondary,
             )
             .make() ??
         const SizedBox.shrink();

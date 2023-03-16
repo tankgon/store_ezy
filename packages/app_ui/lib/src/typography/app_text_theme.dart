@@ -53,6 +53,7 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
     ),
     bodySmall: defaultText.copyWith(
       fontSize: FontSizeService().text_S,
+      fontWeight: FontWeight.w400,
       color: AppColorExtension.light.grey,
     ),
     labelLarge: defaultText.copyWith(
@@ -82,6 +83,7 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
     ),
     bodySmall: defaultText.copyWith(
       fontSize: FontSizeService().text_S,
+      fontWeight: FontWeight.w400,
       color: AppColorExtension.light.grey,
     ),
     labelLarge: defaultText.copyWith(

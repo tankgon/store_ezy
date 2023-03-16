@@ -38,5 +38,11 @@
   "distributor": {
     "Rating": "Đánh giá của nhà cung cấp",
     "Popular": "Nhà cung cấp nỗi bật"
+  },
+  "shoppingCart": {
+    "SelectedNItem": "Đã chọn ({} sản phẩm)",
+    "TotalPrice": "Tổng tiền",
+    "NItem": "{} sản phẩm",
+    "Buy": "Mua hàng"
   }
 }

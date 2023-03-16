@@ -35,5 +35,10 @@ abstract class  LocaleKeys {
   static const distributor_Rating = 'distributor.Rating';
   static const distributor_Popular = 'distributor.Popular';
   static const distributor = 'distributor';
+  static const shoppingCart_SelectedNItem = 'shoppingCart.SelectedNItem';
+  static const shoppingCart_TotalPrice = 'shoppingCart.TotalPrice';
+  static const shoppingCart_NItem = 'shoppingCart.NItem';
+  static const shoppingCart_Buy = 'shoppingCart.Buy';
+  static const shoppingCart = 'shoppingCart';
 
 }
