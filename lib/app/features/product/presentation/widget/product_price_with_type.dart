@@ -19,16 +19,18 @@ class ProductPriceWithType extends StatelessWidget {
     return Wrap(
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
-        AppProductPrice(
+        AppPrice(
           price: price,
           style: priceStyle,
         ),
         if (type.isNotNullOrEmpty())
           ' /${type ?? ''}'
               .textAuto
-              .caption(context)
               .textStyle(
-                typeStyle,
+                typeStyle ??
+                    context.textTheme.bodySmall?.copyWith(
+                      color: context.themeColor.grey,
+                    ),
               )
               .make(),
       ].filterNotNull(),

@@ -45,5 +45,20 @@
     "NItem": "{} items",
     "Buy": "Buy",
     "ShoppingCart": "Cart"
+  },
+  "checkout": {
+    "Checkout": "Checkou",
+    "TotalPriceNItems": "Total price ({} items)",
+    "PaymentDetail": "Payment detai",
+    "TotalPrice": "Total price",
+    "Discount": "Discount",
+    "TotalPay": "Total pay"
+  },
+  "payment": {
+    "PaymentMethod": "Payment methods"
+  },
+  "user": {
+    "AddUserReceiveInfo": "Add user receive information",
+    "UserReceiveInfo": "User receive information"
   }
 }

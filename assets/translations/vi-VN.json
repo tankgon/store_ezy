@@ -45,5 +45,20 @@
     "NItem": "{} sản phẩm",
     "Buy": "Mua hàng",
     "ShoppingCart": "Giỏ hàng"
+  },
+  "checkout": {
+    "Checkout": "Thanh toán",
+    "TotalPriceNItems": "Tổng tiền ({} sản phẩm)",
+    "PaymentDetail": "Chi tiết thanh toán",
+    "TotalPrice": "Tổng tiền",
+    "Discount": "Giảm giá",
+    "TotalPay": "Tổng thanh toán"
+  },
+  "payment": {
+    "PaymentMethod": "Phương thức thanh toán"
+  },
+  "user": {
+    "AddUserReceiveInfo": "Thêm thông tin người nhận",
+    "UserReceiveInfo": "Thông tin người nhận"
   }
 }

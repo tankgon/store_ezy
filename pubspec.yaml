@@ -6,7 +6,6 @@ publish_to: none
 ## Generate Localizations
 ## flutter pub run easy_localization:generate --source-dir ./assets/translations -f keys -o locale_keys.g.dart
 
-
 environment:
   sdk: ">=2.17.0 <3.0.0"
   flutter: ">=3.0.5"

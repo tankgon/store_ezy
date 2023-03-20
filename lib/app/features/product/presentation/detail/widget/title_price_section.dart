@@ -20,7 +20,9 @@ class ProductTitleHeader extends StatelessWidget {
             children: [
               ProductPriceWithType(
                 price: '5000',
-                priceStyle: context.textTheme.titleLarge,
+                priceStyle: context.textTheme.titleLarge?.copyWith(
+                  color: context.theme.colorScheme.secondary,
+                ),
                 type: 'chai',
               ).expand(),
               AppButtonIcon(
@@ -38,4 +40,3 @@ class ProductTitleHeader extends StatelessWidget {
     );
   }
 }
-

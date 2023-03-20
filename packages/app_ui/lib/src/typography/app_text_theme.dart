@@ -16,12 +16,14 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
     required this.headlineSmall,
     required this.titleMedium,
     required this.bodySmall,
+    required this.body,
     required this.labelLarge,
   });
 
   final TextStyle text;
   final TextStyle textHint;
 
+  final TextStyle body; // Body Text Content
   final TextStyle titleLarge; // H6
   final TextStyle headlineSmall; // H5
   final TextStyle titleMedium; // Subtitle
@@ -29,12 +31,17 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
   final TextStyle labelLarge; // Button
 
   static TextStyle defaultText = TextStyle(
-    color: AppColorExtension.light.text,
+    color: AppColorExtension.light.grey,
     fontSize: FontSizeService().text,
   );
 
   static final AppTextThemeExtension light = AppTextThemeExtension(
     text: defaultText,
+    body: defaultText.copyWith(
+      color: AppColorExtension.light.greyDark,
+      height: 1.3,
+      fontWeight: FontWeight.w400,
+    ),
     textHint: defaultText.copyWith(
       color: Colors.grey,
     ),
@@ -64,6 +71,11 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
 
   static AppTextThemeExtension dark = AppTextThemeExtension(
     text: defaultText,
+    body: defaultText.copyWith(
+      color: AppColorExtension.light.greyDark,
+      height: 1.3,
+      fontWeight: FontWeight.w400,
+    ),
     textHint: defaultText.copyWith(
       color: Colors.grey,
     ),
@@ -93,15 +105,16 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
   );
 
   @override
-  AppTextThemeExtension copyWith({TextStyle? textStyle, TextStyle? danger}) {
+  AppTextThemeExtension copyWith({TextStyle? text, TextStyle? body, TextStyle? textHint, TextStyle? titleLarge, TextStyle? headlineSmall, TextStyle? titleMedium, TextStyle? bodySmall, TextStyle? labelLarge}) {
     return AppTextThemeExtension(
-      text: textStyle ?? text,
-      textHint: textStyle ?? textHint,
-      titleLarge: textStyle ?? titleLarge,
-      headlineSmall: textStyle ?? headlineSmall,
-      titleMedium: textStyle ?? titleMedium,
-      bodySmall: textStyle ?? bodySmall,
-      labelLarge: textStyle ?? labelLarge,
+      text: text ?? this.text,
+      body: body ?? this.body,
+      textHint: textHint ?? this.textHint,
+      titleLarge: titleLarge ?? this.titleLarge,
+      headlineSmall: headlineSmall ?? this.headlineSmall,
+      titleMedium: titleMedium ?? this.titleMedium,
+      bodySmall: bodySmall ?? this.bodySmall,
+      labelLarge: labelLarge ?? this.labelLarge,
     );
   }
 
@@ -117,6 +130,7 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
       headlineSmall: TextStyle.lerp(headlineSmall, other.headlineSmall, t) ?? headlineSmall,
       titleMedium: TextStyle.lerp(titleMedium, other.titleMedium, t) ?? titleMedium,
       bodySmall: TextStyle.lerp(bodySmall, other.bodySmall, t) ?? bodySmall,
+      body: TextStyle.lerp(body, other.body, t) ?? body,
       labelLarge: TextStyle.lerp(labelLarge, other.labelLarge, t) ?? labelLarge,
     );
   }
@@ -135,7 +149,6 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
       bodyMedium: textThemeExtension.text.copyWith(
         height: 1.3,
       ),
-
       // H6
       titleLarge: textThemeExtension.titleLarge,
       // H5

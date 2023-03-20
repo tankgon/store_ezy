@@ -10,6 +10,7 @@ export 'components/card/card_cupertino_effect.dart';
 export 'components/carousel/carousel_layout_1.dart';
 export 'components/checkbox/app_checkbox.dart';
 export 'components/container/app_badge_count.dart';
+export 'components/container/app_margin.dart';
 export 'components/container/container_circle.dart';
 export 'components/container/key_value/app_key_value_list.dart';
 export 'components/container/key_value/app_key_value_list_layout.dart';

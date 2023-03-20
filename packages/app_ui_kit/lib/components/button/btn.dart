@@ -75,20 +75,20 @@ class Btn extends StatelessWidget {
       switch (btnType) {
         case BtnType.PRIMARY:
         case null:
-          finalStyle = AppButtonTheme.primaryStyle(
+          finalStyle = AppButtonTheme.primary(
             context,
           );
           break;
         case BtnType.GHOST:
-          finalStyle = AppButtonTheme.ghostStyle(
+          finalStyle = AppButtonTheme.ghost(
             context,
           );
           break;
         case BtnType.DELETE:
-          finalStyle = AppButtonTheme.primaryStyle(context);
+          finalStyle = AppButtonTheme.primary(context);
           break;
         default:
-          finalStyle = AppButtonTheme.primaryStyle(
+          finalStyle = AppButtonTheme.primary(
             context,
           );
           break;

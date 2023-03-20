@@ -81,7 +81,7 @@ class AppKeyValueList extends StatelessWidget {
                 return valueTextBuilder!(context, item);
               }
 
-              final valueWidget = item.text.align(TextAlign.right).semiBold.make().objectCenterRight();
+              final valueWidget = item.text.align(TextAlign.right).colorDarkest(context).make().objectCenterRight();
               if (valueExpand == true) {
                 return valueWidget.expand();
               }
@@ -95,7 +95,7 @@ class AppKeyValueList extends StatelessWidget {
             }
             return const SizedBox.shrink();
           },
-      separatorBuilder: separatorBuilder ?? (BuildContext context, int index) => Gaps.vGap16,
+      separatorBuilder: separatorBuilder ?? (BuildContext context, int index) => Gaps.vGap8,
       showLastSeparator: showLastSeparator ?? false,
     );
   }

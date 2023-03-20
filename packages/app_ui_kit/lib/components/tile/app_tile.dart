@@ -5,18 +5,23 @@ import 'package:flutter/cupertino.dart';
 class AppTile extends StatelessWidget {
   const AppTile({
     super.key,
-    this.leading,
     this.title,
+    this.leading,
+    this.trailing,
     this.subtitle,
     this.padding,
     this.onPressed,
+    this.space,
   });
 
-  final Widget? leading;
   final Widget? title;
+  final Widget? leading;
+  final Widget? trailing;
   final Widget? subtitle;
   final EdgeInsetsGeometry? padding;
   final VoidCallback? onPressed;
+
+  final double? space;
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +42,10 @@ class AppTile extends StatelessWidget {
                   subtitle,
                 ].withDivider(Gaps.vGap4),
               ).expand(),
-              const Icon(
+              trailing ?? const Icon(
                 CupertinoIcons.right_chevron,
               ),
-            ].withDivider(Gaps.hGap12),
+            ].withDivider(SizedBox(width: space ?? Dimens.gap_dp12)),
           ),
         ),
       ),

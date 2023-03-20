@@ -100,7 +100,7 @@ class ProductItemTileLayout1 extends StatelessWidget {
                   ],
                 ).expand(),
                 AppButton(
-                  style: AppButtonTheme.primaryStyle(
+                  style: AppButtonTheme.primary(
                     context,
                   ).copyWith(
                     minimumSize: const MaterialStatePropertyAll(Size.zero),

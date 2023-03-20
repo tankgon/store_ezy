@@ -1,28 +1,9 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 
 class AppPrice extends StatelessWidget {
-  const AppPrice({super.key, required this.price, this.style, this.color});
-
-  final String? price;
-  final TextStyle? style;
-  final Color? color;
-
-  @override
-  Widget build(BuildContext context) {
-    return price?.toPrice?.text.semiBold
-            .textStyle(style)
-            .color(
-              color ?? context.theme.colorScheme.secondary,
-            )
-            .make() ??
-        const SizedBox.shrink();
-  }
-}
-
-class AppProductPrice extends StatelessWidget {
-  const AppProductPrice({
+  const AppPrice({
     super.key,
-    this.price,
+    required this.price,
     this.style,
   });
 
@@ -31,10 +12,16 @@ class AppProductPrice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppPrice(
-      price: price,
-      style: style,
-    );
+    return price?.toPrice?.text
+            .textStyle(style)
+            .color(
+              style?.color ?? context.theme.colorScheme.secondary,
+            )
+            .fontWeight(
+              style?.fontWeight ?? FontWeight.w600,
+            )
+            .make() ??
+        const SizedBox.shrink();
   }
 }
 

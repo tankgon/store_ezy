@@ -57,19 +57,7 @@ class _TotalPriceSection extends StatelessWidget {
           ].withDivider(Gaps.vGap4),
         ).expand(),
         AppButton(
-          style: AppButtonTheme.primaryStyle(context).copyWith(
-            padding: const MaterialStatePropertyAll(
-              EdgeInsets.symmetric(
-                horizontal: 42,
-                vertical: 14,
-              ),
-            ),
-            textStyle: const MaterialStatePropertyAll(
-              TextStyle(
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
+          style: AppButtonTheme.confirmAction(context),
           label: LocaleKeys.shoppingCart_Buy.tr(),
           onPressed: () {
             context.pushRoute(const CheckoutRoute());

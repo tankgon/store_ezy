@@ -41,5 +41,17 @@ abstract class  LocaleKeys {
   static const shoppingCart_Buy = 'shoppingCart.Buy';
   static const shoppingCart_ShoppingCart = 'shoppingCart.ShoppingCart';
   static const shoppingCart = 'shoppingCart';
+  static const checkout_Checkout = 'checkout.Checkout';
+  static const checkout_TotalPriceNItems = 'checkout.TotalPriceNItems';
+  static const checkout_PaymentDetail = 'checkout.PaymentDetail';
+  static const checkout_TotalPrice = 'checkout.TotalPrice';
+  static const checkout_Discount = 'checkout.Discount';
+  static const checkout_TotalPay = 'checkout.TotalPay';
+  static const checkout = 'checkout';
+  static const payment_PaymentMethod = 'payment.PaymentMethod';
+  static const payment = 'payment';
+  static const user_AddUserReceiveInfo = 'user.AddUserReceiveInfo';
+  static const user_UserReceiveInfo = 'user.UserReceiveInfo';
+  static const user = 'user';
 
 }

@@ -5,6 +5,7 @@ import 'package:ez_store/app/features/product/presentation/item/layout/product_i
 import 'package:ez_store/app/features/product/presentation/item/layout/product_item_layout_1.dart';
 import 'package:ez_store/app/features/product/presentation/item/layout/product_item_tile_layout_1.dart';
 import 'package:ez_store/app/features/product/presentation/item/layout/product_item_tile_layout_2.dart';
+import 'package:ez_store/app/features/product/presentation/item/layout/product_item_tile_layout_3.dart';
 import 'package:ez_store/app/features/product/presentation/item/product_item_args.dart';
 
 class ProductItem extends StatelessWidget {
@@ -31,23 +32,27 @@ class ProductItem extends StatelessWidget {
             listener: _onStateChanged,
             child: Builder(
               builder: (context) {
-                if (layoutType == ProductItemLayoutType.layout1) {
-                  return ProductItemLayout1.demo(
-                    args: args,
-                    onPressed: () => _onItemClick(context),
-                  );
-                }
-                if (layoutType == ProductItemLayoutType.layoutTile1) {
-                  return ProductItemTileLayout1.demo(
-                    args: args,
-                    onPressed: () => _onItemClick(context),
-                  );
-                }
-                if (layoutType == ProductItemLayoutType.layoutTile2) {
-                  return ProductItemTileLayout2.demo(
-                    args: args,
-                    onPressed: () => _onItemClick(context),
-                  );
+                switch (layoutType) {
+                  case ProductItemLayoutType.layout1:
+                    return ProductItemLayout1.demo(
+                      args: args,
+                      onPressed: () => _onItemClick(context),
+                    );
+                  case ProductItemLayoutType.layoutTile1:
+                    return ProductItemTileLayout1.demo(
+                      args: args,
+                      onPressed: () => _onItemClick(context),
+                    );
+                  case ProductItemLayoutType.layoutTile2:
+                    return ProductItemTileLayout2.demo(
+                      args: args,
+                      onPressed: () => _onItemClick(context),
+                    );
+                  case ProductItemLayoutType.layoutTile3:
+                    return ProductItemTileLayout3.demo(
+                      args: args,
+                      onPressed: () => _onItemClick(context),
+                    );
                 }
                 return const SizedBox.shrink();
               },

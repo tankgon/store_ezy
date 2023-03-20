@@ -10,7 +10,7 @@ bricks:
 
 # Feature Brick
 # Create:
-# mason make feature_brick  --feature_name shopping_cart_group_item --folder_name item_group --state_management cubit
+# mason make feature_brick  --feature_name user_receive_info --folder_name receive_info --state_management cubit
 
 # Feature Core Brick
 # Create:

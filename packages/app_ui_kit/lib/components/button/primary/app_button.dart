@@ -19,7 +19,7 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
-      style: style ?? AppButtonTheme.primaryStyle(context),
+      style: style ?? AppButtonTheme.primary(context),
       child: child ?? label?.text.make(),
     );
   }

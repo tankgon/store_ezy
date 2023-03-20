@@ -10,7 +10,7 @@ class AppButtonTheme {
   static const double defaultOpacity = 0.2;
   static const double defaultBorderWidth = 1;
 
-  static ButtonStyle primaryStyle(
+  static ButtonStyle primary(
     BuildContext context, {
     AppButtonStyle? props,
   }) {
@@ -24,7 +24,26 @@ class AppButtonTheme {
     ).merge(props);
   }
 
-  static ButtonStyle ghostStyle(
+  static ButtonStyle confirmAction(
+    BuildContext context, {
+    AppButtonStyle? props,
+  }) {
+    return AppButtonTheme.primary(context).copyWith(
+      padding: const MaterialStatePropertyAll(
+        EdgeInsets.symmetric(
+          horizontal: 42,
+          vertical: 14,
+        ),
+      ),
+      textStyle: const MaterialStatePropertyAll(
+        TextStyle(
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+    ).merge(props);
+  }
+
+  static ButtonStyle ghost(
     BuildContext context, {
     AppButtonStyle? props,
   }) {

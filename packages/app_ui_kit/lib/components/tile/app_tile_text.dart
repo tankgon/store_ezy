@@ -9,19 +9,21 @@ class AppTileText extends StatelessWidget {
     this.titleLabel,
     this.subtitleLabel,
     this.onPressed,
+    this.padding,
   });
 
   final Widget? leading;
   final String? titleLabel;
   final String? subtitleLabel;
   final VoidCallback? onPressed;
+  final EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
     return CardCupertinoEffect(
       onPressed: onPressed,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: padding ?? const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: IntrinsicHeight(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,

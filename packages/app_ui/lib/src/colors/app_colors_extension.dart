@@ -84,7 +84,7 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
   final Color pink;
 
   static const AppColorExtension dark = AppColorExtension(
-    text: Color(0xff5F5F5F),
+    text: Color(0xFF5F5F5F),
     textLink: Color(0xFF1890ff),
     divider: Color(0xFFF4F4F4),
     lightPrimary: Color(0xffb3daff),
