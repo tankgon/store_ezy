@@ -1,8 +1,7 @@
 import 'package:app_ui_kit/components/app/dismiss_keyboard.dart';
 import 'package:app_ui_kit/components/app/scroll_behavior_default.dart';
 import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/auth/view/bloc/auth_bloc.dart';
-import 'package:ez_store/app/features/auth/view/widget/auth_listener.dart';
+import 'package:ez_store/app/features/auth/self.dart';
 import 'package:flutter/services.dart';
 
 class App extends StatelessWidget {
@@ -112,9 +111,9 @@ class _AppConfiguration extends StatelessWidget {
         configData: PagingConfigData(),
         child: DialogConfiguration(
           configData: DialogConfigData(
-            confirmLabel: 'Confirm',
-            cancelLabel: 'Cancel',
-            deleteLabel: 'Delete',
+            confirmLabel: LocaleKeys.common_dialog_Confirm.tr(),
+            cancelLabel: LocaleKeys.common_dialog_Cancel.tr(),
+            deleteLabel: LocaleKeys.common_dialog_Delete.tr(),
           ),
           child: ScrollConfiguration(
             behavior: const ScrollBehaviorDefault(),

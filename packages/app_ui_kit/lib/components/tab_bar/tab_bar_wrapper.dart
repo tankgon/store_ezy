@@ -1,5 +1,4 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 enum TabBarWrapperBorderStyle { defaultBorder, none }
 
@@ -25,8 +24,8 @@ class TabBarWrapper extends StatelessWidget {
     switch (borderStyle) {
       case TabBarWrapperBorderStyle.defaultBorder:
         boxDecoration = BoxDecoration(
-          color: Theme.of(context).colorScheme.background,
-          border: Border.all(color: Theme.of(context).dividerColor),
+          color: context.theme.colorScheme.background,
+          border: Border.all(color: context.theme.dividerColor),
           borderRadius: borderRadius ?? BorderRadius.circular(Dimens.rad_max),
         );
         break;
@@ -36,7 +35,7 @@ class TabBarWrapper extends StatelessWidget {
     }
     return Theme(
       data: themeData ??
-          Theme.of(context).copyWith(
+          context.theme.copyWith(
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,
           ),
@@ -48,8 +47,8 @@ class TabBarWrapper extends StatelessWidget {
   }
 }
 
-class UnderLineTabBarWrapper extends StatelessWidget {
-  const UnderLineTabBarWrapper({
+class TabBarWrapperUnderLine extends StatelessWidget {
+  const TabBarWrapperUnderLine({
     super.key,
     required this.child,
     this.themeData,
@@ -84,7 +83,7 @@ class UnderLineTabBarWrapper extends StatelessWidget {
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                  color: defaultLineColor ?? Colors.grey,
+                  color: defaultLineColor ?? context.theme.dividerColor,
                   width: defaultLineWidth ?? 3,
                 ),
               ),
@@ -93,23 +92,6 @@ class UnderLineTabBarWrapper extends StatelessWidget {
           child,
         ],
       ),
-    );
-  }
-}
-
-class MainPageTabWrapper extends StatelessWidget {
-  const MainPageTabWrapper({super.key, required this.child});
-
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return UnderLineTabBarWrapper(
-      defaultLineWidth: 1,
-      themeData: AppTabBarTheme.getTabUnderlineIndicatorBoldText(
-        context,
-      ),
-      child: child,
     );
   }
 }

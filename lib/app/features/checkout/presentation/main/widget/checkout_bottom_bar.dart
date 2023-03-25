@@ -5,6 +5,7 @@ class CheckoutBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isPay = false;
     return Row(
       children: [
         Column(
@@ -18,7 +19,7 @@ class CheckoutBottomBar extends StatelessWidget {
         ).expand(),
         AppButton(
           style: AppButtonTheme.confirmAction(context),
-          label: LocaleKeys.shoppingCart_Buy.tr(),
+          label: isPay ? LocaleKeys.checkout_PlaceOrder.tr() : LocaleKeys.checkout_Pay.tr(),
           onPressed: () {
             context.pushRoute(const CheckoutRoute());
           },
@@ -27,4 +28,3 @@ class CheckoutBottomBar extends StatelessWidget {
     );
   }
 }
-

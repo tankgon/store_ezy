@@ -18,7 +18,15 @@
     "FreeNShipping": "Free shipping",
     "ReturnInNDays": "Return in\n{} days",
     "ReadMore": "Read more",
-    "ReadLess": "Read less"
+    "ReadLess": "Read less",
+    "OrderBy": "Order by",
+    "dialog": {
+      "Cancel": "Cancel",
+      "Confirm": "OK",
+      "Delete": "Delêt"
+    },
+    "Next": "Next",
+    "Skip": "Skip"
   },
   "product": {
     "Buy": "Buy",
@@ -49,16 +57,49 @@
   "checkout": {
     "Checkout": "Checkou",
     "TotalPriceNItems": "Total price ({} items)",
-    "PaymentDetail": "Payment detai",
     "TotalPrice": "Total price",
     "Discount": "Discount",
-    "TotalPay": "Total pay"
+    "TotalPay": "Total pay",
+    "PlaceOrder": "Place order",
+    "Pay": "Pay",
+    "PayDetail": "Pay detail"
   },
   "payment": {
-    "PaymentMethod": "Payment methods"
+    "PaymentMethod": "Payment methods",
+    "PaymentDetail": "Payment detai"
   },
   "user": {
     "AddUserReceiveInfo": "Add user receive information",
     "UserReceiveInfo": "User receive information"
+  },
+  "productRating": {
+    "AllRating": "Rating",
+    "WriteReview": "Write review",
+    "DistributorReply": "Distributor repl",
+    "ViewReply": "View reply"
+  },
+  "userOrder": {
+    "Orders": "Orders",
+    "TotalPriceNItems": "Total price ({} items)",
+    "OrderStatus": {
+      "pending": "Pending",
+      "processing": "Processing",
+      "shipping": "Shipping",
+      "delivered": "Delivered",
+      "canceled": "Canceled"
+    }
+  },
+  "authen": {
+    "Login": "Login",
+    "SignUp": "Sign up",
+    "OrSignUpWith": "Or sign up with",
+    "InputEmailOrPhone": "Input email or phone number",
+    "Password": "Password",
+    "OTPSentMessage": "Input OTP sent to phone number {}",
+    "SendAgain": "Send again",
+    "FullName": "FullName",
+    "Address": "Address",
+    "PhoneNumber": "Phone number",
+    "Email": "Email"
   }
 }

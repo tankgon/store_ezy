@@ -8,6 +8,7 @@ class AppButtonIcon extends StatelessWidget {
     this.color,
     this.icon,
     this.padding,
+    this.minSize,
   });
 
   final IconData? icon;
@@ -15,11 +16,13 @@ class AppButtonIcon extends StatelessWidget {
 
   final Color? color;
   final EdgeInsetsGeometry? padding;
+  final double? minSize;
 
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(
       padding: padding ?? Dimens.edge_XS2,
+      minSize: minSize,
       onPressed: onPressed,
       color: color,
       child: Icon(

@@ -5,37 +5,48 @@ import 'package:ez_store/app/features/distributor/presentation/item/cubit/distri
 import 'package:ez_store/app/features/distributor/presentation/item/layout/distributor_item_layout_1.dart';
 
 class DistributorItem extends StatelessWidget {
-  const DistributorItem({super.key, this.item, this.layoutType});
+  const DistributorItem({
+    super.key,
+    this.item,
+    this.layoutType,
+    this.createState = false,
+  });
 
   final dynamic item;
+  final bool createState;
   final DistributorItemLayoutType? layoutType;
 
   @override
   Widget build(BuildContext context) {
+    if (!createState) {
+      return _buildItem(item);
+    }
+
     return BlocProvider(
       create: (context) => DistributorItemCubit()..fetchItem(),
-      child: Builder(builder: (context) {
-        return BlocListener<DistributorItemCubit, DistributorItemState>(
-          listener: _onStateChanged,
-          child: Builder(
-            builder: (context) {
-              if (layoutType == DistributorItemLayoutType.layout1) {
-                return DistributorItemLayout1.demo();
-              }
-              if (layoutType == DistributorItemLayoutType.layoutSimpleInfo1) {
-                return DistributorSimpleInfoLayout1.demo();
-              }
-              return const SizedBox.shrink();
+      child: Builder(
+        builder: (context) {
+          return BlocBuilder<DistributorItemCubit, DistributorItemState>(
+            builder: (context, state) {
+              return _buildItem(state.item);
             },
-          ),
-        );
-      }),
+          );
+        },
+      ),
     );
   }
 
-  void _onStateChanged(BuildContext context, DistributorItemState state) {
-    if (state.status == ItemDetailStatus.error) {
-      DialogUtils.showMaterialDialog(context: context, content: state.errorMsg);
-    }
+  Builder _buildItem(dynamic item) {
+    return Builder(
+      builder: (context) {
+        if (layoutType == DistributorItemLayoutType.layout1) {
+          return DistributorItemLayout1.demo();
+        }
+        if (layoutType == DistributorItemLayoutType.layoutSimpleInfo1) {
+          return DistributorSimpleInfoLayout1.demo();
+        }
+        return const SizedBox.shrink();
+      },
+    );
   }
 }

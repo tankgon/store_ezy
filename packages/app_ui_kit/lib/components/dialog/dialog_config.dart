@@ -39,7 +39,7 @@ class DialogConfiguration extends InheritedWidget {
   final DialogConfigData configData;
 
   static DialogConfigData of(BuildContext context) {
-    var configWidget = context.dependOnInheritedWidgetOfExactType<DialogConfiguration>();
+    final configWidget = context.dependOnInheritedWidgetOfExactType<DialogConfiguration>();
     return configWidget?.configData ?? DialogConfigData();
   }
 

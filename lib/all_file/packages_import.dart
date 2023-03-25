@@ -50,3 +50,4 @@ export 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 export 'package:ez_store/generated/locale_keys.g.dart';
 export 'package:flutter_localizations/flutter_localizations.dart';
 export 'package:easy_localization/easy_localization.dart' hide TextDirection;
+export 'package:reactive_forms/reactive_forms.dart';

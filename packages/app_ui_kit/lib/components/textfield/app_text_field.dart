@@ -1,4 +1,5 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
+import 'package:app_ui_kit/components/textfield/app_text_delay_input.dart';
 import 'package:app_ui_kit/components/textfield/extension/text_input_delay_extend.dart';
 
 class AppTextField extends StatefulWidget {
@@ -35,7 +36,7 @@ class AppTextField extends StatefulWidget {
   State<AppTextField> createState() => _AppTextFieldState();
 }
 
-class _AppTextFieldState extends State<AppTextField> with TextFiledInputDelayCallBack {
+class _AppTextFieldState extends State<AppTextField> {
   FocusNode? _focusNode;
   late TextEditingController _controller;
 
@@ -70,30 +71,25 @@ class _AppTextFieldState extends State<AppTextField> with TextFiledInputDelayCal
 
   void _onTextChange() {
     widget.onChanged?.call(_controller.text);
-
-    if (widget.onUserStopTyping != null) {
-      // wait for user to stop typing
-      onTextChangeDelayCallBack(
-        userStopTypingDelay: widget.userStopTypingDelay,
-        onUserStopTyping: () {
-          widget.onUserStopTyping?.call(_controller.text);
-        },
-      );
-    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      onChanged: (val) {
-        _onTextChange();
-      },
-      textInputAction: widget.textInputAction,
+    return AppTextDelayInput(
       controller: _controller,
-      focusNode: _focusNode,
-      keyboardType: widget.keyboardType,
-      textAlign: widget.textAlign,
-      decoration: widget.decoration ?? AppTextFieldTheme.primaryStyle(context),
+      userStopTypingDelay: widget.userStopTypingDelay,
+      onUserStopTyping: widget.onUserStopTyping,
+      child: TextFormField(
+        onChanged: (val) {
+          _onTextChange();
+        },
+        textInputAction: widget.textInputAction,
+        controller: _controller,
+        focusNode: _focusNode,
+        keyboardType: widget.keyboardType,
+        textAlign: widget.textAlign,
+        decoration: widget.decoration ?? AppTextFieldTheme.primaryStyle(context),
+      ),
     );
   }
 }

@@ -24,6 +24,21 @@ class AppButtonTheme {
     ).merge(props);
   }
 
+  static ButtonStyle circleGreyIcon(
+    BuildContext context, {
+    AppButtonStyle? props,
+  }) {
+    return ElevatedButton.styleFrom(
+      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      shape: const CircleBorder(),
+      foregroundColor: Theme.of(context).hintColor,
+      backgroundColor: Theme.of(context).dividerColor,
+      padding: context.theme.buttonTheme.padding,
+      elevation: defaultElevation,
+      shadowColor: Colors.transparent,
+    ).merge(props);
+  }
+
   static ButtonStyle confirmAction(
     BuildContext context, {
     AppButtonStyle? props,

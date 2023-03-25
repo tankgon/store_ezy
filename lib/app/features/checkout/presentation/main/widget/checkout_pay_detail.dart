@@ -10,7 +10,7 @@ class CheckoutPayDetail extends StatelessWidget {
     return Column(
       children: [
         SectionTitle(
-          title: LocaleKeys.checkout_PaymentDetail.tr(),
+          title: LocaleKeys.checkout_PayDetail.tr(),
         ),
         const AppDivider.thin().pDefault(),
         AppKeyValueList(

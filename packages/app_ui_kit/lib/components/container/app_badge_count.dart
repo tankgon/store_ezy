@@ -6,8 +6,8 @@ class BadgedCount extends StatelessWidget {
     super.key,
     this.badgeBorderColor,
     this.count = 0,
-    this.topOffset = 10,
-    this.rightOffset = -9,
+    this.topOffset = 3,
+    this.rightOffset = -6,
     this.padding,
     required this.onPressed,
     required this.icon,
@@ -34,7 +34,7 @@ class BadgedCount extends StatelessWidget {
     return CardCupertinoEffect(
       onPressed: onPressed,
       child: Padding(
-        padding: padding ?? EdgeInsets.zero,
+        padding: padding ?? Dimens.edge_XS2,
         child: Stack(
           alignment: Alignment.center,
           clipBehavior: Clip.none,

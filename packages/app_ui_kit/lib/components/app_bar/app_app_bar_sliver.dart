@@ -45,6 +45,7 @@ class AppAppBarSliver extends StatelessWidget implements PreferredSizeWidget {
       bottom: args?.bottom,
       backgroundColor: args?.backgroundColor,
       actions: args?.actions,
+      actionsIconTheme: context.theme.iconTheme,
       flexibleSpace: args?.flexibleSpace,
     );
   }

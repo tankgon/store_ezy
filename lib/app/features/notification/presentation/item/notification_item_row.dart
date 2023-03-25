@@ -1,5 +1,5 @@
 import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/auth/view/bloc/auth_bloc.dart';
+import 'package:ez_store/app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:ez_store/app/features/notification/core/service/notification_utils.dart';
 import 'package:ez_store/app/features/notification/data/model/notification_model.dart';
 import 'package:ez_store/app/features/notification/presentation/detail/cubit/notification_detail_cubit.dart';
@@ -34,7 +34,7 @@ class NotificationItemRow extends StatelessWidget {
                         color: Colors.grey[50],
                         shape: BoxShape.circle,
                       ),
-                      child: Assets.icons.icBireal.image().p8(),
+                      child: const Icon(Icons.logo_dev).p8(),
                     ),
                   ).expand(),
                   Gaps.hGap8,

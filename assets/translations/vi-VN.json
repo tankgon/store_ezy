@@ -18,7 +18,15 @@
     "FreeNShipping": "Miễn phí\nvận chuyển",
     "ReturnInNDays": "Đổi trả trong\n{} ngày",
     "ReadMore": "Xem thêm",
-    "ReadLess": "Thu gọn"
+    "ReadLess": "Thu gọn",
+    "OrderBy": "Sắp xếp theo",
+    "dialog": {
+      "Cancel": "Hủy",
+      "Confirm": "OK",
+      "Delete": "Xóa"
+    },
+    "Next": "Tiếp theo",
+    "Skip": "Bỏ qua"
   },
   "product": {
     "Buy": "Chọn mua",
@@ -49,16 +57,49 @@
   "checkout": {
     "Checkout": "Thanh toán",
     "TotalPriceNItems": "Tổng tiền ({} sản phẩm)",
-    "PaymentDetail": "Chi tiết thanh toán",
     "TotalPrice": "Tổng tiền",
     "Discount": "Giảm giá",
-    "TotalPay": "Tổng thanh toán"
+    "TotalPay": "Tổng thanh toán",
+    "PlaceOrder": "Đặt hàng",
+    "Pay": "Thanh toán",
+    "PayDetail": "Chi tiết thanh toán"
   },
   "payment": {
-    "PaymentMethod": "Phương thức thanh toán"
+    "PaymentMethod": "Phương thức thanh toán",
+    "PaymentDetail": "Chi tiết thanh toán"
   },
   "user": {
     "AddUserReceiveInfo": "Thêm thông tin người nhận",
     "UserReceiveInfo": "Thông tin người nhận"
+  },
+  "productRating": {
+    "AllRating": "Tất cả đánh giá",
+    "WriteReview": "Viết đánh giá",
+    "DistributorReply": "Phản hồi từ nhà cung cấp",
+    "ViewReply": "Xem phàn hồi"
+  },
+  "userOrder": {
+    "Orders": "Đơn hàng",
+    "TotalPriceNItems": "Tổng tiền ({} sản phẩm)",
+    "OrderStatus": {
+      "pending": "Chờ xác nhận",
+      "processing": "Đang xử lý",
+      "shipping": "Đang giao",
+      "delivered": "Đã nhận",
+      "canceled": "Đã hủy"
+    }
+  },
+  "authen": {
+    "Login": "Đăng nhập",
+    "SignUp": "Đăng ký",
+    "OrSignUpWith": "Hoặc đăng ký bằng",
+    "InputEmailOrPhone": "Nhập email hoặc số điện thoại",
+    "Password": "Mật khẩu",
+    "OTPSentMessage": "Nhập mã OTP được gửi đến số điện thoại {}",
+    "SendAgain": "Gửi lại",
+    "FullName": "Họ tên",
+    "Address": "Địa chỉ",
+    "PhoneNumber": "Số điện thoại",
+    "Email": "Email"
   }
 }

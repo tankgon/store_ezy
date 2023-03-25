@@ -24,7 +24,8 @@ class HomePage extends StatelessWidget {
                       actions: [
                         const NotificationBtn(),
                         const ShoppingCartBtn(),
-                      ].withDivider(Gaps.hGap16, showLast: true),
+                        Gaps.hGap4,
+                      ].withDivider(Gaps.hGap4, showLast: true),
                     ),
                   ),
                 ];

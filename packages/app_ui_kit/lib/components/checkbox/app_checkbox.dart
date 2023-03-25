@@ -32,8 +32,9 @@ class AppCheckBox extends StatefulWidget {
       initialValue: initialValue,
       visualDensity: visualDensity ??
           const VisualDensity(
-              horizontal: VisualDensity.minimumDensity,
-              vertical: VisualDensity.minimumDensity),
+            horizontal: VisualDensity.minimumDensity,
+            vertical: VisualDensity.minimumDensity,
+          ),
       contentPadding: contentPadding ?? EdgeInsets.zero,
       tristate: tristate ?? false,
       dense: dense,
@@ -57,7 +58,7 @@ class AppCheckBox extends StatefulWidget {
 
 class _AppCheckBoxState extends State<AppCheckBox> {
   late bool isChecked;
-  
+
   @override
   void initState() {
     isChecked = widget.initialValue ?? (widget.tristate ? null : false) ?? false;
@@ -81,10 +82,12 @@ class _AppCheckBoxState extends State<AppCheckBox> {
           value: isChecked,
           visualDensity: widget.visualDensity,
           tristate: widget.tristate,
-          onChanged: widget.enabled == false ? null :(value) {
-            isChecked = !isChecked;
-            widget.onChanged?.call(isChecked);
-          },
+          onChanged: widget.enabled == false
+              ? null
+              : (value) {
+                  isChecked = !isChecked;
+                  widget.onChanged?.call(isChecked);
+                },
         ),
       );
     }

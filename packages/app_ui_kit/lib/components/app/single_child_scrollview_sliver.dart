@@ -32,7 +32,6 @@ class AppScrollBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // if (hasScrollBody == true) {
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(

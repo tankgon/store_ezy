@@ -1,5 +1,5 @@
 import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/auth/view/bloc/auth_bloc.dart';
+import 'package:ez_store/app/features/auth/presentation/bloc/auth_bloc.dart';
 
 class NotificationBtn extends StatelessWidget {
   const NotificationBtn({super.key, this.padding, this.badgeBorderColor});
@@ -27,7 +27,8 @@ class NotificationBtn extends StatelessWidget {
           padding: padding,
           count: 9,
           onPressed: () {
-            context.pushRoute(const NotificationMainRoute());
+            // context.pushRoute(const NotificationMainRoute());
+            context.pushRoute(const SignUpRoute());
           },
         );
       },

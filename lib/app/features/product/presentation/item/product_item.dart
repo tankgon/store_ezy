@@ -14,59 +14,64 @@ class ProductItem extends StatelessWidget {
     required this.item,
     this.layoutType,
     this.args = const ProductItemArgs(),
+    this.createState = false,
   });
 
   final ProductModel item;
+  final bool createState;
   final ProductItemLayoutType? layoutType;
   final ProductItemArgs args;
 
   @override
   Widget build(BuildContext context) {
+    if (!createState) {
+      return _buildItem(item);
+    }
+
     return BlocProvider(
       create: (context) => ProductItemCubit(
         item: item,
       )..fetchItem(),
       child: Builder(
         builder: (context) {
-          return BlocListener<ProductItemCubit, ProductItemState>(
-            listener: _onStateChanged,
-            child: Builder(
-              builder: (context) {
-                switch (layoutType) {
-                  case ProductItemLayoutType.layout1:
-                    return ProductItemLayout1.demo(
-                      args: args,
-                      onPressed: () => _onItemClick(context),
-                    );
-                  case ProductItemLayoutType.layoutTile1:
-                    return ProductItemTileLayout1.demo(
-                      args: args,
-                      onPressed: () => _onItemClick(context),
-                    );
-                  case ProductItemLayoutType.layoutTile2:
-                    return ProductItemTileLayout2.demo(
-                      args: args,
-                      onPressed: () => _onItemClick(context),
-                    );
-                  case ProductItemLayoutType.layoutTile3:
-                    return ProductItemTileLayout3.demo(
-                      args: args,
-                      onPressed: () => _onItemClick(context),
-                    );
-                }
-                return const SizedBox.shrink();
-              },
-            ),
+          return BlocBuilder<ProductItemCubit, ProductItemState>(
+            builder: (context, state) {
+              return _buildItem(state.item);
+            },
           );
         },
       ),
     );
   }
 
-  void _onStateChanged(BuildContext context, ProductItemState state) {
-    if (state.status == ItemDetailStatus.error) {
-      DialogUtils.showMaterialDialog(context: context, content: state.errorMsg);
-    }
+  Builder _buildItem(ProductModel item) {
+    return Builder(
+      builder: (context) {
+        switch (layoutType) {
+          case ProductItemLayoutType.layout1:
+            return ProductItemLayout1.demo(
+              args: args,
+              onPressed: () => _onItemClick(context),
+            );
+          case ProductItemLayoutType.layoutTile1:
+            return ProductItemTileLayout1.demo(
+              args: args,
+              onPressed: () => _onItemClick(context),
+            );
+          case ProductItemLayoutType.layoutTile2:
+            return ProductItemTileLayout2.demo(
+              args: args,
+              onPressed: () => _onItemClick(context),
+            );
+          case ProductItemLayoutType.layoutTile3:
+            return ProductItemTileLayout3.demo(
+              args: args,
+              onPressed: () => _onItemClick(context),
+            );
+        }
+        return const SizedBox.shrink();
+      },
+    );
   }
 
   void _onItemClick(BuildContext context) {

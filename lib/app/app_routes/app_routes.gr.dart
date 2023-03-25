@@ -11,45 +11,48 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i8;
-import 'package:flutter/material.dart' as _i9;
+import 'package:auto_route/auto_route.dart' as _i11;
+import 'package:flutter/material.dart' as _i12;
 
-import '../../all_file/all_file.dart' as _i10;
+import '../../all_file/all_file.dart' as _i13;
+import '../features/auth/presentation/sign_up/sign_up_page.dart' as _i8;
 import '../features/checkout/self.dart' as _i6;
-import '../features/home/presentation/main/home_page.dart' as _i7;
+import '../features/home/presentation/main/home_page.dart' as _i9;
 import '../features/main/presentation/main_page.dart' as _i1;
-import '../features/notification/data/model/notification_model.dart' as _i11;
+import '../features/notification/data/model/notification_model.dart' as _i14;
 import '../features/notification/presentation/detail/notification_detail_page.dart'
     as _i3;
 import '../features/notification/presentation/main/notification_main_page.dart'
     as _i2;
-import '../features/product/data/model/product_base_model.dart' as _i12;
+import '../features/product/data/model/product_base_model.dart' as _i15;
 import '../features/product/presentation/detail/product_detail_page.dart'
     as _i4;
+import '../features/product_rating/self.dart' as _i7;
 import '../features/shopping_cart/presentation/main/shopping_cart_page.dart'
     as _i5;
+import '../features/user_order/self.dart' as _i10;
 
-class AppAutoRoute extends _i8.RootStackRouter {
-  AppAutoRoute([_i9.GlobalKey<_i9.NavigatorState>? navigatorKey])
+class AppAutoRoute extends _i11.RootStackRouter {
+  AppAutoRoute([_i12.GlobalKey<_i12.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i8.PageFactory> pagesMap = {
+  final Map<String, _i11.PageFactory> pagesMap = {
     MainRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i11.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i1.MainPage(),
       );
     },
     NotificationMainRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i11.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i2.NotificationMainPage(),
       );
     },
     NotificationDetailRoute.name: (routeData) {
       final args = routeData.argsAs<NotificationDetailRouteArgs>();
-      return _i8.MaterialPageX<dynamic>(
+      return _i11.MaterialPageX<dynamic>(
         routeData: routeData,
         child: _i3.NotificationDetailPage(
           key: args.key,
@@ -59,7 +62,7 @@ class AppAutoRoute extends _i8.RootStackRouter {
     },
     ProductDetailRoute.name: (routeData) {
       final args = routeData.argsAs<ProductDetailRouteArgs>();
-      return _i8.MaterialPageX<dynamic>(
+      return _i11.MaterialPageX<dynamic>(
         routeData: routeData,
         child: _i4.ProductDetailPage(
           key: args.key,
@@ -68,65 +71,96 @@ class AppAutoRoute extends _i8.RootStackRouter {
       );
     },
     ShoppingCartRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i11.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i5.ShoppingCartPage(),
       );
     },
     CheckoutRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i11.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i6.CheckoutPage(),
       );
     },
-    HomeRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+    ProductRatingRoute.name: (routeData) {
+      return _i11.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i7.HomePage(),
+        child: const _i7.ProductRatingPage(),
+      );
+    },
+    SignUpRoute.name: (routeData) {
+      return _i11.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i8.SignUpPage(),
+      );
+    },
+    HomeRoute.name: (routeData) {
+      return _i11.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i9.HomePage(),
+      );
+    },
+    UserOrderRoute.name: (routeData) {
+      return _i11.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i10.UserOrderPage(),
       );
     },
   };
 
   @override
-  List<_i8.RouteConfig> get routes => [
-        _i8.RouteConfig(
+  List<_i11.RouteConfig> get routes => [
+        _i11.RouteConfig(
           MainRoute.name,
           path: '/main',
           children: [
-            _i8.RouteConfig(
+            _i11.RouteConfig(
               HomeRoute.name,
               path: 'Home',
               parent: MainRoute.name,
-            )
+            ),
+            _i11.RouteConfig(
+              UserOrderRoute.name,
+              path: 'UserOrder',
+              parent: MainRoute.name,
+            ),
           ],
         ),
-        _i8.RouteConfig(
+        _i11.RouteConfig(
           NotificationMainRoute.name,
           path: '/notification-main',
         ),
-        _i8.RouteConfig(
+        _i11.RouteConfig(
           NotificationDetailRoute.name,
           path: '/notification-detail',
         ),
-        _i8.RouteConfig(
+        _i11.RouteConfig(
           ProductDetailRoute.name,
           path: 'Product-Detail',
         ),
-        _i8.RouteConfig(
+        _i11.RouteConfig(
           ShoppingCartRoute.name,
           path: 'ShoppingCart',
         ),
-        _i8.RouteConfig(
+        _i11.RouteConfig(
           CheckoutRoute.name,
           path: 'Checkout',
+        ),
+        _i11.RouteConfig(
+          ProductRatingRoute.name,
+          path: 'ProductRating',
+        ),
+        _i11.RouteConfig(
+          SignUpRoute.name,
+          path: 'SignUp',
         ),
       ];
 }
 
 /// generated route for
 /// [_i1.MainPage]
-class MainRoute extends _i8.PageRouteInfo<void> {
-  const MainRoute({List<_i8.PageRouteInfo>? children})
+class MainRoute extends _i11.PageRouteInfo<void> {
+  const MainRoute({List<_i11.PageRouteInfo>? children})
       : super(
           MainRoute.name,
           path: '/main',
@@ -138,7 +172,7 @@ class MainRoute extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.NotificationMainPage]
-class NotificationMainRoute extends _i8.PageRouteInfo<void> {
+class NotificationMainRoute extends _i11.PageRouteInfo<void> {
   const NotificationMainRoute()
       : super(
           NotificationMainRoute.name,
@@ -151,10 +185,10 @@ class NotificationMainRoute extends _i8.PageRouteInfo<void> {
 /// generated route for
 /// [_i3.NotificationDetailPage]
 class NotificationDetailRoute
-    extends _i8.PageRouteInfo<NotificationDetailRouteArgs> {
+    extends _i11.PageRouteInfo<NotificationDetailRouteArgs> {
   NotificationDetailRoute({
-    _i10.Key? key,
-    required _i11.NotificationDetailModel item,
+    _i13.Key? key,
+    required _i14.NotificationDetailModel item,
   }) : super(
           NotificationDetailRoute.name,
           path: '/notification-detail',
@@ -173,9 +207,9 @@ class NotificationDetailRouteArgs {
     required this.item,
   });
 
-  final _i10.Key? key;
+  final _i13.Key? key;
 
-  final _i11.NotificationDetailModel item;
+  final _i14.NotificationDetailModel item;
 
   @override
   String toString() {
@@ -185,10 +219,10 @@ class NotificationDetailRouteArgs {
 
 /// generated route for
 /// [_i4.ProductDetailPage]
-class ProductDetailRoute extends _i8.PageRouteInfo<ProductDetailRouteArgs> {
+class ProductDetailRoute extends _i11.PageRouteInfo<ProductDetailRouteArgs> {
   ProductDetailRoute({
-    _i10.Key? key,
-    required _i12.ProductModel product,
+    _i13.Key? key,
+    required _i15.ProductModel product,
   }) : super(
           ProductDetailRoute.name,
           path: 'Product-Detail',
@@ -207,9 +241,9 @@ class ProductDetailRouteArgs {
     required this.product,
   });
 
-  final _i10.Key? key;
+  final _i13.Key? key;
 
-  final _i12.ProductModel product;
+  final _i15.ProductModel product;
 
   @override
   String toString() {
@@ -219,7 +253,7 @@ class ProductDetailRouteArgs {
 
 /// generated route for
 /// [_i5.ShoppingCartPage]
-class ShoppingCartRoute extends _i8.PageRouteInfo<void> {
+class ShoppingCartRoute extends _i11.PageRouteInfo<void> {
   const ShoppingCartRoute()
       : super(
           ShoppingCartRoute.name,
@@ -231,7 +265,7 @@ class ShoppingCartRoute extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.CheckoutPage]
-class CheckoutRoute extends _i8.PageRouteInfo<void> {
+class CheckoutRoute extends _i11.PageRouteInfo<void> {
   const CheckoutRoute()
       : super(
           CheckoutRoute.name,
@@ -242,8 +276,32 @@ class CheckoutRoute extends _i8.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i7.HomePage]
-class HomeRoute extends _i8.PageRouteInfo<void> {
+/// [_i7.ProductRatingPage]
+class ProductRatingRoute extends _i11.PageRouteInfo<void> {
+  const ProductRatingRoute()
+      : super(
+          ProductRatingRoute.name,
+          path: 'ProductRating',
+        );
+
+  static const String name = 'ProductRatingRoute';
+}
+
+/// generated route for
+/// [_i8.SignUpPage]
+class SignUpRoute extends _i11.PageRouteInfo<void> {
+  const SignUpRoute()
+      : super(
+          SignUpRoute.name,
+          path: 'SignUp',
+        );
+
+  static const String name = 'SignUpRoute';
+}
+
+/// generated route for
+/// [_i9.HomePage]
+class HomeRoute extends _i11.PageRouteInfo<void> {
   const HomeRoute()
       : super(
           HomeRoute.name,
@@ -251,4 +309,16 @@ class HomeRoute extends _i8.PageRouteInfo<void> {
         );
 
   static const String name = 'HomeRoute';
+}
+
+/// generated route for
+/// [_i10.UserOrderPage]
+class UserOrderRoute extends _i11.PageRouteInfo<void> {
+  const UserOrderRoute()
+      : super(
+          UserOrderRoute.name,
+          path: 'UserOrder',
+        );
+
+  static const String name = 'UserOrderRoute';
 }

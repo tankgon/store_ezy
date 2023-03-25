@@ -9,7 +9,7 @@ class MainPage extends StatelessWidget {
     return AutoTabsScaffold(
       routes: const [
         HomeRoute(),
-        HomeRoute(),
+        UserOrderRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
         return _HomeBottomBar(

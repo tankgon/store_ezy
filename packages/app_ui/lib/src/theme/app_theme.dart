@@ -42,7 +42,8 @@ class AppTheme {
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        contentPadding: EdgeInsets.zero,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        isDense: true,
         fillColor: appColor.divider,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppTextFieldTheme.defaultRadius),
