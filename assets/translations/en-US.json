@@ -100,6 +100,16 @@
     "FullName": "FullName",
     "Address": "Address",
     "PhoneNumber": "Phone number",
-    "Email": "Email"
+    "Email": "Email",
+    "AlreadyHaveAccount": "Already have an account?",
+    "EmailRequired": "Email is required",
+    "PhoneRequired": "Phone number is required",
+    "AddressRequired": "Address is required",
+    "PhoneOrEmailRequired": "Email or phone is requrired",
+    "PasswordPatternMsg": "Password must be at least 8 characters including letters and numbers",
+    "PhoneNumberNotValid": "Phone number not valid",
+    "EmailNotValid": "Email not valid",
+    "PasswordRequired": "Password require",
+    "EmailOrPhoneNotValid": "Email or phone number not valid"
   }
 }

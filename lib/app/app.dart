@@ -3,6 +3,7 @@ import 'package:app_ui_kit/components/app/scroll_behavior_default.dart';
 import 'package:ez_store/all_file/all_file.dart';
 import 'package:ez_store/app/features/auth/self.dart';
 import 'package:flutter/services.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -24,11 +25,24 @@ class App extends StatelessWidget {
         locale: context.locale,
         title: F.title,
         builder: (context, child) {
-          return _flavorBanner(
-            child: _AppWidget(
-              appRouter: appRouter,
-              child: child ?? const SizedBox.shrink(),
+          return ResponsiveWrapper.builder(
+            _flavorBanner(
+              child: _AppWidget(
+                appRouter: appRouter,
+                child: child ?? const SizedBox.shrink(),
+              ),
             ),
+            maxWidth: 1200,
+            minWidth: 480,
+            defaultScale: true,
+            breakpoints: [
+              ResponsiveBreakpoint.autoScale(320, name: MOBILE, scaleFactor: 0.8),
+              ResponsiveBreakpoint.resize(375, name: MOBILE),
+              ResponsiveBreakpoint.resize(480, name: MOBILE),
+              ResponsiveBreakpoint.autoScale(800, name: TABLET, scaleFactor: 1.2),
+              ResponsiveBreakpoint.autoScale(1000, name: DESKTOP, scaleFactor: 1.5),
+            ],
+            background: Container(color: const Color(0xFFF5F5F5)),
           );
         },
         themeMode: ThemeMode.light,

@@ -4,9 +4,10 @@ import 'package:flutter/cupertino.dart';
 class AppButtonIcon extends StatelessWidget {
   const AppButtonIcon({
     super.key,
-    this.onPressed,
-    this.color,
     this.icon,
+    this.onPressed,
+    this.iconColor,
+    this.iconSize,
     this.padding,
     this.minSize,
   });
@@ -14,7 +15,8 @@ class AppButtonIcon extends StatelessWidget {
   final IconData? icon;
   final VoidCallback? onPressed;
 
-  final Color? color;
+  final Color? iconColor;
+  final double? iconSize;
   final EdgeInsetsGeometry? padding;
   final double? minSize;
 
@@ -24,10 +26,10 @@ class AppButtonIcon extends StatelessWidget {
       padding: padding ?? Dimens.edge_XS2,
       minSize: minSize,
       onPressed: onPressed,
-      color: color,
       child: Icon(
         icon,
-        color: context.theme.iconButtonTheme.style?.iconColor?.resolve({MaterialState.pressed}) ?? Colors.grey,
+        size: iconSize,
+        color: iconColor ?? context.theme.iconButtonTheme.style?.iconColor?.resolve({MaterialState.pressed}) ?? Colors.grey,
       ),
     );
   }

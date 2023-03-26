@@ -2,25 +2,33 @@ import 'package:ez_store/all_file/all_file.dart';
 import 'package:ez_store/app/features/home/presentation/feature_gird/cubit/home_feature_gird_cubit.dart';
 
 class HomeFeatureGirdBody extends StatelessWidget {
-  const HomeFeatureGirdBody({super.key, this.padding});
+  const HomeFeatureGirdBody({
+    super.key,
+    this.padding,
+    this.rowCount = 1,
+  });
 
   final EdgeInsetsGeometry? padding;
+  final int rowCount;
 
   @override
   Widget build(BuildContext context) {
+    const itemHeight = 92.0;
+    const itemSpace = 24.0;
+    final totalHeight = rowCount * itemHeight + (rowCount - 1) * itemSpace;
     return SizedBox(
-      height: 208,
+      height: totalHeight,
       child: PagingGrid(
         padding: padding,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, item, index) => const HomeFeatureItem(),
         fetchListData: context.read<HomeFeatureGirdCubit>().fetchList,
         firstPageProgressIndicatorBuilder: (context) => const _HomeGirdLoading(),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: rowCount,
           childAspectRatio: 1.23,
           mainAxisSpacing: 11,
-          crossAxisSpacing: 24,
+          crossAxisSpacing: itemSpace,
         ),
       ),
     );

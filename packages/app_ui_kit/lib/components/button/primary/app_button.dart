@@ -1,4 +1,5 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 
 class AppButton extends StatelessWidget {
   const AppButton({
@@ -7,6 +8,7 @@ class AppButton extends StatelessWidget {
     this.label,
     this.onPressed,
     this.style,
+    this.isSubmitButton = false,
   });
 
   final Widget? child;
@@ -15,10 +17,19 @@ class AppButton extends StatelessWidget {
 
   final ButtonStyle? style;
 
+  final bool isSubmitButton;
+
   @override
   Widget build(BuildContext context) {
+    var isDisabled = onPressed == null;
+
+    if (isSubmitButton) {
+      final form = ReactiveForm.of(context);
+      isDisabled = form?.valid ?? false ? false : true;
+    }
+
     return ElevatedButton(
-      onPressed: onPressed,
+      onPressed: isDisabled ? null : onPressed,
       style: style ?? AppButtonTheme.primary(context),
       child: child ?? label?.text.make(),
     );

@@ -27,7 +27,6 @@ dependencies:
   flutter_keyboard_visibility: ^5.4.0
   expandable_page_view: ^1.0.17
   reactive_forms: ^14.2.0
-  flutter_screenutil: ^5.7.0
 
   app_ui:
     path: ../app_ui

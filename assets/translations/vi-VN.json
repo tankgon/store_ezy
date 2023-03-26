@@ -100,6 +100,16 @@
     "FullName": "Họ tên",
     "Address": "Địa chỉ",
     "PhoneNumber": "Số điện thoại",
-    "Email": "Email"
+    "Email": "Email",
+    "AlreadyHaveAccount": "Đã có tài khoản?",
+    "EmailRequired": "Email là trường thông tin bắt buộc",
+    "PhoneRequired": "SĐT là trường thông tin bắt buộc",
+    "AddressRequired": "Địa chỉ là trường thông tin bắt buộc",
+    "PhoneOrEmailRequired": "Vui lòng nhập Email hoặc SĐT",
+    "PasswordPatternMsg": "Mật khẩu có ít nhất 8 ký tự bao gồm chữ và số",
+    "PhoneNumberNotValid": "Số điện thoại không đúng",
+    "EmailNotValid": "Email không đúng",
+    "PasswordRequired": "Vui lòng nhập mật khẩu",
+    "EmailOrPhoneNotValid": "Email hoặc SĐT không đúng"
   }
 }

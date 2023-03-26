@@ -88,6 +88,16 @@ abstract class  LocaleKeys {
   static const authen_Address = 'authen.Address';
   static const authen_PhoneNumber = 'authen.PhoneNumber';
   static const authen_Email = 'authen.Email';
+  static const authen_AlreadyHaveAccount = 'authen.AlreadyHaveAccount';
+  static const authen_EmailRequired = 'authen.EmailRequired';
+  static const authen_PhoneRequired = 'authen.PhoneRequired';
+  static const authen_AddressRequired = 'authen.AddressRequired';
+  static const authen_PhoneOrEmailRequired = 'authen.PhoneOrEmailRequired';
+  static const authen_PasswordPatternMsg = 'authen.PasswordPatternMsg';
+  static const authen_PhoneNumberNotValid = 'authen.PhoneNumberNotValid';
+  static const authen_EmailNotValid = 'authen.EmailNotValid';
+  static const authen_PasswordRequired = 'authen.PasswordRequired';
+  static const authen_EmailOrPhoneNotValid = 'authen.EmailOrPhoneNotValid';
   static const authen = 'authen';
 
 }

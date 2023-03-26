@@ -75,6 +75,6 @@ class ProductItem extends StatelessWidget {
   }
 
   void _onItemClick(BuildContext context) {
-    context.pushRoute(ProductDetailRoute(product: context.read<ProductItemCubit>().state.item));
+    context.pushRoute(ProductDetailRoute(product: context.read<ProductItemCubit?>()?.state.item ?? item));
   }
 }

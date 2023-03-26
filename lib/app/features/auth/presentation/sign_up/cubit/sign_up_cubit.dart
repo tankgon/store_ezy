@@ -15,13 +15,30 @@ class SignUpCubit extends Cubit<SignUpState> {
   FormGroup _createFormGroup() {
     return FormGroup(
       {
-        idKey: FormControl<String>(),
-        passwordKey: FormControl<String>(),
+        idKey: FormControl<String>(
+          validators: [
+            Validators.required,
+            Validators.composeOR(
+              [
+                Validators.email,
+                Validators.pattern(
+                  AppRegex.phoneNumberVnRegex,
+                ),
+              ],
+            ),
+          ],
+        ),
+        passwordKey: FormControl<String>(
+          validators: [
+            Validators.required,
+            Validators.pattern(
+              AppRegex.passwordRegex,
+            ),
+          ],
+        ),
       },
     );
   }
 
-  FutureOr<void> fetchItem() async {
-
-  }
+  FutureOr<void> fetchItem() async {}
 }

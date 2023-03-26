@@ -1,20 +1,20 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
-import 'package:app_ui_kit/components/textfield/app_text_delay_input.dart';
-import 'package:app_ui_kit/components/textfield/extension/text_input_delay_extend.dart';
+import 'package:app_ui_kit/app_ui_kit.dart';
+import 'package:app_ui_kit/components/textfield/widget/text_field_btn_clear_builder.dart';
+import 'package:flutter/cupertino.dart';
 
 class AppTextField extends StatefulWidget {
   const AppTextField({
     super.key,
-    this.userStopTypingDelay = const Duration(milliseconds: 1000),
     this.controller,
     this.focusNode,
     this.onChanged,
-    this.onUserStopTyping,
     this.decoration,
     this.keyboardType,
     this.textAlign = TextAlign.start,
     this.textInputAction,
     this.onLostFocus,
+    this.enableClearButton = false,
   });
 
   final TextEditingController? controller;
@@ -23,10 +23,9 @@ class AppTextField extends StatefulWidget {
 
   final ValueChanged<String>? onChanged;
 
-  final Duration userStopTypingDelay;
-  final ValueChanged<String>? onUserStopTyping;
-
   final InputDecoration? decoration;
+
+  final bool enableClearButton;
 
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
@@ -75,11 +74,11 @@ class _AppTextFieldState extends State<AppTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return AppTextDelayInput(
+    return TextFieldBtnClearBuilder(
       controller: _controller,
-      userStopTypingDelay: widget.userStopTypingDelay,
-      onUserStopTyping: widget.onUserStopTyping,
-      child: TextFormField(
+      enabled: widget.enableClearButton,
+      inputDecoration: widget.decoration ?? AppTextFieldTheme.primaryStyle(context),
+      builder: (context, inputDecoration) => TextFormField(
         onChanged: (val) {
           _onTextChange();
         },
@@ -88,7 +87,7 @@ class _AppTextFieldState extends State<AppTextField> {
         focusNode: _focusNode,
         keyboardType: widget.keyboardType,
         textAlign: widget.textAlign,
-        decoration: widget.decoration ?? AppTextFieldTheme.primaryStyle(context),
+        decoration: inputDecoration,
       ),
     );
   }
