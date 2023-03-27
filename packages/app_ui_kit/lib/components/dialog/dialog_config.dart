@@ -1,8 +1,16 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
-import 'package:app_ui_kit/components/paging/paging_state_widget.dart';
+import 'package:app_ui_kit/components/dialog/layout/success_dialog_layout.dart';
 import 'package:flutter/cupertino.dart';
 
 typedef DialogButtonBuilder = Widget Function(BuildContext context);
+
+typedef DialogAlertBuilder = Widget Function(
+  BuildContext context,
+  String? title,
+  String? content,
+  VoidCallback? onConfirm,
+  VoidCallback? onAutoDismiss,
+);
 
 extension DialogConfigDataExtension on BuildContext {
   DialogConfigData get dialogConfigData => DialogConfiguration.of(this);
@@ -14,11 +22,21 @@ class DialogConfigData {
     String? cancelLabel,
     String? deleteLabel,
     EdgeInsets? defaultPadding,
+    DialogAlertBuilder? successDialogBuilder,
   }) {
     this.defaultPadding = defaultPadding ?? const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0);
     this.confirmLabel = confirmLabel ?? 'Confirm';
     this.cancelLabel = cancelLabel ?? 'Cancel';
     this.deleteLabel = deleteLabel ?? 'Delete';
+    this.successDialogBuilder = successDialogBuilder ??
+        (context, title, content, onConfirm, onAutoDismiss) {
+          return SuccessDialogLayout(
+            title: title,
+            content: content,
+            onConfirm: onConfirm,
+            onAutoDismiss: onAutoDismiss,
+          );
+        };
   }
 
   late final EdgeInsets defaultPadding;
@@ -27,6 +45,7 @@ class DialogConfigData {
   late final String cancelLabel;
   late final String deleteLabel;
 
+  late final DialogAlertBuilder successDialogBuilder;
 }
 
 class DialogConfiguration extends InheritedWidget {

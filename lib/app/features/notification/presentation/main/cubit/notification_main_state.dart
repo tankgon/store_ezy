@@ -2,31 +2,31 @@ part of 'notification_main_cubit.dart';
 
 class NotificationMainState extends Equatable {
   const NotificationMainState({
-    this.status = ItemDetailStatus.initial,
+    this.status = ItemDefaultStatus.initial,
     this.updateItem,
     this.hasNew,
-    this.errorMsg,
+    this.error,
   });
 
-  final ItemDetailStatus status;
+  final ItemDefaultStatus status;
   final NotificationDetailModel? updateItem;
   final bool? hasNew;
-  final String? errorMsg;
+  final Object? error;
 
   @override
-  List<Object?> get props => [status, updateItem, hasNew, errorMsg];
+  List<Object?> get props => [status, updateItem, hasNew, error];
 
   NotificationMainState copyWith({
-    ItemDetailStatus? status,
+    ItemDefaultStatus? status,
     NotificationDetailModel? updateItem,
     bool? hasNew,
-    String? errorMsg,
+    Object? error,
   }) {
     return NotificationMainState(
       status: status ?? this.status,
       updateItem: updateItem ?? this.updateItem,
       hasNew: hasNew ?? this.hasNew,
-      errorMsg: errorMsg ?? this.errorMsg,
+      error: error ?? this.error,
     );
   }
 }

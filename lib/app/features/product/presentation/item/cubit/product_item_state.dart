@@ -2,27 +2,27 @@ part of 'product_item_cubit.dart';
 
 class ProductItemState extends Equatable {
   const ProductItemState({
-    this.status = ItemDetailStatus.initial,
+    this.status = ItemDefaultStatus.initial,
     required this.item,
-    this.errorMsg,
+    this.error,
   });
 
-  final ItemDetailStatus status;
+  final ItemDefaultStatus status;
   final ProductModel item;
-  final String? errorMsg;
+  final Object? error;
 
   @override
-  List<Object?> get props => [status, item, errorMsg];
+  List<Object?> get props => [status, item, error];
 
   ProductItemState copyWith({
-    ItemDetailStatus? status,
+    ItemDefaultStatus? status,
     ProductModel? item,
-    String? errorMsg,
+    Object? error,
   }) {
     return ProductItemState(
       status: status ?? this.status,
       item: item ?? this.item,
-      errorMsg: errorMsg ?? this.errorMsg,
+      error: error ?? this.error,
     );
   }
 }

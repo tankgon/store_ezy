@@ -10,7 +10,7 @@ bricks:
 
 # Feature Brick
 # Create:
-# mason make feature_brick  --feature_name signup --folder_name signup --state_management cubit
+# mason make feature_brick --feature_name change_password --folder_name change_password --state_management cubit
 
 # Feature Core Brick
 # Create:

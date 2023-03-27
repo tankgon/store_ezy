@@ -3,27 +3,27 @@ part of 'product_rating_cubit.dart';
 class ProductRatingState extends Equatable {
 
   const ProductRatingState({
-    this.status = ItemDetailStatus.initial,
+    this.status = ItemDefaultStatus.initial,
     required this.item,
-    this.errorMsg,
+    this.error,
   });
 
-  final ItemDetailStatus status;
+  final ItemDefaultStatus status;
   final dynamic item;
-  final String? errorMsg;
+  final Object? error;
 
   @override
-  List<Object?> get props => [status, item, errorMsg];
+  List<Object?> get props => [status, item, error];
   
   ProductRatingState copyWith({
-      ItemDetailStatus? status,
+      ItemDefaultStatus? status,
       dynamic? item,
-      String? errorMsg,
+      Object? error,
   }) {
     return ProductRatingState(
       status: status ?? this.status,
       item: item ?? this.item,
-      errorMsg: errorMsg ?? this.errorMsg,
+      error: error ?? this.error,
     );
   }
 }

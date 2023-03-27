@@ -44,8 +44,12 @@ class UserOrderPage extends StatelessWidget {
   }   
 
   void _onStateChanged(BuildContext context, UserOrderState state) {
-    if (state.status == ItemDetailStatus.error) {
-      DialogUtils.showMaterialDialog(context: context, content: state.errorMsg);
+    if (state.status == ItemDefaultStatus.error) {
+      DialogUtils.showErrorDialog(
+        context: context,
+        content: state.error.getServerErrorMsg(),
+        error: state.error,
+      );
     }
   }
 }
@@ -60,9 +64,9 @@ class _PageBodyLoading extends StatelessWidget {
     return BlocBuilder<UserOrderCubit, UserOrderState>(
       builder: (context, state) {
         // if (state.status == ItemDetailStatus.error) {
-        //   return SimpleErrorText(errorMsg: state.errorMsg ?? '');
+        //   return SimpleErrorText(error: state.errorMsg ?? '');
         // }
-        final isLoading = state.status == ItemDetailStatus.loading || state.status == ItemDetailStatus.initial;
+        final isLoading = state.status == ItemDefaultStatus.loading || state.status == ItemDefaultStatus.initial;
 
         return child;
       },

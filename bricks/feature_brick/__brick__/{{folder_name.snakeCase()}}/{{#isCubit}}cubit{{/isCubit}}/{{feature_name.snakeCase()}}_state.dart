@@ -10,20 +10,20 @@ class {{feature_name.pascalCase()}}State extends Equatable {
 
   final ItemDetailStatus status;
   final dynamic item;
-  final String? errorMsg;
+  final Object? error;
 
   @override
-  List<Object?> get props => [status, item, errorMsg];
+  List<Object?> get props => [status, item, error];
   
   {{feature_name.pascalCase()}}State copyWith({
       ItemDetailStatus? status,
       dynamic? item,
-      String? errorMsg,
+      Object? error,
   }) {
     return {{feature_name.pascalCase()}}State(
       status: status ?? this.status,
       item: item ?? this.item,
-      errorMsg: errorMsg ?? this.errorMsg,
+      error: error ?? this.errorMsg,
     );
   }
 }

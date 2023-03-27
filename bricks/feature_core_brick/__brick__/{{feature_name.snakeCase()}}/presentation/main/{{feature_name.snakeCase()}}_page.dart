@@ -3,7 +3,6 @@ import 'package:{{{fullPath}}}/{{feature_name.snakeCase()}}_body.dart';
 {{#isBloc}}import 'package:{{{fullPath}}}/bloc/{{feature_name.snakeCase()}}_bloc.dart';{{/isBloc}}{{#isCubit}}import 'package:{{{fullPath}}}/cubit/{{feature_name.snakeCase()}}_cubit.dart';{{/isCubit}}
 
 class {{feature_name.pascalCase()}}Page extends StatelessWidget {
-
   const {{feature_name.pascalCase()}}Page({super.key});
 {{#isBloc}}
   @override
@@ -72,7 +71,7 @@ class _PageBodyLoading extends StatelessWidget {
     return BlocBuilder<{{feature_name.pascalCase()}}Cubit, {{feature_name.pascalCase()}}State>(
       builder: (context, state) {
         // if (state.status == ItemDetailStatus.error) {
-        //   return SimpleErrorText(errorMsg: state.errorMsg ?? '');
+        //   return SimpleErrorText(error: state.errorMsg ?? '');
         // }
         final isLoading = state.status == ItemDetailStatus.loading || state.status == ItemDetailStatus.initial;
 

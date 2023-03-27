@@ -25,6 +25,7 @@ abstract class  LocaleKeys {
   static const common_dialog = 'common.dialog';
   static const common_Next = 'common.Next';
   static const common_Skip = 'common.Skip';
+  static const common_Confirm = 'common.Confirm';
   static const common = 'common';
   static const product_Buy = 'product.Buy';
   static const product_PopularProducts = 'product.PopularProducts';
@@ -98,6 +99,21 @@ abstract class  LocaleKeys {
   static const authen_EmailNotValid = 'authen.EmailNotValid';
   static const authen_PasswordRequired = 'authen.PasswordRequired';
   static const authen_EmailOrPhoneNotValid = 'authen.EmailOrPhoneNotValid';
+  static const authen_NotReceiveOTP = 'authen.NotReceiveOTP';
+  static const authen_SendOTPAgainAfterSecond = 'authen.SendOTPAgainAfterSecond';
+  static const authen_SignUpSuccess = 'authen.SignUpSuccess';
+  static const authen_NotHaveAccount = 'authen.NotHaveAccount';
+  static const authen_OrLoginWith = 'authen.OrLoginWith';
+  static const authen_ForgotPassword = 'authen.ForgotPassword';
+  static const authen_ForgotPasswordOTPMsg = 'authen.ForgotPasswordOTPMsg';
+  static const authen_RegisterType_phone = 'authen.RegisterType.phone';
+  static const authen_RegisterType_email = 'authen.RegisterType.email';
+  static const authen_RegisterType = 'authen.RegisterType';
+  static const authen_InputNewPassword = 'authen.InputNewPassword';
+  static const authen_ConfirmPassword = 'authen.ConfirmPassword';
+  static const authen_PasswordNotMatch = 'authen.PasswordNotMatch';
+  static const authen_ChangePaswordSuccess = 'authen.ChangePaswordSuccess';
+  static const authen_ChangePasword = 'authen.ChangePasword';
   static const authen = 'authen';
 
 }

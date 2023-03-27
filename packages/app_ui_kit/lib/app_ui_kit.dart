@@ -22,6 +22,7 @@ export 'components/container/show_more/show_more_layout.dart';
 export 'components/container/show_more/show_more_layout_text_list.dart';
 export 'components/container/show_more/show_more_text.dart';
 export 'components/container/size/container_limited_hoz.dart';
+export 'components/countdown/app_countdown_v2.dart';
 export 'components/dialog/dialog_components.dart';
 export 'components/divider/app_divider.dart';
 export 'components/error/app_error_simple.dart';

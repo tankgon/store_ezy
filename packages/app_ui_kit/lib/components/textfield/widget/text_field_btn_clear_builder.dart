@@ -9,12 +9,14 @@ class TextFieldBtnClearBuilder extends StatefulWidget {
     required this.inputDecoration,
     required this.builder,
     this.enabled = false,
+    this.onClear,
   });
 
   final bool enabled;
   final TextEditingController controller;
   final InputDecoration inputDecoration;
   final Widget Function(BuildContext context, InputDecoration inputDecoration) builder;
+  final VoidCallback? onClear;
 
   @override
   State<TextFieldBtnClearBuilder> createState() => _TextFieldBtnClearBuilderState();
@@ -61,6 +63,7 @@ class _TextFieldBtnClearBuilderState extends State<TextFieldBtnClearBuilder> {
                 iconSize: 20,
                 onPressed: () {
                   widget.controller.clear();
+                  widget.onClear?.call();
                 },
               )
             : widget.inputDecoration.suffixIcon,

@@ -41,6 +41,8 @@ dependencies:
   easy_mask: ^2.0.1
 
   #####  View
+  flutter_countdown_timer: ^4.1.0
+  pinput: ^2.2.31
   flutter_rating_bar: ^4.0.1
   scroll_to_index: ^3.0.1
   loader_overlay: ^2.1.0
@@ -123,15 +125,15 @@ dependencies:
   flutter_phosphor_icons: ^0.0.1+6
 
   #####  Firebase
-  firebase_core: ^2.0.0
-  firebase_messaging: ^14.0.4
-  firebase_auth: ^4.0.1
-  google_sign_in: ^5.4.2
-  flutter_facebook_auth: ^4.4.1+1
-  firebase_crashlytics: ^3.0.1
+  firebase_core: ^2.8.0
+  firebase_messaging: ^14.3.0
+  firebase_auth: ^4.3.0
+  google_sign_in: ^6.0.2
+  flutter_facebook_auth: ^5.0.8
+  firebase_crashlytics: ^3.0.17
   crypto: ^3.0.2
-  sign_in_with_apple: ^4.1.0
-  firebase_dynamic_links: ^5.0.4
+  sign_in_with_apple: ^4.3.0
+  firebase_dynamic_links: ^5.0.17
 
   #  firebase_analytics: ^8.3.4
   #  firebase_remote_config: ^0.11.0+2

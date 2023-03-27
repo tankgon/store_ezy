@@ -37,6 +37,81 @@ class DialogUtils {
     );
   }
 
+  static Future<dynamic> showSuccessDialog({
+    required BuildContext context,
+    String? title,
+    String? content,
+    VoidCallback? onConfirm,
+    bool? useRootNavigator,
+    bool barrierDismissible = true,
+    Duration autoDismissDelay = const Duration(seconds: 3),
+    VoidCallback? onAutoDismiss,
+  }) {
+    return showDialog<dynamic>(
+      context: context,
+      useRootNavigator: useRootNavigator ?? true,
+      barrierDismissible: barrierDismissible,
+      builder: (BuildContext context) {
+        if (onAutoDismiss != null) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            Future.delayed(autoDismissDelay, () {
+              if (context.mounted) {
+                Navigator.of(context, rootNavigator: true).pop();
+                onAutoDismiss.call();
+              }
+            });
+          });
+        }
+
+        return context.dialogConfigData.successDialogBuilder(
+          context,
+          title,
+          content,
+          onConfirm,
+          onAutoDismiss,
+        );
+      },
+    );
+  }
+
+  static Future<dynamic> showErrorDialog({
+    required BuildContext context,
+    Object? error,
+    String? title,
+    String? content,
+    VoidCallback? onConfirm,
+    bool? useRootNavigator,
+    bool barrierDismissible = true,
+    Duration autoDismissDelay = const Duration(seconds: 3),
+    VoidCallback? onAutoDismiss,
+  }) {
+    return showDialog<dynamic>(
+      context: context,
+      useRootNavigator: useRootNavigator ?? true,
+      barrierDismissible: barrierDismissible,
+      builder: (BuildContext context) {
+        if (onAutoDismiss != null) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            Future.delayed(autoDismissDelay, () {
+              if (context.mounted) {
+                Navigator.of(context, rootNavigator: true).pop();
+                onAutoDismiss.call();
+              }
+            });
+          });
+        }
+
+        return context.dialogConfigData.successDialogBuilder(
+          context,
+          title,
+          content,
+          onConfirm,
+          onAutoDismiss,
+        );
+      },
+    );
+  }
+
   static Future<dynamic?> showMaterialDialog({
     required BuildContext context,
     String? title,
@@ -131,9 +206,5 @@ class DialogUtils {
         );
       },
     );
-  }
-
-  static pop(BuildContext context) {
-    Navigator.pop(context);
   }
 }

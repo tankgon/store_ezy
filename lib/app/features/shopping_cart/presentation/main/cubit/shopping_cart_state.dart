@@ -3,27 +3,27 @@ part of 'shopping_cart_cubit.dart';
 class ShoppingCartState extends Equatable {
 
   const ShoppingCartState({
-    this.status = ItemDetailStatus.initial,
+    this.status = ItemDefaultStatus.initial,
     required this.item,
-    this.errorMsg,
+    this.error,
   });
 
-  final ItemDetailStatus status;
+  final ItemDefaultStatus status;
   final dynamic item;
-  final String? errorMsg;
+  final Object? error;
 
   @override
-  List<Object?> get props => [status, item, errorMsg];
+  List<Object?> get props => [status, item, error];
   
   ShoppingCartState copyWith({
-      ItemDetailStatus? status,
+      ItemDefaultStatus? status,
       dynamic? item,
-      String? errorMsg,
+      Object? error,
   }) {
     return ShoppingCartState(
       status: status ?? this.status,
       item: item ?? this.item,
-      errorMsg: errorMsg ?? this.errorMsg,
+      error: error ?? this.error,
     );
   }
 }

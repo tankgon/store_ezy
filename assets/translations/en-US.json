@@ -26,7 +26,8 @@
       "Delete": "Delêt"
     },
     "Next": "Next",
-    "Skip": "Skip"
+    "Skip": "Skip",
+    "Confirm": "Confirm"
   },
   "product": {
     "Buy": "Buy",
@@ -110,6 +111,22 @@
     "PhoneNumberNotValid": "Phone number not valid",
     "EmailNotValid": "Email not valid",
     "PasswordRequired": "Password require",
-    "EmailOrPhoneNotValid": "Email or phone number not valid"
+    "EmailOrPhoneNotValid": "Email or phone number not valid",
+    "NotReceiveOTP": "Not received OTP yet?",
+    "SendOTPAgainAfterSecond": "Send OTP again after {} second",
+    "SignUpSuccess": "Sign up successfull",
+    "NotHaveAccount": "Do not have an account?",
+    "OrLoginWith": "Or login with",
+    "ForgotPassword": "Forgot password",
+    "ForgotPasswordOTPMsg": "Enter {} registered to get the recovery OTP code",
+    "RegisterType": {
+      "phone": "Phone number",
+      "email": "Email"
+    },
+    "InputNewPassword": "Input new password",
+    "ConfirmPassword": "Confirm password",
+    "PasswordNotMatch": "Password not match",
+    "ChangePaswordSuccess": "Change password success",
+    "ChangePasword": "Change password"
   }
 }

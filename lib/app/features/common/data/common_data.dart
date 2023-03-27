@@ -2,7 +2,7 @@ import 'package:ez_store/all_file/all_file.dart';
 
 part 'common_data.g.dart';
 
-enum ItemDetailStatus { initial, loading, success, error }
+enum ItemDefaultStatus { initial, loading, success, error }
 
 @JsonSerializable(ignoreUnannotated: false)
 class FCMTokenReq {

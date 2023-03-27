@@ -26,7 +26,8 @@
       "Delete": "Xóa"
     },
     "Next": "Tiếp theo",
-    "Skip": "Bỏ qua"
+    "Skip": "Bỏ qua",
+    "Confirm": "Xác nhận"
   },
   "product": {
     "Buy": "Chọn mua",
@@ -110,6 +111,22 @@
     "PhoneNumberNotValid": "Số điện thoại không đúng",
     "EmailNotValid": "Email không đúng",
     "PasswordRequired": "Vui lòng nhập mật khẩu",
-    "EmailOrPhoneNotValid": "Email hoặc SĐT không đúng"
+    "EmailOrPhoneNotValid": "Email hoặc SĐT không đúng",
+    "NotReceiveOTP": "Bạn không nhận được mã?",
+    "SendOTPAgainAfterSecond": "Gửi lại mã OTP sau {} giây",
+    "SignUpSuccess": "Đăng ký tài khoản thành công",
+    "NotHaveAccount": "Chưa có tài khoản?",
+    "OrLoginWith": "Hoặc đăng nhập bằng",
+    "ForgotPassword": "Quên mật khẩu",
+    "ForgotPasswordOTPMsg": "Nhập {} đã đăng ký để lấy mã OTP khôi phục mật khẩu",
+    "RegisterType": {
+      "phone": "SĐT",
+      "email": "Email"
+    },
+    "InputNewPassword": "Nhập mật khẩu mới",
+    "ConfirmPassword": "Xác nhận mật khẩu",
+    "PasswordNotMatch": "Mật khẩu không khớp",
+    "ChangePaswordSuccess": "Đổi mật khẩu thành công",
+    "ChangePasword": "Đổi mật khẩu"
   }
 }

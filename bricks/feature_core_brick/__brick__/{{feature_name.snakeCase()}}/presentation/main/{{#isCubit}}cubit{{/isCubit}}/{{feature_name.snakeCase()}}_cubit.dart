@@ -20,7 +20,7 @@ class {{feature_name.pascalCase()}}Cubit extends Cubit<{{feature_name.pascalCase
       emit(
         state.copyWith(
           status: ItemDetailStatus.error,
-          errorMsg: e.getServerErrorMsg(),
+          error: e,
         ),
       );
     }

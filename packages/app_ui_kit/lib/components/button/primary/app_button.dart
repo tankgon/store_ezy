@@ -9,6 +9,7 @@ class AppButton extends StatelessWidget {
     this.onPressed,
     this.style,
     this.isSubmitButton = false,
+    this.isEnable = true,
   });
 
   final Widget? child;
@@ -18,6 +19,7 @@ class AppButton extends StatelessWidget {
   final ButtonStyle? style;
 
   final bool isSubmitButton;
+  final bool isEnable;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,10 @@ class AppButton extends StatelessWidget {
     if (isSubmitButton) {
       final form = ReactiveForm.of(context);
       isDisabled = form?.valid ?? false ? false : true;
+    }
+
+    if (!isEnable) {
+      isDisabled = true;
     }
 
     return ElevatedButton(

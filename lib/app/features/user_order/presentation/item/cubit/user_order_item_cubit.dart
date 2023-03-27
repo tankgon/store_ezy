@@ -6,12 +6,12 @@ class UserOrderItemCubit extends Cubit<UserOrderItemState> {
   UserOrderItemCubit({dynamic? item}) : super(UserOrderItemState(item: item));
 
   FutureOr<void> fetchItem() async {
-    emit(state.copyWith(status: ItemDetailStatus.loading));
+    emit(state.copyWith(status: ItemDefaultStatus.loading));
     try {
       // final item = await Get.find<ApproveRepo>().getProgramForApprove(programID: item.programID ?? '');
       emit(
         state.copyWith(
-          status: ItemDetailStatus.success,
+          status: ItemDefaultStatus.success,
           // item: item,
         )
       );
@@ -19,8 +19,8 @@ class UserOrderItemCubit extends Cubit<UserOrderItemState> {
       log(e.toString(), error: e);
       emit(
         state.copyWith(
-          status: ItemDetailStatus.error,
-          errorMsg: e.getServerErrorMsg(),
+          status: ItemDefaultStatus.error,
+          error: e,
         ),
       );
     }

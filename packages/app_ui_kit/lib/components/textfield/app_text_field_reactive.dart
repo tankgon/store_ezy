@@ -85,6 +85,7 @@ class _AppTextFieldState extends State<AppTextFieldReactive> {
     return TextFieldBtnClearBuilder(
       controller: _controller,
       enabled: widget.enableClearButton,
+      onClear: _onClearCLick,
       inputDecoration: widget.decoration ?? AppTextFieldTheme.primaryStyle(context),
       builder: (context, inputDecoration) => ReactiveTextField<String>(
         formControlName: widget.formControlName,
@@ -102,5 +103,15 @@ class _AppTextFieldState extends State<AppTextFieldReactive> {
         decoration: inputDecoration,
       ),
     );
+  }
+
+  void _onClearCLick() {
+    AbstractControl<dynamic>? control;
+    if (widget.formControl != null) {
+      control = widget.formControl;
+    } else if (widget.formControlName != null) {
+      control = ReactiveForm.of(context)?.findControl(widget.formControlName!);
+    }
+    control?.value = null;
   }
 }

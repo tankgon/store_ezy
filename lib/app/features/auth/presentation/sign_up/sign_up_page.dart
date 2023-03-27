@@ -1,6 +1,7 @@
 import 'package:ez_store/all_file/all_file.dart';
 import 'package:ez_store/app/features/auth/presentation/sign_up/sign_up_body.dart';
 import 'package:ez_store/app/features/auth/presentation/sign_up/cubit/sign_up_cubit.dart';
+import 'package:ez_store/app/features/auth/presentation/widget/auth_id_input.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
@@ -8,7 +9,9 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SignUpCubit()..fetchItem(),
+      create: (context) => SignUpCubit(
+        idInputControl: AuthIdPasswordInput.createControlGroup(),
+      )..fetchItem(),
       child: Builder(builder: (context) {
         return BlocListener<SignUpCubit, SignUpState>(
           listener: _onStateChanged,
@@ -29,8 +32,12 @@ class SignUpPage extends StatelessWidget {
   }
 
   void _onStateChanged(BuildContext context, SignUpState state) {
-    if (state.status == ItemDetailStatus.error) {
-      DialogUtils.showMaterialDialog(context: context, content: state.errorMsg);
+    if (state.status == ItemDefaultStatus.error) {
+      DialogUtils.showErrorDialog(
+        context: context,
+        content: state.error.getServerErrorMsg(),
+        error: state.error,
+      );
     }
   }
 }
@@ -45,9 +52,9 @@ class _PageBodyLoading extends StatelessWidget {
     return BlocBuilder<SignUpCubit, SignUpState>(
       builder: (context, state) {
         // if (state.status == ItemDetailStatus.error) {
-        //   return SimpleErrorText(errorMsg: state.errorMsg ?? '');
+        //   return SimpleErrorText(error: state.errorMsg ?? '');
         // }
-        final isLoading = state.status == ItemDetailStatus.loading || state.status == ItemDetailStatus.initial;
+        final isLoading = state.status == ItemDefaultStatus.loading || state.status == ItemDefaultStatus.initial;
 
         return child;
       },

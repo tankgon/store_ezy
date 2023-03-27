@@ -33,8 +33,12 @@ class CheckoutPage extends StatelessWidget {
   }
 
   void _onStateChanged(BuildContext context, CheckoutState state) {
-    if (state.status == ItemDetailStatus.error) {
-      DialogUtils.showMaterialDialog(context: context, content: state.errorMsg);
+    if (state.status == ItemDefaultStatus.error) {
+      DialogUtils.showErrorDialog(
+        context: context,
+        content: state.error.getServerErrorMsg(),
+        error: state.error,
+      );
     }
   }
 }

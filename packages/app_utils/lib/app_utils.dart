@@ -11,6 +11,7 @@ export 'view/toast_utils.dart';
 
 export 'time/time_service.dart';
 export 'time/time_service_extend.dart';
+export 'time/time_countdown_utils.dart';
 
 export 'navigation/launcher_service.dart';
 

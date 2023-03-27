@@ -3,9 +3,9 @@ import 'package:ez_store/services/user_secure_storage_service.dart';
 import 'package:flutter/services.dart';
 
 class RepoError implements Exception {
-  final String errorMsg;
+  final String error;
 
-  RepoError(this.errorMsg);
+  RepoError(this.error);
 }
 
 extension DioErrorExtend on Object? {
@@ -27,7 +27,7 @@ extension DioErrorExtend on Object? {
   String getServerErrorMsg() {
     final object = this;
     if (object is RepoError) {
-      return object.errorMsg;
+      return object.error;
     }
     if (object is DioError) {
       final dioError = object;

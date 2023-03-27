@@ -1,8 +1,10 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 
 class FocusBuilder extends StatefulWidget {
-  const FocusBuilder({super.key, required this.builder,});
-
+  const FocusBuilder({
+    super.key,
+    required this.builder,
+  });
 
   final Widget Function(BuildContext context, bool hasFocus) builder;
 
