@@ -10,8 +10,7 @@ class AuthOtpConfirmPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => AuthOtpConfirmCubit(),
       child: Builder(builder: (context) {
-        return BlocListener<AuthOtpConfirmCubit, AuthOtpConfirmState>(
-          listener: _onStateChanged,
+        return DefaultStatusConsumer<AuthOtpConfirmCubit, AuthOtpConfirmState>(
           child: Scaffold(
             appBar: AppAppBar(
               title: '',
@@ -19,42 +18,12 @@ class AuthOtpConfirmPage extends StatelessWidget {
                 elevation: 0,
               ),
             ),
-            body: const _PageBodyLoading(
-              child: AuthOtpConfirmBody(),
-            ),
+            body: AuthOtpConfirmBody(),
           ),
         );
       }),
     );
   }
 
-  void _onStateChanged(BuildContext context, AuthOtpConfirmState state) {
-    if (state.status == ItemDefaultStatus.error) {
-      DialogUtils.showErrorDialog(
-        context: context,
-        content: state.error.getServerErrorMsg(),
-        error: state.error,
-      );
-    }
-  }
 }
 
-class _PageBodyLoading extends StatelessWidget {
-  const _PageBodyLoading({super.key, required this.child});
-
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<AuthOtpConfirmCubit, AuthOtpConfirmState>(
-      builder: (context, state) {
-        // if (state.status == ItemDetailStatus.error) {
-        //   return SimpleErrorText(error: state.errorMsg ?? '');
-        // }
-        final isLoading = state.status == ItemDefaultStatus.loading || state.status == ItemDefaultStatus.initial;
-
-        return child;
-      },
-    );
-  }
-}

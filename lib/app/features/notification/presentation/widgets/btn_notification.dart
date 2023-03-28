@@ -28,7 +28,7 @@ class NotificationBtn extends StatelessWidget {
           count: 9,
           onPressed: () {
             // context.pushRoute(const NotificationMainRoute());
-            context.pushRoute(const LoginRoute());
+            context.pushRoute(const ChangePasswordRoute());
           },
         );
       },

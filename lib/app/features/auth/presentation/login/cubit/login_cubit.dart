@@ -2,7 +2,7 @@ import 'package:ez_store/all_file/all_file.dart';
 
 part 'login_state.dart';
 
-class LoginCubit extends Cubit<LoginState> {
+class LoginCubit extends RequestCubit<LoginState> {
   LoginCubit({dynamic? item, required Map<String, AbstractControl<dynamic>> idInputControl}) : super(LoginState(item: item)){
     form = FormGroup({
       ...idInputControl,

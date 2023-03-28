@@ -1,3 +1,4 @@
+export 'package:app_ui_kit/components/container/size/container_limited_hoz.dart';
 export 'package:app_ui_kit/components/tab_bar/app_tab_bar.dart';
 export 'package:app_ui_kit/components/tab_bar/tab_bar_wrapper.dart';
 
@@ -21,7 +22,6 @@ export 'components/container/key_value/app_key_value_list_text.dart';
 export 'components/container/show_more/show_more_layout.dart';
 export 'components/container/show_more/show_more_layout_text_list.dart';
 export 'components/container/show_more/show_more_text.dart';
-export 'components/container/size/container_limited_hoz.dart';
 export 'components/countdown/app_countdown_v2.dart';
 export 'components/dialog/dialog_components.dart';
 export 'components/divider/app_divider.dart';
@@ -31,6 +31,7 @@ export 'components/form/reactive_control_listener.dart';
 export 'components/image/app_avatar.dart';
 export 'components/image/app_img.dart';
 export 'components/loading/app_loading.dart';
+export 'components/loading/app_loading_indicator.dart';
 export 'components/paging/paging_components.dart';
 export 'components/photo_view/app_photo_view.dart';
 export 'components/photo_view/app_photo_view_counter_builder.dart';

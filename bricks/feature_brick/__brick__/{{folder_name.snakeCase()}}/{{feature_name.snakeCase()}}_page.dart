@@ -30,20 +30,15 @@ class {{feature_name.pascalCase()}}Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => {{feature_name.pascalCase()}}Cubit()..fetchItem(),
-      child: Builder(
-          builder: (context) {
-            return BlocListener<{{feature_name.pascalCase()}}Cubit, {{feature_name.pascalCase()}}State>(
-              listener: _onStateChanged,
-              child: Scaffold(
-                appBar: AppAppBar(
-                    title: 'title',
-                  ),
-                body: const _PageBodyLoading(
-                  child: {{feature_name.pascalCase()}}Body(),
-                ),
-              ),
-            );
-          }
+      child: DefaultStatusConsumer<{{feature_name.pascalCase()}}Cubit, {{feature_name.pascalCase()}}State>(
+        child: Scaffold(
+          appBar: AppAppBar(
+              title: 'title',
+            ),
+          body: const _PageBodyLoading(
+            child: {{feature_name.pascalCase()}}Body(),
+          ),
+        ),
       ),
     );
   } {{/isCubit}}  {{#isNone}}
@@ -54,29 +49,4 @@ class {{feature_name.pascalCase()}}Page extends StatelessWidget {
     );
   } {{/isNone}}
 
-  void _onStateChanged(BuildContext context, {{feature_name.pascalCase()}}State state) {
-    if (state.status == ItemDetailStatus.error) {
-      DialogUtils.showMaterialDialog(context: context, content: state.errorMsg);
-    }
-  }
-}
-
-class _PageBodyLoading extends StatelessWidget {
-  const _PageBodyLoading({super.key, required this.child});
-
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<{{feature_name.pascalCase()}}Cubit, {{feature_name.pascalCase()}}State>(
-      builder: (context, state) {
-        // if (state.status == ItemDetailStatus.error) {
-        //   return SimpleErrorText(error: state.errorMsg ?? '');
-        // }
-        final isLoading = state.status == ItemDetailStatus.loading || state.status == ItemDetailStatus.initial;
-
-        return child;
-      },
-    );
-  }
 }

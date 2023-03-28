@@ -1,16 +1,13 @@
 part of '{{feature_name.snakeCase()}}_cubit.dart';
 
-class {{feature_name.pascalCase()}}State extends Equatable {
-
+class {{feature_name.pascalCase()}}State extends RequestState {
   const {{feature_name.pascalCase()}}State({
-    this.status = ItemDetailStatus.initial,
+    super.status = ItemDetailStatus.initial,
     required this.item,
-    this.errorMsg,
+    super.errorMsg,
   });
 
-  final ItemDetailStatus status;
   final dynamic item;
-  final Object? error;
 
   @override
   List<Object?> get props => [status, item, error];

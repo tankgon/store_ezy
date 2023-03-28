@@ -13,49 +13,43 @@ class SignUpBody extends StatelessWidget {
     return AuthPageBody(
       child: ReactiveForm(
         formGroup: context.read<SignUpCubit>().form,
-        child: BlocBuilder<SignUpCubit, SignUpState>(
-          builder: (context, state) {
-            final item = state.item;
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                LocaleKeys.authen_SignUp.tr().text.titleLarge(context).semiBold.center.make(),
-                Gaps.vGap32,
-                const AuthIdPasswordInput(),
-                Gaps.vGap32,
-                AppButton(
-                  style: AppButtonTheme.confirmAction(context),
-                  isSubmitButton: true,
-                  label: LocaleKeys.common_Next.tr(),
-                  onPressed: () {},
-                ),
-                Gaps.vGap32,
-                Text.rich(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            LocaleKeys.authen_SignUp.tr().text.titleLarge(context).semiBold.center.make(),
+            Gaps.vGap32,
+            const AuthIdPasswordInput(),
+            Gaps.vGap32,
+            AppButton(
+              style: AppButtonTheme.confirmAction(context),
+              isSubmitButton: true,
+              label: LocaleKeys.common_Next.tr(),
+              onPressed: () {},
+            ),
+            Gaps.vGap32,
+            Text.rich(
+              TextSpan(
+                text: LocaleKeys.authen_AlreadyHaveAccount.tr(),
+                children: [
                   TextSpan(
-                    text: LocaleKeys.authen_AlreadyHaveAccount.tr(),
-                    children: [
-                      TextSpan(
-                        text: ' ${LocaleKeys.authen_Login.tr()}',
-                        style: TextStyle(
-                          color: context.theme.primaryColor,
-                          fontWeight: FontWeight.w600,
-                        ),
-                        recognizer: TapGestureRecognizer()..onTap = () {},
-                      ),
-                    ],
+                    text: ' ${LocaleKeys.authen_Login.tr()}',
+                    style: TextStyle(
+                      color: context.theme.primaryColor,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    recognizer: TapGestureRecognizer()..onTap = () {},
                   ),
-                  textAlign: TextAlign.center,
-                ),
-                Gaps.vGap24,
-                LocaleKeys.authen_OrSignUpWith.tr().text.center.make(),
-                Gaps.vGap24,
-                SocialAuthSection(),
-              ],
-            );
-          },
+                ],
+              ),
+              textAlign: TextAlign.center,
+            ),
+            Gaps.vGap24,
+            LocaleKeys.authen_OrSignUpWith.tr().text.center.make(),
+            Gaps.vGap24,
+            SocialAuthSection(),
+          ],
         ),
       ),
     );
   }
 }
-

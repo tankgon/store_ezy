@@ -11,53 +11,19 @@ class ForgotPasswordPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => ForgotPasswordCubit(
         controls: AuthIdInput.createControl(),
-      )..fetchItem(),
-      child: Builder(builder: (context) {
-        return BlocListener<ForgotPasswordCubit, ForgotPasswordState>(
-          listener: _onStateChanged,
-          child: Scaffold(
-            appBar: AppAppBar(
-              title: '',
-              args: AppBarArgs(
-                elevation: 0,
-              ),
-            ),
-            body: const _PageBodyLoading(
-              child: ForgotPasswordBody(),
+      ),
+      child: DefaultStatusConsumer<ForgotPasswordCubit, ForgotPasswordState>(
+        child: Scaffold(
+          appBar: AppAppBar(
+            title: '',
+            args: AppBarArgs(
+              elevation: 0,
             ),
           ),
-        );
-      }),
+          body: ForgotPasswordBody(),
+        ),
+      ),
     );
   }
 
-  void _onStateChanged(BuildContext context, ForgotPasswordState state) {
-    if (state.status == ItemDefaultStatus.error) {
-      DialogUtils.showErrorDialog(
-        context: context,
-        content: state.error.getServerErrorMsg(),
-        error: state.error,
-      );
-    }
-  }
-}
-
-class _PageBodyLoading extends StatelessWidget {
-  const _PageBodyLoading({super.key, required this.child});
-
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
-      builder: (context, state) {
-        // if (state.status == ItemDetailStatus.error) {
-        //   return SimpleErrorText(error: state.errorMsg ?? '');
-        // }
-        final isLoading = state.status == ItemDefaultStatus.loading || state.status == ItemDefaultStatus.initial;
-
-        return child;
-      },
-    );
-  }
 }

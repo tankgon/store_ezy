@@ -1,16 +1,14 @@
 part of 'forgot_password_cubit.dart';
 
-class ForgotPasswordState extends Equatable {
+class ForgotPasswordState extends RequestState {
 
   const ForgotPasswordState({
-    this.status = ItemDefaultStatus.initial,
+    super.status = ItemDefaultStatus.initial,
     required this.item,
-    this.error,
+    super.error,
   });
 
-  final ItemDefaultStatus status;
   final dynamic item;
-  final Object? error;
 
   @override
   List<Object?> get props => [status, item, error];

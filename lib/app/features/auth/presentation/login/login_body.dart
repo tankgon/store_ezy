@@ -14,40 +14,35 @@ class LoginBody extends StatelessWidget {
     return AuthPageBody(
       child: ReactiveForm(
         formGroup: context.read<LoginCubit>().form,
-        child: BlocBuilder<LoginCubit, LoginState>(
-          builder: (context, state) {
-            final item = state.item;
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                LocaleKeys.authen_Login.tr().text.titleLarge(context).semiBold.center.make(),
-                Gaps.vGap32,
-                const AuthIdPasswordInput(
-                  showPasswordHelper: false,
-                ),
-                AppButtonText(
-                  padding: EdgeInsets.zero.copyWith(top: 8),
-                  label: '${LocaleKeys.authen_ForgotPassword.tr()}?',
-                  onPressed: () {
-                    context.pushRoute(const ForgotPasswordRoute());
-                  },
-                ).objectCenterRight(),
-                Gaps.vGap24,
-                AppButton(
-                  style: AppButtonTheme.confirmAction(context),
-                  isSubmitButton: true,
-                  label: LocaleKeys.authen_Login.tr(),
-                  onPressed: () {},
-                ),
-                Gaps.vGap32,
-                const LoginNotHaveAccountMsg(),
-                Gaps.vGap24,
-                LocaleKeys.authen_OrLoginWith.tr().text.center.make(),
-                Gaps.vGap24,
-                SocialAuthSection(),
-              ],
-            );
-          },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            LocaleKeys.authen_Login.tr().text.titleLarge(context).semiBold.center.make(),
+            Gaps.vGap32,
+            const AuthIdPasswordInput(
+              showPasswordHelper: false,
+            ),
+            AppButtonText(
+              padding: EdgeInsets.zero.copyWith(top: 8),
+              label: '${LocaleKeys.authen_ForgotPassword.tr()}?',
+              onPressed: () {
+                context.pushRoute(const ForgotPasswordRoute());
+              },
+            ).objectCenterRight(),
+            Gaps.vGap24,
+            AppButton(
+              style: AppButtonTheme.confirmAction(context),
+              isSubmitButton: true,
+              label: LocaleKeys.authen_Login.tr(),
+              onPressed: () {},
+            ),
+            Gaps.vGap32,
+            const LoginNotHaveAccountMsg(),
+            Gaps.vGap24,
+            LocaleKeys.authen_OrLoginWith.tr().text.center.make(),
+            Gaps.vGap24,
+            SocialAuthSection(),
+          ],
         ),
       ),
     );

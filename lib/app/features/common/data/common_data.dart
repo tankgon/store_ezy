@@ -4,11 +4,9 @@ part 'common_data.g.dart';
 
 enum ItemDefaultStatus { initial, loading, success, error }
 
+
 @JsonSerializable(ignoreUnannotated: false)
 class FCMTokenReq {
-  final String? deviceID;
-  final String? deviceToken;
-  final String? type;
 
   const FCMTokenReq({
     this.deviceID,
@@ -18,6 +16,9 @@ class FCMTokenReq {
 
   factory FCMTokenReq.fromJson(Map<String, dynamic> json) =>
       _$FCMTokenReqFromJson(json);
+  final String? deviceID;
+  final String? deviceToken;
+  final String? type;
 
   Map<String, dynamic> toJson() => _$FCMTokenReqToJson(this);
 }
@@ -25,15 +26,9 @@ class FCMTokenReq {
 
 @JsonSerializable(ignoreUnannotated: false)
 class RangeValueModel<T> {
-  @_Converter()
-  final T? start;
-  @_Converter()
-  final T? end;
 
   factory RangeValueModel.fromJson(Map<String, dynamic> json) =>
       _$RangeValueModelFromJson<T>(json);
-
-  Map<String, dynamic> toJson() => _$RangeValueModelToJson(this);
 
 //<editor-fold desc="Data Methods">
 
@@ -41,6 +36,19 @@ class RangeValueModel<T> {
     this.start,
     this.end,
   });
+
+  factory RangeValueModel.fromMap(Map<String, dynamic> map) {
+    return RangeValueModel(
+      start: map['start'] as T,
+      end: map['end'] as T,
+    );
+  }
+  @_Converter()
+  final T? start;
+  @_Converter()
+  final T? end;
+
+  Map<String, dynamic> toJson() => _$RangeValueModelToJson(this);
 
   @override
   bool operator ==(Object other) =>
@@ -73,13 +81,6 @@ class RangeValueModel<T> {
       'start': this.start,
       'end': this.end,
     };
-  }
-
-  factory RangeValueModel.fromMap(Map<String, dynamic> map) {
-    return RangeValueModel(
-      start: map['start'] as T,
-      end: map['end'] as T,
-    );
   }
 
 //</editor-fold>

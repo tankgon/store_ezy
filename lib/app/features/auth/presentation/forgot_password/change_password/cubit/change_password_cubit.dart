@@ -3,7 +3,7 @@ import 'package:ez_store/app/features/auth/presentation/widget/auth_id_input.dar
 
 part 'change_password_state.dart';
 
-class ChangePasswordCubit extends Cubit<ChangePasswordState> {
+class ChangePasswordCubit extends RequestCubit<ChangePasswordState> {
   ChangePasswordCubit({dynamic? item}) : super(ChangePasswordState(item: item)) {
     form = FormGroup(
       {

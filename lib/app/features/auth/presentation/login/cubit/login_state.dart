@@ -1,16 +1,14 @@
 part of 'login_cubit.dart';
 
-class LoginState extends Equatable {
+class LoginState extends RequestState {
 
   const LoginState({
-    this.status = ItemDefaultStatus.initial,
+    super.status = ItemDefaultStatus.initial,
     required this.item,
-    this.error,
+    super.error,
   });
 
-  final ItemDefaultStatus status;
   final dynamic item;
-  final Object? error;
 
   @override
   List<Object?> get props => [status, item, error];

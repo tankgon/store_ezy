@@ -13,55 +13,19 @@ class LoginPage extends StatelessWidget {
       create: (context) => LoginCubit(
         idInputControl: AuthIdPasswordInput.createControlGroup(),
       )..fetchItem(),
-      child: Builder(
-        builder: (context) {
-          return BlocListener<LoginCubit, LoginState>(
-            listener: _onStateChanged,
-            child: Scaffold(
-              resizeToAvoidBottomInset: true,
-              appBar: AppAppBar(
-                title: '',
-                args: AppBarArgs(
-                  elevation: 0,
-                ),
-              ),
-              body: const _PageBodyLoading(
-                child: LoginBody(),
-              ),
+      child: const DefaultStatusConsumer<LoginCubit, LoginState>(
+        child: Scaffold(
+          resizeToAvoidBottomInset: true,
+          appBar: AppAppBar(
+            title: '',
+            args: AppBarArgs(
+              elevation: 0,
             ),
-          );
-        },
+          ),
+          body: LoginBody(),
+        ),
       ),
     );
   }
 
-  void _onStateChanged(BuildContext context, LoginState state) {
-    if (state.status == ItemDefaultStatus.error) {
-      DialogUtils.showErrorDialog(
-        context: context,
-        content: state.error.getServerErrorMsg(),
-        error: state.error,
-      );
-    }
-  }
-}
-
-class _PageBodyLoading extends StatelessWidget {
-  const _PageBodyLoading({super.key, required this.child});
-
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<LoginCubit, LoginState>(
-      builder: (context, state) {
-        // if (state.status == ItemDetailStatus.error) {
-        //   return SimpleErrorText(error: state.errorMsg ?? '');
-        // }
-        final isLoading = state.status == ItemDefaultStatus.loading || state.status == ItemDefaultStatus.initial;
-
-        return child;
-      },
-    );
-  }
 }

@@ -1,16 +1,14 @@
 part of 'auth_otp_confirm_cubit.dart';
 
-class AuthOtpConfirmState extends Equatable {
+class AuthOtpConfirmState extends RequestState {
 
   const AuthOtpConfirmState({
-    this.status = ItemDefaultStatus.initial,
+    super.status = ItemDefaultStatus.initial,
     this.otp,
-    this.error,
+    super.error,
   });
 
-  final ItemDefaultStatus status;
   final String? otp;
-  final Object? error;
 
   @override
   List<Object?> get props => [status, otp, error];

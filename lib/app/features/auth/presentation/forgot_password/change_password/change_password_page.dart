@@ -8,50 +8,23 @@ class ChangePasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ChangePasswordCubit()..fetchItem(),
-      child: Builder(builder: (context) {
-        return BlocListener<ChangePasswordCubit, ChangePasswordState>(
-          listener: _onStateChanged,
-          child: Scaffold(
-            appBar: AppAppBar(
-              title: '',
-              args: AppBarArgs(
-                elevation: 0,
+      create: (context) => ChangePasswordCubit(),
+      child: Builder(
+        builder: (context) {
+          return DefaultStatusConsumer<ChangePasswordCubit, ChangePasswordState>(
+            child: Scaffold(
+              appBar: AppAppBar(
+                title: '',
+                args: AppBarArgs(
+                  elevation: 0,
+                ),
               ),
+              body: ChangePasswordBody(),
             ),
-            body: const _PageBodyLoading(
-              child: ChangePasswordBody(),
-            ),
-          ),
-        );
-      }),
+          );
+        },
+      ),
     );
   }
 
-  void _onStateChanged(BuildContext context, ChangePasswordState state) {
-    if (state.status == ItemDefaultStatus.error) {
-      DialogUtils.showErrorDialog(
-        context: context,
-        content: state.error.getServerErrorMsg(),
-        error: state.error,
-      );
-    }
-  }
-}
-
-class _PageBodyLoading extends StatelessWidget {
-  const _PageBodyLoading({super.key, required this.child});
-
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<ChangePasswordCubit, ChangePasswordState>(
-      builder: (context, state) {
-        final isLoading = state.status == ItemDefaultStatus.loading || state.status == ItemDefaultStatus.initial;
-
-        return child;
-      },
-    );
-  }
 }

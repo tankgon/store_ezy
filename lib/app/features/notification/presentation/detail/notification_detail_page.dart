@@ -55,7 +55,7 @@ class _PageBodyLoading extends StatelessWidget {
         if (state.status == ItemDefaultStatus.error) {
           return AppErrorSimple(errorMsg: state.error.getServerErrorMsg());
         } else if (state.status == ItemDefaultStatus.initial || state.status == ItemDefaultStatus.loading) {
-          return const AppLoading();
+          return const AppLoadingIndicator();
         }
 
         return body;

@@ -2,7 +2,7 @@ import 'package:ez_store/all_file/all_file.dart';
 
 part 'forgot_password_state.dart';
 
-class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
+class ForgotPasswordCubit extends RequestCubit<ForgotPasswordState> {
   ForgotPasswordCubit({dynamic? item, required Map<String, AbstractControl<dynamic>> controls}) : super(ForgotPasswordState(item: item)){
     form = FormGroup({
       ...controls
