@@ -1,4 +1,5 @@
 import 'package:ez_store/all_file/all_file.dart';
+import 'package:ez_store/app/features/product/domain/entity/product_entity.dart';
 import 'package:ez_store/app/features/product/presentation/item/layout/product_item_layout.dart';
 import 'package:ez_store/app/features/product/presentation/item/product_item_args.dart';
 import 'package:ez_store/app/features/product/presentation/widget/product_discount.dart';
@@ -8,30 +9,14 @@ import 'package:flutter/cupertino.dart';
 class ProductItemTileLayout3 extends StatelessWidget {
   const ProductItemTileLayout3({
     super.key,
-    this.img,
-    required this.title,
-    this.price,
-    this.type,
+    required this.product,
     this.onAddToCart,
     this.onPressed,
     this.args = const ProductItemArgs(),
   });
 
-  const ProductItemTileLayout3.demo({
-    super.key,
-    this.img = 'https://product.hstatic.net/200000311493/product/set_goi_xa_gung_trang_68383b0f8acb45c498206705071e6d2c.jpg',
-    this.title = 'Dầu gội dưỡng thể',
-    this.price = '100000',
-    this.type = 'chai',
-    this.onAddToCart,
-    this.onPressed,
-    this.args = const ProductItemArgs(),
-  });
 
-  final dynamic img;
-  final String? title;
-  final String? price;
-  final String? type;
+  final ProductEntity product;
   final VoidCallback? onAddToCart;
   final VoidCallback? onPressed;
 
@@ -56,7 +41,7 @@ class ProductItemTileLayout3 extends StatelessWidget {
               ),
               clipBehavior: Clip.hardEdge,
               child: AppImg(
-                img,
+                product.img,
               ),
             ).aspectRatio(1),
             Gaps.hGap12,
@@ -71,17 +56,17 @@ class ProductItemTileLayout3 extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        title?.textAuto.titleMedium(context).medium.maxLines(2).ellipsis.make().pb2().minHeight(22),
+        product.title?.textAuto.titleMedium(context).medium.maxLines(2).ellipsis.make().pb2().minHeight(22),
         const Spacer(),
         Row(
           children: [
             ProductPriceWithType(
-              price: price,
+              price: product.price,
               priceStyle: context.bodyMedium?.copyWith(
                 fontWeight: FontWeight.w500,
                 fontSize: context.textS,
               ),
-              type: type,
+              type: product.type,
               typeStyle: context.bodySmall?.copyWith(
                 color: context.themeColor.grey,
               ),

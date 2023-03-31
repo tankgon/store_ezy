@@ -8,7 +8,7 @@ class ProductItemState extends Equatable {
   });
 
   final ItemDefaultStatus status;
-  final ProductModel item;
+  final ProductEntity item;
   final Object? error;
 
   @override
@@ -16,7 +16,7 @@ class ProductItemState extends Equatable {
 
   ProductItemState copyWith({
     ItemDefaultStatus? status,
-    ProductModel? item,
+    ProductEntity? item,
     Object? error,
   }) {
     return ProductItemState(

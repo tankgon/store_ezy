@@ -1,5 +1,5 @@
 import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/product/data/model/product_base_model.dart';
+import 'package:ez_store/app/features/product/domain/entity/product_entity.dart';
 import 'package:ez_store/app/features/product/presentation/item/cubit/product_item_cubit.dart';
 import 'package:ez_store/app/features/product/presentation/item/layout/product_item_layout.dart';
 import 'package:ez_store/app/features/product/presentation/item/layout/product_item_layout_1.dart';
@@ -17,7 +17,7 @@ class ProductItem extends StatelessWidget {
     this.createState = false,
   });
 
-  final ProductModel item;
+  final ProductEntity item;
   final bool createState;
   final ProductItemLayoutType? layoutType;
   final ProductItemArgs args;
@@ -44,27 +44,32 @@ class ProductItem extends StatelessWidget {
     );
   }
 
-  Builder _buildItem(ProductModel item) {
+  Builder _buildItem(ProductEntity item) {
+
     return Builder(
       builder: (context) {
         switch (layoutType) {
           case ProductItemLayoutType.layout1:
-            return ProductItemLayout1.demo(
+            return ProductItemLayout1(
+              product: item,
               args: args,
               onPressed: () => _onItemClick(context),
             );
           case ProductItemLayoutType.layoutTile1:
-            return ProductItemTileLayout1.demo(
+            return ProductItemTileLayout1(
+              product: item,
               args: args,
               onPressed: () => _onItemClick(context),
             );
           case ProductItemLayoutType.layoutTile2:
-            return ProductItemTileLayout2.demo(
+            return ProductItemTileLayout2(
+              product: item,
               args: args,
               onPressed: () => _onItemClick(context),
             );
           case ProductItemLayoutType.layoutTile3:
-            return ProductItemTileLayout3.demo(
+            return ProductItemTileLayout3(
+              product: item,
               args: args,
               onPressed: () => _onItemClick(context),
             );

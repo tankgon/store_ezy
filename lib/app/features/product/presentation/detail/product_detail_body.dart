@@ -10,7 +10,9 @@ import 'package:ez_store/app/features/product/presentation/detail/widget/detail_
 import 'package:ez_store/app/features/product/presentation/detail/widget/title_price_section.dart';
 import 'package:ez_store/app/features/product/presentation/list/product_grid_hoz.dart';
 import 'package:ez_store/app/features/product/presentation/list/product_grid_ver.dart';
+import 'package:ez_store/app/features/product/presentation/variant/list/product_detail_variant_list.dart';
 import 'package:ez_store/app/features/product/presentation/widget/product_photo_view.dart';
+import 'package:ez_store/app/features/product/self.dart';
 
 class ProductDetailBody extends StatelessWidget {
   const ProductDetailBody({super.key});
@@ -35,6 +37,7 @@ class ProductDetailBody extends StatelessWidget {
                   ),
                   ...[
                     const ProductTitleHeader(),
+                    ProductDetailVariantList.demo().pyDefault(),
                     DistributorItem(
                       layoutType: DistributorItemLayoutType.layoutSimpleInfo1,
                     ),

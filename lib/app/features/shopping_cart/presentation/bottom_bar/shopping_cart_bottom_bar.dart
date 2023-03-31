@@ -7,9 +7,11 @@ class ShoppingCartBottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBottomBar(
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           const _TotalCountSection().minHeight(24),
           const Divider(),
+          Gaps.vGap4,
           const _TotalPriceSection(),
         ],
       ),

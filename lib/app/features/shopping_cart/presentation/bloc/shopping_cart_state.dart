@@ -16,7 +16,7 @@ class ShoppingCartState extends Equatable {
   });
 
   final ShoppingCartStatus status;
-  final List<ProductModel> items;
+  final List<ProductEntity> items;
   final Set<String> selectedItem;
 
   @override
@@ -24,7 +24,7 @@ class ShoppingCartState extends Equatable {
 
   ShoppingCartState copyWith({
     ShoppingCartStatus? status,
-    List<ProductModel>? items,
+    List<ProductEntity>? items,
     Set<String>? selectedItem,
   }) {
     return ShoppingCartState(

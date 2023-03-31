@@ -1,5 +1,5 @@
 import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/product/data/model/product_base_model.dart';
+import 'package:ez_store/app/features/product/domain/entity/product_entity.dart';
 import 'package:ez_store/app/features/product/presentation/item/layout/product_item_layout.dart';
 import 'package:ez_store/app/features/product/presentation/item/layout/product_item_tile_layout_1.dart';
 import 'package:ez_store/app/features/product/presentation/item/product_item.dart';
@@ -23,12 +23,12 @@ class ProductGridVer extends StatelessWidget {
       physics: physics,
       isSliver: isSliver,
       fetchListData: (page, pageSize) {
-        return Future.value(List.generate(15, (index) => index).map((e) => ProductModel()).toList());
+        return Future.value(List.generate(15, (index) => index).map((e) => ProductEntity.demo()).toList());
       },
     );
   }
 
-  final PagingListFetchFunc<ProductModel> fetchListData;
+  final PagingListFetchFunc<ProductEntity> fetchListData;
   final EdgeInsets? padding;
   final ProductItemLayoutType layoutType;
   final double spacing;
@@ -43,7 +43,7 @@ class ProductGridVer extends StatelessWidget {
     const crossAxisCount = 2;
     aspectRatio = layoutType.size.width / layoutType.size.height;
 
-    return PagingGrid<ProductModel>(
+    return PagingGrid<ProductEntity>(
       shrinkWrap: shrinkWrap ?? false,
       physics: physics,
       isSliver: isSliver ?? false,

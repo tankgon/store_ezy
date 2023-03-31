@@ -39,7 +39,10 @@
     "OriginOrBrand": "Xuất xứ/thương hiệu",
     "Uses": "Công dụng",
     "SameDistributor": "Cùng nhà phân phối",
-    "SameProductType": "Sản phẩm tương tự"
+    "SameProductType": "Sản phẩm tương tự",
+    "ProductClassification": "Phân loại sản phẩm",
+    "Classification": "Phân loại",
+    "Quantity": "Số lượng"
   },
   "discount": {
     "Promotions": "Chương trình khuyến mãi"

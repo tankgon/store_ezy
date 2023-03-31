@@ -29,6 +29,7 @@ export 'package:font_awesome_flutter/font_awesome_flutter.dart';
 export 'package:get_it/get_it.dart';
 export 'package:hive_flutter/hive_flutter.dart';
 export 'package:json_annotation/json_annotation.dart';
+export 'package:layout/layout.dart' hide LayoutWidgetBuilder;
 export 'package:loader_overlay/loader_overlay.dart';
 export 'package:package_info_plus/package_info_plus.dart';
 export 'package:reactive_forms/reactive_forms.dart';

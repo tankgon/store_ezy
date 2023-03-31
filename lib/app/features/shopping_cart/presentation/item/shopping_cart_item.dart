@@ -1,6 +1,6 @@
 import 'package:ez_store/all_file/all_file.dart';
 import 'package:ez_store/app/features/shopping_cart/presentation/item/layout/shopping_cart_item_layout_1.dart';
-import 'package:ez_store/app/features/shopping_cart/presentation/item_counter/shopping_cart_item_counter_args.dart';
+import 'package:ez_store/app/widgets/app_item_counter/app_item_counter_args.dart';
 
 class ShoppingCartItem extends StatelessWidget {
   const ShoppingCartItem({
@@ -17,8 +17,8 @@ class ShoppingCartItem extends StatelessWidget {
     );
   }
 
-  ShoppingCartItemCounterSubmitCallBack _counterSubmitCallBack(BuildContext context) {
-    return ShoppingCartItemCounterSubmitCallBack(
+  AppCartItemCounterSubmitCallBack _counterSubmitCallBack(BuildContext context) {
+    return AppCartItemCounterSubmitCallBack(
       onValueSubmit: (value) {
 
       },

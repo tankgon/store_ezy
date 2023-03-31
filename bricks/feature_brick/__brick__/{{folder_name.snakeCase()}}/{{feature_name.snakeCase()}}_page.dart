@@ -8,7 +8,7 @@ class {{feature_name.pascalCase()}}Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => {{feature_name.pascalCase()}}Bloc()..fetchItem(),
+      create: (context) => {{feature_name.pascalCase()}}Bloc(),
       child: Builder(
           builder: (context) {
             return BlocConsumer<{{feature_name.pascalCase()}}Bloc, {{feature_name.pascalCase()}}State>(
@@ -29,15 +29,13 @@ class {{feature_name.pascalCase()}}Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => {{feature_name.pascalCase()}}Cubit()..fetchItem(),
+      create: (context) => {{feature_name.pascalCase()}}Cubit(),
       child: DefaultStatusConsumer<{{feature_name.pascalCase()}}Cubit, {{feature_name.pascalCase()}}State>(
         child: Scaffold(
           appBar: AppAppBar(
               title: 'title',
             ),
-          body: const _PageBodyLoading(
-            child: {{feature_name.pascalCase()}}Body(),
-          ),
+          body: {{feature_name.pascalCase()}}Body(),
         ),
       ),
     );

@@ -6,11 +6,11 @@ import 'package:flutter_svg/svg.dart';
 class AppImg extends StatelessWidget {
   const AppImg(
     this.src, {
-    Key? key,
+    super.key,
     this.fit = BoxFit.fitWidth,
     this.progressIndicatorBuilder,
     this.errorUrlWidget,
-  }) : super(key: key);
+  });
 
   final dynamic? src;
   final BoxFit fit;

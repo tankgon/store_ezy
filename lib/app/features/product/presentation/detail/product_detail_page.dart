@@ -1,12 +1,13 @@
 import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/product/data/model/product_base_model.dart';
+import 'package:ez_store/app/features/product/domain/entity/product_entity.dart';
 import 'package:ez_store/app/features/product/presentation/detail/cubit/product_detail_cubit.dart';
 import 'package:ez_store/app/features/product/presentation/detail/product_detail_body.dart';
+import 'package:ez_store/app/features/product/presentation/detail/widget/product_bottom_bar.dart';
 
 class ProductDetailPage extends StatelessWidget {
   const ProductDetailPage({super.key, required this.product});
 
-  final ProductModel product;
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +23,9 @@ class ProductDetailPage extends StatelessWidget {
                 appBar: AppAppBar(
                     title: '',
                   ),
+                bottomNavigationBar: AppBottomBar(
+                  child: ProductBottomBar(),
+                ),
                 body: ProductDetailBody(),
               ),
             );

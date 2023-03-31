@@ -1,7 +1,7 @@
 import 'package:ez_store/all_file/all_file.dart';
 
-class ShoppingCartItemCounterCallBack {
-  const ShoppingCartItemCounterCallBack({
+class AppCartItemCounterCallBack {
+  const AppCartItemCounterCallBack({
     this.onValueChange,
     this.onAdd,
     this.onRemove,
@@ -12,8 +12,8 @@ class ShoppingCartItemCounterCallBack {
   final VoidCallback? onRemove;
 }
 
-class ShoppingCartItemCounterSubmitCallBack {
-  const ShoppingCartItemCounterSubmitCallBack({
+class AppCartItemCounterSubmitCallBack {
+  const AppCartItemCounterSubmitCallBack({
     this.onValueSubmit,
     this.onDeleteItem,
   });

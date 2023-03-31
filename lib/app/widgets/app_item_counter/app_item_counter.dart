@@ -1,24 +1,23 @@
 import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/shopping_cart/presentation/item_counter/bloc/shopping_cart_item_counter_bloc.dart';
-import 'package:ez_store/app/features/shopping_cart/presentation/item_counter/bloc/shopping_cart_item_counter_bloc.dart';
-import 'package:ez_store/app/features/shopping_cart/presentation/item_counter/shopping_cart_item_counter_args.dart';
-import 'package:ez_store/app/features/shopping_cart/presentation/item_counter/layout/shopping_cart_item_counter_layout_1.dart';
+import 'package:ez_store/app/widgets/app_item_counter/app_item_counter_args.dart';
+import 'package:ez_store/app/widgets/app_item_counter/bloc/app_item_counter_bloc.dart';
+import 'package:ez_store/app/widgets/app_item_counter/layout/app_item_counter_layout_1.dart';
 
-class ShoppingCartItemCounter extends StatefulWidget {
-  const ShoppingCartItemCounter({
+class AppCartItemCounter extends StatefulWidget {
+  const AppCartItemCounter({
     super.key,
     required this.submitCallBack,
     this.counterInitValue = 1,
   });
 
-  final ShoppingCartItemCounterSubmitCallBack submitCallBack;
+  final AppCartItemCounterSubmitCallBack submitCallBack;
   final int counterInitValue;
 
   @override
-  State<ShoppingCartItemCounter> createState() => _ShoppingCartItemCounterState();
+  State<AppCartItemCounter> createState() => _AppCartItemCounterState();
 }
 
-class _ShoppingCartItemCounterState extends State<ShoppingCartItemCounter> {
+class _AppCartItemCounterState extends State<AppCartItemCounter> {
 
   late final TextEditingController _textEditingController;
 
@@ -37,7 +36,7 @@ class _ShoppingCartItemCounterState extends State<ShoppingCartItemCounter> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ShoppingCartItemCounterBloc(
+      create: (context) => AppCartItemCounterBloc(
         initialValue: widget.counterInitValue,
         submitCallBack: widget.submitCallBack,
       ),
@@ -45,30 +44,30 @@ class _ShoppingCartItemCounterState extends State<ShoppingCartItemCounter> {
         builder: (context) {
           return MultiBlocListener(
             listeners: [
-              BlocListener<ShoppingCartItemCounterBloc, ShoppingCartItemCounterState>(
+              BlocListener<AppCartItemCounterBloc, AppCartItemCounterState>(
                 listenWhen: (previous, current) => previous.counterValue != current.counterValue || _textEditingController.text != current.counterValue.toString(),
                 listener: (context, state) {
                   _textEditingController.text = state.counterValue.toString();
                 },
               ),
-              BlocListener<ShoppingCartItemCounterBloc, ShoppingCartItemCounterState>(
+              BlocListener<AppCartItemCounterBloc, AppCartItemCounterState>(
                 listener: (context, state) {
-                  if (state.status == ShoppingCartItemCounterStatus.submit) {
+                  if (state.status == AppCartItemCounterStatus.submit) {
                     widget.submitCallBack.onValueSubmit?.call(state.counterValue);
                   }
                 },
               ),
             ],
-            child: ShoppingCartItemCounterLayout1(
-              callback: ShoppingCartItemCounterCallBack(
+            child: AppCartItemCounterLayout1(
+              callback: AppCartItemCounterCallBack(
                 onAdd: () {
-                  context.read<ShoppingCartItemCounterBloc>().add(ShoppingCartItemCounterAddEvent());
+                  context.read<AppCartItemCounterBloc>().add(AppCartItemCounterAddEvent());
                 },
                 onRemove: () {
-                  context.read<ShoppingCartItemCounterBloc>().add(ShoppingCartItemCounterRemoveEvent());
+                  context.read<AppCartItemCounterBloc>().add(AppCartItemCounterRemoveEvent());
                 },
                 onValueChange: (value) {
-                  context.read<ShoppingCartItemCounterBloc>().add(ShoppingCartItemCounterValueChangeEvent(value));
+                  context.read<AppCartItemCounterBloc>().add(AppCartItemCounterValueChangeEvent(value));
                 },
               ),
               controller: _textEditingController,

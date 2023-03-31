@@ -2,9 +2,9 @@ part of '{{feature_name.snakeCase()}}_cubit.dart';
 
 class {{feature_name.pascalCase()}}State extends RequestState {
   const {{feature_name.pascalCase()}}State({
-    super.status = ItemDetailStatus.initial,
+    super.status = ItemDefaultStatus.initial,
     required this.item,
-    super.errorMsg,
+    super.error,
   });
 
   final dynamic item;
@@ -13,14 +13,14 @@ class {{feature_name.pascalCase()}}State extends RequestState {
   List<Object?> get props => [status, item, error];
   
   {{feature_name.pascalCase()}}State copyWith({
-      ItemDetailStatus? status,
+      ItemDefaultStatus? status,
       dynamic? item,
       Object? error,
   }) {
     return {{feature_name.pascalCase()}}State(
       status: status ?? this.status,
       item: item ?? this.item,
-      error: error ?? this.errorMsg,
+      error: error ?? this.error,
     );
   }
 }

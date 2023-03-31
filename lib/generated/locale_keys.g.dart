@@ -37,6 +37,9 @@ abstract class  LocaleKeys {
   static const product_Uses = 'product.Uses';
   static const product_SameDistributor = 'product.SameDistributor';
   static const product_SameProductType = 'product.SameProductType';
+  static const product_ProductClassification = 'product.ProductClassification';
+  static const product_Classification = 'product.Classification';
+  static const product_Quantity = 'product.Quantity';
   static const product = 'product';
   static const discount_Promotions = 'discount.Promotions';
   static const discount = 'discount';

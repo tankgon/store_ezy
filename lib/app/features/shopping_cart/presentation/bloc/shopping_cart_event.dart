@@ -13,7 +13,7 @@ class ShoppingCartAddItemEvent extends ShoppingCartEvent {
     required this.quantity,
   });
 
-  final ProductModel item;
+  final ProductEntity item;
   final int quantity;
 }
 
@@ -23,6 +23,6 @@ class ShoppingCartRemoveItemEvent extends ShoppingCartEvent {
     required this.quantity,
   });
 
-  final ProductModel item;
+  final ProductEntity item;
   final int quantity;
 }

@@ -10,8 +10,8 @@ bricks:
 
 # Feature Brick
 # Create:
-# mason make feature_brick --feature_name change_password --folder_name change_password --state_management cubit
+# mason make feature_brick --feature_name select_product_variant --folder_name select_variant --state_management cubit
 
 # Feature Core Brick
 # Create:
-# mason make feature_core_brick  --feature_name user_order --state_management cubit
+# mason make feature_core_brick  --feature_name product_variant --state_management cubit

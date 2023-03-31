@@ -11,7 +11,6 @@ class CheckoutProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CheckoutProductItemLayout1(
-    );
+    return CheckoutProductItemLayout1();
   }
 }

@@ -39,7 +39,10 @@
     "OriginOrBrand": "Origin/Brand",
     "Uses": "Uses",
     "SameDistributor": "From this distributor",
-    "SameProductType": "Same product type"
+    "SameProductType": "Same product type",
+    "ProductClassification": "Product classification",
+    "Classification": "Classification",
+    "Quantity": "Quantity"
   },
   "discount": {
     "Promotions": "Promotions"

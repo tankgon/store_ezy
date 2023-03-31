@@ -3,40 +3,18 @@ import 'package:ez_store/app/features/product/presentation/item/layout/product_i
 import 'package:ez_store/app/features/product/presentation/item/product_item_args.dart';
 import 'package:ez_store/app/features/product/presentation/widget/product_discount.dart';
 import 'package:ez_store/app/features/product/presentation/widget/product_price_with_type.dart';
+import 'package:ez_store/app/features/product/self.dart';
 
 class ProductItemTileLayout1 extends StatelessWidget {
   const ProductItemTileLayout1({
     super.key,
-    this.img,
-    required this.title,
-    this.description,
-    this.price,
-    this.type,
-    this.listedPrice,
+    required this.product,
     this.onAddToCart,
     this.onPressed,
     this.args = const ProductItemArgs(),
   });
 
-  const ProductItemTileLayout1.demo({
-    super.key,
-    this.img = 'https://product.hstatic.net/200000311493/product/set_goi_xa_gung_trang_68383b0f8acb45c498206705071e6d2c.jpg',
-    this.title = 'Dầu gội dưỡng thể',
-    this.description = 'Mô tả sản phẩm tối đa hai dòng với số lượng ký tự tối đa 100 ký tự',
-    this.price = '100000',
-    this.type = 'chai',
-    this.listedPrice = '200000',
-    this.onAddToCart,
-    this.onPressed,
-    this.args = const ProductItemArgs(),
-  });
-
-  final dynamic img;
-  final String? title;
-  final String? description;
-  final String? price;
-  final String? type;
-  final String? listedPrice;
+  final ProductEntity product;
   final VoidCallback? onAddToCart;
   final VoidCallback? onPressed;
 
@@ -60,7 +38,7 @@ class ProductItemTileLayout1 extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 AppImg(
-                  img,
+                  product.img,
                 ).aspectRatio(1),
                 Gaps.hGap12,
                 _buildContent(context).expand(),
@@ -79,8 +57,8 @@ class ProductItemTileLayout1 extends StatelessWidget {
     return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            title?.textAuto.titleMedium(context).ellipsis.maxLines(2).make().pb4().minHeight(22),
-            description?.text.caption(context).maxLines(2).ellipsis.make(),
+            product.title?.textAuto.titleMedium(context).ellipsis.maxLines(2).make().pb4().minHeight(22),
+            product.description?.text.caption(context).maxLines(2).ellipsis.make(),
             const Spacer(),
             Row(
               mainAxisSize: MainAxisSize.min,
@@ -91,11 +69,11 @@ class ProductItemTileLayout1 extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     ProductPriceWithType(
-                      price: price,
-                      type: type,
+                      price: product.price,
+                      type: product.type,
                     ),
                     AppListedPrice(
-                      price: listedPrice,
+                      price: product.listedPrice,
                     ),
                   ],
                 ).expand(),

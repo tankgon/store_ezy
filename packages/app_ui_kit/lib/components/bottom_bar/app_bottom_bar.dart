@@ -4,12 +4,12 @@ class AppBottomBar extends StatelessWidget {
   const AppBottomBar({
     super.key,
     required this.child,
-    this.showDivider = true,
+    this.elevation,
     this.padding,
   });
 
   final Widget child;
-  final bool showDivider;
+  final double? elevation;
   final EdgeInsetsGeometry? padding;
 
   @override
@@ -21,24 +21,14 @@ class AppBottomBar extends StatelessWidget {
       left: false,
       right: false,
       child: Padding(
-        padding: padding ?? const EdgeInsets.symmetric(horizontal: Dimens.pad),
+        padding: padding ?? const EdgeInsets.only(left: Dimens.pad, right: Dimens.pad, top: 4),
         child: child,
       ),
     );
 
-    if (showDivider == true) {
-      return Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Divider(
-            height: 1,
-            thickness: 1,
-          ),
-          safeArea,
-        ],
-      ).backgroundColor(context.theme.colorScheme.surface);
-    }
-
-    return safeArea;
+    return BottomAppBar(
+      elevation: elevation,
+      child: safeArea.backgroundColor(context.theme.colorScheme.surface),
+    );
   }
 }

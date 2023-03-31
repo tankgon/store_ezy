@@ -31,7 +31,7 @@ import '../features/notification/presentation/detail/notification_detail_page.da
     as _i3;
 import '../features/notification/presentation/main/notification_main_page.dart'
     as _i2;
-import '../features/product/data/model/product_base_model.dart' as _i19;
+import '../features/product/domain/entity/product_entity.dart' as _i19;
 import '../features/product/presentation/detail/product_detail_page.dart'
     as _i4;
 import '../features/product_rating/self.dart' as _i7;
@@ -269,7 +269,7 @@ class NotificationDetailRouteArgs {
 class ProductDetailRoute extends _i15.PageRouteInfo<ProductDetailRouteArgs> {
   ProductDetailRoute({
     _i17.Key? key,
-    required _i19.ProductModel product,
+    required _i19.ProductEntity product,
   }) : super(
           ProductDetailRoute.name,
           path: 'Product-Detail',
@@ -290,7 +290,7 @@ class ProductDetailRouteArgs {
 
   final _i17.Key? key;
 
-  final _i19.ProductModel product;
+  final _i19.ProductEntity product;
 
   @override
   String toString() {

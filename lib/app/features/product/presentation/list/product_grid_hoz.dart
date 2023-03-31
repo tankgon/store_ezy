@@ -1,5 +1,5 @@
 import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/product/data/model/product_base_model.dart';
+import 'package:ez_store/app/features/product/domain/entity/product_entity.dart';
 import 'package:ez_store/app/features/product/presentation/item/layout/product_item_layout.dart';
 import 'package:ez_store/app/features/product/presentation/item/product_item.dart';
 
@@ -15,12 +15,12 @@ class ProductGridHoz extends StatelessWidget {
   static ProductGridHoz demo() {
     return ProductGridHoz(
       fetchListData: (page, pageSize) {
-        return Future.value(List.generate(5, (index) => index).map((e) => ProductModel()).toList());
+        return Future.value(List.generate(5, (index) => index).map((e) => ProductEntity.demo()).toList());
       },
     );
   }
 
-  final PagingListFetchFunc<ProductModel> fetchListData;
+  final PagingListFetchFunc<ProductEntity> fetchListData;
   final EdgeInsets? padding;
   final double spacing;
 
@@ -39,7 +39,7 @@ class ProductGridHoz extends StatelessWidget {
 
     return SizedBox(
       height: totalHeight,
-      child: PagingGrid<ProductModel>(
+      child: PagingGrid<ProductEntity>(
         padding: padding ?? const EdgeInsets.symmetric(horizontal: 16),
         scrollDirection: Axis.horizontal,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

@@ -9,6 +9,7 @@ class CheckoutBottomBar extends StatelessWidget {
     return Row(
       children: [
         Column(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             '${LocaleKeys.checkout_TotalPay.tr()}:'.text.make(),

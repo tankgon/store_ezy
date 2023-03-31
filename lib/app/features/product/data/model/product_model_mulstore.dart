@@ -1,9 +1,9 @@
 import 'package:ez_store/all_file/all_file.dart';
 
-class ProductModel{
+class ProductModelMulStore {
   final String? id;
 
-  const ProductModel({
+  const ProductModelMulStore({
     this.id,
   });
 }

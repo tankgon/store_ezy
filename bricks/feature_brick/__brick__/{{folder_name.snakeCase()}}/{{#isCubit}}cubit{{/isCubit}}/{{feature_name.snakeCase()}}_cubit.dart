@@ -6,12 +6,12 @@ class {{feature_name.pascalCase()}}Cubit extends RequestCubit<{{feature_name.pas
   {{feature_name.pascalCase()}}Cubit({dynamic? item}) : super({{feature_name.pascalCase()}}State(item: item));
 
   FutureOr<void> fetchItem() async {
-    emit(state.copyWith(status: ItemDetailStatus.loading));
+    emit(state.copyWith(status: ItemDefaultStatus.loading));
     try {
       // final item = await Get.find<ApproveRepo>().getProgramForApprove(programID: item.programID ?? '');
       emit(
         state.copyWith(
-          status: ItemDetailStatus.success,
+          status: ItemDefaultStatus.success,
           // item: item,
         )
       );
@@ -19,7 +19,7 @@ class {{feature_name.pascalCase()}}Cubit extends RequestCubit<{{feature_name.pas
       log(e.toString(), error: e);
       emit(
         state.copyWith(
-          status: ItemDetailStatus.error,
+          status: ItemDefaultStatus.error,
           error: e,
         ),
       );

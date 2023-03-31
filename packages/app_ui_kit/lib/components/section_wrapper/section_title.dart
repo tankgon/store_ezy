@@ -5,22 +5,21 @@ class SectionTitle extends StatelessWidget {
     super.key,
     required this.title,
     this.padding,
+    this.trailing,
   });
 
   final String title;
+  final Widget? trailing;
   final EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: padding ?? Dimens.edge_x_default,
-      child: Column(
+      child: Row(
         children: [
-          Row(
-            children: [
-              title.text.headlineSmall(context).make(),
-            ],
-          ),
+          title.text.headlineSmall(context).make().expand(),
+          trailing ?? const SizedBox.shrink(),
         ],
       ),
     );

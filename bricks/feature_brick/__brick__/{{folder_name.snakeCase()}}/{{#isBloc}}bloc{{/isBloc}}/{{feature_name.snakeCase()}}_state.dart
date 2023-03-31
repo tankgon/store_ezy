@@ -33,7 +33,7 @@ class {{feature_name.pascalCase()}}ItemLoaded extends {{feature_name.pascalCase(
 }
 
 class {{feature_name.pascalCase()}}ItemLoadFail extends {{feature_name.pascalCase()}}State {
-  final String errorMsg;
+  final String error;
 
-  const {{feature_name.pascalCase()}}ItemLoadFail(this.errorMsg) : super();
+  const {{feature_name.pascalCase()}}ItemLoadFail(this.error) : super();
 }
