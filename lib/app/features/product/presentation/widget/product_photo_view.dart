@@ -1,6 +1,5 @@
 import 'package:ez_store/all_file/all_file.dart';
 
-
 class ProductDetailPhotoView extends StatefulWidget {
   const ProductDetailPhotoView({
     super.key,
@@ -34,15 +33,22 @@ class _ProductDetailPhotoViewState extends State<ProductDetailPhotoView> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        AppPhotoView<String>(
-          photoController: _controller,
+        Stack(
+          alignment: Alignment.bottomRight,
+          children: [
+            AppPhotoView<String>(
+              photoController: _controller,
+            ),
+            AppPhotoViewCounter(
+              controller: _controller,
+            ).p12(),
+          ],
         ),
-        Gaps.vGap12,
-        AppPhotoViewDot(
-          photoController: _controller,
-        ),
+        // Gaps.vGap12,
+        // AppPhotoViewDot(
+        //   photoController: _controller,
+        // ),
       ],
     );
   }
 }
-
