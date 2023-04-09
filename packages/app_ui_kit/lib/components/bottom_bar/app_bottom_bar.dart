@@ -6,15 +6,17 @@ class AppBottomBar extends StatelessWidget {
     required this.child,
     this.elevation,
     this.padding,
+    this.expandWidth = false,
   });
 
   final Widget child;
+  final bool expandWidth;
   final double? elevation;
   final EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
-    final safeArea = SafeArea(
+    Widget finalChild = SafeArea(
       minimum: Dimens.bottomMinimum,
       top: false,
       bottom: true,
@@ -26,9 +28,16 @@ class AppBottomBar extends StatelessWidget {
       ),
     );
 
+    if (expandWidth) {
+      finalChild = SizedBox(
+        width: double.infinity,
+        child: finalChild,
+      );
+    }
+
     return BottomAppBar(
       elevation: elevation,
-      child: safeArea.backgroundColor(context.theme.colorScheme.surface),
+      child: finalChild.backgroundColor(context.theme.colorScheme.surface),
     );
   }
 }

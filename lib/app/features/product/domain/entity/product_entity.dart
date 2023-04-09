@@ -44,7 +44,7 @@ class ProductVariantEntity {
     return ProductVariantEntity(
       id: '1',
       img: 'https://product.hstatic.net/200000311493/product/set_goi_xa_gung_trang_68383b0f8acb45c498206705071e6d2c.jpg',
-      title: 'LEIFARNE ',
+      title: 'LEIFARNE',
       price: '100000',
     );
   }
@@ -53,4 +53,5 @@ class ProductVariantEntity {
   final String? img;
   final String? title;
   final String? price;
+
 }

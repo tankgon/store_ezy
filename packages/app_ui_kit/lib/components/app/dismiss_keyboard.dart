@@ -9,19 +9,12 @@ class DismissKeyboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return KeyboardVisibilityBuilder(
-      builder: (context, isKeyboardVisible) {
-        return GestureDetector(
-          onTap: () {
-            AppInfoUtils.dismissKeyboard(context);
-          },
-          child: AbsorbPointer(
-            absorbing: isKeyboardVisible,
-            ignoringSemantics: false,
-            child: child,
-          ),
-        );
+    return Listener(
+      behavior: HitTestBehavior.translucent,
+      onPointerDown: (_) {
+        AppInfoUtils.dismissKeyboard(context);
       },
+      child: child,
     );
   }
 }

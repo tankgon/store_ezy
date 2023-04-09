@@ -14,9 +14,9 @@ class ChangePasswordPage extends StatelessWidget {
           return DefaultStatusConsumer<ChangePasswordCubit, ChangePasswordState>(
             child: Scaffold(
               appBar: AppAppBar(
-                title: '',
+                title: LocaleKeys.authen_ChangePasword.tr(),
                 args: AppBarArgs(
-                  elevation: 0,
+                  centerTitle: true,
                 ),
               ),
               body: ChangePasswordBody(),

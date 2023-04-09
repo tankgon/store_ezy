@@ -6,6 +6,7 @@ export 'components/app/single_child_scrollview_sliver.dart';
 export 'components/app_bar/app_app_bar_sliver.dart';
 export 'components/app_bar/app_bar_components.dart';
 export 'components/app_bar/base_app_bar_args.dart';
+export 'components/bottom_bar/app_bottom_align.dart';
 export 'components/bottom_bar/app_bottom_bar.dart';
 export 'components/bottom_sheet/bottom_sheet_utils.dart';
 export 'components/button/primary/app_button.dart';

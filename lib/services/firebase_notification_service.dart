@@ -19,8 +19,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 const _iconLocation = '@mipmap/ic_launcher';
 
-typedef NotificationPressedCallBack = void Function(
-    Map<String, dynamic>? jsonData);
+typedef NotificationPressedCallBack = void Function(Map<String, dynamic>? jsonData);
 
 typedef FilterMessage = bool Function(Map<String, dynamic>? jsonData);
 
@@ -54,8 +53,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 class FirebaseNotificationService {
   FirebaseNotificationService._();
 
-  static final FirebaseNotificationService _instance =
-      FirebaseNotificationService._();
+  static final FirebaseNotificationService _instance = FirebaseNotificationService._();
 
   static FirebaseNotificationService get instance {
     return _instance;
@@ -71,8 +69,7 @@ class FirebaseNotificationService {
     required FilterMessage filterMessage,
   }) async {
     await _requestPermission();
-    await _initFlutterLocalNotificationPlugin(
-        onPressedCallback: notificationPressedCallBack);
+    await _initFlutterLocalNotificationPlugin(onPressedCallback: notificationPressedCallBack);
 
     // await _enableAlwaysHeadUpMessageIOS();
     await _setupChannelForAndroid();
@@ -101,43 +98,37 @@ class FirebaseNotificationService {
       sound: true,
     );
 
-    if (settings.authorizationStatus == AuthorizationStatus.denied ||
-        settings.authorizationStatus == AuthorizationStatus.notDetermined) {
-      logger
-          .e('PushNotification: User declined or has not accepted permission');
+    if (settings.authorizationStatus == AuthorizationStatus.denied || settings.authorizationStatus == AuthorizationStatus.notDetermined) {
+      logger.e('PushNotification: User declined or has not accepted permission');
     }
   }
 
   ///
   /// Init flutter_local_notifications for local notification
   ///
-  Future<void> _initFlutterLocalNotificationPlugin(
-      {required NotificationPressedCallBack onPressedCallback}) async {
+  Future<void> _initFlutterLocalNotificationPlugin({required NotificationPressedCallBack onPressedCallback}) async {
     // Android Setting
-    const initializationSettingsAndroid =
-        AndroidInitializationSettings(_iconLocation);
+    const initializationSettingsAndroid = AndroidInitializationSettings(_iconLocation);
     // IOS Setting
-    const initializationSettingsIOS =
-        IOSInitializationSettings(
+    const initializationSettingsIOS = DarwinInitializationSettings(
       requestAlertPermission: true,
       requestBadgePermission: true,
       requestSoundPermission: true,
+      defaultPresentAlert: true,
+      defaultPresentBadge: true,
+      defaultPresentSound: true,
     );
     // initialise the plugin. app_icon needs to be a added as a drawable resource to the Android head project
     // Combine
-    const initializationSettings =
-        InitializationSettings(
-            android: initializationSettingsAndroid,
-            iOS: initializationSettingsIOS);
+    const initializationSettings = InitializationSettings(android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
 
     flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
     // Handle when FlutterLocalNotificationPlugin notification is clicked
-    await flutterLocalNotificationsPlugin?.initialize(initializationSettings,
-        onSelectNotification: (String? payload) async {
-      if (payload != null) {
+    await flutterLocalNotificationsPlugin?.initialize(initializationSettings, onDidReceiveBackgroundNotificationResponse: (response) async {
+      if (response.payload != null) {
         try {
-          final payloadJson = await jsonDecode(payload);
+          final payloadJson = await jsonDecode(response.payload ?? '');
           if (payloadJson is Map<String, dynamic>?) {
             onPressedCallback.call(payloadJson);
           }
@@ -166,8 +157,7 @@ class FirebaseNotificationService {
       NotificationDetails? notificationDetails;
       if (Platform.isAndroid && android != null && channel != null) {
         notificationDetails = NotificationDetails(
-          android: AndroidNotificationDetails(
-              channel?.id ?? '', channel?.name ?? '',
+          android: AndroidNotificationDetails(channel?.id ?? '', channel?.name ?? '',
               channelShowBadge: true,
               // !!! also set the sound in the channel - For Android 8.0 or newer, this (sound) is tied to the specified channel
               sound: const RawResourceAndroidNotificationSound('default_noti'),
@@ -175,20 +165,16 @@ class FirebaseNotificationService {
         );
       } else if (Platform.isIOS) {
         notificationDetails = const NotificationDetails(
-          iOS: IOSNotificationDetails(
-              presentBadge: true,
-              // badgeNumber: 3,
-              presentAlert: true,
-              presentSound: true,
-              sound: 'default_noti.wav'),
+          iOS: DarwinNotificationDetails(
+            presentAlert: true,
+            presentBadge: true,
+            presentSound: true,
+            sound: 'default_noti.wav',
+          ),
         );
       }
-      final title = notification?.title ??
-          getStringFromLocKey(
-              notification?.titleLocKey, notification?.titleLocArgs);
-      final body = notification?.body ??
-          getStringFromLocKey(
-              notification?.bodyLocKey, notification?.bodyLocArgs);
+      final title = notification?.title ?? getStringFromLocKey(notification?.titleLocKey, notification?.titleLocArgs);
+      final body = notification?.body ?? getStringFromLocKey(notification?.bodyLocKey, notification?.bodyLocArgs);
       flutterLocalNotificationsPlugin?.show(
         notification.hashCode,
         title,
@@ -218,8 +204,7 @@ class FirebaseNotificationService {
     // On Foreground
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       _logMessage(message);
-      _showMessageHeadUpForeground(
-          message: message, filterMessage: filterMessage);
+      _showMessageHeadUpForeground(message: message, filterMessage: filterMessage);
     });
 
     // On Background/Terminated
@@ -249,15 +234,11 @@ class FirebaseNotificationService {
         sound: RawResourceAndroidNotificationSound('default_noti'),
       );
 
-      await flutterLocalNotificationsPlugin
-          ?.resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin>()
-          ?.createNotificationChannel(channel!);
+      await flutterLocalNotificationsPlugin?.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.createNotificationChannel(channel!);
     }
   }
 
-  Future<void> setupInteractedMessage(
-      {required NotificationPressedCallBack callBack}) async {
+  Future<void> setupInteractedMessage({required NotificationPressedCallBack callBack}) async {
     // Get any messages which caused the application to open from a terminated state.
     await _firebaseMessaging.getInitialMessage().then((RemoteMessage? message) {
       _logMessage(message);
@@ -275,8 +256,7 @@ class FirebaseNotificationService {
     return _firebaseMessaging.subscribeToTopic(topicName);
   }
 
-  void _onMessageClick(
-      RemoteMessage? message, NotificationPressedCallBack callBack) {
+  void _onMessageClick(RemoteMessage? message, NotificationPressedCallBack callBack) {
     if (message == null) {
       return;
     }
@@ -302,8 +282,7 @@ class FirebaseNotificationService {
   }
 
   Future<void> hideAllNotification() async {
-    await FirebaseMessaging.instance
-        .setForegroundNotificationPresentationOptions(
+    await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
       alert: false,
       badge: false,
       sound: false,
@@ -311,8 +290,7 @@ class FirebaseNotificationService {
   }
 
   Future<void> enableAllNotification() async {
-    await FirebaseMessaging.instance
-        .setForegroundNotificationPresentationOptions(
+    await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
       alert: true,
       badge: true,
       sound: true,

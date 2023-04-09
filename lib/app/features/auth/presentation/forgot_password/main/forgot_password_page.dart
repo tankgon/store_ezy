@@ -12,18 +12,38 @@ class ForgotPasswordPage extends StatelessWidget {
       create: (context) => ForgotPasswordCubit(
         controls: AuthIdInput.createControl(),
       ),
-      child: DefaultStatusConsumer<ForgotPasswordCubit, ForgotPasswordState>(
-        child: Scaffold(
-          appBar: AppAppBar(
-            title: '',
-            args: AppBarArgs(
-              elevation: 0,
+      child: Builder(
+        builder: (context) {
+          return ReactiveForm(
+            formGroup: context.read<ForgotPasswordCubit>().form,
+            child: DefaultStatusConsumer<ForgotPasswordCubit, ForgotPasswordState>(
+              child: Scaffold(
+                appBar: AppAppBar(
+                  title: LocaleKeys.authen_ForgotPassword.tr(),
+                  args: const AppBarArgs(
+                    centerTitle: true,
+                  ),
+                ),
+                body: AppBottomAlign(
+                  bottomBar: AppBottomBar(
+                    elevation: 0,
+                    expandWidth: true,
+                    child: AppButton(
+                      style: AppButtonTheme.confirmAction(context),
+                      isSubmitButton: true,
+                      label: LocaleKeys.common_Confirm.tr(),
+                      onPressed: () {
+                        context.pushRoute(ChangePasswordRoute());
+                      },
+                    ),
+                  ),
+                  child: const ForgotPasswordBody(),
+                ),
+              ),
             ),
-          ),
-          body: ForgotPasswordBody(),
-        ),
+          );
+        },
       ),
     );
   }
-
 }

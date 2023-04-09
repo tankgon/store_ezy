@@ -4,18 +4,29 @@ import 'package:ez_store/app/features/auth/presentation/widget/auth_id_input.dar
 import 'package:ez_store/app/features/auth/presentation/widget/auth_page_body.dart';
 
 class ChangePasswordBody extends StatelessWidget {
-  const ChangePasswordBody({super.key}) ;
+  const ChangePasswordBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return AuthPageBody(
-      child: ReactiveForm(
-        formGroup: context.read<ChangePasswordCubit>().form,
+    return ReactiveForm(
+      formGroup: context.read<ChangePasswordCubit>().form,
+      child: AppBottomAlign(
+        bottomBar: AppBottomBar(
+          elevation: 0,
+          expandWidth: true,
+          child: AppButton(
+            style: AppButtonTheme.confirmAction(context),
+            isSubmitButton: true,
+            label: LocaleKeys.common_Confirm.tr(),
+            onPressed: () {
+              context.read<ChangePasswordCubit>().submit();
+            },
+          ),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            LocaleKeys.authen_ChangePasword.tr().text.titleLarge(context).semiBold.center.make(),
-            Gaps.vGap32,
+            Gaps.vGap24,
             AuthPasswordInput(
               formControlName: ChangePasswordCubit.passwordKey,
               hintText: LocaleKeys.authen_InputNewPassword.tr(),
@@ -27,15 +38,6 @@ class ChangePasswordBody extends StatelessWidget {
               showPasswordHelper: false,
             ),
             Gaps.vGap24,
-            AppButton(
-              style: AppButtonTheme.confirmAction(context),
-              isSubmitButton: true,
-              label: LocaleKeys.common_Confirm.tr(),
-              onPressed: () {
-                context.read<ChangePasswordCubit>().submit();
-              },
-            ),
-            Gaps.vGap32,
           ],
         ),
       ),

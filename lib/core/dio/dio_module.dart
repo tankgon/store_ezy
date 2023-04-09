@@ -22,9 +22,9 @@ class DioModule {
     logger.i('**** Dio create');
     final options = BaseOptions(
       baseUrl: F.SERVER_URL,
-      connectTimeout: 11000,
-      receiveTimeout: 11000,
-      sendTimeout: 11000,
+      connectTimeout: const Duration(seconds: 12),
+      receiveTimeout: const Duration(seconds: 12),
+      sendTimeout: const Duration(seconds: 12),
     );
     // Get Data for mobile on server
     options.headers["device"] = F.DEVICE_TYPE;

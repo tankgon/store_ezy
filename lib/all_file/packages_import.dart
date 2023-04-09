@@ -34,7 +34,6 @@ export 'package:loader_overlay/loader_overlay.dart';
 export 'package:package_info_plus/package_info_plus.dart';
 export 'package:reactive_forms/reactive_forms.dart';
 export 'package:retrofit/http.dart' hide Path;
-export 'package:url_launcher/url_launcher.dart';
 export 'package:velocity_x/velocity_x.dart'
     show
         VelocityXRichTextExtension,
