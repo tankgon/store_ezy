@@ -37,9 +37,10 @@ class AppTileText extends StatelessWidget {
                   subtitleLabel?.text.caption(context).maxLines(2).ellipsis.make(),
                 ].withDivider(Gaps.vGap4),
               ).expand(),
-              const Icon(
-                CupertinoIcons.right_chevron,
-              ),
+              if (onPressed != null)
+                const Icon(
+                  CupertinoIcons.right_chevron,
+                ),
             ].withDivider(Gaps.hGap12),
           ),
         ),

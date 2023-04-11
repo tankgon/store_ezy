@@ -32,6 +32,7 @@ import 'package:ez_store/app/features/user_order/self.dart';
     ...checkoutRoutes,
     ...productRatingRoutes,
     ...authRoutes,
+    ...userOrderRoutes,
   ],
 )
 class $AppAutoRoute {}

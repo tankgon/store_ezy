@@ -24,8 +24,7 @@ class AppButtonText extends StatelessWidget {
       padding: padding,
       minSize: padding != null ? 0 : kMinInteractiveDimensionCupertino,
       onPressed: onPressed,
-      color: color,
-      child: child ?? label?.text.textBase.medium.make() ?? const SizedBox.shrink(),
+      child: child ?? label?.text.textBase.medium.color(color ?? Theme.of(context).primaryColor).make() ?? const SizedBox.shrink(),
     );
   }
 }

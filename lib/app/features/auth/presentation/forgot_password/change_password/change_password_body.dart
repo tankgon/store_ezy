@@ -23,22 +23,24 @@ class ChangePasswordBody extends StatelessWidget {
             },
           ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Gaps.vGap24,
-            AuthPasswordInput(
-              formControlName: ChangePasswordCubit.passwordKey,
-              hintText: LocaleKeys.authen_InputNewPassword.tr(),
-            ),
-            Gaps.vGap16,
-            AuthPasswordInput(
-              formControlName: ChangePasswordCubit.confirmKey,
-              hintText: LocaleKeys.authen_ConfirmPassword.tr(),
-              showPasswordHelper: false,
-            ),
-            Gaps.vGap24,
-          ],
+        child: AppScrollBody(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Gaps.vGap24,
+              AuthPasswordInput(
+                formControlName: ChangePasswordCubit.passwordKey,
+                hintText: LocaleKeys.authen_InputNewPassword.tr(),
+              ),
+              Gaps.vGap16,
+              AuthPasswordInput(
+                formControlName: ChangePasswordCubit.confirmKey,
+                hintText: LocaleKeys.authen_ConfirmPassword.tr(),
+                showPasswordHelper: false,
+              ),
+              Gaps.vGap24,
+            ],
+          ).pxDefault(),
         ),
       ),
     );

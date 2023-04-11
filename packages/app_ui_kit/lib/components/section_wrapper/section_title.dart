@@ -5,10 +5,12 @@ class SectionTitle extends StatelessWidget {
     super.key,
     required this.title,
     this.padding,
+    this.leading,
     this.trailing,
   });
 
   final String title;
+  final Widget? leading;
   final Widget? trailing;
   final EdgeInsetsGeometry? padding;
 
@@ -18,6 +20,7 @@ class SectionTitle extends StatelessWidget {
       padding: padding ?? Dimens.edge_x_default,
       child: Row(
         children: [
+          leading ?? const SizedBox.shrink(),
           title.text.headlineSmall(context).make().expand(),
           trailing ?? const SizedBox.shrink(),
         ],

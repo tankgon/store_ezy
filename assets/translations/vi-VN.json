@@ -1,135 +1,138 @@
 {
-  "homePage": {
-    "title": "Trang chủ"
-  },
   "appName": "MulStore",
-  "mainPage": {
-    "home": "Trang chủ",
-    "order": "Đơn hàng",
-    "message": "Tin nhăn",
-    "account": "Tài khoản"
+  "authen": {
+    "Address": "Địa chỉ",
+    "AddressRequired": "Địa chỉ là trường thông tin bắt buộc",
+    "AlreadyHaveAccount": "Đã có tài khoản?",
+    "ChangePasword": "Đổi mật khẩu",
+    "ChangePaswordSuccess": "Đổi mật khẩu thành công",
+    "ConfirmPassword": "Xác nhận mật khẩu",
+    "Email": "Email",
+    "EmailNotValid": "Email không đúng",
+    "EmailOrPhoneNotValid": "Email hoặc SĐT không đúng",
+    "EmailRequired": "Email là trường thông tin bắt buộc",
+    "ForgotPassword": "Quên mật khẩu",
+    "ForgotPasswordOTPMsg": "Nhập {} đã đăng ký để lấy mã OTP khôi phục mật khẩu",
+    "FullName": "Họ tên",
+    "InputEmailOrPhone": "Nhập email hoặc số điện thoại",
+    "InputNewPassword": "Nhập mật khẩu mới",
+    "Login": "Đăng nhập",
+    "NotHaveAccount": "Chưa có tài khoản?",
+    "NotReceiveOTP": "Bạn không nhận được mã?",
+    "OTPSentMessage": "Nhập mã OTP được gửi đến số điện thoại {}",
+    "OrLoginWith": "Hoặc đăng nhập bằng",
+    "OrSignUpWith": "Hoặc đăng ký bằng",
+    "Password": "Mật khẩu",
+    "PasswordNotMatch": "Mật khẩu không khớp",
+    "PasswordPatternMsg": "Mật khẩu có ít nhất 8 ký tự bao gồm chữ và số",
+    "PasswordRequired": "Vui lòng nhập mật khẩu",
+    "PhoneNumber": "Số điện thoại",
+    "PhoneNumberNotValid": "Số điện thoại không đúng",
+    "PhoneOrEmailRequired": "Vui lòng nhập Email hoặc SĐT",
+    "PhoneRequired": "SĐT là trường thông tin bắt buộc",
+    "RegisterType": {
+      "email": "Email",
+      "phone": "SĐT"
+    },
+    "SendAgain": "Gửi lại",
+    "SendOTPAgainAfterSecond": "Gửi lại mã OTP sau {} giây",
+    "SignUp": "Đăng ký",
+    "SignUpSuccess": "Đăng ký tài khoản thành công"
+  },
+  "checkout": {
+    "Checkout": "Thanh toán",
+    "Discount": "Giảm giá",
+    "Pay": "Thanh toán",
+    "PayDetail": "Chi tiết thanh toán",
+    "PlaceOrder": "Đặt hàng",
+    "TotalPay": "Tổng thanh toán",
+    "TotalPrice": "Tổng tiền",
+    "TotalPriceNItems": "Tổng tiền ({} sản phẩm)"
   },
   "common": {
+    "Authentic": "Chính hãng",
+    "Confirm": "Xác nhận",
+    "Desciption": "Mô tả",
+    "FreeNShipping": "Miễn phí\nvận chuyển",
+    "Next": "Tiếp theo",
+    "Note": "Ghi chú",
+    "OrderBy": "Sắp xếp theo",
+    "ReadLess": "Thu gọn",
+    "ReadMore": "Xem thêm",
+    "ReturnInNDays": "Đổi trả trong\n{} ngày",
     "Search": "Tìm kím",
     "SeeAll": "Xem tất cả",
-    "Authentic": "Chính hãng",
-    "Desciption": "Mô tả",
-    "Note": "Ghi chú",
-    "FreeNShipping": "Miễn phí\nvận chuyển",
-    "ReturnInNDays": "Đổi trả trong\n{} ngày",
-    "ReadMore": "Xem thêm",
-    "ReadLess": "Thu gọn",
-    "OrderBy": "Sắp xếp theo",
+    "Skip": "Bỏ qua",
     "dialog": {
       "Cancel": "Hủy",
       "Confirm": "OK",
       "Delete": "Xóa"
-    },
-    "Next": "Tiếp theo",
-    "Skip": "Bỏ qua",
-    "Confirm": "Xác nhận"
-  },
-  "product": {
-    "Buy": "Chọn mua",
-    "PopularProducts": "Sản phẩm nỗi bật",
-    "HotDeals": "Giá tốt hôm nay",
-    "NewProducts": "Sản phẩm mới",
-    "Category": "Danh mục",
-    "Packing": "Quy cách",
-    "OriginOrBrand": "Xuất xứ/thương hiệu",
-    "Uses": "Công dụng",
-    "SameDistributor": "Cùng nhà phân phối",
-    "SameProductType": "Sản phẩm tương tự",
-    "ProductClassification": "Phân loại sản phẩm",
-    "Classification": "Phân loại",
-    "Quantity": "Số lượng"
+    }
   },
   "discount": {
     "Promotions": "Chương trình khuyến mãi"
   },
   "distributor": {
-    "Rating": "Đánh giá của nhà cung cấp",
-    "Popular": "Nhà cung cấp nỗi bật"
+    "Popular": "Nhà cung cấp nỗi bật",
+    "Rating": "Đánh giá nhà cung cấp"
   },
-  "shoppingCart": {
-    "SelectedNItem": "Đã chọn ({} sản phẩm)",
-    "TotalPrice": "Tổng tiền",
-    "NItem": "{} sản phẩm",
-    "Buy": "Mua hàng",
-    "ShoppingCart": "Giỏ hàng"
+  "homePage": {
+    "title": "Trang chủ"
   },
-  "checkout": {
-    "Checkout": "Thanh toán",
-    "TotalPriceNItems": "Tổng tiền ({} sản phẩm)",
-    "TotalPrice": "Tổng tiền",
-    "Discount": "Giảm giá",
-    "TotalPay": "Tổng thanh toán",
-    "PlaceOrder": "Đặt hàng",
-    "Pay": "Thanh toán",
-    "PayDetail": "Chi tiết thanh toán"
+  "mainPage": {
+    "account": "Tài khoản",
+    "home": "Trang chủ",
+    "message": "Tin nhăn",
+    "order": "Đơn hàng"
   },
   "payment": {
-    "PaymentMethod": "Phương thức thanh toán",
-    "PaymentDetail": "Chi tiết thanh toán"
+    "PaymentDetail": "Chi tiết thanh toán",
+    "PaymentMethod": "Phương thức thanh toán"
+  },
+  "product": {
+    "Buy": "Chọn mua",
+    "Category": "Danh mục",
+    "Classification": "Phân loại",
+    "HotDeals": "Giá tốt hôm nay",
+    "NewProducts": "Sản phẩm mới",
+    "OriginOrBrand": "Xuất xứ/thương hiệu",
+    "Packing": "Quy cách",
+    "PopularProducts": "Sản phẩm nỗi bật",
+    "ProductClassification": "Phân loại sản phẩm",
+    "Quantity": "Số lượng",
+    "SameDistributor": "Cùng nhà phân phối",
+    "SameProductType": "Sản phẩm tương tự",
+    "Uses": "Công dụng"
+  },
+  "productRating": {
+    "AllRating": "Tất cả đánh giá",
+    "DistributorReply": "Phản hồi từ nhà cung cấp",
+    "ViewReply": "Xem phàn hồi",
+    "WriteReview": "Viết đánh giá"
+  },
+  "shoppingCart": {
+    "Buy": "Mua hàng",
+    "NItem": "{} sản phẩm",
+    "SelectedNItem": "Đã chọn ({} sản phẩm)",
+    "ShoppingCart": "Giỏ hàng",
+    "TotalPrice": "Tổng tiền"
   },
   "user": {
     "AddUserReceiveInfo": "Thêm thông tin người nhận",
     "UserReceiveInfo": "Thông tin người nhận"
   },
-  "productRating": {
-    "AllRating": "Tất cả đánh giá",
-    "WriteReview": "Viết đánh giá",
-    "DistributorReply": "Phản hồi từ nhà cung cấp",
-    "ViewReply": "Xem phàn hồi"
-  },
   "userOrder": {
-    "Orders": "Đơn hàng",
-    "TotalPriceNItems": "Tổng tiền ({} sản phẩm)",
+    "NoOrderYet": "Chưa có đơn nào",
     "OrderStatus": {
+      "canceled": "Đã hủy",
+      "delivered": "Đã nhận",
       "pending": "Chờ xác nhận",
       "processing": "Đang xử lý",
-      "shipping": "Đang giao",
-      "delivered": "Đã nhận",
-      "canceled": "Đã hủy"
-    }
-  },
-  "authen": {
-    "Login": "Đăng nhập",
-    "SignUp": "Đăng ký",
-    "OrSignUpWith": "Hoặc đăng ký bằng",
-    "InputEmailOrPhone": "Nhập email hoặc số điện thoại",
-    "Password": "Mật khẩu",
-    "OTPSentMessage": "Nhập mã OTP được gửi đến số điện thoại {}",
-    "SendAgain": "Gửi lại",
-    "FullName": "Họ tên",
-    "Address": "Địa chỉ",
-    "PhoneNumber": "Số điện thoại",
-    "Email": "Email",
-    "AlreadyHaveAccount": "Đã có tài khoản?",
-    "EmailRequired": "Email là trường thông tin bắt buộc",
-    "PhoneRequired": "SĐT là trường thông tin bắt buộc",
-    "AddressRequired": "Địa chỉ là trường thông tin bắt buộc",
-    "PhoneOrEmailRequired": "Vui lòng nhập Email hoặc SĐT",
-    "PasswordPatternMsg": "Mật khẩu có ít nhất 8 ký tự bao gồm chữ và số",
-    "PhoneNumberNotValid": "Số điện thoại không đúng",
-    "EmailNotValid": "Email không đúng",
-    "PasswordRequired": "Vui lòng nhập mật khẩu",
-    "EmailOrPhoneNotValid": "Email hoặc SĐT không đúng",
-    "NotReceiveOTP": "Bạn không nhận được mã?",
-    "SendOTPAgainAfterSecond": "Gửi lại mã OTP sau {} giây",
-    "SignUpSuccess": "Đăng ký tài khoản thành công",
-    "NotHaveAccount": "Chưa có tài khoản?",
-    "OrLoginWith": "Hoặc đăng nhập bằng",
-    "ForgotPassword": "Quên mật khẩu",
-    "ForgotPasswordOTPMsg": "Nhập {} đã đăng ký để lấy mã OTP khôi phục mật khẩu",
-    "RegisterType": {
-      "phone": "SĐT",
-      "email": "Email"
+      "shipping": "Đang giao"
     },
-    "InputNewPassword": "Nhập mật khẩu mới",
-    "ConfirmPassword": "Xác nhận mật khẩu",
-    "PasswordNotMatch": "Mật khẩu không khớp",
-    "ChangePaswordSuccess": "Đổi mật khẩu thành công",
-    "ChangePasword": "Đổi mật khẩu"
+    "Orders": "Đơn hàng",
+    "TotalPriceNItems": "Tổng tiền ({} sản phẩm)",
+    "OrderDetail": "Chi tiết đơn hàng",
+    "ShippingInfo": "Thông tin vận chuyển"
   }
 }

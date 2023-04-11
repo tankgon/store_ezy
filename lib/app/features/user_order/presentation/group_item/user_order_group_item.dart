@@ -2,10 +2,22 @@ import 'package:ez_store/all_file/all_file.dart';
 import 'package:ez_store/app/features/checkout/presentation/item/checkout_product_item.dart';
 
 class UserOrderGroupItem extends StatelessWidget {
-  const UserOrderGroupItem({super.key});
+  const UserOrderGroupItem({
+    super.key,
+    this.showStatus = true,
+    this.limitItemShow,
+  });
+
+  final bool showStatus;
+  final int? limitItemShow;
+
+  void _onItemClick(BuildContext context) {
+    context.pushRoute(const UserOrderDetailRoute());
+  }
 
   @override
   Widget build(BuildContext context) {
+    final totalItemCount = 3;
     return Column(
       children: [
         Row(
@@ -14,40 +26,32 @@ class UserOrderGroupItem extends StatelessWidget {
             'Group 1'.text.titleMedium(context).semiBold.make().expand(),
           ].withDivider(Gaps.hGap8),
         ).pDefault(),
-        const Divider(
-          thickness: 1,
-          height: 1,
-        ).pxDefault(),
-        ListView.separated(
-          shrinkWrap: true,
-          padding: const EdgeInsets.symmetric(vertical: 16),
-          itemCount: 2,
-          physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (context, index) {
-            return const CheckoutProductItem();
-          },
-          separatorBuilder: (context, index) {
-            return const SizedBox(height: 20);
-          },
-        ).pxDefault(),
-        const Divider(
-          thickness: 1,
-          height: 1,
-        ).pxDefault(),
-        AppTile(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          space: 10,
-          title: 'Giảm 5%'.text.textS.colorDark(context).make(),
-          leading: Icon(
-            PhosphorIcons.gift,
-            color: context.themeColor.green,
-          ),
-          trailing: '-100000'.toPrice?.text.textS.colorDark(context).make(),
+        Column(
+          children: [
+            ListView.separated(
+              shrinkWrap: true,
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              itemCount: limitItemShow != null ? limitItemShow! : totalItemCount,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                return const CheckoutProductItem();
+              },
+              separatorBuilder: (context, index) {
+                return const SizedBox(height: 20);
+              },
+            ).pxDefault(),
+            if (limitItemShow != null && limitItemShow! < totalItemCount) ...[
+              const AppDivider.thin().pxDefault(),
+              AppButtonText(
+                label: LocaleKeys.common_SeeAll.tr(),
+                color: context.textTheme.bodySmall?.color,
+                onPressed: () {
+                  _onItemClick(context);
+                },
+              ),
+            ]
+          ],
         ),
-        const Divider(
-          thickness: 1,
-          height: 1,
-        ).pxDefault(),
         Row(
           children: [
             '${LocaleKeys.checkout_TotalPriceNItems.tr(
@@ -66,8 +70,26 @@ class UserOrderGroupItem extends StatelessWidget {
               ),
             ),
           ],
-        ).pDefault()
-      ],
+        ).pDefault(),
+        if (showStatus)
+          AppTile(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            space: 10,
+            title: 'Đang chờ duyệt'.text.textS.color(context.themeColor.yellow).make(),
+            leading: Icon(
+              PhosphorIcons.truck,
+              color: context.themeColor.yellow,
+            ),
+            onPressed: () {
+              _onItemClick(context);
+            },
+          ),
+      ].withDivider(
+        const Divider(
+          thickness: 1,
+          height: 1,
+        ),
+      ),
     );
   }
 }

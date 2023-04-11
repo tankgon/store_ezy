@@ -11,10 +11,10 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i15;
-import 'package:flutter/material.dart' as _i16;
+import 'package:auto_route/auto_route.dart' as _i16;
+import 'package:flutter/material.dart' as _i17;
 
-import '../../all_file/all_file.dart' as _i17;
+import '../../all_file/all_file.dart' as _i18;
 import '../features/auth/presentation/forgot_password/change_password/change_password_page.dart'
     as _i12;
 import '../features/auth/presentation/forgot_password/main/forgot_password_page.dart'
@@ -24,42 +24,44 @@ import '../features/auth/presentation/otp_confirm/auth_otp_confirm_page.dart'
     as _i10;
 import '../features/auth/presentation/sign_up/sign_up_page.dart' as _i8;
 import '../features/checkout/self.dart' as _i6;
-import '../features/home/presentation/main/home_page.dart' as _i13;
+import '../features/home/presentation/main/home_page.dart' as _i14;
 import '../features/main/presentation/main_page.dart' as _i1;
-import '../features/notification/data/model/notification_model.dart' as _i18;
+import '../features/notification/data/model/notification_model.dart' as _i19;
 import '../features/notification/presentation/detail/notification_detail_page.dart'
     as _i3;
 import '../features/notification/presentation/main/notification_main_page.dart'
     as _i2;
-import '../features/product/domain/entity/product_entity.dart' as _i19;
+import '../features/product/domain/entity/product_entity.dart' as _i20;
 import '../features/product/presentation/detail/product_detail_page.dart'
     as _i4;
 import '../features/product_rating/self.dart' as _i7;
 import '../features/shopping_cart/presentation/main/shopping_cart_page.dart'
     as _i5;
-import '../features/user_order/self.dart' as _i14;
+import '../features/user_order/presentation/detail/user_order_detail_page.dart'
+    as _i13;
+import '../features/user_order/self.dart' as _i15;
 
-class AppAutoRoute extends _i15.RootStackRouter {
-  AppAutoRoute([_i16.GlobalKey<_i16.NavigatorState>? navigatorKey])
+class AppAutoRoute extends _i16.RootStackRouter {
+  AppAutoRoute([_i17.GlobalKey<_i17.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i15.PageFactory> pagesMap = {
+  final Map<String, _i16.PageFactory> pagesMap = {
     MainRoute.name: (routeData) {
-      return _i15.MaterialPageX<dynamic>(
+      return _i16.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i1.MainPage(),
       );
     },
     NotificationMainRoute.name: (routeData) {
-      return _i15.MaterialPageX<dynamic>(
+      return _i16.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i2.NotificationMainPage(),
       );
     },
     NotificationDetailRoute.name: (routeData) {
       final args = routeData.argsAs<NotificationDetailRouteArgs>();
-      return _i15.MaterialPageX<dynamic>(
+      return _i16.MaterialPageX<dynamic>(
         routeData: routeData,
         child: _i3.NotificationDetailPage(
           key: args.key,
@@ -69,7 +71,7 @@ class AppAutoRoute extends _i15.RootStackRouter {
     },
     ProductDetailRoute.name: (routeData) {
       final args = routeData.argsAs<ProductDetailRouteArgs>();
-      return _i15.MaterialPageX<dynamic>(
+      return _i16.MaterialPageX<dynamic>(
         routeData: routeData,
         child: _i4.ProductDetailPage(
           key: args.key,
@@ -78,136 +80,146 @@ class AppAutoRoute extends _i15.RootStackRouter {
       );
     },
     ShoppingCartRoute.name: (routeData) {
-      return _i15.MaterialPageX<dynamic>(
+      return _i16.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i5.ShoppingCartPage(),
       );
     },
     CheckoutRoute.name: (routeData) {
-      return _i15.MaterialPageX<dynamic>(
+      return _i16.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i6.CheckoutPage(),
       );
     },
     ProductRatingRoute.name: (routeData) {
-      return _i15.MaterialPageX<dynamic>(
+      return _i16.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i7.ProductRatingPage(),
       );
     },
     SignUpRoute.name: (routeData) {
-      return _i15.MaterialPageX<dynamic>(
+      return _i16.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i8.SignUpPage(),
       );
     },
     LoginRoute.name: (routeData) {
-      return _i15.MaterialPageX<dynamic>(
+      return _i16.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i9.LoginPage(),
       );
     },
     AuthOtpConfirmRoute.name: (routeData) {
-      return _i15.MaterialPageX<dynamic>(
+      return _i16.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i10.AuthOtpConfirmPage(),
       );
     },
     ForgotPasswordRoute.name: (routeData) {
-      return _i15.MaterialPageX<dynamic>(
+      return _i16.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i11.ForgotPasswordPage(),
       );
     },
     ChangePasswordRoute.name: (routeData) {
-      return _i15.MaterialPageX<dynamic>(
+      return _i16.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i12.ChangePasswordPage(),
       );
     },
-    HomeRoute.name: (routeData) {
-      return _i15.MaterialPageX<dynamic>(
+    UserOrderDetailRoute.name: (routeData) {
+      return _i16.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i13.HomePage(),
+        child: const _i13.UserOrderDetailPage(),
+      );
+    },
+    HomeRoute.name: (routeData) {
+      return _i16.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i14.HomePage(),
       );
     },
     UserOrderRoute.name: (routeData) {
-      return _i15.MaterialPageX<dynamic>(
+      return _i16.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i14.UserOrderPage(),
+        child: const _i15.UserOrderPage(),
       );
     },
   };
 
   @override
-  List<_i15.RouteConfig> get routes => [
-        _i15.RouteConfig(
+  List<_i16.RouteConfig> get routes => [
+        _i16.RouteConfig(
           MainRoute.name,
           path: '/main',
           children: [
-            _i15.RouteConfig(
+            _i16.RouteConfig(
               HomeRoute.name,
               path: 'Home',
               parent: MainRoute.name,
             ),
-            _i15.RouteConfig(
+            _i16.RouteConfig(
               UserOrderRoute.name,
               path: 'UserOrder',
               parent: MainRoute.name,
             ),
           ],
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           NotificationMainRoute.name,
           path: '/notification-main',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           NotificationDetailRoute.name,
           path: '/notification-detail',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           ProductDetailRoute.name,
-          path: 'Product-Detail',
+          path: 'product-detail',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           ShoppingCartRoute.name,
-          path: 'ShoppingCart',
+          path: 'shopping-cart',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           CheckoutRoute.name,
-          path: 'Checkout',
+          path: 'checkout',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           ProductRatingRoute.name,
-          path: 'ProductRating',
+          path: 'product-rating',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           SignUpRoute.name,
-          path: 'SignUp',
+          path: 'sign-up',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           LoginRoute.name,
-          path: 'Login',
+          path: 'login',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           AuthOtpConfirmRoute.name,
-          path: 'OTPConfirm',
+          path: 'otp-confirm',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           ForgotPasswordRoute.name,
-          path: 'ForgotPassword',
+          path: 'forgot-password',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           ChangePasswordRoute.name,
-          path: 'ChangePassword',
+          path: 'change-password',
+        ),
+        _i16.RouteConfig(
+          UserOrderDetailRoute.name,
+          path: 'user-order-detail',
         ),
       ];
 }
 
 /// generated route for
 /// [_i1.MainPage]
-class MainRoute extends _i15.PageRouteInfo<void> {
-  const MainRoute({List<_i15.PageRouteInfo>? children})
+class MainRoute extends _i16.PageRouteInfo<void> {
+  const MainRoute({List<_i16.PageRouteInfo>? children})
       : super(
           MainRoute.name,
           path: '/main',
@@ -219,7 +231,7 @@ class MainRoute extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.NotificationMainPage]
-class NotificationMainRoute extends _i15.PageRouteInfo<void> {
+class NotificationMainRoute extends _i16.PageRouteInfo<void> {
   const NotificationMainRoute()
       : super(
           NotificationMainRoute.name,
@@ -232,10 +244,10 @@ class NotificationMainRoute extends _i15.PageRouteInfo<void> {
 /// generated route for
 /// [_i3.NotificationDetailPage]
 class NotificationDetailRoute
-    extends _i15.PageRouteInfo<NotificationDetailRouteArgs> {
+    extends _i16.PageRouteInfo<NotificationDetailRouteArgs> {
   NotificationDetailRoute({
-    _i17.Key? key,
-    required _i18.NotificationDetailModel item,
+    _i18.Key? key,
+    required _i19.NotificationDetailModel item,
   }) : super(
           NotificationDetailRoute.name,
           path: '/notification-detail',
@@ -254,9 +266,9 @@ class NotificationDetailRouteArgs {
     required this.item,
   });
 
-  final _i17.Key? key;
+  final _i18.Key? key;
 
-  final _i18.NotificationDetailModel item;
+  final _i19.NotificationDetailModel item;
 
   @override
   String toString() {
@@ -266,13 +278,13 @@ class NotificationDetailRouteArgs {
 
 /// generated route for
 /// [_i4.ProductDetailPage]
-class ProductDetailRoute extends _i15.PageRouteInfo<ProductDetailRouteArgs> {
+class ProductDetailRoute extends _i16.PageRouteInfo<ProductDetailRouteArgs> {
   ProductDetailRoute({
-    _i17.Key? key,
-    required _i19.ProductEntity product,
+    _i18.Key? key,
+    required _i20.ProductEntity product,
   }) : super(
           ProductDetailRoute.name,
-          path: 'Product-Detail',
+          path: 'product-detail',
           args: ProductDetailRouteArgs(
             key: key,
             product: product,
@@ -288,9 +300,9 @@ class ProductDetailRouteArgs {
     required this.product,
   });
 
-  final _i17.Key? key;
+  final _i18.Key? key;
 
-  final _i19.ProductEntity product;
+  final _i20.ProductEntity product;
 
   @override
   String toString() {
@@ -300,11 +312,11 @@ class ProductDetailRouteArgs {
 
 /// generated route for
 /// [_i5.ShoppingCartPage]
-class ShoppingCartRoute extends _i15.PageRouteInfo<void> {
+class ShoppingCartRoute extends _i16.PageRouteInfo<void> {
   const ShoppingCartRoute()
       : super(
           ShoppingCartRoute.name,
-          path: 'ShoppingCart',
+          path: 'shopping-cart',
         );
 
   static const String name = 'ShoppingCartRoute';
@@ -312,11 +324,11 @@ class ShoppingCartRoute extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.CheckoutPage]
-class CheckoutRoute extends _i15.PageRouteInfo<void> {
+class CheckoutRoute extends _i16.PageRouteInfo<void> {
   const CheckoutRoute()
       : super(
           CheckoutRoute.name,
-          path: 'Checkout',
+          path: 'checkout',
         );
 
   static const String name = 'CheckoutRoute';
@@ -324,11 +336,11 @@ class CheckoutRoute extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i7.ProductRatingPage]
-class ProductRatingRoute extends _i15.PageRouteInfo<void> {
+class ProductRatingRoute extends _i16.PageRouteInfo<void> {
   const ProductRatingRoute()
       : super(
           ProductRatingRoute.name,
-          path: 'ProductRating',
+          path: 'product-rating',
         );
 
   static const String name = 'ProductRatingRoute';
@@ -336,11 +348,11 @@ class ProductRatingRoute extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i8.SignUpPage]
-class SignUpRoute extends _i15.PageRouteInfo<void> {
+class SignUpRoute extends _i16.PageRouteInfo<void> {
   const SignUpRoute()
       : super(
           SignUpRoute.name,
-          path: 'SignUp',
+          path: 'sign-up',
         );
 
   static const String name = 'SignUpRoute';
@@ -348,11 +360,11 @@ class SignUpRoute extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i9.LoginPage]
-class LoginRoute extends _i15.PageRouteInfo<void> {
+class LoginRoute extends _i16.PageRouteInfo<void> {
   const LoginRoute()
       : super(
           LoginRoute.name,
-          path: 'Login',
+          path: 'login',
         );
 
   static const String name = 'LoginRoute';
@@ -360,11 +372,11 @@ class LoginRoute extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i10.AuthOtpConfirmPage]
-class AuthOtpConfirmRoute extends _i15.PageRouteInfo<void> {
+class AuthOtpConfirmRoute extends _i16.PageRouteInfo<void> {
   const AuthOtpConfirmRoute()
       : super(
           AuthOtpConfirmRoute.name,
-          path: 'OTPConfirm',
+          path: 'otp-confirm',
         );
 
   static const String name = 'AuthOtpConfirmRoute';
@@ -372,11 +384,11 @@ class AuthOtpConfirmRoute extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i11.ForgotPasswordPage]
-class ForgotPasswordRoute extends _i15.PageRouteInfo<void> {
+class ForgotPasswordRoute extends _i16.PageRouteInfo<void> {
   const ForgotPasswordRoute()
       : super(
           ForgotPasswordRoute.name,
-          path: 'ForgotPassword',
+          path: 'forgot-password',
         );
 
   static const String name = 'ForgotPasswordRoute';
@@ -384,19 +396,31 @@ class ForgotPasswordRoute extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i12.ChangePasswordPage]
-class ChangePasswordRoute extends _i15.PageRouteInfo<void> {
+class ChangePasswordRoute extends _i16.PageRouteInfo<void> {
   const ChangePasswordRoute()
       : super(
           ChangePasswordRoute.name,
-          path: 'ChangePassword',
+          path: 'change-password',
         );
 
   static const String name = 'ChangePasswordRoute';
 }
 
 /// generated route for
-/// [_i13.HomePage]
-class HomeRoute extends _i15.PageRouteInfo<void> {
+/// [_i13.UserOrderDetailPage]
+class UserOrderDetailRoute extends _i16.PageRouteInfo<void> {
+  const UserOrderDetailRoute()
+      : super(
+          UserOrderDetailRoute.name,
+          path: 'user-order-detail',
+        );
+
+  static const String name = 'UserOrderDetailRoute';
+}
+
+/// generated route for
+/// [_i14.HomePage]
+class HomeRoute extends _i16.PageRouteInfo<void> {
   const HomeRoute()
       : super(
           HomeRoute.name,
@@ -407,8 +431,8 @@ class HomeRoute extends _i15.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i14.UserOrderPage]
-class UserOrderRoute extends _i15.PageRouteInfo<void> {
+/// [_i15.UserOrderPage]
+class UserOrderRoute extends _i16.PageRouteInfo<void> {
   const UserOrderRoute()
       : super(
           UserOrderRoute.name,

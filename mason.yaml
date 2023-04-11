@@ -10,7 +10,7 @@ bricks:
 
 # Feature Brick
 # Create:
-# mason make feature_brick --feature_name select_product_variant --folder_name select_variant --state_management cubit
+# mason make feature_brick --feature_name order_shipping_status --folder_name shipping_status --state_management cubit
 
 # Feature Core Brick
 # Create:

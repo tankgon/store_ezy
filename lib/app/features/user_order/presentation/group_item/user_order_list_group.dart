@@ -14,7 +14,9 @@ class UserOrderListGroup extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       separatorBuilder: (context, index) => const AppDivider(),
       itemBuilder: (context, index) {
-        return UserOrderGroupItem();
+        return UserOrderGroupItem(
+          limitItemShow: 1,
+        );
       },
     );
   }

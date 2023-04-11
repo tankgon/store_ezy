@@ -3,7 +3,7 @@ import 'package:ez_store/app/features/product_rating/presentation/main/product_r
 
 const productRatingRoutes = [
     AutoRoute(
-      path: 'ProductRating',
+      path: 'product-rating',
       page: ProductRatingPage,
     )
 ];

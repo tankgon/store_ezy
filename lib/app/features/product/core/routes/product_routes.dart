@@ -3,7 +3,7 @@ import 'package:ez_store/app/features/product/presentation/detail/product_detail
 
 const productRoutes = [
   AutoRoute(
-    path: 'Product-Detail',
+    path: 'product-detail',
     page: ProductDetailPage,
   )
 ];

@@ -3,7 +3,7 @@ import 'package:ez_store/app/features/checkout/presentation/main/checkout_page.d
 
 const checkoutRoutes = [
     AutoRoute(
-      path: 'Checkout',
+      path: 'checkout',
       page: CheckoutPage,
     )
 ];

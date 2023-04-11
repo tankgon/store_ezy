@@ -16,23 +16,25 @@ class AppPhotoViewCounter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppPhotoViewCounterBuilder(
-      controller: controller,
-      builder: (context, index, total) {
-        if (!(total > 1)) {
-          return emptyWidget ?? const SizedBox.shrink();
-        }
-        return Container(
-          decoration: BoxDecoration(
-            color: const Color(0x4D000000),
-            borderRadius: BorderRadius.circular(50),
-          ),
-          child: Padding(
-            padding: padding ?? const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-            child: '${(index ?? 0) + 1}/$total'.text.colorOnPrimary(context).make(),
-          ),
-        );
-      },
+    return IgnorePointer(
+      child: AppPhotoViewCounterBuilder(
+        controller: controller,
+        builder: (context, index, total) {
+          if (!(total > 1)) {
+            return emptyWidget ?? const SizedBox.shrink();
+          }
+          return Container(
+            decoration: BoxDecoration(
+              color: const Color(0x4D000000),
+              borderRadius: BorderRadius.circular(50),
+            ),
+            child: Padding(
+              padding: padding ?? const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+              child: '${(index ?? 0) + 1}/$total'.text.colorOnPrimary(context).make(),
+            ),
+          );
+        },
+      ),
     );
   }
 }

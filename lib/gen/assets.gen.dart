@@ -49,6 +49,10 @@ class $AssetsIconsCommonGen {
   /// File path: assets/icons/common/apple.svg
   SvgGenImage get apple => const SvgGenImage('assets/icons/common/apple.svg');
 
+  /// File path: assets/icons/common/empty_box.svg
+  SvgGenImage get emptyBox =>
+      const SvgGenImage('assets/icons/common/empty_box.svg');
+
   /// File path: assets/icons/common/facebook.svg
   SvgGenImage get facebook =>
       const SvgGenImage('assets/icons/common/facebook.svg');
@@ -57,7 +61,7 @@ class $AssetsIconsCommonGen {
   SvgGenImage get google => const SvgGenImage('assets/icons/common/google.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [apple, facebook, google];
+  List<SvgGenImage> get values => [apple, emptyBox, facebook, google];
 }
 
 class $AssetsIconsProductGen {

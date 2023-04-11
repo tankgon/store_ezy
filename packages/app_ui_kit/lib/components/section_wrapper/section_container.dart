@@ -8,6 +8,7 @@ class SectionContainer extends StatelessWidget {
     required this.child,
     this.space = Dimens.pad_XS,
     this.titlePadding,
+    this.leading,
     this.trailing,
     this.crossAxisAlignment = CrossAxisAlignment.center,
   });
@@ -15,6 +16,7 @@ class SectionContainer extends StatelessWidget {
   const SectionContainer.content({
     super.key,
     required this.title,
+    this.leading,
     this.trailing,
     required this.child,
     this.space = Dimens.pad_XS,
@@ -23,6 +25,7 @@ class SectionContainer extends StatelessWidget {
   });
 
   final String title;
+  final Widget? leading;
   final Widget? trailing;
   final EdgeInsetsGeometry? titlePadding;
 
@@ -38,6 +41,7 @@ class SectionContainer extends StatelessWidget {
         SectionTitle(
           title: title,
           padding: titlePadding,
+          leading: leading,
           trailing: trailing,
         ),
         SizedBox(height: space),

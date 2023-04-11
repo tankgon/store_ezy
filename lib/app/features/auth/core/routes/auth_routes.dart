@@ -7,23 +7,23 @@ import 'package:ez_store/app/features/auth/presentation/sign_up/sign_up_page.dar
 
 const authRoutes = [
     AutoRoute(
-      path: 'SignUp',
+      path: 'sign-up',
       page: SignUpPage,
     ),
     AutoRoute(
-      path: 'Login',
+      path: 'login',
       page: LoginPage,
     ),
     AutoRoute(
-      path: 'OTPConfirm',
+      path: 'otp-confirm',
       page: AuthOtpConfirmPage,
     ),
     AutoRoute(
-      path: 'ForgotPassword',
+      path: 'forgot-password',
       page: ForgotPasswordPage,
     ),
     AutoRoute(
-      path: 'ChangePassword',
+      path: 'change-password',
       page: ChangePasswordPage,
     ),
 ];

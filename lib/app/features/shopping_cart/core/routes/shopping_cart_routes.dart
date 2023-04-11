@@ -3,7 +3,7 @@ import 'package:ez_store/app/features/shopping_cart/presentation/main/shopping_c
 
 const shoppingCartRoutes = [
     AutoRoute(
-      path: 'ShoppingCart',
+      path: 'shopping-cart',
       page: ShoppingCartPage,
     )
 ];

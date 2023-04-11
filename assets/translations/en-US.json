@@ -1,135 +1,138 @@
 {
-  "homePage": {
-    "title": "Home"
-  },
   "appName": "MulStore",
-  "mainPage": {
-    "home": "Home",
-    "order": "Orders",
-    "message": "Message",
-    "account": "Account"
+  "authen": {
+    "Address": "Address",
+    "AddressRequired": "Address is required",
+    "AlreadyHaveAccount": "Already have an account?",
+    "ChangePasword": "Change password",
+    "ChangePaswordSuccess": "Change password success",
+    "ConfirmPassword": "Confirm password",
+    "Email": "Email",
+    "EmailNotValid": "Email not valid",
+    "EmailOrPhoneNotValid": "Email or phone number not valid",
+    "EmailRequired": "Email is required",
+    "ForgotPassword": "Forgot password",
+    "ForgotPasswordOTPMsg": "Enter {} registered to get the recovery OTP code",
+    "FullName": "FullName",
+    "InputEmailOrPhone": "Input email or phone number",
+    "InputNewPassword": "Input new password",
+    "Login": "Login",
+    "NotHaveAccount": "Do not have an account?",
+    "NotReceiveOTP": "Not received OTP yet?",
+    "OTPSentMessage": "Input OTP sent to phone number {}",
+    "OrLoginWith": "Or login with",
+    "OrSignUpWith": "Or sign up with",
+    "Password": "Password",
+    "PasswordNotMatch": "Password not match",
+    "PasswordPatternMsg": "Password must be at least 8 characters including letters and numbers",
+    "PasswordRequired": "Password require",
+    "PhoneNumber": "Phone number",
+    "PhoneNumberNotValid": "Phone number not valid",
+    "PhoneOrEmailRequired": "Email or phone is requrired",
+    "PhoneRequired": "Phone number is required",
+    "RegisterType": {
+      "email": "Email",
+      "phone": "Phone number"
+    },
+    "SendAgain": "Send again",
+    "SendOTPAgainAfterSecond": "Send OTP again after {} second",
+    "SignUp": "Sign up",
+    "SignUpSuccess": "Sign up successfull"
+  },
+  "checkout": {
+    "Checkout": "Checkou",
+    "Discount": "Discount",
+    "Pay": "Pay",
+    "PayDetail": "Pay detail",
+    "PlaceOrder": "Place order",
+    "TotalPay": "Total pay",
+    "TotalPrice": "Total price",
+    "TotalPriceNItems": "Total price ({} items)"
   },
   "common": {
+    "Authentic": "Authentic",
+    "Confirm": "Confirm",
+    "Desciption": "Description",
+    "FreeNShipping": "Free shipping",
+    "Next": "Next",
+    "Note": "Note",
+    "OrderBy": "Order by",
+    "ReadLess": "Read less",
+    "ReadMore": "Read more",
+    "ReturnInNDays": "Return in\n{} days",
     "Search": "Search",
     "SeeAll": "More",
-    "Authentic": "Authentic",
-    "Desciption": "Description",
-    "Note": "Note",
-    "FreeNShipping": "Free shipping",
-    "ReturnInNDays": "Return in\n{} days",
-    "ReadMore": "Read more",
-    "ReadLess": "Read less",
-    "OrderBy": "Order by",
+    "Skip": "Skip",
     "dialog": {
       "Cancel": "Cancel",
       "Confirm": "OK",
       "Delete": "Delêt"
-    },
-    "Next": "Next",
-    "Skip": "Skip",
-    "Confirm": "Confirm"
-  },
-  "product": {
-    "Buy": "Buy",
-    "PopularProducts": "Popular products",
-    "HotDeals": "Hot deals",
-    "NewProducts": "New products",
-    "Category": "Category",
-    "Packing": "Packing",
-    "OriginOrBrand": "Origin/Brand",
-    "Uses": "Uses",
-    "SameDistributor": "From this distributor",
-    "SameProductType": "Same product type",
-    "ProductClassification": "Product classification",
-    "Classification": "Classification",
-    "Quantity": "Quantity"
+    }
   },
   "discount": {
     "Promotions": "Promotions"
   },
   "distributor": {
-    "Rating": "Distributor rating",
-    "Popular": "Popular distributors"
+    "Popular": "Popular distributors",
+    "Rating": "Distributor rating"
   },
-  "shoppingCart": {
-    "SelectedNItem": "Selected ({} items)",
-    "TotalPrice": "Total price",
-    "NItem": "{} items",
-    "Buy": "Buy",
-    "ShoppingCart": "Cart"
+  "homePage": {
+    "title": "Home"
   },
-  "checkout": {
-    "Checkout": "Checkou",
-    "TotalPriceNItems": "Total price ({} items)",
-    "TotalPrice": "Total price",
-    "Discount": "Discount",
-    "TotalPay": "Total pay",
-    "PlaceOrder": "Place order",
-    "Pay": "Pay",
-    "PayDetail": "Pay detail"
+  "mainPage": {
+    "account": "Account",
+    "home": "Home",
+    "message": "Message",
+    "order": "Orders"
   },
   "payment": {
-    "PaymentMethod": "Payment methods",
-    "PaymentDetail": "Payment detai"
+    "PaymentDetail": "Payment detai",
+    "PaymentMethod": "Payment methods"
+  },
+  "product": {
+    "Buy": "Buy",
+    "Category": "Category",
+    "Classification": "Classification",
+    "HotDeals": "Hot deals",
+    "NewProducts": "New products",
+    "OriginOrBrand": "Origin/Brand",
+    "Packing": "Packing",
+    "PopularProducts": "Popular products",
+    "ProductClassification": "Product classification",
+    "Quantity": "Quantity",
+    "SameDistributor": "From this distributor",
+    "SameProductType": "Same product type",
+    "Uses": "Uses"
+  },
+  "productRating": {
+    "AllRating": "Rating",
+    "DistributorReply": "Distributor repl",
+    "ViewReply": "View reply",
+    "WriteReview": "Write review"
+  },
+  "shoppingCart": {
+    "Buy": "Buy",
+    "NItem": "{} items",
+    "SelectedNItem": "Selected ({} items)",
+    "ShoppingCart": "Cart",
+    "TotalPrice": "Total price"
   },
   "user": {
     "AddUserReceiveInfo": "Add user receive information",
     "UserReceiveInfo": "User receive information"
   },
-  "productRating": {
-    "AllRating": "Rating",
-    "WriteReview": "Write review",
-    "DistributorReply": "Distributor repl",
-    "ViewReply": "View reply"
-  },
   "userOrder": {
-    "Orders": "Orders",
-    "TotalPriceNItems": "Total price ({} items)",
+    "NoOrderYet": "No orders yet",
     "OrderStatus": {
+      "canceled": "Canceled",
+      "delivered": "Delivered",
       "pending": "Pending",
       "processing": "Processing",
-      "shipping": "Shipping",
-      "delivered": "Delivered",
-      "canceled": "Canceled"
-    }
-  },
-  "authen": {
-    "Login": "Login",
-    "SignUp": "Sign up",
-    "OrSignUpWith": "Or sign up with",
-    "InputEmailOrPhone": "Input email or phone number",
-    "Password": "Password",
-    "OTPSentMessage": "Input OTP sent to phone number {}",
-    "SendAgain": "Send again",
-    "FullName": "FullName",
-    "Address": "Address",
-    "PhoneNumber": "Phone number",
-    "Email": "Email",
-    "AlreadyHaveAccount": "Already have an account?",
-    "EmailRequired": "Email is required",
-    "PhoneRequired": "Phone number is required",
-    "AddressRequired": "Address is required",
-    "PhoneOrEmailRequired": "Email or phone is requrired",
-    "PasswordPatternMsg": "Password must be at least 8 characters including letters and numbers",
-    "PhoneNumberNotValid": "Phone number not valid",
-    "EmailNotValid": "Email not valid",
-    "PasswordRequired": "Password require",
-    "EmailOrPhoneNotValid": "Email or phone number not valid",
-    "NotReceiveOTP": "Not received OTP yet?",
-    "SendOTPAgainAfterSecond": "Send OTP again after {} second",
-    "SignUpSuccess": "Sign up successfull",
-    "NotHaveAccount": "Do not have an account?",
-    "OrLoginWith": "Or login with",
-    "ForgotPassword": "Forgot password",
-    "ForgotPasswordOTPMsg": "Enter {} registered to get the recovery OTP code",
-    "RegisterType": {
-      "phone": "Phone number",
-      "email": "Email"
+      "shipping": "Shipping"
     },
-    "InputNewPassword": "Input new password",
-    "ConfirmPassword": "Confirm password",
-    "PasswordNotMatch": "Password not match",
-    "ChangePaswordSuccess": "Change password success",
-    "ChangePasword": "Change password"
+    "Orders": "Orders",
+    "TotalPriceNItems": "Total price ({} items)",
+    "OrderDetail": "Order detai",
+    "ShippingInfo": "Shipping Info"
   }
 }

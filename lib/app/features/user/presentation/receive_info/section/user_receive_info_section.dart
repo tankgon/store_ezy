@@ -1,7 +1,10 @@
 import 'package:ez_store/all_file/all_file.dart';
 
 class UserReceiveInfoSection extends StatelessWidget {
-  const UserReceiveInfoSection({super.key, required this.user});
+  const UserReceiveInfoSection({
+    super.key,
+    required this.user,
+  });
 
   final UserModel user;
 
@@ -20,7 +23,7 @@ class UserReceiveInfoSection extends StatelessWidget {
               LocaleKeys.user_UserReceiveInfo.tr().text.titleMedium(context).make(),
             ].withDivider(Gaps.hGap8),
           ).p12(),
-          _Divider(),
+          const _Divider(),
           AppTile(
             padding: Dimens.edge_XS,
             title: _UserDetail(
@@ -32,6 +35,39 @@ class UserReceiveInfoSection extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class UserReceiveInfo extends StatelessWidget {
+  const UserReceiveInfo({
+    super.key,
+    required this.user,
+  });
+
+  final UserModel user;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Icon(
+          PhosphorIcons.map_pin_line,
+        ).pr12(),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            LocaleKeys.user_UserReceiveInfo.tr().text.titleMedium(context).make().pt2(),
+            Gaps.vGap8,
+            _UserDetail(
+              name: 'user.name',
+              phone: 'user.phone',
+              address: 'user.address',
+            ),
+          ],
+        ).expand(),
+      ],
     );
   }
 }
