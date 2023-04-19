@@ -10,7 +10,7 @@ bricks:
 
 # Feature Brick
 # Create:
-# mason make feature_brick --feature_name order_shipping_status --folder_name shipping_status --state_management cubit
+# mason make feature_brick --feature_name user_account --folder_name account --state_management cubit
 
 # Feature Core Brick
 # Create:

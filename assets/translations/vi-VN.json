@@ -119,7 +119,8 @@
   },
   "user": {
     "AddUserReceiveInfo": "Thêm thông tin người nhận",
-    "UserReceiveInfo": "Thông tin người nhận"
+    "UserReceiveInfo": "Thông tin người nhận",
+    "Account": "Tài khoản"
   },
   "userOrder": {
     "NoOrderYet": "Chưa có đơn nào",

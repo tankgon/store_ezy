@@ -10,6 +10,8 @@ class MainPage extends StatelessWidget {
       routes: const [
         HomeRoute(),
         UserOrderRoute(),
+        UserOrderRoute(),
+        UserAccountRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
         return _HomeBottomBar(

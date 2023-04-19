@@ -119,7 +119,8 @@
   },
   "user": {
     "AddUserReceiveInfo": "Add user receive information",
-    "UserReceiveInfo": "User receive information"
+    "UserReceiveInfo": "User receive information",
+    "Account": "Account"
   },
   "userOrder": {
     "NoOrderYet": "No orders yet",

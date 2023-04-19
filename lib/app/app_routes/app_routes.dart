@@ -7,6 +7,7 @@ import 'package:ez_store/app/features/notification/core/routes/notification_rout
 import 'package:ez_store/app/features/product/core/routes/product_routes.dart';
 import 'package:ez_store/app/features/product_rating/self.dart';
 import 'package:ez_store/app/features/shopping_cart/core/routes/shopping_cart_routes.dart';
+import 'package:ez_store/app/features/user/self.dart';
 import 'package:ez_store/app/features/user_order/self.dart';
 
 @MaterialAutoRouter(
@@ -23,7 +24,11 @@ import 'package:ez_store/app/features/user_order/self.dart';
         AutoRoute(
           path: 'UserOrder',
           page: UserOrderPage,
-        )
+        ),
+        AutoRoute(
+          path: 'UserAccount',
+          page: UserAccountPage,
+        ),
       ],
     ),
     ...notificationRoutes,

@@ -108,6 +108,7 @@ abstract class  LocaleKeys {
   static const shoppingCart = 'shoppingCart';
   static const user_AddUserReceiveInfo = 'user.AddUserReceiveInfo';
   static const user_UserReceiveInfo = 'user.UserReceiveInfo';
+  static const user_Account = 'user.Account';
   static const user = 'user';
   static const userOrder_NoOrderYet = 'userOrder.NoOrderYet';
   static const userOrder_OrderStatus_canceled = 'userOrder.OrderStatus.canceled';
