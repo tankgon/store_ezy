@@ -79,8 +79,10 @@ class _PagingListState<V> extends State<PagingList<V>> {
 
   @override
   void initState() {
-    _pagingController = (widget.pagingController ?? AppPagingController(firstPageKey: 0));
-    _pagingController.init(fetchListDataParam: widget.fetchListData as Future<List<V>> Function(int page, int pageSize), pageSizeParam: widget.pageSize);
+    _pagingController = widget.pagingController ?? AppPagingController(firstPageKey: 0);
+    if (widget.fetchListData != null) {
+      _pagingController.init(fetchListDataParam: widget.fetchListData!, pageSizeParam: widget.pageSize);
+    }
 
     if (widget.delayFetch != null) {
       isDelayDone = false;
@@ -118,9 +120,6 @@ class _PagingListState<V> extends State<PagingList<V>> {
         _pagingController.appendPage(newItems as List<V>, nextPageKey);
       }
     } catch (error) {
-      // if (pageKey == 0 && _pagingController.itemList.isNullOrEmpty()) {
-      //   widget.onEmpty?.call();
-      // }
       if (kDebugMode) {
         rethrow;
       }
@@ -133,7 +132,6 @@ class _PagingListState<V> extends State<PagingList<V>> {
     if (isEmpty) return const SizedBox.shrink();
 
     Widget pagedListView;
-    Widget finalWidget;
 
     if (widget.isSliver) {
       if (widget.padding != null) {

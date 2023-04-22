@@ -15,10 +15,6 @@ class AppLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (!isLoading) {
-      return child;
-    }
-
     return Stack(
       children: [
         IgnorePointer(

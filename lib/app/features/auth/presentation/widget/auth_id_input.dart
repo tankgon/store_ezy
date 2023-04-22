@@ -4,14 +4,20 @@ class AuthIdPasswordInput extends StatelessWidget {
   const AuthIdPasswordInput({
     super.key,
     this.showPasswordHelper = true,
+    this.showConfirmPassword = false,
   });
 
   final bool showPasswordHelper;
+  final bool showConfirmPassword;
 
-  static Map<String, AbstractControl<dynamic>> createControlGroup() {
+  static Map<String, AbstractControl<dynamic>> createControlGroup({
+    bool hasConfirmPassword = false,
+  }) {
     return {
       ...AuthIdInput.createControl(),
-      ...AuthPasswordInput.createControl(),
+      ...AuthPasswordInput.createControl(
+        hasConfirm: hasConfirmPassword,
+      ),
     };
   }
 
@@ -21,9 +27,15 @@ class AuthIdPasswordInput extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         const AuthIdInput(),
-        AuthPasswordInput(
-          showPasswordHelper: showPasswordHelper,
-        ),
+        if (showConfirmPassword)
+          const AuthPasswordInputWithConfirm(
+            passwordKey: AuthPasswordInput.passwordKey,
+            confirmKey: AuthPasswordInput.passwordConfirmKey,
+          )
+        else
+          AuthPasswordInput(
+            showPasswordHelper: showPasswordHelper,
+          ),
       ].withDivider(Gaps.vGap16),
     );
   }
@@ -82,9 +94,14 @@ class AuthPasswordInput extends StatelessWidget {
   final String? hintText;
 
   static const String passwordKey = 'passwordKey';
+  static const String passwordConfirmKey = 'passwordConfirmKey';
   static const String mustMatchKey = 'mustMatchKey';
 
-  static Map<String, AbstractControl<dynamic>> createControl({String? key}) {
+  static Map<String, AbstractControl<dynamic>> createControl({
+    String? key,
+    String? confirmKey,
+    bool hasConfirm = false,
+  }) {
     return {
       key ?? passwordKey: FormControl<String>(
         validators: [
@@ -94,10 +111,19 @@ class AuthPasswordInput extends StatelessWidget {
           ),
         ],
       ),
+      if (hasConfirm)
+        confirmKey ?? passwordConfirmKey: FormControl<String>(
+          validators: [
+            Validators.required,
+            Validators.pattern(
+              AppRegex.passwordRegex,
+            ),
+          ],
+        ),
     };
   }
 
-  static ValidatorFunction mustMatch(String controlName, String matchingControlName) {
+  static ValidatorFunction mustMatch({String controlName = passwordKey, String matchingControlName = passwordConfirmKey}) {
     return (AbstractControl<dynamic> control) {
       final form = control as FormGroup;
 
@@ -144,6 +170,36 @@ class AuthPasswordInput extends StatelessWidget {
           mustMatchKey: (e) => LocaleKeys.authen_PasswordNotMatch.tr(),
         },
       ),
+    );
+  }
+}
+
+class AuthPasswordInputWithConfirm extends StatelessWidget {
+  const AuthPasswordInputWithConfirm({
+    required this.passwordKey,
+    required this.confirmKey,
+    super.key,
+  });
+
+  final String passwordKey;
+  final String confirmKey;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        AuthPasswordInput(
+          formControlName: passwordKey,
+          hintText: LocaleKeys.authen_InputNewPassword.tr(),
+        ),
+        Gaps.vGap16,
+        AuthPasswordInput(
+          formControlName: confirmKey,
+          hintText: LocaleKeys.authen_ConfirmPassword.tr(),
+          showPasswordHelper: false,
+        ),
+      ],
     );
   }
 }

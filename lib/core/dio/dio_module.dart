@@ -33,10 +33,10 @@ class DioModule {
 
     if (AppConfig.SHOW_LOG) {
       _dio!.interceptors.add(PrettyDioLogger(
-        request: false,
+        request: true,
         requestHeader: false,
         requestBody: true,
-        responseBody: false,
+        responseBody: true,
       ));
     }
 

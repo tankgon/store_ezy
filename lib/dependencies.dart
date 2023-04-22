@@ -1,4 +1,6 @@
 import 'package:ez_store/all_file/all_file.dart';
+import 'package:ez_store/app/features/auth/data/mulstore/api/auth_api_ms.dart';
+import 'package:ez_store/app/features/auth/data/mulstore/auth_repo_ms.dart';
 import 'package:ez_store/firebase_options.dart';
 import 'package:ez_store/firebase_options_dev.dart';
 import 'package:ez_store/firebase_options_stag.dart';
@@ -11,6 +13,7 @@ import 'package:flutter/foundation.dart';
 import 'package:logger_and_error/logger/logger_custom.dart';
 
 import 'app/app_routes/app_routes.gr.dart';
+import 'app/features/auth/self.dart';
 
 final getIt = GetIt.instance;
 
@@ -78,4 +81,14 @@ Future<void> _appDataProvider() async {
     ..registerSingleton<UserSecureStorage>(userSecureStorage)
     ..registerSingleton<DeviceService>(DeviceService())
     ..registerSingleton<AppConfigService>(AppConfigService());
+
+  _initDataService();
+}
+
+void _initDataService() {
+  // Init Data Service
+  final dio = getIt<DioModule>().dio;
+  getIt
+    ..registerSingleton<AuthApiMS>(AuthApiMS(dio))
+    ..registerSingleton<AuthRepo>(AuthRepoMS());
 }

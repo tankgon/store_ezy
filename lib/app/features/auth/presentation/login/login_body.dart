@@ -1,5 +1,5 @@
 import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/auth/data/model/auth_base_model.dart';
+import 'package:ez_store/app/features/auth/data/mulstore/model/auth_model_ms.dart';
 import 'package:ez_store/app/features/auth/presentation/login/cubit/login_cubit.dart';
 import 'package:ez_store/app/features/auth/presentation/sign_up/sign_up_body.dart';
 import 'package:ez_store/app/features/auth/presentation/social_login/socail_auth.dart';

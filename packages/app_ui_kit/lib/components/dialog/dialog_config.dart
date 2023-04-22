@@ -23,6 +23,7 @@ class DialogConfigData {
     String? deleteLabel,
     EdgeInsets? defaultPadding,
     DialogAlertBuilder? successDialogBuilder,
+    DialogAlertBuilder? errorDialogBuilder,
   }) {
     this.defaultPadding = defaultPadding ?? const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0);
     this.confirmLabel = confirmLabel ?? 'Confirm';
@@ -31,6 +32,15 @@ class DialogConfigData {
     this.successDialogBuilder = successDialogBuilder ??
         (context, title, content, onConfirm, onAutoDismiss) {
           return SuccessDialogLayout(
+            title: title,
+            content: content,
+            onConfirm: onConfirm,
+            onAutoDismiss: onAutoDismiss,
+          );
+        };
+    this.errorDialogBuilder = errorDialogBuilder ??
+        (context, title, content, onConfirm, onAutoDismiss) {
+          return ErrorDialogLayout(
             title: title,
             content: content,
             onConfirm: onConfirm,
@@ -46,6 +56,7 @@ class DialogConfigData {
   late final String deleteLabel;
 
   late final DialogAlertBuilder successDialogBuilder;
+  late final DialogAlertBuilder errorDialogBuilder;
 }
 
 class DialogConfiguration extends InheritedWidget {

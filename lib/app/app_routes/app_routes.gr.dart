@@ -11,6 +11,8 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'dart:async' as _i22;
+
 import 'package:auto_route/auto_route.dart' as _i17;
 import 'package:flutter/material.dart' as _i18;
 
@@ -111,9 +113,16 @@ class AppAutoRoute extends _i17.RootStackRouter {
       );
     },
     AuthOtpConfirmRoute.name: (routeData) {
+      final args = routeData.argsAs<AuthOtpConfirmRouteArgs>();
       return _i17.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i10.AuthOtpConfirmPage(),
+        child: _i10.AuthOtpConfirmPage(
+          confirmOTPFunc: args.confirmOTPFunc,
+          onResendOTP: args.onResendOTP,
+          otpLength: args.otpLength,
+          otpMessage: args.otpMessage,
+          key: args.key,
+        ),
       );
     },
     ForgotPasswordRoute.name: (routeData) {
@@ -384,14 +393,51 @@ class LoginRoute extends _i17.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i10.AuthOtpConfirmPage]
-class AuthOtpConfirmRoute extends _i17.PageRouteInfo<void> {
-  const AuthOtpConfirmRoute()
-      : super(
+class AuthOtpConfirmRoute extends _i17.PageRouteInfo<AuthOtpConfirmRouteArgs> {
+  AuthOtpConfirmRoute({
+    required _i22.Future<bool> Function(String) confirmOTPFunc,
+    required _i22.Future<void> Function() onResendOTP,
+    int otpLength = 4,
+    String? otpMessage,
+    _i19.Key? key,
+  }) : super(
           AuthOtpConfirmRoute.name,
           path: 'otp-confirm',
+          args: AuthOtpConfirmRouteArgs(
+            confirmOTPFunc: confirmOTPFunc,
+            onResendOTP: onResendOTP,
+            otpLength: otpLength,
+            otpMessage: otpMessage,
+            key: key,
+          ),
         );
 
   static const String name = 'AuthOtpConfirmRoute';
+}
+
+class AuthOtpConfirmRouteArgs {
+  const AuthOtpConfirmRouteArgs({
+    required this.confirmOTPFunc,
+    required this.onResendOTP,
+    this.otpLength = 4,
+    this.otpMessage,
+    this.key,
+  });
+
+  final _i22.Future<bool> Function(String) confirmOTPFunc;
+
+  final _i22.Future<void> Function() onResendOTP;
+
+  final int otpLength;
+
+  final String? otpMessage;
+
+  final _i19.Key? key;
+
+  @override
+  String toString() {
+    return 'AuthOtpConfirmRouteArgs{confirmOTPFunc: $confirmOTPFunc, onResendOTP: $onResendOTP, otpLength: $otpLength, otpMessage: $otpMessage, key: $key}';
+  }
 }
 
 /// generated route for

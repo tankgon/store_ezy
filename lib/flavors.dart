@@ -12,13 +12,13 @@ class F {
   static String get title {
     switch (appFlavor) {
       case Flavor.DEVELOPMENT:
-        return 'BIREAL Dev';
+        return 'MulStore Dev';
       case Flavor.STAGING:
-        return 'BIREAL Stag';
+        return 'MulStore Stag';
       case Flavor.PRODUCTION:
-        return 'BIREAL';
+        return 'MulStore';
       default:
-        return 'BIREAL';
+        return 'MulStore';
     }
   }
 
@@ -38,13 +38,13 @@ class F {
   static String get SERVER_URL {
     switch (appFlavor) {
       case Flavor.DEVELOPMENT:
-        return 'https://api.dev.bireal.vn/v1/';
+        return 'https://devapi.mulstore.smatez.com/';
       case Flavor.STAGING:
-        return 'https://api.stag.bireal.vn/v1/';
+        return 'https://devapi.mulstore.smatez.com/';
       case Flavor.PRODUCTION:
-        return 'https://api.bireal.vn/v1/';
+        return 'https://devapi.mulstore.smatez.com/';
       default:
-        return 'https://api.bireal.vn/v1/';
+        return 'https://devapi.mulstore.smatez.com/';
     }
   }
 

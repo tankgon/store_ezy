@@ -64,6 +64,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> _onAuthenticatedEvent(AuthenticatedEvent event, Emitter<AuthState> emit) async {
+    log('AuthenticatedEvent: ${event.token}');
     try {
       // await setUserInfo(
       //   token: event.token,

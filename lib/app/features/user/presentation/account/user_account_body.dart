@@ -10,9 +10,9 @@ class UserAccountBody extends StatelessWidget {
       child: Column(
         children: [
           AppButton(
-            label: 'Login',
+            label: 'Sign Up',
             onPressed: () {
-              context.router.push(const LoginRoute());
+              context.router.push(const SignUpRoute());
             },
           )
         ],

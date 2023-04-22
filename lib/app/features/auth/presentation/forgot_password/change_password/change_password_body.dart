@@ -28,15 +28,9 @@ class ChangePasswordBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Gaps.vGap24,
-              AuthPasswordInput(
-                formControlName: ChangePasswordCubit.passwordKey,
-                hintText: LocaleKeys.authen_InputNewPassword.tr(),
-              ),
-              Gaps.vGap16,
-              AuthPasswordInput(
-                formControlName: ChangePasswordCubit.confirmKey,
-                hintText: LocaleKeys.authen_ConfirmPassword.tr(),
-                showPasswordHelper: false,
+              AuthPasswordInputWithConfirm(
+                passwordKey: ChangePasswordCubit.passwordKey,
+                confirmKey: ChangePasswordCubit.confirmKey,
               ),
               Gaps.vGap24,
             ],

@@ -9,41 +9,36 @@ class AuthOtpConfirmBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<AuthOtpConfirmCubit>();
+    final otpLength = cubit.otpLength;
     return AuthPageBody(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          LocaleKeys.authen_OTPSentMessage.tr(args: ['0796538406']).text.center.titleMedium(context).make(),
+          cubit.otpMessage?.text.center.titleMedium(context).make() ?? const SizedBox.shrink(),
           Gaps.vGap24,
           DefaultPinInput(
-            length: 6,
+            length: otpLength,
             onCompleted: (value) {
-              context.read<AuthOtpConfirmCubit>().setOtpValid(otp: value);
+              cubit.setOtpValid(otp: value);
             },
             onEditing: () {
-              context.read<AuthOtpConfirmCubit>().setOtpValid(otp: '');
+              cubit.setOtpValid(otp: '');
             },
           ),
           Gaps.vGap24,
           ResendCountdownText(
-            onResend: () {},
+            onResend: cubit.resendOtp,
           ).objectCenter(),
           Gaps.vGap32,
           BlocBuilder<AuthOtpConfirmCubit, AuthOtpConfirmState>(
             builder: (context, state) {
               return AppButton(
-                isEnable: (state.otp?.length ?? 0) == 6,
+                isEnable: (state.otp?.length ?? 0) == otpLength,
                 style: AppButtonTheme.confirmAction(context),
                 label: LocaleKeys.common_Confirm.tr(),
                 onPressed: () {
-                  DialogUtils.showSuccessDialog(
-                    context: context,
-                    content: LocaleKeys.authen_SignUpSuccess.tr(),
-                    barrierDismissible: false,
-                    onAutoDismiss: () {
-
-                    },
-                  );
+                  cubit.onConfirmOTP();
                 },
               );
             },

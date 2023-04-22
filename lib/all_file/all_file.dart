@@ -1,4 +1,5 @@
 export 'dart:developer' show log;
+export 'package:freezed_annotation/freezed_annotation.dart';
 
 // Packages
 export 'package:ez_store/all_file/packages_import.dart';

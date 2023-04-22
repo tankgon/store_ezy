@@ -18,13 +18,17 @@ class SignUpBody extends StatelessWidget {
           children: [
             LocaleKeys.authen_SignUp.tr().text.titleLarge(context).semiBold.center.make(),
             Gaps.vGap32,
-            const AuthIdPasswordInput(),
+            const AuthIdPasswordInput(
+              showConfirmPassword: true,
+            ),
             Gaps.vGap32,
             AppButton(
               style: AppButtonTheme.confirmAction(context),
               isSubmitButton: true,
               label: LocaleKeys.common_Next.tr(),
-              onPressed: () {},
+              onPressed: () {
+                context.read<SignUpCubit>().signUpOTP();
+              },
             ),
             Gaps.vGap32,
             Text.rich(

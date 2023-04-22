@@ -14,9 +14,6 @@ class ChangePasswordCubit extends RequestCubit<ChangePasswordState> {
           key: confirmKey,
         ),
       },
-      validators: [
-        AuthPasswordInput.mustMatch(passwordKey, confirmKey),
-      ],
     );
   }
 

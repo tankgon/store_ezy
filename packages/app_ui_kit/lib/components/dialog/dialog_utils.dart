@@ -101,7 +101,7 @@ class DialogUtils {
           });
         }
 
-        return context.dialogConfigData.successDialogBuilder(
+        return context.dialogConfigData.errorDialogBuilder(
           context,
           title,
           content,

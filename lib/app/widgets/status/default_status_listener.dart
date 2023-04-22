@@ -14,7 +14,7 @@ class DefaultStatusConsumer<C extends RequestCubit<S>, S extends RequestState> e
 
   final bool showLoadingIndicator;
 
-  final VoidCallback? onSuccess;
+  final ValueChanged<S>? onSuccess;
   final VoidCallback? onLoading;
   final VoidCallback? onError;
 
@@ -43,7 +43,7 @@ class DefaultStatusConsumer<C extends RequestCubit<S>, S extends RequestState> e
         );
       }
     } else if (state.status == ItemDefaultStatus.success) {
-      onSuccess?.call();
+      onSuccess?.call(state as S);
     }
   }
 }
