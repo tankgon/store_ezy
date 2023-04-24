@@ -70,7 +70,7 @@ class LoginNotHaveAccountMsg extends StatelessWidget {
             ),
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                context.pushRoute(const SignUpRoute());
+                context.router.replace(const SignUpRoute());
               },
           ),
         ],

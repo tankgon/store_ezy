@@ -28,6 +28,7 @@ class SignUpPage extends StatelessWidget {
                   onConfirm: () {
                     context.read<SignUpCubit>().reActiveAccount(
                       userID: error.userID,
+                      userName: error.userName,
                     );
                   },
                 );

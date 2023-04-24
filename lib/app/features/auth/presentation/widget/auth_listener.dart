@@ -24,13 +24,13 @@ class AuthListener extends StatelessWidget {
   void _onAuthStateChange(BuildContext context, AuthState state) {
     if (state is AuthenticatedState) {
       if (!state.isRefresh) {
-        ToastUtils.showToast(
-          context: context,
-          msg: 'Chào mừng'.tr(),
-          duration: const Duration(
-            seconds: 3,
-          ),
-        );
+        // ToastUtils.showToast(
+        //   context: context,
+        //   msg: 'Chào mừng'.tr(),
+        //   duration: const Duration(
+        //     seconds: 3,
+        //   ),
+        // );
       }
     } else if (state is UnAuthenticatedState) {
       if (state.openSignInPage) {
@@ -39,11 +39,11 @@ class AuthListener extends StatelessWidget {
       }
 
       if (state.showToast) {
-        ToastUtils.showToast(
-          context: context,
-          msg: 'Đăng xuất thành công'.tr(),
-          duration: const Duration(seconds: 3),
-        );
+        // ToastUtils.showToast(
+        //   context: context,
+        //   msg: 'Đăng xuất thành công'.tr(),
+        //   duration: const Duration(seconds: 3),
+        // );
       }
     }
   }

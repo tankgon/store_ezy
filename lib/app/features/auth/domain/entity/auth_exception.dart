@@ -11,8 +11,10 @@ class AuthException implements Exception {
 class AuthAccountExistException extends AuthException {
   AuthAccountExistException({
     required this.userID,
+    this.userName,
     super.error,
   });
 
   final String userID;
+  final String? userName;
 }

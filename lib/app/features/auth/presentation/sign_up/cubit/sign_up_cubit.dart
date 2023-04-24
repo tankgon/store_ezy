@@ -22,18 +22,20 @@ class SignUpCubit extends RequestCubit<SignUpState> {
 
   String? _userID;
   String? _uuid;
+  String? _userName;
 
   FutureOr<void> signUpOTP() async {
     if (form.valid) {
       emit(state.copyWith(status: ItemDefaultStatus.loading));
       try {
-        final id = form.getValue<String>(AuthIdInput.idKey);
+        final userName = form.getValue<String>(AuthIdInput.idKey);
         final signUpOTPRs = await _authRepo.signUpOTP(
-          id: id!,
+          id: userName!,
           password: form.getValue<String>(AuthPasswordInput.passwordKey)!,
         );
         _uuid = signUpOTPRs.uuid;
         _userID = signUpOTPRs.userID;
+        _userName = userName;
 
         await _verifyOTP(signUpOTPRs);
       } catch (e) {
@@ -46,6 +48,7 @@ class SignUpCubit extends RequestCubit<SignUpState> {
   Future<void> _verifyOTP(AuthSignUpOTPEntity signUpOTPRs) async {
     final verifyRs = await getIt<AppAutoRoute>().push(
       AuthOtpConfirmRoute(
+        otpMessage: 'Mã OTP đã được gửi đến {}'.tr(args: [_userName ?? '']),
         confirmOTPFunc: (otpUserInput) {
           return _confirmOTP(
             otpUserInput: otpUserInput,
@@ -83,7 +86,7 @@ class SignUpCubit extends RequestCubit<SignUpState> {
       userID: _userID ?? '',
       requestData: authSignUpOTPEntity,
     );
-    if (rs.token?.isNotEmpty != true) {
+    if (rs.token.isNotNullOrEmpty()) {
       authBloc.add(
         AuthenticatedEvent(
           token: rs.token!,
@@ -93,15 +96,14 @@ class SignUpCubit extends RequestCubit<SignUpState> {
     return true;
   }
 
-  Future<void> reActiveAccount({required String userID}) async {
-    log('reActiveAccount');
-
+  Future<void> reActiveAccount({required String userID, String? userName}) async {
     try {
       final signUpOTPRs = await _authRepo.resendSignUpOTP(
         userID: userID,
       );
       _uuid = signUpOTPRs.uuid;
       _userID = userID;
+      _userName = userName ?? _userName;
       await _verifyOTP(signUpOTPRs);
     } catch (e) {
       log(e.toString(), error: e, stackTrace: StackTrace.current);

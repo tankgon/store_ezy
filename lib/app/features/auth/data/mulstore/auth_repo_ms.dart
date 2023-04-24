@@ -9,6 +9,17 @@ const _deviceType = 'MOBILEAPP';
 class AuthRepoMS extends AuthRepo {
   final _authApi = getIt<AuthApiMS>();
 
+  Object _checkReActiveError(Object e) {
+    if (e.getServerErrorCode() == 'MSG0046') {
+      return AuthAccountExistException(
+        error: e,
+        userID: e.getServerErrorVar('userID') ?? '',
+        userName: e.getServerErrorVar('userLogin') ?? '',
+      );
+    }
+    return e;
+  }
+
   @override
   Future<AuthSignUpOTPEntity> signUpOTP({required String id, required String password}) async {
     try {
@@ -25,15 +36,7 @@ class AuthRepoMS extends AuthRepo {
       }
       return Future.error('Can not sign up');
     } catch (e) {
-      if (e.getServerErrorCode() == 'MSG0046') {
-        return Future.error(
-          AuthAccountExistException(
-            error: e,
-            userID: e.getServerErrorVar('userID') ?? '',
-          ),
-        );
-      }
-      return Future.error(e);
+      return Future.error(_checkReActiveError(e));
     }
   }
 
@@ -80,23 +83,27 @@ class AuthRepoMS extends AuthRepo {
 
   @override
   Future<AuthConfirmEntity> loginWithPassword({required String id, required String password}) async {
-    final deviceID = await AppInfoUtils.getDeviceID();
-    // final fcmToken = await FirebaseNotificationService.instance.getFCMToken();
-    final rs = await _authApi.loginPassword(
-      AuthLoginPasswordReq(
-        userLogin: id,
-        password: password,
-        deviceID: deviceID,
-        deviceToken: 'fcmToken',
-        type: _deviceType,
-      ),
-    );
-    if (rs != null) {
-      return Future.value(
-        rs.toEntity(),
+    try {
+      final deviceID = await AppInfoUtils.getDeviceID();
+      // final fcmToken = await FirebaseNotificationService.instance.getFCMToken();
+      final rs = await _authApi.loginPassword(
+        AuthLoginPasswordReq(
+          userLogin: id,
+          password: password,
+          deviceID: deviceID,
+          deviceToken: 'fcmToken',
+          type: _deviceType,
+        ),
       );
+      if (rs != null) {
+        return Future.value(
+          rs.toEntity(),
+        );
+      }
+      return Future.error('Can not login');
+    } catch (e) {
+      return Future.error(_checkReActiveError(e));
     }
-    return Future.error('Can not login');
   }
 
   @override
