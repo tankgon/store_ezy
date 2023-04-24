@@ -8,7 +8,7 @@ class MessageBody extends StatelessWidget {
     return AppScrollBody(
       child: Column(
         children: [
-          'message'.text.make(),
+          ''.text.make(),
         ],
       ),
     );

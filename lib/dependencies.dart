@@ -3,6 +3,9 @@ import 'package:ez_store/app/features/auth/data/mulstore/api/auth_api_ms.dart';
 import 'package:ez_store/app/features/auth/data/mulstore/auth_repo_ms.dart';
 import 'package:ez_store/app/features/message/data/repo/message_repo_impl.dart';
 import 'package:ez_store/app/features/message/self.dart';
+import 'package:ez_store/app/features/user/data/mulstore/api/user_api_ms.dart';
+import 'package:ez_store/app/features/user/data/mulstore/user_repo_ms.dart';
+import 'package:ez_store/app/features/user/domain/repo/user_repo.dart';
 import 'package:ez_store/firebase_options.dart';
 import 'package:ez_store/firebase_options_dev.dart';
 import 'package:ez_store/firebase_options_stag.dart';
@@ -88,7 +91,11 @@ void _initDataService() {
   // Init Data Service
   final dio = getIt<DioModule>().dio;
   getIt
-    ..registerSingleton<AuthApiMS>(AuthApiMS(dio))
-    ..registerSingleton<AuthRepo>(AuthRepoMS())
-    ..registerSingleton<MessageRepo>(MessageRepoImpl());
+    ..registerLazySingleton<UserApiMS>(()=> UserApiMS(dio))
+    ..registerLazySingleton<AuthApiMS>(()=> AuthApiMS(dio));
+
+  getIt
+    ..registerLazySingleton<UserRepo>(()=> UserRepoMS())
+    ..registerLazySingleton<AuthRepo>(()=> AuthRepoMS())
+    ..registerLazySingleton<MessageRepo>(()=> MessageRepoImpl());
 }

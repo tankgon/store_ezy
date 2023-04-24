@@ -23,7 +23,7 @@ class SignUpCubit extends RequestCubit<SignUpState> {
   String? userID;
   String? uuid;
 
-  FutureOr<void> signUpOTP(StackRouter router) async {
+  FutureOr<void> signUpOTP() async {
     if (form.valid) {
       emit(state.copyWith(status: ItemDefaultStatus.loading));
       try {
@@ -35,9 +35,18 @@ class SignUpCubit extends RequestCubit<SignUpState> {
         uuid = signUpOTPRs.uuid;
         userID = signUpOTPRs.userID;
 
-        final verifyRs = await _verifyOTP(
-          router,
-          signUpOTPRs,
+        final verifyRs = await getIt<AppAutoRoute>().push(
+          AuthOtpConfirmRoute(
+            confirmOTPFunc: (otpUserInput) {
+              return _confirmOTP(
+                otpUserInput: otpUserInput,
+                authSignUpOTPEntity: signUpOTPRs,
+              );
+            },
+            onResendOTP: () {
+              return _resendOTP(signUpOTPRs);
+            },
+          ),
         );
         if (verifyRs == true) {
           emit(state.copyWith(status: ItemDefaultStatus.success));
@@ -45,25 +54,10 @@ class SignUpCubit extends RequestCubit<SignUpState> {
           emit(state.copyWith(status: ItemDefaultStatus.initial));
         }
       } catch (e) {
+        log(e.toString(), error: e, stackTrace: StackTrace.current);
         emit(state.copyWith(status: ItemDefaultStatus.error, error: e));
       }
     }
-  }
-
-  Future<Object?> _verifyOTP(StackRouter router, AuthSignUpOTPEntity signUpOTPRs) async {
-    return router.push(
-      AuthOtpConfirmRoute(
-        confirmOTPFunc: (otpUserInput) {
-          return _confirmOTP(
-            otpUserInput: otpUserInput,
-            authSignUpOTPEntity: signUpOTPRs,
-          );
-        },
-        onResendOTP: () {
-          return _resendOTP(signUpOTPRs);
-        },
-      ),
-    );
   }
 
   Future<Object?> _resendOTP(AuthSignUpOTPEntity signUpOTPRs) async {
@@ -89,7 +83,6 @@ class SignUpCubit extends RequestCubit<SignUpState> {
       authBloc.add(
         AuthenticatedEvent(
           token: rs.token!,
-          user: rs.userEntity, // TODO: remove after get profile api
         ),
       );
     }

@@ -8,9 +8,7 @@ class AuthFirstLoadUserEvent extends AuthEvent {
 }
 
 class AuthFetchUserEvent extends AuthEvent {
-  AuthFetchUserEvent({this.fetchLoveList = false});
-
-  final bool fetchLoveList;
+  AuthFetchUserEvent();
 }
 
 class AuthenticatedEvent extends AuthEvent {

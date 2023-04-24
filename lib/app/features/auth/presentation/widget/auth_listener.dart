@@ -26,7 +26,7 @@ class AuthListener extends StatelessWidget {
       if (!state.isRefresh) {
         ToastUtils.showToast(
           context: context,
-          msg: 'Welcome'.tr(),
+          msg: 'Chào mừng'.tr(),
           duration: const Duration(
             seconds: 3,
           ),
@@ -41,7 +41,7 @@ class AuthListener extends StatelessWidget {
       if (state.showToast) {
         ToastUtils.showToast(
           context: context,
-          msg: 'Logged out'.tr(),
+          msg: 'Đăng xuất thành công'.tr(),
           duration: const Duration(seconds: 3),
         );
       }

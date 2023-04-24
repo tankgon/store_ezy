@@ -7,10 +7,15 @@ class UserEntity {
   const UserEntity({
     this.userID,
     this.userName,
+    this.fullName,
+    this.object,
   });
 
   final String? userID;
   final String? userName;
+  final String? fullName;
+
+  final Object? object;
 
   factory UserEntity.fromJson(Map<String, dynamic> json) =>
       _$UserEntityFromJson(json);

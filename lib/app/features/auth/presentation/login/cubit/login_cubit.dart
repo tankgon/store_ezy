@@ -32,7 +32,6 @@ class LoginCubit extends RequestCubit<LoginState> {
       authBloc.add(
         AuthenticatedEvent(
           token: rs.token!,
-          user: rs.userEntity, // TODO: remove after get profile api
         ),
       );
       emit(

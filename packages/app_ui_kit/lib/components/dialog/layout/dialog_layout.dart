@@ -10,12 +10,14 @@ class SuccessDialogLayout extends StatelessWidget {
     this.content,
     this.child,
     this.onConfirm,
+    this.onAutoDismiss,
   });
 
   final String? title;
   final String? content;
   final Widget? child;
   final VoidCallback? onConfirm;
+  final VoidCallback? onAutoDismiss;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,10 @@ class SuccessDialogLayout extends StatelessWidget {
       ),
       title: title,
       content: content,
-      onConfirm: onConfirm,
+      onConfirm: onAutoDismiss != null
+          ? null
+          : (onConfirm ?? () {}),
+      buttonStyle: AppButtonTheme.success(context),
       child: child,
     );
   }
@@ -42,12 +47,14 @@ class ErrorDialogLayout extends StatelessWidget {
     this.content,
     this.child,
     this.onConfirm,
+    this.onAutoDismiss,
   });
 
   final String? title;
   final String? content;
   final Widget? child;
   final VoidCallback? onConfirm;
+  final VoidCallback? onAutoDismiss;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +68,10 @@ class ErrorDialogLayout extends StatelessWidget {
       ),
       title: title,
       content: content,
-      onConfirm: onConfirm,
+      onConfirm: onAutoDismiss != null
+          ? null
+          : (onConfirm ?? () {}),
+      buttonStyle: AppButtonTheme.error(context),
       child: child,
     );
   }
@@ -75,6 +85,7 @@ class AppDialogLayout extends StatelessWidget {
     this.content,
     this.child,
     this.onConfirm,
+    this.buttonStyle,
   });
 
   final Widget? icon;
@@ -83,6 +94,7 @@ class AppDialogLayout extends StatelessWidget {
   final String? content;
   final Widget? child;
   final VoidCallback? onConfirm;
+  final ButtonStyle? buttonStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -100,6 +112,7 @@ class AppDialogLayout extends StatelessWidget {
           if (onConfirm != null)
             AppButton(
               label: context.dialogConfigData.confirmLabel,
+              style: buttonStyle,
               onPressed: () => Navigator.of(context).pop(),
             ).pt16(),
         ].withDivider(Gaps.vGap12),

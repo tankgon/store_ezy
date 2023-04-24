@@ -1,3 +1,4 @@
+import 'package:app_ui/app_ui.dart';
 import 'package:app_ui/src/all_file.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -24,6 +25,28 @@ class AppButtonTheme {
     ).merge(props);
   }
 
+  static ButtonStyle success(
+    BuildContext context, {
+    AppButtonStyle? props,
+  }) {
+    return ghost(
+      context,
+      props: props,
+      color: context.themeColor.successColor,
+    );
+  }
+
+  static ButtonStyle error(
+    BuildContext context, {
+    AppButtonStyle? props,
+  }) {
+    return ghost(
+      context,
+      props: props,
+      color: context.themeColor.error,
+    );
+  }
+
   static ButtonStyle circleGreyIcon(
     BuildContext context, {
     AppButtonStyle? props,
@@ -43,34 +66,37 @@ class AppButtonTheme {
     BuildContext context, {
     AppButtonStyle? props,
   }) {
-    return AppButtonTheme.primary(context).copyWith(
-      padding: const MaterialStatePropertyAll(
-        EdgeInsets.symmetric(
-          horizontal: 42,
-          vertical: 14,
-        ),
-      ),
-      textStyle: const MaterialStatePropertyAll(
-        TextStyle(
-          fontWeight: FontWeight.w600,
-        ),
-      ),
-    ).merge(props);
+    return AppButtonTheme.primary(context)
+        .copyWith(
+          padding: const MaterialStatePropertyAll(
+            EdgeInsets.symmetric(
+              horizontal: 42,
+              vertical: 14,
+            ),
+          ),
+          textStyle: const MaterialStatePropertyAll(
+            TextStyle(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        )
+        .merge(props);
   }
 
   static ButtonStyle ghost(
     BuildContext context, {
     AppButtonStyle? props,
+    Color? color,
   }) {
     final styleFrom = ElevatedButton.styleFrom(
       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      foregroundColor: Theme.of(context).primaryColor,
+      foregroundColor: color ?? Theme.of(context).primaryColor,
       backgroundColor: Theme.of(context).colorScheme.onPrimary,
       elevation: defaultElevation,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(defaultRadius),
         side: BorderSide(
-          color: Theme.of(context).primaryColor,
+          color: color ?? Theme.of(context).primaryColor,
           width: defaultBorderWidth,
         ),
       ),
@@ -82,7 +108,7 @@ class AppButtonTheme {
             (states) => RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(defaultRadius),
               side: BorderSide(
-                color: states.contains(MaterialState.disabled) ? Theme.of(context).disabledColor : Theme.of(context).primaryColor,
+                color: states.contains(MaterialState.disabled) ? Theme.of(context).disabledColor : (color ?? Theme.of(context).primaryColor),
                 width: defaultBorderWidth,
               ),
             ),
@@ -92,9 +118,9 @@ class AppButtonTheme {
   }
 
   static ButtonStyle none(
-      BuildContext context, {
-        AppButtonStyle? props,
-      }) {
+    BuildContext context, {
+    AppButtonStyle? props,
+  }) {
     return ElevatedButton.styleFrom(
       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       foregroundColor: Theme.of(context).textTheme.bodyMedium?.color ?? Colors.black,

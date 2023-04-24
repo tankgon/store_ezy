@@ -1,5 +1,5 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
-import 'package:app_ui_kit/components/dialog/layout/success_dialog_layout.dart';
+import 'package:app_ui_kit/components/dialog/layout/dialog_layout.dart';
 import 'package:flutter/cupertino.dart';
 
 typedef DialogButtonBuilder = Widget Function(BuildContext context);
@@ -25,7 +25,7 @@ class DialogConfigData {
     DialogAlertBuilder? successDialogBuilder,
     DialogAlertBuilder? errorDialogBuilder,
   }) {
-    this.defaultPadding = defaultPadding ?? const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0);
+    this.defaultPadding = defaultPadding ?? const EdgeInsets.symmetric(horizontal: 24, vertical: 24.0);
     this.confirmLabel = confirmLabel ?? 'Confirm';
     this.cancelLabel = cancelLabel ?? 'Cancel';
     this.deleteLabel = deleteLabel ?? 'Delete';
@@ -34,9 +34,8 @@ class DialogConfigData {
           return SuccessDialogLayout(
             title: title,
             content: content,
-            onConfirm: onConfirm ?? () {
-
-            },
+            onConfirm: onConfirm,
+            onAutoDismiss: onAutoDismiss,
           );
         };
     this.errorDialogBuilder = errorDialogBuilder ??
@@ -44,9 +43,8 @@ class DialogConfigData {
           return ErrorDialogLayout(
             title: title,
             content: content,
-            onConfirm: onConfirm ?? () {
-
-            },
+            onConfirm: onConfirm,
+            onAutoDismiss: onAutoDismiss,
           );
         };
   }

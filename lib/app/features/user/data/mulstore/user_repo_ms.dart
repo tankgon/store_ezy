@@ -1,24 +1,21 @@
 import 'package:ez_store/all_file/all_file.dart';
-
-import 'package:ez_store/app/features/user/data/mulstore/model/user_model_ms.dart';
-
+import 'package:ez_store/app/features/user/data/mulstore/api/user_api_ms.dart';
 import 'package:ez_store/app/features/user/domain/entity/user_base_entity.dart';
 import 'package:ez_store/app/features/user/domain/repo/user_repo.dart';
 
+class UserRepoMS implements UserRepo {
+  UserRepoMS({UserApiMS? userApiMS}) {
+    _userApiMS = userApiMS ?? getIt<UserApiMS>();
+  }
 
-abstract class UserRepoMS implements UserRepo {
+  late final UserApiMS _userApiMS;
+
   @override
   Future<UserEntity> getUserInfo() async {
-    // final UserModel userModel = await EzStore.instance.get<UserModel>(
-    //   key: 'user',
-    //   defaultValue: UserModel(userID: '123'),
-    // );
-    // return userModel.toEntity();
-
-    return Future.value(
-      UserEntity(
-        userID: '123',
-      ),
-    );
+    final rs = await _userApiMS.getUserProfile();
+    if (rs == null) {
+      throw Exception('Không tìm thấy thông tin người dùng'.tr());
+    }
+    return rs.toEntity();
   }
 }

@@ -12,7 +12,7 @@ class MessagePage extends StatelessWidget {
       child: DefaultStatusConsumer<MessageCubit, MessageState>(
         child: Scaffold(
           appBar: AppAppBar(
-            title: 'title',
+            title: 'Tin Nhắn',
           ),
           body: MessageBody(),
         ),

@@ -27,9 +27,7 @@ class SignUpBody extends StatelessWidget {
               isSubmitButton: true,
               label: LocaleKeys.common_Next.tr(),
               onPressed: () {
-                context.read<SignUpCubit>().signUpOTP(
-                  context.router,
-                );
+                context.read<SignUpCubit>().signUpOTP();
               },
             ),
             Gaps.vGap32,
