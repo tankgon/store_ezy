@@ -10,7 +10,7 @@ class NotificationBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState>(
-      listenWhen: (previous, current) => previous.data.userModel?.userId != current.data.userModel?.userId,
+      listenWhen: (previous, current) => previous.data.user?.userID != current.data.user?.userID,
       listener: (context, state) {
         if (state is AuthenticatedState) {}
       },

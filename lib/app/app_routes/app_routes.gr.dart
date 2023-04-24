@@ -396,7 +396,7 @@ class LoginRoute extends _i17.PageRouteInfo<void> {
 class AuthOtpConfirmRoute extends _i17.PageRouteInfo<AuthOtpConfirmRouteArgs> {
   AuthOtpConfirmRoute({
     required _i22.Future<bool> Function(String) confirmOTPFunc,
-    required _i22.Future<void> Function() onResendOTP,
+    required _i22.Future<Object?> Function() onResendOTP,
     int otpLength = 4,
     String? otpMessage,
     _i19.Key? key,
@@ -426,7 +426,7 @@ class AuthOtpConfirmRouteArgs {
 
   final _i22.Future<bool> Function(String) confirmOTPFunc;
 
-  final _i22.Future<void> Function() onResendOTP;
+  final _i22.Future<Object?> Function() onResendOTP;
 
   final int otpLength;
 

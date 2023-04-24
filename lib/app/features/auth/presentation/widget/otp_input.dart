@@ -10,10 +10,10 @@ class DefaultPinInput extends StatelessWidget {
     this.onEditing,
   });
 
-  final int length;
   final TextEditingController? controller;
+  final int length;
   final ValueChanged<String>? onCompleted;
-  final VoidCallback? onEditing;
+  final ValueChanged<String>? onEditing;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class DefaultPinInput extends StatelessWidget {
       onCompleted: onCompleted,
       onChanged: (value) {
         if (value.length != length) {
-          onEditing?.call();
+          onEditing?.call(value);
         }
       },
     );

@@ -16,7 +16,6 @@ export 'package:ez_store/all_file/controllers_import.dart';
 
 // Model & Repo & API
 export 'package:ez_store/all_file/repos_import.dart';
-export 'package:ez_store/all_file/models_import.dart';
 
 // Service
 export 'package:ez_store/all_file/services_import.dart';

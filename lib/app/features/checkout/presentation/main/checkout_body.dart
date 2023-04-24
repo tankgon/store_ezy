@@ -12,7 +12,7 @@ class CheckoutBody extends StatelessWidget {
       child: Column(
         children: [
           const UserReceiveInfoSection(
-            user: UserModel(),
+            user: UserEntity(),
           ).pxDefault(),
           const CheckoutProductListGroup(),
           const AppDivider(),

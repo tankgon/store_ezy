@@ -1,4 +1,5 @@
 import 'package:ez_store/all_file/all_file.dart';
+import 'package:ez_store/app/features/user/self.dart';
 
 class UserSecureStorage {
   bool _isInitialized = false;
@@ -19,7 +20,7 @@ class UserSecureStorage {
 
   late Box _box;
 
-  UserModel? userData;
+  UserEntity? userData;
   final StreamController<bool> _unAuthorizedController = StreamController<bool>.broadcast();
   Stream<bool> get unAuthorizedStream => _unAuthorizedController.stream;
 
@@ -31,7 +32,7 @@ class UserSecureStorage {
   final socialAvatarKey = 'socialAvatarKey';
   final unAuthorizeKey = 'unAuthorizeKey';
 
-  String? get userId => user?.userId;
+  String? get userId => user?.userID;
 
   bool get isLogin => user != null;
 
@@ -65,13 +66,17 @@ class UserSecureStorage {
     await _box.put(unAuthorizeKey, false);
   }
 
-  Future<void> setUserModel(UserModel user) async {
+  Future<void> setUserModel(UserEntity user) async {
     logger.i('setUserModel $user');
     userData = user;
   }
 
-  UserModel? get user {
+  UserEntity? get user {
     return userData;
+  }
+
+  String? get userToken {
+    return token;
   }
 
   Future<void> setSocialAvatar(String? socialAvatar) async {

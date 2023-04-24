@@ -20,10 +20,13 @@ class AuthOtpConfirmBody extends StatelessWidget {
           DefaultPinInput(
             length: otpLength,
             onCompleted: (value) {
-              cubit.setOtpValid(otp: value);
+              cubit
+                ..setOtpValid(otp: value)
+                ..onConfirmOTP();
             },
-            onEditing: () {
-              cubit.setOtpValid(otp: '');
+            onEditing: (value) {
+              log('onEditing:');
+              cubit.setOtpValid(otp: value);
             },
           ),
           Gaps.vGap24,

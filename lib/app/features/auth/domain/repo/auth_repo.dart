@@ -4,9 +4,11 @@ import 'package:ez_store/app/features/auth/self.dart';
 abstract class AuthRepo {
   Future<AuthSignUpOTPEntity> signUpOTP({required String id,required String password});
 
-  Future<AuthConfirmOTPEntity> confirmOTP({required String otp, Object? requestData});
+  Future<AuthSignUpOTPEntity> resendSignUpOTP({required String userID});
 
-  Future<dynamic> login({required String id,required String password});
+  Future<AuthConfirmEntity> confirmSignUpOTP({required String otp, required String uuid, required String userID, AuthSignUpOTPEntity? requestData});
+
+  Future<AuthConfirmEntity> loginWithPassword({required String id,required String password});
 
   Future<dynamic> loginWithGoogle();
 

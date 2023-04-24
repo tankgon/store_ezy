@@ -34,8 +34,9 @@ class DialogConfigData {
           return SuccessDialogLayout(
             title: title,
             content: content,
-            onConfirm: onConfirm,
-            onAutoDismiss: onAutoDismiss,
+            onConfirm: onConfirm ?? () {
+
+            },
           );
         };
     this.errorDialogBuilder = errorDialogBuilder ??
@@ -43,8 +44,9 @@ class DialogConfigData {
           return ErrorDialogLayout(
             title: title,
             content: content,
-            onConfirm: onConfirm,
-            onAutoDismiss: onAutoDismiss,
+            onConfirm: onConfirm ?? () {
+
+            },
           );
         };
   }

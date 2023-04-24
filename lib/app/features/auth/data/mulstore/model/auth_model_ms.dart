@@ -1,6 +1,6 @@
 import 'package:ez_store/all_file/all_file.dart';
+import 'package:ez_store/app/features/auth/self.dart';
 
-part 'auth_model_ms.freezed.dart';
 part 'auth_model_ms.g.dart';
 
 enum RegisterType {
@@ -10,62 +10,163 @@ enum RegisterType {
   final String translateKey = 'authen';
 }
 
+@JsonSerializable()
+class AuthSignUpOTPReq {
 
+  const AuthSignUpOTPReq({
+    this.userLogin,
+    this.password,
+  });
 
-@freezed
-class AuthSignUpOTPReq with _$AuthSignUpOTPReq {
-  const factory AuthSignUpOTPReq({
-    @JsonKey(name: 'userLogin') String? userLogin,
-    @JsonKey(name: 'password') String? password,
-  }) = _AuthSignUpOTPReq;
+  factory AuthSignUpOTPReq.fromJson(Map<String, dynamic> json) =>
+      _$AuthSignUpOTPReqFromJson(json);
 
-  factory AuthSignUpOTPReq.fromJson(Map<String, Object?> json) => _$AuthSignUpOTPReqFromJson(json);
+  final String? userLogin;
+  final String? password;
+
+  Map<String, dynamic> toJson() => _$AuthSignUpOTPReqToJson(this);
 }
 
-@freezed
-class AuthSignUpOTPResp with _$AuthSignUpOTPResp {
-  const factory AuthSignUpOTPResp({
-    @JsonKey(name: 'userID') String? userID,
-    @JsonKey(name: 'uuid') String? uuid,
-    @JsonKey(name: 'userLogin') String? userLogin,
-    @JsonKey(name: 'otp') String? otp,
-  }) = _AuthSignUpResp;
+@JsonSerializable()
+@CopyWith()
+class AuthSignUpOTPResp {
 
-  factory AuthSignUpOTPResp.fromJson(Map<String, Object?> json) => _$AuthSignUpOTPRespFromJson(json);
+  const AuthSignUpOTPResp({
+    this.userID,
+    this.uuid,
+    this.userLogin,
+    this.otp,
+  });
+
+  factory AuthSignUpOTPResp.fromJson(Map<String, dynamic> json) =>
+      _$AuthSignUpOTPRespFromJson(json);
+  final String? userID;
+  final String? uuid;
+  final String? userLogin;
+  final String? otp;
+
+  Map<String, dynamic> toJson() => _$AuthSignUpOTPRespToJson(this);
+
+
+  AuthSignUpOTPEntity toEntity() => AuthSignUpOTPEntity(
+    userID: userID,
+    uuid: uuid,
+    object: this,
+  );
 }
 
-@freezed
-class AuthVerifyOTPReq with _$AuthVerifyOTPReq {
-  const factory AuthVerifyOTPReq({
-    @JsonKey(name: 'userID') String? userID,
-    @JsonKey(name: 'uuid') String? uuid,
-    @JsonKey(name: 'otp') String? otp,
-    @JsonKey(name: 'deviceToken') String? deviceToken,
-    @JsonKey(name: 'deviceID') String? deviceID,
-    @JsonKey(name: 'type') String? type,
-  }) = _AuthVerifyOTPReq;
+@JsonSerializable()
+class AuthVerifyOTPReq {
+  const AuthVerifyOTPReq({
+    this.userID,
+    this.uuid,
+    this.otp,
+    this.deviceToken,
+    this.deviceID,
+    this.type,
+  });
 
-  factory AuthVerifyOTPReq.fromJson(Map<String, Object?> json) => _$AuthVerifyOTPReqFromJson(json);
+  factory AuthVerifyOTPReq.fromJson(Map<String, dynamic> json) =>
+      _$AuthVerifyOTPReqFromJson(json);
+  final String? userID;
+  final String? uuid;
+  final String? otp;
+  final String? deviceToken;
+  final String? deviceID;
+  final String? type;
+
+  Map<String, dynamic> toJson() => _$AuthVerifyOTPReqToJson(this);
 }
 
-@freezed
-class VerifyOTPResp with _$VerifyOTPResp {
-  const factory VerifyOTPResp({
-    @JsonKey(name: 'token') String? token,
-    @JsonKey(name: 'userID') String? userID,
-    @JsonKey(name: 'userLogin') String? userLogin,
-    @JsonKey(name: 'accountType') int? accountType,
-  }) = _VerifyOTPResp;
+@JsonSerializable()
+class VerifyOTPResp {
+  const VerifyOTPResp({
+    this.token,
+    this.userID,
+    this.userLogin,
+    this.accountType,
+  });
 
-  factory VerifyOTPResp.fromJson(Map<String, Object?> json) => _$VerifyOTPRespFromJson(json);
+  final String? token;
+  final String? userID;
+  final String? userLogin;
+  final int? accountType;
+
+  factory VerifyOTPResp.fromJson(Map<String, dynamic> json) =>
+      _$VerifyOTPRespFromJson(json);
+
+  Map<String, dynamic> toJson() => _$VerifyOTPRespToJson(this);
+
+  AuthConfirmEntity toEntity() => AuthConfirmEntity(
+    userID: userID,
+    token: token,
+    userName: userLogin,
+    email: userLogin,
+    object: this,
+  );
 }
 
-@freezed
-class AuthResendOTPReq with _$AuthResendOTPReq {
-  const factory AuthResendOTPReq({
-    @JsonKey(name: 'userID') String? userID,
-  }) = _AuthResendOTPReq;
+@JsonSerializable()
+class AuthResendOTPReq {
+  final String? userID;
 
-  factory AuthResendOTPReq.fromJson(Map<String, Object?> json) => _$AuthResendOTPReqFromJson(json);
+  const AuthResendOTPReq({
+    this.userID,
+  });
+
+  factory AuthResendOTPReq.fromJson(Map<String, dynamic> json) =>
+      _$AuthResendOTPReqFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AuthResendOTPReqToJson(this);
 }
 
+@JsonSerializable()
+class AuthLoginPasswordReq {
+  const AuthLoginPasswordReq({
+    this.userLogin,
+    this.password,
+    this.deviceToken,
+    this.deviceID,
+    this.type,
+  });
+
+  final String? userLogin;
+  final String? password;
+  final String? deviceToken;
+  final String? deviceID;
+  final String? type;
+
+  factory AuthLoginPasswordReq.fromJson(Map<String, dynamic> json) =>
+      _$AuthLoginPasswordReqFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AuthLoginPasswordReqToJson(this);
+}
+
+
+@JsonSerializable()
+class AuthLoginPasswordResp {
+  final String? token;
+  final String? userID;
+  final String? userLogin;
+  final int? accountType;
+
+  const AuthLoginPasswordResp({
+    this.token,
+    this.userID,
+    this.userLogin,
+    this.accountType,
+  });
+
+  AuthConfirmEntity toEntity() => AuthConfirmEntity(
+    userID: userID,
+    token: token,
+    userName: userLogin,
+    email: userLogin,
+    object: this,
+  );
+
+  factory AuthLoginPasswordResp.fromJson(Map<String, dynamic> json) =>
+      _$AuthLoginPasswordRespFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AuthLoginPasswordRespToJson(this);
+}

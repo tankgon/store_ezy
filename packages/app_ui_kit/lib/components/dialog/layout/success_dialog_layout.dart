@@ -10,14 +10,12 @@ class SuccessDialogLayout extends StatelessWidget {
     this.content,
     this.child,
     this.onConfirm,
-    this.onAutoDismiss,
   });
 
   final String? title;
   final String? content;
   final Widget? child;
   final VoidCallback? onConfirm;
-  final VoidCallback? onAutoDismiss;
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +24,12 @@ class SuccessDialogLayout extends StatelessWidget {
         'assets/lottie/ic_check.json',
         package: 'app_ui_kit',
         width: 55,
+        height: 55,
         repeat: false,
       ),
       title: title,
       content: content,
       onConfirm: onConfirm,
-      onAutoDismiss: onAutoDismiss,
       child: child,
     );
   }
@@ -44,14 +42,12 @@ class ErrorDialogLayout extends StatelessWidget {
     this.content,
     this.child,
     this.onConfirm,
-    this.onAutoDismiss,
   });
 
   final String? title;
   final String? content;
   final Widget? child;
   final VoidCallback? onConfirm;
-  final VoidCallback? onAutoDismiss;
 
   @override
   Widget build(BuildContext context) {
@@ -60,12 +56,12 @@ class ErrorDialogLayout extends StatelessWidget {
         'assets/lottie/ic_error.json',
         package: 'app_ui_kit',
         width: 70,
+        height: 70,
         repeat: false,
       ),
       title: title,
       content: content,
       onConfirm: onConfirm,
-      onAutoDismiss: onAutoDismiss,
       child: child,
     );
   }
@@ -79,7 +75,6 @@ class AppDialogLayout extends StatelessWidget {
     this.content,
     this.child,
     this.onConfirm,
-    this.onAutoDismiss,
   });
 
   final Widget? icon;
@@ -88,7 +83,6 @@ class AppDialogLayout extends StatelessWidget {
   final String? content;
   final Widget? child;
   final VoidCallback? onConfirm;
-  final VoidCallback? onAutoDismiss;
 
   @override
   Widget build(BuildContext context) {
@@ -97,6 +91,7 @@ class AppDialogLayout extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       content: Column(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           if (icon != null) icon,
           title?.text.titleLarge(context).center.make(),
@@ -106,7 +101,7 @@ class AppDialogLayout extends StatelessWidget {
             AppButton(
               label: context.dialogConfigData.confirmLabel,
               onPressed: () => Navigator.of(context).pop(),
-            ),
+            ).pt16(),
         ].withDivider(Gaps.vGap12),
       ).py4(),
     );

@@ -43,7 +43,7 @@ class DioModule {
     // Check token
     final storage = getIt<UserSecureStorage>();
     if (storage.user != null) {
-      addToken(storage.user!.token);
+      addToken(storage.userToken);
     }
 
     addTokenInterceptor();

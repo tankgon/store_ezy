@@ -44,6 +44,31 @@ class _AuthApiMS implements AuthApiMS {
   }
 
   @override
+  Future<AuthSignUpOTPResp?> resendSignUpOTP(req) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(req.toJson());
+    final _result = await _dio
+        .fetch<Map<String, dynamic>?>(_setStreamType<AuthSignUpOTPResp>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/mulstore/auth/resend-otp',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value =
+        _result.data == null ? null : AuthSignUpOTPResp.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<VerifyOTPResp?> verifyOTP(req) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -65,6 +90,32 @@ class _AuthApiMS implements AuthApiMS {
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value =
         _result.data == null ? null : VerifyOTPResp.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<AuthLoginPasswordResp?> loginPassword(req) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(req.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>?>(
+        _setStreamType<AuthLoginPasswordResp>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/mulstore/auth/signin',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = _result.data == null
+        ? null
+        : AuthLoginPasswordResp.fromJson(_result.data!);
     return value;
   }
 

@@ -1,25 +1,45 @@
+import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 import 'package:ez_store/all_file/all_file.dart';
+import 'package:ez_store/app/features/auth/domain/repo/auth_repo.dart';
+import 'package:ez_store/app/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:ez_store/app/features/auth/presentation/widget/auth_id_input.dart';
 
 part 'login_state.dart';
 
 class LoginCubit extends RequestCubit<LoginState> {
-  LoginCubit({dynamic? item, required Map<String, AbstractControl<dynamic>> idInputControl}) : super(LoginState(item: item)){
+  LoginCubit({
+    required Map<String, AbstractControl<dynamic>> idInputControl,
+    required this.authBloc,
+    dynamic? item,
+  }) : super(LoginState(item: item)) {
     form = FormGroup({
       ...idInputControl,
     });
+    authRepo = getIt<AuthRepo>();
   }
 
   late final FormGroup form;
+  late final AuthRepo authRepo;
+  final AuthBloc authBloc;
 
-  FutureOr<void> fetchItem() async {
+  FutureOr<void> loginPassword() async {
     emit(state.copyWith(status: ItemDefaultStatus.loading));
     try {
-      // final item = await Get.find<ApproveRepo>().getProgramForApprove(programID: item.programID ?? '');
+      final rs = await authRepo.loginWithPassword(
+        id: form.getValue<String>(AuthIdInput.idKey) ?? '',
+        password: form.getValue<String>(AuthPasswordInput.passwordKey) ?? '',
+      );
+      authBloc.add(
+        AuthenticatedEvent(
+          token: rs.token!,
+          user: rs.userEntity, // TODO: remove after get profile api
+        ),
+      );
       emit(
         state.copyWith(
           status: ItemDefaultStatus.success,
           // item: item,
-        )
+        ),
       );
     } catch (e) {
       log(e.toString(), error: e);

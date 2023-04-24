@@ -1,8 +1,7 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/auth/domain/repo/auth_repo.dart';
-import 'package:ez_store/app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:ez_store/app/features/auth/presentation/widget/auth_id_input.dart';
+import 'package:ez_store/app/features/auth/self.dart';
 
 part 'sign_up_state.dart';
 
@@ -21,33 +20,79 @@ class SignUpCubit extends RequestCubit<SignUpState> {
   late FormGroup form;
   final _authRepo = getIt<AuthRepo>();
 
-  FutureOr<void> signUpOTP() async {
+  String? userID;
+  String? uuid;
+
+  FutureOr<void> signUpOTP(StackRouter router) async {
     if (form.valid) {
       emit(state.copyWith(status: ItemDefaultStatus.loading));
       try {
-        final item = await _authRepo.signUpOTP(
-          id: form.getValue<String>(AuthIdInput.idKey)!,
+        final id = form.getValue<String>(AuthIdInput.idKey);
+        final signUpOTPRs = await _authRepo.signUpOTP(
+          id: id!,
           password: form.getValue<String>(AuthPasswordInput.passwordKey)!,
         );
-        emit(state.copyWith(status: ItemDefaultStatus.success, item: item.resultObject));
+        uuid = signUpOTPRs.uuid;
+        userID = signUpOTPRs.userID;
+
+        final verifyRs = await _verifyOTP(
+          router,
+          signUpOTPRs,
+        );
+        if (verifyRs == true) {
+          emit(state.copyWith(status: ItemDefaultStatus.success));
+        } else {
+          emit(state.copyWith(status: ItemDefaultStatus.initial));
+        }
       } catch (e) {
         emit(state.copyWith(status: ItemDefaultStatus.error, error: e));
       }
     }
   }
 
-  Future<bool> confirmOTP(String otpUserInput) async {
-    final rs = await _authRepo.confirmOTP(
-      otp: otpUserInput,
-      requestData: state.item,
+  Future<Object?> _verifyOTP(StackRouter router, AuthSignUpOTPEntity signUpOTPRs) async {
+    return router.push(
+      AuthOtpConfirmRoute(
+        confirmOTPFunc: (otpUserInput) {
+          return _confirmOTP(
+            otpUserInput: otpUserInput,
+            authSignUpOTPEntity: signUpOTPRs,
+          );
+        },
+        onResendOTP: () {
+          return _resendOTP(signUpOTPRs);
+        },
+      ),
     );
-    if (rs.token?.isNotEmpty != true) {
-      authBloc.add(AuthenticatedEvent(token: rs.token!));
-    }
-    return true;
   }
 
-  Future<void> resendOTP() async {
-    return;
+  Future<Object?> _resendOTP(AuthSignUpOTPEntity signUpOTPRs) async {
+    final resendRs = await _authRepo.resendSignUpOTP(
+      userID: signUpOTPRs.userID ?? '',
+    );
+    uuid = resendRs.uuid;
+    userID = resendRs.userID;
+    return Future.value(resendRs);
+  }
+
+  Future<bool> _confirmOTP({
+    required String otpUserInput,
+    required AuthSignUpOTPEntity authSignUpOTPEntity,
+  }) async {
+    final rs = await _authRepo.confirmSignUpOTP(
+      otp: otpUserInput,
+      uuid: uuid ?? '',
+      userID: userID ?? '',
+      requestData: authSignUpOTPEntity,
+    );
+    if (rs.token?.isNotEmpty != true) {
+      authBloc.add(
+        AuthenticatedEvent(
+          token: rs.token!,
+          user: rs.userEntity, // TODO: remove after get profile api
+        ),
+      );
+    }
+    return true;
   }
 }

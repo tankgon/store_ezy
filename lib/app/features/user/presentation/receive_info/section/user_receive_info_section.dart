@@ -1,4 +1,5 @@
 import 'package:ez_store/all_file/all_file.dart';
+import 'package:ez_store/app/features/user/domain/entity/user_base_entity.dart';
 
 class UserReceiveInfoSection extends StatelessWidget {
   const UserReceiveInfoSection({
@@ -6,7 +7,7 @@ class UserReceiveInfoSection extends StatelessWidget {
     required this.user,
   });
 
-  final UserModel user;
+  final UserEntity user;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +46,7 @@ class UserReceiveInfo extends StatelessWidget {
     required this.user,
   });
 
-  final UserModel user;
+  final UserEntity user;
 
   @override
   Widget build(BuildContext context) {

@@ -2,51 +2,50 @@ part of 'auth_bloc.dart';
 
 class AuthData {
 
-  const AuthData({
-    this.userModel,
-  });
-
-  final UserModel? userModel;
-
-//<editor-fold desc="Data Methods">
-
-  factory AuthData.fromMap(Map<String, dynamic> map) {
-    return AuthData(
-      userModel: map['userModel'] as UserModel,
-    );
-  }
+  final UserEntity? user;
 
   AuthData updateUser({
-    UserModel? userModel,
+    UserEntity? user,
   }) {
     return AuthData(
-      userModel: userModel,
+      user: user,
     );
   }
 
-  @override
-  bool operator ==(Object other) => identical(this, other) || (other is AuthData && runtimeType == other.runtimeType && userModel == other.userModel);
+//<editor-fold desc="Data Methods">
+  const AuthData({
+    this.user,
+  });
 
   @override
-  int get hashCode => userModel.hashCode;
+  bool operator ==(Object other) => identical(this, other) || (other is AuthData && runtimeType == other.runtimeType && user == other.user);
+
+  @override
+  int get hashCode => user.hashCode;
 
   @override
   String toString() {
-    return 'AuthData{' + ' userModel: $userModel,' + '}';
+    return 'AuthData{' + ' user: $user,' + '}';
   }
 
   AuthData copyWith({
-    UserModel? userModel,
+    UserEntity? user,
   }) {
     return AuthData(
-      userModel: userModel ?? this.userModel,
+      user: user ?? this.user,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'userModel': this.userModel,
+      'user': this.user,
     };
+  }
+
+  factory AuthData.fromMap(Map<String, dynamic> map) {
+    return AuthData(
+      user: map['user'] as UserEntity,
+    );
   }
 
 //</editor-fold>

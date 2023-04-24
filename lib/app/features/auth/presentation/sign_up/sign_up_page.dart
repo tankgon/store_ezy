@@ -17,15 +17,7 @@ class SignUpPage extends StatelessWidget {
         builder: (context) {
           return DefaultStatusConsumer<SignUpCubit, SignUpState>(
             onSuccess: (state) async {
-              final rs = await context.pushRoute(
-                AuthOtpConfirmRoute(
-                  confirmOTPFunc: context.read<SignUpCubit>().confirmOTP,
-                  onResendOTP: context.read<SignUpCubit>().resendOTP,
-                ),
-              );
-              if (rs == true) {
-                getIt<AppAutoRoute>().popToParentOf([SignUpRoute.name]);
-              }
+              getIt<AppAutoRoute>().popToParentOf([SignUpRoute.name]);
             },
             child: Scaffold(
               appBar: AppAppBar(

@@ -1,5 +1,5 @@
-
 import 'package:ez_store/all_file/all_file.dart';
+import 'package:ez_store/app/features/user/self.dart';
 import 'package:ez_store/services/user_secure_storage_service.dart';
 
 part 'auth_event.dart';
@@ -19,23 +19,26 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   late final UserSecureStorage _userSecureStorage;
+
   // late final AuthRepo _authRepo;
   // late final UserRepo _userRepo;
 
   FutureOr<void> _onFirstLoadAuthEvent(AuthFirstLoadUserEvent event, Emitter<AuthState> emit) {
     emit(AuthLoadingState(state.data));
-    logger.i(_userSecureStorage.user);
+    log('${_userSecureStorage.user}');
 
     try {
       if (_userSecureStorage.token == null) {
         add(UnAuthenticatedEvent());
       } else {
-        add(AuthenticatedEvent(
-          token: _userSecureStorage.token ?? '',
-          avatar: _userSecureStorage.socialAvatar ?? '',
-          firstTime: false,
-          isRefresh: true,
-        ));
+        add(
+          AuthenticatedEvent(
+            token: _userSecureStorage.token ?? '',
+            avatar: _userSecureStorage.socialAvatar ?? '',
+            firstTime: false,
+            isRefresh: true,
+          ),
+        );
       }
     } catch (e) {
       log(e.toString(), error: e);
@@ -46,7 +49,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Future<void> _onAuthFetchUserEvent(AuthFetchUserEvent event, Emitter<AuthState> emit) async {
     try {
       // var user = await _userRepo.getUserProfile();
-      // _userSecureStorage.setUserModel(user);
+      // _userSecureStorage.setUserEntity(user);
       // if (event.fetchLoveList) {
       //   _loveRepo.loadLoveListAll(
       //     delayFetch: const Duration(seconds: 3),
@@ -66,31 +69,30 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Future<void> _onAuthenticatedEvent(AuthenticatedEvent event, Emitter<AuthState> emit) async {
     log('AuthenticatedEvent: ${event.token}');
     try {
-      // await setUserInfo(
-      //   token: event.token,
-      //   avatar: event.avatar,
-      // );
-      //
+      await setUserInfo(
+        token: event.token,
+        avatar: event.avatar,
+      );
+
       // var user = await _userRepo.getUserProfile();
       // List<AdminPermissionTypes>? adminRole;
       // if (user.isAdmin()) {
       //   adminRole = await _userRepo.getAdminRole();
       // }
-      // _userSecureStorage.setUserModel(user);
+      // _userSecureStorage.setUserEntity(user);
       // _loveRepo.loadLoveListAll(
       //   delayFetch: const Duration(seconds: 3),
       // );
-      //
-      // emit(
-      //   AuthenticatedState(
-      //     state.data.copyWith(
-      //       userModel: user,
-      //       adminRoleList: adminRole,
-      //     ),
-      //     firstTimeLoginEver: event.firstTime,
-      //     isRefresh: event.isRefresh,
-      //   ),
-      // );
+
+      emit(
+        AuthenticatedState(
+          state.data.copyWith(
+            user: event.user,
+          ),
+          firstTimeLoginEver: event.firstTime,
+          isRefresh: event.isRefresh,
+        ),
+      );
     } catch (e) {
       log(e.toString(), error: e);
       emit(AuthenticatedStateFail(state.data, err: e.getServerErrorMsg()));
@@ -110,7 +112,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
       emit(UnAuthenticatedState(
         state.data.updateUser(
-          userModel: null,
+          user: null,
         ),
         openSignInPage: event.openSignInPage,
         showToast: event.showToast,
@@ -129,11 +131,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> setUserInfo({required String token, String? avatar}) async {
-    _userSecureStorage.setToken(token);
-    _userSecureStorage.notifyAuthorized();
-    // SocketIOService.instance.setToken(token: token);
+    await _userSecureStorage.setToken(token);
+    await _userSecureStorage.notifyAuthorized();
+
     getIt<DioModule>().addToken(token);
 
+    // SocketIOService.instance.setToken(token: token);
     if (avatar.isNotNullOrEmpty()) {
       // await _userRepo.updateUserAvatarStr(
       //   avatarStr: avatar ?? '',
@@ -141,11 +144,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  bool get isLogin => state.data.userModel != null;
+  bool get isLogin => state.data.user != null;
 
-  String? get userID => state.data.userModel?.userId;
+  String? get userID => state.data.user?.userID;
 
-  UserModel? get user => state.data.userModel;
+  UserEntity? get user => state.data.user;
 
   bool isAdmin() {
     return true;
@@ -155,5 +158,4 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Future<void> close() async {
     return super.close();
   }
-
 }

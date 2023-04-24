@@ -1,63 +1,91 @@
 import 'package:app_utils/view/app_info_utils.dart';
 import 'package:ez_store/all_file/all_file.dart';
 import 'package:ez_store/app/features/auth/data/mulstore/api/auth_api_ms.dart';
-import 'package:ez_store/app/features/auth/domain/repo/auth_repo.dart';
 import 'package:ez_store/app/features/auth/self.dart';
-import 'package:ez_store/services/firebase_notification_service.dart';
 
 import 'model/auth_model_ms.dart';
+
+const _deviceType = 'MOBILEAPP';
 
 class AuthRepoMS extends AuthRepo {
   final _authApi = getIt<AuthApiMS>();
 
   @override
   Future<AuthSignUpOTPEntity> signUpOTP({required String id, required String password}) async {
-    // call api and map result
-    final value = await _authApi.signUp(
+    final rs = await _authApi.signUp(
       AuthSignUpOTPReq(
         userLogin: id,
         password: password,
       ),
     );
-    return AuthSignUpOTPEntity(
-      userID: value!.userID,
-      uuid: value.uuid,
-      otp: value.otp,
-      resultObject: value,
-    );
+    if (rs != null) {
+      return Future.value(
+        rs.toEntity(),
+      );
+    }
+    return Future.error('Can not sign up');
   }
 
   @override
-  Future<AuthConfirmOTPEntity> confirmOTP({required String otp, Object? requestData}) async {
-    if (requestData is AuthSignUpOTPResp) {
+  Future<AuthSignUpOTPEntity> resendSignUpOTP({required String userID}) async {
+    final rs = await _authApi.resendSignUpOTP(
+      AuthResendOTPReq(
+        userID: userID,
+      ),
+    );
+    if (rs != null) {
+      return Future.value(
+        rs.toEntity(),
+      );
+    }
+    return Future.error('Can not resend OTP');
+  }
+
+  @override
+  Future<AuthConfirmEntity> confirmSignUpOTP({required String otp, required String uuid, required String userID, AuthSignUpOTPEntity? requestData}) async {
+    final object = requestData?.object;
+    if (object is AuthSignUpOTPResp) {
       final deviceID = await AppInfoUtils.getDeviceID();
       // final fcmToken = await FirebaseNotificationService.instance.getFCMToken();
       final rs = await _authApi.verifyOTP(
         AuthVerifyOTPReq(
-          userID: requestData.userID,
-          uuid: requestData.uuid,
+          userID: userID,
+          uuid: uuid,
           otp: otp,
           deviceID: deviceID,
           deviceToken: 'fcmToken',
-          type: 'MOBILEAPP',
+          type: _deviceType,
         ),
       );
       if (rs != null) {
         return Future.value(
-          AuthConfirmOTPEntity(
-            userID: rs.userID,
-            token: rs.token,
-            userName: rs.userLogin,
-          ),
+          rs.toEntity(),
         );
       }
     }
+    log('confirmSignUpOTP: requestData is not AuthSignUpOTPResp');
     return Future.error('OTP is not correct');
   }
 
   @override
-  Future login({required String id, required String password}) {
-    throw UnimplementedError();
+  Future<AuthConfirmEntity> loginWithPassword({required String id, required String password}) async {
+    final deviceID = await AppInfoUtils.getDeviceID();
+    // final fcmToken = await FirebaseNotificationService.instance.getFCMToken();
+    final rs = await _authApi.loginPassword(
+      AuthLoginPasswordReq(
+        userLogin: id,
+        password: password,
+        deviceID: deviceID,
+        deviceToken: 'fcmToken',
+        type: _deviceType,
+      ),
+    );
+    if (rs != null) {
+      return Future.value(
+        rs.toEntity(),
+      );
+    }
+    return Future.error('Can not login');
   }
 
   @override

@@ -34,7 +34,9 @@ class LoginBody extends StatelessWidget {
               style: AppButtonTheme.confirmAction(context),
               isSubmitButton: true,
               label: LocaleKeys.authen_Login.tr(),
-              onPressed: () {},
+              onPressed: () {
+                context.read<LoginCubit>().loginPassword();
+              },
             ),
             Gaps.vGap32,
             const LoginNotHaveAccountMsg(),

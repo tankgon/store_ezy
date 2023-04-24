@@ -1,28 +1,52 @@
 import 'package:ez_store/all_file/all_file.dart';
+import 'package:ez_store/app/features/user/self.dart';
 
 part 'auth_entity.g.dart';
-part 'auth_entity.freezed.dart';
 
-@freezed
-class AuthSignUpOTPEntity with _$AuthSignUpOTPEntity {
-  const factory AuthSignUpOTPEntity({
-    @JsonKey(name: 'userID') String? userID,
-    @JsonKey(name: 'uuid') String? uuid,
-    @JsonKey(name: 'otp') String? otp,
-    @JsonKey(name: 'resultObject') Object? resultObject,
-  }) = _AuthSignUpOTPEntity;
+@JsonSerializable()
+@CopyWith()
+class AuthSignUpOTPEntity {
+  const AuthSignUpOTPEntity({
+    this.userID,
+    this.uuid,
+    this.object,
+  });
 
-  factory AuthSignUpOTPEntity.fromJson(Map<String, Object?> json) => _$AuthSignUpOTPEntityFromJson(json);
+  final String? userID;
+  final String? uuid;
+  final Object? object;
+
+  factory AuthSignUpOTPEntity.fromJson(Map<String, dynamic> json) =>
+      _$AuthSignUpOTPEntityFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AuthSignUpOTPEntityToJson(this);
 }
 
-@freezed
-class AuthConfirmOTPEntity with _$AuthConfirmOTPEntity {
-  const factory AuthConfirmOTPEntity({
-    @JsonKey(name: 'userID') String? userID,
-    @JsonKey(name: 'token') String? token,
-    @JsonKey(name: 'userName') String? userName,
-    @JsonKey(name: 'email') String? email,
-  }) = _AuthConfirmOTPEntity;
+@JsonSerializable()
+@CopyWith()
+class AuthConfirmEntity {
+  const AuthConfirmEntity({
+    this.token,
+    this.userID,
+    this.userName,
+    this.email,
+    this.object,
+  });
 
-  factory AuthConfirmOTPEntity.fromJson(Map<String, Object?> json) => _$AuthConfirmOTPEntityFromJson(json);
+  final String? token;
+  final String? userID;
+  final String? userName;
+  final String? email;
+  final Object? object;
+
+  UserEntity get userEntity => UserEntity(
+    userID: userID,
+    userName: userName,
+  );
+
+  factory AuthConfirmEntity.fromJson(Map<String, dynamic> json) =>
+      _$AuthConfirmEntityFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AuthConfirmEntityToJson(this);
+
 }

@@ -10,7 +10,13 @@ abstract class AuthApiMS {
   @POST('/api/mulstore/auth/signup')
   Future<AuthSignUpOTPResp?> signUp(@Body() AuthSignUpOTPReq req);
 
+  @POST('/api/mulstore/auth/resend-otp')
+  Future<AuthSignUpOTPResp?> resendSignUpOTP(@Body() AuthResendOTPReq req);
+
   @POST('/api/mulstore/auth/verify-otp')
   Future<VerifyOTPResp?> verifyOTP(@Body() AuthVerifyOTPReq req);
+
+  @POST('/api/mulstore/auth/signin')
+  Future<AuthLoginPasswordResp?> loginPassword(@Body() AuthLoginPasswordReq req);
 
 }

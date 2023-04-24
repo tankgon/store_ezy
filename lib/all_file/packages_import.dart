@@ -1,4 +1,3 @@
-//// *** Dart ***
 export 'dart:async';
 export 'dart:convert';
 export 'dart:io';
@@ -10,6 +9,7 @@ export 'package:bloc/bloc.dart' hide EventHandler;
 export 'package:breakpoint/breakpoint.dart';
 export 'package:cached_network_image/cached_network_image.dart';
 export 'package:connectivity_plus/connectivity_plus.dart';
+export 'package:copy_with_extension/copy_with_extension.dart';
 export 'package:device_info_plus/device_info_plus.dart';
 //// *** Third Party Packages ***
 export 'package:dio/dio.dart' hide Headers, MultipartFile;
@@ -36,17 +36,17 @@ export 'package:reactive_forms/reactive_forms.dart';
 export 'package:retrofit/http.dart' hide Path;
 export 'package:velocity_x/velocity_x.dart'
     show
+        CenterExtension,
         VelocityXRichTextExtension,
-        VxContextExtensions,
         VelocityXTextSpanExtension,
+        VxCenterBuilderExtension,
+        VxContextExtensions,
+        VxMarqueeExtension,
         VxNumExtension,
         VxObjectExtensions,
         VxOpacityExtension,
-        VxTransformExtension,
-        VxWidgetsExtension,
-        VxTextExtensions,
         // StringExtension,
         VxPaddingExtensions,
-        VxMarqueeExtension,
-        CenterExtension,
-        VxCenterBuilderExtension;
+        VxTextExtensions,
+        VxTransformExtension,
+        VxWidgetsExtension;

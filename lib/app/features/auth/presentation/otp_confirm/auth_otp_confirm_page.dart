@@ -12,7 +12,7 @@ class AuthOtpConfirmPage extends StatelessWidget {
   });
 
   final Future<bool> Function(String otpUserInput) confirmOTPFunc;
-  final Future<void> Function() onResendOTP;
+  final Future<Object?> Function() onResendOTP;
   final int otpLength;
   final String? otpMessage;
 

@@ -4,7 +4,10 @@ import 'package:ez_store/app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:ez_store/services/user_secure_storage_service.dart';
 
 class AuthListener extends StatelessWidget {
-  const AuthListener({super.key, required this.child});
+  const AuthListener({
+    required this.child,
+    super.key,
+  });
 
   final Widget child;
 
@@ -21,13 +24,13 @@ class AuthListener extends StatelessWidget {
   void _onAuthStateChange(BuildContext context, AuthState state) {
     if (state is AuthenticatedState) {
       if (!state.isRefresh) {
-        String msg;
-        if (state.firstTimeLoginEver) {
-          msg = 'welcomeNewUser'.tr().replaceFirst('<user_name>', 'contactName');
-        } else {
-          msg = 'welcomeUser'.tr().replaceFirst('<user_name>', 'contactName');
-        }
-        ToastUtils.showToast(context: context, msg: msg, duration: const Duration(seconds: 3));
+        ToastUtils.showToast(
+          context: context,
+          msg: 'Welcome'.tr(),
+          duration: const Duration(
+            seconds: 3,
+          ),
+        );
       }
     } else if (state is UnAuthenticatedState) {
       if (state.openSignInPage) {
@@ -38,7 +41,7 @@ class AuthListener extends StatelessWidget {
       if (state.showToast) {
         ToastUtils.showToast(
           context: context,
-          msg: 'logout'.tr(),
+          msg: 'Logged out'.tr(),
           duration: const Duration(seconds: 3),
         );
       }

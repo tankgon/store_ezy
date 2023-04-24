@@ -13,7 +13,7 @@ class UserOrderDetailBody extends StatelessWidget {
       child: Column(
         children: [
           const UserReceiveInfo(
-            user: UserModel(),
+            user: UserEntity(),
           ).pxDefault().pb16(),
           OrderShippingStatus(),
           const UserOrderGroupItem(

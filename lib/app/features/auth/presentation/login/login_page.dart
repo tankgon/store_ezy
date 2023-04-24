@@ -3,6 +3,7 @@ import 'package:ez_store/app/features/auth/presentation/login/login_body.dart';
 import 'package:ez_store/app/features/auth/presentation/login/cubit/login_cubit.dart';
 import 'package:ez_store/app/features/auth/presentation/sign_up/sign_up_body.dart';
 import 'package:ez_store/app/features/auth/presentation/widget/auth_id_input.dart';
+import 'package:ez_store/app/features/auth/self.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -12,9 +13,13 @@ class LoginPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => LoginCubit(
         idInputControl: AuthIdPasswordInput.createControlGroup(),
-      )..fetchItem(),
-      child: const DefaultStatusConsumer<LoginCubit, LoginState>(
-        child: Scaffold(
+        authBloc: context.read<AuthBloc>(),
+      ),
+      child: DefaultStatusConsumer<LoginCubit, LoginState>(
+        onSuccess: (state) {
+          context.router.popToParentOf([LoginRoute.name]);
+        },
+        child: const Scaffold(
           resizeToAvoidBottomInset: true,
           appBar: AppAppBar(
             title: '',

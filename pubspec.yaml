@@ -41,6 +41,7 @@ dependencies:
   json_serializable: ^6.6.1
   equatable: ^2.0.3
   json_annotation: ^4.8.0
+  copy_with_extension: ^4.0.0
   easy_mask: ^2.0.1
 
   #####  View
@@ -199,6 +200,7 @@ dev_dependencies:
   very_good_analysis: ^4.0.0+1
   freezed: ^2.2.0
   pub_version_plus: ^1.0.2
+  copy_with_extension_gen: ^4.0.0
 
 flutter_gen:
   integrations:
