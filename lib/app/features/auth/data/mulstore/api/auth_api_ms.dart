@@ -13,4 +13,12 @@ abstract class AuthApiMS {
   @POST('/api/mulstore/auth/verify-otp')
   Future<VerifyOTPResp?> verifyOTP(@Body() AuthVerifyOTPReq req);
 
+  @POST('/api/mulstore/auth/forgot-password/send-otp')
+  Future<dynamic?> forgotPasswordSendOTP(@Body() dynamic req);
+
+  @POST('/api/mulstore/auth/forgot-password/verify-otp')
+  Future<dynamic?> forgotPasswordVerifyOTP(@Body() dynamic req);
+
+  @POST('/api/mulstore/auth/forgot-password/create-password')
+  Future<dynamic?> forgotPasswordCreatePassword(@Body() dynamic req);
 }

@@ -3,6 +3,7 @@ import 'package:ez_store/app/features/auth/core/routes/auth_routes.dart';
 import 'package:ez_store/app/features/checkout/self.dart';
 import 'package:ez_store/app/features/home/presentation/main/home_page.dart';
 import 'package:ez_store/app/features/main/presentation/main_page.dart';
+import 'package:ez_store/app/features/message/self.dart';
 import 'package:ez_store/app/features/notification/core/routes/notification_routes.dart';
 import 'package:ez_store/app/features/product/core/routes/product_routes.dart';
 import 'package:ez_store/app/features/product_rating/self.dart';
@@ -29,6 +30,10 @@ import 'package:ez_store/app/features/user_order/self.dart';
           path: 'UserAccount',
           page: UserAccountPage,
         ),
+        AutoRoute(
+          path: 'message',
+          page: MessagePage,
+        )
       ],
     ),
     ...notificationRoutes,

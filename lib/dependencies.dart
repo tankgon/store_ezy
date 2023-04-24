@@ -9,10 +9,8 @@ import 'package:ez_store/services/device_service.dart';
 import 'package:ez_store/services/user_secure_storage_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:flutter/foundation.dart';
-import 'package:logger_and_error/logger/logger_custom.dart';
+tics.dart';
 
-import 'app/app_routes/app_routes.gr.dart';
 import 'app/features/auth/self.dart';
 
 final getIt = GetIt.instance;
@@ -90,5 +88,6 @@ void _initDataService() {
   final dio = getIt<DioModule>().dio;
   getIt
     ..registerSingleton<AuthApiMS>(AuthApiMS(dio))
-    ..registerSingleton<AuthRepo>(AuthRepoMS());
+    ..registerSingleton<AuthRepo>(AuthRepoMS())
+    ..registerSingleton<MessageRepo>(MessageRepoImpl());
 }

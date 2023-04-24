@@ -1,17 +1,8 @@
 import 'package:app_utils/view/app_info_utils.dart';
 import 'package:ez_store/all_file/all_file.dart';
 import 'package:ez_store/app/features/auth/data/mulstore/api/auth_api_ms.dart';
-import 'package:ez_store/app/features/auth/domain/repo/auth_repo.dart';
-import 'package:ez_store/app/features/auth/self.dart';
-import 'package:ez_store/services/firebase_notification_service.dart';
-
-import 'model/auth_model_ms.dart';
-
-class AuthRepoMS extends AuthRepo {
-  final _authApi = getIt<AuthApiMS>();
-
-  @override
-  Future<AuthSignUpOTPEntity> signUpOTP({required String id, required String password}) async {
+import 'package:ez_store/app/features/auth/selfuthSignUpOTPEntity> signUpOTP(
+      {required String id, required String password}) async {
     // call api and map result
     final value = await _authApi.signUp(
       AuthSignUpOTPReq(
@@ -28,7 +19,8 @@ class AuthRepoMS extends AuthRepo {
   }
 
   @override
-  Future<AuthConfirmOTPEntity> confirmOTP({required String otp, Object? requestData}) async {
+  Future<AuthConfirmOTPEntity> confirmOTP(
+      {required String otp, Object? requestData}) async {
     if (requestData is AuthSignUpOTPResp) {
       final deviceID = await AppInfoUtils.getDeviceID();
       // final fcmToken = await FirebaseNotificationService.instance.getFCMToken();
@@ -81,6 +73,28 @@ class AuthRepoMS extends AuthRepo {
   @override
   Future<void> logout() {
     // TODO: implement logout
+    throw UnimplementedError();
+  }
+
+  @override
+  Future forgotPasswordChangePassword(
+      {required String userName,
+      required String uuid,
+      required String password}) {
+    // TODO: implement forgotPasswordChangePassword
+    throw UnimplementedError();
+  }
+
+  @override
+  Future forgotPasswordConfirmOTP(
+      {required String otp, required String userName, required String uuid}) {
+    // TODO: implement forgotPasswordConfirmOTP
+    throw UnimplementedError();
+  }
+
+  @override
+  Future forgotPasswordSentOTP({required String userName}) {
+    // TODO: implement forgotPasswordSentOTP
     throw UnimplementedError();
   }
 }
