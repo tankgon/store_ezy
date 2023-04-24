@@ -1,6 +1,8 @@
 import 'package:ez_store/all_file/all_file.dart';
 import 'package:ez_store/app/features/auth/data/mulstore/api/auth_api_ms.dart';
 import 'package:ez_store/app/features/auth/data/mulstore/auth_repo_ms.dart';
+import 'package:ez_store/app/features/message/data/repo/message_repo_impl.dart';
+import 'package:ez_store/app/features/message/self.dart';
 import 'package:ez_store/firebase_options.dart';
 import 'package:ez_store/firebase_options_dev.dart';
 import 'package:ez_store/firebase_options_stag.dart';
@@ -9,7 +11,6 @@ import 'package:ez_store/services/device_service.dart';
 import 'package:ez_store/services/user_secure_storage_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-tics.dart';
 
 import 'app/features/auth/self.dart';
 
