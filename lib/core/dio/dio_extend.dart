@@ -3,9 +3,9 @@ import 'package:ez_store/services/user_secure_storage_service.dart';
 import 'package:flutter/services.dart';
 
 class RepoError implements Exception {
-  final String error;
-
   RepoError(this.error);
+
+  final String error;
 }
 
 extension DioErrorExtend on Object? {
@@ -51,5 +51,19 @@ extension DioErrorExtend on Object? {
       return '$object';
     }
     return 'Something went wrong. Please try again'.tr();
+  }
+
+  String? getServerErrorVar(String key) {
+    final object = this;
+    if (object is RepoError) {
+      return object.error;
+    }
+    if (object is DioError) {
+      final data = object.response?.data;
+      if (data is Map) {
+        return data[key] as String?;
+      }
+    }
+    return null;
   }
 }

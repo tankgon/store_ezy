@@ -1,9 +1,8 @@
 import 'package:app_utils/view/app_info_utils.dart';
 import 'package:ez_store/all_file/all_file.dart';
 import 'package:ez_store/app/features/auth/data/mulstore/api/auth_api_ms.dart';
+import 'package:ez_store/app/features/auth/data/mulstore/model/auth_model_ms.dart';
 import 'package:ez_store/app/features/auth/self.dart';
-
-import 'model/auth_model_ms.dart';
 
 const _deviceType = 'MOBILEAPP';
 
@@ -12,18 +11,30 @@ class AuthRepoMS extends AuthRepo {
 
   @override
   Future<AuthSignUpOTPEntity> signUpOTP({required String id, required String password}) async {
-    final rs = await _authApi.signUp(
-      AuthSignUpOTPReq(
-        userLogin: id,
-        password: password,
-      ),
-    );
-    if (rs != null) {
-      return Future.value(
-        rs.toEntity(),
+    try {
+      final rs = await _authApi.signUp(
+        AuthSignUpOTPReq(
+          userLogin: id,
+          password: password,
+        ),
       );
+      if (rs != null) {
+        return Future.value(
+          rs.toEntity(),
+        );
+      }
+      return Future.error('Can not sign up');
+    } catch (e) {
+      if (e.getServerErrorCode() == 'MSG0046') {
+        return Future.error(
+          AuthAccountExistException(
+            error: e,
+            userID: e.getServerErrorVar('userID') ?? '',
+          ),
+        );
+      }
+      return Future.error(e);
     }
-    return Future.error('Can not sign up');
   }
 
   @override
@@ -113,17 +124,13 @@ class AuthRepoMS extends AuthRepo {
   }
 
   @override
-  Future forgotPasswordChangePassword(
-      {required String userName,
-      required String uuid,
-      required String password}) {
+  Future forgotPasswordChangePassword({required String userName, required String uuid, required String password}) {
     // TODO: implement forgotPasswordChangePassword
     throw UnimplementedError();
   }
 
   @override
-  Future forgotPasswordConfirmOTP(
-      {required String otp, required String userName, required String uuid}) {
+  Future forgotPasswordConfirmOTP({required String otp, required String userName, required String uuid}) {
     // TODO: implement forgotPasswordConfirmOTP
     throw UnimplementedError();
   }

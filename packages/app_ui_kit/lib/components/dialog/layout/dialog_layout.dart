@@ -31,9 +31,7 @@ class SuccessDialogLayout extends StatelessWidget {
       ),
       title: title,
       content: content,
-      onConfirm: onAutoDismiss != null
-          ? null
-          : (onConfirm ?? () {}),
+      onConfirm: onConfirm ?? (onAutoDismiss != null? null : () {}),
       buttonStyle: AppButtonTheme.success(context),
       child: child,
     );
@@ -68,9 +66,7 @@ class ErrorDialogLayout extends StatelessWidget {
       ),
       title: title,
       content: content,
-      onConfirm: onAutoDismiss != null
-          ? null
-          : (onConfirm ?? () {}),
+      onConfirm: onConfirm ?? (onAutoDismiss != null? null : () {}),
       buttonStyle: AppButtonTheme.error(context),
       child: child,
     );
@@ -113,7 +109,10 @@ class AppDialogLayout extends StatelessWidget {
             AppButton(
               label: context.dialogConfigData.confirmLabel,
               style: buttonStyle,
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () {
+                onConfirm?.call();
+                Navigator.of(context).pop();
+              },
             ).pt16(),
         ].withDivider(Gaps.vGap12),
       ).py4(),

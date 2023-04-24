@@ -19,6 +19,22 @@ class SignUpPage extends StatelessWidget {
             onSuccess: (state) async {
               getIt<AppAutoRoute>().popToParentOf([SignUpRoute.name]);
             },
+            onError: (error) {
+              if (error is AuthAccountExistException) {
+                DialogUtils.showErrorDialog(
+                  context: context,
+                  content: error.error.getServerErrorMsg(),
+                  error: error,
+                  onConfirm: () {
+                    context.read<SignUpCubit>().reActiveAccount(
+                      userID: error.userID,
+                    );
+                  },
+                );
+                return true;
+              }
+              return false;
+            },
             child: Scaffold(
               appBar: AppAppBar(
                 title: '',
@@ -34,3 +50,4 @@ class SignUpPage extends StatelessWidget {
     );
   }
 }
+

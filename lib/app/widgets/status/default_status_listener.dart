@@ -16,7 +16,8 @@ class DefaultStatusConsumer<C extends RequestCubit<S>, S extends RequestState> e
 
   final ValueChanged<S>? onSuccess;
   final VoidCallback? onLoading;
-  final VoidCallback? onError;
+  // Return false if not handled
+  final bool Function(Object? value)? onError;
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +34,8 @@ class DefaultStatusConsumer<C extends RequestCubit<S>, S extends RequestState> e
 
   void _onStatusChange(BuildContext context, RequestState state) {
     if (state.status == ItemDefaultStatus.error) {
-      if (onError != null) {
-        onError?.call();
-      } else {
+      final onErrorHandled = onError?.call(state.error) ?? false;
+      if (!onErrorHandled) {
         DialogUtils.showErrorDialog(
           context: context,
           content: state.error.getServerErrorMsg(),

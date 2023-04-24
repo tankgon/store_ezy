@@ -20,8 +20,8 @@ class SignUpCubit extends RequestCubit<SignUpState> {
   late FormGroup form;
   final _authRepo = getIt<AuthRepo>();
 
-  String? userID;
-  String? uuid;
+  String? _userID;
+  String? _uuid;
 
   FutureOr<void> signUpOTP() async {
     if (form.valid) {
@@ -32,27 +32,10 @@ class SignUpCubit extends RequestCubit<SignUpState> {
           id: id!,
           password: form.getValue<String>(AuthPasswordInput.passwordKey)!,
         );
-        uuid = signUpOTPRs.uuid;
-        userID = signUpOTPRs.userID;
+        _uuid = signUpOTPRs.uuid;
+        _userID = signUpOTPRs.userID;
 
-        final verifyRs = await getIt<AppAutoRoute>().push(
-          AuthOtpConfirmRoute(
-            confirmOTPFunc: (otpUserInput) {
-              return _confirmOTP(
-                otpUserInput: otpUserInput,
-                authSignUpOTPEntity: signUpOTPRs,
-              );
-            },
-            onResendOTP: () {
-              return _resendOTP(signUpOTPRs);
-            },
-          ),
-        );
-        if (verifyRs == true) {
-          emit(state.copyWith(status: ItemDefaultStatus.success));
-        } else {
-          emit(state.copyWith(status: ItemDefaultStatus.initial));
-        }
+        await _verifyOTP(signUpOTPRs);
       } catch (e) {
         log(e.toString(), error: e, stackTrace: StackTrace.current);
         emit(state.copyWith(status: ItemDefaultStatus.error, error: e));
@@ -60,12 +43,33 @@ class SignUpCubit extends RequestCubit<SignUpState> {
     }
   }
 
+  Future<void> _verifyOTP(AuthSignUpOTPEntity signUpOTPRs) async {
+    final verifyRs = await getIt<AppAutoRoute>().push(
+      AuthOtpConfirmRoute(
+        confirmOTPFunc: (otpUserInput) {
+          return _confirmOTP(
+            otpUserInput: otpUserInput,
+            authSignUpOTPEntity: signUpOTPRs,
+          );
+        },
+        onResendOTP: () {
+          return _resendOTP(signUpOTPRs);
+        },
+      ),
+    );
+    if (verifyRs == true) {
+      emit(state.copyWith(status: ItemDefaultStatus.success));
+    } else {
+      emit(state.copyWith(status: ItemDefaultStatus.initial));
+    }
+  }
+
   Future<Object?> _resendOTP(AuthSignUpOTPEntity signUpOTPRs) async {
     final resendRs = await _authRepo.resendSignUpOTP(
       userID: signUpOTPRs.userID ?? '',
     );
-    uuid = resendRs.uuid;
-    userID = resendRs.userID;
+    _uuid = resendRs.uuid;
+    _userID = resendRs.userID;
     return Future.value(resendRs);
   }
 
@@ -75,8 +79,8 @@ class SignUpCubit extends RequestCubit<SignUpState> {
   }) async {
     final rs = await _authRepo.confirmSignUpOTP(
       otp: otpUserInput,
-      uuid: uuid ?? '',
-      userID: userID ?? '',
+      uuid: _uuid ?? '',
+      userID: _userID ?? '',
       requestData: authSignUpOTPEntity,
     );
     if (rs.token?.isNotEmpty != true) {
@@ -87,5 +91,21 @@ class SignUpCubit extends RequestCubit<SignUpState> {
       );
     }
     return true;
+  }
+
+  Future<void> reActiveAccount({required String userID}) async {
+    log('reActiveAccount');
+
+    try {
+      final signUpOTPRs = await _authRepo.resendSignUpOTP(
+        userID: userID,
+      );
+      _uuid = signUpOTPRs.uuid;
+      _userID = userID;
+      await _verifyOTP(signUpOTPRs);
+    } catch (e) {
+      log(e.toString(), error: e, stackTrace: StackTrace.current);
+      emit(state.copyWith(status: ItemDefaultStatus.error, error: e));
+    }
   }
 }
