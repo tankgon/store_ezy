@@ -111,4 +111,26 @@ class AuthRepoMS extends AuthRepo {
     // TODO: implement logout
     throw UnimplementedError();
   }
+
+  @override
+  Future forgotPasswordChangePassword(
+      {required String userName,
+      required String uuid,
+      required String password}) {
+    // TODO: implement forgotPasswordChangePassword
+    throw UnimplementedError();
+  }
+
+  @override
+  Future forgotPasswordConfirmOTP(
+      {required String otp, required String userName, required String uuid}) {
+    // TODO: implement forgotPasswordConfirmOTP
+    throw UnimplementedError();
+  }
+
+  @override
+  Future forgotPasswordSentOTP({required String userName}) {
+    // TODO: implement forgotPasswordSentOTP
+    throw UnimplementedError();
+  }
 }

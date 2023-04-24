@@ -10,7 +10,7 @@ class MainPage extends StatelessWidget {
       routes: const [
         HomeRoute(),
         UserOrderRoute(),
-        UserOrderRoute(),
+        MessageRoute(),
         UserAccountRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
@@ -76,7 +76,8 @@ class _HomeBottomBar extends StatelessWidget {
     dynamic activeIcon,
   }) {
     final iconW = _getIconWidget(context, icon);
-    final activeIconW = _getIconWidget(context, activeIcon) ?? _getIconWidget(context, icon, isActive: true);
+    final activeIconW = _getIconWidget(context, activeIcon) ??
+        _getIconWidget(context, icon, isActive: true);
 
     return BottomNavigationBarItem(
       icon: iconW ?? const SizedBox.shrink(),
@@ -85,7 +86,8 @@ class _HomeBottomBar extends StatelessWidget {
     );
   }
 
-  Widget? _getIconWidget(BuildContext context, dynamic icon, {bool isActive = false}) {
+  Widget? _getIconWidget(BuildContext context, dynamic icon,
+      {bool isActive = false}) {
     if (icon == null) {
       return null;
     }

@@ -17,4 +17,18 @@ abstract class AuthRepo {
   Future<dynamic> loginWithApple();
 
   Future<void> logout();
+
+  Future<dynamic> forgotPasswordSentOTP({required String userName});
+
+  Future<dynamic> forgotPasswordConfirmOTP({
+    required String otp,
+    required String userName,
+    required String uuid,
+  });
+
+  Future<dynamic> forgotPasswordChangePassword({
+    required String userName,
+    required String uuid,
+    required String password,
+  });
 }
