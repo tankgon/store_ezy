@@ -1,7 +1,15 @@
 import 'package:app_utils/view/app_info_utils.dart';
 import 'package:ez_store/all_file/all_file.dart';
 import 'package:ez_store/app/features/auth/data/mulstore/api/auth_api_ms.dart';
-import 'package:ez_store/app/features/auth/selfuthSignUpOTPEntity> signUpOTP(
+import 'package:ez_store/app/features/auth/self.dart';
+
+import 'model/auth_model_ms.dart';
+
+class AuthRepoMS extends AuthRepo {
+  final _authApi = getIt<AuthApiMS>();
+
+  @override
+  Future<AuthSignUpOTPEntity> signUpOTP(
       {required String id, required String password}) async {
     // call api and map result
     final value = await _authApi.signUp(
