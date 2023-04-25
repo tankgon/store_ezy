@@ -16,8 +16,7 @@ class ForgotPasswordPage extends StatelessWidget {
         builder: (context) {
           return ReactiveForm(
             formGroup: context.read<ForgotPasswordCubit>().form,
-            child:
-                DefaultStatusConsumer<ForgotPasswordCubit, ForgotPasswordState>(
+            child: DefaultStatusConsumer<ForgotPasswordCubit, ForgotPasswordState>(
               child: Scaffold(
                 appBar: AppAppBar(
                   title: LocaleKeys.authen_ForgotPassword.tr(),
@@ -34,7 +33,7 @@ class ForgotPasswordPage extends StatelessWidget {
                       isSubmitButton: true,
                       label: LocaleKeys.common_Confirm.tr(),
                       onPressed: () {
-                        context.pushRoute(const ChangePasswordRoute());
+                        context.read<ForgotPasswordCubit>().changePasswordOTP();
                       },
                     ),
                   ),

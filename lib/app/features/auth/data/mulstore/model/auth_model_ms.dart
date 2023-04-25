@@ -195,10 +195,10 @@ class ForgotPasswordResp {
     this.otp,
   });
 
-  // to ForgotPasswordOTPEntity
   ForgotPasswordOTPEntity toEntity() => ForgotPasswordOTPEntity(
         userID: userID,
         uuid: uuid,
+        userName: userLogin,
         object: this,
       );
 

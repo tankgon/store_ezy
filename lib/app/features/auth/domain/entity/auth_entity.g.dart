@@ -208,3 +208,55 @@ Map<String, dynamic> _$AuthConfirmEntityToJson(AuthConfirmEntity instance) =>
       'email': instance.email,
       'object': instance.object,
     };
+
+ForgotPasswordOTPEntity _$ForgotPasswordOTPEntityFromJson(
+        Map<String, dynamic> json) =>
+    ForgotPasswordOTPEntity(
+      userID: json['userID'] as String?,
+      userName: json['userName'] as String?,
+      uuid: json['uuid'] as String?,
+      object: json['object'],
+    );
+
+Map<String, dynamic> _$ForgotPasswordOTPEntityToJson(
+        ForgotPasswordOTPEntity instance) =>
+    <String, dynamic>{
+      'userID': instance.userID,
+      'userName': instance.userName,
+      'uuid': instance.uuid,
+      'object': instance.object,
+    };
+
+ForgotPasswordConfirmOTPEntity _$ForgotPasswordConfirmOTPEntityFromJson(
+        Map<String, dynamic> json) =>
+    ForgotPasswordConfirmOTPEntity(
+      userID: json['userID'] as String?,
+      uuid: json['uuid'] as String?,
+      userName: json['userName'] as String?,
+      object: json['object'],
+    );
+
+Map<String, dynamic> _$ForgotPasswordConfirmOTPEntityToJson(
+        ForgotPasswordConfirmOTPEntity instance) =>
+    <String, dynamic>{
+      'userID': instance.userID,
+      'uuid': instance.uuid,
+      'userName': instance.userName,
+      'object': instance.object,
+    };
+
+ForgotPasswordCreatePasswordEntity _$ForgotPasswordCreatePasswordEntityFromJson(
+        Map<String, dynamic> json) =>
+    ForgotPasswordCreatePasswordEntity(
+      userID: json['userID'] as String?,
+      userName: json['userName'] as String?,
+      object: json['object'],
+    );
+
+Map<String, dynamic> _$ForgotPasswordCreatePasswordEntityToJson(
+        ForgotPasswordCreatePasswordEntity instance) =>
+    <String, dynamic>{
+      'userID': instance.userID,
+      'userName': instance.userName,
+      'object': instance.object,
+    };

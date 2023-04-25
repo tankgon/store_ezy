@@ -9,12 +9,14 @@ class AuthOtpConfirmPage extends StatelessWidget {
     this.otpLength = 4,
     this.otpMessage,
     super.key,
+    this.successMessage,
   });
 
   final Future<bool> Function(String otpUserInput) confirmOTPFunc;
   final Future<Object?> Function() onResendOTP;
   final int otpLength;
   final String? otpMessage;
+  final String? successMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +30,18 @@ class AuthOtpConfirmPage extends StatelessWidget {
       child: Builder(builder: (context) {
         return DefaultStatusConsumer<AuthOtpConfirmCubit, AuthOtpConfirmState>(
           onSuccess: (state) {
-            DialogUtils.showSuccessDialog(
-              context: context,
-              content: LocaleKeys.authen_SignUpSuccess.tr(),
-              barrierDismissible: false,
-              onAutoDismiss: () {
-                context.router.pop(true);
-              },
-            );
+            if (successMessage?.isNotEmpty == true) {
+              DialogUtils.showSuccessDialog(
+                context: context,
+                content: successMessage,
+                barrierDismissible: false,
+                onAutoDismiss: () {
+                  context.router.pop(true);
+                },
+              );
+            } else {
+              context.router.pop(true);
+            }
           },
           child: Scaffold(
             appBar: AppAppBar(

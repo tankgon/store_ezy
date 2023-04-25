@@ -1,10 +1,17 @@
+import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/auth/presentation/widget/auth_id_input.dart';
+import 'package:mulstore/app/features/auth/self.dart';
 
 part 'change_password_state.dart';
 
 class ChangePasswordCubit extends RequestCubit<ChangePasswordState> {
-  ChangePasswordCubit({dynamic? item}) : super(ChangePasswordState(item: item)) {
+  ChangePasswordCubit({
+    required this.userID,
+    required this.uuid,
+    dynamic? item,
+  }) : super(ChangePasswordState(item: item)) {
+    _authRepo = getIt<AuthRepo>();
     form = FormGroup(
       {
         ...AuthPasswordInput.createControl(
@@ -21,15 +28,24 @@ class ChangePasswordCubit extends RequestCubit<ChangePasswordState> {
   static const String confirmKey = 'confirmKey';
 
   late final FormGroup form;
+  late final AuthRepo _authRepo;
+  final String userID;
+  final String uuid;
 
-  FutureOr<void> fetchItem() async {
+  FutureOr<void> submit() async {
     emit(state.copyWith(status: ItemDefaultStatus.loading));
     try {
-      // final item = await Get.find<ApproveRepo>().getProgramForApprove(programID: item.programID ?? '');
-      emit(state.copyWith(
-        status: ItemDefaultStatus.success,
-        // item: item,
-      ));
+      final rs = await _authRepo.forgotPasswordCreatePassword(
+        userID: userID,
+        uuid: uuid,
+        password: form.getValue<String>(passwordKey) ?? '',
+      );
+      emit(
+        state.copyWith(
+          status: ItemDefaultStatus.success,
+          item: rs,
+        ),
+      );
     } catch (e) {
       log(e.toString(), error: e);
       emit(
@@ -39,9 +55,5 @@ class ChangePasswordCubit extends RequestCubit<ChangePasswordState> {
         ),
       );
     }
-  }
-
-  void submit() {
-
   }
 }

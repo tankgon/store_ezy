@@ -3,15 +3,34 @@ import 'package:mulstore/app/features/auth/presentation/forgot_password/change_p
 import 'package:mulstore/app/features/auth/presentation/forgot_password/change_password/cubit/change_password_cubit.dart';
 
 class ChangePasswordPage extends StatelessWidget {
-  const ChangePasswordPage({super.key});
+  const ChangePasswordPage({
+    super.key,
+    required this.userID,
+    required this.uuid,
+  });
+
+  final String userID;
+  final String uuid;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ChangePasswordCubit(),
+      create: (context) => ChangePasswordCubit(
+        userID: userID,
+        uuid: uuid,
+      ),
       child: Builder(
         builder: (context) {
           return DefaultStatusConsumer<ChangePasswordCubit, ChangePasswordState>(
+            onSuccess: (state) {
+              DialogUtils.showSuccessDialog(
+                context: context,
+                content: 'Đổi mật khẩu thành công',
+                onAutoDismiss: () {
+                  context.router.popToParentOf([ForgotPasswordRoute.name]);
+                },
+              );
+            },
             child: Scaffold(
               appBar: AppAppBar(
                 title: LocaleKeys.authen_ChangePasword.tr(),
@@ -26,5 +45,4 @@ class ChangePasswordPage extends StatelessWidget {
       ),
     );
   }
-
 }

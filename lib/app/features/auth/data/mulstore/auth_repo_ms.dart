@@ -143,7 +143,6 @@ class AuthRepoMS extends AuthRepo {
     required String userID,
     required String uuid,
   }) async {
-    // forgotPasswordVerifyOTP
     final rs = await _authApi.forgotPasswordVerifyOTP(
       ForgotPasswordVerifyOTPReq(
         otp: otp,
@@ -165,7 +164,6 @@ class AuthRepoMS extends AuthRepo {
     required String uuid,
     required String password,
   }) async {
-    // call api forgotPasswordCreatePassword
     final rs = await _authApi.forgotPasswordCreatePassword(
       ForgotPasswordCreatePasswordReq(
         userID: userID,

@@ -48,6 +48,7 @@ class SignUpCubit extends RequestCubit<SignUpState> {
   Future<void> _verifyOTP(AuthSignUpOTPEntity signUpOTPRs) async {
     final verifyRs = await getIt<AppAutoRoute>().push(
       AuthOtpConfirmRoute(
+        successMessage: LocaleKeys.authen_SignUpSuccess.tr(),
         otpMessage: 'Mã OTP đã được gửi đến {}'.tr(args: [_userName ?? '']),
         confirmOTPFunc: (otpUserInput) {
           return _confirmOTP(

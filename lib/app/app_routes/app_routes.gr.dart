@@ -123,6 +123,7 @@ class AppAutoRoute extends _i18.RootStackRouter {
           otpLength: args.otpLength,
           otpMessage: args.otpMessage,
           key: args.key,
+          successMessage: args.successMessage,
         ),
       );
     },
@@ -133,9 +134,14 @@ class AppAutoRoute extends _i18.RootStackRouter {
       );
     },
     ChangePasswordRoute.name: (routeData) {
+      final args = routeData.argsAs<ChangePasswordRouteArgs>();
       return _i18.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i12.ChangePasswordPage(),
+        child: _i12.ChangePasswordPage(
+          key: args.key,
+          userID: args.userID,
+          uuid: args.uuid,
+        ),
       );
     },
     UserOrderDetailRoute.name: (routeData) {
@@ -412,6 +418,7 @@ class AuthOtpConfirmRoute extends _i18.PageRouteInfo<AuthOtpConfirmRouteArgs> {
     int otpLength = 4,
     String? otpMessage,
     _i20.Key? key,
+    String? successMessage,
   }) : super(
           AuthOtpConfirmRoute.name,
           path: 'otp-confirm',
@@ -421,6 +428,7 @@ class AuthOtpConfirmRoute extends _i18.PageRouteInfo<AuthOtpConfirmRouteArgs> {
             otpLength: otpLength,
             otpMessage: otpMessage,
             key: key,
+            successMessage: successMessage,
           ),
         );
 
@@ -434,6 +442,7 @@ class AuthOtpConfirmRouteArgs {
     this.otpLength = 4,
     this.otpMessage,
     this.key,
+    this.successMessage,
   });
 
   final _i23.Future<bool> Function(String) confirmOTPFunc;
@@ -446,9 +455,11 @@ class AuthOtpConfirmRouteArgs {
 
   final _i20.Key? key;
 
+  final String? successMessage;
+
   @override
   String toString() {
-    return 'AuthOtpConfirmRouteArgs{confirmOTPFunc: $confirmOTPFunc, onResendOTP: $onResendOTP, otpLength: $otpLength, otpMessage: $otpMessage, key: $key}';
+    return 'AuthOtpConfirmRouteArgs{confirmOTPFunc: $confirmOTPFunc, onResendOTP: $onResendOTP, otpLength: $otpLength, otpMessage: $otpMessage, key: $key, successMessage: $successMessage}';
   }
 }
 
@@ -466,14 +477,41 @@ class ForgotPasswordRoute extends _i18.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i12.ChangePasswordPage]
-class ChangePasswordRoute extends _i18.PageRouteInfo<void> {
-  const ChangePasswordRoute()
-      : super(
+class ChangePasswordRoute extends _i18.PageRouteInfo<ChangePasswordRouteArgs> {
+  ChangePasswordRoute({
+    _i20.Key? key,
+    required String userID,
+    required String uuid,
+  }) : super(
           ChangePasswordRoute.name,
           path: 'change-password',
+          args: ChangePasswordRouteArgs(
+            key: key,
+            userID: userID,
+            uuid: uuid,
+          ),
         );
 
   static const String name = 'ChangePasswordRoute';
+}
+
+class ChangePasswordRouteArgs {
+  const ChangePasswordRouteArgs({
+    this.key,
+    required this.userID,
+    required this.uuid,
+  });
+
+  final _i20.Key? key;
+
+  final String userID;
+
+  final String uuid;
+
+  @override
+  String toString() {
+    return 'ChangePasswordRouteArgs{key: $key, userID: $userID, uuid: $uuid}';
+  }
 }
 
 /// generated route for
