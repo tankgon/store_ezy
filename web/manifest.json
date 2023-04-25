@@ -1,11 +1,11 @@
 {
-    "name": "Ez Store",
-    "short_name": "Ez Store",
+    "name": "MulStore",
+    "short_name": "MulStore",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Ez Store",
+    "description": "MulStore",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

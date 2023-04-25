@@ -1,5 +1,5 @@
 name: mulstore
-description: Ez Store
+description: MulStore
 version: 1.0.0+1
 publish_to: none
 
@@ -158,7 +158,7 @@ dependencies:
   #  flutter_flavor: ^3.1.1
 
   #####  CLI
-  mason_cli: ^0.1.0-dev.30
+  mason_cli: ^0.1.0-dev.50
 
   #####  Testing
   #  mockito: ^5.1.0
@@ -181,6 +181,7 @@ dependency_overrides:
   flutter_svg: ">=1.1.1+1"
   ffi: ">=2.0.1"
   intl: ">=0.18.0"
+  cli_util: ">=0.4.0"
 #  flutter_inappwebview: ">=5.4.3+7"
 
 dev_dependencies:
@@ -188,7 +189,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mocktail: ^0.3.0
-  flutter_launcher_icons: ^0.12.0
+  flutter_launcher_icons: ^0.13.1
   build_runner: ^2.3.3
   retrofit_generator: ^6.0.0+1
   flutter_gen_runner: ^5.3.0
@@ -236,6 +237,12 @@ flutter:
           weight: 400
         - asset: assets/fonts/Inter-Thin.ttf
           weight: 100
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/icons/app/app_logo.png"
 
 targets:
   $default:
