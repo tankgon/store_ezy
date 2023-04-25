@@ -3,6 +3,7 @@ import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/auth/data/mulstore/api/auth_api_ms.dart';
 import 'package:mulstore/app/features/auth/data/mulstore/model/auth_model_ms.dart';
 import 'package:mulstore/app/features/auth/self.dart';
+import 'package:mulstore/services/firebase_notification_service.dart';
 
 const _deviceType = 'MOBILEAPP';
 
@@ -21,7 +22,8 @@ class AuthRepoMS extends AuthRepo {
   }
 
   @override
-  Future<AuthSignUpOTPEntity> signUpOTP({required String id, required String password}) async {
+  Future<AuthSignUpOTPEntity> signUpOTP(
+      {required String id, required String password}) async {
     try {
       final rs = await _authApi.signUp(
         AuthSignUpOTPReq(
@@ -56,18 +58,22 @@ class AuthRepoMS extends AuthRepo {
   }
 
   @override
-  Future<AuthConfirmEntity> confirmSignUpOTP({required String otp, required String uuid, required String userID, AuthSignUpOTPEntity? requestData}) async {
+  Future<AuthConfirmEntity> confirmSignUpOTP(
+      {required String otp,
+      required String uuid,
+      required String userID,
+      AuthSignUpOTPEntity? requestData}) async {
     final object = requestData?.object;
     if (object is AuthSignUpOTPResp) {
       final deviceID = await AppInfoUtils.getDeviceID();
-      // final fcmToken = await FirebaseNotificationService.instance.getFCMToken();
+      final fcmToken = await FirebaseNotificationService.instance.getFCMToken();
       final rs = await _authApi.verifyOTP(
         AuthVerifyOTPReq(
           userID: userID,
           uuid: uuid,
           otp: otp,
           deviceID: deviceID,
-          deviceToken: 'fcmToken',
+          deviceToken: fcmToken,
           type: _deviceType,
         ),
       );
@@ -82,16 +88,17 @@ class AuthRepoMS extends AuthRepo {
   }
 
   @override
-  Future<AuthConfirmEntity> loginWithPassword({required String id, required String password}) async {
+  Future<AuthConfirmEntity> loginWithPassword(
+      {required String id, required String password}) async {
     try {
       final deviceID = await AppInfoUtils.getDeviceID();
-      // final fcmToken = await FirebaseNotificationService.instance.getFCMToken();
+      final fcmToken = await FirebaseNotificationService.instance.getFCMToken();
       final rs = await _authApi.loginPassword(
         AuthLoginPasswordReq(
           userLogin: id,
           password: password,
           deviceID: deviceID,
-          deviceToken: 'fcmToken',
+          deviceToken: fcmToken,
           type: _deviceType,
         ),
       );
@@ -131,13 +138,17 @@ class AuthRepoMS extends AuthRepo {
   }
 
   @override
-  Future forgotPasswordChangePassword({required String userName, required String uuid, required String password}) {
+  Future forgotPasswordChangePassword(
+      {required String userName,
+      required String uuid,
+      required String password}) {
     // TODO: implement forgotPasswordChangePassword
     throw UnimplementedError();
   }
 
   @override
-  Future forgotPasswordConfirmOTP({required String otp, required String userName, required String uuid}) {
+  Future forgotPasswordConfirmOTP(
+      {required String otp, required String userName, required String uuid}) {
     // TODO: implement forgotPasswordConfirmOTP
     throw UnimplementedError();
   }
