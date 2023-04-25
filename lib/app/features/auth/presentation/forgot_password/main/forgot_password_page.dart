@@ -1,6 +1,6 @@
 import 'package:mulstore/all_file/all_file.dart';
-import 'package:mulstore/app/features/auth/presentation/forgot_password/main/forgot_password_body.dart';
 import 'package:mulstore/app/features/auth/presentation/forgot_password/main/cubit/forgot_password_cubit.dart';
+import 'package:mulstore/app/features/auth/presentation/forgot_password/main/forgot_password_body.dart';
 import 'package:mulstore/app/features/auth/presentation/widget/auth_id_input.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
@@ -16,7 +16,8 @@ class ForgotPasswordPage extends StatelessWidget {
         builder: (context) {
           return ReactiveForm(
             formGroup: context.read<ForgotPasswordCubit>().form,
-            child: DefaultStatusConsumer<ForgotPasswordCubit, ForgotPasswordState>(
+            child:
+                DefaultStatusConsumer<ForgotPasswordCubit, ForgotPasswordState>(
               child: Scaffold(
                 appBar: AppAppBar(
                   title: LocaleKeys.authen_ForgotPassword.tr(),
@@ -33,7 +34,7 @@ class ForgotPasswordPage extends StatelessWidget {
                       isSubmitButton: true,
                       label: LocaleKeys.common_Confirm.tr(),
                       onPressed: () {
-                        context.pushRoute(ChangePasswordRoute());
+                        context.pushRoute(const ChangePasswordRoute());
                       },
                     ),
                   ),

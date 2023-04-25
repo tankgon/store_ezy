@@ -1,9 +1,6 @@
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/auth/data/mulstore/model/auth_model_ms.dart';
-import 'package:mulstore/app/features/auth/presentation/forgot_password/main/cubit/forgot_password_cubit.dart';
-import 'package:mulstore/app/features/auth/presentation/login/login_body.dart';
 import 'package:mulstore/app/features/auth/presentation/widget/auth_id_input.dart';
-import 'package:mulstore/app/features/auth/presentation/widget/auth_page_body.dart';
 
 class ForgotPasswordBody extends StatelessWidget {
   const ForgotPasswordBody({super.key});
@@ -17,12 +14,17 @@ class ForgotPasswordBody extends StatelessWidget {
           Gaps.vGap32,
           LocaleKeys.authen_ForgotPasswordOTPMsg
               .tr(
-            args: [RegisterType.values.mapAsList((item) => item.enumTranslate()).join('/')],
-          )
+                args: [
+                  RegisterType.values
+                      .mapAsList((item) => item.enumTranslate())
+                      .join('/')
+                ],
+              )
               .text
               .titleMedium(context)
               .center
-              .make().px22(),
+              .make()
+              .px22(),
           Gaps.vGap32,
           const AuthIdInput(),
           Gaps.vGap42,

@@ -204,3 +204,93 @@ Map<String, dynamic> _$AuthLoginPasswordRespToJson(
       'userLogin': instance.userLogin,
       'accountType': instance.accountType,
     };
+
+ForgotPasswordReq _$ForgotPasswordReqFromJson(Map<String, dynamic> json) =>
+    ForgotPasswordReq(
+      userLogin: json['userLogin'] as String?,
+    );
+
+Map<String, dynamic> _$ForgotPasswordReqToJson(ForgotPasswordReq instance) =>
+    <String, dynamic>{
+      'userLogin': instance.userLogin,
+    };
+
+ForgotPasswordResp _$ForgotPasswordRespFromJson(Map<String, dynamic> json) =>
+    ForgotPasswordResp(
+      userID: json['userID'] as String?,
+      uuid: json['uuid'] as String?,
+      userLogin: json['userLogin'] as String?,
+      otp: json['otp'] as String?,
+    );
+
+Map<String, dynamic> _$ForgotPasswordRespToJson(ForgotPasswordResp instance) =>
+    <String, dynamic>{
+      'userID': instance.userID,
+      'uuid': instance.uuid,
+      'userLogin': instance.userLogin,
+      'otp': instance.otp,
+    };
+
+ForgotPasswordVerifyOTPReq _$ForgotPasswordVerifyOTPReqFromJson(
+        Map<String, dynamic> json) =>
+    ForgotPasswordVerifyOTPReq(
+      userID: json['userID'] as String?,
+      uuid: json['uuid'] as String?,
+      otp: json['otp'] as String?,
+    );
+
+Map<String, dynamic> _$ForgotPasswordVerifyOTPReqToJson(
+        ForgotPasswordVerifyOTPReq instance) =>
+    <String, dynamic>{
+      'userID': instance.userID,
+      'uuid': instance.uuid,
+      'otp': instance.otp,
+    };
+
+ForgotPasswordVerifyOTPResp _$ForgotPasswordVerifyOTPRespFromJson(
+        Map<String, dynamic> json) =>
+    ForgotPasswordVerifyOTPResp(
+      userID: json['userID'] as String?,
+      uuid: json['uuid'] as String?,
+      userLogin: json['userLogin'] as String?,
+      otp: json['otp'] as String?,
+    );
+
+Map<String, dynamic> _$ForgotPasswordVerifyOTPRespToJson(
+        ForgotPasswordVerifyOTPResp instance) =>
+    <String, dynamic>{
+      'userID': instance.userID,
+      'uuid': instance.uuid,
+      'userLogin': instance.userLogin,
+      'otp': instance.otp,
+    };
+
+ForgotPasswordCreatePasswordReq _$ForgotPasswordCreatePasswordReqFromJson(
+        Map<String, dynamic> json) =>
+    ForgotPasswordCreatePasswordReq(
+      userID: json['userID'] as String?,
+      uuid: json['uuid'] as String?,
+      password: json['password'] as String?,
+    );
+
+Map<String, dynamic> _$ForgotPasswordCreatePasswordReqToJson(
+        ForgotPasswordCreatePasswordReq instance) =>
+    <String, dynamic>{
+      'userID': instance.userID,
+      'uuid': instance.uuid,
+      'password': instance.password,
+    };
+
+ForgotPasswordCreatePasswordResp _$ForgotPasswordCreatePasswordRespFromJson(
+        Map<String, dynamic> json) =>
+    ForgotPasswordCreatePasswordResp(
+      userID: json['userID'] as String?,
+      userLogin: json['userLogin'] as String?,
+    );
+
+Map<String, dynamic> _$ForgotPasswordCreatePasswordRespToJson(
+        ForgotPasswordCreatePasswordResp instance) =>
+    <String, dynamic>{
+      'userID': instance.userID,
+      'userLogin': instance.userLogin,
+    };

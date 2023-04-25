@@ -94,72 +94,6 @@ class _AuthApiMS implements AuthApiMS {
   }
 
   @override
-  Future<dynamic> forgotPasswordSendOTP(req) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = req;
-    final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/api/mulstore/auth/forgot-password/send-otp',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = _result.data;
-    return value;
-  }
-
-  @override
-  Future<dynamic> forgotPasswordVerifyOTP(req) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = req;
-    final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/api/mulstore/auth/forgot-password/verify-otp',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = _result.data;
-    return value;
-  }
-
-  @override
-  Future<dynamic> forgotPasswordCreatePassword(req) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = req;
-    final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/api/mulstore/auth/forgot-password/create-password',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = _result.data;
-    return value;
-  }
-
-  @override
   Future<AuthLoginPasswordResp?> loginPassword(req) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -182,6 +116,85 @@ class _AuthApiMS implements AuthApiMS {
     final value = _result.data == null
         ? null
         : AuthLoginPasswordResp.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ForgotPasswordResp?> forgotPasswordSendOTP(req) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(req.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>?>(
+        _setStreamType<ForgotPasswordResp>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/mulstore/auth/forgot-password/send-otp',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = _result.data == null
+        ? null
+        : ForgotPasswordResp.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ForgotPasswordVerifyOTPResp?> forgotPasswordVerifyOTP(req) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(req.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>?>(
+        _setStreamType<ForgotPasswordVerifyOTPResp>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/mulstore/auth/forgot-password/verify-otp',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = _result.data == null
+        ? null
+        : ForgotPasswordVerifyOTPResp.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ForgotPasswordCreatePasswordResp?> forgotPasswordCreatePassword(
+      req) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(req.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>?>(
+        _setStreamType<ForgotPasswordCreatePasswordResp>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/mulstore/auth/forgot-password/create-password',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = _result.data == null
+        ? null
+        : ForgotPasswordCreatePasswordResp.fromJson(_result.data!);
     return value;
   }
 

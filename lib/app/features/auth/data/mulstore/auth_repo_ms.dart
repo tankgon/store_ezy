@@ -138,24 +138,63 @@ class AuthRepoMS extends AuthRepo {
   }
 
   @override
-  Future forgotPasswordChangePassword(
-      {required String userName,
-      required String uuid,
-      required String password}) {
-    // TODO: implement forgotPasswordChangePassword
-    throw UnimplementedError();
+  Future<ForgotPasswordConfirmOTPEntity> forgotPasswordConfirmOTP({
+    required String otp,
+    required String userID,
+    required String uuid,
+  }) async {
+    // forgotPasswordVerifyOTP
+    final rs = await _authApi.forgotPasswordVerifyOTP(
+      ForgotPasswordVerifyOTPReq(
+        otp: otp,
+        userID: userID,
+        uuid: uuid,
+      ),
+    );
+    if (rs != null) {
+      return Future.value(
+        rs.toEntity(),
+      );
+    }
+    return Future.error('Can not verify OTP');
   }
 
   @override
-  Future forgotPasswordConfirmOTP(
-      {required String otp, required String userName, required String uuid}) {
-    // TODO: implement forgotPasswordConfirmOTP
-    throw UnimplementedError();
+  Future<ForgotPasswordCreatePasswordEntity> forgotPasswordCreatePassword({
+    required String userID,
+    required String uuid,
+    required String password,
+  }) async {
+    // call api forgotPasswordCreatePassword
+    final rs = await _authApi.forgotPasswordCreatePassword(
+      ForgotPasswordCreatePasswordReq(
+        userID: userID,
+        uuid: uuid,
+        password: password,
+      ),
+    );
+    if (rs != null) {
+      return Future.value(
+        rs.toEntity(),
+      );
+    }
+    return Future.error('Can not create password');
   }
 
   @override
-  Future forgotPasswordSentOTP({required String userName}) {
-    // TODO: implement forgotPasswordSentOTP
-    throw UnimplementedError();
+  Future<ForgotPasswordOTPEntity> forgotPasswordSentOTP({
+    required String userName,
+  }) async {
+    final rs = await _authApi.forgotPasswordSendOTP(
+      ForgotPasswordReq(
+        userLogin: userName,
+      ),
+    );
+    if (rs != null) {
+      return Future.value(
+        rs.toEntity(),
+      );
+    }
+    return Future.error('Can not send OTP');
   }
 }

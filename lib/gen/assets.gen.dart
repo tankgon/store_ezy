@@ -35,12 +35,20 @@ class $AssetsTranslationsGen {
 class $AssetsIconsAppGen {
   const $AssetsIconsAppGen();
 
+  /// File path: assets/icons/app/app_logo.png
+  AssetGenImage get appLogo =>
+      const AssetGenImage('assets/icons/app/app_logo.png');
+
+  /// File path: assets/icons/app/app_logo_name.png
+  AssetGenImage get appLogoNamePng =>
+      const AssetGenImage('assets/icons/app/app_logo_name.png');
+
   /// File path: assets/icons/app/app_logo_name.svg
-  SvgGenImage get appLogoName =>
+  SvgGenImage get appLogoNameSvg =>
       const SvgGenImage('assets/icons/app/app_logo_name.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [appLogoName];
+  List<dynamic> get values => [appLogo, appLogoNamePng, appLogoNameSvg];
 }
 
 class $AssetsIconsCommonGen {
