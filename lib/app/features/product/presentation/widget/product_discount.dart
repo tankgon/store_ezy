@@ -1,4 +1,4 @@
-import 'package:ez_store/all_file/all_file.dart';
+import 'package:mulstore/all_file/all_file.dart';
 
 class ProductDiscount1 extends StatelessWidget {
   const ProductDiscount1({super.key, required this.percent});

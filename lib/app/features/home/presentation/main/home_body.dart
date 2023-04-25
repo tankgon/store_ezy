@@ -1,9 +1,9 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/distributor/presentation/list/distributor_grid_ver.dart';
-import 'package:ez_store/app/features/home/presentation/feature_gird/home_feature_gird_page.dart';
-import 'package:ez_store/app/features/product/presentation/list/product_grid_hoz.dart';
-import 'package:ez_store/app/features/product/presentation/list/product_list_hoz.dart';
-import 'package:ez_store/app/features/search/presentation/widget/search_bar.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/distributor/presentation/list/distributor_grid_ver.dart';
+import 'package:mulstore/app/features/home/presentation/feature_gird/home_feature_gird_page.dart';
+import 'package:mulstore/app/features/product/presentation/list/product_grid_hoz.dart';
+import 'package:mulstore/app/features/product/presentation/list/product_list_hoz.dart';
+import 'package:mulstore/app/features/search/presentation/widget/search_bar.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key});

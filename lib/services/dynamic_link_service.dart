@@ -1,4 +1,4 @@
-// import 'package:ez_store/all_file/all_file.dart';
+// import 'package:mulstore/all_file/all_file.dart';
 // import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 //
 // class DynamicLinkService {

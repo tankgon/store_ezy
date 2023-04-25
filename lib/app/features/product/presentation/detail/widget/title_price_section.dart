@@ -1,5 +1,5 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/product/presentation/widget/product_price_with_type.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/product/presentation/widget/product_price_with_type.dart';
 
 class ProductTitleHeader extends StatelessWidget {
   const ProductTitleHeader({

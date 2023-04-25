@@ -1,5 +1,5 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/auth/presentation/widget/auth_id_input.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/auth/presentation/widget/auth_id_input.dart';
 
 part 'change_password_state.dart';
 

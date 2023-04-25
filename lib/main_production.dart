@@ -5,9 +5,9 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
-import 'package:ez_store/app/app.dart';
-import 'package:ez_store/bootstrap.dart';
-import 'package:ez_store/flavors.dart';
+import 'package:mulstore/app/app.dart';
+import 'package:mulstore/bootstrap.dart';
+import 'package:mulstore/flavors.dart';
 
 void main() {
   F.appFlavor = Flavor.PRODUCTION;

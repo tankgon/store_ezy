@@ -1,6 +1,6 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/user/presentation/account/user_account_body.dart';
-import 'package:ez_store/app/features/user/presentation/account/cubit/user_account_cubit.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/user/presentation/account/user_account_body.dart';
+import 'package:mulstore/app/features/user/presentation/account/cubit/user_account_cubit.dart';
 
 class UserAccountPage extends StatelessWidget {
   const UserAccountPage({super.key});

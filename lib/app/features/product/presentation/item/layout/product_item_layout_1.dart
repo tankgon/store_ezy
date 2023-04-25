@@ -1,8 +1,8 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/product/domain/entity/product_entity.dart';
-import 'package:ez_store/app/features/product/presentation/item/layout/product_item_layout.dart';
-import 'package:ez_store/app/features/product/presentation/item/product_item_args.dart';
-import 'package:ez_store/app/features/product/presentation/widget/product_price_with_type.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/product/domain/entity/product_entity.dart';
+import 'package:mulstore/app/features/product/presentation/item/layout/product_item_layout.dart';
+import 'package:mulstore/app/features/product/presentation/item/product_item_args.dart';
+import 'package:mulstore/app/features/product/presentation/widget/product_price_with_type.dart';
 
 class ProductItemLayout1 extends StatelessWidget {
   const ProductItemLayout1({

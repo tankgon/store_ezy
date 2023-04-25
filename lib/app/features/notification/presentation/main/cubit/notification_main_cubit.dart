@@ -1,5 +1,5 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/notification/data/model/notification_model.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/notification/data/model/notification_model.dart';
 
 part 'notification_main_state.dart';
 

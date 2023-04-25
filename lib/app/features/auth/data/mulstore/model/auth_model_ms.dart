@@ -1,5 +1,5 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/auth/self.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/auth/self.dart';
 
 part 'auth_model_ms.g.dart';
 

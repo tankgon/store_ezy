@@ -1,18 +1,18 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/distributor/presentation/item/distributor_item.dart';
-import 'package:ez_store/app/features/distributor/presentation/item/layout/distributor_item_layout.dart';
-import 'package:ez_store/app/features/distributor/presentation/rating/distributor_rating.dart';
-import 'package:ez_store/app/features/product/presentation/detail/cubit/product_detail_cubit.dart';
-import 'package:ez_store/app/features/product/presentation/detail/widget/core_feature.dart';
-import 'package:ez_store/app/features/product/presentation/detail/widget/detail_attribute.dart';
-import 'package:ez_store/app/features/product/presentation/detail/widget/detail_description.dart';
-import 'package:ez_store/app/features/product/presentation/detail/widget/detail_note.dart';
-import 'package:ez_store/app/features/product/presentation/detail/widget/title_price_section.dart';
-import 'package:ez_store/app/features/product/presentation/list/product_grid_hoz.dart';
-import 'package:ez_store/app/features/product/presentation/list/product_grid_ver.dart';
-import 'package:ez_store/app/features/product/presentation/variant/list/product_detail_variant_list.dart';
-import 'package:ez_store/app/features/product/presentation/widget/product_photo_view.dart';
-import 'package:ez_store/app/features/product/self.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/distributor/presentation/item/distributor_item.dart';
+import 'package:mulstore/app/features/distributor/presentation/item/layout/distributor_item_layout.dart';
+import 'package:mulstore/app/features/distributor/presentation/rating/distributor_rating.dart';
+import 'package:mulstore/app/features/product/presentation/detail/cubit/product_detail_cubit.dart';
+import 'package:mulstore/app/features/product/presentation/detail/widget/core_feature.dart';
+import 'package:mulstore/app/features/product/presentation/detail/widget/detail_attribute.dart';
+import 'package:mulstore/app/features/product/presentation/detail/widget/detail_description.dart';
+import 'package:mulstore/app/features/product/presentation/detail/widget/detail_note.dart';
+import 'package:mulstore/app/features/product/presentation/detail/widget/title_price_section.dart';
+import 'package:mulstore/app/features/product/presentation/list/product_grid_hoz.dart';
+import 'package:mulstore/app/features/product/presentation/list/product_grid_ver.dart';
+import 'package:mulstore/app/features/product/presentation/variant/list/product_detail_variant_list.dart';
+import 'package:mulstore/app/features/product/presentation/widget/product_photo_view.dart';
+import 'package:mulstore/app/features/product/self.dart';
 
 class ProductDetailBody extends StatelessWidget {
   const ProductDetailBody({super.key});
@@ -21,7 +21,8 @@ class ProductDetailBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final imgList = List.generate(15, (index) => index)
         .map(
-          (e) => 'https://product.hstatic.net/200000311493/product/set_goi_xa_gung_trang_68383b0f8acb45c498206705071e6d2c.jpg',
+          (e) =>
+              'https://product.hstatic.net/200000311493/product/set_goi_xa_gung_trang_68383b0f8acb45c498206705071e6d2c.jpg',
         )
         .toList();
     return CustomScrollView(

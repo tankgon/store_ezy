@@ -1,5 +1,5 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/services/app_config/app_config_model.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/services/app_config/app_config_model.dart';
 
 class AppConfigService {
   bool _isInitialized = false;

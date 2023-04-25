@@ -1,5 +1,5 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/user/data/mulstore/model/user_model_ms.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/user/data/mulstore/model/user_model_ms.dart';
 
 part 'user_api_ms.g.dart';
 

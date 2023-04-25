@@ -1,6 +1,6 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/product/presentation/main/product_body.dart';
-import 'package:ez_store/app/features/product/presentation/main/cubit/product_cubit.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/product/presentation/main/product_body.dart';
+import 'package:mulstore/app/features/product/presentation/main/cubit/product_cubit.dart';
 
 class ProductPage extends StatelessWidget {
 

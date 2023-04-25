@@ -1,4 +1,4 @@
-import 'package:ez_store/all_file/all_file.dart';
+import 'package:mulstore/all_file/all_file.dart';
 
 enum DistributorItemLayoutType {
   layout1(size: Size(74, 88)),

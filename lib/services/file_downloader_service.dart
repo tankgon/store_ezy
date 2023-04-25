@@ -1,9 +1,9 @@
 // import 'dart:isolate';
 // import 'dart:ui';
 //
-// import 'package:ez_store/all_file/all_file.dart';
-// import 'package:ez_store/core/utils/file_utils.dart';
-// import 'package:ez_store/services/user_secure_storage_service.dart';
+// import 'package:mulstore/all_file/all_file.dart';
+// import 'package:mulstore/core/utils/file_utils.dart';
+// import 'package:mulstore/services/user_secure_storage_service.dart';
 // import 'package:flutter_downloader/flutter_downloader.dart';
 // import 'package:android_path_provider/android_path_provider.dart';
 // import 'package:path_provider/path_provider.dart';

@@ -1,6 +1,6 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/services/user_secure_storage_service.dart';
 import 'package:flutter/services.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/services/user_secure_storage_service.dart';
 
 class RepoError implements Exception {
   RepoError(this.error);
@@ -11,7 +11,8 @@ class RepoError implements Exception {
 extension DioErrorExtend on Object? {
   String? getServerErrorCode() {
     if (this is DioError) {
-      var errorCode = castOrNull<String>((this as DioError).response?.data?['errorCode']);
+      var errorCode =
+          castOrNull<String>((this as DioError).response?.data?['errorCode']);
       return errorCode;
     }
     return null;
@@ -38,13 +39,16 @@ extension DioErrorExtend on Object? {
         return 'Reconnect'.tr();
       }
       if (dioError.response?.data is Map) {
-        final errorCode = (dioError.response?.data as Map)['errorCode'] as String?;
+        final errorCode =
+            (dioError.response?.data as Map)['errorCode'] as String?;
         if (errorCode != null) {
           return errorCode.tr();
         }
       }
     }
-    if (kDebugMode || AppConfig.IN_DEV || getIt<UserSecureStorage>().developerMode == true) {
+    if (kDebugMode ||
+        AppConfig.IN_DEV ||
+        getIt<UserSecureStorage>().developerMode == true) {
       if (object is PlatformException) {
         return '${object.message} \n\n\n---\n\n\n ${object.stacktrace} \n\n\n---\n\n\n $object';
       }

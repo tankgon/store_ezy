@@ -1,4 +1,4 @@
-package com.ezstore.ez_store
+package com.ezstore.mulstore
 
 import io.flutter.embedding.android.FlutterActivity
 

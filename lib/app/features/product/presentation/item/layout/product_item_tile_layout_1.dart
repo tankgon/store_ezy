@@ -1,9 +1,9 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/product/presentation/item/layout/product_item_layout.dart';
-import 'package:ez_store/app/features/product/presentation/item/product_item_args.dart';
-import 'package:ez_store/app/features/product/presentation/widget/product_discount.dart';
-import 'package:ez_store/app/features/product/presentation/widget/product_price_with_type.dart';
-import 'package:ez_store/app/features/product/self.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/product/presentation/item/layout/product_item_layout.dart';
+import 'package:mulstore/app/features/product/presentation/item/product_item_args.dart';
+import 'package:mulstore/app/features/product/presentation/widget/product_discount.dart';
+import 'package:mulstore/app/features/product/presentation/widget/product_price_with_type.dart';
+import 'package:mulstore/app/features/product/self.dart';
 
 class ProductItemTileLayout1 extends StatelessWidget {
   const ProductItemTileLayout1({

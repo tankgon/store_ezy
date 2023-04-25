@@ -1,7 +1,6 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/auth/presentation/forgot_password/change_password/cubit/change_password_cubit.dart';
-import 'package:ez_store/app/features/auth/presentation/widget/auth_id_input.dart';
-import 'package:ez_store/app/features/auth/presentation/widget/auth_page_body.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/auth/presentation/forgot_password/change_password/cubit/change_password_cubit.dart';
+import 'package:mulstore/app/features/auth/presentation/widget/auth_id_input.dart';
 
 class ChangePasswordBody extends StatelessWidget {
   const ChangePasswordBody({super.key});

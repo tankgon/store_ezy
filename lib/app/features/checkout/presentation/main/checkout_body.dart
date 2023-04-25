@@ -1,7 +1,7 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/checkout/presentation/group_item/checkout_product_list_group.dart';
-import 'package:ez_store/app/features/checkout/presentation/main/widget/checkout_pay_detail.dart';
-import 'package:ez_store/app/features/user/self.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/checkout/presentation/group_item/checkout_product_list_group.dart';
+import 'package:mulstore/app/features/checkout/presentation/main/widget/checkout_pay_detail.dart';
+import 'package:mulstore/app/features/user/self.dart';
 
 class CheckoutBody extends StatelessWidget {
   const CheckoutBody({super.key});

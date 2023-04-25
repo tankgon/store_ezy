@@ -1,5 +1,5 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/widgets/container/show_more/more_btn.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/widgets/container/show_more/more_btn.dart';
 
 class ProductDetailAttribute extends StatelessWidget {
   const ProductDetailAttribute({

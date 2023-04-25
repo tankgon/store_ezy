@@ -1,6 +1,6 @@
-import 'package:ez_store/all_file/all_file.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:mulstore/all_file/all_file.dart';
 
 part 'notification_model.g.dart';
 
@@ -11,7 +11,8 @@ class NotificationListResp {
 
   NotificationListResp({this.result, this.total});
 
-  factory NotificationListResp.fromJson(Map<String, dynamic> json) => _$NotificationListRespFromJson(json);
+  factory NotificationListResp.fromJson(Map<String, dynamic> json) =>
+      _$NotificationListRespFromJson(json);
 
   Map<String, dynamic> toJson() => _$NotificationListRespToJson(this);
 }
@@ -43,7 +44,8 @@ class NotificationDetailModel {
   final String? conversationGroupID;
   final String? consultantID;
 
-  factory NotificationDetailModel.fromJson(Map<String, dynamic> json) => _$NotificationDetailModelFromJson(json);
+  factory NotificationDetailModel.fromJson(Map<String, dynamic> json) =>
+      _$NotificationDetailModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$NotificationDetailModelToJson(this);
 
@@ -193,9 +195,11 @@ class NotificationDetailModel {
       quoteMessageID: quoteMessageID ?? this.quoteMessageID,
       sourceUserID: sourceUserID ?? this.sourceUserID,
       destUserID: destUserID ?? this.destUserID,
-      conversationMessageID: conversationMessageID ?? this.conversationMessageID,
+      conversationMessageID:
+          conversationMessageID ?? this.conversationMessageID,
       urlObjectID: urlObjectID ?? this.urlObjectID,
-      sourceUserContactName: sourceUserContactName ?? this.sourceUserContactName,
+      sourceUserContactName:
+          sourceUserContactName ?? this.sourceUserContactName,
       sourceUserAvatar: sourceUserAvatar ?? this.sourceUserAvatar,
       validToDate: validToDate ?? this.validToDate,
       userTypes: userTypes ?? this.userTypes,
@@ -279,9 +283,17 @@ class NotificationModel {
   @JsonKey(name: 'errorCode')
   final String? errorCode;
 
-  NotificationModel({this.destUserID, this.errorCode, this.userTypes, this.type, this.broadcast, this.data, this.userID});
+  NotificationModel(
+      {this.destUserID,
+      this.errorCode,
+      this.userTypes,
+      this.type,
+      this.broadcast,
+      this.data,
+      this.userID});
 
-  factory NotificationModel.fromJson(Map<String, dynamic> json) => _$NotificationModelFromJson(json);
+  factory NotificationModel.fromJson(Map<String, dynamic> json) =>
+      _$NotificationModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$NotificationModelToJson(this);
 }
@@ -292,7 +304,8 @@ class NotificationMarkAsReadReq {
 
   NotificationMarkAsReadReq({this.messageID});
 
-  factory NotificationMarkAsReadReq.fromJson(Map<String, dynamic> json) => _$NotificationMarkAsReadReqFromJson(json);
+  factory NotificationMarkAsReadReq.fromJson(Map<String, dynamic> json) =>
+      _$NotificationMarkAsReadReqFromJson(json);
 
   Map<String, dynamic> toJson() => _$NotificationMarkAsReadReqToJson(this);
 }
@@ -303,7 +316,8 @@ class NotificationMarkAsReadResp {
 
   NotificationMarkAsReadResp({this.messageID});
 
-  factory NotificationMarkAsReadResp.fromJson(Map<String, dynamic> json) => _$NotificationMarkAsReadRespFromJson(json);
+  factory NotificationMarkAsReadResp.fromJson(Map<String, dynamic> json) =>
+      _$NotificationMarkAsReadRespFromJson(json);
 
   Map<String, dynamic> toJson() => _$NotificationMarkAsReadRespToJson(this);
 }
@@ -319,7 +333,8 @@ class CreateBookingNotifyModel {
 
   CreateBookingNotifyModel({this.bookingID, this.objectID, this.objectType});
 
-  factory CreateBookingNotifyModel.fromJson(Map<String, dynamic> json) => _$CreateBookingNotifyModelFromJson(json);
+  factory CreateBookingNotifyModel.fromJson(Map<String, dynamic> json) =>
+      _$CreateBookingNotifyModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$CreateBookingNotifyModelToJson(this);
 }
@@ -335,7 +350,8 @@ class CreateDepositNotifyModel {
 
   CreateDepositNotifyModel({this.depositID, this.objectID, this.objectType});
 
-  factory CreateDepositNotifyModel.fromJson(Map<String, dynamic> json) => _$CreateDepositNotifyModelFromJson(json);
+  factory CreateDepositNotifyModel.fromJson(Map<String, dynamic> json) =>
+      _$CreateDepositNotifyModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$CreateDepositNotifyModelToJson(this);
 }

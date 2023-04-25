@@ -1,8 +1,8 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/user/self.dart';
-import 'package:ez_store/app/features/user_order/presentation/detail/widget/order_pay_detail.dart';
-import 'package:ez_store/app/features/user_order/presentation/group_item/user_order_group_item.dart';
-import 'package:ez_store/app/features/user_order/presentation/shipping_status/order_shipping_status.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/user/self.dart';
+import 'package:mulstore/app/features/user_order/presentation/detail/widget/order_pay_detail.dart';
+import 'package:mulstore/app/features/user_order/presentation/group_item/user_order_group_item.dart';
+import 'package:mulstore/app/features/user_order/presentation/shipping_status/order_shipping_status.dart';
 
 class UserOrderDetailBody extends StatelessWidget {
   const UserOrderDetailBody({super.key});

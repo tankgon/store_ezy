@@ -1,6 +1,6 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/message/presentation/main/cubit/message_cubit.dart';
-import 'package:ez_store/app/features/message/presentation/main/message_body.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/message/presentation/main/cubit/message_cubit.dart';
+import 'package:mulstore/app/features/message/presentation/main/message_body.dart';
 
 class MessagePage extends StatelessWidget {
   const MessagePage({super.key});

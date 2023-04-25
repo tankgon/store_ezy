@@ -1,6 +1,6 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/notification/presentation/main/cubit/notification_main_cubit.dart';
-import 'package:ez_store/app/features/notification/presentation/main/notification_main_body.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/notification/presentation/main/cubit/notification_main_cubit.dart';
+import 'package:mulstore/app/features/notification/presentation/main/notification_main_body.dart';
 
 class NotificationMainPage extends StatelessWidget {
   const NotificationMainPage({super.key});

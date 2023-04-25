@@ -1,7 +1,7 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/product/presentation/variant/item/layout/product_variant_item_layout_1.dart';
-import 'package:ez_store/app/features/product/presentation/variant/item/layout/product_variant_item_tile_layout_1.dart';
-import 'package:ez_store/app/features/product/self.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/product/presentation/variant/item/layout/product_variant_item_layout_1.dart';
+import 'package:mulstore/app/features/product/presentation/variant/item/layout/product_variant_item_tile_layout_1.dart';
+import 'package:mulstore/app/features/product/self.dart';
 
 class ProductVariantItem extends StatelessWidget {
   const ProductVariantItem({

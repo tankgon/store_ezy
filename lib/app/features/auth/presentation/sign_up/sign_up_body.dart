@@ -1,9 +1,9 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/auth/presentation/sign_up/cubit/sign_up_cubit.dart';
-import 'package:ez_store/app/features/auth/presentation/social_login/socail_auth.dart';
-import 'package:ez_store/app/features/auth/presentation/widget/auth_id_input.dart';
-import 'package:ez_store/app/features/auth/presentation/widget/auth_page_body.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/auth/presentation/sign_up/cubit/sign_up_cubit.dart';
+import 'package:mulstore/app/features/auth/presentation/social_login/socail_auth.dart';
+import 'package:mulstore/app/features/auth/presentation/widget/auth_id_input.dart';
+import 'package:mulstore/app/features/auth/presentation/widget/auth_page_body.dart';
 
 class SignUpBody extends StatelessWidget {
   const SignUpBody({super.key});

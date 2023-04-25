@@ -1,5 +1,5 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/services/user_secure_storage_service.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/services/user_secure_storage_service.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 /// Author: Kyo Huu

@@ -1,6 +1,6 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/distributor/presentation/item/distributor_item.dart';
-import 'package:ez_store/app/features/distributor/presentation/item/layout/distributor_item_layout.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/distributor/presentation/item/distributor_item.dart';
+import 'package:mulstore/app/features/distributor/presentation/item/layout/distributor_item_layout.dart';
 
 class DistributorGridVer extends StatelessWidget {
   const DistributorGridVer({
@@ -14,13 +14,15 @@ class DistributorGridVer extends StatelessWidget {
     this.layoutType = DistributorItemLayoutType.layout1,
   });
 
-  static DistributorGridVer demo({bool shrinkWrap = false, ScrollPhysics? physics, bool? onlyOnePage}){
+  static DistributorGridVer demo(
+      {bool shrinkWrap = false, ScrollPhysics? physics, bool? onlyOnePage}) {
     return DistributorGridVer(
       shrinkWrap: shrinkWrap,
       physics: physics,
       onlyOnePage: onlyOnePage,
       fetchListData: (page, pageSize) {
-        return Future.value(List.generate(8, (index) => index).map((e) => Object()).toList());
+        return Future.value(
+            List.generate(8, (index) => index).map((e) => Object()).toList());
       },
     );
   }

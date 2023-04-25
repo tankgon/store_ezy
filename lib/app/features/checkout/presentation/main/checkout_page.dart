@@ -1,7 +1,7 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/checkout/presentation/main/checkout_body.dart';
-import 'package:ez_store/app/features/checkout/presentation/main/cubit/checkout_cubit.dart';
-import 'package:ez_store/app/features/checkout/presentation/main/widget/checkout_bottom_bar.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/checkout/presentation/main/checkout_body.dart';
+import 'package:mulstore/app/features/checkout/presentation/main/cubit/checkout_cubit.dart';
+import 'package:mulstore/app/features/checkout/presentation/main/widget/checkout_bottom_bar.dart';
 
 class CheckoutPage extends StatelessWidget {
   const CheckoutPage({super.key});

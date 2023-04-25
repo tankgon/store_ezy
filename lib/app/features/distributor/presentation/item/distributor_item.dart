@@ -1,8 +1,8 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/distributor/presentation/item/layout/distributor_item_layout.dart';
-import 'package:ez_store/app/features/distributor/presentation/item/layout/distributor_simple_info_layout_1.dart';
-import 'package:ez_store/app/features/distributor/presentation/item/cubit/distributor_item_cubit.dart';
-import 'package:ez_store/app/features/distributor/presentation/item/layout/distributor_item_layout_1.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/distributor/presentation/item/layout/distributor_item_layout.dart';
+import 'package:mulstore/app/features/distributor/presentation/item/layout/distributor_simple_info_layout_1.dart';
+import 'package:mulstore/app/features/distributor/presentation/item/cubit/distributor_item_cubit.dart';
+import 'package:mulstore/app/features/distributor/presentation/item/layout/distributor_item_layout_1.dart';
 
 class DistributorItem extends StatelessWidget {
   const DistributorItem({

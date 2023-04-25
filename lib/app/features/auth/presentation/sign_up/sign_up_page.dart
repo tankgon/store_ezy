@@ -1,8 +1,7 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/auth/presentation/sign_up/sign_up_body.dart';
-import 'package:ez_store/app/features/auth/presentation/sign_up/cubit/sign_up_cubit.dart';
-import 'package:ez_store/app/features/auth/presentation/widget/auth_id_input.dart';
-import 'package:ez_store/app/features/auth/self.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/auth/presentation/sign_up/cubit/sign_up_cubit.dart';
+import 'package:mulstore/app/features/auth/presentation/sign_up/sign_up_body.dart';
+import 'package:mulstore/app/features/auth/self.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
@@ -27,9 +26,9 @@ class SignUpPage extends StatelessWidget {
                   error: error,
                   onConfirm: () {
                     context.read<SignUpCubit>().reActiveAccount(
-                      userID: error.userID,
-                      userName: error.userName,
-                    );
+                          userID: error.userID,
+                          userName: error.userName,
+                        );
                   },
                 );
                 return true;
@@ -51,4 +50,3 @@ class SignUpPage extends StatelessWidget {
     );
   }
 }
-

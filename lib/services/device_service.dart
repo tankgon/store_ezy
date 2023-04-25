@@ -1,6 +1,6 @@
 import 'package:app_utils/view/app_info_utils.dart';
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/services/firebase_notification_service.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/services/firebase_notification_service.dart';
 
 class DeviceService {
   DeviceService();

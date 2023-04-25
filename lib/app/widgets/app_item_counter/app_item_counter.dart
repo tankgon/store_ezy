@@ -1,7 +1,7 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/widgets/app_item_counter/app_item_counter_args.dart';
-import 'package:ez_store/app/widgets/app_item_counter/bloc/app_item_counter_bloc.dart';
-import 'package:ez_store/app/widgets/app_item_counter/layout/app_item_counter_layout_1.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/widgets/app_item_counter/app_item_counter_args.dart';
+import 'package:mulstore/app/widgets/app_item_counter/bloc/app_item_counter_bloc.dart';
+import 'package:mulstore/app/widgets/app_item_counter/layout/app_item_counter_layout_1.dart';
 
 class AppCartItemCounter extends StatefulWidget {
   const AppCartItemCounter({

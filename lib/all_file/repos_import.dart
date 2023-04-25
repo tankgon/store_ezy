@@ -1,1 +1,1 @@
-export 'package:ez_store/app/features/common/data/common_data.dart';
+export 'package:mulstore/app/features/common/data/common_data.dart';

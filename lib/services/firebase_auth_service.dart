@@ -1,7 +1,7 @@
 // import 'dart:math';
 //
 // import 'package:crypto/crypto.dart';
-// import 'package:ez_store/all_file/all_file.dart';
+// import 'package:mulstore/all_file/all_file.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 // import 'package:google_sign_in/google_sign_in.dart';

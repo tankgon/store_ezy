@@ -1,4 +1,4 @@
-import 'package:ez_store/all_file/all_file.dart';
+import 'package:mulstore/all_file/all_file.dart';
 
 class SearchBar extends StatelessWidget {
   const SearchBar({
@@ -20,7 +20,8 @@ class SearchBar extends StatelessWidget {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: Dimens.rad_border_circular,
-            borderSide: context.theme.inputDecorationTheme.focusedBorder!.borderSide,
+            borderSide:
+                context.theme.inputDecorationTheme.focusedBorder!.borderSide,
           ),
           // contentPadding: EdgeInsets.zero,
           hintText: LocaleKeys.common_Search.tr(),

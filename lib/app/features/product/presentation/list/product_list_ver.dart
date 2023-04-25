@@ -1,7 +1,7 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/product/domain/entity/product_entity.dart';
-import 'package:ez_store/app/features/product/presentation/item/layout/product_item_layout.dart';
-import 'package:ez_store/app/features/product/presentation/item/product_item.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/product/domain/entity/product_entity.dart';
+import 'package:mulstore/app/features/product/presentation/item/layout/product_item_layout.dart';
+import 'package:mulstore/app/features/product/presentation/item/product_item.dart';
 
 class ProductListVer extends StatelessWidget {
   const ProductListVer({
@@ -12,11 +12,13 @@ class ProductListVer extends StatelessWidget {
     this.shrinkWrap,
   });
 
-  static ProductListVer demo({bool? shrinkWrap}){
+  static ProductListVer demo({bool? shrinkWrap}) {
     return ProductListVer(
       shrinkWrap: shrinkWrap,
       fetchListData: (page, pageSize) {
-        return Future.value(List.generate(5, (index) => index).map((e) => ProductEntity.demo()).toList());
+        return Future.value(List.generate(5, (index) => index)
+            .map((e) => ProductEntity.demo())
+            .toList());
       },
     );
   }

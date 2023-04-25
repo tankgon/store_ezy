@@ -1,6 +1,6 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/auth/presentation/otp_confirm/auth_otp_confirm_body.dart';
-import 'package:ez_store/app/features/auth/presentation/otp_confirm/cubit/auth_otp_confirm_cubit.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/auth/presentation/otp_confirm/auth_otp_confirm_body.dart';
+import 'package:mulstore/app/features/auth/presentation/otp_confirm/cubit/auth_otp_confirm_cubit.dart';
 
 class AuthOtpConfirmPage extends StatelessWidget {
   const AuthOtpConfirmPage({

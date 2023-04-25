@@ -1,4 +1,4 @@
-import 'package:ez_store/all_file/all_file.dart';
+import 'package:mulstore/all_file/all_file.dart';
 
 class SocialAuthSection extends StatelessWidget {
   const SocialAuthSection({super.key});

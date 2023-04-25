@@ -1,7 +1,7 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/shopping_cart/presentation/widget/shopping_cart_btn.dart';
-import 'package:ez_store/app/features/user_order/presentation/main/cubit/user_order_cubit.dart';
-import 'package:ez_store/app/features/user_order/presentation/main/user_order_body.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/shopping_cart/presentation/widget/shopping_cart_btn.dart';
+import 'package:mulstore/app/features/user_order/presentation/main/cubit/user_order_cubit.dart';
+import 'package:mulstore/app/features/user_order/presentation/main/user_order_body.dart';
 
 class UserOrderPage extends StatelessWidget {
 

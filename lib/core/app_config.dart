@@ -1,4 +1,4 @@
-import 'package:ez_store/flavors.dart';
+import 'package:mulstore/flavors.dart';
 
 class AppConfig {
   AppConfig._();

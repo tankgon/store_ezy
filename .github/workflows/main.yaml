@@ -1,4 +1,4 @@
-name: ez_store
+name: mulstore
 
 on: [pull_request, push]
 

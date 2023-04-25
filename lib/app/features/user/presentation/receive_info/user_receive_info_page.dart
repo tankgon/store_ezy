@@ -1,6 +1,6 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/user/presentation/receive_info/user_receive_info_body.dart';
-import 'package:ez_store/app/features/user/presentation/receive_info/cubit/user_receive_info_cubit.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/user/presentation/receive_info/user_receive_info_body.dart';
+import 'package:mulstore/app/features/user/presentation/receive_info/cubit/user_receive_info_cubit.dart';
 
 class UserReceiveInfoPage extends StatelessWidget {
 

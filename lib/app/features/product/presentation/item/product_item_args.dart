@@ -1,4 +1,4 @@
-import 'package:ez_store/all_file/all_file.dart';
+import 'package:mulstore/all_file/all_file.dart';
 
 class ProductItemArgs {
   const ProductItemArgs({
@@ -7,4 +7,3 @@ class ProductItemArgs {
 
   final Widget? action;
 }
-

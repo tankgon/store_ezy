@@ -1,6 +1,6 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/distributor/presentation/rating/distributor_rating_body.dart';
-import 'package:ez_store/app/features/distributor/presentation/rating/cubit/distributor_rating_cubit.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/distributor/presentation/rating/distributor_rating_body.dart';
+import 'package:mulstore/app/features/distributor/presentation/rating/cubit/distributor_rating_cubit.dart';
 
 class DistributorRatingSimple extends StatelessWidget {
 

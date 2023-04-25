@@ -1,19 +1,19 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/auth/data/mulstore/api/auth_api_ms.dart';
-import 'package:ez_store/app/features/auth/data/mulstore/auth_repo_ms.dart';
-import 'package:ez_store/app/features/message/data/repo/message_repo_impl.dart';
-import 'package:ez_store/app/features/message/self.dart';
-import 'package:ez_store/app/features/user/data/mulstore/api/user_api_ms.dart';
-import 'package:ez_store/app/features/user/data/mulstore/user_repo_ms.dart';
-import 'package:ez_store/app/features/user/domain/repo/user_repo.dart';
-import 'package:ez_store/firebase_options.dart';
-import 'package:ez_store/firebase_options_dev.dart';
-import 'package:ez_store/firebase_options_stag.dart';
-import 'package:ez_store/services/app_config/app_config_service.dart';
-import 'package:ez_store/services/device_service.dart';
-import 'package:ez_store/services/user_secure_storage_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/auth/data/mulstore/api/auth_api_ms.dart';
+import 'package:mulstore/app/features/auth/data/mulstore/auth_repo_ms.dart';
+import 'package:mulstore/app/features/message/data/repo/message_repo_impl.dart';
+import 'package:mulstore/app/features/message/self.dart';
+import 'package:mulstore/app/features/user/data/mulstore/api/user_api_ms.dart';
+import 'package:mulstore/app/features/user/data/mulstore/user_repo_ms.dart';
+import 'package:mulstore/app/features/user/domain/repo/user_repo.dart';
+import 'package:mulstore/firebase_options.dart';
+import 'package:mulstore/firebase_options_dev.dart';
+import 'package:mulstore/firebase_options_stag.dart';
+import 'package:mulstore/services/app_config/app_config_service.dart';
+import 'package:mulstore/services/device_service.dart';
+import 'package:mulstore/services/user_secure_storage_service.dart';
 
 import 'app/features/auth/self.dart';
 
@@ -91,11 +91,11 @@ void _initDataService() {
   // Init Data Service
   final dio = getIt<DioModule>().dio;
   getIt
-    ..registerLazySingleton<UserApiMS>(()=> UserApiMS(dio))
-    ..registerLazySingleton<AuthApiMS>(()=> AuthApiMS(dio));
+    ..registerLazySingleton<UserApiMS>(() => UserApiMS(dio))
+    ..registerLazySingleton<AuthApiMS>(() => AuthApiMS(dio));
 
   getIt
-    ..registerLazySingleton<UserRepo>(()=> UserRepoMS())
-    ..registerLazySingleton<AuthRepo>(()=> AuthRepoMS())
-    ..registerLazySingleton<MessageRepo>(()=> MessageRepoImpl());
+    ..registerLazySingleton<UserRepo>(() => UserRepoMS())
+    ..registerLazySingleton<AuthRepo>(() => AuthRepoMS())
+    ..registerLazySingleton<MessageRepo>(() => MessageRepoImpl());
 }

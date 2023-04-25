@@ -1,5 +1,5 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/widgets/app_item_counter/app_item_counter_args.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/widgets/app_item_counter/app_item_counter_args.dart';
 
 part 'app_item_counter_event.dart';
 

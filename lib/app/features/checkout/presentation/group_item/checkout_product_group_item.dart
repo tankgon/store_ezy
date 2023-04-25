@@ -1,5 +1,5 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/checkout/presentation/item/checkout_product_item.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/checkout/presentation/item/checkout_product_item.dart';
 
 class CheckoutProductGroupItem extends StatelessWidget {
   const CheckoutProductGroupItem({super.key});

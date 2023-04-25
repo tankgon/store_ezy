@@ -1,5 +1,5 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/distributor/presentation/item/cubit/distributor_item_cubit.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/distributor/presentation/item/cubit/distributor_item_cubit.dart';
 import 'package:velocity_x/src/flutter/text.dart';
 
 class DistributorSimpleInfoLayout1 extends StatelessWidget {

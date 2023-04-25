@@ -1,8 +1,8 @@
 import 'package:app_utils/view/app_info_utils.dart';
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/auth/data/mulstore/api/auth_api_ms.dart';
-import 'package:ez_store/app/features/auth/data/mulstore/model/auth_model_ms.dart';
-import 'package:ez_store/app/features/auth/self.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/auth/data/mulstore/api/auth_api_ms.dart';
+import 'package:mulstore/app/features/auth/data/mulstore/model/auth_model_ms.dart';
+import 'package:mulstore/app/features/auth/self.dart';
 
 const _deviceType = 'MOBILEAPP';
 

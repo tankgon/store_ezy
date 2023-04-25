@@ -1,10 +1,8 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/auth/data/mulstore/model/auth_model_ms.dart';
-import 'package:ez_store/app/features/auth/presentation/login/cubit/login_cubit.dart';
-import 'package:ez_store/app/features/auth/presentation/sign_up/sign_up_body.dart';
-import 'package:ez_store/app/features/auth/presentation/social_login/socail_auth.dart';
-import 'package:ez_store/app/features/auth/presentation/widget/auth_id_input.dart';
-import 'package:ez_store/app/features/auth/presentation/widget/auth_page_body.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/auth/presentation/login/cubit/login_cubit.dart';
+import 'package:mulstore/app/features/auth/presentation/social_login/socail_auth.dart';
+import 'package:mulstore/app/features/auth/presentation/widget/auth_id_input.dart';
+import 'package:mulstore/app/features/auth/presentation/widget/auth_page_body.dart';
 
 class LoginBody extends StatelessWidget {
   const LoginBody({super.key});
@@ -17,7 +15,13 @@ class LoginBody extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            LocaleKeys.authen_Login.tr().text.titleLarge(context).semiBold.center.make(),
+            LocaleKeys.authen_Login
+                .tr()
+                .text
+                .titleLarge(context)
+                .semiBold
+                .center
+                .make(),
             Gaps.vGap32,
             const AuthIdPasswordInput(
               showPasswordHelper: false,

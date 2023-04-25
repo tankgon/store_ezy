@@ -1,8 +1,8 @@
 import 'package:app_utils/view/app_info_utils.dart';
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/firebase_options.dart';
-import 'package:ez_store/firebase_options_dev.dart';
-import 'package:ez_store/firebase_options_stag.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/firebase_options.dart';
+import 'package:mulstore/firebase_options_dev.dart';
+import 'package:mulstore/firebase_options_stag.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';

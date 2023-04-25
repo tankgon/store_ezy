@@ -1,7 +1,7 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/user/data/mulstore/api/user_api_ms.dart';
-import 'package:ez_store/app/features/user/domain/entity/user_base_entity.dart';
-import 'package:ez_store/app/features/user/domain/repo/user_repo.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/user/data/mulstore/api/user_api_ms.dart';
+import 'package:mulstore/app/features/user/domain/entity/user_base_entity.dart';
+import 'package:mulstore/app/features/user/domain/repo/user_repo.dart';
 
 class UserRepoMS implements UserRepo {
   UserRepoMS({UserApiMS? userApiMS}) {

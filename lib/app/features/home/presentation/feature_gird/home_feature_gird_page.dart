@@ -1,6 +1,6 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/home/presentation/feature_gird/cubit/home_feature_gird_cubit.dart';
-import 'package:ez_store/app/features/home/presentation/feature_gird/home_feature_gird_body.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/home/presentation/feature_gird/cubit/home_feature_gird_cubit.dart';
+import 'package:mulstore/app/features/home/presentation/feature_gird/home_feature_gird_body.dart';
 
 class HomeFeatureGird extends StatelessWidget {
   const HomeFeatureGird({

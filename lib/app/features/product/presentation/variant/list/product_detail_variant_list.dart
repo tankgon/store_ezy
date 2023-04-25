@@ -1,6 +1,6 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/product/presentation/variant/select_variant/select_product_variant.dart';
-import 'package:ez_store/app/features/product/self.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/product/presentation/variant/select_variant/select_product_variant.dart';
+import 'package:mulstore/app/features/product/self.dart';
 
 class ProductDetailVariantList extends StatelessWidget {
   const ProductDetailVariantList({

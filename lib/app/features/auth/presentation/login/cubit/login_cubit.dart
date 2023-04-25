@@ -1,8 +1,8 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/auth/domain/repo/auth_repo.dart';
-import 'package:ez_store/app/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:ez_store/app/features/auth/presentation/widget/auth_id_input.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/auth/domain/repo/auth_repo.dart';
+import 'package:mulstore/app/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:mulstore/app/features/auth/presentation/widget/auth_id_input.dart';
 
 part 'login_state.dart';
 

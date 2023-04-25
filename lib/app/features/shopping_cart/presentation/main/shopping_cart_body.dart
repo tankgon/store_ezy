@@ -1,6 +1,6 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/shopping_cart/presentation/group_item/shopping_cart_list_group.dart';
-import 'package:ez_store/app/features/shopping_cart/presentation/main/cubit/shopping_cart_cubit.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/shopping_cart/presentation/group_item/shopping_cart_list_group.dart';
+import 'package:mulstore/app/features/shopping_cart/presentation/main/cubit/shopping_cart_cubit.dart';
 
 class ShoppingCartBody extends StatelessWidget {
 

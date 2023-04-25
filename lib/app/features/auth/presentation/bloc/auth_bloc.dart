@@ -1,7 +1,7 @@
-import 'package:ez_store/all_file/all_file.dart';
-import 'package:ez_store/app/features/user/domain/repo/user_repo.dart';
-import 'package:ez_store/app/features/user/self.dart';
-import 'package:ez_store/services/user_secure_storage_service.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/user/domain/repo/user_repo.dart';
+import 'package:mulstore/app/features/user/self.dart';
+import 'package:mulstore/services/user_secure_storage_service.dart';
 
 part 'auth_event.dart';
 

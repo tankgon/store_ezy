@@ -1,6 +1,7 @@
-import 'package:ez_store/all_file/all_file.dart';
+import 'package:mulstore/all_file/all_file.dart';
 
-class DefaultStatusConsumer<C extends RequestCubit<S>, S extends RequestState> extends StatelessWidget {
+class DefaultStatusConsumer<C extends RequestCubit<S>, S extends RequestState>
+    extends StatelessWidget {
   const DefaultStatusConsumer({
     super.key,
     required this.child,
@@ -25,7 +26,8 @@ class DefaultStatusConsumer<C extends RequestCubit<S>, S extends RequestState> e
       listener: _onStatusChange,
       builder: (context, state) {
         return AppLoading(
-          isLoading: showLoadingIndicator && state.status == ItemDefaultStatus.loading,
+          isLoading:
+              showLoadingIndicator && state.status == ItemDefaultStatus.loading,
           child: child,
         );
       },
