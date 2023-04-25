@@ -50,23 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDEh0Vl71rWQuh5erxUcvRFkizJZxmmumA',
-    appId: '1:499593620652:android:4309edc495519020ccc309',
-    messagingSenderId: '499593620652',
-    projectId: 'birealflutter',
-    storageBucket: 'birealflutter.appspot.com',
+    apiKey: 'AIzaSyC3dKaRzzUMp2vZQLWpuCkEcc9_Utj7dLI',
+    appId: '1:3205711259:android:8bd760ba05bced8cc7cd3e',
+    messagingSenderId: '3205711259',
+    projectId: 'mulstore-ios',
+    storageBucket: 'mulstore-ios.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBK-kRjAV3FL1nR7qxX3M841cKSSOtN4gw',
-    appId: '1:499593620652:ios:49322e1a1800f75cccc309',
-    messagingSenderId: '499593620652',
-    projectId: 'birealflutter',
-    storageBucket: 'birealflutter.appspot.com',
-    androidClientId:
-        '499593620652-634m5giidospb9u552p6uq9hmpd97v4u.apps.googleusercontent.com',
-    iosClientId:
-        '499593620652-hic9kh6013at677jmu4r3sht9tcj50hs.apps.googleusercontent.com',
-    iosBundleId: 'vn.sntg.Bireal',
+    apiKey: 'AIzaSyCji20noFGSIw-Btu7MlOdXdFWXRTvfCfY',
+    appId: '1:3205711259:ios:ac49b5914316e441c7cd3e',
+    messagingSenderId: '3205711259',
+    projectId: 'mulstore-ios',
+    storageBucket: 'mulstore-ios.appspot.com',
+    iosClientId: '3205711259-r7kaor561nlnnrsesukdpncv1i0g8gjf.apps.googleusercontent.com',
+    iosBundleId: 'mulstorebb.smatez.com',
   );
 }
