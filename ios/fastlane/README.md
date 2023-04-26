@@ -15,37 +15,26 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
-### ios dev
+### ios build_and_deploy_ios
 
 ```sh
-[bundle exec] fastlane ios dev
+[bundle exec] fastlane ios build_and_deploy_ios
 ```
 
+Build and distribute iOS app to TestFlight
+
+----
 
 
-### ios stag
+## Android
+
+### android build_and_deploy_android
 
 ```sh
-[bundle exec] fastlane ios stag
+[bundle exec] fastlane android build_and_deploy_android
 ```
 
-
-
-### ios prod
-
-```sh
-[bundle exec] fastlane ios prod
-```
-
-
-
-### ios all
-
-```sh
-[bundle exec] fastlane ios all
-```
-
-
+Build and distribute Android app to Firebase
 
 ----
 

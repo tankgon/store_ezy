@@ -3,7 +3,7 @@ import 'package:layout/layout.dart';
 
 enum AppBreakpointType {
   xxs(screenSize: 320, scale: 0.9),
-  xs(screenSize: 375, scale: 1),
+  xs(screenSize: 375, scale: 1.05),
   sm(screenSize: 576, scale: 1.1),
   md(screenSize: 768, scale: 1.2),
   lg(screenSize: 992, scale: 1.3),
