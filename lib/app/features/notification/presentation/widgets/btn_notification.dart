@@ -27,8 +27,7 @@ class NotificationBtn extends StatelessWidget {
           padding: padding,
           count: 9,
           onPressed: () {
-            // context.pushRoute(const NotificationMainRoute());
-            context.pushRoute(const ForgotPasswordRoute());
+            context.pushRoute(const NotificationMainRoute());
           },
         );
       },

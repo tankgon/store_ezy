@@ -1,6 +1,6 @@
 name: mulstore
 description: MulStore
-version: 1.0.0+1
+version: 1.0.0+4
 publish_to: none
 
 ## Build runner
@@ -116,7 +116,7 @@ dependencies:
 
   #####  Resource & Config
   flutter_keyboard_visibility: ^5.1.0
-  connectivity_plus: ^3.0.3
+#  connectivity_plus: ^3.0.4
   font_awesome_flutter: ^10.4.0
   flutter_svg: ^2.0.0+1
   image_picker: ^0.8.5+3
@@ -128,7 +128,6 @@ dependencies:
   path_provider: ^2.0.10
   android_path_provider: ^0.3.0
   #  audioplayers: ^1.0.1
-  just_audio: ^0.9.28
   open_file: ^3.2.1
   antdesign_icons: ^0.0.3
   flutter_phosphor_icons: ^0.0.1+6

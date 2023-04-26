@@ -8,7 +8,6 @@ export 'package:auto_route/auto_route.dart';
 export 'package:bloc/bloc.dart' hide EventHandler;
 export 'package:breakpoint/breakpoint.dart';
 export 'package:cached_network_image/cached_network_image.dart';
-export 'package:connectivity_plus/connectivity_plus.dart';
 export 'package:copy_with_extension/copy_with_extension.dart';
 export 'package:device_info_plus/device_info_plus.dart';
 //// *** Third Party Packages ***

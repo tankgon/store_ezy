@@ -23,7 +23,7 @@ class ShoppingCartItem extends StatelessWidget {
 
       },
       onDeleteItem: () {
-        DialogUtils.showMaterialDialog(context: context, content: 'Are you sure to delete this item?', delete: () { });
+        DialogUtils.showMaterialDialog(context: context, content: 'Xóa mặt hàng này ra khỏi giỏ?', delete: () { });
       },
     );
   }

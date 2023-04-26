@@ -1,0 +1,111 @@
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Description of what the lane does"
+  before_all do
+    ENV["MATCH_PASSWORD"] = "Chihuy105@"
+    ENV["FASTLANE_PASSWORD"] = "Chihuy105@"
+
+#     xcode_select("/Applications/Xcode-13.4.1.app")
+  end
+
+  ########################################################
+  ############ ---------- Utils Lane -------- ############
+  ########################################################
+
+  private_lane :increment_number do |options|
+    increment_version_number(
+      version_number: flutter_version()["version_name"]
+    )
+    increment_build_number(
+      build_number: flutter_version()["version_code"]
+    )
+  end
+
+  private_lane :build do |options|
+    scheme = options[:scheme]
+
+    enable_automatic_code_signing(path: "Runner.xcodeproj")
+    build_app(
+      scheme: scheme,
+      clean: true,
+      export_method: "app-store",
+      configuration: "Release-#{scheme}",
+    )
+  end
+
+  private_lane :publish do |options|
+    app_identifier = options[:app_identifier]
+    scheme = options[:scheme]
+
+    api_key = app_store_connect_api_key(
+      key_id: "47JGS2K395",
+      issuer_id: "4a080b97-b872-49db-8fb3-eaf791755f96",
+      key_filepath: "AuthKey_47JGS2K395.p8",
+      duration: 1200, # optional (maximum 1200)
+      in_house: false # optional but may be required if using match/sigh
+    )
+
+    # Get changelog
+    changelog = read_changelog(
+      changelog_path: './../CHANGELOG.md',	# Specify path to CHANGELOG.md
+      section_identifier: '[Latest]',	# Specify what section to read
+      excluded_markdown_elements: ['###']	# Specify which markdown elements should be excluded
+    )
+
+    # Upload to TestFlight
+    upload_to_testflight(
+      app_identifier: app_identifier,
+      api_key: api_key,
+      changelog: changelog,
+      skip_waiting_for_build_processing: true,
+      distribute_external: true,
+      groups: [scheme],
+    )
+  end
+
+
+  ########################################################
+  ############ ---------- Build Lane -------- ############
+  ########################################################
+
+  lane :dev do
+    increment_number
+    build(
+      scheme: "development"
+    )
+    publish(
+      app_identifier: "vn.tlmcorp.tlmapp.dev",
+    )
+  end
+
+  lane :stag do
+    increment_number
+    build(
+      scheme: "staging"
+    )
+    publish(
+      app_identifier: "vn.tlmcorp.tlmapp.stag",
+    )
+  end
+
+  lane :prod do
+    increment_number
+    build(
+      scheme: "production"
+    )
+    publish(
+      app_identifier: "vn.tlmcorp.tlmapp",
+    )
+  end
+
+  lane :all do
+    dev
+    prod
+    stag
+  end
+
+end

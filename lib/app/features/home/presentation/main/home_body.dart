@@ -30,7 +30,7 @@ class HomeBody extends StatelessWidget {
                   showIndicator: false,
                   imgList: List.generate(5, (index) => index)
                       .map(
-                        (e) => 'https://i.pinimg.com/236x/42/b5/30/42b53045eea95293ddf65fa599f75d0b--hamster-twitter.jpg',
+                        (e) => 'https://img.freepik.com/free-vector/sales-banner-template_1176-108.jpg?w=2000',
                   )
                       .toList(),
                 ),
