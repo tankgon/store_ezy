@@ -73,7 +73,7 @@
     "Promotions": "Chương trình khuyến mãi"
   },
   "distributor": {
-    "Popular": "Nhà cung cấp nỗi bật",
+    "Popular": "Nhà cung cấp nổi bật",
     "Rating": "Đánh giá nhà cung cấp"
   },
   "homePage": {
@@ -82,7 +82,7 @@
   "mainPage": {
     "account": "Tài khoản",
     "home": "Trang chủ",
-    "message": "Tin nhăn",
+    "message": "Tin nhắn",
     "order": "Đơn hàng"
   },
   "payment": {
@@ -97,7 +97,7 @@
     "NewProducts": "Sản phẩm mới",
     "OriginOrBrand": "Xuất xứ/thương hiệu",
     "Packing": "Quy cách",
-    "PopularProducts": "Sản phẩm nỗi bật",
+    "PopularProducts": "Sản phẩm nổi bật",
     "ProductClassification": "Phân loại sản phẩm",
     "Quantity": "Số lượng",
     "SameDistributor": "Cùng nhà phân phối",

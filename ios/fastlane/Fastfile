@@ -34,31 +34,5 @@ platform :ios do
   end
 end
 
-platform :android do
-  desc "Build and distribute Android app to Firebase"
-  lane :build_and_deploy_android do |options|
-    flavor = options[:flavor]
-
-    # Build the app
-    gradle(
-      task: "assemble",
-      build_type: "Release",
-      flavor: "#{flavor.capitalize}",
-      print_command: false,
-      properties: {
-        "android.injected.signing.store.file" => "keystore.jks",
-        "android.injected.signing.store.password" => "your_keystore_password",
-        "android.injected.signing.key.alias" => "your_key_alias",
-        "android.injected.signing.key.password" => "your_key_password",
-      }
-    )
-
-    # Upload to Firebase App Distribution
-    firebase_app_distribution(
-      app: "your_firebase_app_id",
-      groups: "your_distribution_group",
-      release_notes: "Release for #{flavor} flavor",
-      android_app_path: "app/build/outputs/apk/#{flavor}/release/app-#{flavor}-release.apk"
-    )
-  end
-end
+# Run command
+# fastlane ios build_and_deploy_ios flavor:production
