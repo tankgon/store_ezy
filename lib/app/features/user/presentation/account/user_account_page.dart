@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/user/presentation/account/user_account_body.dart';
 import 'package:mulstore/app/features/user/presentation/account/cubit/user_account_cubit.dart';
 
+@RoutePage()
 class UserAccountPage extends StatelessWidget {
   const UserAccountPage({super.key});
 

@@ -2,12 +2,23 @@ import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/auth/self.dart';
 
 abstract class AuthRepo {
-  Future<AuthSignUpOTPEntity> signUpOTP({
-    required String id,
+
+  Future<AuthSignUpOTPEntity> signUpPhone({
+    required String phone,
+    required String countryCode,
     required String password,
   });
 
-  Future<AuthSignUpOTPEntity> resendSignUpOTP({
+  Future<AuthSignUpOTPEntity> resendSignUpOTPPhone({
+    required String userID,
+  });
+
+  Future<AuthSignUpOTPEntity> signUpEmail({
+    required String email,
+    required String password,
+  });
+
+  Future<AuthSignUpOTPEntity> resendSignUpOTPEmail({
     required String userID,
   });
 
@@ -18,13 +29,24 @@ abstract class AuthRepo {
     AuthSignUpOTPEntity? requestData,
   });
 
-  Future<AuthConfirmEntity> loginWithPassword({
-    required String id,
+  Future<AuthConfirmEntity> loginWithPhonePassword({
+    required String phone,
+    required String countryCode,
     required String password,
   });
 
-  Future<ForgotPasswordOTPEntity> forgotPasswordSentOTP({
-    required String userName,
+  Future<AuthConfirmEntity> loginWithEmailPassword({
+    required String email,
+    required String password,
+  });
+
+  Future<ForgotPasswordOTPEntity> forgotPasswordSentOTPPhone({
+    required String phone,
+    required String countryCode,
+  });
+
+  Future<ForgotPasswordOTPEntity> forgotPasswordSentOTPEmail({
+    required String email,
   });
 
   Future<ForgotPasswordConfirmOTPEntity> forgotPasswordConfirmOTP({

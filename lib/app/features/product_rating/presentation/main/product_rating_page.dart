@@ -2,6 +2,7 @@ import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/product_rating/presentation/main/cubit/product_rating_cubit.dart';
 import 'package:mulstore/app/features/product_rating/presentation/main/product_rating_body.dart';
 
+@RoutePage()
 class ProductRatingPage extends StatelessWidget {
   const ProductRatingPage({super.key});
 

@@ -1,5 +1,6 @@
 import 'package:app_utils/view/app_info_utils.dart';
 import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/auth/core/utils/check_id_helper.dart';
 import 'package:mulstore/app/features/auth/data/mulstore/api/auth_api_ms.dart';
 import 'package:mulstore/app/features/auth/data/mulstore/model/auth_model_ms.dart';
 import 'package:mulstore/app/features/auth/self.dart';
@@ -22,12 +23,16 @@ class AuthRepoMS extends AuthRepo {
   }
 
   @override
-  Future<AuthSignUpOTPEntity> signUpOTP(
-      {required String id, required String password}) async {
+  Future<AuthSignUpOTPEntity> signUpPhone({
+    required String phone,
+    required String countryCode,
+    required String password,
+  }) async {
     try {
-      final rs = await _authApi.signUp(
+      final rs = await _authApi.signUpPhone(
         AuthSignUpOTPReq(
-          userLogin: id,
+          userLogin: phone,
+          countryCode: countryCode,
           password: password,
         ),
       );
@@ -43,8 +48,33 @@ class AuthRepoMS extends AuthRepo {
   }
 
   @override
-  Future<AuthSignUpOTPEntity> resendSignUpOTP({required String userID}) async {
-    final rs = await _authApi.resendSignUpOTP(
+  Future<AuthSignUpOTPEntity> signUpEmail({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final rs = await _authApi.signUpEmail(
+        AuthSignUpOTPReq(
+          userLogin: email,
+          password: password,
+        ),
+      );
+      if (rs != null) {
+        return Future.value(
+          rs.toEntity(),
+        );
+      }
+      return Future.error('Can not sign up');
+    } catch (e) {
+      return Future.error(_checkReActiveError(e));
+    }
+  }
+
+  @override
+  Future<AuthSignUpOTPEntity> resendSignUpOTPPhone({
+    required String userID,
+  }) async {
+    final rs = await _authApi.resendSignUpPhoneOTP(
       AuthResendOTPReq(
         userID: userID,
       ),
@@ -58,11 +88,29 @@ class AuthRepoMS extends AuthRepo {
   }
 
   @override
-  Future<AuthConfirmEntity> confirmSignUpOTP(
-      {required String otp,
-      required String uuid,
-      required String userID,
-      AuthSignUpOTPEntity? requestData}) async {
+  Future<AuthSignUpOTPEntity> resendSignUpOTPEmail({
+    required String userID,
+  }) async {
+    final rs = await _authApi.resendSignUpEmailOTP(
+      AuthResendOTPReq(
+        userID: userID,
+      ),
+    );
+    if (rs != null) {
+      return Future.value(
+        rs.toEntity(),
+      );
+    }
+    return Future.error('Can not resend OTP');
+  }
+
+  @override
+  Future<AuthConfirmEntity> confirmSignUpOTP({
+    required String otp,
+    required String uuid,
+    required String userID,
+    AuthSignUpOTPEntity? requestData,
+  }) async {
     final object = requestData?.object;
     if (object is AuthSignUpOTPResp) {
       final deviceID = await AppInfoUtils.getDeviceID();
@@ -88,14 +136,48 @@ class AuthRepoMS extends AuthRepo {
   }
 
   @override
-  Future<AuthConfirmEntity> loginWithPassword(
-      {required String id, required String password}) async {
+  Future<AuthConfirmEntity> loginWithPhonePassword({
+    required String phone,
+    required String countryCode,
+    required String password,
+  }) async {
     try {
       final deviceID = await AppInfoUtils.getDeviceID();
       final fcmToken = await FirebaseNotificationService.instance.getFCMToken();
-      final rs = await _authApi.loginPassword(
+
+      final rs = await _authApi.loginPhone(
         AuthLoginPasswordReq(
-          userLogin: id,
+          userLogin: phone,
+          countryCode: countryCode,
+          password: password,
+          deviceID: deviceID,
+          deviceToken: fcmToken,
+          type: _deviceType,
+        ),
+      );
+      if (rs != null) {
+        return Future.value(
+          rs.toEntity(),
+        );
+      }
+      return Future.error('Can not login');
+    } catch (e) {
+      return Future.error(_checkReActiveError(e));
+    }
+  }
+
+  @override
+  Future<AuthConfirmEntity> loginWithEmailPassword({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final deviceID = await AppInfoUtils.getDeviceID();
+      final fcmToken = await FirebaseNotificationService.instance.getFCMToken();
+
+      final rs = await _authApi.loginEmail(
+        AuthLoginPasswordReq(
+          userLogin: email,
           password: password,
           deviceID: deviceID,
           deviceToken: fcmToken,
@@ -180,12 +262,29 @@ class AuthRepoMS extends AuthRepo {
   }
 
   @override
-  Future<ForgotPasswordOTPEntity> forgotPasswordSentOTP({
-    required String userName,
+  Future<ForgotPasswordOTPEntity> forgotPasswordSentOTPPhone({
+    required String phone,
+    required String countryCode,
   }) async {
-    final rs = await _authApi.forgotPasswordSendOTP(
+    final rs = await _authApi.forgotPasswordSendOTPPhone(
       ForgotPasswordReq(
-        userLogin: userName,
+        userLogin: phone,
+        countryCode: countryCode,
+      ),
+    );
+    if (rs != null) {
+      return Future.value(
+        rs.toEntity(),
+      );
+    }
+    return Future.error('Can not send OTP');
+  }
+
+  @override
+  Future<ForgotPasswordOTPEntity> forgotPasswordSentOTPEmail({required String email}) async {
+    final rs = await _authApi.forgotPasswordSendOTPEmail(
+      ForgotPasswordReq(
+        userLogin: email,
       ),
     );
     if (rs != null) {

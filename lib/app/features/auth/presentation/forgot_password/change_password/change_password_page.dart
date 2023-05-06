@@ -2,6 +2,7 @@ import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/auth/presentation/forgot_password/change_password/change_password_body.dart';
 import 'package:mulstore/app/features/auth/presentation/forgot_password/change_password/cubit/change_password_cubit.dart';
 
+@RoutePage()
 class ChangePasswordPage extends StatelessWidget {
   const ChangePasswordPage({
     super.key,

@@ -5,25 +5,10 @@ import 'package:mulstore/app/features/auth/presentation/login/login_page.dart';
 import 'package:mulstore/app/features/auth/presentation/otp_confirm/auth_otp_confirm_page.dart';
 import 'package:mulstore/app/features/auth/presentation/sign_up/sign_up_page.dart';
 
-const authRoutes = [
-    AutoRoute(
-      path: 'sign-up',
-      page: SignUpPage,
-    ),
-    AutoRoute(
-      path: 'login',
-      page: LoginPage,
-    ),
-    AutoRoute(
-      path: 'otp-confirm',
-      page: AuthOtpConfirmPage,
-    ),
-    AutoRoute(
-      path: 'forgot-password',
-      page: ForgotPasswordPage,
-    ),
-    AutoRoute(
-      path: 'change-password',
-      page: ChangePasswordPage,
-    ),
+final authRoutes = [
+  AutoRoute(path: '/sign-up', page: SignUpRoute.page),
+  AutoRoute(path: '/login', page: LoginRoute.page),
+  AutoRoute(path: '/otp-confirm', page: AuthOtpConfirmRoute.page),
+  AutoRoute(path: '/forgot-password', page: ForgotPasswordRoute.page),
+  AutoRoute(path: '/change-password', page: ChangePasswordRoute.page),
 ];

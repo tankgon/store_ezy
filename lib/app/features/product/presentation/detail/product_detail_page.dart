@@ -4,6 +4,7 @@ import 'package:mulstore/app/features/product/presentation/detail/cubit/product_
 import 'package:mulstore/app/features/product/presentation/detail/product_detail_body.dart';
 import 'package:mulstore/app/features/product/presentation/detail/widget/product_bottom_bar.dart';
 
+@RoutePage()
 class ProductDetailPage extends StatelessWidget {
   const ProductDetailPage({super.key, required this.product});
 

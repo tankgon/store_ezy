@@ -5,6 +5,7 @@ import 'package:mulstore/app/features/auth/presentation/sign_up/cubit/sign_up_cu
 import 'package:mulstore/app/features/auth/presentation/widget/auth_id_input.dart';
 import 'package:mulstore/app/features/auth/self.dart';
 
+@RoutePage()
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
@@ -38,7 +39,7 @@ class LoginPage extends StatelessWidget {
                 onConfirm: () {
                   context.read<SignUpCubit>().reActiveAccount(
                         userID: error.userID,
-                        userName: error.userName,
+                        id: error.userName,
                       );
                 },
               );

@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/shopping_cart/presentation/widget/shopping_cart_btn.dart';
 import 'package:mulstore/app/features/user_order/presentation/main/cubit/user_order_cubit.dart';
 import 'package:mulstore/app/features/user_order/presentation/main/user_order_body.dart';
 
+@RoutePage()
 class UserOrderPage extends StatelessWidget {
 
   const UserOrderPage({super.key});

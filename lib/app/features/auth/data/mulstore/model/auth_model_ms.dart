@@ -14,6 +14,7 @@ enum RegisterType {
 class AuthSignUpOTPReq {
   const AuthSignUpOTPReq({
     this.userLogin,
+    this.countryCode,
     this.password,
   });
 
@@ -21,6 +22,7 @@ class AuthSignUpOTPReq {
       _$AuthSignUpOTPReqFromJson(json);
 
   final String? userLogin;
+  final String? countryCode;
   final String? password;
 
   Map<String, dynamic> toJson() => _$AuthSignUpOTPReqToJson(this);
@@ -35,13 +37,13 @@ class AuthSignUpOTPResp {
     this.userLogin,
     this.otp,
   });
-
-  factory AuthSignUpOTPResp.fromJson(Map<String, dynamic> json) =>
-      _$AuthSignUpOTPRespFromJson(json);
   final String? userID;
   final String? uuid;
   final String? userLogin;
   final String? otp;
+
+  factory AuthSignUpOTPResp.fromJson(Map<String, dynamic> json) =>
+      _$AuthSignUpOTPRespFromJson(json);
 
   Map<String, dynamic> toJson() => _$AuthSignUpOTPRespToJson(this);
 
@@ -121,6 +123,7 @@ class AuthResendOTPReq {
 class AuthLoginPasswordReq {
   const AuthLoginPasswordReq({
     this.userLogin,
+    this.countryCode,
     this.password,
     this.deviceToken,
     this.deviceID,
@@ -128,6 +131,7 @@ class AuthLoginPasswordReq {
   });
 
   final String? userLogin;
+  final String? countryCode;
   final String? password;
   final String? deviceToken;
   final String? deviceID;
@@ -170,9 +174,11 @@ class AuthLoginPasswordResp {
 @JsonSerializable()
 class ForgotPasswordReq {
   final String? userLogin;
+  final String? countryCode;
 
   const ForgotPasswordReq({
     this.userLogin,
+    this.countryCode,
   });
 
   factory ForgotPasswordReq.fromJson(Map<String, dynamic> json) =>

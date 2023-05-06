@@ -3,6 +3,7 @@ import 'package:mulstore/app/features/checkout/presentation/main/checkout_body.d
 import 'package:mulstore/app/features/checkout/presentation/main/cubit/checkout_cubit.dart';
 import 'package:mulstore/app/features/checkout/presentation/main/widget/checkout_bottom_bar.dart';
 
+@RoutePage()
 class CheckoutPage extends StatelessWidget {
   const CheckoutPage({super.key});
 

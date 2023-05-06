@@ -1,5 +1,6 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/auth/core/utils/check_id_helper.dart';
 import 'package:mulstore/app/features/auth/presentation/widget/auth_id_input.dart';
 import 'package:mulstore/app/features/auth/self.dart';
 
@@ -22,22 +23,40 @@ class SignUpCubit extends RequestCubit<SignUpState> {
 
   String? _userID;
   String? _uuid;
-  String? _userName;
+  CheckIdResultData? _idRs;
 
   FutureOr<void> signUpOTP() async {
     if (form.valid) {
       emit(state.copyWith(status: ItemDefaultStatus.loading));
       try {
-        final userName = form.getValue<String>(AuthIdInput.idKey);
-        final signUpOTPRs = await _authRepo.signUpOTP(
-          id: userName!,
-          password: form.getValue<String>(AuthPasswordInput.passwordKey)!,
-        );
-        _uuid = signUpOTPRs.uuid;
-        _userID = signUpOTPRs.userID;
-        _userName = userName;
+        final id = form.getValue<String>(AuthIdInput.idKey) ?? '';
+        final password = form.getValue<String>(AuthPasswordInput.passwordKey) ?? '';
+        if (id.isEmpty || password.isEmpty) {
+          throw Exception('Chưa nhập đủ thông tin');
+        }
 
-        await _verifyOTP(signUpOTPRs);
+        bool loginResult = false;
+
+        final idRs = await CheckIdHelper.checkId(id);
+        _idRs = idRs;
+        if (idRs.isPhone) {
+          loginResult = await _signUpPhone(
+            phone: idRs.phone ?? '',
+            countryCode: idRs.countryCode ?? '',
+            password: password,
+          );
+        } else if (idRs.isEmail) {
+          loginResult = await _signUpEmail(
+            email: idRs.email ?? '',
+            password: password,
+          );
+        }
+
+        if (loginResult) {
+          emit(state.copyWith(status: ItemDefaultStatus.success));
+        } else {
+          emit(state.copyWith(status: ItemDefaultStatus.initial));
+        }
       } catch (e) {
         log(e.toString(), error: e, stackTrace: StackTrace.current);
         emit(state.copyWith(status: ItemDefaultStatus.error, error: e));
@@ -45,11 +64,41 @@ class SignUpCubit extends RequestCubit<SignUpState> {
     }
   }
 
-  Future<void> _verifyOTP(AuthSignUpOTPEntity signUpOTPRs) async {
+  Future<bool> _signUpPhone({
+    required String phone,
+    required String countryCode,
+    required String password,
+  }) async {
+    final signUpOTPRs = await _authRepo.signUpPhone(
+      phone: phone,
+      countryCode: countryCode,
+      password: password,
+    );
+    _uuid = signUpOTPRs.uuid;
+    _userID = signUpOTPRs.userID;
+
+    return _verifyOTP(signUpOTPRs);
+  }
+
+  Future<bool> _signUpEmail({
+    required String email,
+    required String password,
+  }) async {
+    final signUpOTPRs = await _authRepo.signUpEmail(
+      email: email,
+      password: password,
+    );
+    _uuid = signUpOTPRs.uuid;
+    _userID = signUpOTPRs.userID;
+
+    return _verifyOTP(signUpOTPRs);
+  }
+
+  Future<bool> _verifyOTP(AuthSignUpOTPEntity signUpOTPRs) async {
     final verifyRs = await getIt<AppAutoRoute>().push(
       AuthOtpConfirmRoute(
         successMessage: LocaleKeys.authen_SignUpSuccess.tr(),
-        otpMessage: 'Mã OTP đã được gửi đến {}'.tr(args: [_userName ?? '']),
+        otpMessage: _idRs?.getOTPMessage(),
         confirmOTPFunc: (otpUserInput) {
           return _confirmOTP(
             otpUserInput: otpUserInput,
@@ -57,23 +106,29 @@ class SignUpCubit extends RequestCubit<SignUpState> {
           );
         },
         onResendOTP: () {
-          return _resendOTP(signUpOTPRs);
+          return _resendOTP(
+            signUpOTPRs,
+          );
         },
       ),
     );
-    if (verifyRs == true) {
-      emit(state.copyWith(status: ItemDefaultStatus.success));
-    } else {
-      emit(state.copyWith(status: ItemDefaultStatus.initial));
-    }
+    return verifyRs == true;
   }
 
   Future<Object?> _resendOTP(AuthSignUpOTPEntity signUpOTPRs) async {
-    final resendRs = await _authRepo.resendSignUpOTP(
-      userID: signUpOTPRs.userID ?? '',
-    );
-    _uuid = resendRs.uuid;
-    _userID = resendRs.userID;
+    AuthSignUpOTPEntity? resendRs;
+    if (_idRs?.isPhone ?? false) {
+      resendRs = await _authRepo.resendSignUpOTPPhone(
+        userID: signUpOTPRs.userID ?? '',
+      );
+    }
+    if (_idRs?.isEmail ?? false) {
+      resendRs = await _authRepo.resendSignUpOTPEmail(
+        userID: signUpOTPRs.userID ?? '',
+      );
+    }
+    _uuid = resendRs?.uuid;
+    _userID = resendRs?.userID;
     return Future.value(resendRs);
   }
 
@@ -97,14 +152,34 @@ class SignUpCubit extends RequestCubit<SignUpState> {
     return true;
   }
 
-  Future<void> reActiveAccount({required String userID, String? userName}) async {
+  Future<void> reActiveAccount({
+    required String userID,
+    String? id,
+  }) async {
     try {
-      final signUpOTPRs = await _authRepo.resendSignUpOTP(
-        userID: userID,
-      );
+      if (id?.isEmpty ?? true) {
+        throw Exception('Chưa nhập đủ thông tin');
+      }
+      AuthSignUpOTPEntity? signUpOTPRs;
+
+      final idRs = await CheckIdHelper.checkId(id ?? '');
+      if (idRs.isPhone) {
+        signUpOTPRs = await _authRepo.resendSignUpOTPPhone(
+          userID: userID,
+
+        );
+      } else if (idRs.isEmail) {
+        signUpOTPRs = await _authRepo.resendSignUpOTPEmail(
+          userID: userID,
+        );
+      }
+      if (signUpOTPRs == null) {
+        throw Exception('Không thể gửi mã OTP');
+      }
+
       _uuid = signUpOTPRs.uuid;
       _userID = userID;
-      _userName = userName ?? _userName;
+      _idRs = idRs;
       await _verifyOTP(signUpOTPRs);
     } catch (e) {
       log(e.toString(), error: e, stackTrace: StackTrace.current);

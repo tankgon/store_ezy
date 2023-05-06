@@ -3,6 +3,7 @@ import 'package:mulstore/app/features/notification/data/model/notification_model
 import 'package:mulstore/app/features/notification/presentation/detail/cubit/notification_detail_cubit.dart';
 import 'package:mulstore/app/features/notification/presentation/detail/notification_detail_body.dart';
 
+@RoutePage()
 class NotificationDetailPage extends StatelessWidget {
   const NotificationDetailPage({super.key, required this.item});
 

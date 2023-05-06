@@ -1,5 +1,7 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/auth/core/utils/check_id_helper.dart';
+import 'package:mulstore/app/features/auth/domain/entity/auth_entity.dart';
 import 'package:mulstore/app/features/auth/domain/repo/auth_repo.dart';
 import 'package:mulstore/app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:mulstore/app/features/auth/presentation/widget/auth_id_input.dart';
@@ -25,10 +27,34 @@ class LoginCubit extends RequestCubit<LoginState> {
   FutureOr<void> loginPassword() async {
     emit(state.copyWith(status: ItemDefaultStatus.loading));
     try {
-      final rs = await authRepo.loginWithPassword(
-        id: form.getValue<String>(AuthIdInput.idKey) ?? '',
-        password: form.getValue<String>(AuthPasswordInput.passwordKey) ?? '',
-      );
+
+
+      final userName = form.getValue<String>(AuthIdInput.idKey) ?? '';
+      final password = form.getValue<String>(AuthPasswordInput.passwordKey) ?? '';
+
+      if (userName.isEmpty || password.isEmpty) {
+        throw Exception('Không nhập đủ thông tin');
+      }
+
+      final idRs = await CheckIdHelper.checkId(userName);
+      AuthConfirmEntity? rs;
+      if (idRs.isPhone) {
+        rs = await authRepo.loginWithPhonePassword(
+          phone: idRs.phone!,
+          countryCode: idRs.countryCode ?? '',
+          password: password,
+        );
+      } else if (idRs.isEmail) {
+        rs = await authRepo.loginWithEmailPassword(
+          email: idRs.email!,
+          password: password,
+        );
+      }
+
+      if (rs == null) {
+        throw Exception('Đăng nhập thất bại');
+      }
+
       authBloc.add(
         AuthenticatedEvent(
           token: rs.token!,

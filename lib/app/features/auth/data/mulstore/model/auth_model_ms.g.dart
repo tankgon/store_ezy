@@ -96,12 +96,14 @@ extension $AuthSignUpOTPRespCopyWith on AuthSignUpOTPResp {
 AuthSignUpOTPReq _$AuthSignUpOTPReqFromJson(Map<String, dynamic> json) =>
     AuthSignUpOTPReq(
       userLogin: json['userLogin'] as String?,
+      countryCode: json['countryCode'] as String?,
       password: json['password'] as String?,
     );
 
 Map<String, dynamic> _$AuthSignUpOTPReqToJson(AuthSignUpOTPReq instance) =>
     <String, dynamic>{
       'userLogin': instance.userLogin,
+      'countryCode': instance.countryCode,
       'password': instance.password,
     };
 
@@ -171,6 +173,7 @@ AuthLoginPasswordReq _$AuthLoginPasswordReqFromJson(
         Map<String, dynamic> json) =>
     AuthLoginPasswordReq(
       userLogin: json['userLogin'] as String?,
+      countryCode: json['countryCode'] as String?,
       password: json['password'] as String?,
       deviceToken: json['deviceToken'] as String?,
       deviceID: json['deviceID'] as String?,
@@ -181,6 +184,7 @@ Map<String, dynamic> _$AuthLoginPasswordReqToJson(
         AuthLoginPasswordReq instance) =>
     <String, dynamic>{
       'userLogin': instance.userLogin,
+      'countryCode': instance.countryCode,
       'password': instance.password,
       'deviceToken': instance.deviceToken,
       'deviceID': instance.deviceID,
@@ -208,11 +212,13 @@ Map<String, dynamic> _$AuthLoginPasswordRespToJson(
 ForgotPasswordReq _$ForgotPasswordReqFromJson(Map<String, dynamic> json) =>
     ForgotPasswordReq(
       userLogin: json['userLogin'] as String?,
+      countryCode: json['countryCode'] as String?,
     );
 
 Map<String, dynamic> _$ForgotPasswordReqToJson(ForgotPasswordReq instance) =>
     <String, dynamic>{
       'userLogin': instance.userLogin,
+      'countryCode': instance.countryCode,
     };
 
 ForgotPasswordResp _$ForgotPasswordRespFromJson(Map<String, dynamic> json) =>

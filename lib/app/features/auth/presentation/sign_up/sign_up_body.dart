@@ -41,9 +41,10 @@ class SignUpBody extends StatelessWidget {
                       color: context.theme.primaryColor,
                       fontWeight: FontWeight.w600,
                     ),
-                    recognizer: TapGestureRecognizer()..onTap = () {
-                      context.router.replace(const LoginRoute());
-                    },
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        context.router.replace(const LoginRoute());
+                      },
                   ),
                 ],
               ),

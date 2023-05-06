@@ -19,7 +19,7 @@ class _AuthApiMS implements AuthApiMS {
   String? baseUrl;
 
   @override
-  Future<AuthSignUpOTPResp?> signUp(req) async {
+  Future<AuthSignUpOTPResp?> signUpPhone(AuthSignUpOTPReq req) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -33,7 +33,7 @@ class _AuthApiMS implements AuthApiMS {
     )
             .compose(
               _dio.options,
-              '/api/mulstore/auth/signup',
+              '/api/mulstore/auth/signup-phone',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -44,7 +44,7 @@ class _AuthApiMS implements AuthApiMS {
   }
 
   @override
-  Future<AuthSignUpOTPResp?> resendSignUpOTP(req) async {
+  Future<AuthSignUpOTPResp?> signUpEmail(AuthSignUpOTPReq req) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -58,7 +58,7 @@ class _AuthApiMS implements AuthApiMS {
     )
             .compose(
               _dio.options,
-              '/api/mulstore/auth/resend-otp',
+              '/api/mulstore/auth/signup-phone',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -69,7 +69,57 @@ class _AuthApiMS implements AuthApiMS {
   }
 
   @override
-  Future<VerifyOTPResp?> verifyOTP(req) async {
+  Future<AuthSignUpOTPResp?> resendSignUpPhoneOTP(AuthResendOTPReq req) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(req.toJson());
+    final _result = await _dio
+        .fetch<Map<String, dynamic>?>(_setStreamType<AuthSignUpOTPResp>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/mulstore/auth/resend-otp-phone',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value =
+        _result.data == null ? null : AuthSignUpOTPResp.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<AuthSignUpOTPResp?> resendSignUpEmailOTP(AuthResendOTPReq req) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(req.toJson());
+    final _result = await _dio
+        .fetch<Map<String, dynamic>?>(_setStreamType<AuthSignUpOTPResp>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/mulstore/auth/resend-otp-email',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value =
+        _result.data == null ? null : AuthSignUpOTPResp.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<VerifyOTPResp?> verifyOTP(AuthVerifyOTPReq req) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -94,7 +144,7 @@ class _AuthApiMS implements AuthApiMS {
   }
 
   @override
-  Future<AuthLoginPasswordResp?> loginPassword(req) async {
+  Future<AuthLoginPasswordResp?> loginPhone(AuthLoginPasswordReq req) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -108,7 +158,7 @@ class _AuthApiMS implements AuthApiMS {
     )
             .compose(
               _dio.options,
-              '/api/mulstore/auth/signin',
+              '/api/mulstore/auth/signin-phone',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -120,7 +170,34 @@ class _AuthApiMS implements AuthApiMS {
   }
 
   @override
-  Future<ForgotPasswordResp?> forgotPasswordSendOTP(req) async {
+  Future<AuthLoginPasswordResp?> loginEmail(AuthLoginPasswordReq req) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(req.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>?>(
+        _setStreamType<AuthLoginPasswordResp>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/mulstore/auth/signin-email',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = _result.data == null
+        ? null
+        : AuthLoginPasswordResp.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ForgotPasswordResp?> forgotPasswordSendOTPPhone(
+      ForgotPasswordReq req) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -134,7 +211,7 @@ class _AuthApiMS implements AuthApiMS {
     )
             .compose(
               _dio.options,
-              '/api/mulstore/auth/forgot-password/send-otp',
+              '/api/mulstore/auth/forgot-password/send-otp-phone',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -146,7 +223,35 @@ class _AuthApiMS implements AuthApiMS {
   }
 
   @override
-  Future<ForgotPasswordVerifyOTPResp?> forgotPasswordVerifyOTP(req) async {
+  Future<ForgotPasswordResp?> forgotPasswordSendOTPEmail(
+      ForgotPasswordReq req) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(req.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>?>(
+        _setStreamType<ForgotPasswordResp>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/mulstore/auth/forgot-password/send-otp-email',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = _result.data == null
+        ? null
+        : ForgotPasswordResp.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ForgotPasswordVerifyOTPResp?> forgotPasswordVerifyOTP(
+      ForgotPasswordVerifyOTPReq req) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -173,7 +278,7 @@ class _AuthApiMS implements AuthApiMS {
 
   @override
   Future<ForgotPasswordCreatePasswordResp?> forgotPasswordCreatePassword(
-      req) async {
+      ForgotPasswordCreatePasswordReq req) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

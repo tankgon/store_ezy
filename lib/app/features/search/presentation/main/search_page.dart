@@ -2,6 +2,7 @@ import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/search/presentation/main/cubit/search_cubit.dart';
 import 'package:mulstore/app/features/search/presentation/main/search_body.dart';
 
+@RoutePage()
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
 

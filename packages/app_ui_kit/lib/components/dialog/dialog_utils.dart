@@ -47,22 +47,13 @@ class DialogUtils {
     Duration autoDismissDelay = const Duration(seconds: 3),
     VoidCallback? onAutoDismiss,
   }) {
-    return showDialog<dynamic>(
+    BuildContext? dialogContext;
+    final rs = showDialog<dynamic>(
       context: context,
       useRootNavigator: useRootNavigator ?? true,
       barrierDismissible: barrierDismissible,
       builder: (BuildContext context) {
-        if (onAutoDismiss != null) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            Future.delayed(autoDismissDelay, () {
-              if (context.mounted) {
-                Navigator.of(context, rootNavigator: true).pop();
-                onAutoDismiss.call();
-              }
-            });
-          });
-        }
-
+        dialogContext = context;
         return context.dialogConfigData.successDialogBuilder(
           context,
           title,
@@ -72,6 +63,18 @@ class DialogUtils {
         );
       },
     );
+
+    if (onAutoDismiss != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        Future.delayed(autoDismissDelay, () {
+          if (dialogContext?.mounted ?? false) {
+            Navigator.of(dialogContext!, rootNavigator: true).pop();
+            onAutoDismiss.call();
+          }
+        });
+      });
+    }
+    return rs;
   }
 
   static Future<dynamic> showErrorDialog({
@@ -85,21 +88,13 @@ class DialogUtils {
     Duration autoDismissDelay = const Duration(seconds: 3),
     VoidCallback? onAutoDismiss,
   }) {
-    return showDialog<dynamic>(
+    BuildContext? dialogContext;
+    final rs = showDialog<dynamic>(
       context: context,
       useRootNavigator: useRootNavigator ?? true,
       barrierDismissible: barrierDismissible,
       builder: (BuildContext context) {
-        if (onAutoDismiss != null) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            Future.delayed(autoDismissDelay, () {
-              if (context.mounted) {
-                Navigator.of(context, rootNavigator: true).pop();
-                onAutoDismiss.call();
-              }
-            });
-          });
-        }
+        dialogContext = context;
 
         return context.dialogConfigData.errorDialogBuilder(
           context,
@@ -110,6 +105,19 @@ class DialogUtils {
         );
       },
     );
+
+    if (onAutoDismiss != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        Future.delayed(autoDismissDelay, () {
+          if (dialogContext?.mounted ?? false) {
+            Navigator.of(dialogContext!, rootNavigator: true).pop();
+            onAutoDismiss.call();
+          }
+        });
+      });
+    }
+
+    return rs;
   }
 
   static Future<dynamic?> showMaterialDialog({

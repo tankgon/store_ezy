@@ -25,19 +25,6 @@ Build and distribute iOS app to TestFlight
 
 ----
 
-
-## Android
-
-### android build_and_deploy_android
-
-```sh
-[bundle exec] fastlane android build_and_deploy_android
-```
-
-Build and distribute Android app to Firebase
-
-----
-
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
 
 More information about _fastlane_ can be found on [fastlane.tools](https://fastlane.tools).

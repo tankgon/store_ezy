@@ -7,22 +7,38 @@ part 'auth_api_ms.g.dart';
 abstract class AuthApiMS {
   factory AuthApiMS(Dio dio) = _AuthApiMS;
 
-  @POST('/api/mulstore/auth/signup')
-  Future<AuthSignUpOTPResp?> signUp(@Body() AuthSignUpOTPReq req);
+  @POST('/api/mulstore/auth/signup-phone')
+  Future<AuthSignUpOTPResp?> signUpPhone(@Body() AuthSignUpOTPReq req);
 
-  @POST('/api/mulstore/auth/resend-otp')
-  Future<AuthSignUpOTPResp?> resendSignUpOTP(@Body() AuthResendOTPReq req);
+  @POST('/api/mulstore/auth/signup-phone')
+  Future<AuthSignUpOTPResp?> signUpEmail(@Body() AuthSignUpOTPReq req);
+
+  @POST('/api/mulstore/auth/resend-otp-phone')
+  Future<AuthSignUpOTPResp?> resendSignUpPhoneOTP(@Body() AuthResendOTPReq req);
+
+  @POST('/api/mulstore/auth/resend-otp-email')
+  Future<AuthSignUpOTPResp?> resendSignUpEmailOTP(@Body() AuthResendOTPReq req);
 
   @POST('/api/mulstore/auth/verify-otp')
   Future<VerifyOTPResp?> verifyOTP(@Body() AuthVerifyOTPReq req);
 
-  @POST('/api/mulstore/auth/signin')
-  Future<AuthLoginPasswordResp?> loginPassword(
+  @POST('/api/mulstore/auth/signin-phone')
+  Future<AuthLoginPasswordResp?> loginPhone(
     @Body() AuthLoginPasswordReq req,
   );
 
-  @POST('/api/mulstore/auth/forgot-password/send-otp')
-  Future<ForgotPasswordResp?> forgotPasswordSendOTP(
+  @POST('/api/mulstore/auth/signin-email')
+  Future<AuthLoginPasswordResp?> loginEmail(
+    @Body() AuthLoginPasswordReq req,
+  );
+
+  @POST('/api/mulstore/auth/forgot-password/send-otp-phone')
+  Future<ForgotPasswordResp?> forgotPasswordSendOTPPhone(
+    @Body() ForgotPasswordReq req,
+  );
+
+  @POST('/api/mulstore/auth/forgot-password/send-otp-email')
+  Future<ForgotPasswordResp?> forgotPasswordSendOTPEmail(
     @Body() ForgotPasswordReq req,
   );
 

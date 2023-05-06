@@ -3,6 +3,7 @@ import 'package:mulstore/app/features/auth/presentation/sign_up/cubit/sign_up_cu
 import 'package:mulstore/app/features/auth/presentation/sign_up/sign_up_body.dart';
 import 'package:mulstore/app/features/auth/self.dart';
 
+@RoutePage()
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
 
@@ -15,8 +16,10 @@ class SignUpPage extends StatelessWidget {
       child: Builder(
         builder: (context) {
           return DefaultStatusConsumer<SignUpCubit, SignUpState>(
-            onSuccess: (state) async {
-              getIt<AppAutoRoute>().popToParentOf([SignUpRoute.name]);
+            onSuccess: (state) {
+              getIt<AppAutoRoute>().popToParentOf(
+                [SignUpRoute.name],
+              );
             },
             onError: (error) {
               if (error is AuthAccountExistException) {
@@ -26,9 +29,9 @@ class SignUpPage extends StatelessWidget {
                   error: error,
                   onConfirm: () {
                     context.read<SignUpCubit>().reActiveAccount(
-                          userID: error.userID,
-                          userName: error.userName,
-                        );
+                      userID: error.userID,
+                      id: error.userName,
+                    );
                   },
                 );
                 return true;

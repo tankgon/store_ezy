@@ -2,6 +2,7 @@ import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/auth/presentation/otp_confirm/auth_otp_confirm_body.dart';
 import 'package:mulstore/app/features/auth/presentation/otp_confirm/cubit/auth_otp_confirm_cubit.dart';
 
+@RoutePage()
 class AuthOtpConfirmPage extends StatelessWidget {
   const AuthOtpConfirmPage({
     required this.confirmOTPFunc,
@@ -30,17 +31,18 @@ class AuthOtpConfirmPage extends StatelessWidget {
       child: Builder(builder: (context) {
         return DefaultStatusConsumer<AuthOtpConfirmCubit, AuthOtpConfirmState>(
           onSuccess: (state) {
-            if (successMessage?.isNotEmpty == true) {
+            final router = context.router;
+            if (successMessage?.isNotEmpty ?? false) {
               DialogUtils.showSuccessDialog(
                 context: context,
                 content: successMessage,
                 barrierDismissible: false,
                 onAutoDismiss: () {
-                  context.router.pop(true);
+                  router.pop(true);
                 },
               );
             } else {
-              context.router.pop(true);
+              router.pop(true);
             }
           },
           child: Scaffold(

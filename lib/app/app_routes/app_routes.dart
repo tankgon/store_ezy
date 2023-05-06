@@ -11,29 +11,22 @@ import 'package:mulstore/app/features/shopping_cart/core/routes/shopping_cart_ro
 import 'package:mulstore/app/features/user/self.dart';
 import 'package:mulstore/app/features/user_order/self.dart';
 
-@MaterialAutoRouter(
+@AutoRouterConfig(
   replaceInRouteName: 'Page|Dialog,Route',
-  routes: <AutoRoute>[
+)
+class AppAutoRoute extends $AppAutoRoute {
+  @override
+  RouteType get defaultRouteType => const RouteType.material();
+  @override
+  final List<AutoRoute> routes = [
     AutoRoute(
       path: '/main',
-      page: MainPage,
+      page: MainRoute.page,
       children: [
-        AutoRoute(
-          path: 'Home',
-          page: HomePage,
-        ),
-        AutoRoute(
-          path: 'UserOrder',
-          page: UserOrderPage,
-        ),
-        AutoRoute(
-          path: 'UserAccount',
-          page: UserAccountPage,
-        ),
-        AutoRoute(
-          path: 'message',
-          page: MessagePage,
-        )
+        AutoRoute(path: 'home', page: HomeRoute.page),
+        AutoRoute(path: 'user-order', page: UserOrderRoute.page),
+        AutoRoute(path: 'user-account', page: UserAccountRoute.page),
+        AutoRoute(path: 'message', page: MessageRoute.page),
       ],
     ),
     ...notificationRoutes,
@@ -43,6 +36,5 @@ import 'package:mulstore/app/features/user_order/self.dart';
     ...productRatingRoutes,
     ...authRoutes,
     ...userOrderRoutes,
-  ],
-)
-class $AppAutoRoute {}
+  ];
+}

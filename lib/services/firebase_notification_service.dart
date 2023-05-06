@@ -83,8 +83,13 @@ class FirebaseNotificationService {
     });
   }
 
-  Future<String?> getFCMToken() {
-    return _firebaseMessaging.getToken();
+  Future<String?> getFCMToken() async {
+    try {
+      return await _firebaseMessaging.getToken();
+    } catch (e, trace) {
+      logger.e(e.toString(), e, trace);
+      return Future.value();
+    }
   }
 
   Future<void> _requestPermission() async {

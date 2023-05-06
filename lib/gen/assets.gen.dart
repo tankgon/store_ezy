@@ -47,8 +47,12 @@ class $AssetsIconsAppGen {
   SvgGenImage get appLogoNameSvg =>
       const SvgGenImage('assets/icons/app/app_logo_name.svg');
 
+  /// File path: assets/icons/app/splash.png
+  AssetGenImage get splash =>
+      const AssetGenImage('assets/icons/app/splash.png');
+
   /// List of all assets
-  List<dynamic> get values => [appLogo, appLogoNamePng, appLogoNameSvg];
+  List<dynamic> get values => [appLogo, appLogoNamePng, appLogoNameSvg, splash];
 }
 
 class $AssetsIconsCommonGen {

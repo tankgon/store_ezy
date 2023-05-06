@@ -20,8 +20,8 @@ class _NotificationApi implements NotificationApi {
 
   @override
   Future<dynamic> getNotificationList({
-    offset,
-    limit,
+    int? offset,
+    int? limit,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -48,7 +48,7 @@ class _NotificationApi implements NotificationApi {
   }
 
   @override
-  Future<dynamic> getNotificationDetail({messageID}) async {
+  Future<dynamic> getNotificationDetail({String? messageID}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'messageID': messageID};
     queryParameters.removeWhere((k, v) => v == null);
@@ -71,7 +71,7 @@ class _NotificationApi implements NotificationApi {
   }
 
   @override
-  Future<dynamic> notificationMarkAsRead({body}) async {
+  Future<dynamic> notificationMarkAsRead({Object? body}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);

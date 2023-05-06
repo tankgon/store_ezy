@@ -14,7 +14,7 @@ extension AutoRouteExtend on StackRouter {
     var parentRoute = stackList.getOrNull(index - 1);
     var name = parentRoute?.routeData.name;
 
-    if (!name.isNullOrEmpty()) {
+    if (name?.isNotEmpty ?? false) {
       popUntilRouteWithName(name!);
       return true;
     }

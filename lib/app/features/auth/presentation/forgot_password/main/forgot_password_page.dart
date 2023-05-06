@@ -3,6 +3,7 @@ import 'package:mulstore/app/features/auth/presentation/forgot_password/main/cub
 import 'package:mulstore/app/features/auth/presentation/forgot_password/main/forgot_password_body.dart';
 import 'package:mulstore/app/features/auth/presentation/widget/auth_id_input.dart';
 
+@RoutePage()
 class ForgotPasswordPage extends StatelessWidget {
   const ForgotPasswordPage({super.key});
 

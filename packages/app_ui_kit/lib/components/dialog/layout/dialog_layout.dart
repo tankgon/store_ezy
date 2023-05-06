@@ -111,7 +111,7 @@ class AppDialogLayout extends StatelessWidget {
               style: buttonStyle,
               onPressed: () {
                 onConfirm?.call();
-                Navigator.of(context).pop();
+                Navigator.of(context, rootNavigator: true).pop();
               },
             ).pt16(),
         ].withDivider(Gaps.vGap12),

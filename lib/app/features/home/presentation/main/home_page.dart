@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/home/presentation/main/cubit/home_cubit.dart';
 import 'package:mulstore/app/features/home/presentation/main/home_body.dart';
 import 'package:mulstore/app/features/notification/presentation/widgets/btn_notification.dart';
 import 'package:mulstore/app/features/shopping_cart/presentation/widget/shopping_cart_btn.dart';
 
+@RoutePage()
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 

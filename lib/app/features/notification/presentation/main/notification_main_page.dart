@@ -2,6 +2,7 @@ import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/notification/presentation/main/cubit/notification_main_cubit.dart';
 import 'package:mulstore/app/features/notification/presentation/main/notification_main_body.dart';
 
+@RoutePage()
 class NotificationMainPage extends StatelessWidget {
   const NotificationMainPage({super.key});
 

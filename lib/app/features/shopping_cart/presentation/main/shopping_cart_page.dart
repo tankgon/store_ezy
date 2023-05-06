@@ -3,6 +3,7 @@ import 'package:mulstore/app/features/shopping_cart/presentation/bottom_bar/shop
 import 'package:mulstore/app/features/shopping_cart/presentation/main/shopping_cart_body.dart';
 import 'package:mulstore/app/features/shopping_cart/presentation/main/cubit/shopping_cart_cubit.dart';
 
+@RoutePage()
 class ShoppingCartPage extends StatelessWidget {
   const ShoppingCartPage({super.key});
 

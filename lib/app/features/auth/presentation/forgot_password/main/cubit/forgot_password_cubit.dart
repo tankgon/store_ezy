@@ -1,5 +1,6 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/auth/core/utils/check_id_helper.dart';
 import 'package:mulstore/app/features/auth/presentation/widget/auth_id_input.dart';
 import 'package:mulstore/app/features/auth/self.dart';
 
@@ -19,19 +20,36 @@ class ForgotPasswordCubit extends RequestCubit<ForgotPasswordState> {
 
   String? _userID;
   String? _uuid;
-  String? _userName;
+  CheckIdResultData? _idRs;
   ForgotPasswordConfirmOTPEntity? _confirmResult;
 
   FutureOr<void> changePasswordOTP() async {
     emit(state.copyWith(status: ItemDefaultStatus.loading));
     try {
-      final userName = form.getValue<String>(AuthIdInput.idKey) ?? '';
-      final rs = await _authRepo.forgotPasswordSentOTP(
-        userName: userName,
-      );
+      final id = form.getValue<String>(AuthIdInput.idKey) ?? '';
+      if (id.isEmpty) {
+        throw Exception('Không nhập đủ thông tin');
+      }
+
+      ForgotPasswordOTPEntity rs;
+
+      final idRs = await CheckIdHelper.checkId(id);
+      if (idRs.isPhone) {
+        rs = await _authRepo.forgotPasswordSentOTPPhone(
+          phone: idRs.phone!,
+          countryCode: idRs.countryCode ?? '',
+        );
+      } else if (idRs.isEmail) {
+        rs = await _authRepo.forgotPasswordSentOTPEmail(
+          email: idRs.email!,
+        );
+      } else {
+        throw Exception('Không nhập đủ thông tin');
+      }
+
       _uuid = rs.uuid;
       _userID = rs.userID;
-      _userName = userName;
+      _idRs = idRs;
 
       final verifiedOTP = await _verifyOTP();
       if (verifiedOTP) {
@@ -58,7 +76,7 @@ class ForgotPasswordCubit extends RequestCubit<ForgotPasswordState> {
   Future<bool> _verifyOTP() async {
     final verifyRs = await getIt<AppAutoRoute>().push(
       AuthOtpConfirmRoute(
-        otpMessage: 'Mã OTP đã được gửi đến {}'.tr(args: [_userName ?? '']),
+        otpMessage: _idRs?.getOTPMessage(),
         confirmOTPFunc: (otpUserInput) {
           return _confirmOTP(
             otpUserInput: otpUserInput,
@@ -71,11 +89,20 @@ class ForgotPasswordCubit extends RequestCubit<ForgotPasswordState> {
   }
 
   Future<Object?> _resendOTP() async {
-    final resendRs = await _authRepo.forgotPasswordSentOTP(
-      userName: _userName ?? '',
-    );
-    _uuid = resendRs.uuid;
-    _userID = resendRs.userID;
+    ForgotPasswordOTPEntity? resendRs;
+    if (_idRs?.isPhone ?? false) {
+      resendRs = await _authRepo.forgotPasswordSentOTPPhone(
+        phone: _idRs?.phone ?? '',
+        countryCode: _idRs?.countryCode ?? '',
+      );
+    } else if (_idRs?.isEmail ?? false) {
+      resendRs = await _authRepo.forgotPasswordSentOTPEmail(
+        email: _idRs?.email ?? '',
+      );
+    }
+
+    _uuid = resendRs?.uuid;
+    _userID = resendRs?.userID;
     return Future.value(resendRs);
   }
 

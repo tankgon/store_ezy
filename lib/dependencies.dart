@@ -15,6 +15,7 @@ import 'package:mulstore/services/app_config/app_config_service.dart';
 import 'package:mulstore/services/device_service.dart';
 import 'package:mulstore/services/user_secure_storage_service.dart';
 
+import 'app/app_routes/app_routes.dart';
 import 'app/features/auth/self.dart';
 
 final getIt = GetIt.instance;
