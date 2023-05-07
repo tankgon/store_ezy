@@ -45,7 +45,11 @@ class ProductItemTileLayout1 extends StatelessWidget {
               ],
             ).p12(),
             ProductDiscount1(
-              percent: '99',
+              child: Icon(
+                AntIcons.giftFilled,
+                size: 16,
+                color: Colors.white,
+              ),
             ),
           ],
         ),
@@ -53,44 +57,44 @@ class ProductItemTileLayout1 extends StatelessWidget {
     );
   }
 
-  Column _buildContent(BuildContext context) {
-    return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            product.title?.textAuto.titleMedium(context).ellipsis.maxLines(2).make().pb4().minHeight(22),
-            product.description?.text.caption(context).maxLines(2).ellipsis.make(),
-            const Spacer(),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    ProductPriceWithType(
-                      price: product.price,
-                      type: product.type,
-                    ),
-                    AppListedPrice(
-                      price: product.listedPrice,
-                    ),
-                  ],
-                ).expand(),
-                AppButton(
-                  style: AppButtonTheme.primary(
-                    context,
-                  ).copyWith(
-                    minimumSize: const MaterialStatePropertyAll(Size.zero),
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    padding: const MaterialStatePropertyAll(Dimens.edge_XS3)
+  Widget _buildContent(BuildContext context) {
+    return CheckTextExceed(
+      content: product.title ?? '',
+      textStyle: context.theme.textTheme.titleMedium ?? const TextStyle(),
+      builder: (context, textStyle, isExceedMaxLines) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          product.title?.text.textStyle(textStyle).ellipsis.maxLines(2).make().pb4().minHeight(22),
+          product.description?.text.caption(context).maxLines(isExceedMaxLines ? 1 : 2).ellipsis.make(),
+          const Spacer(),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ProductPriceWithType(
+                    price: product.price,
+                    type: product.type,
                   ),
-                  child: Icon(Icons.add_rounded),
-                  onPressed: onAddToCart ?? () {},
-                ),
-              ],
-            ),
-          ].filterNotNull(),
-        );
+                  AppListedPrice(
+                    price: product.listedPrice,
+                  ),
+                ],
+              ).expand(),
+              AppButton(
+                style: AppButtonTheme.primary(
+                  context,
+                ).copyWith(minimumSize: const MaterialStatePropertyAll(Size.zero), tapTargetSize: MaterialTapTargetSize.shrinkWrap, padding: const MaterialStatePropertyAll(Dimens.edge_XS3)),
+                onPressed: onAddToCart ?? () {},
+                child: const Icon(Icons.add_rounded),
+              ),
+            ],
+          ),
+        ].filterNotNull(),
+      ),
+    );
   }
 }

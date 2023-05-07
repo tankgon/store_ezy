@@ -1,6 +1,8 @@
 import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/about/self.dart';
 import 'package:mulstore/app/features/auth/self.dart';
 import 'package:mulstore/app/features/user/presentation/account/cubit/user_account_cubit.dart';
+import 'package:mulstore/app/features/user/self.dart';
 
 class UserAccountBody extends StatelessWidget {
   const UserAccountBody({super.key});
@@ -8,47 +10,47 @@ class UserAccountBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScrollBody.withSpacing(
-      child: BlocBuilder<AuthBloc, AuthState>(
-        builder: (context, state) {
-          if (state is AuthenticatedState) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                state.data.user?.userName?.text
-                    .titleLarge(context)
-                    .center
-                    .make(),
-                AppButton(
-                  label: 'Đăng xuất'.tr(),
-                  onPressed: () {
-                    context
-                        .read<AuthBloc>()
-                        .add(UnAuthenticatedEvent(showToast: true));
-                  },
-                ),
-              ].withDivider(Gaps.vGap16),
-            );
-          }
+      child: Column(
+        children: [
+          BlocBuilder<AuthBloc, AuthState>(
+            builder: (context, state) {
+              if (state is AuthenticatedState) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    UserSimpleInfo(
+                      user: state.data.user,
+                      subTitle: 'Xem trang cá nhân'.tr(),
+                      onPressed: () {
+                        context.router.push(
+                          UserInfoRoute(
+                            user: state.data.user!,
+                          ),
+                        );
+                      },
+                    ),
+                  ].withDivider(Gaps.vGap16),
+                );
+              }
 
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              AppButton(
-                label: 'Đăng ký'.tr(),
-                onPressed: () {
-                  context.router.push(const SignUpRoute());
-                },
-              ),
-              AppButton(
-                label: 'Đăng nhập'.tr(),
-                onPressed: () {
-                  context.router.push(const LoginRoute());
-                },
-              ),
-            ].withDivider(Gaps.vGap16),
-          );
-        },
-      ).pxDefault(),
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  UserSimpleInfo(
+                    user: state.data.user,
+                    onPressed: () {
+                      context.router.push(const LoginRoute());
+                    },
+                  ),
+                ].withDivider(Gaps.vGap16),
+              );
+            },
+          ).pxDefault(),
+          Gaps.vGap16,
+          const AppDivider(),
+          const AppInfoSection(),
+        ],
+      ),
     );
   }
 }

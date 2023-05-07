@@ -18,7 +18,7 @@ class CheckoutBody extends StatelessWidget {
           const AppDivider(),
           AppTileText(
             padding: Dimens.edge,
-            titleLabel: LocaleKeys.payment_PaymentMethod.tr(),
+            title: LocaleKeys.payment_PaymentMethod.tr(),
             onPressed: () {
 
             },

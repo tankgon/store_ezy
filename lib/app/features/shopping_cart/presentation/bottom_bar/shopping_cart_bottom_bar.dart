@@ -30,7 +30,7 @@ class _TotalCountSection extends StatelessWidget {
       children: [
         LocaleKeys.shoppingCart_SelectedNItem.tr(args: ['3']).text.bodySmall(context).make().expand(),
         Icon(
-          Icons.discount_outlined,
+          AppIcon.coupon,
           color: context.themeColor.green,
           size: Dimens.ic_XS,
         ),

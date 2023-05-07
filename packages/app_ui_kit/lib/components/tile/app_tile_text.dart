@@ -6,15 +6,15 @@ class AppTileText extends StatelessWidget {
   const AppTileText({
     super.key,
     this.leading,
-    this.titleLabel,
-    this.subtitleLabel,
+    this.title,
+    this.subtitle,
     this.onPressed,
     this.padding,
   });
 
   final Widget? leading;
-  final String? titleLabel;
-  final String? subtitleLabel;
+  final String? title;
+  final String? subtitle;
   final VoidCallback? onPressed;
   final EdgeInsetsGeometry? padding;
 
@@ -33,8 +33,8 @@ class AppTileText extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  titleLabel?.text.titleMedium(context).semiBold.maxLines(2).ellipsis.make().minHeight(20),
-                  subtitleLabel?.text.caption(context).maxLines(2).ellipsis.make(),
+                  title?.text.titleMedium(context).semiBold.maxLines(2).ellipsis.make().minHeight(20),
+                  subtitle?.text.caption(context).maxLines(2).ellipsis.make(),
                 ].withDivider(Gaps.vGap4),
               ).expand(),
               if (onPressed != null)

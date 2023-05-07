@@ -4,7 +4,7 @@ import 'package:app_ui_kit/components/skeleton/app_Shimmer.dart';
 
 class AppAvatar extends StatelessWidget {
   const AppAvatar({
-    Key? key,
+    super.key,
     this.src,
     this.height = 50,
     this.fit = BoxFit.cover,
@@ -14,7 +14,7 @@ class AppAvatar extends StatelessWidget {
     this.loading = false,
     this.iconColor,
     this.border,
-  }) : super(key: key);
+  });
 
   final String? src;
   final BoxFit fit;

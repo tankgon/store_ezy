@@ -25,6 +25,34 @@ class AppButtonTheme {
     ).merge(props);
   }
 
+  static ButtonStyle grey(
+    BuildContext context, {
+    AppButtonStyle? props,
+  }) {
+    return color(
+      context,
+      color: context.themeColor.divider,
+      textColor: context.themeColor.greyDark,
+      props: props,
+    );
+  }
+
+  static ButtonStyle color(
+    BuildContext context, {
+    required Color color,
+    Color? textColor,
+    AppButtonStyle? props,
+  }) {
+    return ElevatedButton.styleFrom(
+      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      foregroundColor: textColor,
+      backgroundColor: color,
+      padding: context.theme.buttonTheme.padding,
+      elevation: defaultElevation,
+      shadowColor: Colors.transparent,
+    ).merge(props);
+  }
+
   static ButtonStyle success(
     BuildContext context, {
     AppButtonStyle? props,

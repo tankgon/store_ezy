@@ -31,8 +31,8 @@ class DistributorSimpleInfoLayout1 extends StatelessWidget {
         height: Dimens.ic_XL6,
         src: avatar,
       ),
-      titleLabel: name,
-      subtitleLabel: type,
+      title: name,
+      subtitle: type,
       onPressed: onPressed ?? () {},
     );
   }

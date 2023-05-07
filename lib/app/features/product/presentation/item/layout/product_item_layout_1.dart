@@ -29,31 +29,37 @@ class ProductItemLayout1 extends StatelessWidget {
         decoration: AppDecor.grayBorder(
           context,
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            AppImg(
-              product.img,
-            ).aspectRatio(1),
-            product.title?.textAuto.titleMedium(context).ellipsis.maxLines(2).make().pb4().minHeight(22),
-            product.description?.text.caption(context).maxLines(1).ellipsis.make(),
-            const Spacer(),
-            ProductPriceWithType(
-              price: product.price,
-              type: product.type,
-            ),
-            Gaps.vGap2,
-            AppListedPrice(
-              price: product.listedPrice,
-            ),
-            Gaps.vGap6,
-            AppButton(
-              label: LocaleKeys.product_Buy.tr(),
-              onPressed: onAddToCart ?? () {},
-            ),
-          ].filterNotNull(),
-        ).p12(),
+        child: CheckTextExceed(
+          content: product.title ?? '',
+          textStyle: context.theme.textTheme.titleMedium ?? const TextStyle(),
+          builder: (context, textStyle, isExceedMaxLines) {
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                AppImg(
+                  product.img,
+                ).aspectRatio(1),
+                product.title?.text.textStyle(textStyle).ellipsis.maxLines(2).make().pb4().minHeight(22),
+                product.description?.text.caption(context).maxLines(isExceedMaxLines ? 1 : 2).ellipsis.make(),
+                const Spacer(),
+                ProductPriceWithType(
+                  price: product.price,
+                  type: product.type,
+                ),
+                Gaps.vGap2,
+                AppListedPrice(
+                  price: product.listedPrice,
+                ),
+                Gaps.vGap6,
+                AppButton(
+                  label: LocaleKeys.product_Buy.tr(),
+                  onPressed: onAddToCart ?? () {},
+                ),
+              ].filterNotNull(),
+            ).p12();
+          },
+        ),
       ),
     );
   }

@@ -12,7 +12,7 @@ class ProductEntity {
   });
 
   static ProductEntity demo(){
-    return ProductEntity(
+    return const ProductEntity(
       id: '1',
       img: 'https://product.hstatic.net/200000311493/product/set_goi_xa_gung_trang_68383b0f8acb45c498206705071e6d2c.jpg',
       title: 'LEIFARNE Chair, beige',

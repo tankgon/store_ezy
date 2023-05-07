@@ -51,8 +51,8 @@ class _HomeBottomBar extends StatelessWidget {
         ),
         _buildBottomBarItem(
           context: context,
-          icon: PhosphorIcons.tray,
-          activeIcon: PhosphorIcons.tray_fill,
+          icon: AppIcon.order,
+          activeIcon: AppIcon.order,
           label: LocaleKeys.mainPage_order.tr(),
         ),
         _buildBottomBarItem(

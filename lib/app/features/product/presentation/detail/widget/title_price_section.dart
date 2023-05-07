@@ -30,7 +30,7 @@ class ProductTitleHeader extends StatelessWidget {
                 onPressed: () {},
               ),
               AppButtonIcon(
-                icon: PhosphorIcons.share,
+                icon: AppIcon.share,
                 onPressed: () {},
               ),
             ],

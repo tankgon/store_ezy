@@ -1,7 +1,7 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:mulstore/all_file/all_file.dart';
-import 'package:mulstore/app/features/user/presentation/account/user_account_body.dart';
+import 'package:mulstore/app/features/notification/presentation/widgets/btn_notification.dart';
 import 'package:mulstore/app/features/user/presentation/account/cubit/user_account_cubit.dart';
+import 'package:mulstore/app/features/user/presentation/account/user_account_body.dart';
 
 @RoutePage()
 class UserAccountPage extends StatelessWidget {
@@ -14,12 +14,17 @@ class UserAccountPage extends StatelessWidget {
       child: DefaultStatusConsumer<UserAccountCubit, UserAccountState>(
         child: Scaffold(
           appBar: AppAppBar(
-              title: LocaleKeys.user_Account.tr(),
+            title: 'Tài khoản'.tr(),
+            args: AppBarArgs(
+              actions: [
+                const NotificationBtn(),
+                Gaps.hGap4,
+              ].withDivider(Gaps.hGap4, showLast: true),
             ),
-          body: UserAccountBody(),
+          ),
+          body: const UserAccountBody(),
         ),
       ),
     );
-  }   
-
+  }
 }

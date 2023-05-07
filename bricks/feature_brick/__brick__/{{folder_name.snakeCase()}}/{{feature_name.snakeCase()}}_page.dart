@@ -2,6 +2,7 @@ import 'package:{{{pathPackage}}}/all_file/all_file.dart';
 import 'package:{{{fullPath}}}/{{feature_name.snakeCase()}}_body.dart';
 {{#isBloc}}import 'package:{{{fullPath}}}/bloc/{{feature_name.snakeCase()}}_bloc.dart';{{/isBloc}}{{#isCubit}}import 'package:{{{fullPath}}}/cubit/{{feature_name.snakeCase()}}_cubit.dart';{{/isCubit}}
 
+@RoutePage()
 class {{feature_name.pascalCase()}}Page extends StatelessWidget {
   const {{feature_name.pascalCase()}}Page({super.key});
 {{#isBloc}}

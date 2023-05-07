@@ -21,8 +21,8 @@ class UserOrderDetailBody extends StatelessWidget {
           ),
           AppTileText(
             padding: Dimens.edge,
-            titleLabel: LocaleKeys.payment_PaymentMethod.tr(),
-            subtitleLabel: 'Thanh toán khi nhận hàng',
+            title: LocaleKeys.payment_PaymentMethod.tr(),
+            subtitle: 'Thanh toán khi nhận hàng',
           ),
           const OrderPaymentDetail().pyDefault(),
         ].withDivider(const AppDivider()),

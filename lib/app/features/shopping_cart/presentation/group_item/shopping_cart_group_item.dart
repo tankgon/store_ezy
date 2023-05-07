@@ -40,7 +40,7 @@ class ShoppingCartGroupItem extends StatelessWidget {
         AppTile(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           leading: Icon(
-            PhosphorIcons.gift,
+            AppIcon.gift,
             color: context.themeColor.green,
           ),
           title: 'Tổng tiền'.text.colorDark(context).make(),

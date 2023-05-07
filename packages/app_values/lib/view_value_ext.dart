@@ -76,6 +76,10 @@ extension VxTextBuilderExtend on VxTextBuilder {
     return textStyle(context.theme.textTheme.bodySmall);
   }
 
+  VxTextBuilder bodyMedium(BuildContext context) {
+    return textStyle(context.theme.textTheme.bodyMedium);
+  }
+
   VxTextBuilder labelLarge(BuildContext context) {
     return textStyle(context.theme.textTheme.labelLarge);
   }

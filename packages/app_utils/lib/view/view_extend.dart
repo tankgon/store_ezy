@@ -48,7 +48,6 @@ extension ThemeExtend on ThemeData {
   Color lightGrey() {
     return hintColor.withOpacity(0.6);
   }
-
 }
 
 extension ListWidgetExtend<T extends Widget?> on List<T> {
@@ -65,13 +64,12 @@ extension ListWidgetExtend<T extends Widget?> on List<T> {
         rs.add(divider);
       }
     });
-    if (!showLast) {
+    if (rs.length > 1 && !showLast) {
       rs.removeLast();
     }
     return rs;
   }
 }
-
 
 extension StringVelocityExtend on String {
   /// Get Text Widget for the String
@@ -79,4 +77,3 @@ extension StringVelocityExtend on String {
 
   VxTextBuilder get textAuto => VxTextBuilder(this);
 }
-

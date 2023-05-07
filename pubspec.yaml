@@ -1,6 +1,6 @@
 name: mulstore
 description: MulStore
-version: 1.0.2+6
+version: 1.0.3+7
 publish_to: none
 
 ## Build runner
@@ -218,6 +218,9 @@ flutter:
     - assets/icons/product/
     - assets/translations/
   fonts:
+    - family: AppIcon
+      fonts:
+        - asset: assets/fonts/AppIcon.ttf
     - family: Inter
       fonts:
         - asset: assets/fonts/Inter-Black.ttf

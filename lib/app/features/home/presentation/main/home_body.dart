@@ -21,7 +21,7 @@ class HomeBody extends StatelessWidget {
                 padding: Dimens.edge_x_XS,
               ),
               SectionContainer(
-                title: LocaleKeys.product_PopularProducts.tr(),
+                title: '${'Sản phẩm HOT'.tr()} 🔥🔥🔥',
                 child: ProductListHoz.demo(),
               ),
               SectionContainer(
@@ -36,11 +36,15 @@ class HomeBody extends StatelessWidget {
                 ),
               ),
               SectionContainer(
-                title: LocaleKeys.product_HotDeals.tr(),
+                title: '${'Sản phẩm bán chạy'.tr()} 🌟🌟🌟',
                 child: ProductGridHoz.demo(),
               ),
               SectionContainer(
-                title: LocaleKeys.product_NewProducts.tr(),
+                title: 'Giá tốt hôm nay'.tr(),
+                child: ProductGridHoz.demo(),
+              ),
+              SectionContainer(
+                title: 'Sản phẩm mới'.tr(),
                 child: ProductGridHoz.demo(),
               ),
               SectionContainer(

@@ -73,6 +73,8 @@ class ProductItem extends StatelessWidget {
               args: args,
               onPressed: () => _onItemClick(context),
             );
+          case null:
+            break;
         }
         return const SizedBox.shrink();
       },
