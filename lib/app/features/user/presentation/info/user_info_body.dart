@@ -55,7 +55,7 @@ class UserInfoBody extends StatelessWidget {
                       PhosphorIcons.star_fill,
                       color: Color(0xFFF9B83B),
                     ),
-                    title: 'Yêu thích'.tr(),
+                    title: 'Đánh giá, bình luận'.tr(),
                     onPressed: () {},
                   ),
                   AppTileText(
@@ -63,10 +63,12 @@ class UserInfoBody extends StatelessWidget {
                       PhosphorIcons.clock_counter_clockwise,
                       color: Color(0xFF02BEA8),
                     ),
-                    title: 'Yêu thích'.tr(),
+                    title: 'Lịch sử giao dịch'.tr(),
                     onPressed: () {},
                   ),
-                ].mapAsList((item) => item.minHeight(52)).withDivider(const AppDivider.thin()),
+                ]
+                    .mapAsList((item) => item.minHeight(52))
+                    .withDivider(const AppDivider.thin()),
               ),
             ].withDivider(Gaps.vGap12),
           ),
