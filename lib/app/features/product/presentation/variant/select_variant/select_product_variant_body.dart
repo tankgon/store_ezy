@@ -40,7 +40,7 @@ class SelectProductVariantBody extends StatelessWidget {
               ),
             ),
           ],
-        ).pDefault(),
+        ).pxDefault().py12(),
       ],
     );
   }
