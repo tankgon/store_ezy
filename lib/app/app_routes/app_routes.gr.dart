@@ -13,7 +13,7 @@ import 'dart:async' as _i22;
 import 'package:auto_route/auto_route.dart' as _i21;
 import 'package:mulstore/all_file/all_file.dart' as _i23;
 import 'package:mulstore/app/features/about/presentation/main/about_page.dart'
-    as _i19;
+    as _i15;
 import 'package:mulstore/app/features/auth/presentation/forgot_password/change_password/change_password_page.dart'
     as _i4;
 import 'package:mulstore/app/features/auth/presentation/forgot_password/main/forgot_password_page.dart'
@@ -25,10 +25,10 @@ import 'package:mulstore/app/features/auth/presentation/otp_confirm/auth_otp_con
 import 'package:mulstore/app/features/auth/presentation/sign_up/sign_up_page.dart'
     as _i6;
 import 'package:mulstore/app/features/checkout/presentation/main/checkout_page.dart'
-    as _i15;
+    as _i17;
 import 'package:mulstore/app/features/home/presentation/main/home_page.dart'
     as _i1;
-import 'package:mulstore/app/features/main/presentation/main_page.dart' as _i17;
+import 'package:mulstore/app/features/main/presentation/main_page.dart' as _i19;
 import 'package:mulstore/app/features/message/presentation/main/message_page.dart'
     as _i12;
 import 'package:mulstore/app/features/notification/data/model/notification_model.dart'
@@ -38,20 +38,20 @@ import 'package:mulstore/app/features/notification/presentation/detail/notificat
 import 'package:mulstore/app/features/notification/presentation/main/notification_main_page.dart'
     as _i9;
 import 'package:mulstore/app/features/product/domain/entity/product_entity.dart'
-    as _i25;
+    as _i26;
 import 'package:mulstore/app/features/product/presentation/detail/product_detail_page.dart'
-    as _i14;
+    as _i16;
 import 'package:mulstore/app/features/product_rating/presentation/main/product_rating_page.dart'
     as _i2;
 import 'package:mulstore/app/features/search/presentation/main/search_page.dart'
-    as _i16;
-import 'package:mulstore/app/features/shopping_cart/presentation/main/shopping_cart_page.dart'
     as _i18;
-import 'package:mulstore/app/features/user/presentation/account/user_account_page.dart'
-    as _i13;
-import 'package:mulstore/app/features/user/presentation/info/user_info_page.dart'
+import 'package:mulstore/app/features/shopping_cart/presentation/main/shopping_cart_page.dart'
     as _i20;
-import 'package:mulstore/app/features/user/self.dart' as _i26;
+import 'package:mulstore/app/features/user/presentation/account/user_account_page.dart'
+    as _i14;
+import 'package:mulstore/app/features/user/presentation/info/user_info_page.dart'
+    as _i13;
+import 'package:mulstore/app/features/user/self.dart' as _i25;
 import 'package:mulstore/app/features/user_order/presentation/detail/user_order_detail_page.dart'
     as _i10;
 import 'package:mulstore/app/features/user_order/presentation/main/user_order_page.dart'
@@ -151,17 +151,33 @@ abstract class $AppAutoRoute extends _i21.RootStackRouter {
         child: const _i12.MessagePage(),
       );
     },
+    UserInfoRoute.name: (routeData) {
+      final args = routeData.argsAs<UserInfoRouteArgs>();
+      return _i21.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i13.UserInfoPage(
+          key: args.key,
+          user: args.user,
+        ),
+      );
+    },
     UserAccountRoute.name: (routeData) {
       return _i21.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i13.UserAccountPage(),
+        child: const _i14.UserAccountPage(),
+      );
+    },
+    AboutRoute.name: (routeData) {
+      return _i21.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i15.AboutPage(),
       );
     },
     ProductDetailRoute.name: (routeData) {
       final args = routeData.argsAs<ProductDetailRouteArgs>();
       return _i21.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i14.ProductDetailPage(
+        child: _i16.ProductDetailPage(
           key: args.key,
           product: args.product,
         ),
@@ -170,41 +186,25 @@ abstract class $AppAutoRoute extends _i21.RootStackRouter {
     CheckoutRoute.name: (routeData) {
       return _i21.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i15.CheckoutPage(),
+        child: const _i17.CheckoutPage(),
       );
     },
     SearchRoute.name: (routeData) {
       return _i21.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i16.SearchPage(),
+        child: const _i18.SearchPage(),
       );
     },
     MainRoute.name: (routeData) {
       return _i21.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i17.MainPage(),
+        child: const _i19.MainPage(),
       );
     },
     ShoppingCartRoute.name: (routeData) {
       return _i21.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i18.ShoppingCartPage(),
-      );
-    },
-    AboutRoute.name: (routeData) {
-      return _i21.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i19.AboutPage(),
-      );
-    },
-    UserInfoRoute.name: (routeData) {
-      final args = routeData.argsAs<UserInfoRouteArgs>();
-      return _i21.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i20.UserInfoPage(
-          key: args.key,
-          user: args.user,
-        ),
+        child: const _i20.ShoppingCartPage(),
       );
     },
   };
@@ -477,133 +477,11 @@ class MessageRoute extends _i21.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i13.UserAccountPage]
-class UserAccountRoute extends _i21.PageRouteInfo<void> {
-  const UserAccountRoute({List<_i21.PageRouteInfo>? children})
-      : super(
-          UserAccountRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'UserAccountRoute';
-
-  static const _i21.PageInfo<void> page = _i21.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i14.ProductDetailPage]
-class ProductDetailRoute extends _i21.PageRouteInfo<ProductDetailRouteArgs> {
-  ProductDetailRoute({
-    _i23.Key? key,
-    required _i25.ProductEntity product,
-    List<_i21.PageRouteInfo>? children,
-  }) : super(
-          ProductDetailRoute.name,
-          args: ProductDetailRouteArgs(
-            key: key,
-            product: product,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'ProductDetailRoute';
-
-  static const _i21.PageInfo<ProductDetailRouteArgs> page =
-      _i21.PageInfo<ProductDetailRouteArgs>(name);
-}
-
-class ProductDetailRouteArgs {
-  const ProductDetailRouteArgs({
-    this.key,
-    required this.product,
-  });
-
-  final _i23.Key? key;
-
-  final _i25.ProductEntity product;
-
-  @override
-  String toString() {
-    return 'ProductDetailRouteArgs{key: $key, product: $product}';
-  }
-}
-
-/// generated route for
-/// [_i15.CheckoutPage]
-class CheckoutRoute extends _i21.PageRouteInfo<void> {
-  const CheckoutRoute({List<_i21.PageRouteInfo>? children})
-      : super(
-          CheckoutRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'CheckoutRoute';
-
-  static const _i21.PageInfo<void> page = _i21.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i16.SearchPage]
-class SearchRoute extends _i21.PageRouteInfo<void> {
-  const SearchRoute({List<_i21.PageRouteInfo>? children})
-      : super(
-          SearchRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'SearchRoute';
-
-  static const _i21.PageInfo<void> page = _i21.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i17.MainPage]
-class MainRoute extends _i21.PageRouteInfo<void> {
-  const MainRoute({List<_i21.PageRouteInfo>? children})
-      : super(
-          MainRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'MainRoute';
-
-  static const _i21.PageInfo<void> page = _i21.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i18.ShoppingCartPage]
-class ShoppingCartRoute extends _i21.PageRouteInfo<void> {
-  const ShoppingCartRoute({List<_i21.PageRouteInfo>? children})
-      : super(
-          ShoppingCartRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'ShoppingCartRoute';
-
-  static const _i21.PageInfo<void> page = _i21.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i19.AboutPage]
-class AboutRoute extends _i21.PageRouteInfo<void> {
-  const AboutRoute({List<_i21.PageRouteInfo>? children})
-      : super(
-          AboutRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'AboutRoute';
-
-  static const _i21.PageInfo<void> page = _i21.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i20.UserInfoPage]
+/// [_i13.UserInfoPage]
 class UserInfoRoute extends _i21.PageRouteInfo<UserInfoRouteArgs> {
   UserInfoRoute({
     _i23.Key? key,
-    required _i26.UserEntity user,
+    required _i25.UserEntity user,
     List<_i21.PageRouteInfo>? children,
   }) : super(
           UserInfoRoute.name,
@@ -628,10 +506,132 @@ class UserInfoRouteArgs {
 
   final _i23.Key? key;
 
-  final _i26.UserEntity user;
+  final _i25.UserEntity user;
 
   @override
   String toString() {
     return 'UserInfoRouteArgs{key: $key, user: $user}';
   }
+}
+
+/// generated route for
+/// [_i14.UserAccountPage]
+class UserAccountRoute extends _i21.PageRouteInfo<void> {
+  const UserAccountRoute({List<_i21.PageRouteInfo>? children})
+      : super(
+          UserAccountRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'UserAccountRoute';
+
+  static const _i21.PageInfo<void> page = _i21.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i15.AboutPage]
+class AboutRoute extends _i21.PageRouteInfo<void> {
+  const AboutRoute({List<_i21.PageRouteInfo>? children})
+      : super(
+          AboutRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AboutRoute';
+
+  static const _i21.PageInfo<void> page = _i21.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i16.ProductDetailPage]
+class ProductDetailRoute extends _i21.PageRouteInfo<ProductDetailRouteArgs> {
+  ProductDetailRoute({
+    _i23.Key? key,
+    required _i26.ProductEntity product,
+    List<_i21.PageRouteInfo>? children,
+  }) : super(
+          ProductDetailRoute.name,
+          args: ProductDetailRouteArgs(
+            key: key,
+            product: product,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ProductDetailRoute';
+
+  static const _i21.PageInfo<ProductDetailRouteArgs> page =
+      _i21.PageInfo<ProductDetailRouteArgs>(name);
+}
+
+class ProductDetailRouteArgs {
+  const ProductDetailRouteArgs({
+    this.key,
+    required this.product,
+  });
+
+  final _i23.Key? key;
+
+  final _i26.ProductEntity product;
+
+  @override
+  String toString() {
+    return 'ProductDetailRouteArgs{key: $key, product: $product}';
+  }
+}
+
+/// generated route for
+/// [_i17.CheckoutPage]
+class CheckoutRoute extends _i21.PageRouteInfo<void> {
+  const CheckoutRoute({List<_i21.PageRouteInfo>? children})
+      : super(
+          CheckoutRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CheckoutRoute';
+
+  static const _i21.PageInfo<void> page = _i21.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i18.SearchPage]
+class SearchRoute extends _i21.PageRouteInfo<void> {
+  const SearchRoute({List<_i21.PageRouteInfo>? children})
+      : super(
+          SearchRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SearchRoute';
+
+  static const _i21.PageInfo<void> page = _i21.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i19.MainPage]
+class MainRoute extends _i21.PageRouteInfo<void> {
+  const MainRoute({List<_i21.PageRouteInfo>? children})
+      : super(
+          MainRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MainRoute';
+
+  static const _i21.PageInfo<void> page = _i21.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i20.ShoppingCartPage]
+class ShoppingCartRoute extends _i21.PageRouteInfo<void> {
+  const ShoppingCartRoute({List<_i21.PageRouteInfo>? children})
+      : super(
+          ShoppingCartRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ShoppingCartRoute';
+
+  static const _i21.PageInfo<void> page = _i21.PageInfo<void>(name);
 }

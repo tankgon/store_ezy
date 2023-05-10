@@ -1,6 +1,7 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 import 'package:app_ui_kit/components/image/app_img.dart';
 import 'package:app_ui_kit/components/skeleton/app_Shimmer.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class AppAvatar extends StatelessWidget {
   const AppAvatar({
@@ -39,8 +40,11 @@ class AppAvatar extends StatelessWidget {
 
     Widget img;
     if (src.isNullOrEmpty()) {
-      img = const FittedBox(
-        child: Icon(Icons.account_circle_rounded),
+      img = FittedBox(
+        child: SvgPicture.asset(
+          'assets/icon/ic_user_default.svg',
+          package: 'app_ui_kit',
+        ),
       );
     } else {
       img = AppImg(

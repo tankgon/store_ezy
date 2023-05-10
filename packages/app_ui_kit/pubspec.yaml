@@ -19,7 +19,7 @@ dependencies:
   custom_refresh_indicator: ^1.1.1
   pull_to_refresh: 2.0.0
   flutter_linkify: ^5.0.2
-  flutter_svg: ^1.1.1+1
+  flutter_svg: ^2.0.0+1
   cached_network_image: ^3.2.3
   shimmer: ^2.0.0
   smooth_page_indicator: ^1.0.1
@@ -54,3 +54,4 @@ flutter:
   generate: false
   assets:
     - assets/lottie/
+    - assets/icon/

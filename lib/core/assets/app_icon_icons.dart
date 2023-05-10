@@ -25,4 +25,5 @@ class AppIcon {
   static const IconData order = IconData(0xe901, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData gift = IconData(0xe902, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData share = IconData(0xe903, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData order_fill = IconData(0xe904, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

@@ -52,7 +52,7 @@ class _HomeBottomBar extends StatelessWidget {
         _buildBottomBarItem(
           context: context,
           icon: AppIcon.order,
-          activeIcon: AppIcon.order,
+          activeIcon: AppIcon.order_fill,
           label: LocaleKeys.mainPage_order.tr(),
         ),
         _buildBottomBarItem(

@@ -21,12 +21,14 @@ class UserSimpleInfo extends StatelessWidget {
         children: [
           AppAvatar(
             src: user?.avatarImg,
-            showBorder: false,
+            border: Border.all(
+              color: context.themeColor.greyLighter,
+            ),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              (user?.fullNameOrUserName ?? 'Đăng nhập'.tr())?.text.titleMedium(context).maxLines(2).ellipsis.make(),
+              (user?.fullNameOrUserName ?? 'Đăng nhập/Đăng ký'.tr())?.text.titleMedium(context).maxLines(2).ellipsis.make(),
               subTitle?.text.caption(context).make(),
             ].withDivider(Gaps.vGap8),
           )
