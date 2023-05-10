@@ -64,7 +64,7 @@ class _TotalPriceSection extends StatelessWidget {
           onPressed: () {
             context.pushRoute(const CheckoutRoute());
           },
-        )
+        ),
       ],
     );
   }

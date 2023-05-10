@@ -9,6 +9,7 @@ class ShoppingCartListGroup extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemCount: 10,
+      shrinkWrap: true,
       separatorBuilder: (context, index) => const AppDivider(),
       itemBuilder: (context, index) {
         return ShoppingCartGroupItem();

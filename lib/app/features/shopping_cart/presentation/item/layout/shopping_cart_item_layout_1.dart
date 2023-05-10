@@ -16,26 +16,29 @@ class ShoppingCartItemLayout1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        AppCheckBox(
-          onChanged: (value) {},
-        ),
-        ProductItem(
-          item: ProductEntity.demo(),
-          layoutType: ProductItemLayoutType.layoutTile2,
-          args: ProductItemArgs(
-            action: GestureDetector(
-              onTap: () {
-                // leave it here to prevent the parent from being clicked
-              },
-              child: AppCartItemCounter(
-                submitCallBack: counterSubmitCallBack,
-              ).pr16().objectCenterRight(),
-            ),
+    return IntrinsicHeight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          AppCheckBox(
+            onChanged: (value) {},
           ),
-        ).expand(),
-      ],
+          ProductItem(
+            item: ProductEntity.demo(),
+            layoutType: ProductItemLayoutType.layoutTile2,
+            args: ProductItemArgs(
+              action: GestureDetector(
+                onTap: () {
+                  // leave it here to prevent the parent from being clicked
+                },
+                child: AppCartItemCounter(
+                  submitCallBack: counterSubmitCallBack,
+                ).pr16().objectCenterRight(),
+              ),
+            ),
+          ).expand(),
+        ],
+      ),
     );
   }
 }

@@ -45,6 +45,7 @@ dependencies:
   easy_mask: ^2.0.1
 
   #####  View
+  expand_tap_area: ^1.1.1
   timelines: ^0.1.0
   flutter_keyboard_size: ^1.0.1
   flutter_countdown_timer: ^4.1.0

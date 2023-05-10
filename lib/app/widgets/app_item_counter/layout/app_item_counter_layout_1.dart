@@ -1,3 +1,4 @@
+import 'package:expand_tap_area/expand_tap_area.dart';
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/widgets/app_item_counter/app_item_counter_args.dart';
 
@@ -13,48 +14,65 @@ class AppCartItemCounterLayout1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      clipBehavior: Clip.hardEdge,
-      decoration: BoxDecoration(
-        color: context.theme.inputDecorationTheme.fillColor,
-        borderRadius: BorderRadius.circular(4),
-        border: Border.all(color: context.themeColor.greyLighter),
-      ),
+    final counterButtonStyle = AppButtonTheme.none(context).copyWith(
+      shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(2))),
+      padding: MaterialStateProperty.all(const EdgeInsets.all(4)),
+      side: MaterialStateProperty.all(BorderSide(color: context.themeColor.greyLighter)),
+    );
+    const expandPadding = EdgeInsets.all(6);
+    return SizedBox(
+      height: 44,
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.min,
         children: [
-          AppButton(
-            style: AppButtonTheme.none(context).copyWith(
-              shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(2))),
-              padding: MaterialStateProperty.all(const EdgeInsets.all(2)),
-            ),
+          _ExpandPressArea(
             onPressed: callback.onRemove,
-            child: const Icon(Icons.remove_rounded),
+            tapPadding: expandPadding.copyWith(
+              left: expandPadding.left + 4,
+              right: 0,
+            ),
+            child: AppButton(
+              style: counterButtonStyle,
+              onPressed: callback.onRemove,
+              child: const Icon(Icons.remove_rounded),
+            ),
           ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.symmetric(vertical: BorderSide(color: context.themeColor.greyLighter)),
-            ),
-            child: IntrinsicWidth(
-              child: AppTextField(
-                controller: controller,
-                keyboardType: TextInputType.number,
-                textInputAction: TextInputAction.done,
-                textAlign: TextAlign.center,
-                decoration: AppTextFieldTheme.none(context).copyWith(
-                  contentPadding: const EdgeInsets.symmetric(vertical: 4, horizontal: 2),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 6),
+            child: Container(
+              decoration: BoxDecoration(
+                color: context.theme.inputDecorationTheme.fillColor,
+                border: Border.symmetric(
+                  horizontal: BorderSide(color: context.themeColor.greyLighter),
                 ),
-                onLostFocus: _onValueChange,
               ),
-            ).px8(),
-          ).maxWidth(80).minWidth(44).flex(),
-          AppButton(
-            style: AppButtonTheme.none(context).copyWith(
-              shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(2))),
-              padding: MaterialStateProperty.all(const EdgeInsets.all(2)),
+              alignment: Alignment.center,
+              child: IntrinsicWidth(
+                child: AppTextField(
+                  controller: controller,
+                  keyboardType: TextInputType.number,
+                  textInputAction: TextInputAction.done,
+                  textAlign: TextAlign.center,
+                  decoration: AppTextFieldTheme.none(context).copyWith(
+                    contentPadding: const EdgeInsets.symmetric(vertical: 4, horizontal: 2),
+                  ),
+                  onLostFocus: _onValueChange,
+                ),
+              ).maxWidth(80).minWidth(40).flex(),
             ),
+          ),
+          _ExpandPressArea(
             onPressed: callback.onAdd,
-            child: const Icon(Icons.add_rounded),
+            tapPadding: expandPadding.copyWith(
+              right: expandPadding.right + 4,
+              left: 0,
+            ),
+            child: AppButton(
+              style: counterButtonStyle,
+              onPressed: callback.onAdd,
+              child: const Icon(Icons.add_rounded),
+            ),
           ),
         ],
       ),
@@ -66,5 +84,30 @@ class AppCartItemCounterLayout1 extends StatelessWidget {
     if (parse != null) {
       callback.onValueChange?.call(parse);
     }
+  }
+}
+
+class _ExpandPressArea extends StatelessWidget {
+  const _ExpandPressArea({
+    super.key,
+    required this.child,
+    this.onPressed,
+    required this.tapPadding,
+  });
+
+  final Widget child;
+  final VoidCallback? onPressed;
+  final EdgeInsets tapPadding;
+
+  @override
+  Widget build(BuildContext context) {
+    return ExpandTapWidget(
+      onTap: onPressed ?? () {},
+      tapPadding: tapPadding,
+      child: Padding(
+        padding: tapPadding,
+        child: child,
+      ),
+    );
   }
 }
