@@ -13,17 +13,20 @@ class AboutPage extends StatelessWidget {
       child: DefaultStatusConsumer<AboutCubit, AboutState>(
         child: Scaffold(
           appBar: AppAppBar(
-              title: 'title',
-            ),
+            title: 'title',
+          ),
           body: AboutBody(),
         ),
       ),
     );
-  }   
+  }
 
   void _onStateChanged(BuildContext context, AboutState state) {
     if (state.status == ItemDefaultStatus.error) {
-      DialogUtils.showMaterialDialog(context: context, content: state.error.getServerErrorMsg());
+      DialogUtils.showMaterialDialog(
+        context: context,
+        content: context.getAppErrorMsg(state.error),
+      );
     }
   }
 }
@@ -40,7 +43,8 @@ class _PageBodyLoading extends StatelessWidget {
         // if (state.status == ItemDefaultStatus.error) {
         //   return SimpleErrorText(error: state.error ?? '');
         // }
-        final isLoading = state.status == ItemDefaultStatus.loading || state.status == ItemDefaultStatus.initial;
+        final isLoading = state.status == ItemDefaultStatus.loading ||
+            state.status == ItemDefaultStatus.initial;
 
         return child;
       },

@@ -24,7 +24,8 @@ class DefaultStatusConsumer<C extends RequestCubit<S>, S extends RequestState>
   Widget build(BuildContext context) {
     return BlocConsumer<C, S>(
       listenWhen: (previous, current) {
-        if (current.status == ItemDefaultStatus.error && current.error != current.error) {
+        if (current.status == ItemDefaultStatus.error &&
+            current.error != current.error) {
           return true;
         }
         return previous.status != current.status;
@@ -46,7 +47,7 @@ class DefaultStatusConsumer<C extends RequestCubit<S>, S extends RequestState>
       if (!onErrorHandled) {
         DialogUtils.showErrorDialog(
           context: context,
-          content: state.error.getServerErrorMsg(),
+          content: context.getAppErrorMsg(state.error),
           error: state.error,
         );
       }

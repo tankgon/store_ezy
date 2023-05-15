@@ -19,7 +19,7 @@ class DioModule {
       return _dio!;
     }
 
-    logger.i('**** Dio create');
+    log('**** Dio create');
     final options = BaseOptions(
       baseUrl: F.SERVER_URL,
       connectTimeout: const Duration(seconds: 12),
@@ -56,7 +56,7 @@ class DioModule {
       InterceptorsWrapper(
         onError: (error, handler) async {
           if (error.response?.statusCode == 401) {
-            logger.i('interceptor 401');
+            log('interceptor 401');
 
             final storage = getIt<UserSecureStorage>();
             await storage.notifyUnAuthorized();
@@ -73,21 +73,21 @@ class DioModule {
 
   void addToken(String? token) {
     if (token == null) return;
-    logger.i('DioModule.addToken => $token');
+    log('DioModule.addToken => $token');
 
     dio.options.headers["Authorization"] = 'Bearer $token';
     dio.options.headers["token"] = token;
   }
 
   void removeToken() {
-    logger.i('DioModule.removeToken =>');
+    log('DioModule.removeToken =>');
     dio.options.headers["Authorization"] = null;
     dio.options.headers["token"] = null;
   }
 
   @override
   void onClose() {
-    logger.i('**** Dio clear');
+    log('**** Dio clear');
     //dio.clear();
   }
 }

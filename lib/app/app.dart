@@ -1,12 +1,10 @@
 import 'package:app_ui_kit/components/app/dismiss_keyboard.dart';
 import 'package:app_ui_kit/components/app/scroll_behavior_default.dart';
-import 'package:mulstore/all_file/all_file.dart';
-import 'package:mulstore/app/app_routes/app_routes.dart';
-import 'package:mulstore/app/features/auth/self.dart';
-import 'package:mulstore/app/widgets/responsive/app_responsive_config.dart';
 import 'package:flutter/services.dart';
-import 'package:layout/layout.dart';
-import 'package:responsive_framework/responsive_framework.dart';
+import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/auth/self.dart';
+import 'package:mulstore/app/widgets/exception/app_exception_handler.dart';
+import 'package:mulstore/app/widgets/responsive/app_responsive_config.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -113,18 +111,21 @@ class _AppConfiguration extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DismissKeyboard(
-      child: PagingConfiguration(
-        configData: PagingConfigData(),
-        child: DialogConfiguration(
-          configData: DialogConfigData(
-            confirmLabel: LocaleKeys.common_dialog_Confirm.tr(),
-            cancelLabel: LocaleKeys.common_dialog_Cancel.tr(),
-            deleteLabel: LocaleKeys.common_dialog_Delete.tr(),
-          ),
-          child: ScrollConfiguration(
-            behavior: const ScrollBehaviorDefault(),
-            child: LoaderOverlay(
-              child: child,
+      child: ExceptionHandlerConfig(
+        handler: AppExceptionHandler(context: context),
+        child: PagingConfiguration(
+          configData: PagingConfigData(),
+          child: DialogConfiguration(
+            configData: DialogConfigData(
+              confirmLabel: LocaleKeys.common_dialog_Confirm.tr(),
+              cancelLabel: LocaleKeys.common_dialog_Cancel.tr(),
+              deleteLabel: LocaleKeys.common_dialog_Delete.tr(),
+            ),
+            child: ScrollConfiguration(
+              behavior: const ScrollBehaviorDefault(),
+              child: LoaderOverlay(
+                child: child,
+              ),
             ),
           ),
         ),

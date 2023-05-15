@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/home/presentation/main/cubit/home_cubit.dart';
 import 'package:mulstore/app/features/home/presentation/main/home_body.dart';
@@ -44,7 +43,7 @@ class HomePage extends StatelessWidget {
     if (state.status == ItemDefaultStatus.error) {
       DialogUtils.showErrorDialog(
         context: context,
-        content: state.error.getServerErrorMsg(),
+        content: context.getAppErrorMsg(state.error),
         error: state.error,
       );
     }

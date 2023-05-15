@@ -15,13 +15,12 @@ class NotificationMainPage extends StatelessWidget {
           listener: _onStateChanged,
           child: Scaffold(
             appBar: AppAppBar(
-              title: 'notification'.tr(),
-              args: const AppBarArgs(
-                centerTitle: true,
-                elevation: 0,
-                titleSpacing: 0,
-              )
-            ),
+                title: 'notification'.tr(),
+                args: const AppBarArgs(
+                  centerTitle: true,
+                  elevation: 0,
+                  titleSpacing: 0,
+                )),
             body: const NotificationMainBody(),
           ),
         );
@@ -33,7 +32,7 @@ class NotificationMainPage extends StatelessWidget {
     if (state.status == ItemDefaultStatus.error) {
       DialogUtils.showErrorDialog(
         context: context,
-        content: state.error.getServerErrorMsg(),
+        content: context.getAppErrorMsg(state.error),
         error: state.error,
       );
     }

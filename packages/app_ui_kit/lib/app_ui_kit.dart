@@ -29,6 +29,7 @@ export 'components/countdown/app_countdown_v2.dart';
 export 'components/dialog/dialog_components.dart';
 export 'components/divider/app_divider.dart';
 export 'components/error/app_error_simple.dart';
+export 'components/exception/exception_handler.dart';
 export 'components/form/reactive_control_builder.dart';
 export 'components/form/reactive_control_listener.dart';
 export 'components/image/app_avatar.dart';

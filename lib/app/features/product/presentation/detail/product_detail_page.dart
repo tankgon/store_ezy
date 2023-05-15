@@ -16,30 +16,28 @@ class ProductDetailPage extends StatelessWidget {
       create: (context) => ProductDetailCubit(
         item: product,
       )..fetchItem(),
-      child: Builder(
-          builder: (context) {
-            return BlocListener<ProductDetailCubit, ProductDetailState>(
-              listener: _onStateChanged,
-              child: Scaffold(
-                appBar: AppAppBar(
-                    title: '',
-                  ),
-                bottomNavigationBar: AppBottomBar(
-                  child: ProductBottomBar(),
-                ),
-                body: ProductDetailBody(),
-              ),
-            );
-          }
-      ),
+      child: Builder(builder: (context) {
+        return BlocListener<ProductDetailCubit, ProductDetailState>(
+          listener: _onStateChanged,
+          child: Scaffold(
+            appBar: AppAppBar(
+              title: '',
+            ),
+            bottomNavigationBar: AppBottomBar(
+              child: ProductBottomBar(),
+            ),
+            body: ProductDetailBody(),
+          ),
+        );
+      }),
     );
-  }   
+  }
 
   void _onStateChanged(BuildContext context, ProductDetailState state) {
     if (state.status == ItemDefaultStatus.error) {
       DialogUtils.showErrorDialog(
         context: context,
-        content: state.error.getServerErrorMsg(),
+        content: context.getAppErrorMsg(state.error),
         error: state.error,
       );
     }

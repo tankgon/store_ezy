@@ -34,7 +34,7 @@ class LoginPage extends StatelessWidget {
             if (error is AuthAccountExistException) {
               DialogUtils.showErrorDialog(
                 context: context,
-                content: error.error.getServerErrorMsg(),
+                content: context.getAppErrorMsg(error.error),
                 error: error,
                 onConfirm: () {
                   context.read<SignUpCubit>().reActiveAccount(

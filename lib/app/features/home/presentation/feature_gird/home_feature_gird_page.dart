@@ -31,7 +31,7 @@ class HomeFeatureGird extends StatelessWidget {
     if (state.status == ItemDefaultStatus.error) {
       DialogUtils.showErrorDialog(
         context: context,
-        content: state.error.getServerErrorMsg(),
+        content: context.getAppErrorMsg(state.error),
         error: state.error,
       );
     }

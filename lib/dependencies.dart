@@ -15,13 +15,12 @@ import 'package:mulstore/services/app_config/app_config_service.dart';
 import 'package:mulstore/services/device_service.dart';
 import 'package:mulstore/services/user_secure_storage_service.dart';
 
-import 'app/app_routes/app_routes.dart';
 import 'app/features/auth/self.dart';
 
 final getIt = GetIt.instance;
 
 Future<void> setupAppDependencies() async {
-  logger.i('SERVICE starting ...');
+  log('SERVICE starting ...');
 
   await _appService();
   await _appDataProvider();
@@ -29,12 +28,10 @@ Future<void> setupAppDependencies() async {
   // Navigation
   getIt.registerSingleton<AppAutoRoute>(AppAutoRoute());
 
-  logger.i('SERVICE all started...');
+  log('SERVICE all started...');
 }
 
 Future<void> _appService() async {
-  logger = LoggerCustom(logEnable: AppConfig.SHOW_LOG);
-
   await Hive.initFlutter();
 
   // Firebase

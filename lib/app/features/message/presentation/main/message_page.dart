@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/message/presentation/main/cubit/message_cubit.dart';
 import 'package:mulstore/app/features/message/presentation/main/message_body.dart';
@@ -25,7 +24,7 @@ class MessagePage extends StatelessWidget {
   void _onStateChanged(BuildContext context, MessageState state) {
     if (state.status == ItemDefaultStatus.error) {
       DialogUtils.showMaterialDialog(
-          context: context, content: state.error.getServerErrorMsg());
+          context: context, content: context.getAppErrorMsg(state.error));
     }
   }
 }

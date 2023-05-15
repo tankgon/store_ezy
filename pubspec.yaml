@@ -164,8 +164,6 @@ dependencies:
   #  mockito: ^5.1.0
 
   #package internal import
-  logger_and_error:
-    path: ./packages/logger_and_error
   app_ui:
     path: ./packages/app_ui
   app_ui_kit:

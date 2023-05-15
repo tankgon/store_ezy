@@ -21,7 +21,8 @@ class UserSecureStorage {
   late Box _box;
 
   UserEntity? userData;
-  final StreamController<bool> _unAuthorizedController = StreamController<bool>.broadcast();
+  final StreamController<bool> _unAuthorizedController =
+      StreamController<bool>.broadcast();
   Stream<bool> get unAuthorizedStream => _unAuthorizedController.stream;
 
   String? _token;
@@ -67,7 +68,7 @@ class UserSecureStorage {
   }
 
   Future<void> setUserModel(UserEntity user) async {
-    logger.i('setUserModel $user');
+    log('setUserModel $user');
     userData = user;
   }
 

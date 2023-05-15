@@ -1,9 +1,9 @@
 import 'package:app_utils/view/app_info_utils.dart';
 import 'package:mulstore/all_file/all_file.dart';
-import 'package:mulstore/app/features/auth/core/utils/check_id_helper.dart';
 import 'package:mulstore/app/features/auth/data/mulstore/api/auth_api_ms.dart';
 import 'package:mulstore/app/features/auth/data/mulstore/model/auth_model_ms.dart';
 import 'package:mulstore/app/features/auth/self.dart';
+import 'package:mulstore/app/widgets/exception/app_exception_handler.dart';
 import 'package:mulstore/services/firebase_notification_service.dart';
 
 const _deviceType = 'MOBILEAPP';
@@ -12,11 +12,11 @@ class AuthRepoMS extends AuthRepo {
   final _authApi = getIt<AuthApiMS>();
 
   Object _checkReActiveError(Object e) {
-    if (e.getServerErrorCode() == 'MSG0046') {
+    if (AppExceptionHandler.getServerErrorCode(e) == 'MSG0046') {
       return AuthAccountExistException(
         error: e,
-        userID: e.getServerErrorVar('userID') ?? '',
-        userName: e.getServerErrorVar('userLogin') ?? '',
+        userID: AppExceptionHandler.getServerErrorVar(e, 'userID') ?? '',
+        userName: AppExceptionHandler.getServerErrorVar(e, 'userLogin') ?? '',
       );
     }
     return e;
@@ -281,7 +281,8 @@ class AuthRepoMS extends AuthRepo {
   }
 
   @override
-  Future<ForgotPasswordOTPEntity> forgotPasswordSentOTPEmail({required String email}) async {
+  Future<ForgotPasswordOTPEntity> forgotPasswordSentOTPEmail(
+      {required String email}) async {
     final rs = await _authApi.forgotPasswordSendOTPEmail(
       ForgotPasswordReq(
         userLogin: email,

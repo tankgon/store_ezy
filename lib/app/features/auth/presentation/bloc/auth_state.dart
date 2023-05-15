@@ -1,7 +1,6 @@
 part of 'auth_bloc.dart';
 
 class AuthData {
-
   final UserEntity? user;
 
   AuthData updateUser({
@@ -18,7 +17,11 @@ class AuthData {
   });
 
   @override
-  bool operator ==(Object other) => identical(this, other) || (other is AuthData && runtimeType == other.runtimeType && user == other.user);
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is AuthData &&
+          runtimeType == other.runtimeType &&
+          user == other.user);
 
   @override
   int get hashCode => user.hashCode;
@@ -67,7 +70,8 @@ class AuthLoadingState extends AuthState {
 }
 
 class UnAuthenticatedState extends AuthState {
-  const UnAuthenticatedState(super.data, {this.showToast = false, this.openSignInPage = false});
+  const UnAuthenticatedState(super.data,
+      {this.showToast = false, this.openSignInPage = false});
 
   final bool openSignInPage;
   final bool showToast;
@@ -76,7 +80,7 @@ class UnAuthenticatedState extends AuthState {
 class AuthenticatedStateFail extends AuthState {
   const AuthenticatedStateFail(super.data, {required this.err});
 
-  final String err;
+  final Object err;
 }
 
 class AuthenticatedState extends AuthState {

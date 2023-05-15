@@ -1,11 +1,11 @@
 import 'package:app_utils/view/app_info_utils.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/firebase_options.dart';
 import 'package:mulstore/firebase_options_dev.dart';
 import 'package:mulstore/firebase_options_stag.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 /// TODO: SETUP
 /// 1. Add this to manifest
@@ -19,7 +19,8 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 const _iconLocation = '@mipmap/ic_launcher';
 
-typedef NotificationPressedCallBack = void Function(Map<String, dynamic>? jsonData);
+typedef NotificationPressedCallBack = void Function(
+    Map<String, dynamic>? jsonData);
 
 typedef FilterMessage = bool Function(Map<String, dynamic>? jsonData);
 
@@ -47,13 +48,14 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   }
 
   // In here you can perform logic such as HTTP requests, perform IO operations (e.g. updating local storage)
-  logger.i("Handling a background message: ${message.notification?.title}");
+  log("Handling a background message: ${message.notification?.title}");
 }
 
 class FirebaseNotificationService {
   FirebaseNotificationService._();
 
-  static final FirebaseNotificationService _instance = FirebaseNotificationService._();
+  static final FirebaseNotificationService _instance =
+      FirebaseNotificationService._();
 
   static FirebaseNotificationService get instance {
     return _instance;
@@ -69,7 +71,8 @@ class FirebaseNotificationService {
     required FilterMessage filterMessage,
   }) async {
     await _requestPermission();
-    await _initFlutterLocalNotificationPlugin(onPressedCallback: notificationPressedCallBack);
+    await _initFlutterLocalNotificationPlugin(
+        onPressedCallback: notificationPressedCallBack);
 
     // await _enableAlwaysHeadUpMessageIOS();
     await _setupChannelForAndroid();
@@ -78,8 +81,8 @@ class FirebaseNotificationService {
 
     await _firebaseMessaging.getToken().then((value) async {
       final deviceID = await AppInfoUtils.getDeviceID();
-      logger.i('FirebaseMessaging Token: ${value?.toString() ?? ''}');
-      logger.i('deviceID Token: ${deviceID?.toString() ?? ''}');
+      log('FirebaseMessaging Token: ${value?.toString() ?? ''}');
+      log('deviceID Token: ${deviceID?.toString() ?? ''}');
     });
   }
 
@@ -87,7 +90,7 @@ class FirebaseNotificationService {
     try {
       return await _firebaseMessaging.getToken();
     } catch (e, trace) {
-      logger.e(e.toString(), e, trace);
+      log(e.toString(), error: e, stackTrace: trace);
       return Future.value();
     }
   }
@@ -103,17 +106,20 @@ class FirebaseNotificationService {
       sound: true,
     );
 
-    if (settings.authorizationStatus == AuthorizationStatus.denied || settings.authorizationStatus == AuthorizationStatus.notDetermined) {
-      logger.e('PushNotification: User declined or has not accepted permission');
+    if (settings.authorizationStatus == AuthorizationStatus.denied ||
+        settings.authorizationStatus == AuthorizationStatus.notDetermined) {
+      log('PushNotification: User declined or has not accepted permission');
     }
   }
 
   ///
   /// Init flutter_local_notifications for local notification
   ///
-  Future<void> _initFlutterLocalNotificationPlugin({required NotificationPressedCallBack onPressedCallback}) async {
+  Future<void> _initFlutterLocalNotificationPlugin(
+      {required NotificationPressedCallBack onPressedCallback}) async {
     // Android Setting
-    const initializationSettingsAndroid = AndroidInitializationSettings(_iconLocation);
+    const initializationSettingsAndroid =
+        AndroidInitializationSettings(_iconLocation);
     // IOS Setting
     const initializationSettingsIOS = DarwinInitializationSettings(
       requestAlertPermission: true,
@@ -125,12 +131,14 @@ class FirebaseNotificationService {
     );
     // initialise the plugin. app_icon needs to be a added as a drawable resource to the Android head project
     // Combine
-    const initializationSettings = InitializationSettings(android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
+    const initializationSettings = InitializationSettings(
+        android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
 
     flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
     // Handle when FlutterLocalNotificationPlugin notification is clicked
-    await flutterLocalNotificationsPlugin?.initialize(initializationSettings, onDidReceiveBackgroundNotificationResponse: (response) async {
+    await flutterLocalNotificationsPlugin?.initialize(initializationSettings,
+        onDidReceiveBackgroundNotificationResponse: (response) async {
       if (response.payload != null) {
         try {
           final payloadJson = await jsonDecode(response.payload ?? '');
@@ -138,7 +146,7 @@ class FirebaseNotificationService {
             onPressedCallback.call(payloadJson);
           }
         } catch (e, trace) {
-          logger.e(e.toString(), e, trace);
+          log(e.toString(), error: e, stackTrace: trace);
         }
       }
     });
@@ -148,11 +156,11 @@ class FirebaseNotificationService {
     RemoteMessage? message,
     required FilterMessage filterMessage,
   }) {
-    logger.i('_showMessageHeadUp');
+    log('_showMessageHeadUp');
     if (message != null) {
       final isShow = filterMessage(message.data);
       if (!isShow) {
-        logger.i('Message not show because filtered');
+        log('Message not show because filtered');
         return;
       }
 
@@ -162,7 +170,8 @@ class FirebaseNotificationService {
       NotificationDetails? notificationDetails;
       if (Platform.isAndroid && android != null && channel != null) {
         notificationDetails = NotificationDetails(
-          android: AndroidNotificationDetails(channel?.id ?? '', channel?.name ?? '',
+          android: AndroidNotificationDetails(
+              channel?.id ?? '', channel?.name ?? '',
               channelShowBadge: true,
               // !!! also set the sound in the channel - For Android 8.0 or newer, this (sound) is tied to the specified channel
               sound: const RawResourceAndroidNotificationSound('default_noti'),
@@ -178,8 +187,12 @@ class FirebaseNotificationService {
           ),
         );
       }
-      final title = notification?.title ?? getStringFromLocKey(notification?.titleLocKey, notification?.titleLocArgs);
-      final body = notification?.body ?? getStringFromLocKey(notification?.bodyLocKey, notification?.bodyLocArgs);
+      final title = notification?.title ??
+          getStringFromLocKey(
+              notification?.titleLocKey, notification?.titleLocArgs);
+      final body = notification?.body ??
+          getStringFromLocKey(
+              notification?.bodyLocKey, notification?.bodyLocArgs);
       flutterLocalNotificationsPlugin?.show(
         notification.hashCode,
         title,
@@ -209,7 +222,8 @@ class FirebaseNotificationService {
     // On Foreground
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       _logMessage(message);
-      _showMessageHeadUpForeground(message: message, filterMessage: filterMessage);
+      _showMessageHeadUpForeground(
+          message: message, filterMessage: filterMessage);
     });
 
     // On Background/Terminated
@@ -239,11 +253,15 @@ class FirebaseNotificationService {
         sound: RawResourceAndroidNotificationSound('default_noti'),
       );
 
-      await flutterLocalNotificationsPlugin?.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.createNotificationChannel(channel!);
+      await flutterLocalNotificationsPlugin
+          ?.resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin>()
+          ?.createNotificationChannel(channel!);
     }
   }
 
-  Future<void> setupInteractedMessage({required NotificationPressedCallBack callBack}) async {
+  Future<void> setupInteractedMessage(
+      {required NotificationPressedCallBack callBack}) async {
     // Get any messages which caused the application to open from a terminated state.
     await _firebaseMessaging.getInitialMessage().then((RemoteMessage? message) {
       _logMessage(message);
@@ -252,7 +270,7 @@ class FirebaseNotificationService {
 
     // Also handle any interaction when the app is in the background via a Stream listener
     FirebaseMessaging.onMessageOpenedApp.listen((message) {
-      logger.i('onMessageOpenedApp ', message);
+      log('onMessageOpenedApp $message');
       _onMessageClick(message, callBack);
     });
   }
@@ -261,12 +279,13 @@ class FirebaseNotificationService {
     return _firebaseMessaging.subscribeToTopic(topicName);
   }
 
-  void _onMessageClick(RemoteMessage? message, NotificationPressedCallBack callBack) {
+  void _onMessageClick(
+      RemoteMessage? message, NotificationPressedCallBack callBack) {
     if (message == null) {
       return;
     }
 
-    logger.i('_onMessageClick ', message);
+    log('_onMessageClick $message');
     callBack.call(message.data);
   }
 
@@ -275,7 +294,7 @@ class FirebaseNotificationService {
       return;
     }
 
-    logger.i('Tag: FirebaseMessaging \n'
+    log('Tag: FirebaseMessaging \n'
         'getInitialMessage:\n'
         '-- data: ${message.data.toString()}\n'
         '-- messageId: ${message.messageId}\n'
@@ -287,7 +306,8 @@ class FirebaseNotificationService {
   }
 
   Future<void> hideAllNotification() async {
-    await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+    await FirebaseMessaging.instance
+        .setForegroundNotificationPresentationOptions(
       alert: false,
       badge: false,
       sound: false,
@@ -295,7 +315,8 @@ class FirebaseNotificationService {
   }
 
   Future<void> enableAllNotification() async {
-    await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+    await FirebaseMessaging.instance
+        .setForegroundNotificationPresentationOptions(
       alert: true,
       badge: true,
       sound: true,
