@@ -82,18 +82,33 @@ Future<void> _appDataProvider() async {
     ..registerSingleton<DeviceService>(DeviceService())
     ..registerSingleton<AppConfigService>(AppConfigService());
 
-  _initDataService();
+  _initDataMSService();
 }
 
-void _initDataService() {
-  // Init Data Service
+void _initDataMSService() {
   final dio = getIt<DioModule>().dio;
   getIt
-    ..registerLazySingleton<UserApiMS>(() => UserApiMS(dio))
-    ..registerLazySingleton<AuthApiMS>(() => AuthApiMS(dio));
 
+    // API
+    ..registerLazySingleton<UserApiMS>(() => UserApiMS(dio))
+    ..registerLazySingleton<AuthApiMS>(() => AuthApiMS(dio))
+
+    // Repo
+    ..registerLazySingleton<UserRepo>(UserRepoMS.new)
+    ..registerLazySingleton<AuthRepo>(AuthRepoMS.new)
+    ..registerLazySingleton<MessageRepo>(MessageRepoImpl.new);
+}
+
+void _initDataWPService() {
+  final dio = getIt<DioModule>().dio;
   getIt
-    ..registerLazySingleton<UserRepo>(() => UserRepoMS())
-    ..registerLazySingleton<AuthRepo>(() => AuthRepoMS())
-    ..registerLazySingleton<MessageRepo>(() => MessageRepoImpl());
+
+    // API
+    ..registerLazySingleton<UserApiMS>(() => UserApiMS(dio))
+    ..registerLazySingleton<AuthApiMS>(() => AuthApiMS(dio))
+
+    // Repo
+    ..registerLazySingleton<UserRepo>(UserRepoMS.new)
+    ..registerLazySingleton<AuthRepo>(AuthRepoMS.new)
+    ..registerLazySingleton<MessageRepo>(MessageRepoImpl.new);
 }

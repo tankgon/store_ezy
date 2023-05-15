@@ -1,11 +1,9 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
+import 'package:app_ui_kit/components/paging/app_paging_controller.dart';
 import 'package:app_ui_kit/components/paging/paging_config.dart';
 import 'package:app_ui_kit/components/paging/paging_list.dart';
 import 'package:app_ui_kit/components/refresh/app_pull_down_refresh.dart';
-import 'package:flutter/foundation.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-
-import 'app_paging_controller.dart';
 
 class PagingGrid<T> extends StatefulWidget {
   const PagingGrid({
@@ -78,12 +76,15 @@ class _PagingGridState<V> extends State<PagingGrid<V>> {
 
   @override
   void initState() {
-    _pagingController = widget.pagingController ?? AppPagingController(firstPageKey: 0);
-    _pagingController.init(fetchListDataParam: widget.fetchListData, pageSizeParam: widget.pageSize);
+    _pagingController =
+        widget.pagingController ?? AppPagingController(firstPageKey: 0);
+    _pagingController.init(
+        fetchListDataParam: widget.fetchListData,
+        pageSizeParam: widget.pageSize);
 
     if (widget.delayFetch != null) {
       isDelayDone = false;
-      Future.delayed(widget.delayFetch ?? Duration.zero).then((value) {
+      Future<Object>.delayed(widget.delayFetch ?? Duration.zero).then((value) {
         isDelayDone = true;
         _fetchPage(0);
       });
@@ -101,7 +102,8 @@ class _PagingGridState<V> extends State<PagingGrid<V>> {
 
   Future<void> _fetchPage(int pageKey) async {
     try {
-      final newItems = await widget.fetchListData.call(pageKey, widget.pageSize);
+      final newItems =
+          await widget.fetchListData.call(pageKey, widget.pageSize);
       final isLastPage = (newItems.length) < widget.pageSize;
 
       if (widget.clearOnFirstPage && pageKey == 0) {
@@ -145,7 +147,9 @@ class _PagingGridState<V> extends State<PagingGrid<V>> {
     }
 
     return AppPullDownRefresh(
-      indicatorAlignment: widget.scrollDirection == Axis.vertical ? Alignment.topCenter : Alignment.centerLeft,
+      indicatorAlignment: widget.scrollDirection == Axis.vertical
+          ? Alignment.topCenter
+          : Alignment.centerLeft,
       enable: widget.enablePullDown,
       refresh: _pagingController.refresh,
       child: pagedListView,
@@ -159,21 +163,7 @@ class _PagingGridState<V> extends State<PagingGrid<V>> {
       showNewPageErrorIndicatorAsGridChild: false,
       showNoMoreItemsIndicatorAsGridChild: false,
       showNewPageProgressIndicatorAsGridChild: false,
-      builderDelegate: PagedChildBuilderDelegate<V>(
-        itemBuilder: widget.itemBuilder,
-        firstPageProgressIndicatorBuilder: widget.firstPageProgressIndicatorBuilder ?? context.pagingConfigData.progressIndicatorBuilder,
-        newPageProgressIndicatorBuilder: widget.newPageProgressIndicatorBuilder ?? context.pagingConfigData.progressIndicatorBuilder,
-        firstPageErrorIndicatorBuilder: (_) => context.pagingConfigData.errorBuilder(context, _pagingController.error),
-        newPageErrorIndicatorBuilder: (_) => context.pagingConfigData.errorBuilder(context, _pagingController.error),
-        noItemsFoundIndicatorBuilder: (context) {
-          widget.onEmpty?.call();
-          if (widget.noItemsFoundIndicatorBuilder != null) {
-            return widget.noItemsFoundIndicatorBuilder?.call(context) ?? const SizedBox.shrink();
-          }
-          return context.pagingConfigData.emptyBuilder(context);
-        },
-        noMoreItemsIndicatorBuilder: widget.noMoreItemsIndicatorBuilder,
-      ),
+      builderDelegate: _getPagedChildBuilderDelegate(),
     );
   }
 
@@ -190,21 +180,31 @@ class _PagingGridState<V> extends State<PagingGrid<V>> {
       showNoMoreItemsIndicatorAsGridChild: false,
       showNewPageProgressIndicatorAsGridChild: false,
       pagingController: _pagingController,
-      builderDelegate: PagedChildBuilderDelegate<V>(
-        itemBuilder: widget.itemBuilder,
-        firstPageProgressIndicatorBuilder: widget.firstPageProgressIndicatorBuilder ?? context.pagingConfigData.progressIndicatorBuilder,
-        newPageProgressIndicatorBuilder: widget.newPageProgressIndicatorBuilder ?? context.pagingConfigData.progressIndicatorBuilder,
-        firstPageErrorIndicatorBuilder: (_) => context.pagingConfigData.errorBuilder(context, _pagingController.error),
-        newPageErrorIndicatorBuilder: (_) => context.pagingConfigData.errorBuilder(context, _pagingController.error),
-        noItemsFoundIndicatorBuilder: (context) {
-          widget.onEmpty?.call();
-          if (widget.noItemsFoundIndicatorBuilder != null) {
-            return widget.noItemsFoundIndicatorBuilder?.call(context) ?? const SizedBox.shrink();
-          }
-          return context.pagingConfigData.emptyBuilder(context);
-        },
-        noMoreItemsIndicatorBuilder: widget.noMoreItemsIndicatorBuilder,
-      ),
+      builderDelegate: _getPagedChildBuilderDelegate(),
+    );
+  }
+
+  PagedChildBuilderDelegate<V> _getPagedChildBuilderDelegate() {
+    return PagedChildBuilderDelegate<V>(
+      itemBuilder: widget.itemBuilder,
+      firstPageProgressIndicatorBuilder:
+          widget.firstPageProgressIndicatorBuilder ??
+              context.pagingConfigData.progressIndicatorBuilder,
+      newPageProgressIndicatorBuilder: widget.newPageProgressIndicatorBuilder ??
+          context.pagingConfigData.progressIndicatorBuilder,
+      firstPageErrorIndicatorBuilder: (_) => context.pagingConfigData
+          .errorBuilder(context, _pagingController.error),
+      newPageErrorIndicatorBuilder: (_) => context.pagingConfigData
+          .errorBuilder(context, _pagingController.error),
+      noItemsFoundIndicatorBuilder: (context) {
+        widget.onEmpty?.call();
+        if (widget.noItemsFoundIndicatorBuilder != null) {
+          return widget.noItemsFoundIndicatorBuilder?.call(context) ??
+              const SizedBox.shrink();
+        }
+        return context.pagingConfigData.emptyBuilder(context);
+      },
+      noMoreItemsIndicatorBuilder: widget.noMoreItemsIndicatorBuilder,
     );
   }
 }
