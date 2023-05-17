@@ -10,6 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  dartx: ^1.1.0
   velocity_x: ^3.6.0
   easy_mask: ^2.0.1
   auto_route: ^6.4.0

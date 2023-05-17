@@ -30,7 +30,7 @@ class ProductItemLayout1 extends StatelessWidget {
           context,
         ),
         child: CheckTextExceed(
-          content: product.title ?? '',
+          content: product.name ?? '',
           textStyle: context.theme.textTheme.titleMedium ?? const TextStyle(),
           builder: (context, textStyle, isExceedMaxLines) {
             return Column(
@@ -40,8 +40,18 @@ class ProductItemLayout1 extends StatelessWidget {
                 AppImg(
                   product.img,
                 ).aspectRatio(1),
-                product.title?.text.textStyle(textStyle).ellipsis.maxLines(2).make().pb4().minHeight(22),
-                product.description?.text.caption(context).maxLines(isExceedMaxLines ? 1 : 2).ellipsis.make(),
+                product.name?.text
+                    .textStyle(textStyle)
+                    .ellipsis
+                    .maxLines(2)
+                    .make()
+                    .pb4()
+                    .minHeight(22),
+                product.description?.text
+                    .caption(context)
+                    .maxLines(isExceedMaxLines ? 1 : 2)
+                    .ellipsis
+                    .make(),
                 const Spacer(),
                 ProductPriceWithType(
                   price: product.price,

@@ -1,5 +1,4 @@
 import 'package:mulstore/all_file/all_file.dart';
-import 'package:mulstore/app/features/product/presentation/item/layout/product_item_layout.dart';
 import 'package:mulstore/app/features/product/presentation/item/product_item_args.dart';
 import 'package:mulstore/app/features/product/presentation/widget/product_discount.dart';
 import 'package:mulstore/app/features/product/presentation/widget/product_price_with_type.dart';
@@ -59,13 +58,23 @@ class ProductItemTileLayout1 extends StatelessWidget {
 
   Widget _buildContent(BuildContext context) {
     return CheckTextExceed(
-      content: product.title ?? '',
+      content: product.name ?? '',
       textStyle: context.theme.textTheme.titleMedium ?? const TextStyle(),
       builder: (context, textStyle, isExceedMaxLines) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          product.title?.text.textStyle(textStyle).ellipsis.maxLines(2).make().pb4().minHeight(22),
-          product.description?.text.caption(context).maxLines(isExceedMaxLines ? 1 : 2).ellipsis.make(),
+          product.name?.text
+              .textStyle(textStyle)
+              .ellipsis
+              .maxLines(2)
+              .make()
+              .pb4()
+              .minHeight(22),
+          product.description?.text
+              .caption(context)
+              .maxLines(isExceedMaxLines ? 1 : 2)
+              .ellipsis
+              .make(),
           const Spacer(),
           Row(
             mainAxisSize: MainAxisSize.min,
@@ -87,7 +96,10 @@ class ProductItemTileLayout1 extends StatelessWidget {
               AppButton(
                 style: AppButtonTheme.primary(
                   context,
-                ).copyWith(minimumSize: const MaterialStatePropertyAll(Size.zero), tapTargetSize: MaterialTapTargetSize.shrinkWrap, padding: const MaterialStatePropertyAll(Dimens.edge_XS3)),
+                ).copyWith(
+                    minimumSize: const MaterialStatePropertyAll(Size.zero),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    padding: const MaterialStatePropertyAll(Dimens.edge_XS3)),
                 onPressed: onAddToCart ?? () {},
                 child: const Icon(Icons.add_rounded),
               ),

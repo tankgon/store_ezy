@@ -2,9 +2,7 @@ import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/product/domain/entity/product_entity.dart';
 import 'package:mulstore/app/features/product/presentation/item/layout/product_item_layout.dart';
 import 'package:mulstore/app/features/product/presentation/item/product_item_args.dart';
-import 'package:mulstore/app/features/product/presentation/widget/product_discount.dart';
 import 'package:mulstore/app/features/product/presentation/widget/product_price_with_type.dart';
-import 'package:flutter/cupertino.dart';
 
 class ProductItemTileLayout2 extends StatelessWidget {
   const ProductItemTileLayout2({
@@ -55,7 +53,14 @@ class ProductItemTileLayout2 extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        product.title?.textAuto.titleMedium(context).semiBold.maxLines(2).ellipsis.make().pb2().minHeight(22),
+        product.name?.textAuto
+            .titleMedium(context)
+            .semiBold
+            .maxLines(2)
+            .ellipsis
+            .make()
+            .pb2()
+            .minHeight(22),
         Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.end,
