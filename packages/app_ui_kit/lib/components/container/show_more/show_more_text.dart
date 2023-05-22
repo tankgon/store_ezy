@@ -60,14 +60,19 @@ class ShowMoreText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (content.isNullOrEmpty()) {
+    if (content.isNullOrEmpty) {
       return const SizedBox.shrink();
     }
 
     final finalMaxLines = maxLines ?? 8;
     final finalTextStyle = textStyle ?? context.textTheme.bodyMedium!;
     final more = moreWidget ?? content!.text.textStyle(finalTextStyle).make();
-    final less = lessWidget ?? content!.text.textStyle(finalTextStyle).maxLines(finalMaxLines).ellipsis.make();
+    final less = lessWidget ??
+        content!.text
+            .textStyle(finalTextStyle)
+            .maxLines(finalMaxLines)
+            .ellipsis
+            .make();
 
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
@@ -160,7 +165,7 @@ class CheckMoreTextBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (content.isNullOrEmpty()) {
+    if (content.isNullOrEmpty) {
       return const SizedBox.shrink();
     }
 
@@ -181,7 +186,11 @@ class CheckMoreTextBuilder extends StatelessWidget {
         return builder(
           isTextExceedMaxLines,
           more,
-          content!.text.textStyle(finalTextStyle).maxLines(finalMaxLines).ellipsis.make(),
+          content!.text
+              .textStyle(finalTextStyle)
+              .maxLines(finalMaxLines)
+              .ellipsis
+              .make(),
         );
       },
     );

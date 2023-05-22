@@ -1,12 +1,12 @@
-import 'package:app_utils/app_utils.dart';
 import 'package:app_utils/all_file/app_utils_all_file.dart';
+import 'package:app_utils/app_utils.dart';
 
 extension TimeCountDownExtend on DateTime? {}
 
 extension TimeCountDownString on String? {
   int? getTimeEpoc({String? today}) {
     try {
-      if (isNullOrEmpty()) return null;
+      if (isNullOrEmpty) return null;
 
       return TimeCountDownUtils.countTimeEpoch(
         startValidDate: this,
@@ -20,7 +20,7 @@ extension TimeCountDownString on String? {
 
   int? getDiff({String? today}) {
     try {
-      if (isNullOrEmpty()) return null;
+      if (isNullOrEmpty) return null;
 
       return TimeCountDownUtils.getDiff(
         startValidDate: this,
@@ -42,7 +42,8 @@ class TimeCountDownUtils {
       today: today,
     );
 
-    var millisecondsSinceEpoch = TimeService().todayLocal().millisecondsSinceEpoch;
+    var millisecondsSinceEpoch =
+        TimeService().todayLocal().millisecondsSinceEpoch;
     return diff == null ? null : millisecondsSinceEpoch + diff;
   }
 

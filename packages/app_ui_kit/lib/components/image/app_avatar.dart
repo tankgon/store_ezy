@@ -39,7 +39,7 @@ class AppAvatar extends StatelessWidget {
     }
 
     Widget img;
-    if (src.isNullOrEmpty()) {
+    if (src.isNullOrEmpty) {
       img = FittedBox(
         child: SvgPicture.asset(
           'assets/icon/ic_user_default.svg',

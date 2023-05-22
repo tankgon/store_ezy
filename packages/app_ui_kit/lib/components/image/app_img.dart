@@ -34,7 +34,7 @@ class AppImg extends StatelessWidget {
       return errorWidget;
     }
 
-    if (srcStr.isNullOrEmpty()) {
+    if (srcStr.isNullOrEmpty) {
       return errorWidget;
     }
     Widget? imageWidget;

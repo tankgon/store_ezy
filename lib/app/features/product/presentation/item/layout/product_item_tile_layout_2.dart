@@ -77,7 +77,7 @@ class ProductItemTileLayout2 extends StatelessWidget {
         ),
         const Spacer(),
         args.action ?? const SizedBox.shrink(),
-      ].filterNotNull(),
+      ].filterNotNullList(),
     );
   }
 }

@@ -1,5 +1,5 @@
+import 'package:app_utils/all_file/app_utils_all_file.dart';
 import 'package:app_utils/app_utils.dart';
-import 'package:flutter/material.dart';
 
 class ViewUtils {
   ViewUtils._();
@@ -34,7 +34,7 @@ class ViewUtils {
     if (hidePairValueNull) {
       list.forEachIndexed((element, index) {
         var isNotNull = element != null;
-        if (element is String && element.isNullOrEmpty()) {
+        if (element is String && element.isNullOrEmpty) {
           isNotNull = false;
         }
         if (index.isOdd && isNotNull) {

@@ -105,7 +105,7 @@ class ProductItemTileLayout1 extends StatelessWidget {
               ),
             ],
           ),
-        ].filterNotNull(),
+        ].filterNotNullList(),
       ),
     );
   }

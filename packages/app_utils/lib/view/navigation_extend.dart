@@ -3,13 +3,17 @@ import 'package:app_utils/data/collection_extend.dart';
 import 'package:auto_route/auto_route.dart';
 
 extension AutoRouteExtend on StackRouter {
-  bool popToParentOf(List<String> routeNameList, {VoidCallback? onNotFound, bool reverse = false}) {
+  bool popToParentOf(List<String> routeNameList,
+      {VoidCallback? onNotFound, bool reverse = false}) {
     var stackList = stack;
     if (reverse) {
       stackList = stack.reversed.toList();
     }
 
-    var index = stackList.indexWhere((item) => routeNameList.find((itemRouteName) => item.routeData.name == itemRouteName) != null);
+    var index = stackList.indexWhere((item) =>
+        routeNameList
+            .find((itemRouteName) => item.routeData.name == itemRouteName) !=
+        null);
 
     var parentRoute = stackList.getOrNull(index - 1);
     var name = parentRoute?.routeData.name;
@@ -26,20 +30,24 @@ extension AutoRouteExtend on StackRouter {
     return false;
   }
 
-  bool popToOf(List<String> routeNameList, {VoidCallback? onNotFound, bool reverse = false}) {
+  bool popToOf(List<String> routeNameList,
+      {VoidCallback? onNotFound, bool reverse = false}) {
     var stackList = stack;
 
     if (reverse) {
       stackList = stack.reversed.toList();
     }
-    var index = stackList.indexWhere((item) => routeNameList.find((itemRouteName) => item.routeData.name == itemRouteName) != null);
+    var index = stackList.indexWhere((item) =>
+        routeNameList
+            .find((itemRouteName) => item.routeData.name == itemRouteName) !=
+        null);
 
     var route = stackList.getOrNull(index);
     var name = route?.routeData.name;
 
     log('popToOf $name');
 
-    if (!name.isNullOrEmpty()) {
+    if (!name.isNullOrEmpty) {
       popUntilRouteWithName(
         name!,
       );

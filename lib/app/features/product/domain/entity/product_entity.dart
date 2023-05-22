@@ -18,7 +18,8 @@ class ProductEntity {
       name: 'LEIFARNE Chair, beige',
       imgList: [
         ImageEntity(
-          src: 'https://product.hstatic.net/200000311493/product/set_goi_xa_gung_trang_68383b0f8acb45c498206705071e6d2c.jpg',
+          src:
+              'https://product.hstatic.net/200000311493/product/set_goi_xa_gung_trang_68383b0f8acb45c498206705071e6d2c.jpg',
         ),
       ],
       description:
@@ -37,7 +38,7 @@ class ProductEntity {
   final String? type;
   final String? listedPrice;
 
-  String get img => imgList.firstOrNull()
+  String? get img => imgList.firstOrNull?.src;
 }
 
 class ProductVariantEntity {

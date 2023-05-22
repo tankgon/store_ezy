@@ -99,7 +99,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Future<FutureOr<void>> _onUnAuthenticatedEvent(
       UnAuthenticatedEvent event, Emitter<AuthState> emit) async {
     try {
-      if (_userSecureStorage.token.isNotNullOrEmpty()) {
+      if (_userSecureStorage.token.isNotNullOrEmpty) {
         try {
           // await _authRepo.logout();
         } catch (e) {
@@ -135,7 +135,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     getIt<DioModule>().addToken(token);
 
     // SocketIOService.instance.setToken(token: token);
-    if (avatar.isNotNullOrEmpty()) {
+    if (avatar.isNotNullOrEmpty) {
       // await _userRepo.updateUserAvatarStr(
       //   avatarStr: avatar ?? '',
       // );

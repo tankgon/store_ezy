@@ -7,7 +7,8 @@ import 'package:mulstore/app/features/auth/self.dart';
 part 'sign_up_state.dart';
 
 class SignUpCubit extends RequestCubit<SignUpState> {
-  SignUpCubit({required this.authBloc, dynamic? item}) : super(SignUpState(item: item)) {
+  SignUpCubit({required this.authBloc, dynamic? item})
+      : super(SignUpState(item: item)) {
     form = FormGroup({
       ...AuthIdPasswordInput.createControlGroup(
         hasConfirmPassword: true,
@@ -30,7 +31,8 @@ class SignUpCubit extends RequestCubit<SignUpState> {
       emit(state.copyWith(status: ItemDefaultStatus.loading));
       try {
         final id = form.getValue<String>(AuthIdInput.idKey) ?? '';
-        final password = form.getValue<String>(AuthPasswordInput.passwordKey) ?? '';
+        final password =
+            form.getValue<String>(AuthPasswordInput.passwordKey) ?? '';
         if (id.isEmpty || password.isEmpty) {
           throw Exception('Chưa nhập đủ thông tin');
         }
@@ -142,7 +144,7 @@ class SignUpCubit extends RequestCubit<SignUpState> {
       userID: _userID ?? '',
       requestData: authSignUpOTPEntity,
     );
-    if (rs.token.isNotNullOrEmpty()) {
+    if (rs.token.isNotNullOrEmpty) {
       authBloc.add(
         AuthenticatedEvent(
           token: rs.token!,
@@ -166,7 +168,6 @@ class SignUpCubit extends RequestCubit<SignUpState> {
       if (idRs.isPhone) {
         signUpOTPRs = await _authRepo.resendSignUpOTPPhone(
           userID: userID,
-
         );
       } else if (idRs.isEmail) {
         signUpOTPRs = await _authRepo.resendSignUpOTPEmail(

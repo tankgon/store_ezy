@@ -66,7 +66,7 @@ class ProductItemLayout1 extends StatelessWidget {
                   label: LocaleKeys.product_Buy.tr(),
                   onPressed: onAddToCart ?? () {},
                 ),
-              ].filterNotNull(),
+              ].filterNotNullList(),
             ).p12();
           },
         ),

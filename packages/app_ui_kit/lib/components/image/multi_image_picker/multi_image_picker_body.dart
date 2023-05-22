@@ -21,7 +21,7 @@
 //     bool clearOnAdd = true,
 //   }) {
 //     ImageUtils.getMultipleImageFromLibrary(imagePicker).then((rs) {
-//       if (rs.isNullOrEmpty()) return;
+//       if (rs.isNullOrEmpty) return;
 //
 //       if (clearOnAdd) {
 //         form.controls[fileKey]?.value = rs;
@@ -38,7 +38,7 @@
 //       formControlName: fileKey,
 //       builder: (context, control, child) {
 //         final listFile = control.value as List<dynamic>?;
-//         if (listFile.isNullOrEmpty()) return const SizedBox.shrink();
+//         if (listFile.isNullOrEmpty) return const SizedBox.shrink();
 //
 //         // var imageList = listFile.filterAsList(FileUtils.isImage);
 //
@@ -79,7 +79,7 @@
 //
 //   @override
 //   Widget build(BuildContext context) {
-//     if (list.isNullOrEmpty()) return const SizedBox.shrink();
+//     if (list.isNullOrEmpty) return const SizedBox.shrink();
 //
 //     return SizedBox(
 //       height: height,

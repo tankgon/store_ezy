@@ -72,13 +72,8 @@ class $AssetsIconsCommonGen {
   /// File path: assets/icons/common/google.svg
   SvgGenImage get google => const SvgGenImage('assets/icons/common/google.svg');
 
-  /// File path: assets/icons/common/ic_user_default.svg
-  SvgGenImage get icUserDefault =>
-      const SvgGenImage('assets/icons/common/ic_user_default.svg');
-
   /// List of all assets
-  List<SvgGenImage> get values =>
-      [apple, emptyBox, facebook, google, icUserDefault];
+  List<SvgGenImage> get values => [apple, emptyBox, facebook, google];
 }
 
 class $AssetsIconsProductGen {

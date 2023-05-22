@@ -1,6 +1,4 @@
 import 'package:mulstore/all_file/all_file.dart';
-import 'package:mulstore/app/features/distributor/presentation/item/cubit/distributor_item_cubit.dart';
-import 'package:velocity_x/src/flutter/text.dart';
 
 class DistributorItemLayout1 extends StatelessWidget {
   const DistributorItemLayout1({
@@ -37,9 +35,16 @@ class DistributorItemLayout1 extends StatelessWidget {
         ).aspectRatio(1).expand(),
         SizedBox(
           height: (context.textS) * 2.6,
-          child: name.text.caption(context).medium.center.maxLines(2).ellipsis.make().centered(),
+          child: name.text
+              .caption(context)
+              .medium
+              .center
+              .maxLines(2)
+              .ellipsis
+              .make()
+              .centered(),
         ),
-      ].filterNotNull(),
+      ].filterNotNullList(),
     );
   }
 }

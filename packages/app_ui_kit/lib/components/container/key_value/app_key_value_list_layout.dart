@@ -18,7 +18,7 @@ class AppKeyValueListLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (children.isNullOrEmpty()) {
+    if (children.isNullOrEmpty) {
       return const SizedBox.shrink();
     }
 
@@ -37,12 +37,16 @@ class AppKeyValueListLayout extends StatelessWidget {
       if (i == (children.length - 2)) {
         if (showLastSeparator) {
           listPair.add(
-            separatorBuilder != null ? separatorBuilder!(context, i) : const SizedBox.shrink(),
+            separatorBuilder != null
+                ? separatorBuilder!(context, i)
+                : const SizedBox.shrink(),
           );
         }
       } else {
         listPair.add(
-          separatorBuilder != null ? separatorBuilder!(context, i) : const SizedBox.shrink(),
+          separatorBuilder != null
+              ? separatorBuilder!(context, i)
+              : const SizedBox.shrink(),
         );
       }
     }
@@ -76,7 +80,7 @@ class AppKeyValueListLayoutBuilder<K, V> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (children.isNullOrEmpty()) {
+    if (children.isNullOrEmpty) {
       return const SizedBox.shrink();
     }
 
@@ -113,7 +117,7 @@ class AppKeyValueListLayoutBuilderIndex<K, V> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (children.isNullOrEmpty()) {
+    if (children.isNullOrEmpty) {
       return const SizedBox.shrink();
     }
 

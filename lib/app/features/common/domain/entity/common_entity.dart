@@ -1,5 +1,7 @@
 import 'package:mulstore/all_file/all_file.dart';
 
+part 'common_entity.g.dart';
+
 @JsonSerializable()
 class ImageEntity {
   final int? id;

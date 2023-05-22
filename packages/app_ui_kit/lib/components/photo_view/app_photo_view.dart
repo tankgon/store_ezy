@@ -1,7 +1,6 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 import 'package:app_ui_kit/app_ui_kit.dart';
 import 'package:app_ui_kit/components/skeleton/app_Shimmer.dart';
-import 'package:scroll_to_index/scroll_to_index.dart';
 
 part 'app_photo_view_controller.dart';
 
@@ -19,13 +18,14 @@ class AppPhotoView<T> extends StatelessWidget {
 
     return AspectRatio(
       aspectRatio: photoController!.imageRatio,
-      child: photoController!.listCarousel.isNullOrEmpty()
+      child: photoController!.listCarousel.isNullOrEmpty
           ? const AppShimmer()
           : PageView.builder(
               controller: photoController!.controller,
               physics: const PageScrollPhysics(),
               onPageChanged: (value) {
-                if (photoController!.isOnSliding == false && photoController!.curIndexLD.value != value) {
+                if (photoController!.isOnSliding == false &&
+                    photoController!.curIndexLD.value != value) {
                   photoController!.curIndexLD.value = value;
                 }
               },
@@ -42,4 +42,3 @@ class AppPhotoView<T> extends StatelessWidget {
     );
   }
 }
-

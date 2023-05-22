@@ -17,7 +17,10 @@ extension MapExtend<K, V> on Map<K, V>? {
       return [];
     }
 
-    return this?.entries.map<T>((entry) => mapFunc(entry.key, entry.value)).toList();
+    return this
+        ?.entries
+        .map<T>((entry) => mapFunc(entry.key, entry.value))
+        .toList();
   }
 
   Map<K, V> removeWhereClone(bool Function(K key, V value) condition) {
@@ -32,7 +35,8 @@ extension MapExtend<K, V> on Map<K, V>? {
     return temp;
   }
 
-  Map<K, V> sortClone(int Function(MapEntry<K, V> a, MapEntry<K, V> b) compare) {
+  Map<K, V> sortClone(
+      int Function(MapEntry<K, V> a, MapEntry<K, V> b) compare) {
     return Map.fromEntries(this!.entries.toList()..sort(compare));
   }
 
@@ -65,7 +69,7 @@ extension ListExtend<T> on List<T>? {
   }
 
   Iterable<T> withoutLast() {
-    if (isNullOrEmpty()) return [];
+    if (isNullOrEmpty) return [];
 
     return this!.sublist(0, this!.length - 1);
   }
@@ -81,7 +85,8 @@ extension IterableBasics<E> on Iterable<E>? {
   // ignore: use_function_type_syntax_for_parameters
   List<T> mapAsList<T>(T f(E item)) => this?.map(f).toList() ?? [];
 
-  List<dynamic> expandAsList<T>(Iterable<T> Function(E element) toElements) => this?.expand(toElements).toList() ?? [];
+  List<dynamic> expandAsList<T>(Iterable<T> Function(E element) toElements) =>
+      this?.expand(toElements).toList() ?? [];
 
   Map<K, E> toMap<K>(K Function(E item) getKey) {
     var map = <K, E>{};
@@ -91,20 +96,20 @@ extension IterableBasics<E> on Iterable<E>? {
     return map;
   }
 
-  bool isNullOrEmpty() {
+  bool get isNullOrEmpty {
     if (this == null || this?.length == 0) return true;
     return false;
   }
 
-  bool isNotNullOrEmpty() {
-    return !isNullOrEmpty();
+  bool get isNotNullOrEmpty {
+    return !isNullOrEmpty;
   }
 
   Iterable<E> filter(bool Function(E item) conditionMethod) {
     return this?.where(conditionMethod) ?? [];
   }
 
-  List<T> filterNotNull<T>() {
+  List<T> filterNotNullList<T>() {
     return this
             ?.where(
               (element) => element != null,
@@ -115,7 +120,7 @@ extension IterableBasics<E> on Iterable<E>? {
   }
 
   E? find(bool Function(E item) conditionMethod) {
-    return filterAsList(conditionMethod).firstOrNull();
+    return filterAsList(conditionMethod).firstOrNull;
   }
 
   List<E> filterAsList(bool Function(E item) conditionMethod) {
@@ -129,7 +134,7 @@ extension IterableBasics<E> on Iterable<E>? {
   }
 
   String? joinWithoutNullEmpty([String separator = ""]) {
-    final list = filterAsList((item) => item.isNotNullOrEmpty());
+    final list = filterAsList((item) => item.isNotNullOrEmpty);
     if (list.isEmpty) return null;
     return list.join(separator);
   }
@@ -140,7 +145,7 @@ extension IterableBasics<E> on Iterable<E>? {
 
   List<E> filterAsListIndex(bool Function(E item, int index) conditionMethod) {
     var i = 0;
-    if (isNullOrEmpty()) {
+    if (isNullOrEmpty) {
       return [];
     }
     return filter((e) => conditionMethod(e, i++)).toList();
@@ -159,7 +164,7 @@ extension IterableBasics<E> on Iterable<E>? {
   }
 
   // use "Nill" to avoid conflict name
-  E? firstOrNull() {
+  E? get firstOrNull {
     if (this?.length == 0) return null;
     return firstOrElse(() => null as E);
   }
@@ -181,7 +186,7 @@ extension IterableBasics<E> on Iterable<E>? {
 
   Iterable<T>? mapIndexed<T>(T Function(E e, int i) f) {
     var i = 0;
-    if (isNullOrEmpty()) {
+    if (isNullOrEmpty) {
       return null;
     }
     return this!.map((e) => f(e, i++));
@@ -189,7 +194,7 @@ extension IterableBasics<E> on Iterable<E>? {
 
   void forEachIndexed<T>(T Function(E e, int i) f) {
     var i = 0;
-    if (isNullOrEmpty()) {
+    if (isNullOrEmpty) {
       return;
     }
     return this!.forEach((e) => f(e, i++));

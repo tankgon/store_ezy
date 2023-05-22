@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_this
 
 import 'package:app_utils/data/collection_extend.dart';
+import 'package:dartx/dartx.dart';
 import 'package:easy_mask/easy_mask.dart';
 import 'package:intl/intl.dart';
 
@@ -26,7 +27,7 @@ extension IterableExt<T> on Iterable<T> {
 extension DataExtendNum on num? {
   bool get toBoolean => this == null ? false : this == 1;
 
-  bool isNullOrEmpty() {
+  bool get isNullOrEmpty {
     return this == null;
   }
 
@@ -35,7 +36,7 @@ extension DataExtendNum on num? {
   }
 
   String toCountStr() {
-    return this.isNullOrEmpty() ? '0' : (this! > 99 ? '99+' : this.toString());
+    return this.isNullOrEmpty ? '0' : (this! > 99 ? '99+' : this.toString());
   }
 
   String? toStringHideZero() =>
@@ -93,8 +94,8 @@ extension DataExtendObjectNullAble on Object? {
   num get toNumWithZero =>
       (this is num) ? (this as num) : num.tryParse(this.toString()) ?? 0;
 
-  bool isNotNullOrEmpty() =>
-      (this is String) ? (this as String).isNotNullOrEmpty() : this != null;
+  bool get isNotNullOrEmpty =>
+      (this is String) ? (this as String).isNotNullOrEmpty : this != null;
 }
 
 extension DataExtendStringNullAble on String? {
@@ -120,7 +121,7 @@ extension DataExtendStringNullAble on String? {
       this == null ? null : '$this ${'invalidFill'}';
 
   List<String>? getStrFromEnum<E extends Enum>(List<E> values) {
-    return this.isNullOrEmpty()
+    return this.isNullOrEmpty
         ? null
         : this
             ?.split(',')
@@ -130,7 +131,7 @@ extension DataExtendStringNullAble on String? {
   }
 
   List<String>? getStrFromEnumTr<E extends Enum>(List<E> values) {
-    return this.isNullOrEmpty()
+    return this.isNullOrEmpty
         ? null
         : this
             ?.split(',')
@@ -149,7 +150,7 @@ extension DataExtendStringNullAble on String? {
   bool get isEmptyOrNull => this == null || this!.isEmpty;
 
   String? capitalizeOnly() {
-    if (this.isNullOrEmpty()) return null;
+    if (this.isNullOrEmpty) return null;
     return this
         ?.split(RegExp(r"\n"))
         .map((e) => e.capitalizeFirstOnly())
@@ -160,12 +161,12 @@ extension DataExtendStringNullAble on String? {
   }
 
   String? capitalizeFirstOnly() {
-    if (this.isNullOrEmpty()) return null;
+    if (this.isNullOrEmpty) return null;
     return this![0].toUpperCase() + this!.substring(1);
   }
 
   String? unsigned() {
-    if (this.isNullOrEmpty()) return this;
+    if (this.isNullOrEmpty) return this;
 
     var result = this;
     for (var i = 0; i < _vietnamese.length; ++i) {
@@ -180,7 +181,7 @@ extension DataExtendStringNullAble on String? {
 
   String? stringValidator() => this.isNullOrEmpty ? 'inputErrorMsg' : null;
 
-  String get toPhoneFormattedStr => this.isNullOrEmpty()
+  String get toPhoneFormattedStr => this.isNullOrEmpty
       ? ''
       : (MaskTemplate.phoneMask.getMaskedString(this ?? ''));
 

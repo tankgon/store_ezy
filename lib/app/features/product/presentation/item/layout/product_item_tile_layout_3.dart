@@ -78,7 +78,7 @@ class ProductItemTileLayout3 extends StatelessWidget {
             args.action,
           ].withDivider(Gaps.hGap8),
         ),
-      ].filterNotNull(),
+      ].filterNotNullList(),
     );
   }
 }

@@ -8,22 +8,26 @@ extension DateExtend on DateTime {
   }
 
   String toSimpleDateLocale() {
-    return TimeService().dateToStrLocale(this, format: TimeService().formatSimpleDate);
+    return TimeService()
+        .dateToStrLocale(this, format: TimeService().formatSimpleDate);
   }
 
   String toSimpleTimeLocale() {
-    return TimeService().dateToStrLocale(this, format: TimeService().formatSimpleHour);
+    return TimeService()
+        .dateToStrLocale(this, format: TimeService().formatSimpleHour);
   }
 
   String toSimpleDateTimeLocale() {
-    return TimeService().dateToStrLocale(this, format: TimeService().formatUserDateTimeFull);
+    return TimeService()
+        .dateToStrLocale(this, format: TimeService().formatUserDateTimeFull);
   }
 }
 
 extension DateNullExtend on DateTime? {
   String? toSimpleDateLocale() {
     if (this == null) return null;
-    return TimeService().dateToStrLocale(this!, format: TimeService().formatSimpleDate);
+    return TimeService()
+        .dateToStrLocale(this!, format: TimeService().formatSimpleDate);
   }
 
   bool? isSameDate(DateTime? date) {
@@ -74,55 +78,61 @@ extension DateNullExtend on DateTime? {
 
 extension TimeString on String? {
   String? toSimpleMonthYear() {
-    if (isNullOrEmpty()) return null;
-    return TimeService().dateStrFormatLocale(this, format: TimeService().formatSimpleMonthYear);
+    if (isNullOrEmpty) return null;
+    return TimeService()
+        .dateStrFormatLocale(this, format: TimeService().formatSimpleMonthYear);
   }
 
   String? toDateStrFormat(String format) {
-    if (isNullOrEmpty()) return null;
+    if (isNullOrEmpty) return null;
     return TimeService().dateStrFormatLocale(this, format: format);
   }
 
   String? toSimpleMonthDateLocale() {
-    if (isNullOrEmpty()) return null;
-    return TimeService().dateStrFormatLocale(this, format: TimeService().formatSimpleMonthDate);
+    if (isNullOrEmpty) return null;
+    return TimeService()
+        .dateStrFormatLocale(this, format: TimeService().formatSimpleMonthDate);
   }
 
   String? toSimpleDateLocale() {
-    if (isNullOrEmpty()) return null;
-    return TimeService().dateStrFormatLocale(this, format: TimeService().formatSimpleDate);
+    if (isNullOrEmpty) return null;
+    return TimeService()
+        .dateStrFormatLocale(this, format: TimeService().formatSimpleDate);
   }
 
   String? toSimpleDateTimeLocale() {
-    if (isNullOrEmpty()) return null;
-    return TimeService().dateStrFormatLocale(this, format: TimeService().formatUserDateTimeFull);
+    if (isNullOrEmpty) return null;
+    return TimeService().dateStrFormatLocale(this,
+        format: TimeService().formatUserDateTimeFull);
   }
 
   String? toSimpleDate() {
-    if (isNullOrEmpty()) return null;
-    return TimeService().dateStrFormatLocale(this, format: TimeService().formatSimpleDate);
+    if (isNullOrEmpty) return null;
+    return TimeService()
+        .dateStrFormatLocale(this, format: TimeService().formatSimpleDate);
   }
 
   DateTime? toDateLocale() {
-    if (isNullOrEmpty()) return null;
+    if (isNullOrEmpty) return null;
     return TimeService().strUtcToDateLocale(this);
   }
 
   DateTime? toDate() {
-    if (isNullOrEmpty()) return null;
+    if (isNullOrEmpty) return null;
     return TimeService().strUtcToDate(this);
   }
 
   String? toTimeAgo() {
-    if (isNullOrEmpty()) return null;
+    if (isNullOrEmpty) return null;
     return TimeService().getTimeAgo(this);
   }
 
   DateFormat toDateFormat() {
-    return DateFormat(isNullOrEmpty() ? TimeService().formatSimpleDate : this);
+    return DateFormat(isNullOrEmpty ? TimeService().formatSimpleDate : this);
   }
 
   DateFormat toDateFormatLocale(BuildContext context) {
-    return DateFormat(isNullOrEmpty() ? TimeService().formatSimpleDate : this, Localizations.localeOf(context).languageCode);
+    return DateFormat(isNullOrEmpty ? TimeService().formatSimpleDate : this,
+        Localizations.localeOf(context).languageCode);
   }
 }

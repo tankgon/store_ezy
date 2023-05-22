@@ -23,7 +23,7 @@ class ProductPriceWithType extends StatelessWidget {
           price: price,
           style: priceStyle,
         ),
-        if (type.isNotNullOrEmpty())
+        if (type.isNotNullOrEmpty)
           ' /${type ?? ''}'
               .textAuto
               .textStyle(
@@ -33,7 +33,7 @@ class ProductPriceWithType extends StatelessWidget {
                     ),
               )
               .make(),
-      ].filterNotNull(),
+      ].filterNotNullList(),
     );
   }
 }

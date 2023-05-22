@@ -8,20 +8,25 @@ extension PriceDataExtendNum on num? {
 
   String? get toShortPrice => PriceService().strToPriceStr(this?.toString());
 
-  String? get toPriceTwoFraction => PriceService().strToPriceStr(this?.toString(), numberFormat: PriceService().twoFractionPriceFormat);
+  String? get toPriceTwoFraction =>
+      PriceService().strToPriceStr(this?.toString(),
+          numberFormat: PriceService().twoFractionPriceFormat);
 
-  String? get billionToFullPrice => this == null ? null : (this! * 1000000000).toString();
+  String? get billionToFullPrice =>
+      this == null ? null : (this! * 1000000000).toString();
 
   String? get toPrice => PriceService().strToFullFormattedPriceStr(toString());
 }
 
 extension PriceDataExtendString on String? {
   String? toThousandSeparator() {
-    return isNotNullOrEmpty() ? '${PriceService().strToNumberFormat(this)}' : null;
+    return isNotNullOrEmpty
+        ? '${PriceService().strToNumberFormat(this)}'
+        : null;
   }
 
   String? removeThousandSeparator() {
-    return isNotNullOrEmpty() ? '${PriceService().strToNumberParse(this)}' : null;
+    return isNotNullOrEmpty ? '${PriceService().strToNumberParse(this)}' : null;
   }
 
   String? get toShortPrice => PriceService().strToPriceStr(this);
@@ -30,7 +35,8 @@ extension PriceDataExtendString on String? {
 
   String? get toPrice => PriceService().strToFullFormattedPriceStr(this);
 
-  String? get toPriceTwoFraction => PriceService().strToPriceStr(this, numberFormat: PriceService().twoFractionPriceFormat);
+  String? get toPriceTwoFraction => PriceService()
+      .strToPriceStr(this, numberFormat: PriceService().twoFractionPriceFormat);
 }
 
 class PriceService {
@@ -54,7 +60,8 @@ class PriceService {
     NumberFormat? numberFormat,
   }) {
     this.priceFormat = priceFormat ?? NumberFormat('###.#########', 'vi_VN');
-    this.twoFractionPriceFormat = twoFractionPriceFormat ?? NumberFormat('###.##', 'vi_VN');
+    this.twoFractionPriceFormat =
+        twoFractionPriceFormat ?? NumberFormat('###.##', 'vi_VN');
     this.fullWithUnitFormatted = fullWithUnitFormatted ??
         NumberFormat.currency(
           locale: 'vi_VN',
@@ -64,9 +71,8 @@ class PriceService {
     this.numberFormat = numberFormat ?? NumberFormat.decimalPattern('vi_VN');
   }
 
-
   String? strToNumberFormat(String? str) {
-    if (str.isNullOrEmpty()) return null;
+    if (str.isNullOrEmpty) return null;
     try {
       var parse = num.tryParse(str ?? '');
       if (parse == null) {
@@ -80,7 +86,7 @@ class PriceService {
   }
 
   num? strToNumberParse(String? str) {
-    if (str.isNullOrEmpty()) return null;
+    if (str.isNullOrEmpty) return null;
     try {
       return numberFormat.parse(str ?? '0');
     } catch (e) {
@@ -90,7 +96,7 @@ class PriceService {
   }
 
   String? strToFullFormattedPriceStr(String? priceStr) {
-    if (priceStr.isNullOrEmpty()) return null;
+    if (priceStr.isNullOrEmpty) return null;
     try {
       return fullWithUnitFormatted.format(num.tryParse(priceStr ?? ''));
     } catch (e) {
@@ -100,7 +106,7 @@ class PriceService {
   }
 
   String? strToPriceStr(String? priceStr, {NumberFormat? numberFormat}) {
-    if (priceStr.isNullOrEmpty()) return null;
+    if (priceStr.isNullOrEmpty) return null;
 
     try {
       final format = numberFormat ?? priceFormat;

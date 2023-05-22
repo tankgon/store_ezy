@@ -96,7 +96,7 @@
 //           if (notificationData is Map) {
 //             data = notificationData;
 //           } else if (notificationData is String) {
-//             final rs = notificationData.isNotNullOrEmpty() == true ? json.decode(notificationData) : null;
+//             final rs = notificationData.isNotNullOrEmpty == true ? json.decode(notificationData) : null;
 //             data = castOrNull<Map?>(rs);
 //           }
 //         }
@@ -135,7 +135,7 @@
 //         if (notificationData is Map) {
 //           data = notificationData;
 //         } else if (notificationData is String) {
-//           final rs = notificationData.isNotNullOrEmpty() == true ? json.decode(notificationData) : null;
+//           final rs = notificationData.isNotNullOrEmpty == true ? json.decode(notificationData) : null;
 //           data = castOrNull<Map?>(rs);
 //         }
 //       }
