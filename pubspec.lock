@@ -60,28 +60,28 @@ packages:
   app_ui:
     dependency: "direct main"
     description:
-      path: "packages/app_ui"
+      path: "external_packages/app_ui"
       relative: true
     source: path
     version: "0.0.1"
   app_ui_kit:
     dependency: "direct main"
     description:
-      path: "packages/app_ui_kit"
+      path: "external_packages/app_ui_kit"
       relative: true
     source: path
     version: "0.0.1"
   app_utils:
     dependency: "direct main"
     description:
-      path: "packages/app_utils"
+      path: "external_packages/app_utils"
       relative: true
     source: path
     version: "0.0.1"
   app_values:
     dependency: "direct main"
     description:
-      path: "packages/app_values"
+      path: "external_packages/app_values"
       relative: true
     source: path
     version: "0.0.1"
