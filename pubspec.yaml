@@ -166,13 +166,13 @@ dependencies:
 
   #package internal import
   app_ui:
-    path: ./external_packages/app_ui
+    path: ./packages/app_ui
   app_ui_kit:
-    path: ./external_packages/app_ui_kit
+    path: ./packages/app_ui_kit
   app_utils:
-    path: ./external_packages/app_utils
+    path: ./packages/app_utils
   app_values:
-    path: ./external_packages/app_values
+    path: ./packages/app_values
 
 dependency_overrides:
 #  webview_flutter: ">=3.0.4"
