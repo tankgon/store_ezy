@@ -8,7 +8,5 @@ abstract class ProductApiWP {
   factory ProductApiWP(Dio dio) = _ProductApiWP;
 
   @GET('/wp-json/wc/v3/products/{id}')
-  Future<ProductWP?> getProductDetail({
-    @Path('id') String id,
-  });
+  Future<ProductWP?> getProductDetail(@Path() String id);
 }

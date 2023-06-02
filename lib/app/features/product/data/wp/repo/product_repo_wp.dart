@@ -12,25 +12,27 @@ class ProductRepoWP extends ProductRepo {
   late final ProductApiWP _productApiWP;
 
   @override
-  Future<List<ProductEntity>> getProductList({int? limit, int? offset}) async {
+  Future<List<ProductEntity>> getProductList({
+    int? limit,
+    int? offset,
+    ProductListType? type,
+  }) async {
     return [];
   }
 
   @override
   Future<ProductEntity?> getProductDetail(String id) async {
-    final rs = await _productApiWP.getProductDetail(id: id);
+    final rs = await _productApiWP.getProductDetail(id);
     return rs?.toEntity();
   }
 
   @override
-  Future<List<ProductEntity>> getProductListByCategory(String id,
-      {int? limit, int? offset}) async {
+  Future<List<ProductEntity>> getProductListByCategory(String id, {int? limit, int? offset}) async {
     return [];
   }
 
   @override
-  Future<List<ProductEntity>> getProductListByBrand(String id,
-      {int? limit, int? offset}) async {
+  Future<List<ProductEntity>> getProductListByBrand(String id, {int? limit, int? offset}) async {
     return [];
   }
 }

@@ -19,7 +19,7 @@ class _ProductApiWP implements ProductApiWP {
   String? baseUrl;
 
   @override
-  Future<ProductWP?> getProductDetail({required String id}) async {
+  Future<ProductWP?> getProductDetail(String id) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
