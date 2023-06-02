@@ -1,5 +1,5 @@
 import 'package:mulstore/all_file/all_file.dart';
-import 'package:mulstore/app/features/common/domain/entity/common_entity.dart';
+import 'package:mulstore/app/common/domain/entity/common_entity.dart';
 
 class ProductEntity {
   const ProductEntity({
@@ -10,6 +10,7 @@ class ProductEntity {
     this.price,
     this.type,
     this.listedPrice,
+    this.object,
   });
 
   static ProductEntity demo() {
@@ -37,6 +38,7 @@ class ProductEntity {
   final String? price;
   final String? type;
   final String? listedPrice;
+  final Object? object;
 
   String? get img => imgList.firstOrNull?.src;
 }

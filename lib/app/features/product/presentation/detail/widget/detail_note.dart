@@ -1,5 +1,5 @@
 import 'package:mulstore/all_file/all_file.dart';
-import 'package:mulstore/app/widgets/container/show_more/more_btn.dart';
+import 'package:mulstore/app/common/presentation/widgets/container/show_more/more_btn.dart';
 
 class ProductDetailNote extends StatelessWidget {
   const ProductDetailNote({super.key});
@@ -16,11 +16,10 @@ class ProductDetailNote extends StatelessWidget {
           );
         },
         content:
-        'Làm phẳng, làm mềm và làm mờ các loại sẹo Gel trị sẹo QDerma là sản phẩm có tác dụng giúp làm phẳng, làm mềm và làm mờ các loại sẹo, hỗ trợ hạn chế tình trạng viêm da, đồng thời còn cân bằng độ ẩm trong da, giúp vùng da bị tổn thương chống lại tia UV từ ánh nắng mặt trời.',
+            'Làm phẳng, làm mềm và làm mờ các loại sẹo Gel trị sẹo QDerma là sản phẩm có tác dụng giúp làm phẳng, làm mềm và làm mờ các loại sẹo, hỗ trợ hạn chế tình trạng viêm da, đồng thời còn cân bằng độ ẩm trong da, giúp vùng da bị tổn thương chống lại tia UV từ ánh nắng mặt trời.',
         maxLines: 5,
         textStyle: context.themeText.body,
       ),
     );
   }
 }
-

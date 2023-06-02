@@ -3,8 +3,8 @@ import 'package:mulstore/app/features/product/domain/entity/product_entity.dart'
 import 'package:mulstore/app/features/product/presentation/item/layout/product_item_layout.dart';
 import 'package:mulstore/app/features/product/presentation/item/product_item.dart';
 import 'package:mulstore/app/features/product/presentation/item/product_item_args.dart';
-import 'package:mulstore/app/widgets/app_item_counter/app_item_counter.dart';
-import 'package:mulstore/app/widgets/app_item_counter/app_item_counter_args.dart';
+import 'package:mulstore/app/common/presentation/widgets/app_item_counter/app_item_counter.dart';
+import 'package:mulstore/app/common/presentation/widgets/app_item_counter/app_item_counter_args.dart';
 
 class ShoppingCartItemLayout1 extends StatelessWidget {
   const ShoppingCartItemLayout1({

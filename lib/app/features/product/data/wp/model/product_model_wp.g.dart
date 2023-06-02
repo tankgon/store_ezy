@@ -6,8 +6,7 @@ part of 'product_model_wp.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ProductModelWP _$ProductModelWPFromJson(Map<String, dynamic> json) =>
-    ProductModelWP(
+ProductWP _$ProductWPFromJson(Map<String, dynamic> json) => ProductWP(
       id: json['id'] as int?,
       name: json['name'] as String?,
       slug: json['slug'] as String?,
@@ -53,7 +52,7 @@ ProductModelWP _$ProductModelWPFromJson(Map<String, dynamic> json) =>
       weight: json['weight'] as String?,
       dimensions: json['dimensions'] == null
           ? null
-          : Dimensions.fromJson(json['dimensions'] as Map<String, dynamic>),
+          : DimensionWP.fromJson(json['dimensions'] as Map<String, dynamic>),
       shippingRequired: json['shipping_required'] as bool?,
       shippingTaxable: json['shipping_taxable'] as bool?,
       shippingClass: json['shipping_class'] as String?,
@@ -69,11 +68,11 @@ ProductModelWP _$ProductModelWPFromJson(Map<String, dynamic> json) =>
       parentId: json['parent_id'] as int?,
       purchaseNote: json['purchase_note'] as String?,
       categories: (json['categories'] as List<dynamic>?)
-          ?.map((e) => Categories.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => CategoryWP.fromJson(e as Map<String, dynamic>))
           .toList(),
       tags: json['tags'] as List<dynamic>?,
       images: (json['images'] as List<dynamic>?)
-          ?.map((e) => Images.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ImageWP.fromJson(e as Map<String, dynamic>))
           .toList(),
       attributes: json['attributes'] as List<dynamic>?,
       defaultAttributes: json['default_attributes'] as List<dynamic>?,
@@ -83,11 +82,10 @@ ProductModelWP _$ProductModelWPFromJson(Map<String, dynamic> json) =>
       metaData: json['meta_data'] as List<dynamic>?,
       links: json['_links'] == null
           ? null
-          : Links.fromJson(json['_links'] as Map<String, dynamic>),
+          : LinkWP.fromJson(json['_links'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$ProductModelWPToJson(ProductModelWP instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ProductWPToJson(ProductWP instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'slug': instance.slug,
@@ -156,33 +154,33 @@ Map<String, dynamic> _$ProductModelWPToJson(ProductModelWP instance) =>
       '_links': instance.links,
     };
 
-Dimensions _$DimensionsFromJson(Map<String, dynamic> json) => Dimensions(
+DimensionWP _$DimensionWPFromJson(Map<String, dynamic> json) => DimensionWP(
       length: json['length'] as String?,
       width: json['width'] as String?,
       height: json['height'] as String?,
     );
 
-Map<String, dynamic> _$DimensionsToJson(Dimensions instance) =>
+Map<String, dynamic> _$DimensionWPToJson(DimensionWP instance) =>
     <String, dynamic>{
       'length': instance.length,
       'width': instance.width,
       'height': instance.height,
     };
 
-Categories _$CategoriesFromJson(Map<String, dynamic> json) => Categories(
+CategoryWP _$CategoryWPFromJson(Map<String, dynamic> json) => CategoryWP(
       id: json['id'] as int?,
       name: json['name'] as String?,
       slug: json['slug'] as String?,
     );
 
-Map<String, dynamic> _$CategoriesToJson(Categories instance) =>
+Map<String, dynamic> _$CategoryWPToJson(CategoryWP instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'slug': instance.slug,
     };
 
-Images _$ImagesFromJson(Map<String, dynamic> json) => Images(
+ImageWP _$ImageWPFromJson(Map<String, dynamic> json) => ImageWP(
       id: json['id'] as int?,
       dateCreated: json['date_created'] as String?,
       dateCreatedGmt: json['date_created_gmt'] as String?,
@@ -193,7 +191,7 @@ Images _$ImagesFromJson(Map<String, dynamic> json) => Images(
       alt: json['alt'] as String?,
     );
 
-Map<String, dynamic> _$ImagesToJson(Images instance) => <String, dynamic>{
+Map<String, dynamic> _$ImageWPToJson(ImageWP instance) => <String, dynamic>{
       'id': instance.id,
       'date_created': instance.dateCreated,
       'date_created_gmt': instance.dateCreatedGmt,
@@ -204,33 +202,33 @@ Map<String, dynamic> _$ImagesToJson(Images instance) => <String, dynamic>{
       'alt': instance.alt,
     };
 
-Links _$LinksFromJson(Map<String, dynamic> json) => Links(
+LinkWP _$LinkWPFromJson(Map<String, dynamic> json) => LinkWP(
       self: (json['self'] as List<dynamic>?)
-          ?.map((e) => Self.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => SelfWP.fromJson(e as Map<String, dynamic>))
           .toList(),
       collection: (json['collection'] as List<dynamic>?)
-          ?.map((e) => Collection.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => CollectionWP.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$LinksToJson(Links instance) => <String, dynamic>{
+Map<String, dynamic> _$LinkWPToJson(LinkWP instance) => <String, dynamic>{
       'self': instance.self,
       'collection': instance.collection,
     };
 
-Self _$SelfFromJson(Map<String, dynamic> json) => Self(
+SelfWP _$SelfWPFromJson(Map<String, dynamic> json) => SelfWP(
       href: json['href'] as String?,
     );
 
-Map<String, dynamic> _$SelfToJson(Self instance) => <String, dynamic>{
+Map<String, dynamic> _$SelfWPToJson(SelfWP instance) => <String, dynamic>{
       'href': instance.href,
     };
 
-Collection _$CollectionFromJson(Map<String, dynamic> json) => Collection(
+CollectionWP _$CollectionWPFromJson(Map<String, dynamic> json) => CollectionWP(
       href: json['href'] as String?,
     );
 
-Map<String, dynamic> _$CollectionToJson(Collection instance) =>
+Map<String, dynamic> _$CollectionWPToJson(CollectionWP instance) =>
     <String, dynamic>{
       'href': instance.href,
     };

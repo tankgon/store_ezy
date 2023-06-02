@@ -3,8 +3,8 @@ import 'package:app_ui_kit/components/app/scroll_behavior_default.dart';
 import 'package:flutter/services.dart';
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/auth/self.dart';
-import 'package:mulstore/app/widgets/exception/app_exception_handler.dart';
-import 'package:mulstore/app/widgets/responsive/app_responsive_config.dart';
+import 'package:mulstore/app/common/presentation/widgets/exception/app_exception_handler.dart';
+import 'package:mulstore/app/common/presentation/widgets/responsive/app_responsive_config.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

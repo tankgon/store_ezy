@@ -33,7 +33,7 @@ export 'package:mulstore/generated/locale_keys.g.dart';
 export 'package:mulstore/services/socket_io_service.dart';
 export 'package:package_info_plus/package_info_plus.dart';
 export 'package:reactive_forms/reactive_forms.dart';
-export 'package:retrofit/http.dart' hide Path;
+export 'package:retrofit/http.dart';
 export 'package:velocity_x/velocity_x.dart'
     show
         CenterExtension,

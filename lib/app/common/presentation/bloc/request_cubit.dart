@@ -1,6 +1,6 @@
 import 'package:mulstore/all_file/all_file.dart';
 
-class RequestCubit<T extends RequestState> extends Cubit<T>{
+class RequestCubit<T extends RequestState> extends Cubit<T> {
   RequestCubit(super.initialState);
 }
 

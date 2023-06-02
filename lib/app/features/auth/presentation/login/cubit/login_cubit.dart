@@ -27,13 +27,12 @@ class LoginCubit extends RequestCubit<LoginState> {
   FutureOr<void> loginPassword() async {
     emit(state.copyWith(status: ItemDefaultStatus.loading));
     try {
-
-
       final userName = form.getValue<String>(AuthIdInput.idKey) ?? '';
-      final password = form.getValue<String>(AuthPasswordInput.passwordKey) ?? '';
+      final password =
+          form.getValue<String>(AuthPasswordInput.passwordKey) ?? '';
 
       if (userName.isEmpty || password.isEmpty) {
-        throw Exception('Không nhập đủ thông tin');
+        throw Exception('Không nhập đủ thông tin'.tr());
       }
 
       final idRs = await CheckIdHelper.checkId(userName);
@@ -52,7 +51,7 @@ class LoginCubit extends RequestCubit<LoginState> {
       }
 
       if (rs == null) {
-        throw Exception('Đăng nhập thất bại');
+        throw Exception('Đăng nhập thất bại'.tr());
       }
 
       authBloc.add(

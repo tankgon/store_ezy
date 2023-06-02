@@ -1,9 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:mulstore/app/features/product/domain/entity/product_entity.dart';
 
+part 'product_model_convert.dart';
 part 'product_model_wp.g.dart';
 
 @JsonSerializable()
-class ProductModelWP {
+class ProductWP {
   final int? id;
   final String? name;
   final String? slug;
@@ -73,7 +75,7 @@ class ProductModelWP {
   @JsonKey(name: 'sold_individually')
   final bool? soldIndividually;
   final String? weight;
-  final Dimensions? dimensions;
+  final DimensionWP? dimensions;
   @JsonKey(name: 'shipping_required')
   final bool? shippingRequired;
   @JsonKey(name: 'shipping_taxable')
@@ -98,9 +100,9 @@ class ProductModelWP {
   final int? parentId;
   @JsonKey(name: 'purchase_note')
   final String? purchaseNote;
-  final List<Categories>? categories;
+  final List<CategoryWP>? categories;
   final List<dynamic>? tags;
-  final List<Images>? images;
+  final List<ImageWP>? images;
   final List<dynamic>? attributes;
   @JsonKey(name: 'default_attributes')
   final List<dynamic>? defaultAttributes;
@@ -112,9 +114,9 @@ class ProductModelWP {
   @JsonKey(name: 'meta_data')
   final List<dynamic>? metaData;
   @JsonKey(name: '_links')
-  final Links? links;
+  final LinkWP? links;
 
-  const ProductModelWP({
+  const ProductWP({
     this.id,
     this.name,
     this.slug,
@@ -183,50 +185,50 @@ class ProductModelWP {
     this.links,
   });
 
-  factory ProductModelWP.fromJson(Map<String, dynamic> json) =>
-      _$ProductModelWPFromJson(json);
+  factory ProductWP.fromJson(Map<String, dynamic> json) =>
+      _$ProductWPFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ProductModelWPToJson(this);
+  Map<String, dynamic> toJson() => _$ProductWPToJson(this);
 }
 
 @JsonSerializable()
-class Dimensions {
+class DimensionWP {
   final String? length;
   final String? width;
   final String? height;
 
-  const Dimensions({
+  const DimensionWP({
     this.length,
     this.width,
     this.height,
   });
 
-  factory Dimensions.fromJson(Map<String, dynamic> json) =>
-      _$DimensionsFromJson(json);
+  factory DimensionWP.fromJson(Map<String, dynamic> json) =>
+      _$DimensionWPFromJson(json);
 
-  Map<String, dynamic> toJson() => _$DimensionsToJson(this);
+  Map<String, dynamic> toJson() => _$DimensionWPToJson(this);
 }
 
 @JsonSerializable()
-class Categories {
+class CategoryWP {
   final int? id;
   final String? name;
   final String? slug;
 
-  const Categories({
+  const CategoryWP({
     this.id,
     this.name,
     this.slug,
   });
 
-  factory Categories.fromJson(Map<String, dynamic> json) =>
-      _$CategoriesFromJson(json);
+  factory CategoryWP.fromJson(Map<String, dynamic> json) =>
+      _$CategoryWPFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CategoriesToJson(this);
+  Map<String, dynamic> toJson() => _$CategoryWPToJson(this);
 }
 
 @JsonSerializable()
-class Images {
+class ImageWP {
   final int? id;
   @JsonKey(name: 'date_created')
   final String? dateCreated;
@@ -240,7 +242,7 @@ class Images {
   final String? name;
   final String? alt;
 
-  const Images({
+  const ImageWP({
     this.id,
     this.dateCreated,
     this.dateCreatedGmt,
@@ -251,49 +253,50 @@ class Images {
     this.alt,
   });
 
-  factory Images.fromJson(Map<String, dynamic> json) => _$ImagesFromJson(json);
+  factory ImageWP.fromJson(Map<String, dynamic> json) =>
+      _$ImageWPFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ImagesToJson(this);
+  Map<String, dynamic> toJson() => _$ImageWPToJson(this);
 }
 
 @JsonSerializable()
-class Links {
-  final List<Self>? self;
-  final List<Collection>? collection;
+class LinkWP {
+  final List<SelfWP>? self;
+  final List<CollectionWP>? collection;
 
-  const Links({
+  const LinkWP({
     this.self,
     this.collection,
   });
 
-  factory Links.fromJson(Map<String, dynamic> json) => _$LinksFromJson(json);
+  factory LinkWP.fromJson(Map<String, dynamic> json) => _$LinkWPFromJson(json);
 
-  Map<String, dynamic> toJson() => _$LinksToJson(this);
+  Map<String, dynamic> toJson() => _$LinkWPToJson(this);
 }
 
 @JsonSerializable()
-class Self {
+class SelfWP {
   final String? href;
 
-  const Self({
+  const SelfWP({
     this.href,
   });
 
-  factory Self.fromJson(Map<String, dynamic> json) => _$SelfFromJson(json);
+  factory SelfWP.fromJson(Map<String, dynamic> json) => _$SelfWPFromJson(json);
 
-  Map<String, dynamic> toJson() => _$SelfToJson(this);
+  Map<String, dynamic> toJson() => _$SelfWPToJson(this);
 }
 
 @JsonSerializable()
-class Collection {
+class CollectionWP {
   final String? href;
 
-  const Collection({
+  const CollectionWP({
     this.href,
   });
 
-  factory Collection.fromJson(Map<String, dynamic> json) =>
-      _$CollectionFromJson(json);
+  factory CollectionWP.fromJson(Map<String, dynamic> json) =>
+      _$CollectionWPFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CollectionToJson(this);
+  Map<String, dynamic> toJson() => _$CollectionWPToJson(this);
 }

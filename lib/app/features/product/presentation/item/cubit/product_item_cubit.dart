@@ -5,7 +5,9 @@ import 'package:mulstore/app/features/product/domain/repo/product_repo.dart';
 part 'product_item_state.dart';
 
 class ProductItemCubit extends Cubit<ProductItemState> {
-  ProductItemCubit({required ProductEntity item}) : super(ProductItemState(item: item));
+  ProductItemCubit({
+    required ProductEntity item,
+  }) : super(ProductItemState(item: item));
 
   FutureOr<void> fetchItem() async {
     emit(state.copyWith(status: ItemDefaultStatus.loading));
@@ -14,8 +16,8 @@ class ProductItemCubit extends Cubit<ProductItemState> {
       emit(
         state.copyWith(
           status: ItemDefaultStatus.success,
-          // item: item,
-        )
+          item: item,
+        ),
       );
     } catch (e) {
       log(e.toString(), error: e);
