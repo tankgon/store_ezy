@@ -1,7 +1,7 @@
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/distributor/presentation/list/distributor_grid_ver.dart';
 import 'package:mulstore/app/features/home/presentation/feature_gird/home_feature_gird_page.dart';
-import 'package:mulstore/app/features/product/presentation/list/product_grid_hoz.dart';
+import 'package:mulstore/app/features/product/domain/repo/product_repo.dart';
 import 'package:mulstore/app/features/product/presentation/list/product_list_hoz.dart';
 import 'package:mulstore/app/features/search/presentation/widget/search_bar.dart';
 
@@ -22,7 +22,15 @@ class HomeBody extends StatelessWidget {
               ),
               SectionContainer(
                 title: '${'Sản phẩm HOT'.tr()} 🔥🔥🔥',
-                child: ProductListHoz.demo(),
+                child: ProductListHoz(
+                  fetchListData: (offset, limit) =>
+                      getIt<ProductRepo>().getProductList(
+                    offset: offset,
+                    limit: limit,
+                    type: ProductListType.hot,
+                    showType: ProductListShowType.homePage,
+                  ),
+                ),
               ),
               SectionContainer(
                 title: LocaleKeys.discount_Promotions.tr(),
@@ -30,22 +38,47 @@ class HomeBody extends StatelessWidget {
                   showIndicator: false,
                   imgList: List.generate(5, (index) => index)
                       .map(
-                        (e) => 'https://img.freepik.com/free-vector/sales-banner-template_1176-108.jpg?w=2000',
-                  )
+                        (e) =>
+                            'https://img.freepik.com/free-vector/sales-banner-template_1176-108.jpg?w=2000',
+                      )
                       .toList(),
                 ),
               ),
               SectionContainer(
                 title: '${'Sản phẩm bán chạy'.tr()} 🌟🌟🌟',
-                child: ProductGridHoz.demo(),
+                child: ProductListHoz(
+                  fetchListData: (offset, limit) =>
+                      getIt<ProductRepo>().getProductList(
+                    offset: offset,
+                    limit: limit,
+                    type: ProductListType.bestSeller,
+                    showType: ProductListShowType.homePage,
+                  ),
+                ),
               ),
               SectionContainer(
                 title: 'Giá tốt hôm nay'.tr(),
-                child: ProductGridHoz.demo(),
+                child: ProductListHoz(
+                  fetchListData: (offset, limit) =>
+                      getIt<ProductRepo>().getProductList(
+                    offset: offset,
+                    limit: limit,
+                    type: ProductListType.goodPrice,
+                    showType: ProductListShowType.homePage,
+                  ),
+                ),
               ),
               SectionContainer(
                 title: 'Sản phẩm mới'.tr(),
-                child: ProductGridHoz.demo(),
+                child: ProductListHoz(
+                  fetchListData: (offset, limit) =>
+                      getIt<ProductRepo>().getProductList(
+                    offset: offset,
+                    limit: limit,
+                    type: ProductListType.newest,
+                    showType: ProductListShowType.homePage,
+                  ),
+                ),
               ),
               SectionContainer(
                 title: LocaleKeys.distributor_Popular.tr(),

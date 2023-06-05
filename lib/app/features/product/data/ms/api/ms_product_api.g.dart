@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'product_api_ml.dart';
+part of 'ms_product_api.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'product_api_ml.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _ProductApiML implements ProductApiML {
-  _ProductApiML(
+class _MsProductApi implements MsProductApi {
+  _MsProductApi(
     this._dio, {
     this.baseUrl,
   });
@@ -19,13 +19,20 @@ class _ProductApiML implements ProductApiML {
   String? baseUrl;
 
   @override
-  Future<PagingResultML<ProductML>?> getListHot() async {
+  Future<MsPagingResult<MsProduct>?> getListHot({
+    int? offset,
+    int? limit,
+  }) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'page': offset,
+      r'limit': limit,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>?>(
-        _setStreamType<PagingResultML<ProductML>>(Options(
+        _setStreamType<MsPagingResult<MsProduct>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -39,21 +46,28 @@ class _ProductApiML implements ProductApiML {
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = _result.data == null
         ? null
-        : PagingResultML<ProductML>.fromJson(
+        : MsPagingResult<MsProduct>.fromJson(
             _result.data!,
-            (json) => ProductML.fromJson(json as Map<String, dynamic>),
+            (json) => MsProduct.fromJson(json as Map<String, dynamic>),
           );
     return value;
   }
 
   @override
-  Future<PagingResultML<ProductML>?> getListBestSell() async {
+  Future<MsPagingResult<MsProduct>?> getListBestSell({
+    int? offset,
+    int? limit,
+  }) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'page': offset,
+      r'limit': limit,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>?>(
-        _setStreamType<PagingResultML<ProductML>>(Options(
+        _setStreamType<MsPagingResult<MsProduct>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -67,21 +81,28 @@ class _ProductApiML implements ProductApiML {
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = _result.data == null
         ? null
-        : PagingResultML<ProductML>.fromJson(
+        : MsPagingResult<MsProduct>.fromJson(
             _result.data!,
-            (json) => ProductML.fromJson(json as Map<String, dynamic>),
+            (json) => MsProduct.fromJson(json as Map<String, dynamic>),
           );
     return value;
   }
 
   @override
-  Future<PagingResultML<ProductML>?> getListGoodPrice() async {
+  Future<MsPagingResult<MsProduct>?> getListGoodPrice({
+    int? offset,
+    int? limit,
+  }) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'page': offset,
+      r'limit': limit,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>?>(
-        _setStreamType<PagingResultML<ProductML>>(Options(
+        _setStreamType<MsPagingResult<MsProduct>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -95,21 +116,28 @@ class _ProductApiML implements ProductApiML {
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = _result.data == null
         ? null
-        : PagingResultML<ProductML>.fromJson(
+        : MsPagingResult<MsProduct>.fromJson(
             _result.data!,
-            (json) => ProductML.fromJson(json as Map<String, dynamic>),
+            (json) => MsProduct.fromJson(json as Map<String, dynamic>),
           );
     return value;
   }
 
   @override
-  Future<PagingResultML<ProductML>?> getListNew() async {
+  Future<MsPagingResult<MsProduct>?> getListNew({
+    int? offset,
+    int? limit,
+  }) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'page': offset,
+      r'limit': limit,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>?>(
-        _setStreamType<PagingResultML<ProductML>>(Options(
+        _setStreamType<MsPagingResult<MsProduct>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -123,9 +151,9 @@ class _ProductApiML implements ProductApiML {
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = _result.data == null
         ? null
-        : PagingResultML<ProductML>.fromJson(
+        : MsPagingResult<MsProduct>.fromJson(
             _result.data!,
-            (json) => ProductML.fromJson(json as Map<String, dynamic>),
+            (json) => MsProduct.fromJson(json as Map<String, dynamic>),
           );
     return value;
   }

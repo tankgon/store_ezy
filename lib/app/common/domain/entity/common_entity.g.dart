@@ -7,7 +7,7 @@ part of 'common_entity.dart';
 // **************************************************************************
 
 ImageEntity _$ImageEntityFromJson(Map<String, dynamic> json) => ImageEntity(
-      id: json['id'] as int?,
+      id: json['id'] as String?,
       src: json['src'] as String?,
       name: json['name'] as String?,
       alt: json['alt'] as String?,

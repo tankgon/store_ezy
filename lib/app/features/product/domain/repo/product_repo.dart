@@ -6,6 +6,7 @@ abstract class ProductRepo {
     int? limit,
     int? offset,
     ProductListType? type,
+    ProductListShowType? showType,
   });
 
   Future<ProductEntity?> getProductDetail(String id);
@@ -28,4 +29,9 @@ enum ProductListType {
   newest,
   bestSeller,
   goodPrice,
+}
+
+enum ProductListShowType {
+  all,
+  homePage,
 }

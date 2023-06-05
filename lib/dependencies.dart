@@ -1,10 +1,15 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/common/data/ms/api/ms_app_setting_api.dart';
+import 'package:mulstore/app/common/data/ms/repo/ms_app_setting_repo.dart';
 import 'package:mulstore/app/features/auth/data/mulstore/api/auth_api_ms.dart';
 import 'package:mulstore/app/features/auth/data/mulstore/auth_repo_ms.dart';
 import 'package:mulstore/app/features/message/data/repo/message_repo_impl.dart';
 import 'package:mulstore/app/features/message/self.dart';
+import 'package:mulstore/app/features/product/data/ms/api/ms_product_api.dart';
+import 'package:mulstore/app/features/product/data/ms/repo/ms_product_repo.dart';
+import 'package:mulstore/app/features/product/domain/repo/product_repo.dart';
 import 'package:mulstore/app/features/user/data/mulstore/api/user_api_ms.dart';
 import 'package:mulstore/app/features/user/data/mulstore/user_repo_ms.dart';
 import 'package:mulstore/app/features/user/domain/repo/user_repo.dart';
@@ -92,10 +97,14 @@ void _initDataMSService() {
     // API
     ..registerLazySingleton<UserApiMS>(() => UserApiMS(dio))
     ..registerLazySingleton<AuthApiMS>(() => AuthApiMS(dio))
+    ..registerLazySingleton<MsProductApi>(() => MsProductApi(dio))
+    ..registerLazySingleton<MsAppSettingApi>(() => MsAppSettingApi(dio))
 
     // Repo
+    ..registerLazySingleton<MsAppSettingRepo>(MsAppSettingRepo.new)
     ..registerLazySingleton<UserRepo>(UserRepoMS.new)
     ..registerLazySingleton<AuthRepo>(AuthRepoMS.new)
+    ..registerLazySingleton<ProductRepo>(MsProductRepo.new)
     ..registerLazySingleton<MessageRepo>(MessageRepoImpl.new);
 }
 

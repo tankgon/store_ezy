@@ -16,6 +16,7 @@ class ProductRepoWP extends ProductRepo {
     int? limit,
     int? offset,
     ProductListType? type,
+    ProductListShowType? showType,
   }) async {
     return [];
   }
@@ -27,12 +28,14 @@ class ProductRepoWP extends ProductRepo {
   }
 
   @override
-  Future<List<ProductEntity>> getProductListByCategory(String id, {int? limit, int? offset}) async {
+  Future<List<ProductEntity>> getProductListByCategory(String id,
+      {int? limit, int? offset}) async {
     return [];
   }
 
   @override
-  Future<List<ProductEntity>> getProductListByBrand(String id, {int? limit, int? offset}) async {
+  Future<List<ProductEntity>> getProductListByBrand(String id,
+      {int? limit, int? offset}) async {
     return [];
   }
 }

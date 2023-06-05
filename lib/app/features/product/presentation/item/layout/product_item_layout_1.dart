@@ -39,7 +39,8 @@ class ProductItemLayout1 extends StatelessWidget {
               children: [
                 AppImg(
                   product.img,
-                ).aspectRatio(1),
+                ).cornerRadius(Dimens.rad_XS).aspectRatio(1),
+                Gaps.vGap8,
                 product.name?.text
                     .textStyle(textStyle)
                     .ellipsis

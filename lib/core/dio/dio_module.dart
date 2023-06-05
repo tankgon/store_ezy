@@ -27,7 +27,8 @@ class DioModule {
       sendTimeout: const Duration(seconds: 12),
     );
     // Get Data for mobile on server
-    options.headers["device"] = F.DEVICE_TYPE;
+    options.headers['device'] = F.DEVICE_TYPE;
+    options.headers['languageCode'] = 'vi';
 
     _dio = Dio(options);
 
@@ -75,14 +76,14 @@ class DioModule {
     if (token == null) return;
     log('DioModule.addToken => $token');
 
-    dio.options.headers["Authorization"] = 'Bearer $token';
-    dio.options.headers["token"] = token;
+    dio.options.headers['Authorization'] = 'Bearer $token';
+    dio.options.headers['token'] = token;
   }
 
   void removeToken() {
     log('DioModule.removeToken =>');
-    dio.options.headers["Authorization"] = null;
-    dio.options.headers["token"] = null;
+    dio.options.headers['Authorization'] = null;
+    dio.options.headers['token'] = null;
   }
 
   @override

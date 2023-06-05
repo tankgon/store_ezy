@@ -1,19 +1,19 @@
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/product/domain/entity/product_entity.dart';
 
-part 'product_model_ml.g.dart';
-part 'product_ml_convert.dart';
+part 'ms_product_convert.dart';
+part 'ms_product_model.g.dart';
 
 @JsonSerializable()
-class ProductML {
+class MsProduct {
   final String? productID;
   final String? localizedProductID;
   final String? productName;
   final String? productDescription;
   final String? price;
-  final List<dynamic>? medias;
+  final List<MsMedia>? medias;
 
-  const ProductML({
+  const MsProduct({
     this.productID,
     this.localizedProductID,
     this.productName,
@@ -22,8 +22,8 @@ class ProductML {
     this.medias,
   });
 
-  factory ProductML.fromJson(Map<String, dynamic> json) =>
-      _$ProductMLFromJson(json);
+  factory MsProduct.fromJson(Map<String, dynamic> json) =>
+      _$MsProductFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ProductMLToJson(this);
+  Map<String, dynamic> toJson() => _$MsProductToJson(this);
 }

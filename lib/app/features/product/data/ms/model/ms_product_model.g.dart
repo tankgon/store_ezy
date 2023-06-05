@@ -1,21 +1,23 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'product_model_ml.dart';
+part of 'ms_product_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-ProductML _$ProductMLFromJson(Map<String, dynamic> json) => ProductML(
+MsProduct _$MsProductFromJson(Map<String, dynamic> json) => MsProduct(
       productID: json['productID'] as String?,
       localizedProductID: json['localizedProductID'] as String?,
       productName: json['productName'] as String?,
       productDescription: json['productDescription'] as String?,
       price: json['price'] as String?,
-      medias: json['medias'] as List<dynamic>?,
+      medias: (json['medias'] as List<dynamic>?)
+          ?.map((e) => MsMedia.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
-Map<String, dynamic> _$ProductMLToJson(ProductML instance) => <String, dynamic>{
+Map<String, dynamic> _$MsProductToJson(MsProduct instance) => <String, dynamic>{
       'productID': instance.productID,
       'localizedProductID': instance.localizedProductID,
       'productName': instance.productName,

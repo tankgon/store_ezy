@@ -4,7 +4,7 @@ part 'common_entity.g.dart';
 
 @JsonSerializable()
 class ImageEntity {
-  final int? id;
+  final String? id;
   final String? src;
   final String? name;
   final String? alt;

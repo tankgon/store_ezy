@@ -1,6 +1,6 @@
-part of 'product_model_ml.dart';
+part of 'ms_product_model.dart';
 
-extension ProductWPMapper on ProductML {
+extension ProductWPMapper on MsProduct {
   ProductEntity toEntity() {
     return ProductEntity(
       id: productID.toString(),
@@ -10,6 +10,7 @@ extension ProductWPMapper on ProductML {
       type: 'product',
       listedPrice: price,
       object: this,
+      imgList: medias?.map((item) => item.toEntity()).toList(),
     );
   }
 }
