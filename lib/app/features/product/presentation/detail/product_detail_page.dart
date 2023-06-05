@@ -15,7 +15,7 @@ class ProductDetailPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => ProductDetailCubit(
         item: product,
-      )..fetchItem(),
+      ),
       child: Builder(builder: (context) {
         return BlocListener<ProductDetailCubit, ProductDetailState>(
           listener: _onStateChanged,

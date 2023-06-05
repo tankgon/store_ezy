@@ -1,16 +1,31 @@
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/common/domain/entity/common_entity.dart';
+import 'package:mulstore/app/features/product/domain/entity/category_entity.dart';
 
 class ProductEntity {
   const ProductEntity({
     this.id = '',
+    this.slug,
+    this.sku,
     this.imgList,
     this.name,
     this.description,
+    this.shortDescription,
     this.price,
     this.type,
+    this.status,
     this.listedPrice,
     this.object,
+    this.categories,
+    this.regularPrice,
+    this.salePrice,
+    this.priceHtml,
+    this.onSale,
+    this.purchasable,
+    this.totalSales,
+    this.reviewsAllowed,
+    this.averageRating,
+    this.ratingCount,
   });
 
   static ProductEntity demo() {
@@ -32,13 +47,31 @@ class ProductEntity {
   }
 
   final String id;
+  final String? slug;
+  final String? sku;
+
   final List<ImageEntity>? imgList;
   final String? name;
   final String? description;
+  final String? shortDescription;
   final String? price;
   final String? type;
+  final String? status;
   final String? listedPrice;
   final Object? object;
+  final List<ProductCategoryEntity>? categories;
+
+  final String? regularPrice;
+  final String? salePrice;
+  final String? priceHtml;
+
+  final bool? onSale;
+  final bool? purchasable;
+  final int? totalSales;
+
+  final bool? reviewsAllowed;
+  final String? averageRating;
+  final int? ratingCount;
 
   String? get img => imgList.firstOrNull?.src;
 }

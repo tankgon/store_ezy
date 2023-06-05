@@ -25,7 +25,7 @@ class _MsProductApi implements MsProductApi {
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'page': offset,
+      r'offset': offset,
       r'limit': limit,
     };
     queryParameters.removeWhere((k, v) => v == null);
@@ -60,7 +60,7 @@ class _MsProductApi implements MsProductApi {
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'page': offset,
+      r'offset': offset,
       r'limit': limit,
     };
     queryParameters.removeWhere((k, v) => v == null);
@@ -95,7 +95,7 @@ class _MsProductApi implements MsProductApi {
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'page': offset,
+      r'offset': offset,
       r'limit': limit,
     };
     queryParameters.removeWhere((k, v) => v == null);
@@ -130,7 +130,7 @@ class _MsProductApi implements MsProductApi {
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'page': offset,
+      r'offset': offset,
       r'limit': limit,
     };
     queryParameters.removeWhere((k, v) => v == null);
@@ -155,6 +155,31 @@ class _MsProductApi implements MsProductApi {
             _result.data!,
             (json) => MsProduct.fromJson(json as Map<String, dynamic>),
           );
+    return value;
+  }
+
+  @override
+  Future<MsProduct?> getProductDetail({String? productID}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'productID': productID};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>?>(_setStreamType<MsProduct>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/mulstore/product/get-detail',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value =
+        _result.data == null ? null : MsProduct.fromJson(_result.data!);
     return value;
   }
 

@@ -9,25 +9,30 @@ abstract class MsProductApi {
 
   @GET('/api/mulstore/product/get-list-hot')
   Future<MsPagingResult<MsProduct>?> getListHot({
-    @Query('page') int? offset,
+    @Query('offset') int? offset,
     @Query('limit') int? limit,
   });
 
   @GET('/api/mulstore/product/get-list-best-seller')
   Future<MsPagingResult<MsProduct>?> getListBestSell({
-    @Query('page') int? offset,
+    @Query('offset') int? offset,
     @Query('limit') int? limit,
   });
 
   @GET('/api/mulstore/product/get-list-good-price-today')
   Future<MsPagingResult<MsProduct>?> getListGoodPrice({
-    @Query('page') int? offset,
+    @Query('offset') int? offset,
     @Query('limit') int? limit,
   });
 
   @GET('/api/mulstore/product/get-list-new')
   Future<MsPagingResult<MsProduct>?> getListNew({
-    @Query('page') int? offset,
+    @Query('offset') int? offset,
     @Query('limit') int? limit,
+  });
+
+  @GET('/api/mulstore/product/get-detail')
+  Future<MsProduct?> getProductDetail({
+    @Query('productID') String? productID,
   });
 }
