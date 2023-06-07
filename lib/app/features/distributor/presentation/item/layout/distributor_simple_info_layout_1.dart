@@ -1,27 +1,20 @@
 import 'package:mulstore/all_file/all_file.dart';
-import 'package:mulstore/app/features/distributor/presentation/item/cubit/distributor_item_cubit.dart';
-import 'package:velocity_x/src/flutter/text.dart';
+import 'package:mulstore/app/features/distributor/domain/entity/distributor_entity.dart';
 
 class DistributorSimpleInfoLayout1 extends StatelessWidget {
   const DistributorSimpleInfoLayout1({
     super.key,
-    required this.name,
-    this.avatar,
-    this.type,
+    required this.item,
     this.onPressed,
   });
 
-  const DistributorSimpleInfoLayout1.demo({
-    super.key,
-    this.name = 'Long chau',
-    this.avatar = 'https://vnpayqr.vn/wp-content/uploads/2021/05/Longchau.png',
-    this.type = 'Nhà cung cấp',
-    this.onPressed,
-  });
+  static DistributorSimpleInfoLayout1 demo() {
+    return DistributorSimpleInfoLayout1(
+      item: DistributorEntity.demo(),
+    );
+  }
 
-  final String name;
-  final String? avatar;
-  final String? type;
+  final DistributorEntity? item;
   final VoidCallback? onPressed;
 
   @override
@@ -29,10 +22,10 @@ class DistributorSimpleInfoLayout1 extends StatelessWidget {
     return AppTileText(
       leading: AppAvatar(
         height: Dimens.ic_XL6,
-        src: avatar,
+        src: item?.img?.src,
       ),
-      title: name,
-      subtitle: type,
+      title: item?.name,
+      subtitle: item?.type,
       onPressed: onPressed ?? () {},
     );
   }

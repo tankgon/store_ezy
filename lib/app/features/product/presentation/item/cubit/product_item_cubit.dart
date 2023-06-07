@@ -12,7 +12,9 @@ class ProductItemCubit extends Cubit<ProductItemState> {
   FutureOr<void> fetchItem() async {
     emit(state.copyWith(status: ItemDefaultStatus.loading));
     try {
-      final item = await getIt<ProductRepo>().getProductDetail(state.item.id);
+      final item = await getIt<ProductRepo>().getProductDetail(
+        id: state.item.id,
+      );
       emit(
         state.copyWith(
           status: ItemDefaultStatus.success,

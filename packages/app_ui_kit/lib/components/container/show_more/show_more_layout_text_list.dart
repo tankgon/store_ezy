@@ -1,5 +1,4 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
-import 'package:app_ui_kit/components/button/actions/btn_more_text.dart';
 import 'package:app_ui_kit/components/container/key_value/app_key_value_list_text.dart';
 import 'package:app_ui_kit/components/container/show_more/show_more_layout.dart';
 
@@ -45,7 +44,10 @@ class ShowMoreLayoutTextList extends StatelessWidget {
           key: const Key('lessLayout'),
           separatorBuilder: (context, index) => Gaps.vGap4,
           pairMaxLines: pairMaxLine,
-          children: valueList.length > (maxVisiblePair * 2) ? valueList.sublist(0, maxVisiblePair * 2) : valueList,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: valueList.length > (maxVisiblePair * 2)
+              ? valueList.sublist(0, maxVisiblePair * 2)
+              : valueList,
         );
 
         return ShowMoreLayoutBuilder(

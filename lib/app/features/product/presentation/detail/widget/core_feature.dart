@@ -1,7 +1,9 @@
 import 'package:mulstore/all_file/all_file.dart';
 
 class ProductHeightLight extends StatelessWidget {
-  const ProductHeightLight({super.key});
+  const ProductHeightLight({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -10,15 +12,15 @@ class ProductHeightLight extends StatelessWidget {
       children: [
         _HeightLightItem(
           icon: Assets.icons.product.authentic100.svg(),
-          content: '${LocaleKeys.common_Authentic.tr()}\n100%',
+          content: '${'Chính hãng'.tr()}\n100%',
         ),
         _HeightLightItem(
           icon: Assets.icons.product.returnInDatys.svg(),
-          content: LocaleKeys.common_ReturnInNDays.tr(args: ['30']),
+          content: 'Đổi trả trong\n{} ngày'.tr(args: ['30']),
         ),
         _HeightLightItem(
           icon: Assets.icons.product.freeShipping.svg(),
-          content: LocaleKeys.common_FreeNShipping.tr(),
+          content: 'Miễn phí\nvận chuyển'.tr(),
         ),
       ],
     ).pDefault();

@@ -1,11 +1,7 @@
 import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/distributor/domain/entity/distributor_entity.dart';
 import 'package:mulstore/app/features/distributor/presentation/item/distributor_item.dart';
 import 'package:mulstore/app/features/distributor/presentation/item/layout/distributor_item_layout.dart';
-import 'package:mulstore/app/features/distributor/presentation/item/layout/distributor_item_layout_1.dart';
-import 'package:mulstore/app/features/product/domain/entity/product_entity.dart';
-import 'package:mulstore/app/features/product/presentation/item/layout/product_item_tile_layout_1.dart';
-import 'package:mulstore/app/features/product/presentation/item/product_item.dart';
-import 'package:mulstore/app/features/product/presentation/item/layout/product_item_layout_1.dart';
 
 class DistributorGridHoz extends StatelessWidget {
   const DistributorGridHoz({
@@ -16,15 +12,17 @@ class DistributorGridHoz extends StatelessWidget {
     this.layoutType = DistributorItemLayoutType.layout1,
   });
 
-  static DistributorGridHoz demo(){
+  static DistributorGridHoz demo() {
     return DistributorGridHoz(
       fetchListData: (page, pageSize) {
-        return Future.value(List.generate(5, (index) => index).map((e) => Object()).toList());
+        return Future.value(List.generate(5, (index) => index)
+            .map((e) => DistributorEntity.demo())
+            .toList());
       },
     );
   }
 
-  final PagingListFetchFunc<dynamic> fetchListData;
+  final PagingListFetchFunc<DistributorEntity> fetchListData;
   final EdgeInsets? padding;
   final double spacing;
 
@@ -39,7 +37,7 @@ class DistributorGridHoz extends StatelessWidget {
 
     return SizedBox(
       height: totalHeight,
-      child: PagingGrid<dynamic>(
+      child: PagingGrid<DistributorEntity>(
         padding: padding ?? const EdgeInsets.symmetric(horizontal: 16),
         scrollDirection: Axis.horizontal,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

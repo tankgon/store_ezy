@@ -11,7 +11,7 @@ class ProductVariantItem extends StatelessWidget {
     this.layoutType = ProductVariantItemLayoutType.layout1,
   });
 
-  final ProductVariantEntity item;
+  final ProductVariantEntity? item;
   final ProductVariantItemArgs? args;
   final ProductVariantItemLayoutType layoutType;
 

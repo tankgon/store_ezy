@@ -64,19 +64,34 @@ class MsProductRepo extends ProductRepo {
   }
 
   @override
-  Future<ProductEntity> getProductDetail(String id) async {
-    return ProductEntity(id: id);
+  Future<ProductEntity> getProductDetail({
+    required String? id,
+  }) async {
+    if (id == null) throw Exception('id must not be null');
+    return _api
+        .getProductDetail(
+          productID: id,
+        )
+        .then((value) => value!.toEntity());
   }
 
   @override
-  Future<List<ProductEntity>> getProductListByCategory(String id,
-      {int? limit, int? offset}) async {
-    return [];
+  Future<List<ProductEntity>> getProductListByBrand({
+    required String? id,
+    int? limit,
+    int? offset,
+  }) {
+    // TODO: implement getProductListByBrand
+    throw UnimplementedError();
   }
 
   @override
-  Future<List<ProductEntity>> getProductListByBrand(String id,
-      {int? limit, int? offset}) async {
-    return [];
+  Future<List<ProductEntity>> getProductListByCategory({
+    required String? id,
+    int? limit,
+    int? offset,
+  }) {
+    // TODO: implement getProductListByCategory
+    throw UnimplementedError();
   }
 }

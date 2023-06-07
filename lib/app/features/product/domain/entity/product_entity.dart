@@ -1,5 +1,6 @@
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/common/domain/entity/common_entity.dart';
+import 'package:mulstore/app/features/distributor/domain/entity/distributor_entity.dart';
 import 'package:mulstore/app/features/product/domain/entity/category_entity.dart';
 
 class ProductEntity {
@@ -26,6 +27,11 @@ class ProductEntity {
     this.reviewsAllowed,
     this.averageRating,
     this.ratingCount,
+    this.variations,
+    this.madeIn,
+    this.productUses,
+    this.notes,
+    this.distributor,
   });
 
   static ProductEntity demo() {
@@ -46,9 +52,12 @@ class ProductEntity {
     );
   }
 
+  final Object? object;
   final String id;
   final String? slug;
   final String? sku;
+
+  final DistributorEntity? distributor;
 
   final List<ImageEntity>? imgList;
   final String? name;
@@ -58,8 +67,12 @@ class ProductEntity {
   final String? type;
   final String? status;
   final String? listedPrice;
-  final Object? object;
   final List<ProductCategoryEntity>? categories;
+  final List<ProductVariantEntity>? variations;
+
+  final String? madeIn;
+  final String? productUses;
+  final String? notes;
 
   final String? regularPrice;
   final String? salePrice;
@@ -74,11 +87,18 @@ class ProductEntity {
   final int? ratingCount;
 
   String? get img => imgList.firstOrNull?.src;
+
+  List<String>? get imgSrcList =>
+      imgList?.map((e) => e.src).filterNotNullList();
+
+  ProductCategoryEntity? get category => categories?.firstOrNull;
+
+  ProductVariantEntity? get variation => variations?.firstOrNull;
 }
 
 class ProductVariantEntity {
   const ProductVariantEntity({
-    this.id = '',
+    this.id,
     this.img,
     this.title,
     this.price,
@@ -87,15 +107,14 @@ class ProductVariantEntity {
   static ProductVariantEntity demo() {
     return ProductVariantEntity(
       id: '1',
-      img:
-          'https://product.hstatic.net/200000311493/product/set_goi_xa_gung_trang_68383b0f8acb45c498206705071e6d2c.jpg',
+      img: ImageEntity.demo(),
       title: 'LEIFARNE',
       price: '100000',
     );
   }
 
-  final String id;
-  final String? img;
+  final String? id;
+  final ImageEntity? img;
   final String? title;
   final String? price;
 }

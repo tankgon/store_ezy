@@ -9,16 +9,18 @@ abstract class ProductRepo {
     ProductListShowType? showType,
   });
 
-  Future<ProductEntity?> getProductDetail(String id);
+  Future<ProductEntity?> getProductDetail({
+    required String? id,
+  });
 
-  Future<List<ProductEntity>> getProductListByCategory(
-    String id, {
+  Future<List<ProductEntity>> getProductListByCategory({
+    required String? id,
     int? limit,
     int? offset,
   });
 
-  Future<List<ProductEntity>> getProductListByBrand(
-    String id, {
+  Future<List<ProductEntity>> getProductListByBrand({
+    required String? id,
     int? limit,
     int? offset,
   });

@@ -1,10 +1,14 @@
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/common/presentation/widgets/container/show_more/more_btn.dart';
+import 'package:mulstore/app/features/product/self.dart';
 
 class ProductDetailAttribute extends StatelessWidget {
   const ProductDetailAttribute({
     super.key,
+    this.item,
   });
+
+  final ProductEntity? item;
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +20,14 @@ class ProductDetailAttribute extends StatelessWidget {
         );
       },
       valueList: <String?>[
-        LocaleKeys.product_Category.tr(),
-        'Trị sẹo, mờ vết thâm',
-        LocaleKeys.product_Packing.tr(),
-        'Tuýp',
-        LocaleKeys.product_OriginOrBrand.tr(),
-        'Ý',
-        LocaleKeys.product_Uses.tr(),
-        'Gel trị sẹo QDerma với thành phần chính Cyclopentasiloxane có khả\n năng\n khả\n năng vân vân và mây mây dài lắm luông ',
+        'Danh mục'.tr(),
+        item?.category?.name,
+        'Quy cách'.tr(),
+        item?.variation?.title,
+        'Xuất xứ thương hiệu'.tr(),
+        item?.madeIn,
+        'Công dụng'.tr(),
+        item?.productUses,
       ],
       maxVisiblePair: 4,
       maxVisibleTotalLine: 6,

@@ -22,20 +22,29 @@ class ProductRepoWP extends ProductRepo {
   }
 
   @override
-  Future<ProductEntity?> getProductDetail(String id) async {
+  Future<ProductEntity?> getProductDetail({
+    required String? id,
+  }) async {
+    if (id == null) return null;
     final rs = await _productApiWP.getProductDetail(id);
     return rs?.toEntity();
   }
 
   @override
-  Future<List<ProductEntity>> getProductListByCategory(String id,
-      {int? limit, int? offset}) async {
+  Future<List<ProductEntity>> getProductListByCategory({
+    required String? id,
+    int? limit,
+    int? offset,
+  }) async {
     return [];
   }
 
   @override
-  Future<List<ProductEntity>> getProductListByBrand(String id,
-      {int? limit, int? offset}) async {
+  Future<List<ProductEntity>> getProductListByBrand({
+    required String? id,
+    int? limit,
+    int? offset,
+  }) async {
     return [];
   }
 }

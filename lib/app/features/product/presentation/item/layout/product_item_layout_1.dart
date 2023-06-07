@@ -31,6 +31,7 @@ class ProductItemLayout1 extends StatelessWidget {
         ),
         child: CheckTextExceed(
           content: product.name ?? '',
+          maxLine: 1,
           textStyle: context.theme.textTheme.titleMedium ?? const TextStyle(),
           builder: (context, textStyle, isExceedMaxLines) {
             return Column(

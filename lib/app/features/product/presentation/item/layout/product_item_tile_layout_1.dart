@@ -59,6 +59,7 @@ class ProductItemTileLayout1 extends StatelessWidget {
   Widget _buildContent(BuildContext context) {
     return CheckTextExceed(
       content: product.name ?? '',
+      maxLine: 1,
       textStyle: context.theme.textTheme.titleMedium ?? const TextStyle(),
       builder: (context, textStyle, isExceedMaxLines) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,

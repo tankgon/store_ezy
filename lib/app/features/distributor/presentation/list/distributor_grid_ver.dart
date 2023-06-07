@@ -1,4 +1,5 @@
 import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/distributor/domain/entity/distributor_entity.dart';
 import 'package:mulstore/app/features/distributor/presentation/item/distributor_item.dart';
 import 'package:mulstore/app/features/distributor/presentation/item/layout/distributor_item_layout.dart';
 
@@ -21,13 +22,14 @@ class DistributorGridVer extends StatelessWidget {
       physics: physics,
       onlyOnePage: onlyOnePage,
       fetchListData: (page, pageSize) {
-        return Future.value(
-            List.generate(8, (index) => index).map((e) => Object()).toList());
+        return Future.value(List.generate(8, (index) => index)
+            .map((e) => DistributorEntity.demo())
+            .toList());
       },
     );
   }
 
-  final PagingListFetchFunc<dynamic> fetchListData;
+  final PagingListFetchFunc<DistributorEntity> fetchListData;
   final EdgeInsets? padding;
   final DistributorItemLayoutType layoutType;
   final double spacing;
@@ -42,7 +44,7 @@ class DistributorGridVer extends StatelessWidget {
     const crossAxisCount = 4;
     aspectRatio = layoutType.size.width / layoutType.size.height;
 
-    return PagingGrid<dynamic>(
+    return PagingGrid<DistributorEntity>(
       shrinkWrap: shrinkWrap ?? false,
       physics: physics,
       onlyOnePage: onlyOnePage ?? false,

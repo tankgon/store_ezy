@@ -4,13 +4,13 @@ import 'package:mulstore/app/features/product/self.dart';
 class ProductVariantItemLayout1 extends StatelessWidget {
   const ProductVariantItemLayout1({super.key, required this.item, this.args});
 
-  final ProductVariantEntity item;
+  final ProductVariantEntity? item;
   final ProductVariantItemArgs? args;
 
   @override
   Widget build(BuildContext context) {
     return AppImg(
-      item.img,
-    );
+      item?.img?.src,
+    ).aspectRatio(1);
   }
 }

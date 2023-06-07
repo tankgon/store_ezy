@@ -1,10 +1,14 @@
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/product/presentation/widget/product_price_with_type.dart';
+import 'package:mulstore/app/features/product/self.dart';
 
 class ProductTitleHeader extends StatelessWidget {
   const ProductTitleHeader({
     super.key,
+    this.product,
   });
+
+  final ProductEntity? product;
 
   @override
   Widget build(BuildContext context) {
@@ -13,17 +17,19 @@ class ProductTitleHeader extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          'Tên sản phẩm'.text.titleLarge(context).maxLines(3).ellipsis.make(),
+          product?.name?.text.titleLarge(context).maxLines(3).ellipsis.make() ??
+              const SizedBox(),
           Gaps.vGap8,
-          'Gói xà găng trắng'.text.maxLines(2).ellipsis.make(),
+          product?.shortDescription?.text.maxLines(2).ellipsis.make() ??
+              const SizedBox(),
           Row(
             children: [
               ProductPriceWithType(
-                price: '5000',
+                price: product?.price,
                 priceStyle: context.textTheme.titleLarge?.copyWith(
                   color: context.theme.colorScheme.secondary,
                 ),
-                type: 'chai',
+                type: product?.type,
               ).expand(),
               AppButtonIcon(
                 icon: PhosphorIcons.heart,

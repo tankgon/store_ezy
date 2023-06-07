@@ -6,11 +6,14 @@ class CheckTextExceed extends StatelessWidget {
     required this.content,
     required this.textStyle,
     required this.builder,
+    required this.maxLine,
   });
 
   final String content;
+  final int maxLine;
   final TextStyle textStyle;
-  final Widget Function(BuildContext context, TextStyle textStyle, bool isExceedMaxLines) builder;
+  final Widget Function(
+      BuildContext context, TextStyle textStyle, bool isExceedMaxLines) builder;
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +22,8 @@ class CheckTextExceed extends StatelessWidget {
         final titleExceedMaxLines = ViewUtils.isTextExceedMaxLines(
           text: content,
           style: textStyle,
-          maxLine: 1,
-          maxWidth: constraints.maxWidth,
+          maxLine: maxLine,
+          maxWidth: constraints.maxWidth * 0.95,
         );
 
         return builder(
