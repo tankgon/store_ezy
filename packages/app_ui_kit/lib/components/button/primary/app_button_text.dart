@@ -14,7 +14,7 @@ class AppButtonText extends StatelessWidget {
   final Widget? child;
   final String? label;
   final VoidCallback? onPressed;
-  final EdgeInsets? padding;
+  final EdgeInsetsGeometry? padding;
 
   final Color? color;
 

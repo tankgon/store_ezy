@@ -1,4 +1,5 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
+import 'package:app_ui_kit/app_ui_kit.dart';
 
 class SectionTitle extends StatelessWidget {
   const SectionTitle({
@@ -7,11 +8,14 @@ class SectionTitle extends StatelessWidget {
     this.padding,
     this.leading,
     this.trailing,
+    this.seeAll,
   });
 
   final String title;
   final Widget? leading;
   final Widget? trailing;
+  final VoidCallback? seeAll;
+
   final EdgeInsetsGeometry? padding;
 
   @override
@@ -22,9 +26,20 @@ class SectionTitle extends StatelessWidget {
         children: [
           leading ?? const SizedBox.shrink(),
           title.text.headlineSmall(context).make().expand(),
-          trailing ?? const SizedBox.shrink(),
+          _buildTrailing(context) ?? const SizedBox.shrink(),
         ],
       ),
     );
+  }
+
+  Widget? _buildTrailing(BuildContext context) {
+    if (seeAll != null) {
+      return AppButtonText(
+        label: 'Xem tất cả',
+        padding: EdgeInsets.zero,
+        onPressed: seeAll,
+      );
+    }
+    return trailing;
   }
 }

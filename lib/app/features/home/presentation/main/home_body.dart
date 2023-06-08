@@ -3,7 +3,7 @@ import 'package:mulstore/app/features/distributor/presentation/list/distributor_
 import 'package:mulstore/app/features/home/presentation/feature_gird/home_feature_gird_page.dart';
 import 'package:mulstore/app/features/product/domain/repo/product_repo.dart';
 import 'package:mulstore/app/features/product/presentation/list/product_list_hoz.dart';
-import 'package:mulstore/app/features/search/presentation/widget/search_bar.dart';
+import 'package:mulstore/app/features/search/presentation/widget/home_search_bar.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key});
@@ -13,7 +13,7 @@ class HomeBody extends StatelessWidget {
     return AppScrollBody.withSpacing(
       child: Column(
         children: [
-          const SearchBar().pxDefault(),
+          const HomeSearchBar().pxDefault(),
           Gaps.vGap16,
           Column(
             children: [
@@ -22,6 +22,9 @@ class HomeBody extends StatelessWidget {
               ),
               SectionContainer(
                 title: '${'Sản phẩm HOT'.tr()} 🔥🔥🔥',
+                seeAll: () {
+                  context.pushRoute(ProductSearchRoute());
+                },
                 child: ProductListHoz(
                   fetchListData: (offset, limit) =>
                       getIt<ProductRepo>().getProductList(

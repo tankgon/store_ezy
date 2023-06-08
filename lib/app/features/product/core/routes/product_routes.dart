@@ -3,4 +3,5 @@ import 'package:mulstore/app/features/product/presentation/detail/product_detail
 
 final productRoutes = [
   AutoRoute(path: '/product-detail', page: ProductDetailRoute.page),
+  AutoRoute(path: '/product-search', page: ProductSearchRoute.page),
 ];

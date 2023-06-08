@@ -57,11 +57,14 @@ class ProductDetailBody extends StatelessWidget {
                       item: item,
                     ).pDefault(),
                     SectionContainer(
-                      title: LocaleKeys.product_SameDistributor.tr(),
+                      title: 'Cùng nhà phân phối'.tr(),
                       child: ProductGridHoz.demo(),
                     ).pyDefault(),
                     SectionTitle(
-                      title: LocaleKeys.product_SameDistributor.tr(),
+                      title: 'Sản phẩm tương tự'.tr(),
+                      seeAll: () {
+                        context.pushRoute(ProductSearchRoute());
+                      },
                       padding: Dimens.edge,
                     ),
                   ].withDivider(const AppDivider()),

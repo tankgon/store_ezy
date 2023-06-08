@@ -62,7 +62,7 @@ class AppCartItemCounterLayout1 extends StatelessWidget {
                   ),
                   onLostFocus: _onValueChange,
                 ),
-              ).maxWidth(80).minWidth(40).flex(),
+              ).maxWidth(60).minWidth(40),
             ),
           ),
           _ExpandPressArea(

@@ -1,7 +1,7 @@
 import 'package:mulstore/all_file/all_file.dart';
 
-class SearchBar extends StatelessWidget {
-  const SearchBar({
+class HomeSearchBar extends StatelessWidget {
+  const HomeSearchBar({
     super.key,
   });
 

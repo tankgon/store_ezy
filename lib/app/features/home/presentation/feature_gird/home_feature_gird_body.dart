@@ -1,5 +1,6 @@
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/home/presentation/feature_gird/cubit/home_feature_gird_cubit.dart';
+import 'package:mulstore/app/features/product/domain/entity/category_entity.dart';
 
 class HomeFeatureGirdBody extends StatelessWidget {
   const HomeFeatureGirdBody({
@@ -18,10 +19,10 @@ class HomeFeatureGirdBody extends StatelessWidget {
     final totalHeight = rowCount * itemHeight + (rowCount - 1) * itemSpace;
     return SizedBox(
       height: totalHeight,
-      child: PagingGrid(
+      child: PagingGrid<ProductCategoryEntity?>(
         padding: padding,
         scrollDirection: Axis.horizontal,
-        itemBuilder: (context, item, index) => const HomeFeatureItem(),
+        itemBuilder: (context, item, index) => HomeFeatureItem(item: item),
         fetchListData: context.read<HomeFeatureGirdCubit>().fetchList,
         firstPageProgressIndicatorBuilder: (context) => const _HomeGirdLoading(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -36,24 +37,40 @@ class HomeFeatureGirdBody extends StatelessWidget {
 }
 
 class HomeFeatureItem extends StatelessWidget {
-  const HomeFeatureItem({super.key});
+  const HomeFeatureItem({super.key, this.item});
+
+  final ProductCategoryEntity? item;
 
   @override
   Widget build(BuildContext context) {
-    final maxLines = 2;
+    const maxLines = 2;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const AppImg(
-          'https://img.freepik.com/free-vector/medicine-bottles-cartoon-style_1308-88387.jpg?w=2000',
-          fit: BoxFit.contain,
-        ).expand(),
+        AppImg(
+          item?.img,
+        ).aspectRatio(1).cornerRadius(Dimens.rad_XS).objectCenter().expand(),
         SizedBox(
           height: context.textS * 1.3 * maxLines,
-          child: 'Chăm sóc sức khỏe'.text.textS.center.medium.maxLines(maxLines).make(),
+          child: _breakLineAfterTwoWord(item?.name)?.text.textS.center.medium.maxLines(maxLines).make(),
         ),
       ].withDivider(Gaps.vGap8),
     );
+  }
+
+  String _breakLineAfterTwoWord(String? content) {
+    if (content == null) {
+      return '';
+    }
+    final words = content.split(' ');
+    var result = '';
+    for (var i = 0; i < words.length; i++) {
+      if (i == 2) {
+        result += '\n';
+      }
+      result += words[i] + ' ';
+    }
+    return result;
   }
 }
 

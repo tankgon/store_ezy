@@ -1,4 +1,5 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
+import 'package:app_ui_kit/app_ui_kit.dart';
 import 'package:app_ui_kit/components/section_wrapper/section_title.dart';
 
 class SectionContainer extends StatelessWidget {
@@ -10,6 +11,7 @@ class SectionContainer extends StatelessWidget {
     this.titlePadding,
     this.leading,
     this.trailing,
+    this.seeAll,
     this.crossAxisAlignment = CrossAxisAlignment.center,
   });
 
@@ -18,6 +20,7 @@ class SectionContainer extends StatelessWidget {
     required this.title,
     this.leading,
     this.trailing,
+    this.seeAll,
     required this.child,
     this.space = Dimens.pad_XS,
     this.titlePadding = EdgeInsets.zero,
@@ -28,6 +31,7 @@ class SectionContainer extends StatelessWidget {
   final Widget? leading;
   final Widget? trailing;
   final EdgeInsetsGeometry? titlePadding;
+  final VoidCallback? seeAll;
 
   final double space;
   final CrossAxisAlignment crossAxisAlignment;
@@ -43,10 +47,12 @@ class SectionContainer extends StatelessWidget {
           padding: titlePadding,
           leading: leading,
           trailing: trailing,
+          seeAll: seeAll,
         ),
         SizedBox(height: space),
         child,
       ],
     );
   }
+
 }

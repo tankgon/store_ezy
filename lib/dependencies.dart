@@ -8,9 +8,12 @@ import 'package:mulstore/app/features/auth/data/mulstore/auth_repo_ms.dart';
 import 'package:mulstore/app/features/message/data/repo/message_repo_impl.dart';
 import 'package:mulstore/app/features/message/self.dart';
 import 'package:mulstore/app/features/product/data/ms/api/ms_product_api.dart';
+import 'package:mulstore/app/features/product/data/ms/api/ms_product_category_api.dart';
+import 'package:mulstore/app/features/product/data/ms/repo/ms_product_category_repo.dart';
 import 'package:mulstore/app/features/product/data/ms/repo/ms_product_repo.dart';
 import 'package:mulstore/app/features/product/data/wp/api/product_api_wp.dart';
 import 'package:mulstore/app/features/product/data/wp/repo/product_repo_wp.dart';
+import 'package:mulstore/app/features/product/domain/repo/product_category_repo.dart';
 import 'package:mulstore/app/features/product/domain/repo/product_repo.dart';
 import 'package:mulstore/app/features/user/data/mulstore/api/user_api_ms.dart';
 import 'package:mulstore/app/features/user/data/mulstore/user_repo_ms.dart';
@@ -100,6 +103,7 @@ void _initDataMSService() {
     ..registerLazySingleton<UserApiMS>(() => UserApiMS(dio))
     ..registerLazySingleton<AuthApiMS>(() => AuthApiMS(dio))
     ..registerLazySingleton<MsProductApi>(() => MsProductApi(dio))
+    ..registerLazySingleton<MsProductCategoryApi>(() => MsProductCategoryApi(dio))
     ..registerLazySingleton<MsAppSettingApi>(() => MsAppSettingApi(dio))
 
     // Repo
@@ -109,6 +113,7 @@ void _initDataMSService() {
     ..registerLazySingleton<UserRepo>(UserRepoMS.new)
     ..registerLazySingleton<AuthRepo>(AuthRepoMS.new)
     ..registerLazySingleton<ProductRepo>(MsProductRepo.new)
+    ..registerLazySingleton<ProductCategoryRepo>(MsProductCategoryRepo.new)
     ..registerLazySingleton<MessageRepo>(MessageRepoImpl.new);
 }
 
