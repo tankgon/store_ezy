@@ -24,6 +24,14 @@ abstract class ProductRepo {
     int? limit,
     int? offset,
   });
+
+  Future<List<ProductEntity>> getProductListByParams({
+    String? productID,
+    String? sellerID,
+    String? productCategoryID,
+    int? limit,
+    int? offset,
+  });
 }
 
 enum ProductListType {

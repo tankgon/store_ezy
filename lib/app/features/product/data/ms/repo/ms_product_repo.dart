@@ -14,6 +14,14 @@ class MsProductRepo extends ProductRepo {
   late final MsProductApi _api;
   late final MsAppSettingRepo _settingRepo;
 
+  ProductEntity _convertProduct(MsProduct product) {
+    return product.toEntity();
+  }
+
+  List<ProductEntity> _convertListProduct(MsPagingResult<MsProduct>? rs) {
+    return rs?.result?.map(_convertProduct).toList() ?? [];
+  }
+
   @override
   Future<List<ProductEntity>> getProductList({
     int? offset,
@@ -21,8 +29,6 @@ class MsProductRepo extends ProductRepo {
     ProductListType? type,
     ProductListShowType? showType,
   }) async {
-    MsPagingResult<MsProduct>? rs;
-
     switch (type) {
       case ProductListType.hot:
         if (showType == ProductListShowType.homePage) {
@@ -34,33 +40,36 @@ class MsProductRepo extends ProductRepo {
             }
           }
         }
-        rs = await _api.getListHot(
-          offset: offset,
-          limit: limit,
-        );
-        break;
+        return _api
+            .getListHot(
+              offset: offset,
+              limit: limit,
+            )
+            .then(_convertListProduct);
       case ProductListType.newest:
-        rs = await _api.getListNew(
-          offset: offset,
-          limit: limit,
-        );
-        break;
+        return _api
+            .getListNew(
+              offset: offset,
+              limit: limit,
+            )
+            .then(_convertListProduct);
       case ProductListType.bestSeller:
-        rs = await _api.getListBestSell(
-          offset: offset,
-          limit: limit,
-        );
-        break;
+        return _api
+            .getListBestSell(
+              offset: offset,
+              limit: limit,
+            )
+            .then(_convertListProduct);
       case ProductListType.goodPrice:
-        rs = await _api.getListGoodPrice(
-          offset: offset,
-          limit: limit,
-        );
-        break;
+        return _api
+            .getListGoodPrice(
+              offset: offset,
+              limit: limit,
+            )
+            .then(_convertListProduct);
       case null:
         return [];
     }
-    return rs?.result?.map((e) => e.toEntity()).toList() ?? [];
   }
 
   @override
@@ -68,11 +77,46 @@ class MsProductRepo extends ProductRepo {
     required String? id,
   }) async {
     if (id == null) throw Exception('id must not be null');
-    return _api
-        .getProductDetail(
-          productID: id,
-        )
-        .then((value) => value!.toEntity());
+    final product = await _api.getProductDetail(
+      productID: id,
+    );
+    if (product != null) {
+      return _convertProduct(product);
+    }
+    throw Exception('Không tìm thấy sản phẩm');
+  }
+
+  @override
+  Future<List<ProductEntity>> getProductListByParams({
+    String? productID,
+    String? sellerID,
+    String? productCategoryID,
+    int? limit,
+    int? offset,
+  }) {
+    if (productID != null) {
+      if (productCategoryID != null) {
+        return _api
+            .getProductSameCategory(
+              productID: productID,
+              productCategoryID: productCategoryID,
+              limit: limit,
+              offset: offset,
+            )
+            .then(_convertListProduct);
+      }
+      if (sellerID != null) {
+        return _api
+            .getProductSameSeller(
+              productID: productID,
+              sellerID: sellerID,
+              limit: limit,
+              offset: offset,
+            )
+            .then(_convertListProduct);
+      }
+    }
+    return Future.value([]);
   }
 
   @override

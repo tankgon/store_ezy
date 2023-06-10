@@ -10,10 +10,30 @@ class ProductDetailCubit
   ProductDetailCubit({ProductEntity? item})
       : super(ProductDetailState(item: item));
 
+  final ProductRepo productRepo = getIt<ProductRepo>();
+
   @override
   Future<ProductEntity?> fetchApi() {
-    return getIt<ProductRepo>().getProductDetail(
+    return productRepo.getProductDetail(
       id: state.item?.id,
+    );
+  }
+
+  Future<List<ProductEntity>> fetchSameDistributor(int offset, int limit) {
+    return productRepo.getProductListByParams(
+      productID: state.item?.id,
+      sellerID: state.item?.distributor?.id,
+      limit: limit,
+      offset: offset,
+    );
+  }
+
+  Future<List<ProductEntity>> fetchSameCategory(int offset, int limit) {
+    return productRepo.getProductListByParams(
+      productID: state.item?.id,
+      productCategoryID: state.item?.category?.id,
+      limit: limit,
+      offset: offset,
     );
   }
 }

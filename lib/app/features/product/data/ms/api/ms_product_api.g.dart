@@ -183,6 +183,84 @@ class _MsProductApi implements MsProductApi {
     return value;
   }
 
+  @override
+  Future<MsPagingResult<MsProduct>?> getProductSameCategory({
+    String? productID,
+    String? productCategoryID,
+    int? offset,
+    int? limit,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'productID': productID,
+      r'productCategoryID': productCategoryID,
+      r'offset': offset,
+      r'limit': limit,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>?>(
+        _setStreamType<MsPagingResult<MsProduct>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/mulstore/product/get-list-same-category',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = _result.data == null
+        ? null
+        : MsPagingResult<MsProduct>.fromJson(
+            _result.data!,
+            (json) => MsProduct.fromJson(json as Map<String, dynamic>),
+          );
+    return value;
+  }
+
+  @override
+  Future<MsPagingResult<MsProduct>?> getProductSameSeller({
+    String? productID,
+    String? sellerID,
+    int? offset,
+    int? limit,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'productID': productID,
+      r'sellerID': sellerID,
+      r'offset': offset,
+      r'limit': limit,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>?>(
+        _setStreamType<MsPagingResult<MsProduct>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/mulstore/product/get-list-same-seller',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = _result.data == null
+        ? null
+        : MsPagingResult<MsProduct>.fromJson(
+            _result.data!,
+            (json) => MsProduct.fromJson(json as Map<String, dynamic>),
+          );
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

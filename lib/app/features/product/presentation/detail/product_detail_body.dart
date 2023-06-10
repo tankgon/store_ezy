@@ -20,16 +20,15 @@ class ProductDetailBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child:
-              BlocBuilder<ProductDetailCubit, RequestItemState<ProductEntity>>(
-            builder: (context, state) {
-              final item = state.item;
-              final imgList = item?.imgSrcList ?? [];
-              final distributor = item?.distributor;
-              return Column(
+    return BlocBuilder<ProductDetailCubit, RequestItemState<ProductEntity>>(
+      builder: (context, state) {
+        final item = state.item;
+        final imgList = item?.imgSrcList ?? [];
+        final distributor = item?.distributor;
+        return CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: Column(
                 children: [
                   ProductDetailPhotoView(
                     imgList: imgList,
@@ -56,27 +55,36 @@ class ProductDetailBody extends StatelessWidget {
                     ProductDetailNote(
                       item: item,
                     ).pDefault(),
-                    SectionContainer(
-                      title: 'Cùng nhà phân phối'.tr(),
-                      child: ProductGridHoz.demo(),
-                    ).pyDefault(),
-                    SectionTitle(
-                      title: 'Sản phẩm tương tự'.tr(),
-                      seeAll: () {
-                        context.pushRoute(ProductSearchRoute());
-                      },
-                      padding: Dimens.edge,
-                    ),
+                    if (item?.distributor?.id?.isNotNullOrEmpty ?? false)
+                      SectionContainer(
+                        title: 'Cùng nhà phân phối'.tr(),
+                        child: ProductGridHoz(
+                          fetchListData: context
+                              .read<ProductDetailCubit>()
+                              .fetchSameDistributor,
+                        ),
+                      ).pyDefault(),
+                    if (item?.category?.id?.isNotNullOrEmpty ?? false)
+                      SectionTitle(
+                        title: 'Sản phẩm tương tự'.tr(),
+                        seeAll: () {
+                          context.pushRoute(ProductSearchRoute());
+                        },
+                        padding: Dimens.edge,
+                      ),
                   ].withDivider(const AppDivider()),
                 ],
-              );
-            },
-          ),
-        ),
-        ProductGridVer.demo(
-          isSliver: true,
-        )
-      ],
+              ),
+            ),
+            if (item?.category?.id?.isNotNullOrEmpty ?? false)
+              ProductGridVer(
+                isSliver: true,
+                fetchListData:
+                    context.read<ProductDetailCubit>().fetchSameCategory,
+              )
+          ],
+        );
+      },
     );
   }
 }

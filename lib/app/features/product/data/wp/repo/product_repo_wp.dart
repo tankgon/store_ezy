@@ -47,4 +47,16 @@ class ProductRepoWP extends ProductRepo {
   }) async {
     return [];
   }
+
+  @override
+  Future<List<ProductEntity>> getProductListByParams({
+    String? productID,
+    String? sellerID,
+    String? productCategoryID,
+    int? limit,
+    int? offset,
+  }) {
+    // TODO: implement getProductListByParams
+    throw UnimplementedError();
+  }
 }

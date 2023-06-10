@@ -35,4 +35,20 @@ abstract class MsProductApi {
   Future<MsProduct?> getProductDetail({
     @Query('productID') String? productID,
   });
+
+  @GET('/api/mulstore/product/get-list-same-category')
+  Future<MsPagingResult<MsProduct>?> getProductSameCategory({
+    @Query('productID') String? productID,
+    @Query('productCategoryID') String? productCategoryID,
+    @Query('offset') int? offset,
+    @Query('limit') int? limit,
+  });
+
+  @GET('/api/mulstore/product/get-list-same-seller')
+  Future<MsPagingResult<MsProduct>?> getProductSameSeller({
+    @Query('productID') String? productID,
+    @Query('sellerID') String? sellerID,
+    @Query('offset') int? offset,
+    @Query('limit') int? limit,
+  });
 }
