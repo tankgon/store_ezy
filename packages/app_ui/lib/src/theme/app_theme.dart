@@ -1,8 +1,5 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:app_ui/src/all_file.dart';
-import 'package:app_ui/src/colors/app_colors_extension.dart';
-import 'package:app_ui/src/typography/app_text_theme.dart';
-import 'package:app_ui/src/typography/app_textfield_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
@@ -10,7 +7,8 @@ import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 class AppTheme {
   static ThemeData getTheme({bool isDark = false, String? fontFamily}) {
     final colorScheme = AppColorExtension.colorSchemaFrom(isDark: isDark);
-    final onPrimarySurfaceColor = isDark ? colorScheme.onSurface : colorScheme.onPrimary;
+    final onPrimarySurfaceColor =
+        isDark ? colorScheme.onSurface : colorScheme.onPrimary;
 
     final textTheme = AppTextThemeExtension.getTextTheme(isDark: isDark);
     final textExtensionTheme = AppTextThemeExtension.form(isDark);
@@ -42,7 +40,8 @@ class AppTheme {
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         isDense: true,
         fillColor: appColor.divider,
         border: OutlineInputBorder(
@@ -98,9 +97,13 @@ class AppTheme {
           color: AppColorExtension.form(isDark).lightPrimary,
         ),
         labelColor: colorScheme.primary,
-        labelStyle: AppTextThemeExtension.form(isDark).text.copyWith(fontWeight: FontWeight.w600),
+        labelStyle: AppTextThemeExtension.form(isDark)
+            .text
+            .copyWith(fontWeight: FontWeight.w600),
         unselectedLabelColor: AppColorExtension.form(isDark).text,
-        unselectedLabelStyle: AppTextThemeExtension.form(isDark).text.copyWith(fontWeight: FontWeight.w400),
+        unselectedLabelStyle: AppTextThemeExtension.form(isDark)
+            .text
+            .copyWith(fontWeight: FontWeight.w400),
       ),
       sliderTheme: SliderThemeData(
         activeTickMarkColor: Colors.transparent,

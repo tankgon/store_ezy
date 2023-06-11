@@ -1,5 +1,4 @@
 import 'package:mulstore/all_file/all_file.dart';
-import 'package:mulstore/app/features/product/presentation/product_search/cubit/product_search_cubit.dart';
 
 class ProductSearchBody extends StatelessWidget {
   const ProductSearchBody({super.key});
