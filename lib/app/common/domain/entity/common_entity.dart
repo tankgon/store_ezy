@@ -4,12 +4,6 @@ part 'common_entity.g.dart';
 
 @JsonSerializable()
 class ImageEntity {
-  final Object? object;
-  final String? id;
-  final String? src;
-  final String? name;
-  final String? alt;
-
   const ImageEntity({
     this.object,
     this.id,
@@ -30,6 +24,30 @@ class ImageEntity {
 
   factory ImageEntity.fromJson(Map<String, dynamic> json) =>
       _$ImageEntityFromJson(json);
+  final Object? object;
+  final String? id;
+  final String? src;
+  final String? name;
+  final String? alt;
 
   Map<String, dynamic> toJson() => _$ImageEntityToJson(this);
+}
+
+enum OrderByType {
+  priceLowToHigh(
+    displayValue: 'Giá thấp đến cao',
+  ),
+  priceHighToLow(
+    displayValue: 'Giá cao đến thấp',
+  ),
+  newest(
+    displayValue: 'Mới nhất',
+  ),
+  oldest(
+    displayValue: 'Cũ nhất',
+  );
+
+  const OrderByType({required this.displayValue});
+
+  final String displayValue;
 }

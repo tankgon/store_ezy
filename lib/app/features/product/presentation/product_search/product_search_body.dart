@@ -1,4 +1,5 @@
 import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/common/domain/entity/common_entity.dart';
 
 class ProductSearchBody extends StatelessWidget {
   const ProductSearchBody({super.key});
@@ -6,32 +7,20 @@ class ProductSearchBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 5,
+      length: OrderByType.values.length,
       child: AppScrollBody(
         child: Column(
           children: [
-            TabBarWrapperUnderLine(
-              child: AppTabBar(
-                padding: Dimens.edge_x,
-                tabs: [
-                  Tab(
-                    text: 'Tất cả',
+            Gaps.vGap8,
+            Row(
+              children: [
+                'Xếp theo: '.tr().text.make().pl16(),
+                AppButtonTabBar(
+                  tabs: OrderByType.values.mapAsList(
+                    (item) => Tab(text: item.displayValue.tr()),
                   ),
-                  Tab(
-                    text: 'Điện thoại',
-                  ),
-                  Tab(
-                    text: 'Máy tính',
-                  ),
-                  Tab(
-                    text: 'Máy ảnh',
-                  ),
-                  Tab(
-                    text: 'Phụ kiện',
-                  ),
-                ],
-                isScrollable: true,
-              ),
+                ).expand(),
+              ],
             ),
           ],
         ),

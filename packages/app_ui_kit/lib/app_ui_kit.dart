@@ -44,6 +44,7 @@ export 'components/price/app_price.dart';
 export 'components/section_wrapper/section_container.dart';
 export 'components/section_wrapper/section_title.dart';
 export 'components/stream/stream_listener.dart';
+export 'components/tab_bar/app_button_tab_bar.dart';
 export 'components/textfield/app_text_field.dart';
 export 'components/textfield/app_text_field_reactive.dart';
 export 'components/textfield/widget/focus_builder.dart';
