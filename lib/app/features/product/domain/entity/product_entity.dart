@@ -2,6 +2,7 @@ import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/common/domain/entity/common_entity.dart';
 import 'package:mulstore/app/features/distributor/domain/entity/distributor_entity.dart';
 import 'package:mulstore/app/features/product/domain/entity/category_entity.dart';
+import 'package:mulstore/app/features/product/domain/repo/product_repo.dart';
 
 class ProductEntity {
   const ProductEntity({
@@ -117,4 +118,25 @@ class ProductVariantEntity {
   final ImageEntity? img;
   final String? title;
   final String? price;
+}
+
+class ProductFilterData {
+  const ProductFilterData({
+    this.relatedProductID,
+    this.sellerID,
+    this.productCategoryID,
+    this.orderByType,
+    this.search,
+    this.type,
+    this.showType,
+  });
+
+  final OrderByType? orderByType;
+  final String? search;
+  final String? productCategoryID;
+  final String? relatedProductID;
+  final String? sellerID;
+
+  final ProductListType? type;
+  final ProductListShowType? showType;
 }

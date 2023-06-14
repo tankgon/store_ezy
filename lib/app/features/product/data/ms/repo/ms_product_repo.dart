@@ -87,13 +87,14 @@ class MsProductRepo extends ProductRepo {
   }
 
   @override
-  Future<List<ProductEntity>> getProductListByParams({
-    String? productID,
-    String? sellerID,
-    String? productCategoryID,
+  Future<List<ProductEntity>> getProductListSearch({
     int? limit,
     int? offset,
+    ProductFilterData? filterData,
   }) {
+    final productID = filterData?.relatedProductID;
+    final productCategoryID = filterData?.productCategoryID;
+    final sellerID = filterData?.sellerID;
     if (productID != null) {
       if (productCategoryID != null) {
         return _api
@@ -116,7 +117,13 @@ class MsProductRepo extends ProductRepo {
             .then(_convertListProduct);
       }
     }
-    return Future.value([]);
+
+    return getProductList(
+      limit: limit,
+      offset: offset,
+      type: filterData?.type,
+      showType: filterData?.showType,
+    );
   }
 
   @override

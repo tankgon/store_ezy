@@ -25,12 +25,10 @@ abstract class ProductRepo {
     int? offset,
   });
 
-  Future<List<ProductEntity>> getProductListByParams({
-    String? productID,
-    String? sellerID,
-    String? productCategoryID,
+  Future<List<ProductEntity>> getProductListSearch({
     int? limit,
     int? offset,
+    ProductFilterData? filterData,
   });
 }
 

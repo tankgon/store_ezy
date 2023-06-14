@@ -10,7 +10,7 @@ bricks:
 
 # Feature Brick
 # Create:
-# mason make feature_brick --feature_name product_search --folder_name product_search --state_management cubit
+# mason make feature_brick --feature_name promotion --folder_name promotion --state_management cubit
 
 # Feature Core Brick
 # Create:

@@ -20,20 +20,23 @@ class ProductDetailCubit
   }
 
   Future<List<ProductEntity>> fetchSameDistributor(int offset, int limit) {
-    return productRepo.getProductListByParams(
-      productID: state.item?.id,
-      sellerID: state.item?.distributor?.id,
-      limit: limit,
-      offset: offset,
-    );
+    return productRepo.getProductListSearch(
+        limit: limit,
+        offset: offset,
+        filterData: ProductFilterData(
+          relatedProductID: state.item?.id,
+          sellerID: state.item?.distributor?.id,
+        ));
   }
 
   Future<List<ProductEntity>> fetchSameCategory(int offset, int limit) {
-    return productRepo.getProductListByParams(
-      productID: state.item?.id,
-      productCategoryID: state.item?.category?.id,
+    return productRepo.getProductListSearch(
       limit: limit,
       offset: offset,
+      filterData: ProductFilterData(
+        relatedProductID: state.item?.id,
+        productCategoryID: state.item?.category?.id,
+      ),
     );
   }
 }

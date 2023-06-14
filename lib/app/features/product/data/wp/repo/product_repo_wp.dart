@@ -49,14 +49,9 @@ class ProductRepoWP extends ProductRepo {
   }
 
   @override
-  Future<List<ProductEntity>> getProductListByParams({
-    String? productID,
-    String? sellerID,
-    String? productCategoryID,
-    int? limit,
-    int? offset,
-  }) {
-    // TODO: implement getProductListByParams
+  Future<List<ProductEntity>> getProductListSearch(
+      {int? limit, int? offset, ProductFilterData? filterData}) {
+    // TODO: implement getProductListSearch
     throw UnimplementedError();
   }
 }

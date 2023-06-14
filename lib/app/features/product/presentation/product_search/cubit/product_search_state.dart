@@ -1,26 +1,20 @@
 part of 'product_search_cubit.dart';
 
-class ProductSearchState extends RequestState {
+class ProductSearchState extends Equatable {
   const ProductSearchState({
-    super.status = ItemDefaultStatus.initial,
-    required this.item,
-    super.error,
+    required this.filterData,
   });
 
-  final dynamic item;
+  final ProductFilterData? filterData;
 
   @override
-  List<Object?> get props => [status, item, error];
-  
+  List<Object?> get props => [filterData];
+
   ProductSearchState copyWith({
-      ItemDefaultStatus? status,
-      dynamic? item,
-      Object? error,
+    ProductFilterData? filterData,
   }) {
     return ProductSearchState(
-      status: status ?? this.status,
-      item: item ?? this.item,
-      error: error ?? this.error,
+      filterData: filterData ?? this.filterData,
     );
   }
 }

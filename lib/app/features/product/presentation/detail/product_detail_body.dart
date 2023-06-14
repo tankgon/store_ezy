@@ -63,13 +63,19 @@ class ProductDetailBody extends StatelessWidget {
                               .read<ProductDetailCubit>()
                               .fetchSameDistributor,
                         ),
+                        seeAll: () {
+                          context.pushRoute(
+                            ProductSearchRoute(
+                              filterData: ProductFilterData(
+                                sellerID: item?.distributor?.id,
+                              ),
+                            ),
+                          );
+                        },
                       ).pyDefault(),
                     if (item?.category?.id?.isNotNullOrEmpty ?? false)
                       SectionTitle(
                         title: 'Sản phẩm tương tự'.tr(),
-                        seeAll: () {
-                          context.pushRoute(ProductSearchRoute());
-                        },
                         padding: Dimens.edge,
                       ),
                   ].withDivider(const AppDivider()),
