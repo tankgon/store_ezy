@@ -8,17 +8,20 @@ class ProductDetailVariantList extends StatelessWidget {
     this.rowItemCount = 6,
     this.spacing = 8,
     required this.listItem,
+    required this.product,
   });
 
   static ProductDetailVariantList demo() {
     return ProductDetailVariantList(
       listItem: List.generate(10, (index) => ProductVariantEntity.demo()),
+      product: ProductEntity.demo(),
     );
   }
 
   final int rowItemCount;
   final double spacing;
   final List<ProductVariantEntity> listItem;
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +29,10 @@ class ProductDetailVariantList extends StatelessWidget {
       onTap: () {
         BottomSheetUtils.showMaterial(
           context: context,
-          child: SelectProductVariant(),
+          child: SelectProductVariant(
+            product: product,
+            variantList: listItem,
+          ),
         );
       },
       child: SectionContainer(

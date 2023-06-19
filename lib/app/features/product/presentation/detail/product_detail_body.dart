@@ -36,9 +36,11 @@ class ProductDetailBody extends StatelessWidget {
                     ProductTitleHeader(
                       product: item,
                     ),
-                    ProductDetailVariantList(
-                      listItem: item?.variations ?? [],
-                    ).pyDefault(),
+                    if (item != null)
+                      ProductDetailVariantList(
+                        product: item,
+                        listItem: item.variations ?? [],
+                      ).pyDefault(),
                     DistributorItem(
                       item: distributor,
                       layoutType: DistributorItemLayoutType.layoutSimpleInfo1,

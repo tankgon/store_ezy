@@ -2,6 +2,7 @@ import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/common/presentation/widgets/app_item_counter/app_item_counter.dart';
 import 'package:mulstore/app/common/presentation/widgets/app_item_counter/app_item_counter_args.dart';
 import 'package:mulstore/app/features/product/presentation/item/product_item.dart';
+import 'package:mulstore/app/features/product/presentation/variant/select_variant/cubit/select_product_variant_cubit.dart';
 import 'package:mulstore/app/features/product/self.dart';
 
 class SelectProductVariantBody extends StatelessWidget {
@@ -14,18 +15,22 @@ class SelectProductVariantBody extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         ProductItem(
-          item: ProductEntity.demo(),
+          item: context.read<SelectProductVariantCubit>().product,
           layoutType: ProductItemLayoutType.layoutTile2,
         ).pDefault(),
         LimitedBox(
           maxHeight: MediaQuery.of(context).size.height * 0.45,
-          child: ListView.separated(
-            shrinkWrap: true,
-            itemBuilder: (context, index) {
-              return ProductVariantSelectGroup();
+          child: BlocBuilder<SelectProductVariantCubit, SelectProductVariantState>(
+            builder: (context, state) {
+              return ListView.separated(
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return ProductVariantSelectGroup();
+                },
+                separatorBuilder: (context, index) => Gaps.vGap8,
+                itemCount: 2,
+              );
             },
-            separatorBuilder: (context, index) => Gaps.vGap8,
-            itemCount: 2,
           ),
         ),
         const AppDivider.thin(),
@@ -56,8 +61,7 @@ class ProductVariantSelectGroup extends StatelessWidget {
       child: Wrap(
         spacing: 8,
         runSpacing: 12,
-        children: List.generate(4, (index) => ProductVariantEntity.demo())
-            .mapAsListIndexed(
+        children: List.generate(4, (index) => ProductVariantEntity.demo()).mapAsListIndexed(
           (item, index) => ProductVariantItem(
             item: item,
             layoutType: ProductVariantItemLayoutType.layoutTile1,

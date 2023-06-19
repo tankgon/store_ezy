@@ -1,12 +1,11 @@
 import 'package:mulstore/all_file/all_file.dart';
 
-abstract class RequestItemCubit<I, S extends RequestItemState<I>>
-    extends Cubit<S> {
+abstract class RequestItemCubit<I, S extends RequestItemState<I>> extends Cubit<S> {
   RequestItemCubit(super.initialState);
 
   Future<I?> fetchApi();
 
-  Future<void> fetchItem() async {
+  Future<void> loadData() async {
     try {
       loading();
       final item = await fetchApi();

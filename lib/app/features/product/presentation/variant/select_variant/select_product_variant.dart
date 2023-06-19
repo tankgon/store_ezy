@@ -1,17 +1,28 @@
+import 'package:flutter_keyboard_size/flutter_keyboard_size.dart';
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/product/presentation/variant/select_variant/cubit/select_product_variant_cubit.dart';
 import 'package:mulstore/app/features/product/presentation/variant/select_variant/select_product_variant_body.dart';
-import 'package:flutter_keyboard_size/flutter_keyboard_size.dart';
+import 'package:mulstore/app/features/product/self.dart';
 
 class SelectProductVariant extends StatelessWidget {
-  const SelectProductVariant({super.key});
+  const SelectProductVariant({
+    super.key,
+    this.variantList,
+    required this.product,
+  });
+
+  final List<ProductVariantEntity>? variantList;
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {
     return KeyboardSizeProvider(
       child: Consumer<ScreenHeight>(
-        builder:(context, _res, child) => BlocProvider(
-          create: (context) => SelectProductVariantCubit(),
+        builder: (context, _res, child) => BlocProvider(
+          create: (context) => SelectProductVariantCubit(
+            product: product,
+            item: variantList,
+          )..loadData(),
           child: SingleChildScrollView(
             child: Stack(
               alignment: Alignment.topRight,
@@ -20,7 +31,7 @@ class SelectProductVariant extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    SelectProductVariantBody(),
+                    const SelectProductVariantBody(),
                     const AppDivider.thin(),
                     SafeArea(
                       child: AppButton(

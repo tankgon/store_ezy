@@ -16,7 +16,7 @@ class ProductDetailPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => ProductDetailCubit(
         item: product,
-      )..fetchItem(),
+      )..loadData(),
       child: Builder(builder: (context) {
         return RequestItemConsumer<ProductDetailCubit, ProductDetailState>(
           onSuccess: (value) {},
