@@ -2,7 +2,7 @@ part of 'about_cubit.dart';
 
 class AboutState extends RequestState {
   const AboutState({
-    super.status = ItemDefaultStatus.initial,
+    super.status = ItemStatus.initial,
     required this.item,
     super.error,
   });
@@ -11,11 +11,11 @@ class AboutState extends RequestState {
 
   @override
   List<Object?> get props => [status, item, error];
-  
+
   AboutState copyWith({
-      ItemDefaultStatus? status,
-      dynamic? item,
-      Object? error,
+    ItemStatus? status,
+    dynamic? item,
+    Object? error,
   }) {
     return AboutState(
       status: status ?? this.status,

@@ -2,7 +2,7 @@ part of 'user_order_detail_cubit.dart';
 
 class UserOrderDetailState extends RequestState {
   const UserOrderDetailState({
-    super.status = ItemDefaultStatus.initial,
+    super.status = ItemStatus.initial,
     required this.item,
     super.error,
   });
@@ -11,11 +11,11 @@ class UserOrderDetailState extends RequestState {
 
   @override
   List<Object?> get props => [status, item, error];
-  
+
   UserOrderDetailState copyWith({
-      ItemDefaultStatus? status,
-      dynamic? item,
-      Object? error,
+    ItemStatus? status,
+    dynamic? item,
+    Object? error,
   }) {
     return UserOrderDetailState(
       status: status ?? this.status,

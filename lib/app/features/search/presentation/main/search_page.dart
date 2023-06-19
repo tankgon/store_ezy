@@ -25,7 +25,7 @@ class SearchPage extends StatelessWidget {
   }
 
   void _onStateChanged(BuildContext context, SearchState state) {
-    if (state.status == ItemDefaultStatus.error) {
+    if (state.status == ItemStatus.error) {
       DialogUtils.showErrorDialog(
         context: context,
         content: context.getAppErrorMsg(state.error),

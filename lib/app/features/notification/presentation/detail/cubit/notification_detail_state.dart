@@ -2,12 +2,12 @@ part of 'notification_detail_cubit.dart';
 
 class NotificationDetailState extends Equatable {
   const NotificationDetailState({
-    this.status = ItemDefaultStatus.initial,
+    this.status = ItemStatus.initial,
     required this.item,
     this.error,
   });
 
-  final ItemDefaultStatus status;
+  final ItemStatus status;
   final NotificationDetailModel item;
   final Object? error;
 
@@ -15,7 +15,7 @@ class NotificationDetailState extends Equatable {
   List<Object?> get props => [status, item, error];
 
   NotificationDetailState copyWith({
-    ItemDefaultStatus? status,
+    ItemStatus? status,
     NotificationDetailModel? item,
     Object? error,
   }) {

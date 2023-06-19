@@ -2,7 +2,7 @@ part of 'select_product_variant_cubit.dart';
 
 class SelectProductVariantState extends RequestState {
   const SelectProductVariantState({
-    super.status = ItemDefaultStatus.initial,
+    super.status = ItemStatus.initial,
     required this.item,
     super.error,
   });
@@ -11,11 +11,11 @@ class SelectProductVariantState extends RequestState {
 
   @override
   List<Object?> get props => [status, item, error];
-  
+
   SelectProductVariantState copyWith({
-      ItemDefaultStatus? status,
-      dynamic? item,
-      Object? error,
+    ItemStatus? status,
+    dynamic? item,
+    Object? error,
   }) {
     return SelectProductVariantState(
       status: status ?? this.status,

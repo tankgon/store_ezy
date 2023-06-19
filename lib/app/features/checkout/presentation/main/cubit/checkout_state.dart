@@ -1,24 +1,23 @@
 part of 'checkout_cubit.dart';
 
 class CheckoutState extends Equatable {
-
   const CheckoutState({
-    this.status = ItemDefaultStatus.initial,
+    this.status = ItemStatus.initial,
     required this.item,
     this.error,
   });
 
-  final ItemDefaultStatus status;
+  final ItemStatus status;
   final dynamic item;
   final Object? error;
 
   @override
   List<Object?> get props => [status, item, error];
-  
+
   CheckoutState copyWith({
-      ItemDefaultStatus? status,
-      dynamic? item,
-      Object? error,
+    ItemStatus? status,
+    dynamic? item,
+    Object? error,
   }) {
     return CheckoutState(
       status: status ?? this.status,

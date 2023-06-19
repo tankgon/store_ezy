@@ -1,9 +1,8 @@
 part of 'login_cubit.dart';
 
 class LoginState extends RequestState {
-
   const LoginState({
-    super.status = ItemDefaultStatus.initial,
+    super.status = ItemStatus.initial,
     required this.item,
     super.error,
   });
@@ -12,11 +11,11 @@ class LoginState extends RequestState {
 
   @override
   List<Object?> get props => [status, item, error];
-  
+
   LoginState copyWith({
-      ItemDefaultStatus? status,
-      dynamic? item,
-      Object? error,
+    ItemStatus? status,
+    dynamic? item,
+    Object? error,
   }) {
     return LoginState(
       status: status ?? this.status,

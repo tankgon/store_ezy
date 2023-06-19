@@ -22,7 +22,7 @@ class MessagePage extends StatelessWidget {
   }
 
   void _onStateChanged(BuildContext context, MessageState state) {
-    if (state.status == ItemDefaultStatus.error) {
+    if (state.status == ItemStatus.error) {
       DialogUtils.showMaterialDialog(
           context: context, content: context.getAppErrorMsg(state.error));
     }
@@ -41,8 +41,8 @@ class _PageBodyLoading extends StatelessWidget {
         // if (state.status == ItemDefaultStatus.error) {
         //   return SimpleErrorText(error: state.error ?? '');
         // }
-        final isLoading = state.status == ItemDefaultStatus.loading ||
-            state.status == ItemDefaultStatus.initial;
+        final isLoading = state.status == ItemStatus.loading ||
+            state.status == ItemStatus.initial;
 
         return child;
       },

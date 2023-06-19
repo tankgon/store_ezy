@@ -2,7 +2,7 @@ part of 'user_info_cubit.dart';
 
 class UserInfoState extends RequestState {
   const UserInfoState({
-    super.status = ItemDefaultStatus.initial,
+    super.status = ItemStatus.initial,
     required this.item,
     super.error,
   });
@@ -11,11 +11,11 @@ class UserInfoState extends RequestState {
 
   @override
   List<Object?> get props => [status, item, error];
-  
+
   UserInfoState copyWith({
-      ItemDefaultStatus? status,
+    ItemStatus? status,
     UserEntity? item,
-      Object? error,
+    Object? error,
   }) {
     return UserInfoState(
       status: status ?? this.status,

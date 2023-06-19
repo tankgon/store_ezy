@@ -25,7 +25,7 @@ class LoginCubit extends RequestCubit<LoginState> {
   final AuthBloc authBloc;
 
   FutureOr<void> loginPassword() async {
-    emit(state.copyWith(status: ItemDefaultStatus.loading));
+    emit(state.copyWith(status: ItemStatus.loading));
     try {
       final userName = form.getValue<String>(AuthIdInput.idKey) ?? '';
       final password =
@@ -61,7 +61,7 @@ class LoginCubit extends RequestCubit<LoginState> {
       );
       emit(
         state.copyWith(
-          status: ItemDefaultStatus.success,
+          status: ItemStatus.success,
           // item: item,
         ),
       );
@@ -69,7 +69,7 @@ class LoginCubit extends RequestCubit<LoginState> {
       log(e.toString(), error: e);
       emit(
         state.copyWith(
-          status: ItemDefaultStatus.error,
+          status: ItemStatus.error,
           error: e,
         ),
       );

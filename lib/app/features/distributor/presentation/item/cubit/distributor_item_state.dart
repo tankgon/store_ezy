@@ -1,24 +1,23 @@
 part of 'distributor_item_cubit.dart';
 
 class DistributorItemState extends Equatable {
-
   const DistributorItemState({
-    this.status = ItemDefaultStatus.initial,
+    this.status = ItemStatus.initial,
     required this.item,
     this.error,
   });
 
-  final ItemDefaultStatus status;
+  final ItemStatus status;
   final dynamic item;
   final Object? error;
 
   @override
   List<Object?> get props => [status, item, error];
-  
+
   DistributorItemState copyWith({
-      ItemDefaultStatus? status,
-      dynamic? item,
-      Object? error,
+    ItemStatus? status,
+    dynamic? item,
+    Object? error,
   }) {
     return DistributorItemState(
       status: status ?? this.status,

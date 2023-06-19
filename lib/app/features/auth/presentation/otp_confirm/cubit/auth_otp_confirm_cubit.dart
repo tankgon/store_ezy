@@ -20,7 +20,7 @@ class AuthOtpConfirmCubit extends RequestCubit<AuthOtpConfirmState> {
     emit(
       state.copyWith(
         otp: otp,
-        status: ItemDefaultStatus.initial,
+        status: ItemStatus.initial,
       ),
     );
   }
@@ -30,14 +30,14 @@ class AuthOtpConfirmCubit extends RequestCubit<AuthOtpConfirmState> {
       return;
     }
     try {
-      emit(state.copyWith(status: ItemDefaultStatus.loading));
+      emit(state.copyWith(status: ItemStatus.loading));
       await confirmOTPFunc(state.otp ?? '');
-      emit(state.copyWith(status: ItemDefaultStatus.success));
+      emit(state.copyWith(status: ItemStatus.success));
     } catch (e) {
       log('$e', error: e);
       emit(
         state.copyWith(
-          status: ItemDefaultStatus.error,
+          status: ItemStatus.error,
           error: e,
         ),
       );
@@ -51,7 +51,7 @@ class AuthOtpConfirmCubit extends RequestCubit<AuthOtpConfirmState> {
       log('$e', error: e);
       emit(
         state.copyWith(
-          status: ItemDefaultStatus.error,
+          status: ItemStatus.error,
           error: e,
         ),
       );

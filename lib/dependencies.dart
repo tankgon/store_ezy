@@ -22,7 +22,6 @@ import 'package:mulstore/firebase_options.dart';
 import 'package:mulstore/firebase_options_dev.dart';
 import 'package:mulstore/firebase_options_stag.dart';
 import 'package:mulstore/services/app_config/app_config_service.dart';
-import 'package:mulstore/services/device_service.dart';
 import 'package:mulstore/services/user_secure_storage_service.dart';
 
 import 'app/features/auth/self.dart';
@@ -89,7 +88,6 @@ Future<void> _appDataProvider() async {
   await userSecureStorage.init();
   getIt
     ..registerSingleton<UserSecureStorage>(userSecureStorage)
-    ..registerSingleton<DeviceService>(DeviceService())
     ..registerSingleton<AppConfigService>(AppConfigService());
 
   _initDataMSService();
@@ -103,7 +101,8 @@ void _initDataMSService() {
     ..registerLazySingleton<UserApiMS>(() => UserApiMS(dio))
     ..registerLazySingleton<AuthApiMS>(() => AuthApiMS(dio))
     ..registerLazySingleton<MsProductApi>(() => MsProductApi(dio))
-    ..registerLazySingleton<MsProductCategoryApi>(() => MsProductCategoryApi(dio))
+    ..registerLazySingleton<MsProductCategoryApi>(
+        () => MsProductCategoryApi(dio))
     ..registerLazySingleton<MsAppSettingApi>(() => MsAppSettingApi(dio))
 
     // Repo

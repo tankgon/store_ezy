@@ -28,7 +28,7 @@ class SignUpCubit extends RequestCubit<SignUpState> {
 
   FutureOr<void> signUpOTP() async {
     if (form.valid) {
-      emit(state.copyWith(status: ItemDefaultStatus.loading));
+      emit(state.copyWith(status: ItemStatus.loading));
       try {
         final id = form.getValue<String>(AuthIdInput.idKey) ?? '';
         final password =
@@ -55,13 +55,13 @@ class SignUpCubit extends RequestCubit<SignUpState> {
         }
 
         if (loginResult) {
-          emit(state.copyWith(status: ItemDefaultStatus.success));
+          emit(state.copyWith(status: ItemStatus.success));
         } else {
-          emit(state.copyWith(status: ItemDefaultStatus.initial));
+          emit(state.copyWith(status: ItemStatus.initial));
         }
       } catch (e) {
         log(e.toString(), error: e, stackTrace: StackTrace.current);
-        emit(state.copyWith(status: ItemDefaultStatus.error, error: e));
+        emit(state.copyWith(status: ItemStatus.error, error: e));
       }
     }
   }
@@ -184,7 +184,7 @@ class SignUpCubit extends RequestCubit<SignUpState> {
       await _verifyOTP(signUpOTPRs);
     } catch (e) {
       log(e.toString(), error: e, stackTrace: StackTrace.current);
-      emit(state.copyWith(status: ItemDefaultStatus.error, error: e));
+      emit(state.copyWith(status: ItemStatus.error, error: e));
     }
   }
 }

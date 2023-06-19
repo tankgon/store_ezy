@@ -24,7 +24,7 @@ class ForgotPasswordCubit extends RequestCubit<ForgotPasswordState> {
   ForgotPasswordConfirmOTPEntity? _confirmResult;
 
   FutureOr<void> changePasswordOTP() async {
-    emit(state.copyWith(status: ItemDefaultStatus.loading));
+    emit(state.copyWith(status: ItemStatus.loading));
     try {
       final id = form.getValue<String>(AuthIdInput.idKey) ?? '';
       if (id.isEmpty) {
@@ -57,7 +57,7 @@ class ForgotPasswordCubit extends RequestCubit<ForgotPasswordState> {
       } else {
         emit(
           state.copyWith(
-            status: ItemDefaultStatus.error,
+            status: ItemStatus.error,
             error: 'Đổi mật khẩu không thành công',
           ),
         );
@@ -66,7 +66,7 @@ class ForgotPasswordCubit extends RequestCubit<ForgotPasswordState> {
       log(e.toString(), error: e);
       emit(
         state.copyWith(
-          status: ItemDefaultStatus.error,
+          status: ItemStatus.error,
           error: e,
         ),
       );

@@ -2,7 +2,7 @@ part of 'change_password_cubit.dart';
 
 class ChangePasswordState extends RequestState {
   const ChangePasswordState({
-    super.status = ItemDefaultStatus.initial,
+    super.status = ItemStatus.initial,
     required this.item,
     super.error,
   });
@@ -11,11 +11,11 @@ class ChangePasswordState extends RequestState {
 
   @override
   List<Object?> get props => [status, item, error];
-  
+
   ChangePasswordState copyWith({
-      ItemDefaultStatus? status,
-      dynamic? item,
-      Object? error,
+    ItemStatus? status,
+    dynamic? item,
+    Object? error,
   }) {
     return ChangePasswordState(
       status: status ?? this.status,

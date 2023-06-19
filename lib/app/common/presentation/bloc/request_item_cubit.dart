@@ -17,19 +17,19 @@ abstract class RequestItemCubit<I, S extends RequestItemState<I>>
       } else {
         log(e.toString(), error: e);
       }
-      emit(state.copyWith(status: ItemDefaultStatus.error, error: e) as S);
+      emit(state.copyWith(status: ItemStatus.error, error: e) as S);
     }
   }
 
   void loading() {
-    emit(state.copyWith(status: ItemDefaultStatus.loading) as S);
+    emit(state.copyWith(status: ItemStatus.loading) as S);
   }
 
   void loaded(I? item) {
     emit(
       state.copyWith(
         item: item,
-        status: ItemDefaultStatus.success,
+        status: ItemStatus.success,
       ) as S,
     );
   }
@@ -37,17 +37,17 @@ abstract class RequestItemCubit<I, S extends RequestItemState<I>>
 
 class RequestItemState<I> extends Equatable {
   const RequestItemState({
-    this.status = ItemDefaultStatus.initial,
+    this.status = ItemStatus.initial,
     this.item,
     this.error,
   });
 
-  final ItemDefaultStatus status;
+  final ItemStatus status;
   final I? item;
   final Object? error;
 
   RequestItemState<I> copyWith({
-    ItemDefaultStatus? status,
+    ItemStatus? status,
     I? item,
     Object? error,
   }) {

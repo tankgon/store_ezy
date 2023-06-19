@@ -2,7 +2,7 @@ part of 'message_cubit.dart';
 
 class MessageState extends RequestState {
   const MessageState({
-    super.status = ItemDefaultStatus.initial,
+    super.status = ItemStatus.initial,
     required this.item,
     super.error,
   });
@@ -13,7 +13,7 @@ class MessageState extends RequestState {
   List<Object?> get props => [status, item, error];
 
   MessageState copyWith({
-    ItemDefaultStatus? status,
+    ItemStatus? status,
     dynamic? item,
     Object? error,
   }) {

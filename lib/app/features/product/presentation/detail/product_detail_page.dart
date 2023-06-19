@@ -1,5 +1,5 @@
 import 'package:mulstore/all_file/all_file.dart';
-import 'package:mulstore/app/common/presentation/bloc/request_item_cubit.dart';
+import 'package:mulstore/app/common/presentation/widgets/status/request_item_consumer.dart';
 import 'package:mulstore/app/features/product/domain/entity/product_entity.dart';
 import 'package:mulstore/app/features/product/presentation/detail/cubit/product_detail_cubit.dart';
 import 'package:mulstore/app/features/product/presentation/detail/product_detail_body.dart';
@@ -18,9 +18,8 @@ class ProductDetailPage extends StatelessWidget {
         item: product,
       )..fetchItem(),
       child: Builder(builder: (context) {
-        return BlocListener<ProductDetailCubit,
-            RequestItemState<ProductEntity>>(
-          listener: _onStateChanged,
+        return RequestItemConsumer<ProductDetailCubit, ProductDetailState>(
+          onSuccess: (value) {},
           child: Scaffold(
             appBar: AppAppBar(
               title: '',
@@ -33,16 +32,5 @@ class ProductDetailPage extends StatelessWidget {
         );
       }),
     );
-  }
-
-  void _onStateChanged(
-      BuildContext context, RequestItemState<ProductEntity> state) {
-    if (state.status == ItemDefaultStatus.error) {
-      DialogUtils.showErrorDialog(
-        context: context,
-        content: context.getAppErrorMsg(state.error),
-        error: state.error,
-      );
-    }
   }
 }

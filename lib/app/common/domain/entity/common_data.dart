@@ -2,24 +2,7 @@ import 'package:mulstore/all_file/all_file.dart';
 
 part 'common_data.g.dart';
 
-enum ItemDefaultStatus { initial, loading, success, error }
-
-@JsonSerializable(ignoreUnannotated: false)
-class FCMTokenReq {
-  const FCMTokenReq({
-    this.deviceID,
-    this.deviceToken,
-    this.type,
-  });
-
-  factory FCMTokenReq.fromJson(Map<String, dynamic> json) =>
-      _$FCMTokenReqFromJson(json);
-  final String? deviceID;
-  final String? deviceToken;
-  final String? type;
-
-  Map<String, dynamic> toJson() => _$FCMTokenReqToJson(this);
-}
+enum ItemStatus { initial, loading, success, error }
 
 @JsonSerializable(ignoreUnannotated: false)
 class RangeValueModel<T> {

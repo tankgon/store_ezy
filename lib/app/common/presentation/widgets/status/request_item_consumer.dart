@@ -1,9 +1,8 @@
 import 'package:mulstore/all_file/all_file.dart';
 
-@Deprecated('Please use RequestItemCubit instead')
-class DefaultStatusConsumer<C extends RequestCubit<S>, S extends RequestState>
-    extends StatelessWidget {
-  const DefaultStatusConsumer({
+class RequestItemConsumer<C extends RequestItemCubit<Object, S>,
+    S extends RequestItemState<Object>> extends StatelessWidget {
+  const RequestItemConsumer({
     super.key,
     required this.child,
     this.onSuccess,
@@ -41,7 +40,7 @@ class DefaultStatusConsumer<C extends RequestCubit<S>, S extends RequestState>
     );
   }
 
-  void _onStatusChange(BuildContext context, RequestState state) {
+  void _onStatusChange(BuildContext context, RequestItemState<Object> state) {
     if (state.status == ItemStatus.error) {
       final onErrorHandled = onError?.call(state.error) ?? false;
       if (!onErrorHandled) {

@@ -33,7 +33,7 @@ class ChangePasswordCubit extends RequestCubit<ChangePasswordState> {
   final String uuid;
 
   FutureOr<void> submit() async {
-    emit(state.copyWith(status: ItemDefaultStatus.loading));
+    emit(state.copyWith(status: ItemStatus.loading));
     try {
       final rs = await _authRepo.forgotPasswordCreatePassword(
         userID: userID,
@@ -42,7 +42,7 @@ class ChangePasswordCubit extends RequestCubit<ChangePasswordState> {
       );
       emit(
         state.copyWith(
-          status: ItemDefaultStatus.success,
+          status: ItemStatus.success,
           item: rs,
         ),
       );
@@ -50,7 +50,7 @@ class ChangePasswordCubit extends RequestCubit<ChangePasswordState> {
       log(e.toString(), error: e);
       emit(
         state.copyWith(
-          status: ItemDefaultStatus.error,
+          status: ItemStatus.error,
           error: e,
         ),
       );

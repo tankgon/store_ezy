@@ -24,7 +24,7 @@ class ProductPage extends StatelessWidget {
   }
 
   void _onStateChanged(BuildContext context, ProductState state) {
-    if (state.status == ItemDefaultStatus.error) {
+    if (state.status == ItemStatus.error) {
       DialogUtils.showErrorDialog(
         context: context,
         content: context.getAppErrorMsg(state.error),

@@ -1,5 +1,4 @@
 import 'package:mulstore/all_file/all_file.dart';
-import 'package:mulstore/app/common/presentation/bloc/request_item_cubit.dart';
 import 'package:mulstore/app/features/distributor/presentation/item/distributor_item.dart';
 import 'package:mulstore/app/features/distributor/presentation/item/layout/distributor_item_layout.dart';
 import 'package:mulstore/app/features/distributor/presentation/rating/distributor_rating.dart';
@@ -20,7 +19,7 @@ class ProductDetailBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProductDetailCubit, RequestItemState<ProductEntity>>(
+    return BlocBuilder<ProductDetailCubit, ProductDetailState>(
       builder: (context, state) {
         final item = state.item;
         final imgList = item?.imgSrcList ?? [];

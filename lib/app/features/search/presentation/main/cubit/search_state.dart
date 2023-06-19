@@ -1,24 +1,23 @@
 part of 'search_cubit.dart';
 
 class SearchState extends Equatable {
-
   const SearchState({
-    this.status = ItemDefaultStatus.initial,
+    this.status = ItemStatus.initial,
     required this.item,
     this.error,
   });
 
-  final ItemDefaultStatus status;
+  final ItemStatus status;
   final dynamic item;
   final Object? error;
 
   @override
   List<Object?> get props => [status, item, error];
-  
+
   SearchState copyWith({
-      ItemDefaultStatus? status,
-      dynamic? item,
-      Object? error,
+    ItemStatus? status,
+    dynamic? item,
+    Object? error,
   }) {
     return SearchState(
       status: status ?? this.status,

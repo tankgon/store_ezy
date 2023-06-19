@@ -34,7 +34,7 @@ class NotificationDetailPage extends StatelessWidget {
   }
 
   void _onStateChanged(BuildContext context, NotificationDetailState state) {
-    if (state.status == ItemDefaultStatus.error) {
+    if (state.status == ItemStatus.error) {
       DialogUtils.showErrorDialog(
         context: context,
         content: context.getAppErrorMsg(state.error),
@@ -53,12 +53,12 @@ class _PageBodyLoading extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<NotificationDetailCubit, NotificationDetailState>(
       builder: (context, state) {
-        if (state.status == ItemDefaultStatus.error) {
+        if (state.status == ItemStatus.error) {
           return AppErrorSimple(
             errorMsg: context.getAppErrorMsg(state.error) ?? '',
           );
-        } else if (state.status == ItemDefaultStatus.initial ||
-            state.status == ItemDefaultStatus.loading) {
+        } else if (state.status == ItemStatus.initial ||
+            state.status == ItemStatus.loading) {
           return const AppLoadingIndicator();
         }
 

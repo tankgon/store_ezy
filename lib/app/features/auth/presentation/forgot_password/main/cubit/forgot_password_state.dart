@@ -1,9 +1,8 @@
 part of 'forgot_password_cubit.dart';
 
 class ForgotPasswordState extends RequestState {
-
   const ForgotPasswordState({
-    super.status = ItemDefaultStatus.initial,
+    super.status = ItemStatus.initial,
     required this.item,
     super.error,
   });
@@ -12,11 +11,11 @@ class ForgotPasswordState extends RequestState {
 
   @override
   List<Object?> get props => [status, item, error];
-  
+
   ForgotPasswordState copyWith({
-      ItemDefaultStatus? status,
-      dynamic? item,
-      Object? error,
+    ItemStatus? status,
+    dynamic? item,
+    Object? error,
   }) {
     return ForgotPasswordState(
       status: status ?? this.status,

@@ -1,9 +1,8 @@
 part of 'sign_up_cubit.dart';
 
 class SignUpState extends RequestState {
-
   const SignUpState({
-    super.status = ItemDefaultStatus.initial,
+    super.status = ItemStatus.initial,
     required this.item,
     super.error,
   });
@@ -12,11 +11,11 @@ class SignUpState extends RequestState {
 
   @override
   List<Object?> get props => [status, item, error];
-  
+
   SignUpState copyWith({
-      ItemDefaultStatus? status,
-      dynamic? item,
-      Object? error,
+    ItemStatus? status,
+    dynamic? item,
+    Object? error,
   }) {
     return SignUpState(
       status: status ?? this.status,

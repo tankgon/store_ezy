@@ -42,7 +42,7 @@ class UserOrderPage extends StatelessWidget {
   }
 
   void _onStateChanged(BuildContext context, UserOrderState state) {
-    if (state.status == ItemDefaultStatus.error) {
+    if (state.status == ItemStatus.error) {
       DialogUtils.showErrorDialog(
         context: context,
         content: context.getAppErrorMsg(state.error),
@@ -64,8 +64,8 @@ class _PageBodyLoading extends StatelessWidget {
         // if (state.status == ItemDetailStatus.error) {
         //   return SimpleErrorText(error: state.errorMsg ?? '');
         // }
-        final isLoading = state.status == ItemDefaultStatus.loading ||
-            state.status == ItemDefaultStatus.initial;
+        final isLoading = state.status == ItemStatus.loading ||
+            state.status == ItemStatus.initial;
 
         return child;
       },

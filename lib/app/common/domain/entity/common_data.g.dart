@@ -6,19 +6,6 @@ part of 'common_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-FCMTokenReq _$FCMTokenReqFromJson(Map<String, dynamic> json) => FCMTokenReq(
-      deviceID: json['deviceID'] as String?,
-      deviceToken: json['deviceToken'] as String?,
-      type: json['type'] as String?,
-    );
-
-Map<String, dynamic> _$FCMTokenReqToJson(FCMTokenReq instance) =>
-    <String, dynamic>{
-      'deviceID': instance.deviceID,
-      'deviceToken': instance.deviceToken,
-      'type': instance.type,
-    };
-
 RangeValueModel<T> _$RangeValueModelFromJson<T>(Map<String, dynamic> json) =>
     RangeValueModel<T>(
       start: _$JsonConverterFromJson<Object, T>(

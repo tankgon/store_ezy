@@ -10,7 +10,7 @@ class NotificationDetailCubit extends Cubit<NotificationDetailState> {
   }) : super(NotificationDetailState(item: item));
 
   FutureOr<void> fetchItem() async {
-    emit(state.copyWith(status: ItemDefaultStatus.loading));
+    emit(state.copyWith(status: ItemStatus.loading));
     try {
       // final data = await getIt<NotificationRepo>().getNotificationDetail(
       //   messageID: state.item.messageID,
@@ -23,7 +23,7 @@ class NotificationDetailCubit extends Cubit<NotificationDetailState> {
       log(e.toString(), error: e);
       emit(
         state.copyWith(
-          status: ItemDefaultStatus.error,
+          status: ItemStatus.error,
           error: e,
         ),
       );

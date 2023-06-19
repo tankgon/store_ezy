@@ -19,7 +19,7 @@ class DistributorRatingSimple extends StatelessWidget {
   }
 
   void _onStateChanged(BuildContext context, DistributorRatingState state) {
-    if (state.status == ItemDefaultStatus.error) {
+    if (state.status == ItemStatus.error) {
       DialogUtils.showErrorDialog(
         context: context,
         content: context.getAppErrorMsg(state.error),
