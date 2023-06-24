@@ -15,13 +15,7 @@ class LoginBody extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            LocaleKeys.authen_Login
-                .tr()
-                .text
-                .titleLarge(context)
-                .semiBold
-                .center
-                .make(),
+            LocaleKeys.authen_Login.tr().text.titleLarge(context).semiBold.center.make(),
             Gaps.vGap32,
             const AuthIdPasswordInput(
               showPasswordHelper: false,

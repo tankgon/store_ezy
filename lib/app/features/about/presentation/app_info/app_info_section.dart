@@ -12,37 +12,27 @@ class AppInfoSection extends StatelessWidget {
         AppSettingTile(
           iconData: PhosphorIcons.shield,
           title: 'Chính sách bảo mật'.tr(),
-          onPressed: () {
-
-          },
+          onPressed: () {},
         ),
         AppSettingTile(
           iconData: PhosphorIcons.file_text,
           title: 'Điều khoản dịch vụ'.tr(),
-          onPressed: () {
-
-          },
+          onPressed: () {},
         ),
         AppSettingTile(
           iconData: PhosphorIcons.question,
           title: 'Trợ giúp & hỗ trợ'.tr(),
-          onPressed: () {
-
-          },
+          onPressed: () {},
         ),
         AppSettingTile(
           iconData: PhosphorIcons.stack,
           title: 'Phiên bản ứng dụng'.tr(),
-          onPressed: () {
-
-          },
+          onPressed: () {},
         ),
         AppSettingTile(
           iconData: PhosphorIcons.info,
           title: 'Về MulStore'.tr(),
-          onPressed: () {
-
-          },
+          onPressed: () {},
         ),
       ].withDivider(const AppDivider.thin().pxDefault()),
     );

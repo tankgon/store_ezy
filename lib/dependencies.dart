@@ -101,8 +101,7 @@ void _initDataMSService() {
     ..registerLazySingleton<UserApiMS>(() => UserApiMS(dio))
     ..registerLazySingleton<AuthApiMS>(() => AuthApiMS(dio))
     ..registerLazySingleton<MsProductApi>(() => MsProductApi(dio))
-    ..registerLazySingleton<MsProductCategoryApi>(
-        () => MsProductCategoryApi(dio))
+    ..registerLazySingleton<MsProductCategoryApi>(() => MsProductCategoryApi(dio))
     ..registerLazySingleton<MsAppSettingApi>(() => MsAppSettingApi(dio))
 
     // Repo

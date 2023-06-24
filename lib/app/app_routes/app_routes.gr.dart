@@ -12,52 +12,30 @@ import 'dart:async' as _i23;
 
 import 'package:auto_route/auto_route.dart' as _i22;
 import 'package:mulstore/all_file/all_file.dart' as _i24;
-import 'package:mulstore/app/features/about/presentation/main/about_page.dart'
-    as _i15;
-import 'package:mulstore/app/features/auth/presentation/forgot_password/change_password/change_password_page.dart'
-    as _i4;
-import 'package:mulstore/app/features/auth/presentation/forgot_password/main/forgot_password_page.dart'
-    as _i5;
-import 'package:mulstore/app/features/auth/presentation/login/login_page.dart'
-    as _i7;
-import 'package:mulstore/app/features/auth/presentation/otp_confirm/auth_otp_confirm_page.dart'
-    as _i3;
-import 'package:mulstore/app/features/auth/presentation/sign_up/sign_up_page.dart'
-    as _i6;
-import 'package:mulstore/app/features/checkout/presentation/main/checkout_page.dart'
-    as _i18;
-import 'package:mulstore/app/features/home/presentation/main/home_page.dart'
-    as _i1;
+import 'package:mulstore/app/features/about/presentation/main/about_page.dart' as _i15;
+import 'package:mulstore/app/features/auth/presentation/forgot_password/change_password/change_password_page.dart' as _i4;
+import 'package:mulstore/app/features/auth/presentation/forgot_password/main/forgot_password_page.dart' as _i5;
+import 'package:mulstore/app/features/auth/presentation/login/login_page.dart' as _i7;
+import 'package:mulstore/app/features/auth/presentation/otp_confirm/auth_otp_confirm_page.dart' as _i3;
+import 'package:mulstore/app/features/auth/presentation/sign_up/sign_up_page.dart' as _i6;
+import 'package:mulstore/app/features/checkout/presentation/main/checkout_page.dart' as _i18;
+import 'package:mulstore/app/features/home/presentation/main/home_page.dart' as _i1;
 import 'package:mulstore/app/features/main/presentation/main_page.dart' as _i20;
-import 'package:mulstore/app/features/message/presentation/main/message_page.dart'
-    as _i12;
-import 'package:mulstore/app/features/notification/data/model/notification_model.dart'
-    as _i25;
-import 'package:mulstore/app/features/notification/presentation/detail/notification_detail_page.dart'
-    as _i8;
-import 'package:mulstore/app/features/notification/presentation/main/notification_main_page.dart'
-    as _i9;
-import 'package:mulstore/app/features/product/domain/entity/product_entity.dart'
-    as _i27;
-import 'package:mulstore/app/features/product/presentation/detail/product_detail_page.dart'
-    as _i17;
-import 'package:mulstore/app/features/product/presentation/product_search/product_search_page.dart'
-    as _i16;
-import 'package:mulstore/app/features/product_rating/presentation/main/product_rating_page.dart'
-    as _i2;
-import 'package:mulstore/app/features/search/presentation/main/search_page.dart'
-    as _i19;
-import 'package:mulstore/app/features/shopping_cart/presentation/main/shopping_cart_page.dart'
-    as _i21;
-import 'package:mulstore/app/features/user/presentation/account/user_account_page.dart'
-    as _i14;
-import 'package:mulstore/app/features/user/presentation/info/user_info_page.dart'
-    as _i13;
+import 'package:mulstore/app/features/message/presentation/main/message_page.dart' as _i12;
+import 'package:mulstore/app/features/notification/data/model/notification_model.dart' as _i25;
+import 'package:mulstore/app/features/notification/presentation/detail/notification_detail_page.dart' as _i8;
+import 'package:mulstore/app/features/notification/presentation/main/notification_main_page.dart' as _i9;
+import 'package:mulstore/app/features/product/domain/entity/product_entity.dart' as _i27;
+import 'package:mulstore/app/features/product/presentation/detail/product_detail_page.dart' as _i17;
+import 'package:mulstore/app/features/product/presentation/product_search/product_search_page.dart' as _i16;
+import 'package:mulstore/app/features/product_rating/presentation/main/product_rating_page.dart' as _i2;
+import 'package:mulstore/app/features/search/presentation/main/search_page.dart' as _i19;
+import 'package:mulstore/app/features/shopping_cart/presentation/main/shopping_cart_page.dart' as _i21;
+import 'package:mulstore/app/features/user/presentation/account/user_account_page.dart' as _i14;
+import 'package:mulstore/app/features/user/presentation/info/user_info_page.dart' as _i13;
 import 'package:mulstore/app/features/user/self.dart' as _i26;
-import 'package:mulstore/app/features/user_order/presentation/detail/user_order_detail_page.dart'
-    as _i10;
-import 'package:mulstore/app/features/user_order/presentation/main/user_order_page.dart'
-    as _i11;
+import 'package:mulstore/app/features/user_order/presentation/detail/user_order_detail_page.dart' as _i10;
+import 'package:mulstore/app/features/user_order/presentation/main/user_order_page.dart' as _i11;
 
 abstract class $AppAutoRoute extends _i22.RootStackRouter {
   $AppAutoRoute({super.navigatorKey});
@@ -176,8 +154,7 @@ abstract class $AppAutoRoute extends _i22.RootStackRouter {
       );
     },
     ProductSearchRoute.name: (routeData) {
-      final args = routeData.argsAs<ProductSearchRouteArgs>(
-          orElse: () => const ProductSearchRouteArgs());
+      final args = routeData.argsAs<ProductSearchRouteArgs>(orElse: () => const ProductSearchRouteArgs());
       return _i22.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i16.ProductSearchPage(
@@ -277,8 +254,7 @@ class AuthOtpConfirmRoute extends _i22.PageRouteInfo<AuthOtpConfirmRouteArgs> {
 
   static const String name = 'AuthOtpConfirmRoute';
 
-  static const _i22.PageInfo<AuthOtpConfirmRouteArgs> page =
-      _i22.PageInfo<AuthOtpConfirmRouteArgs>(name);
+  static const _i22.PageInfo<AuthOtpConfirmRouteArgs> page = _i22.PageInfo<AuthOtpConfirmRouteArgs>(name);
 }
 
 class AuthOtpConfirmRouteArgs {
@@ -329,8 +305,7 @@ class ChangePasswordRoute extends _i22.PageRouteInfo<ChangePasswordRouteArgs> {
 
   static const String name = 'ChangePasswordRoute';
 
-  static const _i22.PageInfo<ChangePasswordRouteArgs> page =
-      _i22.PageInfo<ChangePasswordRouteArgs>(name);
+  static const _i22.PageInfo<ChangePasswordRouteArgs> page = _i22.PageInfo<ChangePasswordRouteArgs>(name);
 }
 
 class ChangePasswordRouteArgs {
@@ -396,8 +371,7 @@ class LoginRoute extends _i22.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i8.NotificationDetailPage]
-class NotificationDetailRoute
-    extends _i22.PageRouteInfo<NotificationDetailRouteArgs> {
+class NotificationDetailRoute extends _i22.PageRouteInfo<NotificationDetailRouteArgs> {
   NotificationDetailRoute({
     _i24.Key? key,
     required _i25.NotificationDetailModel item,
@@ -413,8 +387,7 @@ class NotificationDetailRoute
 
   static const String name = 'NotificationDetailRoute';
 
-  static const _i22.PageInfo<NotificationDetailRouteArgs> page =
-      _i22.PageInfo<NotificationDetailRouteArgs>(name);
+  static const _i22.PageInfo<NotificationDetailRouteArgs> page = _i22.PageInfo<NotificationDetailRouteArgs>(name);
 }
 
 class NotificationDetailRouteArgs {
@@ -507,8 +480,7 @@ class UserInfoRoute extends _i22.PageRouteInfo<UserInfoRouteArgs> {
 
   static const String name = 'UserInfoRoute';
 
-  static const _i22.PageInfo<UserInfoRouteArgs> page =
-      _i22.PageInfo<UserInfoRouteArgs>(name);
+  static const _i22.PageInfo<UserInfoRouteArgs> page = _i22.PageInfo<UserInfoRouteArgs>(name);
 }
 
 class UserInfoRouteArgs {
@@ -573,8 +545,7 @@ class ProductSearchRoute extends _i22.PageRouteInfo<ProductSearchRouteArgs> {
 
   static const String name = 'ProductSearchRoute';
 
-  static const _i22.PageInfo<ProductSearchRouteArgs> page =
-      _i22.PageInfo<ProductSearchRouteArgs>(name);
+  static const _i22.PageInfo<ProductSearchRouteArgs> page = _i22.PageInfo<ProductSearchRouteArgs>(name);
 }
 
 class ProductSearchRouteArgs {
@@ -611,8 +582,7 @@ class ProductDetailRoute extends _i22.PageRouteInfo<ProductDetailRouteArgs> {
 
   static const String name = 'ProductDetailRoute';
 
-  static const _i22.PageInfo<ProductDetailRouteArgs> page =
-      _i22.PageInfo<ProductDetailRouteArgs>(name);
+  static const _i22.PageInfo<ProductDetailRouteArgs> page = _i22.PageInfo<ProductDetailRouteArgs>(name);
 }
 
 class ProductDetailRouteArgs {

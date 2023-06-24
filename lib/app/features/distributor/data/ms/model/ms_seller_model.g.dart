@@ -6,8 +6,7 @@ part of 'ms_seller_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-MsSellerModel _$MsSellerModelFromJson(Map<String, dynamic> json) =>
-    MsSellerModel(
+MsSellerModel _$MsSellerModelFromJson(Map<String, dynamic> json) => MsSellerModel(
       sellerID: json['sellerID'] as String?,
       businessName: json['businessName'] as String?,
       contactFullName: json['contactFullName'] as String?,
@@ -15,8 +14,7 @@ MsSellerModel _$MsSellerModelFromJson(Map<String, dynamic> json) =>
       linkString: json['linkString'] as String?,
     );
 
-Map<String, dynamic> _$MsSellerModelToJson(MsSellerModel instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$MsSellerModelToJson(MsSellerModel instance) => <String, dynamic>{
       'sellerID': instance.sellerID,
       'businessName': instance.businessName,
       'contactFullName': instance.contactFullName,

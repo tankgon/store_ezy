@@ -4,48 +4,48 @@ import 'package:{{{fullPath}}}/{{feature_name.snakeCase()}}_body.dart';
 
 @RoutePage()
 class {{feature_name.pascalCase()}}Page extends StatelessWidget {
-  const {{feature_name.pascalCase()}}Page({super.key});
+const {{feature_name.pascalCase()}}Page({super.key});
 {{#isBloc}}
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => {{feature_name.pascalCase()}}Bloc(),
-      child: Builder(
-          builder: (context) {
-            return BlocConsumer<{{feature_name.pascalCase()}}Bloc, {{feature_name.pascalCase()}}State>(
-              listener: _onStateChanged,
-              builder: (context, state) {
-                return Scaffold(
-                  appBar: AppAppBar(
-                      title: 'title',
-                    ),
-                  body: const {{feature_name.pascalCase()}}Body(),
-                );
-              },
-            );
-          }
-      ),
-    );
-  } {{/isBloc}}{{#isCubit}}
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => {{feature_name.pascalCase()}}Cubit(),
-      child: DefaultStatusConsumer<{{feature_name.pascalCase()}}Cubit, {{feature_name.pascalCase()}}State>(
-        child: Scaffold(
-          appBar: AppAppBar(
-              title: 'title',
-            ),
-          body: {{feature_name.pascalCase()}}Body(),
-        ),
-      ),
-    );
-  } {{/isCubit}}  {{#isNone}}
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: {{feature_name.pascalCase()}}Body(),
-    );
-  } {{/isNone}}
+@override
+Widget build(BuildContext context) {
+return BlocProvider(
+create: (context) => {{feature_name.pascalCase()}}Bloc(),
+child: Builder(
+builder: (context) {
+return BlocConsumer<{{feature_name.pascalCase()}}Bloc, {{feature_name.pascalCase()}}State>(
+listener: _onStateChanged,
+builder: (context, state) {
+return Scaffold(
+appBar: AppAppBar(
+title: 'title',
+),
+body: const {{feature_name.pascalCase()}}Body(),
+);
+},
+);
+}
+),
+);
+} {{/isBloc}}{{#isCubit}}
+@override
+Widget build(BuildContext context) {
+return BlocProvider(
+create: (context) => {{feature_name.pascalCase()}}Cubit(),
+child: DefaultStatusConsumer<{{feature_name.pascalCase()}}Cubit, {{feature_name.pascalCase()}}State>(
+child: Scaffold(
+appBar: AppAppBar(
+title: 'title',
+),
+body: {{feature_name.pascalCase()}}Body(),
+),
+),
+);
+} {{/isCubit}} {{#isNone}}
+@override
+Widget build(BuildContext context) {
+return const Scaffold(
+body: {{feature_name.pascalCase()}}Body(),
+);
+} {{/isNone}}
 
 }

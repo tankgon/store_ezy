@@ -1,5 +1,3 @@
-
-
 class AppRegex {
   AppRegex._();
 

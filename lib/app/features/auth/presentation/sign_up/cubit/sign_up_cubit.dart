@@ -7,8 +7,7 @@ import 'package:mulstore/app/features/auth/self.dart';
 part 'sign_up_state.dart';
 
 class SignUpCubit extends RequestCubit<SignUpState> {
-  SignUpCubit({required this.authBloc, dynamic? item})
-      : super(SignUpState(item: item)) {
+  SignUpCubit({required this.authBloc, dynamic? item}) : super(SignUpState(item: item)) {
     form = FormGroup({
       ...AuthIdPasswordInput.createControlGroup(
         hasConfirmPassword: true,
@@ -31,8 +30,7 @@ class SignUpCubit extends RequestCubit<SignUpState> {
       emit(state.copyWith(status: ItemStatus.loading));
       try {
         final id = form.getValue<String>(AuthIdInput.idKey) ?? '';
-        final password =
-            form.getValue<String>(AuthPasswordInput.passwordKey) ?? '';
+        final password = form.getValue<String>(AuthPasswordInput.passwordKey) ?? '';
         if (id.isEmpty || password.isEmpty) {
           throw Exception('Chưa nhập đủ thông tin');
         }

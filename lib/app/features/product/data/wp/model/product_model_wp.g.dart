@@ -50,9 +50,7 @@ ProductWP _$ProductWPFromJson(Map<String, dynamic> json) => ProductWP(
       backordered: json['backordered'] as bool?,
       soldIndividually: json['sold_individually'] as bool?,
       weight: json['weight'] as String?,
-      dimensions: json['dimensions'] == null
-          ? null
-          : DimensionWP.fromJson(json['dimensions'] as Map<String, dynamic>),
+      dimensions: json['dimensions'] == null ? null : DimensionWP.fromJson(json['dimensions'] as Map<String, dynamic>),
       shippingRequired: json['shipping_required'] as bool?,
       shippingTaxable: json['shipping_taxable'] as bool?,
       shippingClass: json['shipping_class'] as String?,
@@ -60,29 +58,21 @@ ProductWP _$ProductWPFromJson(Map<String, dynamic> json) => ProductWP(
       reviewsAllowed: json['reviews_allowed'] as bool?,
       averageRating: json['average_rating'] as String?,
       ratingCount: json['rating_count'] as int?,
-      relatedIds: (json['related_ids'] as List<dynamic>?)
-          ?.map((e) => e as int)
-          .toList(),
+      relatedIds: (json['related_ids'] as List<dynamic>?)?.map((e) => e as int).toList(),
       upsellIds: json['upsell_ids'] as List<dynamic>?,
       crossSellIds: json['cross_sell_ids'] as List<dynamic>?,
       parentId: json['parent_id'] as int?,
       purchaseNote: json['purchase_note'] as String?,
-      categories: (json['categories'] as List<dynamic>?)
-          ?.map((e) => CategoryWP.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      categories: (json['categories'] as List<dynamic>?)?.map((e) => CategoryWP.fromJson(e as Map<String, dynamic>)).toList(),
       tags: json['tags'] as List<dynamic>?,
-      images: (json['images'] as List<dynamic>?)
-          ?.map((e) => ImageWP.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      images: (json['images'] as List<dynamic>?)?.map((e) => ImageWP.fromJson(e as Map<String, dynamic>)).toList(),
       attributes: json['attributes'] as List<dynamic>?,
       defaultAttributes: json['default_attributes'] as List<dynamic>?,
       variations: json['variations'] as List<dynamic>?,
       groupedProducts: json['grouped_products'] as List<dynamic>?,
       menuOrder: json['menu_order'] as int?,
       metaData: json['meta_data'] as List<dynamic>?,
-      links: json['_links'] == null
-          ? null
-          : LinkWP.fromJson(json['_links'] as Map<String, dynamic>),
+      links: json['_links'] == null ? null : LinkWP.fromJson(json['_links'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ProductWPToJson(ProductWP instance) => <String, dynamic>{
@@ -160,8 +150,7 @@ DimensionWP _$DimensionWPFromJson(Map<String, dynamic> json) => DimensionWP(
       height: json['height'] as String?,
     );
 
-Map<String, dynamic> _$DimensionWPToJson(DimensionWP instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$DimensionWPToJson(DimensionWP instance) => <String, dynamic>{
       'length': instance.length,
       'width': instance.width,
       'height': instance.height,
@@ -173,8 +162,7 @@ CategoryWP _$CategoryWPFromJson(Map<String, dynamic> json) => CategoryWP(
       slug: json['slug'] as String?,
     );
 
-Map<String, dynamic> _$CategoryWPToJson(CategoryWP instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$CategoryWPToJson(CategoryWP instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'slug': instance.slug,
@@ -203,12 +191,8 @@ Map<String, dynamic> _$ImageWPToJson(ImageWP instance) => <String, dynamic>{
     };
 
 LinkWP _$LinkWPFromJson(Map<String, dynamic> json) => LinkWP(
-      self: (json['self'] as List<dynamic>?)
-          ?.map((e) => SelfWP.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      collection: (json['collection'] as List<dynamic>?)
-          ?.map((e) => CollectionWP.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      self: (json['self'] as List<dynamic>?)?.map((e) => SelfWP.fromJson(e as Map<String, dynamic>)).toList(),
+      collection: (json['collection'] as List<dynamic>?)?.map((e) => CollectionWP.fromJson(e as Map<String, dynamic>)).toList(),
     );
 
 Map<String, dynamic> _$LinkWPToJson(LinkWP instance) => <String, dynamic>{
@@ -228,7 +212,6 @@ CollectionWP _$CollectionWPFromJson(Map<String, dynamic> json) => CollectionWP(
       href: json['href'] as String?,
     );
 
-Map<String, dynamic> _$CollectionWPToJson(CollectionWP instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$CollectionWPToJson(CollectionWP instance) => <String, dynamic>{
       'href': instance.href,
     };

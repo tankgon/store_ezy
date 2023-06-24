@@ -44,8 +44,7 @@ class AppTextDelayInput extends StatefulWidget {
   State<AppTextDelayInput> createState() => _AppTextDelayInputState();
 }
 
-class _AppTextDelayInputState extends State<AppTextDelayInput>  with TextFiledInputDelayCallBack{
-
+class _AppTextDelayInputState extends State<AppTextDelayInput> with TextFiledInputDelayCallBack {
   @override
   void initState() {
     if (widget.onUserStopTyping != null) {

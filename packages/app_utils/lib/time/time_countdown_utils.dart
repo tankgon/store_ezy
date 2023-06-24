@@ -42,8 +42,7 @@ class TimeCountDownUtils {
       today: today,
     );
 
-    var millisecondsSinceEpoch =
-        TimeService().todayLocal().millisecondsSinceEpoch;
+    var millisecondsSinceEpoch = TimeService().todayLocal().millisecondsSinceEpoch;
     return diff == null ? null : millisecondsSinceEpoch + diff;
   }
 
@@ -51,8 +50,6 @@ class TimeCountDownUtils {
     var date = startValidDate.toDate();
     var todayDate = today?.toDate() ?? TimeService().todayUTC();
 
-    return date == null || todayDate == null
-        ? null
-        : date.difference(todayDate).inMilliseconds;
+    return date == null || todayDate == null ? null : date.difference(todayDate).inMilliseconds;
   }
 }

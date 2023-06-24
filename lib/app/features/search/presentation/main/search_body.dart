@@ -2,8 +2,7 @@ import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/search/presentation/main/cubit/search_cubit.dart';
 
 class SearchBody extends StatelessWidget {
-
-  const SearchBody({super.key}) ;
+  const SearchBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +11,7 @@ class SearchBody extends StatelessWidget {
         builder: (context, state) {
           final item = state.item;
           return Column(
-            children: [
-
-            ],
+            children: [],
           );
         },
       ),

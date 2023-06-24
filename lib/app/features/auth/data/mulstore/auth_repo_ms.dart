@@ -1,9 +1,9 @@
 import 'package:app_utils/view/app_info_utils.dart';
 import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/common/presentation/widgets/exception/app_exception_handler.dart';
 import 'package:mulstore/app/features/auth/data/mulstore/api/auth_api_ms.dart';
 import 'package:mulstore/app/features/auth/data/mulstore/model/auth_model_ms.dart';
 import 'package:mulstore/app/features/auth/self.dart';
-import 'package:mulstore/app/common/presentation/widgets/exception/app_exception_handler.dart';
 import 'package:mulstore/services/firebase_notification_service.dart';
 
 const _deviceType = 'MOBILEAPP';
@@ -281,8 +281,7 @@ class AuthRepoMS extends AuthRepo {
   }
 
   @override
-  Future<ForgotPasswordOTPEntity> forgotPasswordSentOTPEmail(
-      {required String email}) async {
+  Future<ForgotPasswordOTPEntity> forgotPasswordSentOTPEmail({required String email}) async {
     final rs = await _authApi.forgotPasswordSendOTPEmail(
       ForgotPasswordReq(
         userLogin: email,

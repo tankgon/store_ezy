@@ -41,12 +41,10 @@ class ProductEntity {
       name: 'LEIFARNE Chair, beige',
       imgList: [
         ImageEntity(
-          src:
-              'https://product.hstatic.net/200000311493/product/set_goi_xa_gung_trang_68383b0f8acb45c498206705071e6d2c.jpg',
+          src: 'https://product.hstatic.net/200000311493/product/set_goi_xa_gung_trang_68383b0f8acb45c498206705071e6d2c.jpg',
         ),
       ],
-      description:
-          'The chair is made of solid wood, which is a durable natural material.',
+      description: 'The chair is made of solid wood, which is a durable natural material.',
       price: '100000',
       type: 'chai',
       listedPrice: '200000',
@@ -89,8 +87,7 @@ class ProductEntity {
 
   String? get img => imgList.firstOrNull?.src;
 
-  List<String>? get imgSrcList =>
-      imgList?.map((e) => e.src).filterNotNullList();
+  List<String>? get imgSrcList => imgList?.map((e) => e.src).filterNotNullList();
 
   ProductCategoryEntity? get category => categories?.firstOrNull;
 

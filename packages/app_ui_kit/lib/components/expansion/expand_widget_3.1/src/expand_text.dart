@@ -108,8 +108,7 @@ class ExpandText extends StatefulWidget {
   State<StatefulWidget> createState() => _ExpandTextState();
 }
 
-class _ExpandTextState extends State<ExpandText>
-    with SingleTickerProviderStateMixin {
+class _ExpandTextState extends State<ExpandText> with SingleTickerProviderStateMixin {
   /// Custom animation curve for indicator icon controll.
   static final _easeInCurve = CurveTween(curve: Curves.easeInOutCubic);
 
@@ -159,9 +158,7 @@ class _ExpandTextState extends State<ExpandText>
           // If not, no text expansion will be performed
           if (dragDetails.primaryVelocity != 0) {
             _isExpanded = dragDetails.primaryVelocity! > 0;
-            dragDetails.primaryVelocity! > 0
-                ? _controller.forward()
-                : _controller.reverse();
+            dragDetails.primaryVelocity! > 0 ? _controller.forward() : _controller.reverse();
           }
         } else {
           _isExpanded = !_isExpanded;
@@ -188,9 +185,7 @@ class _ExpandTextState extends State<ExpandText>
 
         return textPainter.didExceedMaxLines
             ? Column(
-                crossAxisAlignment: widget.expandWidth
-                    ? CrossAxisAlignment.stretch
-                    : CrossAxisAlignment.center,
+                crossAxisAlignment: widget.expandWidth ? CrossAxisAlignment.stretch : CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   AnimatedSize(
@@ -201,8 +196,7 @@ class _ExpandTextState extends State<ExpandText>
                       constraints: const BoxConstraints(),
                       child: GestureDetector(
                         onTap: widget.expandOnGesture ? _handleTap : null,
-                        onVerticalDragEnd:
-                            widget.expandOnGesture ? _handleTap : null,
+                        onVerticalDragEnd: widget.expandOnGesture ? _handleTap : null,
                         child: child,
                       ),
                     ),
@@ -210,9 +204,7 @@ class _ExpandTextState extends State<ExpandText>
                   ClipRect(
                     child: Align(
                       alignment: widget.indicatorAlignment ?? Alignment.center,
-                      heightFactor: widget.hideIndicatorOnExpand
-                          ? 1 - _heightFactor.value
-                          : 1,
+                      heightFactor: widget.hideIndicatorOnExpand ? 1 - _heightFactor.value : 1,
                       child: widget.indicatorBuilder != null
                           ? widget.indicatorBuilder!(
                               context,
@@ -230,8 +222,7 @@ class _ExpandTextState extends State<ExpandText>
                               iconSize: widget.indicatorIconSize,
                               icon: widget.indicatorIcon,
                               hintTextStyle: widget.indicatorHintTextStyle,
-                              capitalizeHintText:
-                                  widget.capitalizeIndicatorHintText,
+                              capitalizeHintText: widget.capitalizeIndicatorHintText,
                             ),
                     ),
                   ),
@@ -260,11 +251,7 @@ class _ExpandTextState extends State<ExpandText>
       animation: _controller.view,
       builder: _buildChildren,
       child: DefaultTextStyle(
-        style: Theme.of(context)
-            .textTheme
-            .bodyText2!
-            .copyWith(color: Theme.of(context).textTheme.caption!.color)
-            .merge(widget.style),
+        style: Theme.of(context).textTheme.bodyText2!.copyWith(color: Theme.of(context).textTheme.caption!.color).merge(widget.style),
         child: Text(
           widget.data,
           textAlign: widget.textAlign,

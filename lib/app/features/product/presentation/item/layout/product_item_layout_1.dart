@@ -42,18 +42,8 @@ class ProductItemLayout1 extends StatelessWidget {
                   product.img,
                 ).cornerRadius(Dimens.rad_XS).aspectRatio(1),
                 Gaps.vGap8,
-                product.name?.text
-                    .textStyle(textStyle)
-                    .ellipsis
-                    .maxLines(2)
-                    .make()
-                    .pb4()
-                    .minHeight(22),
-                product.description?.text
-                    .caption(context)
-                    .maxLines(isExceedMaxLines ? 1 : 2)
-                    .ellipsis
-                    .make(),
+                product.name?.text.textStyle(textStyle).ellipsis.maxLines(2).make().pb4().minHeight(22),
+                product.description?.text.caption(context).maxLines(isExceedMaxLines ? 1 : 2).ellipsis.make(),
                 const Spacer(),
                 ProductPriceWithType(
                   price: product.price,

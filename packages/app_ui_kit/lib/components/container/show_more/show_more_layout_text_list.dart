@@ -45,9 +45,7 @@ class ShowMoreLayoutTextList extends StatelessWidget {
           separatorBuilder: (context, index) => Gaps.vGap4,
           pairMaxLines: pairMaxLine,
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: valueList.length > (maxVisiblePair * 2)
-              ? valueList.sublist(0, maxVisiblePair * 2)
-              : valueList,
+          children: valueList.length > (maxVisiblePair * 2) ? valueList.sublist(0, maxVisiblePair * 2) : valueList,
         );
 
         return ShowMoreLayoutBuilder(

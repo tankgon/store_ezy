@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 
 class BottomSheetUtils {
@@ -27,5 +25,4 @@ class BottomSheetUtils {
       enableDrag: enableDrag ?? true,
     );
   }
-
 }

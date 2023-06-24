@@ -1,7 +1,6 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 
-typedef KeyValueTextSpanBuilder = TextSpan Function(
-    BuildContext context, String item);
+typedef KeyValueTextSpanBuilder = TextSpan Function(BuildContext context, String item);
 
 class AppKeyValueListText extends StatelessWidget {
   const AppKeyValueListText({
@@ -59,12 +58,9 @@ class AppKeyValueListText extends StatelessWidget {
         );
       }
 
-      if (separatorBuilder != null &&
-          (i < (list.length - 2) || showLastSeparator)) {
+      if (separatorBuilder != null && (i < (list.length - 2) || showLastSeparator)) {
         listPair.add(
-          separatorBuilder != null
-              ? separatorBuilder!(context, i)
-              : const SizedBox.shrink(),
+          separatorBuilder != null ? separatorBuilder!(context, i) : const SizedBox.shrink(),
         );
       }
     }
@@ -96,38 +92,30 @@ class AppKeyValueListText extends StatelessWidget {
     return childrenFinal;
   }
 
-  Widget _createStringPair(
-      BuildContext context, String keyItem, String valueItem, int index) {
+  Widget _createStringPair(BuildContext context, String keyItem, String valueItem, int index) {
     return RichText(
       maxLines: pairMaxLines,
-      overflow:
-          pairMaxLines != null ? TextOverflow.ellipsis : TextOverflow.clip,
+      overflow: pairMaxLines != null ? TextOverflow.ellipsis : TextOverflow.clip,
       text: TextSpan(
         children: [
-          _getTextSpan(
-              context, keyItem, _getKeyBuilder(context, keyItem, index)),
-          _getTextSpan(
-              context, valueItem, _getValueBuilder(context, valueItem, index)),
+          _getTextSpan(context, keyItem, _getKeyBuilder(context, keyItem, index)),
+          _getTextSpan(context, valueItem, _getValueBuilder(context, valueItem, index)),
         ].filterNotNullList(),
       ),
     );
   }
 
-  Widget _createDynamicPair(
-      BuildContext context, dynamic keyItem, dynamic valueItem, int index) {
+  Widget _createDynamicPair(BuildContext context, dynamic keyItem, dynamic valueItem, int index) {
     return Row(
       crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
       children: [
-        _getWidgetOrText(
-            context, keyItem, _getKeyBuilder(context, keyItem, index)),
-        _getWidgetOrText(
-            context, valueItem, _getValueBuilder(context, valueItem, index)),
+        _getWidgetOrText(context, keyItem, _getKeyBuilder(context, keyItem, index)),
+        _getWidgetOrText(context, valueItem, _getValueBuilder(context, valueItem, index)),
       ],
     );
   }
 
-  Widget _getWidgetOrText(
-      BuildContext context, dynamic item, KeyValueTextSpanBuilder? builder) {
+  Widget _getWidgetOrText(BuildContext context, dynamic item, KeyValueTextSpanBuilder? builder) {
     if (item is Widget) {
       return item;
     } else if (item is String) {
@@ -137,8 +125,7 @@ class AppKeyValueListText extends StatelessWidget {
     }
   }
 
-  TextSpan _getTextSpan(
-      BuildContext context, String? item, KeyValueTextSpanBuilder? builder) {
+  TextSpan _getTextSpan(BuildContext context, String? item, KeyValueTextSpanBuilder? builder) {
     if (builder != null && item != null) {
       return builder(context, item);
     } else if (item != null) {
@@ -151,8 +138,7 @@ class AppKeyValueListText extends StatelessWidget {
     }
   }
 
-  KeyValueTextSpanBuilder? _getKeyBuilder(
-      BuildContext context, dynamic value, int index) {
+  KeyValueTextSpanBuilder? _getKeyBuilder(BuildContext context, dynamic value, int index) {
     if (keyTextSpanBuilder != null) {
       return keyTextSpanBuilder;
     } else if (value is String) {
@@ -169,8 +155,7 @@ class AppKeyValueListText extends StatelessWidget {
     }
   }
 
-  KeyValueTextSpanBuilder? _getValueBuilder(
-      BuildContext context, dynamic value, int index) {
+  KeyValueTextSpanBuilder? _getValueBuilder(BuildContext context, dynamic value, int index) {
     if (valueTextSpanBuilder != null) {
       return valueTextSpanBuilder;
     } else if (value is String) {

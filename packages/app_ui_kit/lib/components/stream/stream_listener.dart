@@ -7,9 +7,9 @@ typedef StreamOnDataListener<T> = void Function(T data);
 
 /// Signature for the `onError` callback.
 typedef StreamOnErrorListener = void Function(
-    dynamic error,
-    StackTrace stackTrace,
-    );
+  dynamic error,
+  StackTrace stackTrace,
+);
 
 /// Signature for the `onDone` callback.
 typedef StreamOnDoneListener = void Function();

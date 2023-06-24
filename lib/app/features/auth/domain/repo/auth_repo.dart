@@ -2,7 +2,6 @@ import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/auth/self.dart';
 
 abstract class AuthRepo {
-
   Future<AuthSignUpOTPEntity> signUpPhone({
     required String phone,
     required String countryCode,

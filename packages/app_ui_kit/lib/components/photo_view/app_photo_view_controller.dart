@@ -3,11 +3,11 @@ part of 'app_photo_view.dart';
 class AppPhotoViewController<T> {
   AppPhotoViewController({
     this.imgList,
-    this.imageRatio = 16/9,
+    this.imageRatio = 16 / 9,
     this.dotRatio = 1,
     required this.itemStringLink,
     this.itemStringPreview,
-  }){
+  }) {
     init();
   }
 
@@ -36,7 +36,5 @@ class AppPhotoViewController<T> {
 
   void updateImageList(List<String> imageList) {}
 
-  Future<void> dispose() async {
-
-  }
+  Future<void> dispose() async {}
 }

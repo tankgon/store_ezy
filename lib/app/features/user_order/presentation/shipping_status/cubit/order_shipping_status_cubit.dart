@@ -3,8 +3,7 @@ import 'package:mulstore/all_file/all_file.dart';
 part 'order_shipping_status_state.dart';
 
 class OrderShippingStatusCubit extends RequestCubit<OrderShippingStatusState> {
-  OrderShippingStatusCubit({dynamic? item})
-      : super(OrderShippingStatusState(item: item));
+  OrderShippingStatusCubit({dynamic? item}) : super(OrderShippingStatusState(item: item));
 
   FutureOr<void> fetchItem() async {
     emit(state.copyWith(status: ItemStatus.loading));

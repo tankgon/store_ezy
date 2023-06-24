@@ -3,8 +3,7 @@ import 'package:mulstore/all_file/all_file.dart';
 part 'user_order_detail_state.dart';
 
 class UserOrderDetailCubit extends RequestCubit<UserOrderDetailState> {
-  UserOrderDetailCubit({dynamic? item})
-      : super(UserOrderDetailState(item: item));
+  UserOrderDetailCubit({dynamic? item}) : super(UserOrderDetailState(item: item));
 
   FutureOr<void> fetchItem() async {
     emit(state.copyWith(status: ItemStatus.loading));

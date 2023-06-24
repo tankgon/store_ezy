@@ -11,7 +11,7 @@ class BtnMoreText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Btn(
-      label: isMore ? 'viewLess': 'viewMore',
+      label: isMore ? 'viewLess' : 'viewMore',
       btnType: BtnType.TEXT,
       padding: padding ?? EdgeInsets.zero,
       onPressed: onPressed,

@@ -1,6 +1,7 @@
 # Feature Brick
 
-A brick to create a feature using best practices and your state management of choice! Supports Bloc, Cubit, Provider, Riverpod, None.
+A brick to create a feature using best practices and your state management of
+choice! Supports Bloc, Cubit, Provider, Riverpod, None.
 
 ## How to use 🚀
 
@@ -11,7 +12,7 @@ mason make feature_brick --feature_name login --state_management bloc
 ## Variables ✨
 
 | Variable           | Description                     | Default | Type      | Conditional | When             |
-| ------------------ | ------------------------------- | ------- | --------- | ----------- | ---------------- |
+|--------------------|---------------------------------|---------|-----------|-------------|------------------|
 | `feature_name`     | The name of the feature         | login   | `string`  | false       | N/A              |
 | `state_management` | The state management of the app | bloc    | `enum`    | false       | N/A              |
 | `use_equatable`    | Use the equatable package       | true    | `boolean` | true        | Using bloc/cubit |

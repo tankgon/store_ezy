@@ -24,8 +24,7 @@ class AppPhotoView<T> extends StatelessWidget {
               controller: photoController!.controller,
               physics: const PageScrollPhysics(),
               onPageChanged: (value) {
-                if (photoController!.isOnSliding == false &&
-                    photoController!.curIndexLD.value != value) {
+                if (photoController!.isOnSliding == false && photoController!.curIndexLD.value != value) {
                   photoController!.curIndexLD.value = value;
                 }
               },

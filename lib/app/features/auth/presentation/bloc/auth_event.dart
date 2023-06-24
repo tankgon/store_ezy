@@ -28,8 +28,8 @@ class AuthenticatedEvent extends AuthEvent {
 }
 
 class UnAuthenticatedEvent extends AuthEvent {
-
   UnAuthenticatedEvent({this.showToast = false, this.openSignInPage = false});
+
   final bool openSignInPage;
   final bool showToast;
 }

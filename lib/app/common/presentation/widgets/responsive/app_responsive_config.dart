@@ -1,5 +1,4 @@
 import 'package:mulstore/all_file/all_file.dart';
-import 'package:layout/layout.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class AppResponsiveConfig extends StatelessWidget {
@@ -30,4 +29,3 @@ class AppResponsiveConfig extends StatelessWidget {
     );
   }
 }
-

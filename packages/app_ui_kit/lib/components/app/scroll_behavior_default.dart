@@ -16,5 +16,4 @@ class ScrollBehaviorDefault extends ScrollBehavior {
         return const ClampingScrollPhysics();
     }
   }
-
 }

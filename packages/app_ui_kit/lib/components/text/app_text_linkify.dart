@@ -24,4 +24,3 @@ class AppTextLinkify extends StatelessWidget {
     );
   }
 }
-

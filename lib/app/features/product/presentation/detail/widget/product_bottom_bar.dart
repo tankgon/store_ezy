@@ -14,9 +14,7 @@ class ProductBottomBar extends StatelessWidget {
             width: 70,
             child: AppButton(
               style: AppButtonTheme.ghost(context),
-              onPressed: () {
-
-              },
+              onPressed: () {},
               child: const Icon(PhosphorIcons.phone),
             ),
           ),
@@ -24,17 +22,13 @@ class ProductBottomBar extends StatelessWidget {
             width: 70,
             child: AppButton(
               style: AppButtonTheme.ghost(context),
-              onPressed: () {
-
-              },
+              onPressed: () {},
               child: const Icon(PhosphorIcons.chat_circle_text),
             ),
           ),
           AppButton(
             style: AppButtonTheme.primary(context),
-            onPressed: () {
-
-            },
+            onPressed: () {},
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

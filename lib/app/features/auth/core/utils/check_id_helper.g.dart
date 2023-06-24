@@ -33,8 +33,7 @@ class _$CheckIdResultDataCWProxyImpl implements _$CheckIdResultDataCWProxy {
   const _$CheckIdResultDataCWProxyImpl(this._value);
 
   @override
-  CheckIdResultData countryCode(String? countryCode) =>
-      this(countryCode: countryCode);
+  CheckIdResultData countryCode(String? countryCode) => this(countryCode: countryCode);
 
   @override
   CheckIdResultData email(String? email) => this(email: email);
@@ -75,6 +74,5 @@ class _$CheckIdResultDataCWProxyImpl implements _$CheckIdResultDataCWProxy {
 extension $CheckIdResultDataCopyWith on CheckIdResultData {
   /// Returns a callable class that can be used as follows: `instanceOfCheckIdResultData.copyWith(...)` or like so:`instanceOfCheckIdResultData.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$CheckIdResultDataCWProxy get copyWith =>
-      _$CheckIdResultDataCWProxyImpl(this);
+  _$CheckIdResultDataCWProxy get copyWith => _$CheckIdResultDataCWProxyImpl(this);
 }

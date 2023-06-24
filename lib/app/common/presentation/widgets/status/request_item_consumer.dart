@@ -1,7 +1,6 @@
 import 'package:mulstore/all_file/all_file.dart';
 
-class RequestItemConsumer<C extends RequestItemCubit<Object, S>,
-    S extends RequestItemState<Object>> extends StatelessWidget {
+class RequestItemConsumer<C extends RequestItemCubit<Object, S>, S extends RequestItemState<Object>> extends StatelessWidget {
   const RequestItemConsumer({
     super.key,
     required this.child,
@@ -17,6 +16,7 @@ class RequestItemConsumer<C extends RequestItemCubit<Object, S>,
 
   final ValueChanged<S>? onSuccess;
   final VoidCallback? onLoading;
+
   // Return false if not handled
   final bool Function(Object? value)? onError;
 
@@ -24,8 +24,7 @@ class RequestItemConsumer<C extends RequestItemCubit<Object, S>,
   Widget build(BuildContext context) {
     return BlocConsumer<C, S>(
       listenWhen: (previous, current) {
-        if (current.status == ItemStatus.error &&
-            current.error != current.error) {
+        if (current.status == ItemStatus.error && current.error != current.error) {
           return true;
         }
         return previous.status != current.status;

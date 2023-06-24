@@ -8,21 +8,16 @@ extension PriceDataExtendNum on num? {
 
   String? get toShortPrice => PriceService().strToPriceStr(this?.toString());
 
-  String? get toPriceTwoFraction =>
-      PriceService().strToPriceStr(this?.toString(),
-          numberFormat: PriceService().twoFractionPriceFormat);
+  String? get toPriceTwoFraction => PriceService().strToPriceStr(this?.toString(), numberFormat: PriceService().twoFractionPriceFormat);
 
-  String? get billionToFullPrice =>
-      this == null ? null : (this! * 1000000000).toString();
+  String? get billionToFullPrice => this == null ? null : (this! * 1000000000).toString();
 
   String? get toPrice => PriceService().strToFullFormattedPriceStr(toString());
 }
 
 extension PriceDataExtendString on String? {
   String? toThousandSeparator() {
-    return isNotNullOrEmpty
-        ? '${PriceService().strToNumberFormat(this)}'
-        : null;
+    return isNotNullOrEmpty ? '${PriceService().strToNumberFormat(this)}' : null;
   }
 
   String? removeThousandSeparator() {
@@ -35,8 +30,7 @@ extension PriceDataExtendString on String? {
 
   String? get toPrice => PriceService().strToFullFormattedPriceStr(this);
 
-  String? get toPriceTwoFraction => PriceService()
-      .strToPriceStr(this, numberFormat: PriceService().twoFractionPriceFormat);
+  String? get toPriceTwoFraction => PriceService().strToPriceStr(this, numberFormat: PriceService().twoFractionPriceFormat);
 }
 
 class PriceService {
@@ -60,8 +54,7 @@ class PriceService {
     NumberFormat? numberFormat,
   }) {
     this.priceFormat = priceFormat ?? NumberFormat('###.#########', 'vi_VN');
-    this.twoFractionPriceFormat =
-        twoFractionPriceFormat ?? NumberFormat('###.##', 'vi_VN');
+    this.twoFractionPriceFormat = twoFractionPriceFormat ?? NumberFormat('###.##', 'vi_VN');
     this.fullWithUnitFormatted = fullWithUnitFormatted ??
         NumberFormat.currency(
           locale: 'vi_VN',

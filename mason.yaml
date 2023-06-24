@@ -3,14 +3,13 @@ bricks:
     path: ./bricks/feature_brick
   feature_core_brick:
     path: ./bricks/feature_core_brick
-  app_ui: ^0.0.4
 
 # Note
 # Run "mason upgrade" when add new bricks
 
 # Feature Brick
 # Create:
-# mason make feature_brick --feature_name promotion --folder_name promotion --state_management cubit
+# mason make feature_brick --feature_name receive_address --folder_name receive_address --state_management cubit
 
 # Feature Core Brick
 # Create:

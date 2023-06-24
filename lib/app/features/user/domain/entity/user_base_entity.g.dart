@@ -14,8 +14,7 @@ UserEntity _$UserEntityFromJson(Map<String, dynamic> json) => UserEntity(
       avatar: json['avatar'] as String?,
     );
 
-Map<String, dynamic> _$UserEntityToJson(UserEntity instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$UserEntityToJson(UserEntity instance) => <String, dynamic>{
       'userID': instance.userID,
       'userName': instance.userName,
       'fullName': instance.fullName,

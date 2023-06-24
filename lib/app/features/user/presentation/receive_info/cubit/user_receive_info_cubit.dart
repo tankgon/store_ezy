@@ -3,8 +3,7 @@ import 'package:mulstore/all_file/all_file.dart';
 part 'user_receive_info_state.dart';
 
 class UserReceiveInfoCubit extends Cubit<UserReceiveInfoState> {
-  UserReceiveInfoCubit({dynamic? item})
-      : super(UserReceiveInfoState(item: item));
+  UserReceiveInfoCubit({dynamic? item}) : super(UserReceiveInfoState(item: item));
 
   FutureOr<void> fetchItem() async {
     emit(state.copyWith(status: ItemStatus.loading));

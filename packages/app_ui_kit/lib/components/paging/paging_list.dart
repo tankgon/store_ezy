@@ -82,8 +82,7 @@ class _PagingListState<V> extends State<PagingList<V>> {
 
   @override
   void initState() {
-    _pagingController =
-        widget.pagingController ?? AppPagingController(firstPageKey: 0);
+    _pagingController = widget.pagingController ?? AppPagingController(firstPageKey: 0);
     if (widget.fetchListData != null) {
       _pagingController.init(
         fetchListDataParam: widget.fetchListData!,
@@ -111,8 +110,7 @@ class _PagingListState<V> extends State<PagingList<V>> {
 
   Future<void> _fetchPage(int pageKey) async {
     try {
-      final newItems =
-          await widget.fetchListData?.call(pageKey, widget.pageSize);
+      final newItems = await widget.fetchListData?.call(pageKey, widget.pageSize);
       final isLastPage = (newItems?.length ?? 0) < widget.pageSize;
 
       if (pageKey == 0 && (newItems?.length ?? 0) == 0) {
@@ -159,9 +157,7 @@ class _PagingListState<V> extends State<PagingList<V>> {
     }
 
     return AppPullDownRefresh(
-      indicatorAlignment: widget.scrollDirection == Axis.vertical
-          ? Alignment.topCenter
-          : Alignment.centerLeft,
+      indicatorAlignment: widget.scrollDirection == Axis.vertical ? Alignment.topCenter : Alignment.centerLeft,
       enable: widget.enablePullDown,
       refresh: () {
         if (widget.onPullDown != null) {
@@ -183,10 +179,7 @@ class _PagingListState<V> extends State<PagingList<V>> {
         separatorBuilder: widget.separatorBuilder == null
             ? (_, index) => const SizedBox.shrink()
             : (context, index) {
-                return (index + 1) == _pagingController.itemList?.length
-                    ? const SizedBox.shrink()
-                    : (widget.separatorBuilder?.call(context, index) ??
-                        const SizedBox.shrink());
+                return (index + 1) == _pagingController.itemList?.length ? const SizedBox.shrink() : (widget.separatorBuilder?.call(context, index) ?? const SizedBox.shrink());
               },
       ),
     );
@@ -201,17 +194,13 @@ class _PagingListState<V> extends State<PagingList<V>> {
         scrollDirection: widget.scrollDirection,
         physics: widget.physics,
         shrinkWrap: widget.shrinkWrap,
-        padding: (widget.padding ?? EdgeInsets.zero)
-            .copyWith(bottom: widget.padding?.bottom),
+        padding: (widget.padding ?? EdgeInsets.zero).copyWith(bottom: widget.padding?.bottom),
         pagingController: _pagingController,
         builderDelegate: _getPagedChildBuilderDelegate(),
         separatorBuilder: widget.separatorBuilder == null
             ? (_, index) => const SizedBox.shrink()
             : (context, index) {
-                return (index + 1) == _pagingController.itemList?.length
-                    ? const SizedBox.shrink()
-                    : (widget.separatorBuilder?.call(context, index) ??
-                        const SizedBox.shrink());
+                return (index + 1) == _pagingController.itemList?.length ? const SizedBox.shrink() : (widget.separatorBuilder?.call(context, index) ?? const SizedBox.shrink());
               },
       ),
     );
@@ -220,25 +209,18 @@ class _PagingListState<V> extends State<PagingList<V>> {
   PagedChildBuilderDelegate<V> _getPagedChildBuilderDelegate() {
     return PagedChildBuilderDelegate<V>(
       itemBuilder: widget.itemBuilder,
-      firstPageProgressIndicatorBuilder:
-          widget.firstPageProgressIndicatorBuilder ??
-              context.pagingConfigData.progressIndicatorBuilder,
-      newPageProgressIndicatorBuilder: widget.newPageProgressIndicatorBuilder ??
-          context.pagingConfigData.progressIndicatorBuilder,
-      firstPageErrorIndicatorBuilder: (_) => context.pagingConfigData
-          .errorBuilder(context, _pagingController.error),
-      newPageErrorIndicatorBuilder: (_) => context.pagingConfigData
-          .errorBuilder(context, _pagingController.error),
+      firstPageProgressIndicatorBuilder: widget.firstPageProgressIndicatorBuilder ?? context.pagingConfigData.progressIndicatorBuilder,
+      newPageProgressIndicatorBuilder: widget.newPageProgressIndicatorBuilder ?? context.pagingConfigData.progressIndicatorBuilder,
+      firstPageErrorIndicatorBuilder: (_) => context.pagingConfigData.errorBuilder(context, _pagingController.error),
+      newPageErrorIndicatorBuilder: (_) => context.pagingConfigData.errorBuilder(context, _pagingController.error),
       noItemsFoundIndicatorBuilder: (context) {
         widget.onEmpty?.call();
         if (widget.noItemsFoundIndicatorBuilder != null) {
-          return widget.noItemsFoundIndicatorBuilder?.call(context) ??
-              const SizedBox.shrink();
+          return widget.noItemsFoundIndicatorBuilder?.call(context) ?? const SizedBox.shrink();
         }
         return context.pagingConfigData.emptyBuilder(context);
       },
-      noMoreItemsIndicatorBuilder:
-          widget.noMoreItemsIndicatorBuilder ?? (_) => const SizedBox.shrink(),
+      noMoreItemsIndicatorBuilder: widget.noMoreItemsIndicatorBuilder ?? (_) => const SizedBox.shrink(),
     );
   }
 }

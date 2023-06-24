@@ -39,11 +39,7 @@ class ProductDetailVariantList extends StatelessWidget {
         title: LocaleKeys.product_ProductClassification.tr(),
         trailing: Row(
           children: [
-            '{} loại'
-                .tr(args: [listItem.length.toString()])
-                .text
-                .caption(context)
-                .make(),
+            '{} loại'.tr(args: [listItem.length.toString()]).text.caption(context).make(),
             Gaps.hGap8,
             const Icon(
               Icons.arrow_forward_ios_rounded,
@@ -55,12 +51,8 @@ class ProductDetailVariantList extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: LayoutBuilder(
             builder: (_, constrains) {
-              final itemHeight =
-                  (constrains.maxWidth - spacing * (rowItemCount - 1)) /
-                      rowItemCount;
-              final listCount = listItem.length > rowItemCount
-                  ? rowItemCount
-                  : listItem.length;
+              final itemHeight = (constrains.maxWidth - spacing * (rowItemCount - 1)) / rowItemCount;
+              final listCount = listItem.length > rowItemCount ? rowItemCount : listItem.length;
               return SizedBox(
                 height: itemHeight,
                 child: ListView.separated(
@@ -70,8 +62,7 @@ class ProductDetailVariantList extends StatelessWidget {
                   itemCount: listCount,
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
-                    if (listItem.length > rowItemCount &&
-                        index == listCount - 1) {
+                    if (listItem.length > rowItemCount && index == listCount - 1) {
                       return _LastItemWrapper(
                         itemLeftCount: listItem.length - rowItemCount,
                         child: ProductVariantItem(
@@ -81,8 +72,7 @@ class ProductDetailVariantList extends StatelessWidget {
                     }
 
                     return ProductVariantItem(
-                      item: listItem.getOrNull(index) ??
-                          ProductVariantEntity.demo(),
+                      item: listItem.getOrNull(index) ?? ProductVariantEntity.demo(),
                     ).cornerRadius(Dimens.rad_XS);
                   },
                 ).objectCenterLeft(),

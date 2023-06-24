@@ -3,8 +3,7 @@ import 'package:mulstore/app/features/shopping_cart/presentation/group_item/shop
 import 'package:mulstore/app/features/shopping_cart/presentation/main/cubit/shopping_cart_cubit.dart';
 
 class ShoppingCartBody extends StatelessWidget {
-
-  const ShoppingCartBody({super.key}) ;
+  const ShoppingCartBody({super.key});
 
   @override
   Widget build(BuildContext context) {

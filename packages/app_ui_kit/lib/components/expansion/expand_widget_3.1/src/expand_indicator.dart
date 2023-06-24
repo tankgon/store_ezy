@@ -73,13 +73,9 @@ class ExpandIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tooltipMessage = animation.value < 0.25
-        ? collapsedHint ??
-            MaterialLocalizations.of(context).collapsedIconTapHint
-        : expandedHint ?? MaterialLocalizations.of(context).expandedIconTapHint;
+    final tooltipMessage = animation.value < 0.25 ? collapsedHint ?? MaterialLocalizations.of(context).collapsedIconTapHint : expandedHint ?? MaterialLocalizations.of(context).expandedIconTapHint;
 
-    final isNotIcon = expandIndicatorStyle == ExpandIndicatorStyle.text ||
-        expandIndicatorStyle == ExpandIndicatorStyle.both;
+    final isNotIcon = expandIndicatorStyle == ExpandIndicatorStyle.text || expandIndicatorStyle == ExpandIndicatorStyle.both;
 
     final indicator = InkResponse(
       containedInkWell: isNotIcon,
@@ -99,8 +95,7 @@ class ExpandIndicator extends StatelessWidget {
                 turns: animation,
                 child: Icon(
                   icon ?? Icons.expand_more,
-                  color:
-                      iconColor ?? Theme.of(context).textTheme.caption!.color,
+                  color: iconColor ?? Theme.of(context).textTheme.caption!.color,
                   size: iconSize,
                 ),
               ),
@@ -111,9 +106,7 @@ class ExpandIndicator extends StatelessWidget {
                       color: Theme.of(context).textTheme.caption!.color,
                     ),
                 child: Text(
-                  capitalizeHintText
-                      ? tooltipMessage.toUpperCase()
-                      : tooltipMessage,
+                  capitalizeHintText ? tooltipMessage.toUpperCase() : tooltipMessage,
                   style: hintTextStyle,
                 ),
               ),

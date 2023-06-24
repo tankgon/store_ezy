@@ -1,6 +1,5 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:mulstore/all_file/all_file.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:mulstore/all_file/all_file.dart';
 
 @RoutePage()
 class MainPage extends StatelessWidget {
@@ -78,8 +77,7 @@ class _HomeBottomBar extends StatelessWidget {
     dynamic activeIcon,
   }) {
     final iconW = _getIconWidget(context, icon);
-    final activeIconW = _getIconWidget(context, activeIcon) ??
-        _getIconWidget(context, icon, isActive: true);
+    final activeIconW = _getIconWidget(context, activeIcon) ?? _getIconWidget(context, icon, isActive: true);
 
     return BottomNavigationBarItem(
       icon: iconW ?? const SizedBox.shrink(),
@@ -88,8 +86,7 @@ class _HomeBottomBar extends StatelessWidget {
     );
   }
 
-  Widget? _getIconWidget(BuildContext context, dynamic icon,
-      {bool isActive = false}) {
+  Widget? _getIconWidget(BuildContext context, dynamic icon, {bool isActive = false}) {
     if (icon == null) {
       return null;
     }

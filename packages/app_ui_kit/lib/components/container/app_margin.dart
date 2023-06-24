@@ -1,9 +1,7 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
-
 import 'package:flutter/material.dart';
 
 class SizeProviderWidget extends StatefulWidget {
-
   const SizeProviderWidget({
     super.key,
     required this.onChildSize,

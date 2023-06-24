@@ -1,4 +1,3 @@
-
 class FontSizeService {
   static final FontSizeService _singleton = FontSizeService._internal();
 

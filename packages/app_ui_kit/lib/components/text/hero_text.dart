@@ -6,7 +6,6 @@ import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 /// Use Hero for Widget that's not Image
 
 class TextHero extends StatelessWidget {
-
   final Widget? child;
   final String? tag;
 

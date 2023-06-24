@@ -9,5 +9,4 @@ abstract class UserApiMS {
 
   @GET('/api/mulstore/users/get-profile')
   Future<UserMS?> getUserProfile();
-
 }

@@ -25,8 +25,7 @@ class UserEntity {
 
   String? get avatarImg => 'https://upload.wikimedia.org/wikipedia/commons/c/c3/LEONARDO.JPG';
 
-  factory UserEntity.fromJson(Map<String, dynamic> json) =>
-      _$UserEntityFromJson(json);
+  factory UserEntity.fromJson(Map<String, dynamic> json) => _$UserEntityFromJson(json);
 
   Map<String, dynamic> toJson() => _$UserEntityToJson(this);
 }

@@ -20,7 +20,7 @@ class ShoppingCartState extends Equatable {
   final Set<String> selectedItem;
 
   @override
-  List<Object> get props => [status , items, selectedItem];
+  List<Object> get props => [status, items, selectedItem];
 
   ShoppingCartState copyWith({
     ShoppingCartStatus? status,

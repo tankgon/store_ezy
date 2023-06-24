@@ -185,8 +185,7 @@ class ProductWP {
     this.links,
   });
 
-  factory ProductWP.fromJson(Map<String, dynamic> json) =>
-      _$ProductWPFromJson(json);
+  factory ProductWP.fromJson(Map<String, dynamic> json) => _$ProductWPFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProductWPToJson(this);
 }
@@ -203,8 +202,7 @@ class DimensionWP {
     this.height,
   });
 
-  factory DimensionWP.fromJson(Map<String, dynamic> json) =>
-      _$DimensionWPFromJson(json);
+  factory DimensionWP.fromJson(Map<String, dynamic> json) => _$DimensionWPFromJson(json);
 
   Map<String, dynamic> toJson() => _$DimensionWPToJson(this);
 }
@@ -221,8 +219,7 @@ class CategoryWP {
     this.slug,
   });
 
-  factory CategoryWP.fromJson(Map<String, dynamic> json) =>
-      _$CategoryWPFromJson(json);
+  factory CategoryWP.fromJson(Map<String, dynamic> json) => _$CategoryWPFromJson(json);
 
   Map<String, dynamic> toJson() => _$CategoryWPToJson(this);
 }
@@ -253,8 +250,7 @@ class ImageWP {
     this.alt,
   });
 
-  factory ImageWP.fromJson(Map<String, dynamic> json) =>
-      _$ImageWPFromJson(json);
+  factory ImageWP.fromJson(Map<String, dynamic> json) => _$ImageWPFromJson(json);
 
   Map<String, dynamic> toJson() => _$ImageWPToJson(this);
 }
@@ -295,8 +291,7 @@ class CollectionWP {
     this.href,
   });
 
-  factory CollectionWP.fromJson(Map<String, dynamic> json) =>
-      _$CollectionWPFromJson(json);
+  factory CollectionWP.fromJson(Map<String, dynamic> json) => _$CollectionWPFromJson(json);
 
   Map<String, dynamic> toJson() => _$CollectionWPToJson(this);
 }

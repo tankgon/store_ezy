@@ -1,8 +1,7 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 
 class AppSliverBar {
-
-  static SliverAppBar stretchAbleBar({required Widget child,required double expandedHeight, double? stretchTriggerOffset}) {
+  static SliverAppBar stretchAbleBar({required Widget child, required double expandedHeight, double? stretchTriggerOffset}) {
     return SliverAppBar(
       expandedHeight: expandedHeight,
       stretch: true,
@@ -10,15 +9,13 @@ class AppSliverBar {
       stretchTriggerOffset: stretchTriggerOffset ?? 150,
       backgroundColor: Colors.transparent,
       flexibleSpace: FlexibleSpaceBar(
-        stretchModes: const [
-          StretchMode.zoomBackground
-        ],
+        stretchModes: const [StretchMode.zoomBackground],
         background: child,
       ),
     );
   }
 
-  static SliverAppBar stretchAbleBarTitle({required Widget child,required double expandedHeight, double? stretchTriggerOffset}) {
+  static SliverAppBar stretchAbleBarTitle({required Widget child, required double expandedHeight, double? stretchTriggerOffset}) {
     return SliverAppBar(
       expandedHeight: expandedHeight,
       stretch: true,
@@ -27,14 +24,10 @@ class AppSliverBar {
       leading: const SizedBox.shrink(),
       stretchTriggerOffset: stretchTriggerOffset ?? 150,
       backgroundColor: Colors.transparent,
-
       flexibleSpace: FlexibleSpaceBar(
-        stretchModes: const [
-          StretchMode.blurBackground
-        ],
+        stretchModes: const [StretchMode.blurBackground],
         background: child,
       ),
     );
   }
-
 }

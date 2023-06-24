@@ -101,11 +101,9 @@ class Btn extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: matchParent ? MainAxisSize.max : MainAxisSize.min,
       children: [
-        if (leading != null)
-          leading!,
+        if (leading != null) leading!,
         Flexible(child: childWidget ?? const SizedBox.shrink()),
-        if (trailing != null)
-          trailing!,
+        if (trailing != null) trailing!,
       ],
     );
 

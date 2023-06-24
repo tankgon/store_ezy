@@ -31,7 +31,7 @@ class SuccessDialogLayout extends StatelessWidget {
       ),
       title: title,
       content: content,
-      onConfirm: onConfirm ?? (onAutoDismiss != null? null : () {}),
+      onConfirm: onConfirm ?? (onAutoDismiss != null ? null : () {}),
       buttonStyle: AppButtonTheme.success(context),
       child: child,
     );
@@ -66,7 +66,7 @@ class ErrorDialogLayout extends StatelessWidget {
       ),
       title: title,
       content: content,
-      onConfirm: onConfirm ?? (onAutoDismiss != null? null : () {}),
+      onConfirm: onConfirm ?? (onAutoDismiss != null ? null : () {}),
       buttonStyle: AppButtonTheme.error(context),
       child: child,
     );

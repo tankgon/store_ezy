@@ -6,8 +6,7 @@ import 'package:yaml/yaml.dart';
 Future run(HookContext context) async {
   final logger = context.logger;
 
-  final stateManagement =
-      context.vars['state_management'].toString().toLowerCase();
+  final stateManagement = context.vars['state_management'].toString().toLowerCase();
   final isBloc = stateManagement == 'bloc';
   final isCubit = stateManagement == 'cubit';
   final isProvider = stateManagement == 'provider';
@@ -29,8 +28,7 @@ Future run(HookContext context) async {
     }
     final libIndex = folders.indexWhere((folder) => folder == 'lib');
     final featurePath = folders.sublist(libIndex + 1, folders.length).join('/');
-    final pubSpecFile =
-        File('${folders.sublist(0, libIndex).join('/')}/pubspec.yaml');
+    final pubSpecFile = File('${folders.sublist(0, libIndex).join('/')}/pubspec.yaml');
     final content = await pubSpecFile.readAsString();
     final yamlMap = loadYaml(content);
     final packageName = yamlMap['name'];
@@ -41,10 +39,8 @@ Future run(HookContext context) async {
 
     context.vars = {
       ...context.vars,
-      'fullPath': ('$packageName/$featurePath/${context.vars['folder_name']}')
-          .replaceAll('//', '/'),
-      'pathPackage': ('$packageName')
-          .replaceAll('//', '/'),
+      'fullPath': ('$packageName/$featurePath/${context.vars['folder_name']}').replaceAll('//', '/'),
+      'pathPackage': ('$packageName').replaceAll('//', '/'),
       'isBloc': isBloc,
       'isCubit': isCubit,
       'isProvider': isProvider,

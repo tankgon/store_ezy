@@ -54,5 +54,4 @@ class SectionContainer extends StatelessWidget {
       ],
     );
   }
-
 }

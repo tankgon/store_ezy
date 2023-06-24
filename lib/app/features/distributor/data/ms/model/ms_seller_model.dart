@@ -21,8 +21,7 @@ class MsSellerModel {
     this.linkString,
   });
 
-  factory MsSellerModel.fromJson(Map<String, dynamic> json) =>
-      _$MsSellerModelFromJson(json);
+  factory MsSellerModel.fromJson(Map<String, dynamic> json) => _$MsSellerModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$MsSellerModelToJson(this);
 }

@@ -18,16 +18,14 @@ class PagingNumberCubit extends Cubit<PagingNumberState> {
     this.pageSize = 20,
   }) : super(const PagingNumberState());
 
-  final Future<PagingNumberResult> Function(int offset, int limit)
-      fetchListFunc;
+  final Future<PagingNumberResult> Function(int offset, int limit) fetchListFunc;
   final int pageSize;
 
   List<dynamic>? getCurrentPageListData() {
     return state.listData[state.currentPage];
   }
 
-  bool hasNext() =>
-      !(state.totalPage != null && state.currentPage >= state.totalPage!);
+  bool hasNext() => !(state.totalPage != null && state.currentPage >= state.totalPage!);
 
   bool hasPrevious() => state.currentPage > 1;
 
@@ -60,8 +58,7 @@ class PagingNumberCubit extends Cubit<PagingNumberState> {
     emit(state.copyWith(status: PagingNumberStatus.loading));
     try {
       if (needRefresh == false && state.listData[page].isNotNullOrEmpty) {
-        emit(state.copyWith(
-            status: PagingNumberStatus.success, currentPage: page));
+        emit(state.copyWith(status: PagingNumberStatus.success, currentPage: page));
         return;
       }
 
@@ -71,8 +68,7 @@ class PagingNumberCubit extends Cubit<PagingNumberState> {
       );
       final listDataNew = {...state.listData};
       listDataNew[page] = rs.listData;
-      final totalPage =
-          rs.total != null ? ((rs.total ?? 0) / pageSize).ceil() : null;
+      final totalPage = rs.total != null ? ((rs.total ?? 0) / pageSize).ceil() : null;
       emit(
         state.copyWith(
           status: PagingNumberStatus.success,
@@ -100,9 +96,7 @@ class PagingNumberCubit extends Cubit<PagingNumberState> {
     int page, {
     bool Function(dynamic item)? conditionMethod,
   }) {
-    return state.listData[page]
-        .filterAsList(conditionMethod ?? (e) => castOrFallback(e, true))
-        .length;
+    return state.listData[page].filterAsList(conditionMethod ?? (e) => castOrFallback(e, true)).length;
   }
 
   List<T>? getListDataOfCurrentPage<T>() {

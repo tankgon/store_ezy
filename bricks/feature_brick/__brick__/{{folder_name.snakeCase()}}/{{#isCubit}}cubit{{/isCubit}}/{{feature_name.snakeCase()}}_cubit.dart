@@ -2,27 +2,13 @@ import 'package:{{{pathPackage}}}/all_file/all_file.dart';
 
 part '{{feature_name.snakeCase()}}_state.dart';
 
-class {{feature_name.pascalCase()}}Cubit extends RequestCubit<{{feature_name.pascalCase()}}State> {
-  {{feature_name.pascalCase()}}Cubit({dynamic? item}) : super({{feature_name.pascalCase()}}State(item: item));
+class {{feature_name.pascalCase()}}Cubit
+    extends RequestItemCubit<dynamic, {{feature_name.pascalCase()}}State> {
+  {{feature_name.pascalCase()}}Cubit({dynamic? item})
+    : super({{feature_name.pascalCase()}}State(item: item));
 
-  FutureOr<void> fetchItem() async {
-    emit(state.copyWith(status: ItemDefaultStatus.loading));
-    try {
-      // final item = await Get.find<ApproveRepo>().getProgramForApprove(programID: item.programID ?? '');
-      emit(
-        state.copyWith(
-          status: ItemDefaultStatus.success,
-          // item: item,
-        )
-      );
-    } catch (e) {
-      log(e.toString(), error: e);
-      emit(
-        state.copyWith(
-          status: ItemDefaultStatus.error,
-          error: e,
-        ),
-      );
-    }
+  @override
+  Future<dynamic?> fetchApi() {
+    return null;
   }
 }

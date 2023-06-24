@@ -17,8 +17,7 @@ class MsProductCategory {
     this.linkString,
   });
 
-  factory MsProductCategory.fromJson(Map<String, dynamic> json) =>
-      _$MsProductCategoryFromJson(json);
+  factory MsProductCategory.fromJson(Map<String, dynamic> json) => _$MsProductCategoryFromJson(json);
 
   Map<String, dynamic> toJson() => _$MsProductCategoryToJson(this);
 }

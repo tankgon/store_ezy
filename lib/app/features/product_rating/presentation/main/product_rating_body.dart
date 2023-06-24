@@ -1,10 +1,8 @@
-import 'package:mulstore/all_file/all_file.dart';
-import 'package:mulstore/app/features/product_rating/presentation/main/cubit/product_rating_cubit.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:mulstore/all_file/all_file.dart';
 
 class ProductRatingBody extends StatelessWidget {
-
-  const ProductRatingBody({super.key}) ;
+  const ProductRatingBody({super.key});
 
   @override
   Widget build(BuildContext context) {

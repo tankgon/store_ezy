@@ -19,4 +19,3 @@ class AppBottomAlign extends StatelessWidget {
     );
   }
 }
-

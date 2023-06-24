@@ -1,8 +1,7 @@
-
+import 'package:app_ui/src/all_file.dart';
 import 'package:app_ui/src/colors/app_colors_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
-import 'package:app_ui/src/all_file.dart';
 
 class AppTabBarTheme {
   AppTabBarTheme._();
@@ -102,8 +101,8 @@ class AppTabBarTheme {
         labelStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w700),
         unselectedLabelColor: Theme.of(context).hintColor,
         unselectedLabelStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-          fontWeight: FontWeight.w700,
-        ),
+              fontWeight: FontWeight.w700,
+            ),
       ),
     );
   }

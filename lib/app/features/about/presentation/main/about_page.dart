@@ -43,8 +43,7 @@ class _PageBodyLoading extends StatelessWidget {
         // if (state.status == ItemDefaultStatus.error) {
         //   return SimpleErrorText(error: state.error ?? '');
         // }
-        final isLoading = state.status == ItemStatus.loading ||
-            state.status == ItemStatus.initial;
+        final isLoading = state.status == ItemStatus.loading || state.status == ItemStatus.initial;
 
         return child;
       },

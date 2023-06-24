@@ -16,8 +16,7 @@ class AuthSignUpOTPEntity {
   final String? uuid;
   final Object? object;
 
-  factory AuthSignUpOTPEntity.fromJson(Map<String, dynamic> json) =>
-      _$AuthSignUpOTPEntityFromJson(json);
+  factory AuthSignUpOTPEntity.fromJson(Map<String, dynamic> json) => _$AuthSignUpOTPEntityFromJson(json);
 
   Map<String, dynamic> toJson() => _$AuthSignUpOTPEntityToJson(this);
 }
@@ -44,8 +43,7 @@ class AuthConfirmEntity {
         userName: userName,
       );
 
-  factory AuthConfirmEntity.fromJson(Map<String, dynamic> json) =>
-      _$AuthConfirmEntityFromJson(json);
+  factory AuthConfirmEntity.fromJson(Map<String, dynamic> json) => _$AuthConfirmEntityFromJson(json);
 
   Map<String, dynamic> toJson() => _$AuthConfirmEntityToJson(this);
 }
@@ -64,8 +62,7 @@ class ForgotPasswordOTPEntity {
     this.object,
   });
 
-  factory ForgotPasswordOTPEntity.fromJson(Map<String, dynamic> json) =>
-      _$ForgotPasswordOTPEntityFromJson(json);
+  factory ForgotPasswordOTPEntity.fromJson(Map<String, dynamic> json) => _$ForgotPasswordOTPEntityFromJson(json);
 
   Map<String, dynamic> toJson() => _$ForgotPasswordOTPEntityToJson(this);
 }
@@ -84,8 +81,7 @@ class ForgotPasswordConfirmOTPEntity {
     this.object,
   });
 
-  factory ForgotPasswordConfirmOTPEntity.fromJson(Map<String, dynamic> json) =>
-      _$ForgotPasswordConfirmOTPEntityFromJson(json);
+  factory ForgotPasswordConfirmOTPEntity.fromJson(Map<String, dynamic> json) => _$ForgotPasswordConfirmOTPEntityFromJson(json);
 
   Map<String, dynamic> toJson() => _$ForgotPasswordConfirmOTPEntityToJson(this);
 }
@@ -102,10 +98,7 @@ class ForgotPasswordCreatePasswordEntity {
     this.object,
   });
 
-  factory ForgotPasswordCreatePasswordEntity.fromJson(
-          Map<String, dynamic> json) =>
-      _$ForgotPasswordCreatePasswordEntityFromJson(json);
+  factory ForgotPasswordCreatePasswordEntity.fromJson(Map<String, dynamic> json) => _$ForgotPasswordCreatePasswordEntityFromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      _$ForgotPasswordCreatePasswordEntityToJson(this);
+  Map<String, dynamic> toJson() => _$ForgotPasswordCreatePasswordEntityToJson(this);
 }

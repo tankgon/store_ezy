@@ -31,19 +31,18 @@ class _MsProductApi implements MsProductApi {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch<Map<String, dynamic>?>(
-        _setStreamType<MsPagingResult<MsProduct>>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>?>(_setStreamType<MsPagingResult<MsProduct>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/api/mulstore/product/get-list-hot',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+        .compose(
+          _dio.options,
+          '/api/mulstore/product/get-list-hot',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = _result.data == null
         ? null
         : MsPagingResult<MsProduct>.fromJson(
@@ -66,19 +65,18 @@ class _MsProductApi implements MsProductApi {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch<Map<String, dynamic>?>(
-        _setStreamType<MsPagingResult<MsProduct>>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>?>(_setStreamType<MsPagingResult<MsProduct>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/api/mulstore/product/get-list-best-seller',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+        .compose(
+          _dio.options,
+          '/api/mulstore/product/get-list-best-seller',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = _result.data == null
         ? null
         : MsPagingResult<MsProduct>.fromJson(
@@ -101,19 +99,18 @@ class _MsProductApi implements MsProductApi {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch<Map<String, dynamic>?>(
-        _setStreamType<MsPagingResult<MsProduct>>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>?>(_setStreamType<MsPagingResult<MsProduct>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/api/mulstore/product/get-list-good-price-today',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+        .compose(
+          _dio.options,
+          '/api/mulstore/product/get-list-good-price-today',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = _result.data == null
         ? null
         : MsPagingResult<MsProduct>.fromJson(
@@ -136,19 +133,18 @@ class _MsProductApi implements MsProductApi {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch<Map<String, dynamic>?>(
-        _setStreamType<MsPagingResult<MsProduct>>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>?>(_setStreamType<MsPagingResult<MsProduct>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/api/mulstore/product/get-list-new',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+        .compose(
+          _dio.options,
+          '/api/mulstore/product/get-list-new',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = _result.data == null
         ? null
         : MsPagingResult<MsProduct>.fromJson(
@@ -165,21 +161,19 @@ class _MsProductApi implements MsProductApi {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>?>(_setStreamType<MsProduct>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>?>(_setStreamType<MsProduct>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/api/mulstore/product/get-detail',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value =
-        _result.data == null ? null : MsProduct.fromJson(_result.data!);
+        .compose(
+          _dio.options,
+          '/api/mulstore/product/get-detail',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = _result.data == null ? null : MsProduct.fromJson(_result.data!);
     return value;
   }
 
@@ -200,19 +194,18 @@ class _MsProductApi implements MsProductApi {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch<Map<String, dynamic>?>(
-        _setStreamType<MsPagingResult<MsProduct>>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>?>(_setStreamType<MsPagingResult<MsProduct>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/api/mulstore/product/get-list-same-category',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+        .compose(
+          _dio.options,
+          '/api/mulstore/product/get-list-same-category',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = _result.data == null
         ? null
         : MsPagingResult<MsProduct>.fromJson(
@@ -239,19 +232,18 @@ class _MsProductApi implements MsProductApi {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch<Map<String, dynamic>?>(
-        _setStreamType<MsPagingResult<MsProduct>>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>?>(_setStreamType<MsPagingResult<MsProduct>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/api/mulstore/product/get-list-same-seller',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+        .compose(
+          _dio.options,
+          '/api/mulstore/product/get-list-same-seller',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = _result.data == null
         ? null
         : MsPagingResult<MsProduct>.fromJson(
@@ -262,9 +254,7 @@ class _MsProductApi implements MsProductApi {
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
-    if (T != dynamic &&
-        !(requestOptions.responseType == ResponseType.bytes ||
-            requestOptions.responseType == ResponseType.stream)) {
+    if (T != dynamic && !(requestOptions.responseType == ResponseType.bytes || requestOptions.responseType == ResponseType.stream)) {
       if (T == String) {
         requestOptions.responseType = ResponseType.plain;
       } else {

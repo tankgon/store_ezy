@@ -21,8 +21,7 @@ class UserOrderBody extends StatelessWidget {
                   padding: Dimens.edge_x,
                   tabs: OrderStatus.values.mapAsList(
                     (item) => Tab(
-                      text:
-                          '${item.enumTranslate()} (2)', // userOrder.OrderStatus.canceled
+                      text: '${item.enumTranslate()} (2)', // userOrder.OrderStatus.canceled
                     ),
                   ),
                   isScrollable: true,

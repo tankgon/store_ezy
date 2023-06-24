@@ -16,12 +16,10 @@ class CheckoutBody extends StatelessWidget {
           ).pxDefault(),
           const CheckoutProductListGroup(),
           const AppDivider(),
-          AppTileText(
+          AppTileText.semiBold(
             padding: Dimens.edge,
             title: LocaleKeys.payment_PaymentMethod.tr(),
-            onPressed: () {
-
-            },
+            onPressed: () {},
           ),
           const AppDivider(),
           const CheckoutPayDetail().pyDefault(),
@@ -30,4 +28,3 @@ class CheckoutBody extends StatelessWidget {
     );
   }
 }
-

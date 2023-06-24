@@ -17,10 +17,7 @@ extension MapExtend<K, V> on Map<K, V>? {
       return [];
     }
 
-    return this
-        ?.entries
-        .map<T>((entry) => mapFunc(entry.key, entry.value))
-        .toList();
+    return this?.entries.map<T>((entry) => mapFunc(entry.key, entry.value)).toList();
   }
 
   Map<K, V> removeWhereClone(bool Function(K key, V value) condition) {
@@ -35,8 +32,7 @@ extension MapExtend<K, V> on Map<K, V>? {
     return temp;
   }
 
-  Map<K, V> sortClone(
-      int Function(MapEntry<K, V> a, MapEntry<K, V> b) compare) {
+  Map<K, V> sortClone(int Function(MapEntry<K, V> a, MapEntry<K, V> b) compare) {
     return Map.fromEntries(this!.entries.toList()..sort(compare));
   }
 
@@ -85,8 +81,7 @@ extension IterableBasics<E> on Iterable<E>? {
   // ignore: use_function_type_syntax_for_parameters
   List<T> mapAsList<T>(T f(E item)) => this?.map(f).toList() ?? [];
 
-  List<dynamic> expandAsList<T>(Iterable<T> Function(E element) toElements) =>
-      this?.expand(toElements).toList() ?? [];
+  List<dynamic> expandAsList<T>(Iterable<T> Function(E element) toElements) => this?.expand(toElements).toList() ?? [];
 
   Map<K, E> toMap<K>(K Function(E item) getKey) {
     var map = <K, E>{};

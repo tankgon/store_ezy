@@ -53,14 +53,7 @@ class ProductItemTileLayout3 extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        product.name?.textAuto
-            .titleMedium(context)
-            .medium
-            .maxLines(2)
-            .ellipsis
-            .make()
-            .pb2()
-            .minHeight(22),
+        product.name?.textAuto.titleMedium(context).medium.maxLines(2).ellipsis.make().pb2().minHeight(22),
         const Spacer(),
         Row(
           children: [

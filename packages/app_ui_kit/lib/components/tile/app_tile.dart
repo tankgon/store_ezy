@@ -42,9 +42,10 @@ class AppTile extends StatelessWidget {
                   subtitle,
                 ].withDivider(Gaps.vGap4),
               ).expand(),
-              trailing ?? const Icon(
-                CupertinoIcons.right_chevron,
-              ),
+              trailing ??
+                  const Icon(
+                    CupertinoIcons.right_chevron,
+                  ),
             ].withDivider(SizedBox(width: space ?? Dimens.gap_dp12)),
           ),
         ),

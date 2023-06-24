@@ -3,7 +3,6 @@ part of 'paging_number_cubit.dart';
 enum PagingNumberStatus { initial, loading, success, error }
 
 class PagingNumberState extends Equatable {
-  
   const PagingNumberState({
     this.status = PagingNumberStatus.initial,
     this.listData = const {},
@@ -41,32 +40,14 @@ class PagingNumberState extends Equatable {
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) ||
-      (other is PagingNumberState &&
-          runtimeType == other.runtimeType &&
-          status == other.status &&
-          listData == other.listData &&
-          currentPage == other.currentPage &&
-          totalPage == other.totalPage &&
-          error == other.error);
+      identical(this, other) || (other is PagingNumberState && runtimeType == other.runtimeType && status == other.status && listData == other.listData && currentPage == other.currentPage && totalPage == other.totalPage && error == other.error);
 
   @override
-  int get hashCode =>
-      status.hashCode ^
-      listData.hashCode ^
-      currentPage.hashCode ^
-      totalPage.hashCode ^
-      error.hashCode;
+  int get hashCode => status.hashCode ^ listData.hashCode ^ currentPage.hashCode ^ totalPage.hashCode ^ error.hashCode;
 
   @override
   String toString() {
-    return 'PagingNumberState{' +
-        ' status: $status,' +
-        ' listData: $listData,' +
-        ' currentPage: $currentPage,' +
-        ' totalPage: $totalPage,' +
-        ' error: $error,' +
-        '}';
+    return 'PagingNumberState{' + ' status: $status,' + ' listData: $listData,' + ' currentPage: $currentPage,' + ' totalPage: $totalPage,' + ' error: $error,' + '}';
   }
 
   PagingNumberState copyWith({

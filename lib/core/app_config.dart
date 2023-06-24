@@ -5,6 +5,7 @@ class AppConfig {
 
   static final IN_PRODUCTION = F.appFlavor == Flavor.PRODUCTION;
   static final IN_DEV = F.appFlavor == Flavor.DEVELOPMENT;
+
   // static final SHOW_LOG = !IN_PRODUCTION;
   static final SHOW_LOG = true;
 

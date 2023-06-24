@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 extension ColorVxTextBuilderExtend on VxTextBuilder {
-
   VxTextBuilder colorDarkest(BuildContext context) {
     velocityColor = context.themeColor.greyDarkest;
     return this;
@@ -53,5 +52,4 @@ extension ColorVxTextBuilderExtend on VxTextBuilder {
     velocityColor = context.themeColor.primaryLighter;
     return this;
   }
-
 }

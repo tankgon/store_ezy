@@ -2,8 +2,7 @@ import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/product/self.dart';
 
 class ProductVariantItemTileLayout1 extends StatelessWidget {
-  const ProductVariantItemTileLayout1(
-      {super.key, required this.item, this.args});
+  const ProductVariantItemTileLayout1({super.key, required this.item, this.args});
 
   final ProductVariantEntity? item;
   final ProductVariantItemArgs? args;
@@ -33,9 +32,7 @@ class ProductVariantItemTileLayout1 extends StatelessWidget {
               .bodySmall(context)
               .maxLines(1)
               .color(
-                args?.isSelected ?? false
-                    ? context.theme.primaryColor
-                    : context.textTheme.bodyMedium?.color,
+                args?.isSelected ?? false ? context.theme.primaryColor : context.textTheme.bodyMedium?.color,
               )
               .ellipsis
               .make()

@@ -11,7 +11,7 @@
 ///      fonts:
 ///       - asset: fonts/AppIcon.ttf
 ///
-/// 
+///
 ///
 import 'package:flutter/widgets.dart';
 

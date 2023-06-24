@@ -29,5 +29,3 @@ class OrderPaymentDetail extends StatelessWidget {
     );
   }
 }
-
-

@@ -1,4 +1,5 @@
 import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/common/presentation/widgets/btn/btn_camera.dart';
 import 'package:mulstore/app/features/auth/self.dart';
 import 'package:mulstore/app/features/user/domain/entity/user_base_entity.dart';
 import 'package:mulstore/app/features/user/presentation/info/cubit/user_info_cubit.dart';
@@ -17,29 +18,53 @@ class UserInfoBody extends StatelessWidget {
               UserHeader(
                 user: user,
               ).cornerRadius(Dimens.rad).pxDefault(),
-              user?.fullNameOrUserName?.text.titleLarge(context).make(),
-              AppButton(
-                style: AppButtonTheme.grey(context),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(PhosphorIcons.pencil),
-                    'Chỉnh sửa thông tin cá nhân'.tr().text.make(),
-                  ].withDivider(Gaps.hGap8),
-                ),
-                onPressed: () {},
-              ).pxDefault(),
-              const AppDivider.thin().pxDefault(),
+              Gaps.vGap12,
+              user.fullNameOrUserName?.text.titleLarge(context).make(),
+              Gaps.vGap12,
+              'Hạng kim cương'
+                  .tr()
+                  .text
+                  .center
+                  .colorPrimary(context)
+                  .make()
+                  .px12()
+                  .py6()
+                  .backgroundColor(
+                    context.themeColor.primaryLighter,
+                  )
+                  .cornerRadius(Dimens.rad_XL2),
+              Gaps.vGap12,
               Column(
                 children: [
-                  Row(
-                    children: [
-                      const Icon(PhosphorIcons.map_pin),
-                      'P. Tân Thuận Tây, Quận 7, Hồ Chí Minh'.text.make(),
-                    ].withDivider(Gaps.hGap8),
-                  )
-                ],
-              ).pxDefault(),
+                  AppTileText(
+                    leading: const Icon(
+                      PhosphorIcons.info,
+                      color: Colors.blue,
+                    ),
+                    title: 'Tài khoản'.tr(),
+                    onPressed: () {},
+                  ),
+                  AppTileText(
+                    leading: const Icon(
+                      PhosphorIcons.map_pin,
+                      color: Colors.green,
+                    ),
+                    title: 'Địa chỉ nhận hàng'.tr(),
+                    onPressed: () {},
+                  ),
+                  AppTileText(
+                    leading: const Icon(
+                      PhosphorIcons.bank,
+                      color: Colors.purple,
+                    ),
+                    title: 'Tài khoản / Thẻ ngân hàng'.tr(),
+                    onPressed: () {},
+                  ),
+                ]
+                    .mapAsList((item) => item.minHeight(52))
+                    .withDivider(const AppDivider.thin()),
+              ),
+              const AppDivider(),
               Column(
                 children: [
                   AppTileText(
@@ -70,7 +95,7 @@ class UserInfoBody extends StatelessWidget {
                     .mapAsList((item) => item.minHeight(52))
                     .withDivider(const AppDivider.thin()),
               ),
-            ].withDivider(Gaps.vGap12),
+            ].filterNotNullList(),
           ),
           const AppDivider(),
           AppButtonText(
@@ -109,12 +134,20 @@ class UserHeader extends StatelessWidget {
       children: [
         Column(
           children: [
-            AspectRatio(
-              aspectRatio: 343 / 138,
-              child: AppImg(
-                user.coverImg,
-                fit: BoxFit.cover,
-              ),
+            Stack(
+              alignment: Alignment.bottomRight,
+              children: [
+                AspectRatio(
+                  aspectRatio: 343 / 138,
+                  child: AppImg(
+                    user.coverImg,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                BtnCamera(
+                  onPressed: () {},
+                ).p8(),
+              ],
             ),
             const SizedBox(
               height: avatarSize / 2,
@@ -123,16 +156,22 @@ class UserHeader extends StatelessWidget {
         ),
         Padding(
           padding: Dimens.edge_x_default,
-          child: Container(
-            child: AppAvatar(
-              src: user.avatarImg,
-              height: avatarSize,
-              background: Colors.white,
-              border: Border.all(
-                width: 4,
-                color: Colors.transparent,
+          child: Stack(
+            alignment: Alignment.bottomRight,
+            children: [
+              AppAvatar(
+                src: user.avatarImg,
+                height: avatarSize,
+                background: Colors.white,
+                border: Border.all(
+                  width: 4,
+                  color: Colors.transparent,
+                ),
               ),
-            ),
+              BtnCamera(
+                onPressed: () {},
+              ),
+            ],
           ),
         ),
       ],

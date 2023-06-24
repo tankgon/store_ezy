@@ -29,19 +29,14 @@ class UserMS {
   final int? accountStatus;
   final dynamic userType;
 
-
   UserEntity toEntity() => UserEntity(
-    userID: userID,
-    userName: userLoginID,
-    fullName: contactFullName,
-    object: this,
-  );
+        userID: userID,
+        userName: userLoginID,
+        fullName: contactFullName,
+        object: this,
+      );
 
-  factory UserMS.fromJson(Map<String, dynamic> json) =>
-      _$UserMSFromJson(json);
+  factory UserMS.fromJson(Map<String, dynamic> json) => _$UserMSFromJson(json);
 
   Map<String, dynamic> toJson() => _$UserMSToJson(this);
 }
-
-
-

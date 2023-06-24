@@ -33,14 +33,7 @@ class DistributorItemLayout1 extends StatelessWidget {
         ).aspectRatio(1).expand(),
         SizedBox(
           height: (context.textS) * 2.6,
-          child: item?.name?.text
-              .caption(context)
-              .medium
-              .center
-              .maxLines(2)
-              .ellipsis
-              .make()
-              .centered(),
+          child: item?.name?.text.caption(context).medium.center.maxLines(2).ellipsis.make().centered(),
         ),
       ].filterNotNullList(),
     );

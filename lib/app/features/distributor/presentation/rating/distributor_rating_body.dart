@@ -1,6 +1,6 @@
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/distributor/presentation/rating/cubit/distributor_rating_cubit.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class DistributorRatingSimpleLayout1 extends StatelessWidget {
   const DistributorRatingSimpleLayout1({super.key});

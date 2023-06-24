@@ -19,7 +19,7 @@ class UserOrderDetailBody extends StatelessWidget {
           const UserOrderGroupItem(
             showStatus: false,
           ),
-          AppTileText(
+          AppTileText.semiBold(
             padding: Dimens.edge,
             title: LocaleKeys.payment_PaymentMethod.tr(),
             subtitle: 'Thanh toán khi nhận hàng',

@@ -34,8 +34,7 @@ class HomeBody extends StatelessWidget {
                   );
                 },
                 child: ProductListHoz(
-                  fetchListData: (offset, limit) =>
-                      getIt<ProductRepo>().getProductList(
+                  fetchListData: (offset, limit) => getIt<ProductRepo>().getProductList(
                     offset: offset,
                     limit: limit,
                     type: ProductListType.hot,
@@ -49,8 +48,7 @@ class HomeBody extends StatelessWidget {
                   showIndicator: false,
                   imgList: List.generate(5, (index) => index)
                       .map(
-                        (e) =>
-                            'https://img.freepik.com/free-vector/sales-banner-template_1176-108.jpg?w=2000',
+                        (e) => 'https://img.freepik.com/free-vector/sales-banner-template_1176-108.jpg?w=2000',
                       )
                       .toList(),
                 ),
@@ -58,8 +56,7 @@ class HomeBody extends StatelessWidget {
               SectionContainer(
                   title: '${'Sản phẩm bán chạy'.tr()} 🌟🌟🌟',
                   child: ProductListHoz(
-                    fetchListData: (offset, limit) =>
-                        getIt<ProductRepo>().getProductList(
+                    fetchListData: (offset, limit) => getIt<ProductRepo>().getProductList(
                       offset: offset,
                       limit: limit,
                       type: ProductListType.bestSeller,
@@ -79,8 +76,7 @@ class HomeBody extends StatelessWidget {
               SectionContainer(
                   title: 'Giá tốt hôm nay'.tr(),
                   child: ProductListHoz(
-                    fetchListData: (offset, limit) =>
-                        getIt<ProductRepo>().getProductList(
+                    fetchListData: (offset, limit) => getIt<ProductRepo>().getProductList(
                       offset: offset,
                       limit: limit,
                       type: ProductListType.goodPrice,
@@ -100,8 +96,7 @@ class HomeBody extends StatelessWidget {
               SectionContainer(
                   title: 'Sản phẩm mới'.tr(),
                   child: ProductListHoz(
-                    fetchListData: (offset, limit) =>
-                        getIt<ProductRepo>().getProductList(
+                    fetchListData: (offset, limit) => getIt<ProductRepo>().getProductList(
                       offset: offset,
                       limit: limit,
                       type: ProductListType.newest,

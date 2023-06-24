@@ -14,8 +14,7 @@ ImageEntity _$ImageEntityFromJson(Map<String, dynamic> json) => ImageEntity(
       alt: json['alt'] as String?,
     );
 
-Map<String, dynamic> _$ImageEntityToJson(ImageEntity instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ImageEntityToJson(ImageEntity instance) => <String, dynamic>{
       'object': instance.object,
       'id': instance.id,
       'src': instance.src,

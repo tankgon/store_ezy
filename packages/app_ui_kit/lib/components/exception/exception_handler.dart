@@ -30,8 +30,7 @@ class ExceptionHandlerConfig extends InheritedWidget {
   final ExceptionHandler handler;
 
   static ExceptionHandler of(BuildContext context) {
-    final configWidget =
-        context.dependOnInheritedWidgetOfExactType<ExceptionHandlerConfig>();
+    final configWidget = context.dependOnInheritedWidgetOfExactType<ExceptionHandlerConfig>();
     return configWidget?.handler ?? ExceptionHandler(context: context);
   }
 

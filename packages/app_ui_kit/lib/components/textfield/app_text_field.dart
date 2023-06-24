@@ -1,7 +1,5 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
-import 'package:app_ui_kit/app_ui_kit.dart';
 import 'package:app_ui_kit/components/textfield/widget/text_field_btn_clear_builder.dart';
-import 'package:flutter/cupertino.dart';
 
 class AppTextField extends StatefulWidget {
   const AppTextField({

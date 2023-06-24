@@ -17,15 +17,11 @@ class ShoppingCartItem extends StatelessWidget {
     );
   }
 
-  AppCartItemCounterSubmitCallBack _counterSubmitCallBack(
-      BuildContext context) {
+  AppCartItemCounterSubmitCallBack _counterSubmitCallBack(BuildContext context) {
     return AppCartItemCounterSubmitCallBack(
       onValueSubmit: (value) {},
       onDeleteItem: () {
-        DialogUtils.showMaterialDialog(
-            context: context,
-            content: 'Xóa mặt hàng này ra khỏi giỏ?',
-            delete: () {});
+        DialogUtils.showMaterialDialog(context: context, content: 'Xóa mặt hàng này ra khỏi giỏ?', delete: () {});
       },
     );
   }

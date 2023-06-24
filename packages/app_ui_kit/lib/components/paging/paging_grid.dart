@@ -76,11 +76,8 @@ class _PagingGridState<V> extends State<PagingGrid<V>> {
 
   @override
   void initState() {
-    _pagingController =
-        widget.pagingController ?? AppPagingController(firstPageKey: 0);
-    _pagingController.init(
-        fetchListDataParam: widget.fetchListData,
-        pageSizeParam: widget.pageSize);
+    _pagingController = widget.pagingController ?? AppPagingController(firstPageKey: 0);
+    _pagingController.init(fetchListDataParam: widget.fetchListData, pageSizeParam: widget.pageSize);
 
     if (widget.delayFetch != null) {
       isDelayDone = false;
@@ -102,8 +99,7 @@ class _PagingGridState<V> extends State<PagingGrid<V>> {
 
   Future<void> _fetchPage(int pageKey) async {
     try {
-      final newItems =
-          await widget.fetchListData.call(pageKey, widget.pageSize);
+      final newItems = await widget.fetchListData.call(pageKey, widget.pageSize);
       final isLastPage = (newItems.length) < widget.pageSize;
 
       if (widget.clearOnFirstPage && pageKey == 0) {
@@ -147,9 +143,7 @@ class _PagingGridState<V> extends State<PagingGrid<V>> {
     }
 
     return AppPullDownRefresh(
-      indicatorAlignment: widget.scrollDirection == Axis.vertical
-          ? Alignment.topCenter
-          : Alignment.centerLeft,
+      indicatorAlignment: widget.scrollDirection == Axis.vertical ? Alignment.topCenter : Alignment.centerLeft,
       enable: widget.enablePullDown,
       refresh: _pagingController.refresh,
       child: pagedListView,
@@ -187,20 +181,14 @@ class _PagingGridState<V> extends State<PagingGrid<V>> {
   PagedChildBuilderDelegate<V> _getPagedChildBuilderDelegate() {
     return PagedChildBuilderDelegate<V>(
       itemBuilder: widget.itemBuilder,
-      firstPageProgressIndicatorBuilder:
-          widget.firstPageProgressIndicatorBuilder ??
-              context.pagingConfigData.progressIndicatorBuilder,
-      newPageProgressIndicatorBuilder: widget.newPageProgressIndicatorBuilder ??
-          context.pagingConfigData.progressIndicatorBuilder,
-      firstPageErrorIndicatorBuilder: (_) => context.pagingConfigData
-          .errorBuilder(context, _pagingController.error),
-      newPageErrorIndicatorBuilder: (_) => context.pagingConfigData
-          .errorBuilder(context, _pagingController.error),
+      firstPageProgressIndicatorBuilder: widget.firstPageProgressIndicatorBuilder ?? context.pagingConfigData.progressIndicatorBuilder,
+      newPageProgressIndicatorBuilder: widget.newPageProgressIndicatorBuilder ?? context.pagingConfigData.progressIndicatorBuilder,
+      firstPageErrorIndicatorBuilder: (_) => context.pagingConfigData.errorBuilder(context, _pagingController.error),
+      newPageErrorIndicatorBuilder: (_) => context.pagingConfigData.errorBuilder(context, _pagingController.error),
       noItemsFoundIndicatorBuilder: (context) {
         widget.onEmpty?.call();
         if (widget.noItemsFoundIndicatorBuilder != null) {
-          return widget.noItemsFoundIndicatorBuilder?.call(context) ??
-              const SizedBox.shrink();
+          return widget.noItemsFoundIndicatorBuilder?.call(context) ?? const SizedBox.shrink();
         }
         return context.pagingConfigData.emptyBuilder(context);
       },

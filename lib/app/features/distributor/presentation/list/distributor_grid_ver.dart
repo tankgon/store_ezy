@@ -15,16 +15,13 @@ class DistributorGridVer extends StatelessWidget {
     this.layoutType = DistributorItemLayoutType.layout1,
   });
 
-  static DistributorGridVer demo(
-      {bool shrinkWrap = false, ScrollPhysics? physics, bool? onlyOnePage}) {
+  static DistributorGridVer demo({bool shrinkWrap = false, ScrollPhysics? physics, bool? onlyOnePage}) {
     return DistributorGridVer(
       shrinkWrap: shrinkWrap,
       physics: physics,
       onlyOnePage: onlyOnePage,
       fetchListData: (page, pageSize) {
-        return Future.value(List.generate(8, (index) => index)
-            .map((e) => DistributorEntity.demo())
-            .toList());
+        return Future.value(List.generate(8, (index) => index).map((e) => DistributorEntity.demo()).toList());
       },
     );
   }

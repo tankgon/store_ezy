@@ -37,16 +37,12 @@ class AppKeyValueListLayout extends StatelessWidget {
       if (i == (children.length - 2)) {
         if (showLastSeparator) {
           listPair.add(
-            separatorBuilder != null
-                ? separatorBuilder!(context, i)
-                : const SizedBox.shrink(),
+            separatorBuilder != null ? separatorBuilder!(context, i) : const SizedBox.shrink(),
           );
         }
       } else {
         listPair.add(
-          separatorBuilder != null
-              ? separatorBuilder!(context, i)
-              : const SizedBox.shrink(),
+          separatorBuilder != null ? separatorBuilder!(context, i) : const SizedBox.shrink(),
         );
       }
     }

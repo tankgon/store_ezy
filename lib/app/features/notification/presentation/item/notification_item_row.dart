@@ -43,30 +43,15 @@ class NotificationItemRow extends StatelessWidget {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          item.title?.text.semiBold.make().expand() ??
-                              const Spacer(),
-                          item.createdDate
-                                  ?.toTimeAgo()
-                                  ?.text
-                                  .maxLines(3)
-                                  .ellipsis
-                                  .textS
-                                  .colorHint(context)
-                                  .make()
-                                  .pl8() ??
-                              const SizedBox.shrink(),
+                          item.title?.text.semiBold.make().expand() ?? const Spacer(),
+                          item.createdDate?.toTimeAgo()?.text.maxLines(3).ellipsis.textS.colorHint(context).make().pl8() ?? const SizedBox.shrink(),
                         ],
                       ),
                       Gaps.vGap4,
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          item.content?.text
-                                  .maxLines(2)
-                                  .ellipsis
-                                  .make()
-                                  .expand() ??
-                              const Spacer(),
+                          item.content?.text.maxLines(2).ellipsis.make().expand() ?? const Spacer(),
                           if (item.hasRead != true)
                             ContainerCircle(
                               color: context.theme.primaryColor,

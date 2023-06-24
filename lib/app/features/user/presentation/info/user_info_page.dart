@@ -1,7 +1,7 @@
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/auth/self.dart';
-import 'package:mulstore/app/features/user/presentation/info/user_info_body.dart';
 import 'package:mulstore/app/features/user/presentation/info/cubit/user_info_cubit.dart';
+import 'package:mulstore/app/features/user/presentation/info/user_info_body.dart';
 import 'package:mulstore/app/features/user/self.dart';
 
 @RoutePage()
@@ -19,10 +19,9 @@ class UserInfoPage extends StatelessWidget {
         }
       },
       child: BlocProvider(
-        create: (context) =>
-            UserInfoCubit(
-              item: user,
-            ),
+        create: (context) => UserInfoCubit(
+          item: user,
+        ),
         child: DefaultStatusConsumer<UserInfoCubit, UserInfoState>(
           child: Scaffold(
             appBar: AppAppBar(
@@ -34,5 +33,4 @@ class UserInfoPage extends StatelessWidget {
       ),
     );
   }
-
 }

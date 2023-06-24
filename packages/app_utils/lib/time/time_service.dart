@@ -32,8 +32,7 @@ class TimeService {
     this.locale = locale ?? const Locale('vi', 'VN');
     this.formatServer = formatServer ?? 'yyyy-MM-ddTHH:mm:ssZ';
     this.formatSimpleDate = 'dd/MM/yyyy';
-    this.formatSimpleDateDF =
-        formatSimpleDateDF ?? DateFormat(formatSimpleDate);
+    this.formatSimpleDateDF = formatSimpleDateDF ?? DateFormat(formatSimpleDate);
     this.formatSimpleHour = formatSimpleHour ?? 'HH:mm';
     this.formatSimpleMonthDate = formatSimpleMonthDate ?? 'dd/MM';
     this.formatSimpleMonthYear = formatSimpleMonthYear ?? 'MM/yyyy';
@@ -100,8 +99,7 @@ class TimeService {
       if (firstDay.isAfter(secondDay)) return null;
 
       timeAgo.setLocaleMessages('vi', differMessages);
-      return timeAgo.format(secondDay,
-          clock: firstDay, locale: locale.languageCode);
+      return timeAgo.format(secondDay, clock: firstDay, locale: locale.languageCode);
     } catch (e) {
       log(e.toString(), error: e);
       return null;
@@ -115,9 +113,7 @@ class TimeService {
   DateTime? strUtcToDateLocale(String? str, {String? format}) {
     try {
       if (str.isNullOrEmpty) return null;
-      return DateFormat(format ?? formatServer, locale.languageCode)
-          .parseUTC(str ?? '')
-          .toLocal();
+      return DateFormat(format ?? formatServer, locale.languageCode).parseUTC(str ?? '').toLocal();
     } catch (e) {
       log(e.toString(), error: e);
       return null;
@@ -153,8 +149,7 @@ class TimeService {
       var date = strUtcToDateLocale(rs)?.toLocal();
 
       if (date == null) return null;
-      return dateToStr(date,
-          format: DateFormat(format ?? formatServer, locale.languageCode));
+      return dateToStr(date, format: DateFormat(format ?? formatServer, locale.languageCode));
     } catch (e) {
       log(e.toString(), error: e);
       return rs;
@@ -270,9 +265,7 @@ class TimeService {
 
   /// The last day of a given month
   DateTime lastDayOfMonth(DateTime month) {
-    var beginningNextMonth = (month.month < 12)
-        ? DateTime(month.year, month.month + 1, 1)
-        : DateTime(month.year + 1, 1, 1);
+    var beginningNextMonth = (month.month < 12) ? DateTime(month.year, month.month + 1, 1) : DateTime(month.year + 1, 1, 1);
     return beginningNextMonth.subtract(const Duration(days: 1));
   }
 
@@ -350,8 +343,7 @@ class TimeService {
   }
 
   int? getTimeFormNow({Duration? duration}) {
-    return DateTime.now().millisecondsSinceEpoch +
-        (duration?.inMilliseconds ?? 0);
+    return DateTime.now().millisecondsSinceEpoch + (duration?.inMilliseconds ?? 0);
   }
 
   DateTime? changeTime(DateTime? date, int hour, int min, int sec) {

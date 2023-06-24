@@ -15,6 +15,7 @@ export 'package:flutter/foundation.dart' hide IterableFilter;
 export 'package:flutter/gestures.dart';
 export 'package:flutter/material.dart' hide Path;
 export 'package:flutter_bloc/flutter_bloc.dart';
+export 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 export 'package:velocity_x/velocity_x.dart'
     show
         VelocityXRichTextExtension,

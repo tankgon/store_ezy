@@ -20,8 +20,7 @@ class MsPagingResult<T> {
   ) =>
       _$MsPagingResultFromJson(json, fromJsonT);
 
-  Map<String, dynamic> toJson(Object Function(T value) toJsonT) =>
-      _$MsPagingResultToJson(this, toJsonT);
+  Map<String, dynamic> toJson(Object Function(T value) toJsonT) => _$MsPagingResultToJson(this, toJsonT);
 }
 
 @JsonSerializable()
@@ -44,8 +43,7 @@ class MsMedia {
     this.objectRefID,
   });
 
-  factory MsMedia.fromJson(Map<String, dynamic> json) =>
-      _$MsMediaFromJson(json);
+  factory MsMedia.fromJson(Map<String, dynamic> json) => _$MsMediaFromJson(json);
 
   Map<String, dynamic> toJson() => _$MsMediaToJson(this);
 }
@@ -60,8 +58,7 @@ class MsAppSetting {
     this.version,
   });
 
-  factory MsAppSetting.fromJson(Map<String, dynamic> json) =>
-      _$MsAppSettingFromJson(json);
+  factory MsAppSetting.fromJson(Map<String, dynamic> json) => _$MsAppSettingFromJson(json);
 
   Map<String, dynamic> toJson() => _$MsAppSettingToJson(this);
 }

@@ -15,11 +15,9 @@ class AppCartItemCounterLayout1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final counterButtonStyle = AppButtonTheme.none(context).copyWith(
-      shape: MaterialStatePropertyAll(
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(2))),
+      shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(2))),
       padding: MaterialStateProperty.all(const EdgeInsets.all(4)),
-      side: MaterialStateProperty.all(
-          BorderSide(color: context.themeColor.greyLighter)),
+      side: MaterialStateProperty.all(BorderSide(color: context.themeColor.greyLighter)),
     );
     const expandPadding = EdgeInsets.all(6);
     return SizedBox(
@@ -57,8 +55,7 @@ class AppCartItemCounterLayout1 extends StatelessWidget {
                   textInputAction: TextInputAction.done,
                   textAlign: TextAlign.center,
                   decoration: AppTextFieldTheme.none(context).copyWith(
-                    contentPadding:
-                        const EdgeInsets.symmetric(vertical: 4, horizontal: 2),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 4, horizontal: 2),
                   ),
                   onLostFocus: _onValueChange,
                 ),

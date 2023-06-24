@@ -1,5 +1,5 @@
-import 'package:mulstore/all_file/all_file.dart';
 import 'package:flutter_countdown_timer/index.dart';
+import 'package:mulstore/all_file/all_file.dart';
 
 class ResendCountdownText extends StatefulWidget {
   const ResendCountdownText({
@@ -67,15 +67,19 @@ class _ResendCountdownTextState extends State<ResendCountdownText> {
         textAlign: TextAlign.center,
       ),
       childBuilder: (_, time, hour, min, sec) {
-        return LocaleKeys.authen_SendOTPAgainAfterSecond.tr(
-          args: [
-            Duration(
-              hours: hour.toNumWithZero.toInt(),
-              minutes: min.toNumWithZero.toInt(),
-              seconds: sec.toNumWithZero.toInt(),
-            ).inSeconds.toString(),
-          ],
-        ).text.textStyle(textStyle).make();
+        return LocaleKeys.authen_SendOTPAgainAfterSecond
+            .tr(
+              args: [
+                Duration(
+                  hours: hour.toNumWithZero.toInt(),
+                  minutes: min.toNumWithZero.toInt(),
+                  seconds: sec.toNumWithZero.toInt(),
+                ).inSeconds.toString(),
+              ],
+            )
+            .text
+            .textStyle(textStyle)
+            .make();
       },
     ).p12();
   }

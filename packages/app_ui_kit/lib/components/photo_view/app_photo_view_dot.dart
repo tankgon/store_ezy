@@ -24,8 +24,7 @@ class _AppPhotoViewDotState extends State<AppPhotoViewDot> {
   @override
   void initState() {
     _controller = AutoScrollController(
-      viewportBoundaryGetter: () =>
-          Rect.fromLTRB(0, 0, 0, MediaQuery.of(context).padding.bottom),
+      viewportBoundaryGetter: () => Rect.fromLTRB(0, 0, 0, MediaQuery.of(context).padding.bottom),
     );
     widget.photoController?.curIndexLD.addListener(() {
       print('Dot - curIndexLD: ${widget.photoController?.curIndexLD.value}');
@@ -39,16 +38,14 @@ class _AppPhotoViewDotState extends State<AppPhotoViewDot> {
   @override
   Widget build(BuildContext context) {
     if (widget.photoController == null) return const SizedBox.shrink();
-    if (widget.photoController?.imgList?.isNotNullOrEmpty == false)
-      return const SizedBox.shrink();
+    if (widget.photoController?.imgList?.isNotNullOrEmpty == false) return const SizedBox.shrink();
 
     const imageRad = Dimens.rad_XS;
 
-    final previewWidgets =
-        widget.photoController!.listPreview.mapAsList((img) => AppImg(
-              img,
-              fit: BoxFit.cover,
-            ));
+    final previewWidgets = widget.photoController!.listPreview.mapAsList((img) => AppImg(
+          img,
+          fit: BoxFit.cover,
+        ));
 
     final activeBoxDeco = BoxDecoration(
       borderRadius: BorderRadius.circular(imageRad),
@@ -84,8 +81,7 @@ class _AppPhotoViewDotState extends State<AppPhotoViewDot> {
                   builder: (context, value, child) {
                     return Container(
                       clipBehavior: Clip.hardEdge,
-                      decoration:
-                          value == index ? activeBoxDeco : inActiveBoxDeco,
+                      decoration: value == index ? activeBoxDeco : inActiveBoxDeco,
                       child: child,
                     );
                   }),

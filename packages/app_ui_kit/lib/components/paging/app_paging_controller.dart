@@ -1,18 +1,13 @@
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
-class AppPagingController<PageKeyType, ItemType>
-    extends PagingController<PageKeyType, ItemType> {
-  AppPagingController({required PageKeyType firstPageKey})
-      : super(firstPageKey: firstPageKey);
+class AppPagingController<PageKeyType, ItemType> extends PagingController<PageKeyType, ItemType> {
+  AppPagingController({required PageKeyType firstPageKey}) : super(firstPageKey: firstPageKey);
 
   Future<List<ItemType>> Function(PageKeyType offset, int limit)? fetchListData;
   int? pageSize;
 
-  void init(
-      {required Future<List<ItemType>> Function(PageKeyType offset, int limit)
-          fetchListDataParam,
-      required int pageSizeParam}) {
+  void init({required Future<List<ItemType>> Function(PageKeyType offset, int limit) fetchListDataParam, required int pageSizeParam}) {
     fetchListData = fetchListDataParam;
     pageSize = pageSizeParam;
   }
@@ -29,12 +24,9 @@ class AppPagingController<PageKeyType, ItemType>
     }
     log('refreshSilent');
 
-    var itemCurrentLength =
-        (itemList?.length ?? 0) > 0 ? itemList?.length : null;
+    var itemCurrentLength = (itemList?.length ?? 0) > 0 ? itemList?.length : null;
 
-    fetchListData
-        ?.call(0 as PageKeyType, limit ?? itemCurrentLength ?? pageSize ?? 20)
-        .then((value) {
+    fetchListData?.call(0 as PageKeyType, limit ?? itemCurrentLength ?? pageSize ?? 20).then((value) {
       itemList = [...value];
     });
   }
@@ -65,8 +57,7 @@ class AppPagingController<PageKeyType, ItemType>
 
     if (itemList.isNullOrEmpty || item == null) return false;
 
-    final indexUpdate =
-        itemList?.indexWhere((oldItem) => checkFunction(oldItem, item));
+    final indexUpdate = itemList?.indexWhere((oldItem) => checkFunction(oldItem, item));
     if ((indexUpdate ?? -1) > -1) {
       itemList![indexUpdate!] = item;
       itemList = [...?itemList];
@@ -89,8 +80,7 @@ class AppPagingController<PageKeyType, ItemType>
   }) {
     if (itemList.isNullOrEmpty) return false;
 
-    final indexUpdate =
-        itemList?.indexWhere((oldItem) => checkFunction(oldItem));
+    final indexUpdate = itemList?.indexWhere((oldItem) => checkFunction(oldItem));
     if (indexUpdate != null && indexUpdate != -1) {
       fetchListData?.call(indexUpdate as PageKeyType, 1).then((value) {
         itemList![indexUpdate] = value.firstOrNull ?? itemList![indexUpdate];

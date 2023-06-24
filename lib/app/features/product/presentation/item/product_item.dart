@@ -45,7 +45,6 @@ class ProductItem extends StatelessWidget {
   }
 
   Builder _buildItem(ProductEntity item) {
-
     return Builder(
       builder: (context) {
         switch (layoutType) {

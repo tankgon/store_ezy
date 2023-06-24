@@ -105,21 +105,18 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
     green: Color(0xFF44C542),
     orange: Color(0xFFFB822A),
     pink: Color(0xFFFF66B9),
-
     greyDarkest: Color(0xFF121212),
     greyDark: Color(0xFF333333),
     grey: Color(0xFF5F5F5F),
     greyLight: Color(0xFF808080),
     greyNeutral: Color(0xFFB7B7B7),
     greyLighter: Color(0xFFDCDCDC),
-
     primaryDarkest: Color(0xFF004767),
     primaryDark: Color(0xFF0284BE),
     primary: Color(0xFF19AAEB),
     primaryLight: Color(0xFF4BC6FD),
     primaryNeutral: Color(0xFF9BE0FF),
     primaryLighter: Color(0xFFE8F8FF),
-
   );
 
   static const AppColorExtension light = AppColorExtension(
@@ -144,14 +141,12 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
     green: Color(0xFF44C542),
     orange: Color(0xFFFB822A),
     pink: Color(0xFFFF66B9),
-
     greyDarkest: Color(0xFF121212),
     greyDark: Color(0xFF333333),
     grey: Color(0xFF5F5F5F),
     greyLight: Color(0xFF808080),
     greyNeutral: Color(0xFFB7B7B7),
     greyLighter: Color(0xFFDCDCDC),
-
     primaryDarkest: Color(0xFF004767),
     primaryDark: Color(0xFF0284BE),
     primary: Color(0xFF19AAEB),
@@ -184,14 +179,12 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
       green: green,
       orange: orange,
       pink: pink,
-
       greyDarkest: greyDarkest,
       greyDark: greyDark,
       grey: grey,
       greyLight: greyLight,
       greyNeutral: greyNeutral,
       greyLighter: greyLighter,
-
       primaryDarkest: primaryDarkest,
       primaryDark: primaryDark,
       primary: primary,
@@ -228,21 +221,18 @@ class AppColorExtension extends ThemeExtension<AppColorExtension> {
       green: Color.lerp(green, other.green, t) ?? green,
       orange: Color.lerp(orange, other.orange, t) ?? orange,
       pink: Color.lerp(pink, other.pink, t) ?? pink,
-
       greyDark: Color.lerp(greyDark, other.greyDark, t) ?? greyDark,
       greyDarkest: Color.lerp(greyDarkest, other.greyDarkest, t) ?? greyDarkest,
       grey: Color.lerp(grey, other.grey, t) ?? grey,
       greyLight: Color.lerp(greyLight, other.greyLight, t) ?? greyLight,
       greyNeutral: Color.lerp(greyNeutral, other.greyNeutral, t) ?? greyNeutral,
       greyLighter: Color.lerp(greyLighter, other.greyLighter, t) ?? greyLighter,
-
       primary: Color.lerp(primary, other.primary, t) ?? primary,
       primaryDark: Color.lerp(primaryDark, other.primaryDark, t) ?? primaryDark,
       primaryDarkest: Color.lerp(primaryDarkest, other.primaryDarkest, t) ?? primaryDarkest,
       primaryLight: Color.lerp(primaryLight, other.primaryLight, t) ?? primaryLight,
       primaryNeutral: Color.lerp(primaryNeutral, other.primaryNeutral, t) ?? primaryNeutral,
       primaryLighter: Color.lerp(primaryLighter, other.primaryLighter, t) ?? primaryLighter,
-
     );
   }
 

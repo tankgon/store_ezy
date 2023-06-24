@@ -29,5 +29,3 @@ class CheckoutPayDetail extends StatelessWidget {
     );
   }
 }
-
-

@@ -17,11 +17,9 @@ class ProductTitleHeader extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          product?.name?.text.titleLarge(context).maxLines(3).ellipsis.make() ??
-              const SizedBox(),
+          product?.name?.text.titleLarge(context).maxLines(3).ellipsis.make() ?? const SizedBox(),
           Gaps.vGap8,
-          product?.shortDescription?.text.maxLines(2).ellipsis.make() ??
-              const SizedBox(),
+          product?.shortDescription?.text.maxLines(2).ellipsis.make() ?? const SizedBox(),
           Row(
             children: [
               ProductPriceWithType(

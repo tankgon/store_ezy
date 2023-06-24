@@ -49,16 +49,13 @@ extension _DioErrorExtend on Object? {
         return 'Reconnect'.tr();
       }
       if (dioError.response?.data is Map) {
-        final errorCode =
-            (dioError.response?.data as Map)['errorCode'] as String?;
+        final errorCode = (dioError.response?.data as Map)['errorCode'] as String?;
         if (errorCode != null) {
           return errorCode.tr();
         }
       }
     }
-    if (kDebugMode ||
-        AppConfig.IN_DEV ||
-        getIt<UserSecureStorage>().developerMode == true) {
+    if (kDebugMode || AppConfig.IN_DEV || getIt<UserSecureStorage>().developerMode == true) {
       if (object is PlatformException) {
         return '${object.message} \n\n\n---\n\n\n ${object.stacktrace} \n\n\n---\n\n\n $object';
       }

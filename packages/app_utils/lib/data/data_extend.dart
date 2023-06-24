@@ -39,31 +39,25 @@ extension DataExtendNum on num? {
     return this.isNullOrEmpty ? '0' : (this! > 99 ? '99+' : this.toString());
   }
 
-  String? toStringHideZero() =>
-      this != null ? (this == 0 ? null : this.toString()) : null;
+  String? toStringHideZero() => this != null ? (this == 0 ? null : this.toString()) : null;
 
   String toStringWithZero() => this != null ? (this.toString()) : '0';
 
-  String toStringWithZeroNegativeZero() =>
-      this != null ? (this! >= 0 ? (this.toString()) : '0') : '0';
+  String toStringWithZeroNegativeZero() => this != null ? (this! >= 0 ? (this.toString()) : '0') : '0';
 
-  String? get toTwoDigit =>
-      isNotNullOrEmpty() ? this?.toString().padLeft(2, '0') : null;
+  String? get toTwoDigit => isNotNullOrEmpty() ? this?.toString().padLeft(2, '0') : null;
 
   num get toNumWithZero => this ?? 0;
 
-  String? get yearToFullDateBegin =>
-      this == null ? null : '$this-01-01T00:00:00.000Z';
+  String? get yearToFullDateBegin => this == null ? null : '$this-01-01T00:00:00.000Z';
 
-  String? get yearToFullYearEnd =>
-      this == null ? null : '$this-12-31T23:59:59.000Z';
+  String? get yearToFullYearEnd => this == null ? null : '$this-12-31T23:59:59.000Z';
 }
 
 extension DataExtendBool on bool? {
   num get toNumBoolean => this == true ? 1 : 0;
 
-  num? get toNumBooleanWithNull =>
-      this == null ? null : (this ?? false ? 1 : 0);
+  num? get toNumBooleanWithNull => this == null ? null : (this ?? false ? 1 : 0);
 }
 
 extension DataDynamicExtendBool on Object? {
@@ -91,20 +85,14 @@ extension DynamicExtend on dynamic {
 }
 
 extension DataExtendObjectNullAble on Object? {
-  num get toNumWithZero =>
-      (this is num) ? (this as num) : num.tryParse(this.toString()) ?? 0;
+  num get toNumWithZero => (this is num) ? (this as num) : num.tryParse(this.toString()) ?? 0;
 
-  bool get isNotNullOrEmpty =>
-      (this is String) ? (this as String).isNotNullOrEmpty : this != null;
+  bool get isNotNullOrEmpty => (this is String) ? (this as String).isNotNullOrEmpty : this != null;
 }
 
 extension DataExtendStringNullAble on String? {
   bool searchEqual(String? searchText) {
-    return this
-            ?.unsignedLower()
-            ?.trim()
-            .contains(searchText?.unsignedLower()?.trim() ?? '') ??
-        false;
+    return this?.unsignedLower()?.trim().contains(searchText?.unsignedLower()?.trim() ?? '') ?? false;
   }
 
   num? get toNum => num.tryParse(this ?? '');
@@ -117,27 +105,14 @@ extension DataExtendStringNullAble on String? {
 
   String? get withRequiredMark => this == null ? null : '$this *';
 
-  String? get withMustRequiredMsg =>
-      this == null ? null : '$this ${'invalidFill'}';
+  String? get withMustRequiredMsg => this == null ? null : '$this ${'invalidFill'}';
 
   List<String>? getStrFromEnum<E extends Enum>(List<E> values) {
-    return this.isNullOrEmpty
-        ? null
-        : this
-            ?.split(',')
-            .mapAsList((strIndex) => int.tryParse(strIndex))
-            .filter((item) => item != null)
-            .mapAsList((index) => values.getOrNull(index ?? -1)?.name ?? '');
+    return this.isNullOrEmpty ? null : this?.split(',').mapAsList((strIndex) => int.tryParse(strIndex)).filter((item) => item != null).mapAsList((index) => values.getOrNull(index ?? -1)?.name ?? '');
   }
 
   List<String>? getStrFromEnumTr<E extends Enum>(List<E> values) {
-    return this.isNullOrEmpty
-        ? null
-        : this
-            ?.split(',')
-            .mapAsList((strIndex) => int.tryParse(strIndex))
-            .filter((item) => item != null)
-            .mapAsList((index) => values.getOrNull(index ?? -1)?.name ?? '');
+    return this.isNullOrEmpty ? null : this?.split(',').mapAsList((strIndex) => int.tryParse(strIndex)).filter((item) => item != null).mapAsList((index) => values.getOrNull(index ?? -1)?.name ?? '');
   }
 
   T isEmptyOrValue<T>(T value) {
@@ -151,13 +126,7 @@ extension DataExtendStringNullAble on String? {
 
   String? capitalizeOnly() {
     if (this.isNullOrEmpty) return null;
-    return this
-        ?.split(RegExp(r"\n"))
-        .map((e) => e.capitalizeFirstOnly())
-        .join('\n')
-        .split(' ')
-        .map((e) => e.capitalizeFirstOnly())
-        .join(' ');
+    return this?.split(RegExp(r"\n")).map((e) => e.capitalizeFirstOnly()).join('\n').split(' ').map((e) => e.capitalizeFirstOnly()).join(' ');
   }
 
   String? capitalizeFirstOnly() {
@@ -181,9 +150,7 @@ extension DataExtendStringNullAble on String? {
 
   String? stringValidator() => this.isNullOrEmpty ? 'inputErrorMsg' : null;
 
-  String get toPhoneFormattedStr => this.isNullOrEmpty
-      ? ''
-      : (MaskTemplate.phoneMask.getMaskedString(this ?? ''));
+  String get toPhoneFormattedStr => this.isNullOrEmpty ? '' : (MaskTemplate.phoneMask.getMaskedString(this ?? ''));
 
   String getDate() {
     return this?.substring(0, 10).split('-').reversed.join('/') ?? '';
@@ -192,16 +159,14 @@ extension DataExtendStringNullAble on String? {
   String getDatetime() {
     String date = this?.substring(0, 10) ?? '';
     String time = this?.substring(11, 19) ?? '';
-    var dateTime =
-        DateFormat("yyyy-MM-dd HH:mm:ss").parse(date + ' ' + time, true);
+    var dateTime = DateFormat("yyyy-MM-dd HH:mm:ss").parse(date + ' ' + time, true);
     var dateLocal = dateTime.toLocal();
     return dateLocal.toString().substring(0, 16);
   }
 }
 
 extension RangeExtension on int {
-  List<int> toNum(int maxInclusive, {int step = 1}) =>
-      [for (int i = this; i <= maxInclusive; i += step) i];
+  List<int> toNum(int maxInclusive, {int step = 1}) => [for (int i = this; i <= maxInclusive; i += step) i];
 }
 
 extension DateTimeExtension on DateTime {
@@ -211,15 +176,7 @@ extension DateTimeExtension on DateTime {
 
   DateTime setTime({int? newHour, int? newMinute}) {
     var time = toLocal();
-    return DateTime(
-        time.year,
-        time.month,
-        time.day,
-        newHour ?? time.hour,
-        newMinute ?? time.minute,
-        time.second,
-        time.millisecond,
-        time.microsecond);
+    return DateTime(time.year, time.month, time.day, newHour ?? time.hour, newMinute ?? time.minute, time.second, time.millisecond, time.microsecond);
   }
 }
 

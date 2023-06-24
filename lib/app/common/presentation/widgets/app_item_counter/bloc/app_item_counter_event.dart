@@ -3,7 +3,6 @@ part of 'app_item_counter_bloc.dart';
 @immutable
 abstract class AppCartItemCounterEvent {}
 
-
 class AppCartItemCounterSubmitValueEvent extends AppCartItemCounterEvent {
   AppCartItemCounterSubmitValueEvent();
 }
@@ -21,4 +20,3 @@ class AppCartItemCounterValueChangeEvent extends AppCartItemCounterEvent {
 
   final int value;
 }
-

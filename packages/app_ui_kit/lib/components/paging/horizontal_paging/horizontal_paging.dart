@@ -31,8 +31,7 @@ class HorizontalPaging<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<PagingNumberCubit, PagingNumberState>(
-      listenWhen: (previous, current) =>
-          previous.currentPage != current.currentPage,
+      listenWhen: (previous, current) => previous.currentPage != current.currentPage,
       listener: (context, state) {
         log('${state.status}');
         log('${state.currentPage}');
@@ -40,8 +39,7 @@ class HorizontalPaging<T> extends StatelessWidget {
       },
       child: BlocBuilder<PagingNumberCubit, PagingNumberState>(
         builder: (context, state) {
-          final listData =
-              context.read<PagingNumberCubit>().getCurrentPageListData();
+          final listData = context.read<PagingNumberCubit>().getCurrentPageListData();
           if (state.status == PagingNumberStatus.loading) {
             return const Center(
               child: CupertinoActivityIndicator(),
@@ -58,8 +56,7 @@ class HorizontalPaging<T> extends StatelessWidget {
               }
               return itemBuilder(context, item, index);
             },
-            separatorBuilder:
-                separatorBuilder ?? (context, index) => const SizedBox.shrink(),
+            separatorBuilder: separatorBuilder ?? (context, index) => const SizedBox.shrink(),
             itemCount: listData?.length ?? 0,
           );
         },
@@ -75,23 +72,16 @@ class HorizontalPagingIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<PagingNumberCubit, PagingNumberState>(
       builder: (context, state) {
-        final showPage = state.totalPage != 0 &&
-            (context
-                        .read<PagingNumberCubit>()
-                        .getCurrentPageListData()
-                        ?.length ??
-                    0) !=
-                0;
+        final showPage = state.totalPage != 0 && (context.read<PagingNumberCubit>().getCurrentPageListData()?.length ?? 0) != 0;
         return Row(
           children: [
             CupertinoButton(
               padding: EdgeInsets.zero,
-              onPressed:
-                  !context.read<PagingNumberCubit>().hasPrevious() || !showPage
-                      ? null
-                      : () {
-                          context.read<PagingNumberCubit>().previousPage();
-                        },
+              onPressed: !context.read<PagingNumberCubit>().hasPrevious() || !showPage
+                  ? null
+                  : () {
+                      context.read<PagingNumberCubit>().previousPage();
+                    },
               child: const Icon(Icons.arrow_back_ios_new_rounded),
             ),
             if (showPage)
@@ -103,12 +93,11 @@ class HorizontalPagingIndicator extends StatelessWidget {
             if (!showPage) const Spacer(),
             CupertinoButton(
               padding: EdgeInsets.zero,
-              onPressed:
-                  !context.read<PagingNumberCubit>().hasNext() || !showPage
-                      ? null
-                      : () {
-                          context.read<PagingNumberCubit>().nextPage();
-                        },
+              onPressed: !context.read<PagingNumberCubit>().hasNext() || !showPage
+                  ? null
+                  : () {
+                      context.read<PagingNumberCubit>().nextPage();
+                    },
               child: const Icon(Icons.arrow_forward_ios_rounded),
             ),
           ],

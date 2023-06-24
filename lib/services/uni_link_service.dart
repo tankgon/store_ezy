@@ -1,11 +1,9 @@
 import 'package:mulstore/all_file/all_file.dart';
-import 'package:flutter/services.dart';
 
 typedef UniLinkUriCallBack = void Function(Uri? uri);
 typedef UniLinkLinkCallBack = void Function(String? link);
 
 class UniLinkService {
-
   static StreamSubscription? _sub;
 
   Future<void> initUniLinksStr({required UniLinkLinkCallBack callBack}) async {
@@ -57,5 +55,4 @@ class UniLinkService {
   void close() {
     _sub?.cancel();
   }
-
 }

@@ -16,9 +16,7 @@ class ProductListVer extends StatelessWidget {
     return ProductListVer(
       shrinkWrap: shrinkWrap,
       fetchListData: (page, pageSize) {
-        return Future.value(List.generate(5, (index) => index)
-            .map((e) => ProductEntity.demo())
-            .toList());
+        return Future.value(List.generate(5, (index) => index).map((e) => ProductEntity.demo()).toList());
       },
     );
   }

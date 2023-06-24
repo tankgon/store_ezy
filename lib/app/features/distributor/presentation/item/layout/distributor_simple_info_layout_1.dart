@@ -19,7 +19,7 @@ class DistributorSimpleInfoLayout1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppTileText(
+    return AppTileText.semiBold(
       leading: AppAvatar(
         height: Dimens.ic_XL6,
         src: item?.img?.src,

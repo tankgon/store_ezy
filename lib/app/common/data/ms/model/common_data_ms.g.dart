@@ -49,8 +49,7 @@ MsAppSetting _$MsAppSettingFromJson(Map<String, dynamic> json) => MsAppSetting(
       version: json['version'] as String?,
     );
 
-Map<String, dynamic> _$MsAppSettingToJson(MsAppSetting instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$MsAppSettingToJson(MsAppSetting instance) => <String, dynamic>{
       'maxHotProductsShowing': instance.maxHotProductsShowing,
       'version': instance.version,
     };

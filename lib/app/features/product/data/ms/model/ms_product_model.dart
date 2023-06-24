@@ -41,8 +41,7 @@ class MsProduct {
     this.localizedProductVersionID,
   });
 
-  factory MsProduct.fromJson(Map<String, dynamic> json) =>
-      _$MsProductFromJson(json);
+  factory MsProduct.fromJson(Map<String, dynamic> json) => _$MsProductFromJson(json);
 
   Map<String, dynamic> toJson() => _$MsProductToJson(this);
 }
@@ -71,8 +70,7 @@ class MsProductSKU {
     this.linkString,
   });
 
-  factory MsProductSKU.fromJson(Map<String, dynamic> json) =>
-      _$MsProductSKUFromJson(json);
+  factory MsProductSKU.fromJson(Map<String, dynamic> json) => _$MsProductSKUFromJson(json);
 
   Map<String, dynamic> toJson() => _$MsProductSKUToJson(this);
 }
@@ -89,8 +87,7 @@ class MsPackingUnit {
     this.locDescription,
   });
 
-  factory MsPackingUnit.fromJson(Map<String, dynamic> json) =>
-      _$MsPackingUnitFromJson(json);
+  factory MsPackingUnit.fromJson(Map<String, dynamic> json) => _$MsPackingUnitFromJson(json);
 
   Map<String, dynamic> toJson() => _$MsPackingUnitToJson(this);
 }
@@ -107,8 +104,7 @@ class MsPackingSize {
     this.locDescription,
   });
 
-  factory MsPackingSize.fromJson(Map<String, dynamic> json) =>
-      _$MsPackingSizeFromJson(json);
+  factory MsPackingSize.fromJson(Map<String, dynamic> json) => _$MsPackingSizeFromJson(json);
 
   Map<String, dynamic> toJson() => _$MsPackingSizeToJson(this);
 }
@@ -125,8 +121,7 @@ class MsSaleUnit {
     this.locDescription,
   });
 
-  factory MsSaleUnit.fromJson(Map<String, dynamic> json) =>
-      _$MsSaleUnitFromJson(json);
+  factory MsSaleUnit.fromJson(Map<String, dynamic> json) => _$MsSaleUnitFromJson(json);
 
   Map<String, dynamic> toJson() => _$MsSaleUnitToJson(this);
 }
@@ -143,8 +138,7 @@ class MsSaleSize {
     this.locDescription,
   });
 
-  factory MsSaleSize.fromJson(Map<String, dynamic> json) =>
-      _$MsSaleSizeFromJson(json);
+  factory MsSaleSize.fromJson(Map<String, dynamic> json) => _$MsSaleSizeFromJson(json);
 
   Map<String, dynamic> toJson() => _$MsSaleSizeToJson(this);
 }

@@ -6,8 +6,7 @@ enum ItemStatus { initial, loading, success, error }
 
 @JsonSerializable(ignoreUnannotated: false)
 class RangeValueModel<T> {
-  factory RangeValueModel.fromJson(Map<String, dynamic> json) =>
-      _$RangeValueModelFromJson<T>(json);
+  factory RangeValueModel.fromJson(Map<String, dynamic> json) => _$RangeValueModelFromJson<T>(json);
 
 //<editor-fold desc="Data Methods">
 
@@ -22,6 +21,7 @@ class RangeValueModel<T> {
       end: map['end'] as T,
     );
   }
+
   @_Converter()
   final T? start;
   @_Converter()
@@ -30,12 +30,7 @@ class RangeValueModel<T> {
   Map<String, dynamic> toJson() => _$RangeValueModelToJson(this);
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      (other is RangeValueModel &&
-          runtimeType == other.runtimeType &&
-          start == other.start &&
-          end == other.end);
+  bool operator ==(Object other) => identical(this, other) || (other is RangeValueModel && runtimeType == other.runtimeType && start == other.start && end == other.end);
 
   @override
   int get hashCode => start.hashCode ^ end.hashCode;

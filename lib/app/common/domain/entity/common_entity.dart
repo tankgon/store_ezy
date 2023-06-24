@@ -15,15 +15,13 @@ class ImageEntity {
   static ImageEntity demo() {
     return const ImageEntity(
       id: '1',
-      src:
-          'https://product.hstatic.net/200000311493/product/set_goi_xa_gung_trang_68383b0f8acb45c498206705071e6d2c.jpg',
+      src: 'https://product.hstatic.net/200000311493/product/set_goi_xa_gung_trang_68383b0f8acb45c498206705071e6d2c.jpg',
       name: 'Demo',
       alt: 'Demo',
     );
   }
 
-  factory ImageEntity.fromJson(Map<String, dynamic> json) =>
-      _$ImageEntityFromJson(json);
+  factory ImageEntity.fromJson(Map<String, dynamic> json) => _$ImageEntityFromJson(json);
   final Object? object;
   final String? id;
   final String? src;

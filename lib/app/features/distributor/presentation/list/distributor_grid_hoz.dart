@@ -15,9 +15,7 @@ class DistributorGridHoz extends StatelessWidget {
   static DistributorGridHoz demo() {
     return DistributorGridHoz(
       fetchListData: (page, pageSize) {
-        return Future.value(List.generate(5, (index) => index)
-            .map((e) => DistributorEntity.demo())
-            .toList());
+        return Future.value(List.generate(5, (index) => index).map((e) => DistributorEntity.demo()).toList());
       },
     );
   }

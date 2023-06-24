@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class Dimens {
@@ -39,13 +38,9 @@ class Dimens {
 
   static const EdgeInsets edge_default = EdgeInsets.all(pad_default);
 
-  static EdgeInsets edgePage(BuildContext context) =>
-      EdgeInsets.symmetric(horizontal: pad_default).copyWith(
+  static EdgeInsets edgePage(BuildContext context) => EdgeInsets.symmetric(horizontal: pad_default).copyWith(
         top: pad_default,
-        bottom: MediaQuery
-            .of(context)
-            .padding
-            .bottom,
+        bottom: MediaQuery.of(context).padding.bottom,
       );
 
   static const EdgeInsets edge_y_default = EdgeInsets.symmetric(vertical: pad_default);
