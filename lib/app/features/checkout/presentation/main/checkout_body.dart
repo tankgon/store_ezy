@@ -11,8 +11,8 @@ class CheckoutBody extends StatelessWidget {
     return AppScrollBody.withSpacing(
       child: Column(
         children: [
-          const UserReceiveInfoSection(
-            user: UserEntity(),
+          const UserReceiveAddressSection(
+            address: UserAddressEntity(),
           ).pxDefault(),
           const CheckoutProductListGroup(),
           const AppDivider(),

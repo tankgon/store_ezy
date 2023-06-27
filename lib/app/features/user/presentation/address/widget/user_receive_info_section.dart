@@ -1,13 +1,13 @@
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/user/domain/entity/user_base_entity.dart';
 
-class UserReceiveInfoSection extends StatelessWidget {
-  const UserReceiveInfoSection({
+class UserReceiveAddressSection extends StatelessWidget {
+  const UserReceiveAddressSection({
     super.key,
-    required this.user,
+    required this.address,
   });
 
-  final UserEntity user;
+  final UserAddressEntity address;
 
   @override
   Widget build(BuildContext context) {
@@ -21,16 +21,14 @@ class UserReceiveInfoSection extends StatelessWidget {
                 PhosphorIcons.map_pin_line,
                 color: context.themeColor.greyLighter,
               ),
-              LocaleKeys.user_UserReceiveInfo.tr().text.titleMedium(context).make(),
+              'Địa chỉ nhận hàng'.tr().text.titleMedium(context).make(),
             ].withDivider(Gaps.hGap8),
           ).p12(),
           const _Divider(),
           AppTile(
             padding: Dimens.edge_XS,
-            title: _UserDetail(
-              name: 'user.name',
-              phone: 'user.phone',
-              address: 'user.address',
+            title: UserAddressItem(
+              address: address,
             ),
             onPressed: () {},
           ),
@@ -40,13 +38,13 @@ class UserReceiveInfoSection extends StatelessWidget {
   }
 }
 
-class UserReceiveInfo extends StatelessWidget {
-  const UserReceiveInfo({
+class UserReceiveAddress extends StatelessWidget {
+  const UserReceiveAddress({
     super.key,
-    required this.user,
+    required this.address,
   });
 
-  final UserEntity user;
+  final UserAddressEntity address;
 
   @override
   Widget build(BuildContext context) {
@@ -59,12 +57,10 @@ class UserReceiveInfo extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            LocaleKeys.user_UserReceiveInfo.tr().text.titleMedium(context).make().pt2(),
+            'Địa chỉ nhận hàng'.tr().text.titleMedium(context).make().pt2(),
             Gaps.vGap8,
-            _UserDetail(
-              name: 'user.name',
-              phone: 'user.phone',
-              address: 'user.address',
+            UserAddressItem(
+              address: address,
             ),
           ],
         ).expand(),
@@ -73,29 +69,31 @@ class UserReceiveInfo extends StatelessWidget {
   }
 }
 
-class _UserDetail extends StatelessWidget {
-  const _UserDetail({
+class UserAddressItem extends StatelessWidget {
+  const UserAddressItem({
     super.key,
-    required this.name,
-    required this.phone,
     required this.address,
   });
 
-  final String name;
-  final String phone;
-  final String address;
+  final UserAddressEntity address;
 
   @override
   Widget build(BuildContext context) {
     bool isLogin = true;
     if (!isLogin) {
-      return LocaleKeys.user_AddUserReceiveInfo.tr().text.colorLight(context).make();
+      return LocaleKeys.user_AddUserReceiveInfo
+          .tr()
+          .text
+          .colorLight(context)
+          .make();
     }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        '$name  |  $phone'.text.colorDark(context).make(),
-        address.text.colorDark(context).make(),
+        if (address.addressAndPhone.isNotNullOrBlank)
+          address.addressAndPhone!.text.colorDark(context).make(),
+        if (address.fullAddress.isNotNullOrBlank)
+          address.fullAddress!.text.colorDark(context).make(),
       ].withDivider(Gaps.vGap4),
     );
   }

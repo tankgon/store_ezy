@@ -3,21 +3,19 @@
 ///  FlutterGen
 /// *****************************************************
 
-import 'package:flutter/services.dart';
 // coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart';
 
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
   $AssetsIconsAppGen get app => const $AssetsIconsAppGen();
-
   $AssetsIconsCommonGen get common => const $AssetsIconsCommonGen();
-
   $AssetsIconsProductGen get product => const $AssetsIconsProductGen();
 }
 
@@ -38,16 +36,20 @@ class $AssetsIconsAppGen {
   const $AssetsIconsAppGen();
 
   /// File path: assets/icons/app/app_logo.png
-  AssetGenImage get appLogo => const AssetGenImage('assets/icons/app/app_logo.png');
+  AssetGenImage get appLogo =>
+      const AssetGenImage('assets/icons/app/app_logo.png');
 
   /// File path: assets/icons/app/app_logo_name.png
-  AssetGenImage get appLogoNamePng => const AssetGenImage('assets/icons/app/app_logo_name.png');
+  AssetGenImage get appLogoNamePng =>
+      const AssetGenImage('assets/icons/app/app_logo_name.png');
 
   /// File path: assets/icons/app/app_logo_name.svg
-  SvgGenImage get appLogoNameSvg => const SvgGenImage('assets/icons/app/app_logo_name.svg');
+  SvgGenImage get appLogoNameSvg =>
+      const SvgGenImage('assets/icons/app/app_logo_name.svg');
 
   /// File path: assets/icons/app/splash.png
-  AssetGenImage get splash => const AssetGenImage('assets/icons/app/splash.png');
+  AssetGenImage get splash =>
+      const AssetGenImage('assets/icons/app/splash.png');
 
   /// List of all assets
   List<dynamic> get values => [appLogo, appLogoNamePng, appLogoNameSvg, splash];
@@ -60,10 +62,12 @@ class $AssetsIconsCommonGen {
   SvgGenImage get apple => const SvgGenImage('assets/icons/common/apple.svg');
 
   /// File path: assets/icons/common/empty_box.svg
-  SvgGenImage get emptyBox => const SvgGenImage('assets/icons/common/empty_box.svg');
+  SvgGenImage get emptyBox =>
+      const SvgGenImage('assets/icons/common/empty_box.svg');
 
   /// File path: assets/icons/common/facebook.svg
-  SvgGenImage get facebook => const SvgGenImage('assets/icons/common/facebook.svg');
+  SvgGenImage get facebook =>
+      const SvgGenImage('assets/icons/common/facebook.svg');
 
   /// File path: assets/icons/common/google.svg
   SvgGenImage get google => const SvgGenImage('assets/icons/common/google.svg');
@@ -76,13 +80,16 @@ class $AssetsIconsProductGen {
   const $AssetsIconsProductGen();
 
   /// File path: assets/icons/product/authentic_100.svg
-  SvgGenImage get authentic100 => const SvgGenImage('assets/icons/product/authentic_100.svg');
+  SvgGenImage get authentic100 =>
+      const SvgGenImage('assets/icons/product/authentic_100.svg');
 
   /// File path: assets/icons/product/free_shipping.svg
-  SvgGenImage get freeShipping => const SvgGenImage('assets/icons/product/free_shipping.svg');
+  SvgGenImage get freeShipping =>
+      const SvgGenImage('assets/icons/product/free_shipping.svg');
 
   /// File path: assets/icons/product/return_in_datys.svg
-  SvgGenImage get returnInDatys => const SvgGenImage('assets/icons/product/return_in_datys.svg');
+  SvgGenImage get returnInDatys =>
+      const SvgGenImage('assets/icons/product/return_in_datys.svg');
 
   /// List of all assets
   List<SvgGenImage> get values => [authentic100, freeShipping, returnInDatys];

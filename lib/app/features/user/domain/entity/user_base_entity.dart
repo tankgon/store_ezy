@@ -10,6 +10,7 @@ class UserEntity {
     this.userName,
     this.fullName,
     this.avatar,
+    this.receiveAddressList,
   });
 
   final String? userID;
@@ -17,15 +18,46 @@ class UserEntity {
   final String? fullName;
   final String? avatar;
 
+  final List<UserAddressEntity>? receiveAddressList;
+
   final Object? object;
 
   String? get fullNameOrUserName => fullName ?? userName;
 
-  String? get coverImg => 'https://www.bhg.com/thmb/dgy0b4w_W0oUJUxc7M4w3H4AyDo=/1866x0/filters:no_upscale():strip_icc()/living-room-gallery-shelves-l-shaped-couch-ELeyNpyyqpZ8hosOG3EG1X-b5a39646574544e8a75f2961332cd89a.jpg';
+  String? get coverImg =>
+      'https://www.bhg.com/thmb/dgy0b4w_W0oUJUxc7M4w3H4AyDo=/1866x0/filters:no_upscale():strip_icc()/living-room-gallery-shelves-l-shaped-couch-ELeyNpyyqpZ8hosOG3EG1X-b5a39646574544e8a75f2961332cd89a.jpg';
 
-  String? get avatarImg => 'https://upload.wikimedia.org/wikipedia/commons/c/c3/LEONARDO.JPG';
+  String? get avatarImg =>
+      'https://upload.wikimedia.org/wikipedia/commons/c/c3/LEONARDO.JPG';
 
-  factory UserEntity.fromJson(Map<String, dynamic> json) => _$UserEntityFromJson(json);
+  factory UserEntity.fromJson(Map<String, dynamic> json) =>
+      _$UserEntityFromJson(json);
 
   Map<String, dynamic> toJson() => _$UserEntityToJson(this);
+}
+
+@JsonSerializable()
+class UserAddressEntity {
+  const UserAddressEntity({
+    this.object,
+    this.id,
+    this.userName,
+    this.phone,
+    this.fullAddress,
+  });
+
+  final String? id;
+  final String? userName;
+  final String? phone;
+  final String? fullAddress;
+
+  final Object? object;
+
+  String? get addressAndPhone =>
+      [userName, phone].joinWithoutNullEmpty('  |  ');
+
+  Map<String, dynamic> toJson() => _$UserAddressEntityToJson(this);
+
+  factory UserAddressEntity.fromJson(Map<String, dynamic> json) =>
+      _$UserAddressEntityFromJson(json);
 }

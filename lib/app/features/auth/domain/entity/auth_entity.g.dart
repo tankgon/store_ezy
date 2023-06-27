@@ -74,7 +74,8 @@ class _$AuthSignUpOTPEntityCWProxyImpl implements _$AuthSignUpOTPEntityCWProxy {
 extension $AuthSignUpOTPEntityCopyWith on AuthSignUpOTPEntity {
   /// Returns a callable class that can be used as follows: `instanceOfAuthSignUpOTPEntity.copyWith(...)` or like so:`instanceOfAuthSignUpOTPEntity.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$AuthSignUpOTPEntityCWProxy get copyWith => _$AuthSignUpOTPEntityCWProxyImpl(this);
+  _$AuthSignUpOTPEntityCWProxy get copyWith =>
+      _$AuthSignUpOTPEntityCWProxyImpl(this);
 }
 
 abstract class _$AuthConfirmEntityCWProxy {
@@ -167,26 +168,31 @@ class _$AuthConfirmEntityCWProxyImpl implements _$AuthConfirmEntityCWProxy {
 extension $AuthConfirmEntityCopyWith on AuthConfirmEntity {
   /// Returns a callable class that can be used as follows: `instanceOfAuthConfirmEntity.copyWith(...)` or like so:`instanceOfAuthConfirmEntity.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$AuthConfirmEntityCWProxy get copyWith => _$AuthConfirmEntityCWProxyImpl(this);
+  _$AuthConfirmEntityCWProxy get copyWith =>
+      _$AuthConfirmEntityCWProxyImpl(this);
 }
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-AuthSignUpOTPEntity _$AuthSignUpOTPEntityFromJson(Map<String, dynamic> json) => AuthSignUpOTPEntity(
+AuthSignUpOTPEntity _$AuthSignUpOTPEntityFromJson(Map<String, dynamic> json) =>
+    AuthSignUpOTPEntity(
       userID: json['userID'] as String?,
       uuid: json['uuid'] as String?,
       object: json['object'],
     );
 
-Map<String, dynamic> _$AuthSignUpOTPEntityToJson(AuthSignUpOTPEntity instance) => <String, dynamic>{
+Map<String, dynamic> _$AuthSignUpOTPEntityToJson(
+        AuthSignUpOTPEntity instance) =>
+    <String, dynamic>{
       'userID': instance.userID,
       'uuid': instance.uuid,
       'object': instance.object,
     };
 
-AuthConfirmEntity _$AuthConfirmEntityFromJson(Map<String, dynamic> json) => AuthConfirmEntity(
+AuthConfirmEntity _$AuthConfirmEntityFromJson(Map<String, dynamic> json) =>
+    AuthConfirmEntity(
       token: json['token'] as String?,
       userID: json['userID'] as String?,
       userName: json['userName'] as String?,
@@ -194,7 +200,8 @@ AuthConfirmEntity _$AuthConfirmEntityFromJson(Map<String, dynamic> json) => Auth
       object: json['object'],
     );
 
-Map<String, dynamic> _$AuthConfirmEntityToJson(AuthConfirmEntity instance) => <String, dynamic>{
+Map<String, dynamic> _$AuthConfirmEntityToJson(AuthConfirmEntity instance) =>
+    <String, dynamic>{
       'token': instance.token,
       'userID': instance.userID,
       'userName': instance.userName,
@@ -202,41 +209,53 @@ Map<String, dynamic> _$AuthConfirmEntityToJson(AuthConfirmEntity instance) => <S
       'object': instance.object,
     };
 
-ForgotPasswordOTPEntity _$ForgotPasswordOTPEntityFromJson(Map<String, dynamic> json) => ForgotPasswordOTPEntity(
+ForgotPasswordOTPEntity _$ForgotPasswordOTPEntityFromJson(
+        Map<String, dynamic> json) =>
+    ForgotPasswordOTPEntity(
       userID: json['userID'] as String?,
       userName: json['userName'] as String?,
       uuid: json['uuid'] as String?,
       object: json['object'],
     );
 
-Map<String, dynamic> _$ForgotPasswordOTPEntityToJson(ForgotPasswordOTPEntity instance) => <String, dynamic>{
+Map<String, dynamic> _$ForgotPasswordOTPEntityToJson(
+        ForgotPasswordOTPEntity instance) =>
+    <String, dynamic>{
       'userID': instance.userID,
       'userName': instance.userName,
       'uuid': instance.uuid,
       'object': instance.object,
     };
 
-ForgotPasswordConfirmOTPEntity _$ForgotPasswordConfirmOTPEntityFromJson(Map<String, dynamic> json) => ForgotPasswordConfirmOTPEntity(
+ForgotPasswordConfirmOTPEntity _$ForgotPasswordConfirmOTPEntityFromJson(
+        Map<String, dynamic> json) =>
+    ForgotPasswordConfirmOTPEntity(
       userID: json['userID'] as String?,
       uuid: json['uuid'] as String?,
       userName: json['userName'] as String?,
       object: json['object'],
     );
 
-Map<String, dynamic> _$ForgotPasswordConfirmOTPEntityToJson(ForgotPasswordConfirmOTPEntity instance) => <String, dynamic>{
+Map<String, dynamic> _$ForgotPasswordConfirmOTPEntityToJson(
+        ForgotPasswordConfirmOTPEntity instance) =>
+    <String, dynamic>{
       'userID': instance.userID,
       'uuid': instance.uuid,
       'userName': instance.userName,
       'object': instance.object,
     };
 
-ForgotPasswordCreatePasswordEntity _$ForgotPasswordCreatePasswordEntityFromJson(Map<String, dynamic> json) => ForgotPasswordCreatePasswordEntity(
+ForgotPasswordCreatePasswordEntity _$ForgotPasswordCreatePasswordEntityFromJson(
+        Map<String, dynamic> json) =>
+    ForgotPasswordCreatePasswordEntity(
       userID: json['userID'] as String?,
       userName: json['userName'] as String?,
       object: json['object'],
     );
 
-Map<String, dynamic> _$ForgotPasswordCreatePasswordEntityToJson(ForgotPasswordCreatePasswordEntity instance) => <String, dynamic>{
+Map<String, dynamic> _$ForgotPasswordCreatePasswordEntityToJson(
+        ForgotPasswordCreatePasswordEntity instance) =>
+    <String, dynamic>{
       'userID': instance.userID,
       'userName': instance.userName,
       'object': instance.object,

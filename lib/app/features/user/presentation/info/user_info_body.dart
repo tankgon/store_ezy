@@ -34,6 +34,7 @@ class UserInfoBody extends StatelessWidget {
                   )
                   .cornerRadius(Dimens.rad_XL2),
               Gaps.vGap12,
+              const AppDivider(),
               Column(
                 children: [
                   AppTileText(
@@ -50,7 +51,13 @@ class UserInfoBody extends StatelessWidget {
                       color: Colors.green,
                     ),
                     title: 'Địa chỉ nhận hàng'.tr(),
-                    onPressed: () {},
+                    onPressed: () {
+                      context.pushRoute(
+                        ReceiveAddressRoute(
+                          user: user,
+                        ),
+                      );
+                    },
                   ),
                   AppTileText(
                     leading: const Icon(

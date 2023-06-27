@@ -12,9 +12,21 @@ class UserOrderDetailBody extends StatelessWidget {
     return AppScrollBody.withSpacing(
       child: Column(
         children: [
-          const UserReceiveInfo(
-            user: UserEntity(),
-          ).pxDefault().pb16(),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              'Mã đơn hàng: #{}'
+                  .tr(args: ['123'])
+                  .text
+                  .titleMedium(context)
+                  .make()
+                  .pxDefault(),
+              const AppDivider.thin().pDefault(),
+              UserReceiveAddress(
+                address: UserAddressEntity(),
+              ).pxDefault().pb16(),
+            ],
+          ),
           OrderShippingStatus(),
           const UserOrderGroupItem(
             showStatus: false,

@@ -6,17 +6,26 @@ part of 'notification_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-NotificationListResp _$NotificationListRespFromJson(Map<String, dynamic> json) => NotificationListResp(
-      result: (json['result'] as List<dynamic>?)?.map((e) => NotificationDetailModel.fromJson(e as Map<String, dynamic>)).toList(),
+NotificationListResp _$NotificationListRespFromJson(
+        Map<String, dynamic> json) =>
+    NotificationListResp(
+      result: (json['result'] as List<dynamic>?)
+          ?.map((e) =>
+              NotificationDetailModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
       total: json['total'] as num?,
     );
 
-Map<String, dynamic> _$NotificationListRespToJson(NotificationListResp instance) => <String, dynamic>{
+Map<String, dynamic> _$NotificationListRespToJson(
+        NotificationListResp instance) =>
+    <String, dynamic>{
       'result': instance.result,
       'total': instance.total,
     };
 
-NotificationDetailModel _$NotificationDetailModelFromJson(Map<String, dynamic> json) => NotificationDetailModel(
+NotificationDetailModel _$NotificationDetailModelFromJson(
+        Map<String, dynamic> json) =>
+    NotificationDetailModel(
       messageID: json['messageID'] as String?,
       createdDate: json['createdDate'] as String?,
       content: json['content'] as String?,
@@ -41,7 +50,9 @@ NotificationDetailModel _$NotificationDetailModelFromJson(Map<String, dynamic> j
       consultantID: json['consultantID'] as String?,
     );
 
-Map<String, dynamic> _$NotificationDetailModelToJson(NotificationDetailModel instance) => <String, dynamic>{
+Map<String, dynamic> _$NotificationDetailModelToJson(
+        NotificationDetailModel instance) =>
+    <String, dynamic>{
       'messageID': instance.messageID,
       'createdDate': instance.createdDate,
       'content': instance.content,
@@ -66,7 +77,8 @@ Map<String, dynamic> _$NotificationDetailModelToJson(NotificationDetailModel ins
       'consultantID': instance.consultantID,
     };
 
-NotificationModel _$NotificationModelFromJson(Map<String, dynamic> json) => NotificationModel(
+NotificationModel _$NotificationModelFromJson(Map<String, dynamic> json) =>
+    NotificationModel(
       destUserID: json['destUserID'] as String?,
       errorCode: json['errorCode'] as String?,
       userTypes: json['userTypes'] as String?,
@@ -76,7 +88,8 @@ NotificationModel _$NotificationModelFromJson(Map<String, dynamic> json) => Noti
       userID: json['userID'] as String?,
     );
 
-Map<String, dynamic> _$NotificationModelToJson(NotificationModel instance) => <String, dynamic>{
+Map<String, dynamic> _$NotificationModelToJson(NotificationModel instance) =>
+    <String, dynamic>{
       'type': instance.type,
       'broadcast': instance.broadcast,
       'data': instance.data,
@@ -86,41 +99,57 @@ Map<String, dynamic> _$NotificationModelToJson(NotificationModel instance) => <S
       'errorCode': instance.errorCode,
     };
 
-NotificationMarkAsReadReq _$NotificationMarkAsReadReqFromJson(Map<String, dynamic> json) => NotificationMarkAsReadReq(
+NotificationMarkAsReadReq _$NotificationMarkAsReadReqFromJson(
+        Map<String, dynamic> json) =>
+    NotificationMarkAsReadReq(
       messageID: json['messageID'] as String?,
     );
 
-Map<String, dynamic> _$NotificationMarkAsReadReqToJson(NotificationMarkAsReadReq instance) => <String, dynamic>{
+Map<String, dynamic> _$NotificationMarkAsReadReqToJson(
+        NotificationMarkAsReadReq instance) =>
+    <String, dynamic>{
       'messageID': instance.messageID,
     };
 
-NotificationMarkAsReadResp _$NotificationMarkAsReadRespFromJson(Map<String, dynamic> json) => NotificationMarkAsReadResp(
+NotificationMarkAsReadResp _$NotificationMarkAsReadRespFromJson(
+        Map<String, dynamic> json) =>
+    NotificationMarkAsReadResp(
       messageID: json['messageID'] as String?,
     );
 
-Map<String, dynamic> _$NotificationMarkAsReadRespToJson(NotificationMarkAsReadResp instance) => <String, dynamic>{
+Map<String, dynamic> _$NotificationMarkAsReadRespToJson(
+        NotificationMarkAsReadResp instance) =>
+    <String, dynamic>{
       'messageID': instance.messageID,
     };
 
-CreateBookingNotifyModel _$CreateBookingNotifyModelFromJson(Map<String, dynamic> json) => CreateBookingNotifyModel(
+CreateBookingNotifyModel _$CreateBookingNotifyModelFromJson(
+        Map<String, dynamic> json) =>
+    CreateBookingNotifyModel(
       bookingID: json['bookingID'] as String?,
       objectID: json['objectID'] as String?,
       objectType: json['objectType'],
     );
 
-Map<String, dynamic> _$CreateBookingNotifyModelToJson(CreateBookingNotifyModel instance) => <String, dynamic>{
+Map<String, dynamic> _$CreateBookingNotifyModelToJson(
+        CreateBookingNotifyModel instance) =>
+    <String, dynamic>{
       'objectID': instance.objectID,
       'objectType': instance.objectType,
       'bookingID': instance.bookingID,
     };
 
-CreateDepositNotifyModel _$CreateDepositNotifyModelFromJson(Map<String, dynamic> json) => CreateDepositNotifyModel(
+CreateDepositNotifyModel _$CreateDepositNotifyModelFromJson(
+        Map<String, dynamic> json) =>
+    CreateDepositNotifyModel(
       depositID: json['depositID'] as String?,
       objectID: json['objectID'] as String?,
       objectType: json['objectType'],
     );
 
-Map<String, dynamic> _$CreateDepositNotifyModelToJson(CreateDepositNotifyModel instance) => <String, dynamic>{
+Map<String, dynamic> _$CreateDepositNotifyModelToJson(
+        CreateDepositNotifyModel instance) =>
+    <String, dynamic>{
       'objectID': instance.objectID,
       'objectType': instance.objectType,
       'depositID': instance.depositID,
