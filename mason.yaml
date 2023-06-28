@@ -9,7 +9,7 @@ bricks:
 
 # Feature Brick
 # Create:
-# mason make feature_brick --feature_name receive_address --folder_name receive_address --state_management cubit
+# mason make feature_brick --feature_name add_address --folder_name add_address --state_management cubit
 
 # Feature Core Brick
 # Create:

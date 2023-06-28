@@ -9,4 +9,8 @@ final userRoutes = [
     path: '/user-receive-address',
     page: ReceiveAddressRoute.page,
   ),
+  AutoRoute(
+    path: '/user-add-crud',
+    page: CrudAddressRoute.page,
+  ),
 ];
