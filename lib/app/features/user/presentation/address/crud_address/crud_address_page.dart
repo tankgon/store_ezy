@@ -15,8 +15,10 @@ class CrudAddressPage extends StatelessWidget {
 
   final UserAddressEntity? initialAddress;
   final Future<UserAddressEntity> Function(UserAddressEntity)? addAddressFuture;
-  final Future<UserAddressEntity> Function(UserAddressEntity)? updateAddressFuture;
-  final Future<UserAddressEntity> Function(UserAddressEntity)? removeAddressFuture;
+  final Future<UserAddressEntity> Function(UserAddressEntity)?
+      updateAddressFuture;
+  final Future<UserAddressEntity> Function(UserAddressEntity)?
+      removeAddressFuture;
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +30,18 @@ class CrudAddressPage extends StatelessWidget {
         removeItemFuture: removeAddressFuture,
       ),
       child: RequestItemConsumer<CrudAddressCubit, CrudAddressState>(
-        child: Scaffold(
-          appBar: AppAppBar(
-            title: _getTitle(),
-          ),
-          body: CrudAddressBody(),
+        child: Builder(
+          builder: (context) {
+            return ReactiveForm(
+              formGroup: context.read<CrudAddressCubit>().form,
+              child: Scaffold(
+                appBar: AppAppBar(
+                  title: _getTitle(),
+                ),
+                body: CrudAddressBody(),
+              ),
+            );
+          },
         ),
       ),
     );

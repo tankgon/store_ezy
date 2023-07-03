@@ -2,6 +2,7 @@ import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/product/domain/entity/product_entity.dart';
 import 'package:mulstore/app/features/product/domain/repo/product_repo.dart';
 
+part 'product_detail_cubit.g.dart';
 part 'product_detail_state.dart';
 
 class ProductDetailCubit
@@ -10,6 +11,21 @@ class ProductDetailCubit
       : super(ProductDetailState(item: item));
 
   final ProductRepo productRepo = getIt<ProductRepo>();
+
+  @override
+  void emitState({
+    ItemStatus? status,
+    ProductEntity? item,
+    Object? error,
+  }) {
+    emit(
+      state.copyWith(
+        status: status ?? state.status,
+        item: item ?? state.item,
+        error: error,
+      ),
+    );
+  }
 
   @override
   Future<ProductEntity?> fetchApi() {

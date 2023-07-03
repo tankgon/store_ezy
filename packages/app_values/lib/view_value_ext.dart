@@ -1,4 +1,3 @@
-import 'package:app_values/Dimens.dart';
 import 'package:app_values/app_values.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -84,6 +83,10 @@ extension VxTextBuilderExtend on VxTextBuilder {
     return textStyle(context.theme.textTheme.labelLarge);
   }
 
+  VxTextBuilder labelSmall(BuildContext context) {
+    return textStyle(context.theme.textTheme.labelSmall);
+  }
+
   VxTextBuilder colorPrimary(BuildContext context) {
     velocityColor = Theme.of(context).primaryColor;
     return this;
@@ -121,7 +124,8 @@ extension WidgetExtend on Widget {
         child: this,
       );
 
-  Flexible flex({Key? key, int flex = 1, FlexFit fit = FlexFit.loose}) => Flexible(
+  Flexible flex({Key? key, int flex = 1, FlexFit fit = FlexFit.loose}) =>
+      Flexible(
         key: key,
         flex: flex,
         fit: fit,
@@ -203,7 +207,10 @@ extension WidgetExtend on Widget {
 
   Padding pDefaultExceptBottom({Key? key}) => Padding(
         key: key,
-        padding: const EdgeInsets.only(top: Dimens.pad_default, left: Dimens.pad_default, right: Dimens.pad_default),
+        padding: const EdgeInsets.only(
+            top: Dimens.pad_default,
+            left: Dimens.pad_default,
+            right: Dimens.pad_default),
         child: this,
       );
 

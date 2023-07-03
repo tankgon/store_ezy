@@ -23,7 +23,7 @@ class ReceiveAddressPage extends StatelessWidget {
             id: '$index',
             fullAddress: 'Địa chỉ $index',
             phone: '09009090$index',
-            userName: 'Người nhận $index',
+            fullName: 'Người nhận $index',
           ),
         ),
       ),

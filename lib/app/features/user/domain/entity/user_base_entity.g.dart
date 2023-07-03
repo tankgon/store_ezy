@@ -31,7 +31,7 @@ UserAddressEntity _$UserAddressEntityFromJson(Map<String, dynamic> json) =>
     UserAddressEntity(
       object: json['object'],
       id: json['id'] as String?,
-      userName: json['userName'] as String?,
+      fullName: json['fullName'] as String?,
       phone: json['phone'] as String?,
       fullAddress: json['fullAddress'] as String?,
     );
@@ -39,7 +39,7 @@ UserAddressEntity _$UserAddressEntityFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$UserAddressEntityToJson(UserAddressEntity instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'userName': instance.userName,
+      'fullName': instance.fullName,
       'phone': instance.phone,
       'fullAddress': instance.fullAddress,
       'object': instance.object,

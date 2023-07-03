@@ -69,13 +69,14 @@ class AuthIdInput extends StatelessWidget {
     return AppTextFieldReactive(
       formControlName: idKey,
       enableClearButton: true,
-      decoration: AppTextFieldTheme.primaryStyle(context).copyWith(
-        hintText: LocaleKeys.authen_InputEmailOrPhone.tr(),
-      ),
+      hintText: 'Nhập email hoặc số điện thoại'.tr(),
       validationMessages: {
-        ValidationMessage.required: (e) => LocaleKeys.authen_PhoneOrEmailRequired.tr(),
-        ValidationMessage.email: (e) => LocaleKeys.authen_EmailOrPhoneNotValid.tr(),
-        ValidationMessage.pattern: (e) => LocaleKeys.authen_EmailOrPhoneNotValid.tr(),
+        ValidationMessage.required: (e) =>
+            LocaleKeys.authen_PhoneOrEmailRequired.tr(),
+        ValidationMessage.email: (e) =>
+            LocaleKeys.authen_EmailOrPhoneNotValid.tr(),
+        ValidationMessage.pattern: (e) =>
+            LocaleKeys.authen_EmailOrPhoneNotValid.tr(),
       },
     );
   }
@@ -123,7 +124,9 @@ class AuthPasswordInput extends StatelessWidget {
     };
   }
 
-  static ValidatorFunction mustMatch({String controlName = passwordKey, String matchingControlName = passwordConfirmKey}) {
+  static ValidatorFunction mustMatch(
+      {String controlName = passwordKey,
+      String matchingControlName = passwordConfirmKey}) {
     return (AbstractControl<dynamic> control) {
       final form = control as FormGroup;
 
@@ -131,7 +134,9 @@ class AuthPasswordInput extends StatelessWidget {
       final matchingFormControl = form.control(matchingControlName);
 
       final matchingValue = matchingFormControl.value;
-      if (matchingValue is String && matchingValue != '' && formControl.value != matchingValue) {
+      if (matchingValue is String &&
+          matchingValue != '' &&
+          formControl.value != matchingValue) {
         matchingFormControl
           ..setErrors({mustMatchKey: true})
           ..markAsTouched();
@@ -154,19 +159,25 @@ class AuthPasswordInput extends StatelessWidget {
     }
   }
 
-  TextFieldPasswordEyeBuilder _buildPasswordInput(BuildContext context, bool? hasFocus) {
+  TextFieldPasswordEyeBuilder _buildPasswordInput(
+      BuildContext context, bool? hasFocus) {
     return TextFieldPasswordEyeBuilder(
       inputDecoration: AppTextFieldTheme.primaryStyle(context),
-      builder: (context, inputDecoration, isTextVisible) => AppTextFieldReactive(
+      builder: (context, inputDecoration, isTextVisible) =>
+          AppTextFieldReactive(
         formControlName: formControlName ?? passwordKey,
         obscureText: !isTextVisible,
         decoration: inputDecoration.copyWith(
           hintText: hintText ?? LocaleKeys.authen_Password.tr(),
-          helperText: ((hasFocus ?? false) && showPasswordHelper) ? LocaleKeys.authen_PasswordPatternMsg.tr() : null,
+          helperText: ((hasFocus ?? false) && showPasswordHelper)
+              ? LocaleKeys.authen_PasswordPatternMsg.tr()
+              : null,
         ),
         validationMessages: {
-          ValidationMessage.required: (e) => LocaleKeys.authen_PasswordPatternMsg.tr(),
-          ValidationMessage.pattern: (e) => LocaleKeys.authen_PasswordPatternMsg.tr(),
+          ValidationMessage.required: (e) =>
+              LocaleKeys.authen_PasswordPatternMsg.tr(),
+          ValidationMessage.pattern: (e) =>
+              LocaleKeys.authen_PasswordPatternMsg.tr(),
           mustMatchKey: (e) => LocaleKeys.authen_PasswordNotMatch.tr(),
         },
       ),

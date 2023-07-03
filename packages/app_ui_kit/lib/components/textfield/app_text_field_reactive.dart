@@ -11,6 +11,7 @@ class AppTextFieldReactive extends StatefulWidget {
     this.focusNode,
     this.onChanged,
     this.decoration,
+    this.hintText,
     this.keyboardType,
     this.textAlign = TextAlign.start,
     this.textInputAction,
@@ -18,7 +19,10 @@ class AppTextFieldReactive extends StatefulWidget {
     this.onLostFocus,
     this.enableClearButton = false,
     this.validationMessages,
-  }) : assert((formControlName != null && formControl == null) || (formControlName == null && formControl != null), 'Must provide a formControlName or a formControl, but not both at the same time.');
+  }) : assert(
+            (formControlName != null && formControl == null) ||
+                (formControlName == null && formControl != null),
+            'Must provide a formControlName or a formControl, but not both at the same time.');
 
   final TextEditingController? controller;
   final String? formControlName;
@@ -31,6 +35,7 @@ class AppTextFieldReactive extends StatefulWidget {
   final ValueChanged<String>? onChanged;
 
   final InputDecoration? decoration;
+  final String? hintText;
 
   final bool enableClearButton;
 
@@ -86,7 +91,11 @@ class _AppTextFieldState extends State<AppTextFieldReactive> {
       controller: _controller,
       enabled: widget.enableClearButton,
       onClear: _onClearCLick,
-      inputDecoration: widget.decoration ?? AppTextFieldTheme.primaryStyle(context),
+      inputDecoration:
+          (widget.decoration ?? AppTextFieldTheme.primaryStyle(context))
+              .copyWith(
+        hintText: widget.hintText,
+      ),
       builder: (context, inputDecoration) => ReactiveTextField<String>(
         formControlName: widget.formControlName,
         formControl: widget.formControl,

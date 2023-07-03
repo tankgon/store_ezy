@@ -7,13 +7,13 @@ part of 'auth_model_ms.dart';
 // **************************************************************************
 
 abstract class _$AuthSignUpOTPRespCWProxy {
-  AuthSignUpOTPResp otp(String? otp);
-
   AuthSignUpOTPResp userID(String? userID);
+
+  AuthSignUpOTPResp uuid(String? uuid);
 
   AuthSignUpOTPResp userLogin(String? userLogin);
 
-  AuthSignUpOTPResp uuid(String? uuid);
+  AuthSignUpOTPResp otp(String? otp);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AuthSignUpOTPResp(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -22,30 +22,30 @@ abstract class _$AuthSignUpOTPRespCWProxy {
   /// AuthSignUpOTPResp(...).copyWith(id: 12, name: "My name")
   /// ````
   AuthSignUpOTPResp call({
-    String? otp,
     String? userID,
-    String? userLogin,
     String? uuid,
+    String? userLogin,
+    String? otp,
   });
 }
 
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAuthSignUpOTPResp.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAuthSignUpOTPResp.copyWith.fieldName(...)`
 class _$AuthSignUpOTPRespCWProxyImpl implements _$AuthSignUpOTPRespCWProxy {
-  final AuthSignUpOTPResp _value;
-
   const _$AuthSignUpOTPRespCWProxyImpl(this._value);
 
-  @override
-  AuthSignUpOTPResp otp(String? otp) => this(otp: otp);
+  final AuthSignUpOTPResp _value;
 
   @override
   AuthSignUpOTPResp userID(String? userID) => this(userID: userID);
 
   @override
+  AuthSignUpOTPResp uuid(String? uuid) => this(uuid: uuid);
+
+  @override
   AuthSignUpOTPResp userLogin(String? userLogin) => this(userLogin: userLogin);
 
   @override
-  AuthSignUpOTPResp uuid(String? uuid) => this(uuid: uuid);
+  AuthSignUpOTPResp otp(String? otp) => this(otp: otp);
 
   @override
 
@@ -56,28 +56,28 @@ class _$AuthSignUpOTPRespCWProxyImpl implements _$AuthSignUpOTPRespCWProxy {
   /// AuthSignUpOTPResp(...).copyWith(id: 12, name: "My name")
   /// ````
   AuthSignUpOTPResp call({
-    Object? otp = const $CopyWithPlaceholder(),
     Object? userID = const $CopyWithPlaceholder(),
-    Object? userLogin = const $CopyWithPlaceholder(),
     Object? uuid = const $CopyWithPlaceholder(),
+    Object? userLogin = const $CopyWithPlaceholder(),
+    Object? otp = const $CopyWithPlaceholder(),
   }) {
     return AuthSignUpOTPResp(
-      otp: otp == const $CopyWithPlaceholder()
-          ? _value.otp
-          // ignore: cast_nullable_to_non_nullable
-          : otp as String?,
       userID: userID == const $CopyWithPlaceholder()
           ? _value.userID
           // ignore: cast_nullable_to_non_nullable
           : userID as String?,
-      userLogin: userLogin == const $CopyWithPlaceholder()
-          ? _value.userLogin
-          // ignore: cast_nullable_to_non_nullable
-          : userLogin as String?,
       uuid: uuid == const $CopyWithPlaceholder()
           ? _value.uuid
           // ignore: cast_nullable_to_non_nullable
           : uuid as String?,
+      userLogin: userLogin == const $CopyWithPlaceholder()
+          ? _value.userLogin
+          // ignore: cast_nullable_to_non_nullable
+          : userLogin as String?,
+      otp: otp == const $CopyWithPlaceholder()
+          ? _value.otp
+          // ignore: cast_nullable_to_non_nullable
+          : otp as String?,
     );
   }
 }

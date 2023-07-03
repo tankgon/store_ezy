@@ -1,7 +1,14 @@
 import 'package:mulstore/all_file/all_file.dart';
 
-abstract class RequestItemCubit<I, S extends RequestItemState<I>> extends Cubit<S> {
+abstract class RequestItemCubit<I, S extends RequestItemState<I>>
+    extends Cubit<S> {
   RequestItemCubit(super.initialState);
+
+  void emitState({
+    ItemStatus? status,
+    I? item,
+    Object? error,
+  });
 
   Future<I?> fetchApi();
 
@@ -16,20 +23,18 @@ abstract class RequestItemCubit<I, S extends RequestItemState<I>> extends Cubit<
       } else {
         log(e.toString(), error: e);
       }
-      emit(state.copyWith(status: ItemStatus.error, error: e) as S);
+      emitState(status: ItemStatus.error, error: e);
     }
   }
 
   void loading() {
-    emit(state.copyWith(status: ItemStatus.loading) as S);
+    emitState(status: ItemStatus.loading);
   }
 
   void loaded(I? item) {
-    emit(
-      state.copyWith(
-        item: item,
-        status: ItemStatus.success,
-      ) as S,
+    emitState(
+      status: ItemStatus.success,
+      item: item,
     );
   }
 }
@@ -44,18 +49,6 @@ class RequestItemState<I> extends Equatable {
   final ItemStatus status;
   final I? item;
   final Object? error;
-
-  RequestItemState<I> copyWith({
-    ItemStatus? status,
-    I? item,
-    Object? error,
-  }) {
-    return RequestItemState<I>(
-      status: status ?? this.status,
-      item: item ?? this.item,
-      error: error ?? this.error,
-    );
-  }
 
   @override
   List<Object?> get props => [status, item, error];

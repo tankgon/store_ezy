@@ -7,11 +7,11 @@ part of 'auth_entity.dart';
 // **************************************************************************
 
 abstract class _$AuthSignUpOTPEntityCWProxy {
-  AuthSignUpOTPEntity object(Object? object);
-
   AuthSignUpOTPEntity userID(String? userID);
 
   AuthSignUpOTPEntity uuid(String? uuid);
+
+  AuthSignUpOTPEntity object(Object? object);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AuthSignUpOTPEntity(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -20,20 +20,17 @@ abstract class _$AuthSignUpOTPEntityCWProxy {
   /// AuthSignUpOTPEntity(...).copyWith(id: 12, name: "My name")
   /// ````
   AuthSignUpOTPEntity call({
-    Object? object,
     String? userID,
     String? uuid,
+    Object? object,
   });
 }
 
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAuthSignUpOTPEntity.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAuthSignUpOTPEntity.copyWith.fieldName(...)`
 class _$AuthSignUpOTPEntityCWProxyImpl implements _$AuthSignUpOTPEntityCWProxy {
-  final AuthSignUpOTPEntity _value;
-
   const _$AuthSignUpOTPEntityCWProxyImpl(this._value);
 
-  @override
-  AuthSignUpOTPEntity object(Object? object) => this(object: object);
+  final AuthSignUpOTPEntity _value;
 
   @override
   AuthSignUpOTPEntity userID(String? userID) => this(userID: userID);
@@ -42,6 +39,9 @@ class _$AuthSignUpOTPEntityCWProxyImpl implements _$AuthSignUpOTPEntityCWProxy {
   AuthSignUpOTPEntity uuid(String? uuid) => this(uuid: uuid);
 
   @override
+  AuthSignUpOTPEntity object(Object? object) => this(object: object);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AuthSignUpOTPEntity(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -50,15 +50,11 @@ class _$AuthSignUpOTPEntityCWProxyImpl implements _$AuthSignUpOTPEntityCWProxy {
   /// AuthSignUpOTPEntity(...).copyWith(id: 12, name: "My name")
   /// ````
   AuthSignUpOTPEntity call({
-    Object? object = const $CopyWithPlaceholder(),
     Object? userID = const $CopyWithPlaceholder(),
     Object? uuid = const $CopyWithPlaceholder(),
+    Object? object = const $CopyWithPlaceholder(),
   }) {
     return AuthSignUpOTPEntity(
-      object: object == const $CopyWithPlaceholder()
-          ? _value.object
-          // ignore: cast_nullable_to_non_nullable
-          : object as Object?,
       userID: userID == const $CopyWithPlaceholder()
           ? _value.userID
           // ignore: cast_nullable_to_non_nullable
@@ -67,6 +63,10 @@ class _$AuthSignUpOTPEntityCWProxyImpl implements _$AuthSignUpOTPEntityCWProxy {
           ? _value.uuid
           // ignore: cast_nullable_to_non_nullable
           : uuid as String?,
+      object: object == const $CopyWithPlaceholder()
+          ? _value.object
+          // ignore: cast_nullable_to_non_nullable
+          : object as Object?,
     );
   }
 }
@@ -79,15 +79,15 @@ extension $AuthSignUpOTPEntityCopyWith on AuthSignUpOTPEntity {
 }
 
 abstract class _$AuthConfirmEntityCWProxy {
-  AuthConfirmEntity email(String? email);
-
-  AuthConfirmEntity object(Object? object);
-
   AuthConfirmEntity token(String? token);
 
   AuthConfirmEntity userID(String? userID);
 
   AuthConfirmEntity userName(String? userName);
+
+  AuthConfirmEntity email(String? email);
+
+  AuthConfirmEntity object(Object? object);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AuthConfirmEntity(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -96,25 +96,19 @@ abstract class _$AuthConfirmEntityCWProxy {
   /// AuthConfirmEntity(...).copyWith(id: 12, name: "My name")
   /// ````
   AuthConfirmEntity call({
-    String? email,
-    Object? object,
     String? token,
     String? userID,
     String? userName,
+    String? email,
+    Object? object,
   });
 }
 
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAuthConfirmEntity.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAuthConfirmEntity.copyWith.fieldName(...)`
 class _$AuthConfirmEntityCWProxyImpl implements _$AuthConfirmEntityCWProxy {
-  final AuthConfirmEntity _value;
-
   const _$AuthConfirmEntityCWProxyImpl(this._value);
 
-  @override
-  AuthConfirmEntity email(String? email) => this(email: email);
-
-  @override
-  AuthConfirmEntity object(Object? object) => this(object: object);
+  final AuthConfirmEntity _value;
 
   @override
   AuthConfirmEntity token(String? token) => this(token: token);
@@ -126,6 +120,12 @@ class _$AuthConfirmEntityCWProxyImpl implements _$AuthConfirmEntityCWProxy {
   AuthConfirmEntity userName(String? userName) => this(userName: userName);
 
   @override
+  AuthConfirmEntity email(String? email) => this(email: email);
+
+  @override
+  AuthConfirmEntity object(Object? object) => this(object: object);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AuthConfirmEntity(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -134,21 +134,13 @@ class _$AuthConfirmEntityCWProxyImpl implements _$AuthConfirmEntityCWProxy {
   /// AuthConfirmEntity(...).copyWith(id: 12, name: "My name")
   /// ````
   AuthConfirmEntity call({
-    Object? email = const $CopyWithPlaceholder(),
-    Object? object = const $CopyWithPlaceholder(),
     Object? token = const $CopyWithPlaceholder(),
     Object? userID = const $CopyWithPlaceholder(),
     Object? userName = const $CopyWithPlaceholder(),
+    Object? email = const $CopyWithPlaceholder(),
+    Object? object = const $CopyWithPlaceholder(),
   }) {
     return AuthConfirmEntity(
-      email: email == const $CopyWithPlaceholder()
-          ? _value.email
-          // ignore: cast_nullable_to_non_nullable
-          : email as String?,
-      object: object == const $CopyWithPlaceholder()
-          ? _value.object
-          // ignore: cast_nullable_to_non_nullable
-          : object as Object?,
       token: token == const $CopyWithPlaceholder()
           ? _value.token
           // ignore: cast_nullable_to_non_nullable
@@ -161,6 +153,14 @@ class _$AuthConfirmEntityCWProxyImpl implements _$AuthConfirmEntityCWProxy {
           ? _value.userName
           // ignore: cast_nullable_to_non_nullable
           : userName as String?,
+      email: email == const $CopyWithPlaceholder()
+          ? _value.email
+          // ignore: cast_nullable_to_non_nullable
+          : email as String?,
+      object: object == const $CopyWithPlaceholder()
+          ? _value.object
+          // ignore: cast_nullable_to_non_nullable
+          : object as Object?,
     );
   }
 }

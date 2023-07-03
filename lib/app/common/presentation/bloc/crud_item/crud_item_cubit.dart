@@ -1,6 +1,7 @@
 import 'package:mulstore/all_file/all_file.dart';
 
-abstract class CrudItemCubit<I, S extends CrudItemState<I>> extends RequestItemCubit<I, S> {
+abstract class CrudItemCubit<I, S extends CrudItemState<I>>
+    extends RequestItemCubit<I, S> {
   CrudItemCubit(
     super.initialState, {
     this.addItemFuture,
@@ -26,7 +27,7 @@ abstract class CrudItemCubit<I, S extends CrudItemState<I>> extends RequestItemC
       } else {
         log(e.toString(), error: e);
       }
-      emit(state.copyWith(status: ItemStatus.error, error: e) as S);
+      emitState(status: ItemStatus.error, error: e);
     }
   }
 
@@ -44,7 +45,7 @@ abstract class CrudItemCubit<I, S extends CrudItemState<I>> extends RequestItemC
       } else {
         log(e.toString(), error: e);
       }
-      emit(state.copyWith(status: ItemStatus.error, error: e) as S);
+      emitState(status: ItemStatus.error, error: e);
     }
   }
 
@@ -62,7 +63,7 @@ abstract class CrudItemCubit<I, S extends CrudItemState<I>> extends RequestItemC
       } else {
         log(e.toString(), error: e);
       }
-      emit(state.copyWith(status: ItemStatus.error, error: e) as S);
+      emitState(status: ItemStatus.error, error: e);
     }
   }
 }

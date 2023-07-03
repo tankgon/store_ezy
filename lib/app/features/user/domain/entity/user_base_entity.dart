@@ -36,25 +36,38 @@ class UserEntity {
   Map<String, dynamic> toJson() => _$UserEntityToJson(this);
 }
 
+enum AddressForType { receive, office, other }
+
+enum AddressType { home, office, other }
+
 @JsonSerializable()
 class UserAddressEntity {
   const UserAddressEntity({
     this.object,
     this.id,
-    this.userName,
+    this.fullName,
     this.phone,
     this.fullAddress,
   });
 
   final String? id;
-  final String? userName;
+  final String? fullName;
   final String? phone;
   final String? fullAddress;
 
   final Object? object;
 
+  // Const key for form
+  static const String fullNameKey = 'fullNameKey';
+  static const String phoneKey = 'phoneKey';
+  static const String cityKey = 'cityKey';
+  static const String districtKey = 'districtKey';
+  static const String wardKey = 'wardKey';
+  static const String fullAddressKey = 'fullAddressKey';
+  static const String addressTypeKey = 'addressTypeKey';
+
   String? get addressAndPhone =>
-      [userName, phone].joinWithoutNullEmpty('  |  ');
+      [fullName, phone].joinWithoutNullEmpty('  |  ');
 
   Map<String, dynamic> toJson() => _$UserAddressEntityToJson(this);
 

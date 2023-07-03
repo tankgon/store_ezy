@@ -1,5 +1,4 @@
 import 'package:mulstore/all_file/all_file.dart';
-import 'package:mulstore/app/common/presentation/widgets/status/request_item_consumer.dart';
 import 'package:mulstore/app/features/product/domain/entity/product_entity.dart';
 import 'package:mulstore/app/features/product/presentation/detail/cubit/product_detail_cubit.dart';
 import 'package:mulstore/app/features/product/presentation/detail/product_detail_body.dart';

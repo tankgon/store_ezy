@@ -13,7 +13,7 @@ import 'dart:async' as _i25;
 import 'package:auto_route/auto_route.dart' as _i24;
 import 'package:mulstore/all_file/all_file.dart' as _i26;
 import 'package:mulstore/app/features/about/presentation/main/about_page.dart'
-    as _i16;
+    as _i17;
 import 'package:mulstore/app/features/auth/presentation/forgot_password/change_password/change_password_page.dart'
     as _i4;
 import 'package:mulstore/app/features/auth/presentation/forgot_password/main/forgot_password_page.dart'
@@ -25,10 +25,10 @@ import 'package:mulstore/app/features/auth/presentation/otp_confirm/auth_otp_con
 import 'package:mulstore/app/features/auth/presentation/sign_up/sign_up_page.dart'
     as _i6;
 import 'package:mulstore/app/features/checkout/presentation/main/checkout_page.dart'
-    as _i19;
+    as _i20;
 import 'package:mulstore/app/features/home/presentation/main/home_page.dart'
     as _i1;
-import 'package:mulstore/app/features/main/presentation/main_page.dart' as _i21;
+import 'package:mulstore/app/features/main/presentation/main_page.dart' as _i22;
 import 'package:mulstore/app/features/message/presentation/main/message_page.dart'
     as _i12;
 import 'package:mulstore/app/features/notification/data/model/notification_model.dart'
@@ -40,23 +40,23 @@ import 'package:mulstore/app/features/notification/presentation/main/notificatio
 import 'package:mulstore/app/features/product/domain/entity/product_entity.dart'
     as _i30;
 import 'package:mulstore/app/features/product/presentation/detail/product_detail_page.dart'
-    as _i18;
+    as _i19;
 import 'package:mulstore/app/features/product/presentation/product_search/product_search_page.dart'
-    as _i17;
+    as _i18;
 import 'package:mulstore/app/features/product_rating/presentation/main/product_rating_page.dart'
     as _i2;
 import 'package:mulstore/app/features/search/presentation/main/search_page.dart'
-    as _i20;
+    as _i21;
 import 'package:mulstore/app/features/shopping_cart/presentation/main/shopping_cart_page.dart'
-    as _i22;
+    as _i23;
 import 'package:mulstore/app/features/user/domain/entity/user_base_entity.dart'
     as _i29;
 import 'package:mulstore/app/features/user/presentation/account/user_account_page.dart'
-    as _i15;
+    as _i16;
 import 'package:mulstore/app/features/user/presentation/address/crud_address/crud_address_page.dart'
-    as _i23;
-import 'package:mulstore/app/features/user/presentation/address/receive_address/receive_address_page.dart'
     as _i14;
+import 'package:mulstore/app/features/user/presentation/address/receive_address/receive_address_page.dart'
+    as _i15;
 import 'package:mulstore/app/features/user/presentation/info/user_info_page.dart'
     as _i13;
 import 'package:mulstore/app/features/user/self.dart' as _i28;
@@ -169,11 +169,25 @@ abstract class $AppAutoRoute extends _i24.RootStackRouter {
         ),
       );
     },
+    CrudAddressRoute.name: (routeData) {
+      final args = routeData.argsAs<CrudAddressRouteArgs>(
+          orElse: () => const CrudAddressRouteArgs());
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i14.CrudAddressPage(
+          key: args.key,
+          initialAddress: args.initialAddress,
+          addAddressFuture: args.addAddressFuture,
+          updateAddressFuture: args.updateAddressFuture,
+          removeAddressFuture: args.removeAddressFuture,
+        ),
+      );
+    },
     ReceiveAddressRoute.name: (routeData) {
       final args = routeData.argsAs<ReceiveAddressRouteArgs>();
       return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i14.ReceiveAddressPage(
+        child: _i15.ReceiveAddressPage(
           key: args.key,
           user: args.user,
         ),
@@ -182,13 +196,13 @@ abstract class $AppAutoRoute extends _i24.RootStackRouter {
     UserAccountRoute.name: (routeData) {
       return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i15.UserAccountPage(),
+        child: const _i16.UserAccountPage(),
       );
     },
     AboutRoute.name: (routeData) {
       return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i16.AboutPage(),
+        child: const _i17.AboutPage(),
       );
     },
     ProductSearchRoute.name: (routeData) {
@@ -196,7 +210,7 @@ abstract class $AppAutoRoute extends _i24.RootStackRouter {
           orElse: () => const ProductSearchRouteArgs());
       return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i17.ProductSearchPage(
+        child: _i18.ProductSearchPage(
           key: args.key,
           filterData: args.filterData,
         ),
@@ -206,7 +220,7 @@ abstract class $AppAutoRoute extends _i24.RootStackRouter {
       final args = routeData.argsAs<ProductDetailRouteArgs>();
       return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i18.ProductDetailPage(
+        child: _i19.ProductDetailPage(
           key: args.key,
           product: args.product,
         ),
@@ -215,39 +229,25 @@ abstract class $AppAutoRoute extends _i24.RootStackRouter {
     CheckoutRoute.name: (routeData) {
       return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i19.CheckoutPage(),
+        child: const _i20.CheckoutPage(),
       );
     },
     SearchRoute.name: (routeData) {
       return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i20.SearchPage(),
+        child: const _i21.SearchPage(),
       );
     },
     MainRoute.name: (routeData) {
       return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i21.MainPage(),
+        child: const _i22.MainPage(),
       );
     },
     ShoppingCartRoute.name: (routeData) {
       return _i24.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i22.ShoppingCartPage(),
-      );
-    },
-    CrudAddressRoute.name: (routeData) {
-      final args = routeData.argsAs<CrudAddressRouteArgs>(
-          orElse: () => const CrudAddressRouteArgs());
-      return _i24.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i23.CrudAddressPage(
-          key: args.key,
-          initialAddress: args.initialAddress,
-          addAddressFuture: args.addAddressFuture,
-          updateAddressFuture: args.updateAddressFuture,
-          removeAddressFuture: args.removeAddressFuture,
-        ),
+        child: const _i23.ShoppingCartPage(),
       );
     },
   };
@@ -558,205 +558,7 @@ class UserInfoRouteArgs {
 }
 
 /// generated route for
-/// [_i14.ReceiveAddressPage]
-class ReceiveAddressRoute extends _i24.PageRouteInfo<ReceiveAddressRouteArgs> {
-  ReceiveAddressRoute({
-    _i26.Key? key,
-    required _i29.UserEntity user,
-    List<_i24.PageRouteInfo>? children,
-  }) : super(
-          ReceiveAddressRoute.name,
-          args: ReceiveAddressRouteArgs(
-            key: key,
-            user: user,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'ReceiveAddressRoute';
-
-  static const _i24.PageInfo<ReceiveAddressRouteArgs> page =
-      _i24.PageInfo<ReceiveAddressRouteArgs>(name);
-}
-
-class ReceiveAddressRouteArgs {
-  const ReceiveAddressRouteArgs({
-    this.key,
-    required this.user,
-  });
-
-  final _i26.Key? key;
-
-  final _i29.UserEntity user;
-
-  @override
-  String toString() {
-    return 'ReceiveAddressRouteArgs{key: $key, user: $user}';
-  }
-}
-
-/// generated route for
-/// [_i15.UserAccountPage]
-class UserAccountRoute extends _i24.PageRouteInfo<void> {
-  const UserAccountRoute({List<_i24.PageRouteInfo>? children})
-      : super(
-          UserAccountRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'UserAccountRoute';
-
-  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i16.AboutPage]
-class AboutRoute extends _i24.PageRouteInfo<void> {
-  const AboutRoute({List<_i24.PageRouteInfo>? children})
-      : super(
-          AboutRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'AboutRoute';
-
-  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i17.ProductSearchPage]
-class ProductSearchRoute extends _i24.PageRouteInfo<ProductSearchRouteArgs> {
-  ProductSearchRoute({
-    _i26.Key? key,
-    _i30.ProductFilterData? filterData,
-    List<_i24.PageRouteInfo>? children,
-  }) : super(
-          ProductSearchRoute.name,
-          args: ProductSearchRouteArgs(
-            key: key,
-            filterData: filterData,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'ProductSearchRoute';
-
-  static const _i24.PageInfo<ProductSearchRouteArgs> page =
-      _i24.PageInfo<ProductSearchRouteArgs>(name);
-}
-
-class ProductSearchRouteArgs {
-  const ProductSearchRouteArgs({
-    this.key,
-    this.filterData,
-  });
-
-  final _i26.Key? key;
-
-  final _i30.ProductFilterData? filterData;
-
-  @override
-  String toString() {
-    return 'ProductSearchRouteArgs{key: $key, filterData: $filterData}';
-  }
-}
-
-/// generated route for
-/// [_i18.ProductDetailPage]
-class ProductDetailRoute extends _i24.PageRouteInfo<ProductDetailRouteArgs> {
-  ProductDetailRoute({
-    _i26.Key? key,
-    required _i30.ProductEntity product,
-    List<_i24.PageRouteInfo>? children,
-  }) : super(
-          ProductDetailRoute.name,
-          args: ProductDetailRouteArgs(
-            key: key,
-            product: product,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'ProductDetailRoute';
-
-  static const _i24.PageInfo<ProductDetailRouteArgs> page =
-      _i24.PageInfo<ProductDetailRouteArgs>(name);
-}
-
-class ProductDetailRouteArgs {
-  const ProductDetailRouteArgs({
-    this.key,
-    required this.product,
-  });
-
-  final _i26.Key? key;
-
-  final _i30.ProductEntity product;
-
-  @override
-  String toString() {
-    return 'ProductDetailRouteArgs{key: $key, product: $product}';
-  }
-}
-
-/// generated route for
-/// [_i19.CheckoutPage]
-class CheckoutRoute extends _i24.PageRouteInfo<void> {
-  const CheckoutRoute({List<_i24.PageRouteInfo>? children})
-      : super(
-          CheckoutRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'CheckoutRoute';
-
-  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i20.SearchPage]
-class SearchRoute extends _i24.PageRouteInfo<void> {
-  const SearchRoute({List<_i24.PageRouteInfo>? children})
-      : super(
-          SearchRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'SearchRoute';
-
-  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i21.MainPage]
-class MainRoute extends _i24.PageRouteInfo<void> {
-  const MainRoute({List<_i24.PageRouteInfo>? children})
-      : super(
-          MainRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'MainRoute';
-
-  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i22.ShoppingCartPage]
-class ShoppingCartRoute extends _i24.PageRouteInfo<void> {
-  const ShoppingCartRoute({List<_i24.PageRouteInfo>? children})
-      : super(
-          ShoppingCartRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'ShoppingCartRoute';
-
-  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i23.CrudAddressPage]
+/// [_i14.CrudAddressPage]
 class CrudAddressRoute extends _i24.PageRouteInfo<CrudAddressRouteArgs> {
   CrudAddressRoute({
     _i26.Key? key,
@@ -812,4 +614,202 @@ class CrudAddressRouteArgs {
   String toString() {
     return 'CrudAddressRouteArgs{key: $key, initialAddress: $initialAddress, addAddressFuture: $addAddressFuture, updateAddressFuture: $updateAddressFuture, removeAddressFuture: $removeAddressFuture}';
   }
+}
+
+/// generated route for
+/// [_i15.ReceiveAddressPage]
+class ReceiveAddressRoute extends _i24.PageRouteInfo<ReceiveAddressRouteArgs> {
+  ReceiveAddressRoute({
+    _i26.Key? key,
+    required _i29.UserEntity user,
+    List<_i24.PageRouteInfo>? children,
+  }) : super(
+          ReceiveAddressRoute.name,
+          args: ReceiveAddressRouteArgs(
+            key: key,
+            user: user,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ReceiveAddressRoute';
+
+  static const _i24.PageInfo<ReceiveAddressRouteArgs> page =
+      _i24.PageInfo<ReceiveAddressRouteArgs>(name);
+}
+
+class ReceiveAddressRouteArgs {
+  const ReceiveAddressRouteArgs({
+    this.key,
+    required this.user,
+  });
+
+  final _i26.Key? key;
+
+  final _i29.UserEntity user;
+
+  @override
+  String toString() {
+    return 'ReceiveAddressRouteArgs{key: $key, user: $user}';
+  }
+}
+
+/// generated route for
+/// [_i16.UserAccountPage]
+class UserAccountRoute extends _i24.PageRouteInfo<void> {
+  const UserAccountRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          UserAccountRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'UserAccountRoute';
+
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i17.AboutPage]
+class AboutRoute extends _i24.PageRouteInfo<void> {
+  const AboutRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          AboutRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AboutRoute';
+
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i18.ProductSearchPage]
+class ProductSearchRoute extends _i24.PageRouteInfo<ProductSearchRouteArgs> {
+  ProductSearchRoute({
+    _i26.Key? key,
+    _i30.ProductFilterData? filterData,
+    List<_i24.PageRouteInfo>? children,
+  }) : super(
+          ProductSearchRoute.name,
+          args: ProductSearchRouteArgs(
+            key: key,
+            filterData: filterData,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ProductSearchRoute';
+
+  static const _i24.PageInfo<ProductSearchRouteArgs> page =
+      _i24.PageInfo<ProductSearchRouteArgs>(name);
+}
+
+class ProductSearchRouteArgs {
+  const ProductSearchRouteArgs({
+    this.key,
+    this.filterData,
+  });
+
+  final _i26.Key? key;
+
+  final _i30.ProductFilterData? filterData;
+
+  @override
+  String toString() {
+    return 'ProductSearchRouteArgs{key: $key, filterData: $filterData}';
+  }
+}
+
+/// generated route for
+/// [_i19.ProductDetailPage]
+class ProductDetailRoute extends _i24.PageRouteInfo<ProductDetailRouteArgs> {
+  ProductDetailRoute({
+    _i26.Key? key,
+    required _i30.ProductEntity product,
+    List<_i24.PageRouteInfo>? children,
+  }) : super(
+          ProductDetailRoute.name,
+          args: ProductDetailRouteArgs(
+            key: key,
+            product: product,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ProductDetailRoute';
+
+  static const _i24.PageInfo<ProductDetailRouteArgs> page =
+      _i24.PageInfo<ProductDetailRouteArgs>(name);
+}
+
+class ProductDetailRouteArgs {
+  const ProductDetailRouteArgs({
+    this.key,
+    required this.product,
+  });
+
+  final _i26.Key? key;
+
+  final _i30.ProductEntity product;
+
+  @override
+  String toString() {
+    return 'ProductDetailRouteArgs{key: $key, product: $product}';
+  }
+}
+
+/// generated route for
+/// [_i20.CheckoutPage]
+class CheckoutRoute extends _i24.PageRouteInfo<void> {
+  const CheckoutRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          CheckoutRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CheckoutRoute';
+
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i21.SearchPage]
+class SearchRoute extends _i24.PageRouteInfo<void> {
+  const SearchRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          SearchRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SearchRoute';
+
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i22.MainPage]
+class MainRoute extends _i24.PageRouteInfo<void> {
+  const MainRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          MainRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MainRoute';
+
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i23.ShoppingCartPage]
+class ShoppingCartRoute extends _i24.PageRouteInfo<void> {
+  const ShoppingCartRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          ShoppingCartRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ShoppingCartRoute';
+
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }
