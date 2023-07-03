@@ -7,7 +7,8 @@ import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 class AppTheme {
   static ThemeData getTheme({bool isDark = false, String? fontFamily}) {
     final colorScheme = AppColorExtension.colorSchemaFrom(isDark: isDark);
-    final onPrimarySurfaceColor = isDark ? colorScheme.onSurface : colorScheme.onPrimary;
+    final onPrimarySurfaceColor =
+        isDark ? colorScheme.onSurface : colorScheme.onPrimary;
 
     final textTheme = AppTextThemeExtension.getTextTheme(isDark: isDark);
     final textExtensionTheme = AppTextThemeExtension.form(isDark);
@@ -18,6 +19,19 @@ class AppTheme {
       cupertinoOverrideTheme: CupertinoThemeData(
         primaryColor: colorScheme.primary,
         scaffoldBackgroundColor: colorScheme.background,
+      ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        // backgroundColor: appColor.greyNeutral,
+        selectedItemColor: colorScheme.primary,
+        unselectedItemColor: appColor.greyNeutral,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        type: BottomNavigationBarType.fixed,
+        selectedLabelStyle: textTheme.bodyLarge?.copyWith(
+          color: colorScheme.primary,
+          fontWeight: FontWeight.w700,
+        ),
+        unselectedLabelStyle: textTheme.bodyLarge,
       ),
       brightness: colorScheme.brightness,
       primaryColor: colorScheme.primary,
@@ -39,7 +53,8 @@ class AppTheme {
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         isDense: true,
         fillColor: appColor.divider,
         border: OutlineInputBorder(
@@ -95,9 +110,13 @@ class AppTheme {
           color: AppColorExtension.form(isDark).lightPrimary,
         ),
         labelColor: colorScheme.primary,
-        labelStyle: AppTextThemeExtension.form(isDark).text.copyWith(fontWeight: FontWeight.w600),
+        labelStyle: AppTextThemeExtension.form(isDark)
+            .text
+            .copyWith(fontWeight: FontWeight.w600),
         unselectedLabelColor: AppColorExtension.form(isDark).text,
-        unselectedLabelStyle: AppTextThemeExtension.form(isDark).text.copyWith(fontWeight: FontWeight.w400),
+        unselectedLabelStyle: AppTextThemeExtension.form(isDark)
+            .text
+            .copyWith(fontWeight: FontWeight.w400),
       ),
       sliderTheme: SliderThemeData(
         activeTickMarkColor: Colors.transparent,

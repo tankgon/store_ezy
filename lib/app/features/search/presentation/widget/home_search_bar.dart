@@ -9,23 +9,26 @@ class HomeSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 42,
-      child: AppTextField(
-        textInputAction: TextInputAction.search,
-        decoration: AppTextFieldTheme.primaryStyle(
-          context,
-        ).copyWith(
-          border: OutlineInputBorder(
-            borderRadius: Dimens.rad_border_circular,
-            borderSide: BorderSide.none,
+      child: IgnorePointer(
+        child: AppTextField(
+          textInputAction: TextInputAction.search,
+          decoration: AppTextFieldTheme.primaryStyle(
+            context,
+          ).copyWith(
+            border: OutlineInputBorder(
+              borderRadius: Dimens.rad_border_circular,
+              borderSide: BorderSide.none,
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: Dimens.rad_border_circular,
+              borderSide:
+                  context.theme.inputDecorationTheme.focusedBorder!.borderSide,
+            ),
+            // contentPadding: EdgeInsets.zero,
+            hintText: LocaleKeys.common_Search.tr(),
+            prefixIcon: const Icon(PhosphorIcons.magnifying_glass).pl4(),
+            suffixIcon: const Icon(PhosphorIcons.qr_code),
           ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: Dimens.rad_border_circular,
-            borderSide: context.theme.inputDecorationTheme.focusedBorder!.borderSide,
-          ),
-          // contentPadding: EdgeInsets.zero,
-          hintText: LocaleKeys.common_Search.tr(),
-          prefixIcon: const Icon(PhosphorIcons.magnifying_glass).pl4(),
-          suffixIcon: const Icon(PhosphorIcons.qr_code),
         ),
       ),
     );
