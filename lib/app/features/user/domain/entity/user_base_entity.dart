@@ -38,7 +38,24 @@ class UserEntity {
 
 enum AddressForType { receive, office, other }
 
-enum AddressType { home, office, other }
+enum AddressType {
+  home,
+  office,
+  other;
+
+  String get displayValue {
+    switch (this) {
+      case AddressType.home:
+        return 'Nhà riêng';
+      case AddressType.office:
+        return 'Cơ quan';
+      case AddressType.other:
+        return 'Khác';
+      default:
+        return '';
+    }
+  }
+}
 
 @JsonSerializable()
 class UserAddressEntity {
@@ -48,12 +65,15 @@ class UserAddressEntity {
     this.fullName,
     this.phone,
     this.fullAddress,
+    this.addressType,
   });
 
   final String? id;
   final String? fullName;
   final String? phone;
   final String? fullAddress;
+
+  final AddressType? addressType;
 
   final Object? object;
 

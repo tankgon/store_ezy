@@ -41,6 +41,7 @@ export 'components/photo_view/app_photo_view.dart';
 export 'components/photo_view/app_photo_view_counter_builder.dart';
 export 'components/photo_view/app_photo_view_dot.dart';
 export 'components/price/app_price.dart';
+export 'components/radio_button/app_radio_reactive.dart';
 export 'components/section_wrapper/section_container.dart';
 export 'components/section_wrapper/section_title.dart';
 export 'components/stream/stream_listener.dart';

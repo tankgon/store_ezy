@@ -38,6 +38,14 @@ class CrudAddressPage extends StatelessWidget {
                 appBar: AppAppBar(
                   title: _getTitle(),
                 ),
+                bottomNavigationBar: AppBottomBar(
+                  child: AppButton(
+                    label: 'Lưu thay đổi'.tr(),
+                    onPressed: () {
+                      context.read<CrudAddressCubit>().add();
+                    },
+                  ),
+                ),
                 body: CrudAddressBody(),
               ),
             );

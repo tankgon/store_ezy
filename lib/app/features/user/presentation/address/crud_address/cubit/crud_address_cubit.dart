@@ -1,3 +1,4 @@
+import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/common/presentation/bloc/crud_item/crud_item_cubit.dart';
 import 'package:mulstore/app/features/user/self.dart';
@@ -34,8 +35,9 @@ class CrudAddressCubit
       UserAddressEntity.wardKey: FormControl<String>(
         validators: [Validators.required],
       ),
-      UserAddressEntity.addressTypeKey: FormControl<String>(
+      UserAddressEntity.addressTypeKey: FormControl<AddressType>(
         validators: [Validators.required],
+        value: item?.addressType ?? AddressType.home,
       ),
     });
   }
@@ -43,11 +45,33 @@ class CrudAddressCubit
   late FormGroup form;
 
   @override
-  void emitState(
-      {ItemStatus? status, UserAddressEntity? item, Object? error}) {}
+  void emitState({
+    ItemStatus? status,
+    UserAddressEntity? item,
+    Object? error,
+  }) {
+    emit(
+      CrudAddressState(
+        status: status ?? state.status,
+        item: item ?? state.item,
+        error: error ?? state.error,
+      ),
+    );
+  }
 
   @override
   Future<UserAddressEntity?> fetchApi() {
     return Future.value();
+  }
+
+  void add() {
+    addItem(
+      UserAddressEntity(
+        id: state.item?.id,
+        fullName: form.getValue(UserAddressEntity.fullNameKey),
+        phone: form.getValue(UserAddressEntity.phoneKey),
+        fullAddress: form.getValue(UserAddressEntity.fullAddressKey),
+      ),
+    );
   }
 }

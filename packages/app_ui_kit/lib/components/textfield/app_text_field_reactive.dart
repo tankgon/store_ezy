@@ -12,6 +12,8 @@ class AppTextFieldReactive extends StatefulWidget {
     this.onChanged,
     this.decoration,
     this.hintText,
+    this.minLines,
+    this.maxLines,
     this.keyboardType,
     this.textAlign = TextAlign.start,
     this.textInputAction,
@@ -36,6 +38,8 @@ class AppTextFieldReactive extends StatefulWidget {
 
   final InputDecoration? decoration;
   final String? hintText;
+  final int? minLines;
+  final int? maxLines;
 
   final bool enableClearButton;
 
@@ -104,6 +108,8 @@ class _AppTextFieldState extends State<AppTextFieldReactive> {
         onChanged: (val) {
           _onTextChange();
         },
+        minLines: widget.minLines,
+        maxLines: widget.maxLines,
         textInputAction: widget.textInputAction,
         controller: _controller,
         focusNode: _focusNode,
