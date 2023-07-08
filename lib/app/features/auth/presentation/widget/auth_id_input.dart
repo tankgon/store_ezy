@@ -162,7 +162,7 @@ class AuthPasswordInput extends StatelessWidget {
   TextFieldPasswordEyeBuilder _buildPasswordInput(
       BuildContext context, bool? hasFocus) {
     return TextFieldPasswordEyeBuilder(
-      inputDecoration: AppTextFieldTheme.primaryStyle(context),
+      inputDecoration: AppTextFieldTheme.primary(context),
       builder: (context, inputDecoration, isTextVisible) =>
           AppTextFieldReactive(
         formControlName: formControlName ?? passwordKey,

@@ -96,15 +96,18 @@ class _AppTextFieldState extends State<AppTextFieldReactive> {
       enabled: widget.enableClearButton,
       onClear: _onClearCLick,
       inputDecoration:
-          (widget.decoration ?? AppTextFieldTheme.primaryStyle(context))
-              .copyWith(
+          (widget.decoration ?? AppTextFieldTheme.primary(context)).copyWith(
         hintText: widget.hintText,
       ),
       builder: (context, inputDecoration) => ReactiveTextField<String>(
         formControlName: widget.formControlName,
         formControl: widget.formControl,
         obscureText: widget.obscureText,
-        validationMessages: widget.validationMessages,
+        validationMessages: widget.validationMessages ??
+            {
+              ValidationMessage.required: (value) =>
+                  context.tr('Vui lòng nhập thông tin'),
+            },
         onChanged: (val) {
           _onTextChange();
         },

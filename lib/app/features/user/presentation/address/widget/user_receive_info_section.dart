@@ -94,6 +94,17 @@ class UserAddressItem extends StatelessWidget {
           address.addressAndPhone!.text.colorDark(context).make(),
         if (address.fullAddress.isNotNullOrBlank)
           address.fullAddress!.text.colorDark(context).make(),
+        if (address.addressType != null)
+          address.addressType?.displayValue
+              .tr()
+              .text
+              .colorPrimary(context)
+              .make()
+              .px12()
+              .py4()
+              .backgroundColor(context.themeColor.primaryLighter)
+              .cornerRadius(Dimens.rad_XL4)
+              .pt4(),
       ].withDivider(Gaps.vGap4),
     );
   }

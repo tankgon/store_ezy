@@ -23,13 +23,10 @@ class CrudAddressBody extends StatelessWidget {
             child: 'Địa chỉ'.tr().text.titleMedium(context).make(),
           ),
           AppTextFieldReactive(
-            formControlName: UserAddressEntity.fullNameKey,
-          ),
-          AppTextFieldReactive(
             formControlName: UserAddressEntity.fullAddressKey,
             minLines: 3,
             maxLines: 4,
-            decoration: AppTextFieldTheme.primaryStyle(context).copyWith(),
+            decoration: AppTextFieldTheme.primary(context).copyWith(),
           ),
           AppTextRequired(
             child: 'Loại địa chỉ'.tr().text.titleMedium(context).make(),
@@ -40,13 +37,13 @@ class CrudAddressBody extends StatelessWidget {
                 formControlName: UserAddressEntity.addressTypeKey,
                 value: AddressType.home,
                 label: AddressType.home.displayValue.tr(),
-              ).expand(),
+              ).objectCenterLeft().expand(),
               Gaps.hGap16,
               AppRadioReactive<AddressType>(
                 formControlName: UserAddressEntity.addressTypeKey,
                 value: AddressType.office,
                 label: AddressType.office.displayValue.tr(),
-              ).expand(),
+              ).objectCenterLeft().expand(),
             ],
           ),
           const AppDivider.thin(),

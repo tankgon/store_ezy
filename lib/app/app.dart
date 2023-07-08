@@ -1,10 +1,11 @@
+import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
 import 'package:app_ui_kit/components/app/dismiss_keyboard.dart';
 import 'package:app_ui_kit/components/app/scroll_behavior_default.dart';
 import 'package:flutter/services.dart';
 import 'package:mulstore/all_file/all_file.dart';
-import 'package:mulstore/app/features/auth/self.dart';
 import 'package:mulstore/app/common/presentation/widgets/exception/app_exception_handler.dart';
 import 'package:mulstore/app/common/presentation/widgets/responsive/app_responsive_config.dart';
+import 'package:mulstore/app/features/auth/self.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -113,18 +114,23 @@ class _AppConfiguration extends StatelessWidget {
     return DismissKeyboard(
       child: ExceptionHandlerConfig(
         handler: AppExceptionHandler(context: context),
-        child: PagingConfiguration(
-          configData: PagingConfigData(),
-          child: DialogConfiguration(
-            configData: DialogConfigData(
-              confirmLabel: LocaleKeys.common_dialog_Confirm.tr(),
-              cancelLabel: LocaleKeys.common_dialog_Cancel.tr(),
-              deleteLabel: LocaleKeys.common_dialog_Delete.tr(),
-            ),
-            child: ScrollConfiguration(
-              behavior: const ScrollBehaviorDefault(),
-              child: LoaderOverlay(
-                child: child,
+        child: AppConfiguration(
+          configData: AppConfigData(
+            translate: (key) => key.tr(),
+          ),
+          child: PagingConfiguration(
+            configData: PagingConfigData(),
+            child: DialogConfiguration(
+              configData: DialogConfigData(
+                confirmLabel: LocaleKeys.common_dialog_Confirm.tr(),
+                cancelLabel: LocaleKeys.common_dialog_Cancel.tr(),
+                deleteLabel: LocaleKeys.common_dialog_Delete.tr(),
+              ),
+              child: ScrollConfiguration(
+                behavior: const ScrollBehaviorDefault(),
+                child: LoaderOverlay(
+                  child: child,
+                ),
               ),
             ),
           ),

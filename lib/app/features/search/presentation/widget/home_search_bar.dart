@@ -12,7 +12,7 @@ class HomeSearchBar extends StatelessWidget {
       child: IgnorePointer(
         child: AppTextField(
           textInputAction: TextInputAction.search,
-          decoration: AppTextFieldTheme.primaryStyle(
+          decoration: AppTextFieldTheme.greyStyle(
             context,
           ).copyWith(
             border: OutlineInputBorder(
@@ -21,8 +21,9 @@ class HomeSearchBar extends StatelessWidget {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: Dimens.rad_border_circular,
-              borderSide:
-                  context.theme.inputDecorationTheme.focusedBorder!.borderSide,
+              borderSide: context
+                      .theme.inputDecorationTheme.focusedBorder?.borderSide ??
+                  BorderSide.none,
             ),
             // contentPadding: EdgeInsets.zero,
             hintText: LocaleKeys.common_Search.tr(),

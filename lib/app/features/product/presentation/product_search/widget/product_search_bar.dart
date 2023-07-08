@@ -11,7 +11,7 @@ class ProductSearchBar extends StatelessWidget {
       height: 42,
       child: AppTextField(
         textInputAction: TextInputAction.search,
-        decoration: AppTextFieldTheme.primaryStyle(
+        decoration: AppTextFieldTheme.greyStyle(
           context,
         ).copyWith(
           border: OutlineInputBorder(
@@ -20,7 +20,8 @@ class ProductSearchBar extends StatelessWidget {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: Dimens.rad_border_circular,
-            borderSide: context.theme.inputDecorationTheme.focusedBorder!.borderSide,
+            borderSide:
+                context.theme.inputDecorationTheme.focusedBorder!.borderSide,
           ),
           // contentPadding: EdgeInsets.zero,
           hintText: 'Dược phẩm'.tr(),

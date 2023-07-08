@@ -32,7 +32,7 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     return AppBar(
       title: titleFinal,
-      centerTitle: args?.centerTitle ?? false,
+      centerTitle: args?.centerTitle ?? true,
       elevation: args?.elevation ?? 0.5,
       titleSpacing: args?.titleSpacing,
       leading: args?.leading ?? bthBack,
@@ -59,6 +59,14 @@ class AppAppBarTitleText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return title.textAuto.textStyle(Theme.of(context).textTheme.titleLarge).minFontSize(FontSizeService().text_S).maxLines(args?.maxLine ?? 1).align(args?.textAlign ?? TextAlign.start).color(args?.color).ellipsis.semiBold.make();
+    return title.textAuto
+        .textStyle(Theme.of(context).textTheme.titleLarge)
+        .minFontSize(FontSizeService().text_S)
+        .maxLines(args?.maxLine ?? 1)
+        .align(args?.textAlign ?? TextAlign.start)
+        .color(args?.color)
+        .ellipsis
+        .semiBold
+        .make();
   }
 }

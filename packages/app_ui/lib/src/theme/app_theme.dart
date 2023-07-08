@@ -43,6 +43,10 @@ class AppTheme {
       indicatorColor: onPrimarySurfaceColor,
       textTheme: textTheme,
       iconTheme: IconThemeData(color: appColor.grey),
+      radioTheme: RadioThemeData(
+        fillColor: MaterialStateProperty.all(appColor.greyDarkest),
+        visualDensity: VisualDensity.compact,
+      ),
       iconButtonTheme: IconButtonThemeData(
         style: ButtonStyle(
           iconColor: MaterialStateProperty.all(appColor.greyDark),
@@ -52,14 +56,24 @@ class AppTheme {
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
-        filled: true,
+        // filled: true,
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         isDense: true,
-        fillColor: appColor.divider,
+        // fillColor: appColor.divider,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppTextFieldTheme.defaultRadius),
+          borderSide: BorderSide(
+            color: appColor.greyLighter,
+            width: AppTextFieldTheme.defaultBorderWidth,
+          ),
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppTextFieldTheme.defaultRadius),
-          borderSide: BorderSide.none,
+          borderSide: BorderSide(
+            color: colorScheme.primary,
+            width: AppTextFieldTheme.defaultBorderWidth,
+          ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppTextFieldTheme.defaultRadius),

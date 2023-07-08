@@ -75,7 +75,7 @@ class _AppTextFieldState extends State<AppTextField> {
     return TextFieldBtnClearBuilder(
       controller: _controller,
       enabled: widget.enableClearButton,
-      inputDecoration: widget.decoration ?? AppTextFieldTheme.primaryStyle(context),
+      inputDecoration: widget.decoration ?? AppTextFieldTheme.primary(context),
       builder: (context, inputDecoration) => TextFormField(
         onChanged: (val) {
           _onTextChange();

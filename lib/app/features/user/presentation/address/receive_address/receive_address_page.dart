@@ -24,6 +24,7 @@ class ReceiveAddressPage extends StatelessWidget {
             fullAddress: 'Địa chỉ $index',
             phone: '09009090$index',
             fullName: 'Người nhận $index',
+            addressType: AddressType.home,
           ),
         ),
       ),
