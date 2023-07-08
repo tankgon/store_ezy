@@ -109,7 +109,7 @@ class _AppTextFieldState extends State<AppTextFieldReactive> {
           _onTextChange();
         },
         minLines: widget.minLines,
-        maxLines: widget.maxLines,
+        maxLines: widget.obscureText ? 1 : widget.maxLines,
         textInputAction: widget.textInputAction,
         controller: _controller,
         focusNode: _focusNode,

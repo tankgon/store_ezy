@@ -109,7 +109,7 @@ dependencies:
   #####  Data
   hive: ^2.0.2
   hive_flutter: ^1.1.0
-  cached_network_image: ^3.2.0
+  cached_network_image: ^3.2.3
   timeago: ^3.2.2
   url_launcher: ^6.1.10
   email_validator: ^2.0.1
