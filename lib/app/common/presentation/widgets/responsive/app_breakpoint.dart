@@ -2,8 +2,8 @@ import 'package:layout/layout.dart';
 import 'package:mulstore/all_file/all_file.dart';
 
 enum AppBreakpointType {
-  xxs(screenSize: 320, scale: 0.9),
-  xs(screenSize: 375, scale: 0.95),
+  xxs(screenSize: 320, scale: 0.95),
+  xs(screenSize: 375, scale: 1),
   sm(screenSize: 576, scale: 1.1),
   md(screenSize: 768, scale: 1.2),
   lg(screenSize: 992, scale: 1.3),

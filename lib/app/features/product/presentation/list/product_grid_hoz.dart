@@ -10,12 +10,15 @@ class ProductGridHoz extends StatelessWidget {
     this.padding,
     this.spacing = Dimens.pad_default,
     this.layoutType = ProductItemLayoutType.layoutTile1,
+    this.crossAxisCount = 2,
   });
 
   static ProductGridHoz demo() {
     return ProductGridHoz(
       fetchListData: (page, pageSize) {
-        return Future.value(List.generate(5, (index) => index).map((e) => ProductEntity.demo()).toList());
+        return Future.value(List.generate(5, (index) => index)
+            .map((e) => ProductEntity.demo())
+            .toList());
       },
     );
   }
@@ -23,13 +26,13 @@ class ProductGridHoz extends StatelessWidget {
   final PagingListFetchFunc<ProductEntity> fetchListData;
   final EdgeInsets? padding;
   final double spacing;
+  final int crossAxisCount;
 
   final ProductItemLayoutType layoutType;
 
   @override
   Widget build(BuildContext context) {
     var aspectRatio = 1.0;
-    const crossAxisCount = 2;
 
     final height = layoutType.size.height;
     final width = layoutType.size.width;

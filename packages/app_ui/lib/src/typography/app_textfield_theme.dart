@@ -44,6 +44,11 @@ class AppTextFieldTheme {
                   BorderRadius.circular(AppTextFieldTheme.defaultRadius),
               borderSide: BorderSide.none,
             ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius:
+                  BorderRadius.circular(AppTextFieldTheme.defaultRadius),
+              borderSide: BorderSide.none,
+            ),
             focusedBorder: OutlineInputBorder(
               borderRadius:
                   BorderRadius.circular(AppTextFieldTheme.defaultRadius),
@@ -83,6 +88,7 @@ class AppTextFieldTheme {
           contentPadding: EdgeInsets.zero,
           isDense: true,
           border: InputBorder.none,
+          enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,
         );
   }

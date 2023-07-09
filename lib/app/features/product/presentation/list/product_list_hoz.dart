@@ -14,7 +14,9 @@ class ProductListHoz extends StatelessWidget {
   static ProductListHoz demo() {
     return ProductListHoz(
       fetchListData: (page, pageSize) {
-        return Future.value(List.generate(5, (index) => index).map((e) => ProductEntity.demo()).toList());
+        return Future.value(List.generate(5, (index) => index)
+            .map((e) => ProductEntity.demo())
+            .toList());
       },
     );
   }
