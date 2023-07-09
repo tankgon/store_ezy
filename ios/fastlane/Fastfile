@@ -6,7 +6,7 @@ platform :ios do
     flavor = options[:flavor]
 
     # Run Flutter build for iOS
-    sh("flutter build ios --release --flavor #{flavor} -t lib/main_#{flavor}.dart")
+    sh("fvm flutter build ios --release --flavor #{flavor} -t lib/main_#{flavor}.dart")
 
     api_key = app_store_connect_api_key(
       key_id: "43XL62JT87",
@@ -26,10 +26,8 @@ platform :ios do
     )
 
     # Get changelog
-    changelog = read_changelog(
-      changelog_path: './../CHANGELOG.md',	# Specify path to CHANGELOG.md
-      section_identifier: '[Latest]',	# Specify what section to read
-      excluded_markdown_elements: ['###']	# Specify which markdown elements should be excluded
+    changelog = changelog_from_git_commits(
+      merge_commit_filtering: "exclude_merges",
     )
 
     # Upload to TestFlight

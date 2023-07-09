@@ -2,6 +2,8 @@
 # Pakcage Import
 /external_packages/**
 
+*.p8
+
 # Miscellaneous
 *.class
 *.lock
