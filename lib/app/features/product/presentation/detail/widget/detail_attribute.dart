@@ -23,7 +23,7 @@ class ProductDetailAttribute extends StatelessWidget {
         'Danh mục'.tr(),
         item?.category?.name,
         'Quy cách'.tr(),
-        item?.variation?.title,
+        'Demo quy cách',
         'Xuất xứ thương hiệu'.tr(),
         item?.madeIn,
         'Công dụng'.tr(),

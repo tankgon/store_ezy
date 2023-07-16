@@ -4,8 +4,8 @@ import 'package:mulstore/app/features/product/self.dart';
 class ProductVariantItemLayout1 extends StatelessWidget {
   const ProductVariantItemLayout1({super.key, required this.item, this.args});
 
-  final ProductVariantEntity? item;
-  final ProductVariantItemArgs? args;
+  final ProductAttributeValueEntity? item;
+  final ProductAttributeValueArgs? args;
 
   @override
   Widget build(BuildContext context) {

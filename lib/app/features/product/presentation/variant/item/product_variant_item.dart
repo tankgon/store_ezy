@@ -3,16 +3,16 @@ import 'package:mulstore/app/features/product/presentation/variant/item/layout/p
 import 'package:mulstore/app/features/product/presentation/variant/item/layout/product_variant_item_tile_layout_1.dart';
 import 'package:mulstore/app/features/product/self.dart';
 
-class ProductVariantItem extends StatelessWidget {
-  const ProductVariantItem({
+class ProductAttributeValue extends StatelessWidget {
+  const ProductAttributeValue({
     super.key,
     required this.item,
     this.args,
     this.layoutType = ProductVariantItemLayoutType.layout1,
   });
 
-  final ProductVariantEntity? item;
-  final ProductVariantItemArgs? args;
+  final ProductAttributeValueEntity? item;
+  final ProductAttributeValueArgs? args;
   final ProductVariantItemLayoutType layoutType;
 
   @override

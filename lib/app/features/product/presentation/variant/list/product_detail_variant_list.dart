@@ -1,5 +1,5 @@
 import 'package:mulstore/all_file/all_file.dart';
-import 'package:mulstore/app/features/product/presentation/variant/select_variant/select_product_variant.dart';
+import 'package:mulstore/app/features/product/presentation/variant/select_variant/product_select_variant.dart';
 import 'package:mulstore/app/features/product/self.dart';
 
 class ProductDetailVariantList extends StatelessWidget {
@@ -29,9 +29,8 @@ class ProductDetailVariantList extends StatelessWidget {
       onTap: () {
         BottomSheetUtils.showMaterial(
           context: context,
-          child: SelectProductVariant(
+          child: ProductSelectVariant(
             product: product,
-            variantList: listItem,
           ),
         );
       },
@@ -39,7 +38,11 @@ class ProductDetailVariantList extends StatelessWidget {
         title: LocaleKeys.product_ProductClassification.tr(),
         trailing: Row(
           children: [
-            '{} loại'.tr(args: [listItem.length.toString()]).text.caption(context).make(),
+            '{} loại'
+                .tr(args: [listItem.length.toString()])
+                .text
+                .caption(context)
+                .make(),
             Gaps.hGap8,
             const Icon(
               Icons.arrow_forward_ios_rounded,
@@ -51,8 +54,12 @@ class ProductDetailVariantList extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: LayoutBuilder(
             builder: (_, constrains) {
-              final itemHeight = (constrains.maxWidth - spacing * (rowItemCount - 1)) / rowItemCount;
-              final listCount = listItem.length > rowItemCount ? rowItemCount : listItem.length;
+              final itemHeight =
+                  (constrains.maxWidth - spacing * (rowItemCount - 1)) /
+                      rowItemCount;
+              final listCount = listItem.length > rowItemCount
+                  ? rowItemCount
+                  : listItem.length;
               return SizedBox(
                 height: itemHeight,
                 child: ListView.separated(
@@ -62,18 +69,20 @@ class ProductDetailVariantList extends StatelessWidget {
                   itemCount: listCount,
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
-                    if (listItem.length > rowItemCount && index == listCount - 1) {
+                    final variant = listItem.getOrNull(index);
+                    if (listItem.length > rowItemCount &&
+                        index == listCount - 1) {
                       return _LastItemWrapper(
                         itemLeftCount: listItem.length - rowItemCount,
-                        child: ProductVariantItem(
-                          item: listItem.getOrNull(index),
+                        child: ProductVariant(
+                          variant: variant,
                         ),
-                      ).cornerRadius(Dimens.rad_XS);
+                      );
                     }
 
-                    return ProductVariantItem(
-                      item: listItem.getOrNull(index) ?? ProductVariantEntity.demo(),
-                    ).cornerRadius(Dimens.rad_XS);
+                    return ProductVariant(
+                      variant: variant,
+                    );
                   },
                 ).objectCenterLeft(),
               );
@@ -104,9 +113,7 @@ class _LastItemWrapper extends StatelessWidget {
     // if last item then create a mask layer above the last item with a number center
     return Stack(
       children: [
-        ProductVariantItem(
-          item: ProductVariantEntity.demo(),
-        ),
+        child,
         Positioned.fill(
           child: Container(
             color: Colors.black.withOpacity(0.5),
@@ -123,5 +130,18 @@ class _LastItemWrapper extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class ProductVariant extends StatelessWidget {
+  const ProductVariant({super.key, this.variant});
+
+  final ProductVariantEntity? variant;
+
+  @override
+  Widget build(BuildContext context) {
+    return AppImg(
+      variant?.img?.src,
+    ).aspectRatio(1).cornerRadius(Dimens.rad_XS);
   }
 }

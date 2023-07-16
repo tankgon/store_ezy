@@ -1,5 +1,7 @@
 import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/product/data/ms/model/ms_product_attribute.dart';
 import 'package:mulstore/app/features/product/data/ms/model/ms_product_model.dart';
+import 'package:mulstore/app/features/product/data/ms/model/ms_product_sku_result.dart';
 
 part 'ms_product_api.g.dart';
 
@@ -50,5 +52,15 @@ abstract class MsProductApi {
     @Query('sellerID') String? sellerID,
     @Query('offset') int? offset,
     @Query('limit') int? limit,
+  });
+
+  @GET('/api/mulstore/product/get-product-attribute')
+  Future<List<MsProductAttribute>?> getProductAttributeList({
+    @Query('productID') String? productID,
+  });
+
+  @GET('/api/mulstore/product/get-product-sku-by-product-id')
+  Future<MsProductSkuResult?> getProductSKUList({
+    @Query('productID') String? productID,
   });
 }

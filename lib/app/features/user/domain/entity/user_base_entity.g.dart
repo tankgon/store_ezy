@@ -34,6 +34,8 @@ UserAddressEntity _$UserAddressEntityFromJson(Map<String, dynamic> json) =>
       fullName: json['fullName'] as String?,
       phone: json['phone'] as String?,
       fullAddress: json['fullAddress'] as String?,
+      addressType:
+          $enumDecodeNullable(_$AddressTypeEnumMap, json['addressType']),
     );
 
 Map<String, dynamic> _$UserAddressEntityToJson(UserAddressEntity instance) =>
@@ -42,5 +44,12 @@ Map<String, dynamic> _$UserAddressEntityToJson(UserAddressEntity instance) =>
       'fullName': instance.fullName,
       'phone': instance.phone,
       'fullAddress': instance.fullAddress,
+      'addressType': _$AddressTypeEnumMap[instance.addressType],
       'object': instance.object,
     };
+
+const _$AddressTypeEnumMap = {
+  AddressType.home: 'home',
+  AddressType.office: 'office',
+  AddressType.other: 'other',
+};

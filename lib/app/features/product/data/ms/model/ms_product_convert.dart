@@ -24,7 +24,7 @@ extension MsProductMapper on MsProduct {
   }
 }
 
-extension MsProductSKUConvert on MsProductSKU {
+extension MsProductSKUConvert on MsProductSku {
   ProductVariantEntity toEntity() {
     return ProductVariantEntity(
       id: productSKUID,
@@ -35,6 +35,23 @@ extension MsProductSKUConvert on MsProductSKU {
             ),
       title: 'sku-title',
       price: price,
+      listedPrice: priceBefore,
+      variantValueList: attribute.mapAsList((item) {
+        return ProductVariantAttributeEntity(
+          attribute: ProductAttributeEntity(
+            id: item.attributeID,
+            name: item.locAttributeName,
+            slug: item.locAttributeName,
+            description: item.locAttributeDescription,
+          ),
+          attributeValue: ProductAttributeValueEntity(
+            id: item.attributeValueID,
+            name: item.locAttributeValueName,
+            description: item.locAttributeValueDescription,
+          ),
+        );
+      }),
+      object: this,
     );
   }
 }

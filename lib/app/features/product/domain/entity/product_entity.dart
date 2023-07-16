@@ -4,6 +4,10 @@ import 'package:mulstore/app/features/distributor/domain/entity/distributor_enti
 import 'package:mulstore/app/features/product/domain/entity/category_entity.dart';
 import 'package:mulstore/app/features/product/domain/repo/product_repo.dart';
 
+part 'product_entity.g.dart';
+part 'product_variation.dart';
+
+@CopyWith(copyWithNull: true)
 class ProductEntity {
   const ProductEntity({
     this.id = '',
@@ -95,29 +99,6 @@ class ProductEntity {
   ProductCategoryEntity? get category => categories?.firstOrNull;
 
   ProductVariantEntity? get variation => variations?.firstOrNull;
-}
-
-class ProductVariantEntity {
-  const ProductVariantEntity({
-    this.id,
-    this.img,
-    this.title,
-    this.price,
-  });
-
-  static ProductVariantEntity demo() {
-    return ProductVariantEntity(
-      id: '1',
-      img: ImageEntity.demo(),
-      title: 'LEIFARNE',
-      price: '100000',
-    );
-  }
-
-  final String? id;
-  final ImageEntity? img;
-  final String? title;
-  final String? price;
 }
 
 class ProductFilterData {

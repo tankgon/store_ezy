@@ -19,17 +19,23 @@ abstract class ProductRepo {
     int? offset,
   });
 
-  Future<List<ProductEntity>> getProductListByBrand({
-    required String? id,
-    int? limit,
-    int? offset,
-  });
-
   Future<List<ProductEntity>> getProductListSearch({
     int? limit,
     int? offset,
     ProductFilterData? filterData,
   });
+
+  Future<List<ProductAttributeEntity>> getProductAttribute({
+    required String? productId,
+  }) {
+    throw UnimplementedError();
+  }
+
+  Future<List<ProductVariantEntity>> getProductVariantList({
+    required String? productId,
+  }) {
+    throw UnimplementedError();
+  }
 }
 
 enum ProductListType {

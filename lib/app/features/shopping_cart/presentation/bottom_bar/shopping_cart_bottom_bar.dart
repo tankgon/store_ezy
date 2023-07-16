@@ -28,7 +28,12 @@ class _TotalCountSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        LocaleKeys.shoppingCart_SelectedNItem.tr(args: ['3']).text.bodySmall(context).make().expand(),
+        LocaleKeys.shoppingCart_SelectedNItem
+            .tr(args: ['3'])
+            .text
+            .bodySmall(context)
+            .make()
+            .expand(),
         Icon(
           AppIcon.coupon,
           color: context.themeColor.green,
@@ -60,7 +65,7 @@ class _TotalPriceSection extends StatelessWidget {
         ).expand(),
         AppButton(
           style: AppButtonTheme.confirmAction(context),
-          label: LocaleKeys.shoppingCart_Buy.tr(),
+          label: 'Tiếp tục'.tr(),
           onPressed: () {
             context.pushRoute(const CheckoutRoute());
           },

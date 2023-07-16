@@ -31,7 +31,8 @@ class UserOrderGroupItem extends StatelessWidget {
             ListView.separated(
               shrinkWrap: true,
               padding: const EdgeInsets.symmetric(vertical: 16),
-              itemCount: limitItemShow != null ? limitItemShow! : totalItemCount,
+              itemCount:
+                  limitItemShow != null ? limitItemShow! : totalItemCount,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
                 return const CheckoutProductItem();
@@ -75,10 +76,14 @@ class UserOrderGroupItem extends StatelessWidget {
           AppTile(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             space: 10,
-            title: 'Đang chờ duyệt'.text.textS.color(context.themeColor.yellow).make(),
+            title: 'Đang chờ duyệt'
+                .text
+                .textS
+                .color(context.themeColor.orange)
+                .make(),
             leading: Icon(
               PhosphorIcons.truck,
-              color: context.themeColor.yellow,
+              color: context.themeColor.orange,
             ),
             onPressed: () {
               _onItemClick(context);

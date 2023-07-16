@@ -1,6 +1,7 @@
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/common/data/ms/repo/ms_app_setting_repo.dart';
 import 'package:mulstore/app/features/product/data/ms/api/ms_product_api.dart';
+import 'package:mulstore/app/features/product/data/ms/model/ms_product_attribute.dart';
 import 'package:mulstore/app/features/product/data/ms/model/ms_product_model.dart';
 import 'package:mulstore/app/features/product/domain/entity/product_entity.dart';
 import 'package:mulstore/app/features/product/domain/repo/product_repo.dart';
@@ -127,13 +128,19 @@ class MsProductRepo extends ProductRepo {
   }
 
   @override
-  Future<List<ProductEntity>> getProductListByBrand({
-    required String? id,
-    int? limit,
-    int? offset,
-  }) {
-    // TODO: implement getProductListByBrand
-    throw UnimplementedError();
+  Future<List<ProductAttributeEntity>> getProductAttribute({
+    required String? productId,
+  }) async {
+    final list = await _api.getProductAttributeList(productID: productId);
+    return list.mapAsList((e) => e.toEntity());
+  }
+
+  @override
+  Future<List<ProductVariantEntity>> getProductVariantList({
+    required String? productId,
+  }) async {
+    final rs = await _api.getProductSKUList(productID: productId);
+    return rs?.productSKU.mapAsList((e) => e.toEntity()) ?? [];
   }
 
   @override

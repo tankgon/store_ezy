@@ -76,21 +76,4 @@ extension $ProductDetailStateCopyWith on ProductDetailState {
   // ignore: library_private_types_in_public_api
   _$ProductDetailStateCWProxy get copyWith =>
       _$ProductDetailStateCWProxyImpl(this);
-
-  /// Copies the object with the specific fields set to `null`. If you pass `false` as a parameter, nothing will be done and it will be ignored. Don't do it. Prefer `copyWith(field: null)` or `ProductDetailState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
-  ///
-  /// Usage
-  /// ```dart
-  /// ProductDetailState(...).copyWithNull(firstField: true, secondField: true)
-  /// ````
-  ProductDetailState copyWithNull({
-    bool item = false,
-    bool error = false,
-  }) {
-    return ProductDetailState(
-      status: status,
-      item: item == true ? null : this.item,
-      error: error == true ? null : this.error,
-    );
-  }
 }
