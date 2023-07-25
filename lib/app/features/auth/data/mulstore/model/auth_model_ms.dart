@@ -18,7 +18,8 @@ class AuthSignUpOTPReq {
     this.password,
   });
 
-  factory AuthSignUpOTPReq.fromJson(Map<String, dynamic> json) => _$AuthSignUpOTPReqFromJson(json);
+  factory AuthSignUpOTPReq.fromJson(Map<String, dynamic> json) =>
+      _$AuthSignUpOTPReqFromJson(json);
 
   final String? userLogin;
   final String? countryCode;
@@ -42,7 +43,8 @@ class AuthSignUpOTPResp {
   final String? userLogin;
   final String? otp;
 
-  factory AuthSignUpOTPResp.fromJson(Map<String, dynamic> json) => _$AuthSignUpOTPRespFromJson(json);
+  factory AuthSignUpOTPResp.fromJson(Map<String, dynamic> json) =>
+      _$AuthSignUpOTPRespFromJson(json);
 
   Map<String, dynamic> toJson() => _$AuthSignUpOTPRespToJson(this);
 
@@ -64,7 +66,8 @@ class AuthVerifyOTPReq {
     this.type,
   });
 
-  factory AuthVerifyOTPReq.fromJson(Map<String, dynamic> json) => _$AuthVerifyOTPReqFromJson(json);
+  factory AuthVerifyOTPReq.fromJson(Map<String, dynamic> json) =>
+      _$AuthVerifyOTPReqFromJson(json);
   final String? userID;
   final String? uuid;
   final String? otp;
@@ -89,7 +92,8 @@ class VerifyOTPResp {
   final String? userLogin;
   final int? accountType;
 
-  factory VerifyOTPResp.fromJson(Map<String, dynamic> json) => _$VerifyOTPRespFromJson(json);
+  factory VerifyOTPResp.fromJson(Map<String, dynamic> json) =>
+      _$VerifyOTPRespFromJson(json);
 
   Map<String, dynamic> toJson() => _$VerifyOTPRespToJson(this);
 
@@ -105,12 +109,17 @@ class VerifyOTPResp {
 @JsonSerializable()
 class AuthResendOTPReq {
   final String? userID;
+  final String? phone;
+  final String? countryCode;
 
   const AuthResendOTPReq({
     this.userID,
+    this.phone,
+    this.countryCode,
   });
 
-  factory AuthResendOTPReq.fromJson(Map<String, dynamic> json) => _$AuthResendOTPReqFromJson(json);
+  factory AuthResendOTPReq.fromJson(Map<String, dynamic> json) =>
+      _$AuthResendOTPReqFromJson(json);
 
   Map<String, dynamic> toJson() => _$AuthResendOTPReqToJson(this);
 }
@@ -133,7 +142,8 @@ class AuthLoginPasswordReq {
   final String? deviceID;
   final String? type;
 
-  factory AuthLoginPasswordReq.fromJson(Map<String, dynamic> json) => _$AuthLoginPasswordReqFromJson(json);
+  factory AuthLoginPasswordReq.fromJson(Map<String, dynamic> json) =>
+      _$AuthLoginPasswordReqFromJson(json);
 
   Map<String, dynamic> toJson() => _$AuthLoginPasswordReqToJson(this);
 }
@@ -160,7 +170,8 @@ class AuthLoginPasswordResp {
         object: this,
       );
 
-  factory AuthLoginPasswordResp.fromJson(Map<String, dynamic> json) => _$AuthLoginPasswordRespFromJson(json);
+  factory AuthLoginPasswordResp.fromJson(Map<String, dynamic> json) =>
+      _$AuthLoginPasswordRespFromJson(json);
 
   Map<String, dynamic> toJson() => _$AuthLoginPasswordRespToJson(this);
 }
@@ -175,7 +186,8 @@ class ForgotPasswordReq {
     this.countryCode,
   });
 
-  factory ForgotPasswordReq.fromJson(Map<String, dynamic> json) => _$ForgotPasswordReqFromJson(json);
+  factory ForgotPasswordReq.fromJson(Map<String, dynamic> json) =>
+      _$ForgotPasswordReqFromJson(json);
 
   Map<String, dynamic> toJson() => _$ForgotPasswordReqToJson(this);
 }
@@ -201,7 +213,8 @@ class ForgotPasswordResp {
         object: this,
       );
 
-  factory ForgotPasswordResp.fromJson(Map<String, dynamic> json) => _$ForgotPasswordRespFromJson(json);
+  factory ForgotPasswordResp.fromJson(Map<String, dynamic> json) =>
+      _$ForgotPasswordRespFromJson(json);
 
   Map<String, dynamic> toJson() => _$ForgotPasswordRespToJson(this);
 }
@@ -218,7 +231,8 @@ class ForgotPasswordVerifyOTPReq {
     this.otp,
   });
 
-  factory ForgotPasswordVerifyOTPReq.fromJson(Map<String, dynamic> json) => _$ForgotPasswordVerifyOTPReqFromJson(json);
+  factory ForgotPasswordVerifyOTPReq.fromJson(Map<String, dynamic> json) =>
+      _$ForgotPasswordVerifyOTPReqFromJson(json);
 
   Map<String, dynamic> toJson() => _$ForgotPasswordVerifyOTPReqToJson(this);
 }
@@ -244,7 +258,8 @@ class ForgotPasswordVerifyOTPResp {
         object: this,
       );
 
-  factory ForgotPasswordVerifyOTPResp.fromJson(Map<String, dynamic> json) => _$ForgotPasswordVerifyOTPRespFromJson(json);
+  factory ForgotPasswordVerifyOTPResp.fromJson(Map<String, dynamic> json) =>
+      _$ForgotPasswordVerifyOTPRespFromJson(json);
 
   Map<String, dynamic> toJson() => _$ForgotPasswordVerifyOTPRespToJson(this);
 }
@@ -261,9 +276,11 @@ class ForgotPasswordCreatePasswordReq {
     this.password,
   });
 
-  factory ForgotPasswordCreatePasswordReq.fromJson(Map<String, dynamic> json) => _$ForgotPasswordCreatePasswordReqFromJson(json);
+  factory ForgotPasswordCreatePasswordReq.fromJson(Map<String, dynamic> json) =>
+      _$ForgotPasswordCreatePasswordReqFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ForgotPasswordCreatePasswordReqToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$ForgotPasswordCreatePasswordReqToJson(this);
 }
 
 @JsonSerializable()
@@ -276,13 +293,17 @@ class ForgotPasswordCreatePasswordResp {
     this.userLogin,
   });
 
-  ForgotPasswordCreatePasswordEntity toEntity() => ForgotPasswordCreatePasswordEntity(
+  ForgotPasswordCreatePasswordEntity toEntity() =>
+      ForgotPasswordCreatePasswordEntity(
         userID: userID,
         userName: userLogin,
         object: this,
       );
 
-  factory ForgotPasswordCreatePasswordResp.fromJson(Map<String, dynamic> json) => _$ForgotPasswordCreatePasswordRespFromJson(json);
+  factory ForgotPasswordCreatePasswordResp.fromJson(
+          Map<String, dynamic> json) =>
+      _$ForgotPasswordCreatePasswordRespFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ForgotPasswordCreatePasswordRespToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$ForgotPasswordCreatePasswordRespToJson(this);
 }

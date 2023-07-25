@@ -162,11 +162,15 @@ Map<String, dynamic> _$VerifyOTPRespToJson(VerifyOTPResp instance) =>
 AuthResendOTPReq _$AuthResendOTPReqFromJson(Map<String, dynamic> json) =>
     AuthResendOTPReq(
       userID: json['userID'] as String?,
+      phone: json['phone'] as String?,
+      countryCode: json['countryCode'] as String?,
     );
 
 Map<String, dynamic> _$AuthResendOTPReqToJson(AuthResendOTPReq instance) =>
     <String, dynamic>{
       'userID': instance.userID,
+      'phone': instance.phone,
+      'countryCode': instance.countryCode,
     };
 
 AuthLoginPasswordReq _$AuthLoginPasswordReqFromJson(

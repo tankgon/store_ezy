@@ -1,4 +1,5 @@
 import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/auth/core/utils/check_id_helper.dart';
 import 'package:mulstore/app/features/auth/self.dart';
 
 abstract class AuthRepo {
@@ -10,6 +11,7 @@ abstract class AuthRepo {
 
   Future<AuthSignUpOTPEntity> resendSignUpOTPPhone({
     required String userID,
+    CheckIdResultData? idData,
   });
 
   Future<AuthSignUpOTPEntity> signUpEmail({
@@ -19,6 +21,7 @@ abstract class AuthRepo {
 
   Future<AuthSignUpOTPEntity> resendSignUpOTPEmail({
     required String userID,
+    CheckIdResultData? idData,
   });
 
   Future<AuthConfirmEntity> confirmSignUpOTP({

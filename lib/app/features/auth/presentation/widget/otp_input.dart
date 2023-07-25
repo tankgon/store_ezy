@@ -25,14 +25,16 @@ class DefaultPinInput extends StatelessWidget {
         border: Border.all(
           color: Colors.transparent,
         ),
-        color: context.theme.inputDecorationTheme.fillColor,
+        color: AppTextFieldTheme.greyStyle(context).fillColor,
         borderRadius: BorderRadius.circular(AppTextFieldTheme.defaultRadius),
       ),
     );
 
     final focusedPinTheme = defaultPinTheme.copyDecorationWith(
       border: Border.all(
-        color: context.theme.inputDecorationTheme.focusedBorder?.borderSide.color ?? context.theme.primaryColor,
+        color: context
+                .theme.inputDecorationTheme.focusedBorder?.borderSide.color ??
+            context.theme.primaryColor,
       ),
     );
 
