@@ -21,6 +21,8 @@ abstract class _$ProductSelectVariantStateCWProxy {
   ProductSelectVariantState selectedVariant(
       ProductVariantEntity? selectedVariant);
 
+  ProductSelectVariantState quantity(int quantity);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ProductSelectVariantState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -34,6 +36,7 @@ abstract class _$ProductSelectVariantStateCWProxy {
     List<ProductAttributeValueEntity>? selectedValueList,
     List<ProductVariantEntity>? variantList,
     ProductVariantEntity? selectedVariant,
+    int? quantity,
   });
 }
 
@@ -70,6 +73,9 @@ class _$ProductSelectVariantStateCWProxyImpl
       this(selectedVariant: selectedVariant);
 
   @override
+  ProductSelectVariantState quantity(int quantity) => this(quantity: quantity);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ProductSelectVariantState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -84,6 +90,7 @@ class _$ProductSelectVariantStateCWProxyImpl
     Object? selectedValueList = const $CopyWithPlaceholder(),
     Object? variantList = const $CopyWithPlaceholder(),
     Object? selectedVariant = const $CopyWithPlaceholder(),
+    Object? quantity = const $CopyWithPlaceholder(),
   }) {
     return ProductSelectVariantState(
       status: status == const $CopyWithPlaceholder() || status == null
@@ -112,6 +119,10 @@ class _$ProductSelectVariantStateCWProxyImpl
           ? _value.selectedVariant
           // ignore: cast_nullable_to_non_nullable
           : selectedVariant as ProductVariantEntity?,
+      quantity: quantity == const $CopyWithPlaceholder() || quantity == null
+          ? _value.quantity
+          // ignore: cast_nullable_to_non_nullable
+          : quantity as int,
     );
   }
 }
@@ -140,6 +151,7 @@ extension $ProductSelectVariantStateCopyWith on ProductSelectVariantState {
       selectedValueList: selectedValueList,
       variantList: variantList,
       selectedVariant: selectedVariant == true ? null : this.selectedVariant,
+      quantity: quantity,
     );
   }
 }

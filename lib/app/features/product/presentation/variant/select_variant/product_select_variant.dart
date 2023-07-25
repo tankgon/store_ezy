@@ -3,16 +3,15 @@ import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/product/domain/entity/product_entity.dart';
 import 'package:mulstore/app/features/product/presentation/variant/select_variant/cubit/product_select_variant_cubit.dart';
 import 'package:mulstore/app/features/product/presentation/variant/select_variant/product_select_variant_body.dart';
+import 'package:mulstore/app/features/shopping_cart/seft.dart';
 
-class ProductSelectVariant extends StatelessWidget {
-  const ProductSelectVariant({
+class ProductSelectVariantPopup extends StatelessWidget {
+  const ProductSelectVariantPopup({
     super.key,
     required this.product,
-    this.variantList,
   });
 
   final ProductEntity product;
-  final List<ProductAttributeEntity>? variantList;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,6 @@ class ProductSelectVariant extends StatelessWidget {
         builder: (context, _res, child) => BlocProvider(
           create: (context) => ProductSelectVariantCubit(
             product: product,
-            item: variantList,
           )..loadData(),
           child: SingleChildScrollView(
             child: Stack(
@@ -44,7 +42,9 @@ class ProductSelectVariant extends StatelessWidget {
                         return SafeArea(
                           child: AppButton(
                             label: 'Chọn mua'.tr(),
-                            onPressed: selectVariant == null ? null : () {},
+                            onPressed: selectVariant == null
+                                ? null
+                                : () => addToCart(context, selectVariant),
                           ).pDefault(),
                         );
                       },
@@ -67,5 +67,15 @@ class ProductSelectVariant extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void addToCart(BuildContext context, ProductVariantEntity selectVariant) {
+    final result = context.read<ShoppingCartBloc>().add(
+          ShoppingCartAddItemEvent(
+            item: product,
+            selectedVariant: selectVariant,
+            quantity: context.read<ProductSelectVariantCubit>().state.quantity,
+          ),
+        );
   }
 }

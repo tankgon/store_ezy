@@ -15,6 +15,9 @@ import 'package:mulstore/app/features/product/data/wp/api/product_api_wp.dart';
 import 'package:mulstore/app/features/product/data/wp/repo/product_repo_wp.dart';
 import 'package:mulstore/app/features/product/domain/repo/product_category_repo.dart';
 import 'package:mulstore/app/features/product/domain/repo/product_repo.dart';
+import 'package:mulstore/app/features/shopping_cart/data/ms/api/ms_shoppint_cart_api.dart';
+import 'package:mulstore/app/features/shopping_cart/data/ms/repo/ms_shopping_cart_repo.dart';
+import 'package:mulstore/app/features/shopping_cart/domain/repo/shopping_cart_repo.dart';
 import 'package:mulstore/app/features/user/data/mulstore/api/user_api_ms.dart';
 import 'package:mulstore/app/features/user/data/mulstore/user_repo_ms.dart';
 import 'package:mulstore/app/features/user/domain/repo/user_repo.dart';
@@ -101,13 +104,16 @@ void _initDataMSService() {
     ..registerLazySingleton<UserApiMS>(() => UserApiMS(dio))
     ..registerLazySingleton<AuthApiMS>(() => AuthApiMS(dio))
     ..registerLazySingleton<MsProductApi>(() => MsProductApi(dio))
-    ..registerLazySingleton<MsProductCategoryApi>(() => MsProductCategoryApi(dio))
+    ..registerLazySingleton<MsProductCategoryApi>(
+        () => MsProductCategoryApi(dio))
     ..registerLazySingleton<MsAppSettingApi>(() => MsAppSettingApi(dio))
+    ..registerLazySingleton<MsShoppingCartApi>(() => MsShoppingCartApi(dio))
 
     // Repo
     ..registerLazySingleton<MsAppSettingRepo>(
       () => MsAppSettingRepo()..getAppSetting(),
     )
+    ..registerLazySingleton<ShoppingCartRepo>(MsShoppingCartRepo.new)
     ..registerLazySingleton<UserRepo>(UserRepoMS.new)
     ..registerLazySingleton<AuthRepo>(AuthRepoMS.new)
     ..registerLazySingleton<ProductRepo>(MsProductRepo.new)

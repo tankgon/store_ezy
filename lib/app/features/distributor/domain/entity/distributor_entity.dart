@@ -6,6 +6,7 @@ class DistributorEntity {
     this.img,
     this.name,
     this.type,
+    this.object,
   });
 
   static DistributorEntity demo() {
@@ -21,4 +22,5 @@ class DistributorEntity {
   final String? name;
   final ImageEntity? img;
   final String? type;
+  final Object? object;
 }

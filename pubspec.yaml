@@ -1,6 +1,6 @@
 name: mulstore
 description: MulStore
-version: 1.0.14+14
+version: 1.0.15+15
 publish_to: none
 
 ## Build runner

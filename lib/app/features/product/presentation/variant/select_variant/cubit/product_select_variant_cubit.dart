@@ -8,9 +8,9 @@ part 'product_select_variant_state.dart';
 class ProductSelectVariantCubit extends RequestItemCubit<
     List<ProductAttributeEntity>, ProductSelectVariantState> {
   ProductSelectVariantCubit({
-    List<ProductAttributeEntity>? item,
+    List<ProductAttributeEntity>? attributeList,
     required this.product,
-  }) : super(ProductSelectVariantState(item: item));
+  }) : super(ProductSelectVariantState(item: attributeList));
 
   final ProductEntity product;
   final ProductRepo _repo = getIt();
@@ -22,6 +22,7 @@ class ProductSelectVariantCubit extends RequestItemCubit<
     List<ProductAttributeValueEntity>? selectedValueList,
     List<ProductVariantEntity>? variantList,
     ProductVariantEntity? selectedVariant,
+    int? quantity,
     Object? error,
   }) {
     emit(
@@ -31,6 +32,7 @@ class ProductSelectVariantCubit extends RequestItemCubit<
         selectedValueList: selectedValueList ?? state.selectedValueList,
         variantList: variantList ?? state.variantList,
         selectedVariant: selectedVariant ?? state.selectedVariant,
+        quantity: quantity ?? state.quantity,
         error: error,
       ),
     );
@@ -114,5 +116,10 @@ class ProductSelectVariantCubit extends RequestItemCubit<
       });
       return isSelected;
     });
+  }
+
+  // updateQuantity
+  void updateQuantity(int quantity) {
+    emitState(quantity: quantity);
   }
 }

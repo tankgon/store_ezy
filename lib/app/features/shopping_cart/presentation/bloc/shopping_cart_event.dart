@@ -11,9 +11,11 @@ class ShoppingCartAddItemEvent extends ShoppingCartEvent {
   ShoppingCartAddItemEvent({
     required this.item,
     required this.quantity,
+    this.selectedVariant,
   });
 
   final ProductEntity item;
+  final ProductVariantEntity? selectedVariant;
   final int quantity;
 }
 

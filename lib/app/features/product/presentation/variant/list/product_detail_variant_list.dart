@@ -29,7 +29,7 @@ class ProductDetailVariantList extends StatelessWidget {
       onTap: () {
         BottomSheetUtils.showMaterial(
           context: context,
-          child: ProductSelectVariant(
+          child: ProductSelectVariantPopup(
             product: product,
           ),
         );

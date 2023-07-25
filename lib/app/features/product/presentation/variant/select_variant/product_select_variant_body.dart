@@ -57,7 +57,11 @@ class ProductSelectVariantBody extends StatelessWidget {
             LocaleKeys.product_Quantity.tr().text.make().expand(),
             AppCartItemCounter(
               submitCallBack: AppCartItemCounterSubmitCallBack(
-                onValueSubmit: (value) {},
+                onValueSubmit: (value) {
+                  context.read<ProductSelectVariantCubit>().updateQuantity(
+                        value,
+                      );
+                },
                 onDeleteItem: () {},
               ),
             ),

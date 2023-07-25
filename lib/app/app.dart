@@ -6,6 +6,7 @@ import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/common/presentation/widgets/exception/app_exception_handler.dart';
 import 'package:mulstore/app/common/presentation/widgets/responsive/app_responsive_config.dart';
 import 'package:mulstore/app/features/auth/self.dart';
+import 'package:mulstore/app/features/shopping_cart/presentation/bloc/shopping_cart_bloc.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -90,6 +91,9 @@ class _AppWidget extends StatelessWidget {
       listeners: [
         BlocProvider<AuthBloc>(
           create: (context) => AuthBloc()..add(AuthFirstLoadUserEvent()),
+        ),
+        BlocProvider<ShoppingCartBloc>(
+          create: (context) => ShoppingCartBloc(),
         ),
       ],
       child: _AppConfiguration(

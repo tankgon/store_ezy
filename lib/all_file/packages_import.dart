@@ -11,7 +11,6 @@ export 'package:cached_network_image/cached_network_image.dart';
 export 'package:copy_with_extension/copy_with_extension.dart';
 export 'package:dartx/dartx.dart' hide IterableFilter;
 export 'package:device_info_plus/device_info_plus.dart';
-//// *** Third Party Packages ***
 export 'package:dio/dio.dart' hide Headers, MultipartFile;
 export 'package:easy_localization/easy_localization.dart' hide TextDirection;
 export 'package:equatable/equatable.dart';
@@ -24,6 +23,7 @@ export 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 export 'package:flutter_spinkit/flutter_spinkit.dart';
 export 'package:flutter_svg/flutter_svg.dart';
 export 'package:font_awesome_flutter/font_awesome_flutter.dart';
+//// *** Third Party Packages ***
 export 'package:get_it/get_it.dart';
 export 'package:hive_flutter/hive_flutter.dart';
 export 'package:json_annotation/json_annotation.dart';

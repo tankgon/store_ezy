@@ -5,27 +5,27 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: fvm flutter build ios --release --flavor production -t lib/main_production.dart" time="71.74268">
+      <testcase classname="fastlane.lanes" name="0: fvm flutter build ios --release --flavor production -t lib/main_production.dart" time="108.999456">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: app_store_connect_api_key" time="0.017279">
+      <testcase classname="fastlane.lanes" name="1: app_store_connect_api_key" time="0.018913">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: gym" time="154.483566">
+      <testcase classname="fastlane.lanes" name="2: gym" time="168.401471">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: changelog_from_git_commits" time="0.051591">
+      <testcase classname="fastlane.lanes" name="3: changelog_from_git_commits" time="0.046154">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: upload_to_testflight" time="409.239501">
+      <testcase classname="fastlane.lanes" name="4: upload_to_testflight" time="380.506432">
         
       </testcase>
     

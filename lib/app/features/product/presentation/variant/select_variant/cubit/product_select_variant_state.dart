@@ -10,11 +10,13 @@ class ProductSelectVariantState
     this.selectedValueList = const [],
     this.variantList = const [],
     this.selectedVariant,
+    this.quantity = 1,
   });
 
   final List<ProductAttributeValueEntity> selectedValueList;
   final List<ProductVariantEntity> variantList;
   final ProductVariantEntity? selectedVariant;
+  final int quantity;
 
   @override
   List<Object?> get props => [
@@ -24,5 +26,6 @@ class ProductSelectVariantState
         selectedValueList,
         variantList,
         selectedVariant,
+        quantity,
       ];
 }
