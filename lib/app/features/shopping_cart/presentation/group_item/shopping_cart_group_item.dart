@@ -2,7 +2,12 @@ import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/shopping_cart/seft.dart';
 
 class ShoppingCartGroupItem extends StatelessWidget {
-  const ShoppingCartGroupItem({super.key});
+  const ShoppingCartGroupItem({
+    super.key,
+    required this.item,
+  });
+
+  final ShoppingCartItemGroupEntity item;
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +21,16 @@ class ShoppingCartGroupItem extends StatelessWidget {
                 AppCheckBox(
                   onChanged: (value) {},
                 ),
-                'Group 1'.text.titleMedium(context).semiBold.make().expand(),
-                '3 sản phẩm'.text.colorDark(context).make(),
+                '${item.distributor.name}'
+                    .text
+                    .titleMedium(context)
+                    .semiBold
+                    .make()
+                    .expand(),
+                '${item.productCartList.length} sản phẩm'
+                    .text
+                    .colorDark(context)
+                    .make(),
               ],
             ).pr16(),
             const Divider(
@@ -27,10 +40,13 @@ class ShoppingCartGroupItem extends StatelessWidget {
             ListView.separated(
               shrinkWrap: true,
               padding: const EdgeInsets.symmetric(vertical: 16),
-              itemCount: 3,
+              itemCount: item.productCartList.length,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
-                return const ShoppingCartItem();
+                final cartItem = item.productCartList[index];
+                return ShoppingCartItem(
+                  cartItem: cartItem,
+                );
               },
               separatorBuilder: (context, index) {
                 return const SizedBox(height: 26);
@@ -46,7 +62,7 @@ class ShoppingCartGroupItem extends StatelessWidget {
                 AppIcon.gift,
                 color: context.themeColor.green,
               ),
-              title: 'Tổng tiền'.text.colorDark(context).make(),
+              title: 'Quà'.text.colorDark(context).make(),
               onPressed: () {},
             ),
           ],

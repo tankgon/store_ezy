@@ -51,7 +51,8 @@ MsProductCart _$MsProductCartFromJson(Map<String, dynamic> json) =>
           ?.map((e) => MsMedia.fromJson(e as Map<String, dynamic>))
           .toList(),
       quantity: json['quantity'] as int?,
-      price: json['price'] as int?,
+      price: json['price'],
+      priceBefore: json['priceBefore'],
       attribute: (json['attribute'] as List<dynamic>?)
           ?.map(
               (e) => MsProductCartAttribute.fromJson(e as Map<String, dynamic>))
@@ -66,6 +67,7 @@ Map<String, dynamic> _$MsProductCartToJson(MsProductCart instance) =>
       'medias': instance.medias,
       'quantity': instance.quantity,
       'price': instance.price,
+      'priceBefore': instance.priceBefore,
       'attribute': instance.attribute,
     };
 

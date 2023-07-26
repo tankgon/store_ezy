@@ -18,7 +18,10 @@ class SignUpPage extends StatelessWidget {
           return DefaultStatusConsumer<SignUpCubit, SignUpState>(
             onSuccess: (state) {
               getIt<AppAutoRoute>().popToParentOf(
-                [SignUpRoute.name],
+                [
+                  SignUpRoute.name,
+                  LoginRoute.name,
+                ],
               );
             },
             onError: (error) {

@@ -1,5 +1,6 @@
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:mulstore/app/features/shopping_cart/seft.dart';
 
 class AuthListener extends StatelessWidget {
   const AuthListener({
@@ -21,6 +22,9 @@ class AuthListener extends StatelessWidget {
 
   void _onAuthStateChange(BuildContext context, AuthState state) {
     if (state is AuthenticatedState) {
+      context.read<ShoppingCartBloc>().add(
+            ShoppingCartFetchEvent(),
+          );
       if (!state.isRefresh) {
         // ToastUtils.showToast(
         //   context: context,

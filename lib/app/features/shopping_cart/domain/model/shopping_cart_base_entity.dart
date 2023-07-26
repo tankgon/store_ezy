@@ -4,12 +4,12 @@ import 'package:mulstore/app/features/product/self.dart';
 class ShoppingCartItemGroupEntity {
   ShoppingCartItemGroupEntity({
     required this.distributor,
-    required this.items,
+    required this.productCartList,
     this.object,
   });
 
   final DistributorEntity distributor;
-  final List<ShoppingCartItemEntity> items;
+  final List<ShoppingCartItemEntity> productCartList;
   final Object? object;
 }
 

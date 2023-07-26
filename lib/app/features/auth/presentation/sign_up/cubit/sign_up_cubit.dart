@@ -170,10 +170,12 @@ class SignUpCubit extends RequestCubit<SignUpState> {
       if (idRs.isPhone) {
         signUpOTPRs = await _authRepo.resendSignUpOTPPhone(
           userID: userID,
+          idData: idRs,
         );
       } else if (idRs.isEmail) {
         signUpOTPRs = await _authRepo.resendSignUpOTPEmail(
           userID: userID,
+          idData: idRs,
         );
       }
       if (signUpOTPRs == null) {

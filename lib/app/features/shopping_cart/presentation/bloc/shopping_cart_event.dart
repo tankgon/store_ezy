@@ -19,6 +19,16 @@ class ShoppingCartAddItemEvent extends ShoppingCartEvent {
   final int quantity;
 }
 
+class ShoppingCartUpdateItemEvent extends ShoppingCartEvent {
+  ShoppingCartUpdateItemEvent({
+    required this.cartItem,
+    required this.quantity,
+  });
+
+  final ShoppingCartItemEntity cartItem;
+  final int quantity;
+}
+
 class ShoppingCartRemoveItemEvent extends ShoppingCartEvent {
   ShoppingCartRemoveItemEvent({
     required this.item,

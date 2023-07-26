@@ -50,7 +50,8 @@ class MsShoppingCart {
 @JsonSerializable()
 class MsProductCart extends MsProduct {
   final int? quantity;
-  final int? price;
+  final Object? price;
+  final Object? priceBefore;
   final List<MsProductCartAttribute>? attribute;
 
   const MsProductCart({
@@ -60,6 +61,7 @@ class MsProductCart extends MsProduct {
     super.medias,
     this.quantity,
     this.price,
+    this.priceBefore,
     this.attribute,
   });
 
