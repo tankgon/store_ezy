@@ -22,6 +22,20 @@ Map<String, dynamic> _$MsShoppingCartAddReqToJson(
       'quantity': instance.quantity,
     };
 
+MsShoppingCartUpdateReq _$MsShoppingCartUpdateReqFromJson(
+        Map<String, dynamic> json) =>
+    MsShoppingCartUpdateReq(
+      cartID: json['cartID'] as String?,
+      quantity: json['quantity'] as int?,
+    );
+
+Map<String, dynamic> _$MsShoppingCartUpdateReqToJson(
+        MsShoppingCartUpdateReq instance) =>
+    <String, dynamic>{
+      'cartID': instance.cartID,
+      'quantity': instance.quantity,
+    };
+
 MsShoppingCart _$MsShoppingCartFromJson(Map<String, dynamic> json) =>
     MsShoppingCart(
       sellerID: json['sellerID'] as String?,
@@ -44,6 +58,8 @@ Map<String, dynamic> _$MsShoppingCartToJson(MsShoppingCart instance) =>
 
 MsProductCart _$MsProductCartFromJson(Map<String, dynamic> json) =>
     MsProductCart(
+      cartID: json['cartID'] as String?,
+      productSKUID: json['productSKUID'] as String?,
       productID: json['productID'] as String?,
       productName: json['productName'] as String?,
       productDescription: json['productDescription'] as String?,
@@ -51,8 +67,8 @@ MsProductCart _$MsProductCartFromJson(Map<String, dynamic> json) =>
           ?.map((e) => MsMedia.fromJson(e as Map<String, dynamic>))
           .toList(),
       quantity: json['quantity'] as int?,
-      price: json['price'],
-      priceBefore: json['priceBefore'],
+      price: json['price'] as String?,
+      priceBefore: json['priceBefore'] as String?,
       attribute: (json['attribute'] as List<dynamic>?)
           ?.map(
               (e) => MsProductCartAttribute.fromJson(e as Map<String, dynamic>))
@@ -65,6 +81,8 @@ Map<String, dynamic> _$MsProductCartToJson(MsProductCart instance) =>
       'productName': instance.productName,
       'productDescription': instance.productDescription,
       'medias': instance.medias,
+      'cartID': instance.cartID,
+      'productSKUID': instance.productSKUID,
       'quantity': instance.quantity,
       'price': instance.price,
       'priceBefore': instance.priceBefore,

@@ -32,6 +32,7 @@ class ShoppingCartItem extends StatelessWidget {
                   // leave it here to prevent the parent from being clicked
                 },
                 child: AppCartItemCounter(
+                  counterInitValue: cartItem.quantity,
                   submitCallBack: _counterSubmitCallBack(context),
                 ).pr16().objectCenterRight(),
               ),

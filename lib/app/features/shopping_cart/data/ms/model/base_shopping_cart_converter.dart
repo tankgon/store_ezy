@@ -3,15 +3,18 @@ part of 'base_shopping_cart_model.dart';
 extension MsShoppingCartExtend on MsShoppingCart {
   ShoppingCartItemGroupEntity toEntity() {
     return ShoppingCartItemGroupEntity(
+      id: sellerID,
       distributor: getDistributor(),
       productCartList: dataCart?.mapAsList(
             (item) => ShoppingCartItemEntity(
+              id: item.cartID,
               product: item.toEntity().copyWith(
                     price: item.price?.toString(),
                     listedPrice: item.priceBefore?.toString(),
                   ),
               quantity: item.quantity ?? 0,
               variant: item.getVariant(),
+              object: item,
             ),
           ) ??
           [],

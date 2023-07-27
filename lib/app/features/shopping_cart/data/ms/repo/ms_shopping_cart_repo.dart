@@ -12,18 +12,42 @@ class MsShoppingCartRepo extends ShoppingCartRepo {
   Future<void> addShoppingCartItem({
     required ProductEntity item,
     required int quantity,
+    ProductVariantEntity? selectedVariant,
   }) {
     final msProduct = item.object;
     if (msProduct is MsProduct) {
       return _api.addCart(
         body: MsShoppingCartAddReq(
           productVersionID: msProduct.productVersionID,
-          productSKUID: item.id,
+          productSKUID: selectedVariant?.id,
           quantity: quantity,
         ),
       );
     }
     throw Exception('Not support product type');
+  }
+
+  @override
+  Future<void> updateShoppingCartItem({
+    required ShoppingCartItemEntity cartItem,
+    required int quantity,
+  }) {
+    final msProduct = cartItem.object;
+    if (msProduct is MsProductCart) {
+      return _api.updateQuantity(
+        body: MsShoppingCartUpdateReq(
+          cartID: msProduct.cartID,
+          quantity: quantity,
+        ),
+      );
+    } else {
+      return _api.updateQuantity(
+        body: MsShoppingCartUpdateReq(
+          cartID: cartItem.id,
+          quantity: quantity,
+        ),
+      );
+    }
   }
 
   @override
@@ -48,12 +72,6 @@ class MsShoppingCartRepo extends ShoppingCartRepo {
   @override
   Future<void> removeShoppingCartItem({required ProductEntity item}) {
     // TODO: implement removeShoppingCartItem
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> updateShoppingCartItem({required ProductEntity item}) {
-    // TODO: implement updateShoppingCartItem
     throw UnimplementedError();
   }
 }

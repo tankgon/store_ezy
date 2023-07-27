@@ -33,6 +33,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     final item = event.item;
     _repo.addShoppingCartItem(
       item: item,
+      selectedVariant: event.selectedVariant,
       quantity: event.quantity,
     );
     _fetchData(emit);
@@ -56,5 +57,12 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
   FutureOr<void> _onUpdateItem(
     ShoppingCartUpdateItemEvent event,
     Emitter<ShoppingCartState> emit,
-  ) {}
+  ) async {
+    final item = event.cartItem;
+    await _repo.updateShoppingCartItem(
+      cartItem: item,
+      quantity: event.quantity,
+    );
+    await _fetchData(emit);
+  }
 }

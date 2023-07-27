@@ -9,6 +9,7 @@ abstract class ShoppingCartRepo {
   Future<void> addShoppingCartItem({
     required ProductEntity item,
     required int quantity,
+    ProductVariantEntity? selectedVariant,
   });
 
   Future<void> removeShoppingCartItem({
@@ -16,7 +17,8 @@ abstract class ShoppingCartRepo {
   });
 
   Future<void> updateShoppingCartItem({
-    required ProductEntity item,
+    required ShoppingCartItemEntity cartItem,
+    required int quantity,
   });
 
   Future<void> clearShoppingCart();

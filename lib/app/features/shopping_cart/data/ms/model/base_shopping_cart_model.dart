@@ -26,6 +26,22 @@ class MsShoppingCartAddReq {
 }
 
 @JsonSerializable()
+class MsShoppingCartUpdateReq {
+  final String? cartID;
+  final int? quantity;
+
+  const MsShoppingCartUpdateReq({
+    this.cartID,
+    this.quantity,
+  });
+
+  factory MsShoppingCartUpdateReq.fromJson(Map<String, dynamic> json) =>
+      _$MsShoppingCartUpdateReqFromJson(json);
+
+  Map<String, dynamic> toJson() => _$MsShoppingCartUpdateReqToJson(this);
+}
+
+@JsonSerializable()
 class MsShoppingCart {
   final String? sellerID;
   final String? sellerContactFullName;
@@ -49,12 +65,16 @@ class MsShoppingCart {
 
 @JsonSerializable()
 class MsProductCart extends MsProduct {
+  final String? cartID;
+  final String? productSKUID;
   final int? quantity;
-  final Object? price;
-  final Object? priceBefore;
+  final String? price;
+  final String? priceBefore;
   final List<MsProductCartAttribute>? attribute;
 
   const MsProductCart({
+    this.cartID,
+    this.productSKUID,
     super.productID,
     super.productName,
     super.productDescription,

@@ -12,6 +12,11 @@ abstract class MsShoppingCartApi {
     @Body() MsShoppingCartAddReq? body,
   });
 
+  @POST('/api/mulstore/cart/update-quantity-cart')
+  Future<void> updateQuantity({
+    @Body() MsShoppingCartUpdateReq? body,
+  });
+
   @GET('/api/mulstore/cart/get-list-cart')
   Future<List<MsShoppingCart>> getCartList();
 }
