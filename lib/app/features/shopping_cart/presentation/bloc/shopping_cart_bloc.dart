@@ -19,7 +19,10 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
   FutureOr<void> _onInitial(
     ShoppingCartInitialEvent event,
     Emitter<ShoppingCartState> emit,
-  ) {}
+  ) {
+    emit(state.copyWith(status: ShoppingCartStatus.loading));
+    _fetchData(emit);
+  }
 
   Future<FutureOr<void>> _onFetch(
     ShoppingCartFetchEvent event,
@@ -64,5 +67,13 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
       quantity: event.quantity,
     );
     await _fetchData(emit);
+  }
+
+  int get totalQuantity {
+    return state.items.fold<int>(
+      0,
+      (previousValue, element) =>
+          previousValue + element.productCartList.length,
+    );
   }
 }

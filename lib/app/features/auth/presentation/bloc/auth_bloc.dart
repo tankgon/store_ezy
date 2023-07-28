@@ -22,7 +22,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   // late final AuthRepo _authRepo;
   late final UserRepo _userRepo;
 
-  FutureOr<void> _onFirstLoadAuthEvent(AuthFirstLoadUserEvent event, Emitter<AuthState> emit) {
+  FutureOr<void> _onFirstLoadAuthEvent(
+      AuthFirstLoadUserEvent event, Emitter<AuthState> emit) {
     emit(AuthLoadingState(state.data));
     log('${_userSecureStorage.user}');
 
@@ -45,7 +46,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  Future<void> _onAuthFetchUserEvent(AuthFetchUserEvent event, Emitter<AuthState> emit) async {
+  Future<void> _onAuthFetchUserEvent(
+      AuthFetchUserEvent event, Emitter<AuthState> emit) async {
     try {
       if (state is! AuthenticatedState) {
         return;
@@ -63,7 +65,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  Future<void> _onAuthenticatedEvent(AuthenticatedEvent event, Emitter<AuthState> emit) async {
+  Future<void> _onAuthenticatedEvent(
+      AuthenticatedEvent event, Emitter<AuthState> emit) async {
     log('AuthenticatedEvent: ${event.token}');
     try {
       await setUserInfo(
@@ -93,7 +96,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  Future<FutureOr<void>> _onUnAuthenticatedEvent(UnAuthenticatedEvent event, Emitter<AuthState> emit) async {
+  Future<FutureOr<void>> _onUnAuthenticatedEvent(
+      UnAuthenticatedEvent event, Emitter<AuthState> emit) async {
     try {
       if (_userSecureStorage.token.isNotNullOrEmpty) {
         try {
@@ -135,6 +139,35 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       // await _userRepo.updateUserAvatarStr(
       //   avatarStr: avatar ?? '',
       // );
+    }
+  }
+
+  Future<void> checkLoginAction(
+    BuildContext context, {
+    required Function(UserEntity? user) onLogin,
+    VoidCallback? onDismiss,
+  }) async {
+    final isLogin = context.read<AuthBloc>().isLogin;
+
+    if (isLogin) {
+      onLogin.call(user);
+    } else {
+      await DialogUtils.showMaterialDialog(
+        context: context,
+        content: 'Vui lòng đăng nhập để tiếp tục'.tr(),
+        positiveLabel: 'Đăng nhập ngay'.tr(),
+        positive: () async {
+          await context.router.push(const LoginRoute());
+          if (user != null) {
+            onLogin.call(user);
+          } else {
+            onDismiss?.call();
+          }
+        },
+        negative: () {
+          onDismiss?.call();
+        },
+      );
     }
   }
 

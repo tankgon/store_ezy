@@ -9,6 +9,14 @@ class ShoppingCartListGroup extends StatelessWidget {
     return BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
       builder: (context, state) {
         final items = state.items;
+        if (items.isEmpty) {
+          return 'Không có sản phẩm nào trong giỏ hàng'
+              .tr()
+              .text
+              .center
+              .makeCentered()
+              .p16();
+        }
         return ListView.separated(
           itemCount: items.length,
           shrinkWrap: true,

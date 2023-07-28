@@ -1,11 +1,5 @@
-import 'dart:ui';
-
 import 'package:app_ui_kit/all_file/app_ui_kit_all_file.dart';
-import 'package:app_ui_kit/components/button/btn.dart';
-import 'package:app_ui_kit/components/dialog/dialog_config.dart';
-import 'package:app_utils/all_file/app_utils_all_file.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:velocity_x/velocity_x.dart';
+import 'package:app_ui_kit/app_ui_kit.dart';
 
 class DialogReturnMsg {
   DialogReturnMsg._();
@@ -144,40 +138,44 @@ class DialogUtils {
         return [];
       }
       final action = <Widget>[];
-      const edgeInsets = EdgeInsets.symmetric(vertical: 4, horizontal: 12);
 
       if (negative != null) {
         action.add(
-          Btn(
-            padding: edgeInsets,
+          AppButton(
+            style: AppButtonTheme.ghost(context),
             label: negativeLabel ?? context.dialogConfigData.cancelLabel,
+            onPressed: () {
+              Navigator.of(context, rootNavigator: true)
+                  .pop(DialogReturnMsg.cancel);
+              negative.call();
+            },
           ),
         );
       }
 
       if (delete != null) {
         action.add(
-          Btn(
-            btnType: BtnType.DELETE,
-            padding: edgeInsets,
+          AppButton(
+            style: AppButtonTheme.error(context),
+            label: deleteLabel ?? context.dialogConfigData.deleteLabel,
             onPressed: () {
               Navigator.of(context, rootNavigator: true).pop(
                 DialogReturnMsg.delete,
               );
               delete.call();
             },
-            child: Text(deleteLabel ?? context.dialogConfigData.deleteLabel),
           ),
         );
       } else {
         action.add(
-          Btn(
-            padding: edgeInsets,
+          AppButton(
+            style: AppButtonTheme.primary(context),
+            label: positiveLabel ?? context.dialogConfigData.confirmLabel,
             onPressed: () {
-              Navigator.of(context, rootNavigator: true).pop(DialogReturnMsg.confirm);
+              Navigator.of(context, rootNavigator: true)
+                  .pop(DialogReturnMsg.confirm);
               positive?.call();
             },
-            child: Text(positiveLabel ?? context.dialogConfigData.confirmLabel),
           ),
         );
       }
@@ -210,7 +208,8 @@ class DialogUtils {
                   : null),
           actions: action,
           buttonPadding: action.isEmpty ? EdgeInsets.zero : null,
-          contentPadding: contentPadding ?? const EdgeInsets.fromLTRB(18.0, 16.0, 18.0, 18.0),
+          contentPadding: contentPadding ??
+              const EdgeInsets.fromLTRB(18.0, 16.0, 18.0, 18.0),
         );
       },
     );
