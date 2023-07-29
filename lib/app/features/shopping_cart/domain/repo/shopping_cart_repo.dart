@@ -13,7 +13,7 @@ abstract class ShoppingCartRepo {
   });
 
   Future<void> removeShoppingCartItem({
-    required ProductEntity item,
+    required ShoppingCartItemEntity cartItem,
   });
 
   Future<void> updateShoppingCartItem({

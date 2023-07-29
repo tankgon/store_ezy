@@ -45,6 +45,7 @@ class ShoppingCartGroupItem extends StatelessWidget {
               itemBuilder: (context, index) {
                 final cartItem = item.productCartList[index];
                 return ShoppingCartItem(
+                  key: ObjectKey(cartItem),
                   cartItem: cartItem,
                 );
               },

@@ -59,7 +59,13 @@ class ShoppingCartItem extends StatelessWidget {
         DialogUtils.showMaterialDialog(
           context: context,
           content: 'Xóa mặt hàng này ra khỏi giỏ?',
-          delete: () {},
+          delete: () {
+            context.read<ShoppingCartBloc>().add(
+                  ShoppingCartRemoveItemEvent(
+                    cartItem: cartItem,
+                  ),
+                );
+          },
         );
       },
     );

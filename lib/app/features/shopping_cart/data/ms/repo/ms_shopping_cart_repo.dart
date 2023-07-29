@@ -51,6 +51,28 @@ class MsShoppingCartRepo extends ShoppingCartRepo {
   }
 
   @override
+  Future<void> removeShoppingCartItem({
+    required ShoppingCartItemEntity cartItem,
+  }) {
+    final msProduct = cartItem.object;
+    if (msProduct is MsProductCart) {
+      return _api.updateQuantity(
+        body: MsShoppingCartUpdateReq(
+          cartID: msProduct.cartID,
+          quantity: 0,
+        ),
+      );
+    } else {
+      return _api.updateQuantity(
+        body: MsShoppingCartUpdateReq(
+          cartID: cartItem.id,
+          quantity: 0,
+        ),
+      );
+    }
+  }
+
+  @override
   Future<List<ShoppingCartItemGroupEntity>> getShoppingCartList() {
     return _api.getCartList().then((rs) {
       return rs.mapAsList((item) => item.toEntity());
@@ -66,12 +88,6 @@ class MsShoppingCartRepo extends ShoppingCartRepo {
   @override
   Future<void> clearShoppingCart() {
     // TODO: implement clearShoppingCart
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> removeShoppingCartItem({required ProductEntity item}) {
-    // TODO: implement removeShoppingCartItem
     throw UnimplementedError();
   }
 }

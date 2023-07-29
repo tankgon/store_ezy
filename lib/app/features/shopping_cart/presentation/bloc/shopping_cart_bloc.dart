@@ -16,6 +16,16 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
 
   final ShoppingCartRepo _repo = getIt();
 
+  Future<void> _fetchData(Emitter<ShoppingCartState> emit) async {
+    final shoppingCartList = await _repo.getShoppingCartList();
+    emit(
+      state.copyWith(
+        status: ShoppingCartStatus.loaded,
+        items: shoppingCartList,
+      ),
+    );
+  }
+
   FutureOr<void> _onInitial(
     ShoppingCartInitialEvent event,
     Emitter<ShoppingCartState> emit,
@@ -32,29 +42,27 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
   }
 
   FutureOr<void> _onAddItem(
-      ShoppingCartAddItemEvent event, Emitter<ShoppingCartState> emit) {
+    ShoppingCartAddItemEvent event,
+    Emitter<ShoppingCartState> emit,
+  ) async {
     final item = event.item;
-    _repo.addShoppingCartItem(
+    await _repo.addShoppingCartItem(
       item: item,
       selectedVariant: event.selectedVariant,
       quantity: event.quantity,
     );
-    _fetchData(emit);
+    await _fetchData(emit);
   }
 
   FutureOr<void> _onRemoveItem(
     ShoppingCartRemoveItemEvent event,
     Emitter<ShoppingCartState> emit,
-  ) {}
-
-  Future<void> _fetchData(Emitter<ShoppingCartState> emit) async {
-    final shoppingCartList = await _repo.getShoppingCartList();
-    emit(
-      state.copyWith(
-        status: ShoppingCartStatus.loaded,
-        items: shoppingCartList,
-      ),
+  ) async {
+    final item = event.cartItem;
+    await _repo.removeShoppingCartItem(
+      cartItem: item,
     );
+    await _fetchData(emit);
   }
 
   FutureOr<void> _onUpdateItem(
