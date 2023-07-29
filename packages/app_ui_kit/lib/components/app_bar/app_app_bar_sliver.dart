@@ -8,7 +8,6 @@ class AppAppBarSliver extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     this.title,
     this.args,
-    this.titleArgs,
     this.sliverArgs,
   });
 
@@ -16,7 +15,6 @@ class AppAppBarSliver extends StatelessWidget implements PreferredSizeWidget {
 
   final AppBarArgs? args;
   final AppBarSliverArgs? sliverArgs;
-  final AppBarTitleArgs? titleArgs;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +23,7 @@ class AppAppBarSliver extends StatelessWidget implements PreferredSizeWidget {
       if (title is String) {
         titleFinal = AppAppBarTitleText(
           title: title as String,
-          args: titleArgs,
+          maxLine: args?.maxLine,
         );
       } else if (title is Widget) {
         titleFinal = title as Widget;

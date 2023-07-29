@@ -7,13 +7,11 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     this.title,
     this.args,
-    this.titleArgs,
   });
 
   final Object? title;
 
   final AppBarArgs? args;
-  final AppBarTitleArgs? titleArgs;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +20,9 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
       if (title is String) {
         titleFinal = AppAppBarTitleText(
           title: title as String,
-          args: titleArgs,
+          maxLine: args?.maxLine,
+          textAlign: args?.textAlign,
+          color: args?.color,
         );
       } else if (title is Widget) {
         titleFinal = title as Widget;
@@ -51,20 +51,26 @@ class AppAppBarTitleText extends StatelessWidget {
   const AppAppBarTitleText({
     super.key,
     required this.title,
-    this.args,
+    this.maxLine,
+    this.textAlign,
+    this.color,
+    this.maxFontSize,
   });
 
-  final AppBarTitleArgs? args;
   final String title;
+  final int? maxLine;
+  final TextAlign? textAlign;
+  final Color? color;
+  final double? maxFontSize;
 
   @override
   Widget build(BuildContext context) {
     return title.textAuto
         .textStyle(Theme.of(context).textTheme.titleLarge)
         .minFontSize(FontSizeService().text_S)
-        .maxLines(args?.maxLine ?? 1)
-        .align(args?.textAlign ?? TextAlign.start)
-        .color(args?.color)
+        .maxLines(maxLine ?? 1)
+        .align(textAlign ?? TextAlign.start)
+        .color(color)
         .ellipsis
         .semiBold
         .make();

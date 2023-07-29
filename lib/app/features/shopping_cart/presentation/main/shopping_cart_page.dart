@@ -11,8 +11,10 @@ class ShoppingCartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppAppBar(
-        title: LocaleKeys.shoppingCart_ShoppingCart.tr(),
-        args: AppBarArgs(centerTitle: true),
+        title: 'Giỏ hàng'.tr(),
+        args: const AppBarArgs(
+          centerTitle: true,
+        ),
       ),
       body: BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
         builder: (context, state) {

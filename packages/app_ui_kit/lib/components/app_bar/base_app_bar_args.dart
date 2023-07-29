@@ -8,6 +8,12 @@ class AppBarArgs {
   final Widget? flexibleSpace;
   final bool? centerTitle;
 
+  // title data
+  final int? maxLine;
+  final TextAlign? textAlign;
+  final Color? color;
+  final double? maxFontSize;
+
   // Style
   final Color? backgroundColor;
   final Color? titleColor;
@@ -27,6 +33,10 @@ class AppBarArgs {
     this.bottom,
     this.flexibleSpace,
     this.centerTitle,
+    this.maxLine,
+    this.textAlign,
+    this.color,
+    this.maxFontSize,
     this.backgroundColor,
     this.titleColor,
     this.isSliver,
@@ -49,6 +59,10 @@ class AppBarArgs {
           bottom == other.bottom &&
           flexibleSpace == other.flexibleSpace &&
           centerTitle == other.centerTitle &&
+          maxLine == other.maxLine &&
+          textAlign == other.textAlign &&
+          color == other.color &&
+          maxFontSize == other.maxFontSize &&
           backgroundColor == other.backgroundColor &&
           titleColor == other.titleColor &&
           isSliver == other.isSliver &&
@@ -67,6 +81,10 @@ class AppBarArgs {
       bottom.hashCode ^
       flexibleSpace.hashCode ^
       centerTitle.hashCode ^
+      maxLine.hashCode ^
+      textAlign.hashCode ^
+      color.hashCode ^
+      maxFontSize.hashCode ^
       backgroundColor.hashCode ^
       titleColor.hashCode ^
       isSliver.hashCode ^
@@ -80,12 +98,16 @@ class AppBarArgs {
 
   @override
   String toString() {
-    return 'AppAppBarArgs{' +
+    return 'AppBarArgs{' +
         ' leading: $leading,' +
         ' actions: $actions,' +
         ' bottom: $bottom,' +
         ' flexibleSpace: $flexibleSpace,' +
         ' centerTitle: $centerTitle,' +
+        ' maxLine: $maxLine,' +
+        ' textAlign: $textAlign,' +
+        ' color: $color,' +
+        ' maxFontSize: $maxFontSize,' +
         ' backgroundColor: $backgroundColor,' +
         ' titleColor: $titleColor,' +
         ' isSliver: $isSliver,' +
@@ -105,6 +127,10 @@ class AppBarArgs {
     PreferredSizeWidget? bottom,
     Widget? flexibleSpace,
     bool? centerTitle,
+    int? maxLine,
+    TextAlign? textAlign,
+    Color? color,
+    double? maxFontSize,
     Color? backgroundColor,
     Color? titleColor,
     bool? isSliver,
@@ -122,6 +148,10 @@ class AppBarArgs {
       bottom: bottom ?? this.bottom,
       flexibleSpace: flexibleSpace ?? this.flexibleSpace,
       centerTitle: centerTitle ?? this.centerTitle,
+      maxLine: maxLine ?? this.maxLine,
+      textAlign: textAlign ?? this.textAlign,
+      color: color ?? this.color,
+      maxFontSize: maxFontSize ?? this.maxFontSize,
       backgroundColor: backgroundColor ?? this.backgroundColor,
       titleColor: titleColor ?? this.titleColor,
       isSliver: isSliver ?? this.isSliver,
@@ -142,6 +172,10 @@ class AppBarArgs {
       'bottom': this.bottom,
       'flexibleSpace': this.flexibleSpace,
       'centerTitle': this.centerTitle,
+      'maxLine': this.maxLine,
+      'textAlign': this.textAlign,
+      'color': this.color,
+      'maxFontSize': this.maxFontSize,
       'backgroundColor': this.backgroundColor,
       'titleColor': this.titleColor,
       'isSliver': this.isSliver,
@@ -162,6 +196,10 @@ class AppBarArgs {
       bottom: map['bottom'] as PreferredSizeWidget,
       flexibleSpace: map['flexibleSpace'] as Widget,
       centerTitle: map['centerTitle'] as bool,
+      maxLine: map['maxLine'] as int,
+      textAlign: map['textAlign'] as TextAlign,
+      color: map['color'] as Color,
+      maxFontSize: map['maxFontSize'] as double,
       backgroundColor: map['backgroundColor'] as Color,
       titleColor: map['titleColor'] as Color,
       isSliver: map['isSliver'] as bool,
@@ -176,22 +214,6 @@ class AppBarArgs {
   }
 
 //</editor-fold>
-}
-
-class AppBarTitleArgs {
-  final String title;
-  final int? maxLine;
-  final TextAlign? textAlign;
-  final Color? color;
-  final double? maxFontSize;
-
-  const AppBarTitleArgs({
-    required this.title,
-    this.maxLine,
-    this.textAlign,
-    this.color,
-    this.maxFontSize,
-  });
 }
 
 class AppBarSliverArgs {
