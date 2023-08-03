@@ -1,4 +1,5 @@
 import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/product/presentation/detail/cubit/product_detail_cubit.dart';
 
 class ProductBottomBar extends StatelessWidget {
   const ProductBottomBar({super.key});
@@ -28,7 +29,11 @@ class ProductBottomBar extends StatelessWidget {
           ),
           AppButton(
             style: AppButtonTheme.primary(context),
-            onPressed: () {},
+            onPressed: () {
+              context.read<ProductDetailCubit>().selectProduct(
+                    context: context,
+                  );
+            },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

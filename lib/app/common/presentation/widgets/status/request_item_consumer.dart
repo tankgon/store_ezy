@@ -1,6 +1,8 @@
 import 'package:mulstore/all_file/all_file.dart';
 
-class RequestItemConsumer<C extends RequestItemCubit<Object, S>, S extends RequestItemState<Object>> extends StatelessWidget {
+@Deprecated('Please use Api Status instead')
+class RequestItemConsumer<C extends RequestItemCubit<Object, S>,
+    S extends RequestItemState<Object>> extends StatelessWidget {
   const RequestItemConsumer({
     super.key,
     required this.child,
@@ -24,7 +26,8 @@ class RequestItemConsumer<C extends RequestItemCubit<Object, S>, S extends Reque
   Widget build(BuildContext context) {
     return BlocConsumer<C, S>(
       listenWhen: (previous, current) {
-        if (current.status == ItemStatus.error && current.error != current.error) {
+        if (current.status == ItemStatus.error &&
+            current.error != current.error) {
           return true;
         }
         return previous.status != current.status;

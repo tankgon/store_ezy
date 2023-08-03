@@ -1,5 +1,5 @@
 import 'package:mulstore/all_file/all_file.dart';
-import 'package:mulstore/app/features/product/presentation/variant/select_variant/product_select_variant.dart';
+import 'package:mulstore/app/features/product/presentation/detail/cubit/product_detail_cubit.dart';
 import 'package:mulstore/app/features/product/self.dart';
 
 class ProductDetailVariantList extends StatelessWidget {
@@ -27,12 +27,9 @@ class ProductDetailVariantList extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        BottomSheetUtils.showMaterial(
-          context: context,
-          child: ProductSelectVariantPopup(
-            product: product,
-          ),
-        );
+        context.read<ProductDetailCubit>().selectProduct(
+              context: context,
+            );
       },
       child: SectionContainer(
         title: LocaleKeys.product_ProductClassification.tr(),

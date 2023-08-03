@@ -21,7 +21,7 @@ class ProductDetailBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProductDetailCubit, ProductDetailState>(
       builder: (context, state) {
-        final item = state.item;
+        final item = state.product;
         final imgList = item?.imgSrcList ?? [];
         final distributor = item?.distributor;
         return CustomScrollView(
@@ -36,7 +36,7 @@ class ProductDetailBody extends StatelessWidget {
                     ProductTitleHeader(
                       product: item,
                     ),
-                    if (item != null)
+                    if (item != null && (item.variations?.isNotEmpty ?? false))
                       ProductDetailVariantList(
                         product: item,
                         listItem: item.variations ?? [],
@@ -60,7 +60,9 @@ class ProductDetailBody extends StatelessWidget {
                       SectionContainer(
                         title: 'Cùng nhà phân phối'.tr(),
                         child: ProductGridHoz(
-                          fetchListData: context.read<ProductDetailCubit>().fetchSameDistributor,
+                          fetchListData: context
+                              .read<ProductDetailCubit>()
+                              .fetchSameDistributor,
                         ),
                         seeAll: () {
                           context.pushRoute(
@@ -84,7 +86,8 @@ class ProductDetailBody extends StatelessWidget {
             if (item?.category?.id?.isNotNullOrEmpty ?? false)
               ProductGridVer(
                 isSliver: true,
-                fetchListData: context.read<ProductDetailCubit>().fetchSameCategory,
+                fetchListData:
+                    context.read<ProductDetailCubit>().fetchSameCategory,
               )
           ],
         );

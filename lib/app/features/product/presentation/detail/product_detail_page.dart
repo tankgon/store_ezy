@@ -1,4 +1,5 @@
 import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/common/presentation/widgets/status/api_result_consumer.dart';
 import 'package:mulstore/app/features/product/domain/entity/product_entity.dart';
 import 'package:mulstore/app/features/product/presentation/detail/cubit/product_detail_cubit.dart';
 import 'package:mulstore/app/features/product/presentation/detail/product_detail_body.dart';
@@ -17,9 +18,9 @@ class ProductDetailPage extends StatelessWidget {
         item: product,
       )..loadData(),
       child: Builder(builder: (context) {
-        return RequestItemConsumer<ProductDetailCubit, ProductDetailState>(
-          onSuccess: (value) {},
-          child: Scaffold(
+        return ApiItemConsumer<ProductDetailCubit, ProductDetailState>(
+          getStatus: (state) => state.status,
+          child: const Scaffold(
             appBar: AppAppBar(
               title: '',
             ),

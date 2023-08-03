@@ -4,6 +4,7 @@ import 'package:mulstore/app/features/product/data/wp/model/product_model_wp.dar
 import 'package:mulstore/app/features/product/domain/entity/product_entity.dart';
 import 'package:mulstore/app/features/product/domain/repo/product_repo.dart';
 
+// Chim canh cut
 class ProductRepoWP extends ProductRepo {
   ProductRepoWP({ProductApiWP? productApiWP}) {
     _productApiWP = productApiWP ?? getIt<ProductApiWP>();

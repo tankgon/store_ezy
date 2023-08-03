@@ -24,7 +24,8 @@ class AppPhotoView<T> extends StatelessWidget {
               controller: photoController!.controller,
               physics: const PageScrollPhysics(),
               onPageChanged: (value) {
-                if (photoController!.isOnSliding == false && photoController!.curIndexLD.value != value) {
+                if (photoController!.isOnSliding == false &&
+                    photoController!.curIndexLD.value != value) {
                   photoController!.curIndexLD.value = value;
                 }
               },
@@ -32,7 +33,7 @@ class AppPhotoView<T> extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 final currentValue = photoController!.imgList.getOrNull(index);
 
-                return AppImg(
+                return AppImg.fullSize(
                   currentValue,
                   fit: BoxFit.contain,
                 );

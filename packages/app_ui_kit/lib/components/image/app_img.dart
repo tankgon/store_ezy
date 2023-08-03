@@ -10,12 +10,24 @@ class AppImg extends StatelessWidget {
     this.fit = BoxFit.fitWidth,
     this.progressIndicatorBuilder,
     this.errorUrlWidget,
+    this.memCacheHeight = 400,
+  });
+
+  const AppImg.fullSize(
+    this.src, {
+    super.key,
+    this.fit = BoxFit.fitWidth,
+    this.progressIndicatorBuilder,
+    this.errorUrlWidget,
+    this.memCacheHeight = 700,
   });
 
   final dynamic? src;
   final BoxFit fit;
+  final int? memCacheHeight;
   final ProgressIndicatorBuilder? progressIndicatorBuilder;
-  final Widget Function(BuildContext context, Object object, dynamic error)? errorUrlWidget;
+  final Widget Function(BuildContext context, Object object, dynamic error)?
+      errorUrlWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +51,9 @@ class AppImg extends StatelessWidget {
     Widget? imageWidget;
 
     if (srcStr.startsWith('http')) {
-      var url = srcStr.startsWith('http://') ? srcStr.replaceFirst('http://', 'https://') : srcStr;
+      var url = srcStr.startsWith('http://')
+          ? srcStr.replaceFirst('http://', 'https://')
+          : srcStr;
 
       if (srcStr.endsWith('.svg')) {
         return SvgPicture.network(srcStr, fit: fit);
@@ -48,8 +62,9 @@ class AppImg extends StatelessWidget {
       imageWidget = CachedNetworkImage(
         imageUrl: url,
         fit: fit,
-        progressIndicatorBuilder: progressIndicatorBuilder ?? (context, url, downloadProgress) => const AppShimmer(),
-        memCacheHeight: 700,
+        progressIndicatorBuilder: progressIndicatorBuilder ??
+            (context, url, downloadProgress) => const AppShimmer(),
+        memCacheHeight: 500,
         errorWidget: errorUrlWidget ?? (context, url, error) => errorWidget,
       );
 
