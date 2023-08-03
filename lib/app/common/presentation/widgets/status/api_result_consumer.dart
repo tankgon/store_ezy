@@ -26,6 +26,14 @@ class ApiItemConsumer<C extends Cubit<S>, S> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<C, S>(
+      listenWhen: (previous, current) {
+        final status = getStatus(current);
+        final previousStatus = getStatus(previous);
+        if (status.isError) {
+          return true;
+        }
+        return status != previousStatus;
+      },
       listener: _onStatusChange,
       builder: (context, state) {
         final status = getStatus(state);
@@ -46,6 +54,7 @@ class ApiItemConsumer<C extends Cubit<S>, S> extends StatelessWidget {
       error: (error) {
         final onErrorHandled = onError?.call(error) ?? false;
         if (!onErrorHandled) {
+          //TODO: change to snackbar
           DialogUtils.showErrorDialog(
             context: context,
             content: context.getAppErrorMsg(error),

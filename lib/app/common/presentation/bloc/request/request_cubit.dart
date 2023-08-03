@@ -1,6 +1,6 @@
 import 'package:mulstore/all_file/all_file.dart';
 
-@Deprecated('Please use RequestItemCubit instead')
+@Deprecated('Please use Api Status instead')
 class RequestCubit<T extends RequestState> extends Cubit<T> {
   RequestCubit(super.initialState);
 }
