@@ -14,6 +14,6 @@ class ShoppingCartState with _$ShoppingCartState {
   const factory ShoppingCartState({
     @Default(ShoppingCartStatus.initial) ShoppingCartStatus status,
     @Default([]) List<ShoppingCartItemGroupEntity> items,
-    @Default({}) Set<String> selectedItem,
+    @Default({}) Set<String> selectedCartItemIds,
   }) = _ShoppingCartState;
 }

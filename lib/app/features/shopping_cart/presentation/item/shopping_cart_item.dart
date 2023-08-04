@@ -20,8 +20,21 @@ class ShoppingCartItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          AppCheckBox(
-            onChanged: (value) {},
+          BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
+            builder: (context, state) {
+              final isSelected =
+                  context.read<ShoppingCartBloc>().isCartItemSelected(cartItem);
+              return AppCheckBox(
+                initialValue: isSelected,
+                onChanged: (value) {
+                  context.read<ShoppingCartBloc>().add(
+                        ShoppingCartEvent.toggleItem(
+                          cartItem: cartItem,
+                        ),
+                      );
+                },
+              );
+            },
           ),
           ProductItem(
             item: cartItem.product,

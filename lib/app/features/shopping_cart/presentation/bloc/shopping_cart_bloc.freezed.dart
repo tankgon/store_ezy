@@ -26,6 +26,8 @@ mixin _$ShoppingCartEvent {
     required TResult Function(ShoppingCartItemEntity cartItem, int quantity)
         updateItem,
     required TResult Function(ShoppingCartItemEntity cartItem) removeItem,
+    required TResult Function(ShoppingCartItemEntity cartItem, bool? selected)
+        toggleItem,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,8 @@ mixin _$ShoppingCartEvent {
     TResult? Function(ShoppingCartItemEntity cartItem, int quantity)?
         updateItem,
     TResult? Function(ShoppingCartItemEntity cartItem)? removeItem,
+    TResult? Function(ShoppingCartItemEntity cartItem, bool? selected)?
+        toggleItem,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -49,6 +53,8 @@ mixin _$ShoppingCartEvent {
         addItem,
     TResult Function(ShoppingCartItemEntity cartItem, int quantity)? updateItem,
     TResult Function(ShoppingCartItemEntity cartItem)? removeItem,
+    TResult Function(ShoppingCartItemEntity cartItem, bool? selected)?
+        toggleItem,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +65,7 @@ mixin _$ShoppingCartEvent {
     required TResult Function(_ShoppingCartAddItemEvent value) addItem,
     required TResult Function(_ShoppingCartUpdateItemEvent value) updateItem,
     required TResult Function(_ShoppingCartRemoveItemEvent value) removeItem,
+    required TResult Function(_ShoppingCartToggleItemEvent value) toggleItem,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,6 +75,7 @@ mixin _$ShoppingCartEvent {
     TResult? Function(_ShoppingCartAddItemEvent value)? addItem,
     TResult? Function(_ShoppingCartUpdateItemEvent value)? updateItem,
     TResult? Function(_ShoppingCartRemoveItemEvent value)? removeItem,
+    TResult? Function(_ShoppingCartToggleItemEvent value)? toggleItem,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +85,7 @@ mixin _$ShoppingCartEvent {
     TResult Function(_ShoppingCartAddItemEvent value)? addItem,
     TResult Function(_ShoppingCartUpdateItemEvent value)? updateItem,
     TResult Function(_ShoppingCartRemoveItemEvent value)? removeItem,
+    TResult Function(_ShoppingCartToggleItemEvent value)? toggleItem,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -155,6 +164,8 @@ class _$_ShoppingCartInitialEvent extends _ShoppingCartInitialEvent
     required TResult Function(ShoppingCartItemEntity cartItem, int quantity)
         updateItem,
     required TResult Function(ShoppingCartItemEntity cartItem) removeItem,
+    required TResult Function(ShoppingCartItemEntity cartItem, bool? selected)
+        toggleItem,
   }) {
     return initial();
   }
@@ -170,6 +181,8 @@ class _$_ShoppingCartInitialEvent extends _ShoppingCartInitialEvent
     TResult? Function(ShoppingCartItemEntity cartItem, int quantity)?
         updateItem,
     TResult? Function(ShoppingCartItemEntity cartItem)? removeItem,
+    TResult? Function(ShoppingCartItemEntity cartItem, bool? selected)?
+        toggleItem,
   }) {
     return initial?.call();
   }
@@ -184,6 +197,8 @@ class _$_ShoppingCartInitialEvent extends _ShoppingCartInitialEvent
         addItem,
     TResult Function(ShoppingCartItemEntity cartItem, int quantity)? updateItem,
     TResult Function(ShoppingCartItemEntity cartItem)? removeItem,
+    TResult Function(ShoppingCartItemEntity cartItem, bool? selected)?
+        toggleItem,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -200,6 +215,7 @@ class _$_ShoppingCartInitialEvent extends _ShoppingCartInitialEvent
     required TResult Function(_ShoppingCartAddItemEvent value) addItem,
     required TResult Function(_ShoppingCartUpdateItemEvent value) updateItem,
     required TResult Function(_ShoppingCartRemoveItemEvent value) removeItem,
+    required TResult Function(_ShoppingCartToggleItemEvent value) toggleItem,
   }) {
     return initial(this);
   }
@@ -212,6 +228,7 @@ class _$_ShoppingCartInitialEvent extends _ShoppingCartInitialEvent
     TResult? Function(_ShoppingCartAddItemEvent value)? addItem,
     TResult? Function(_ShoppingCartUpdateItemEvent value)? updateItem,
     TResult? Function(_ShoppingCartRemoveItemEvent value)? removeItem,
+    TResult? Function(_ShoppingCartToggleItemEvent value)? toggleItem,
   }) {
     return initial?.call(this);
   }
@@ -224,6 +241,7 @@ class _$_ShoppingCartInitialEvent extends _ShoppingCartInitialEvent
     TResult Function(_ShoppingCartAddItemEvent value)? addItem,
     TResult Function(_ShoppingCartUpdateItemEvent value)? updateItem,
     TResult Function(_ShoppingCartRemoveItemEvent value)? removeItem,
+    TResult Function(_ShoppingCartToggleItemEvent value)? toggleItem,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -292,6 +310,8 @@ class _$_ShoppingCartFetchEvent extends _ShoppingCartFetchEvent
     required TResult Function(ShoppingCartItemEntity cartItem, int quantity)
         updateItem,
     required TResult Function(ShoppingCartItemEntity cartItem) removeItem,
+    required TResult Function(ShoppingCartItemEntity cartItem, bool? selected)
+        toggleItem,
   }) {
     return fetch();
   }
@@ -307,6 +327,8 @@ class _$_ShoppingCartFetchEvent extends _ShoppingCartFetchEvent
     TResult? Function(ShoppingCartItemEntity cartItem, int quantity)?
         updateItem,
     TResult? Function(ShoppingCartItemEntity cartItem)? removeItem,
+    TResult? Function(ShoppingCartItemEntity cartItem, bool? selected)?
+        toggleItem,
   }) {
     return fetch?.call();
   }
@@ -321,6 +343,8 @@ class _$_ShoppingCartFetchEvent extends _ShoppingCartFetchEvent
         addItem,
     TResult Function(ShoppingCartItemEntity cartItem, int quantity)? updateItem,
     TResult Function(ShoppingCartItemEntity cartItem)? removeItem,
+    TResult Function(ShoppingCartItemEntity cartItem, bool? selected)?
+        toggleItem,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -337,6 +361,7 @@ class _$_ShoppingCartFetchEvent extends _ShoppingCartFetchEvent
     required TResult Function(_ShoppingCartAddItemEvent value) addItem,
     required TResult Function(_ShoppingCartUpdateItemEvent value) updateItem,
     required TResult Function(_ShoppingCartRemoveItemEvent value) removeItem,
+    required TResult Function(_ShoppingCartToggleItemEvent value) toggleItem,
   }) {
     return fetch(this);
   }
@@ -349,6 +374,7 @@ class _$_ShoppingCartFetchEvent extends _ShoppingCartFetchEvent
     TResult? Function(_ShoppingCartAddItemEvent value)? addItem,
     TResult? Function(_ShoppingCartUpdateItemEvent value)? updateItem,
     TResult? Function(_ShoppingCartRemoveItemEvent value)? removeItem,
+    TResult? Function(_ShoppingCartToggleItemEvent value)? toggleItem,
   }) {
     return fetch?.call(this);
   }
@@ -361,6 +387,7 @@ class _$_ShoppingCartFetchEvent extends _ShoppingCartFetchEvent
     TResult Function(_ShoppingCartAddItemEvent value)? addItem,
     TResult Function(_ShoppingCartUpdateItemEvent value)? updateItem,
     TResult Function(_ShoppingCartRemoveItemEvent value)? removeItem,
+    TResult Function(_ShoppingCartToggleItemEvent value)? toggleItem,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -483,6 +510,8 @@ class _$_ShoppingCartAddItemEvent extends _ShoppingCartAddItemEvent
     required TResult Function(ShoppingCartItemEntity cartItem, int quantity)
         updateItem,
     required TResult Function(ShoppingCartItemEntity cartItem) removeItem,
+    required TResult Function(ShoppingCartItemEntity cartItem, bool? selected)
+        toggleItem,
   }) {
     return addItem(item, quantity, selectedVariant);
   }
@@ -498,6 +527,8 @@ class _$_ShoppingCartAddItemEvent extends _ShoppingCartAddItemEvent
     TResult? Function(ShoppingCartItemEntity cartItem, int quantity)?
         updateItem,
     TResult? Function(ShoppingCartItemEntity cartItem)? removeItem,
+    TResult? Function(ShoppingCartItemEntity cartItem, bool? selected)?
+        toggleItem,
   }) {
     return addItem?.call(item, quantity, selectedVariant);
   }
@@ -512,6 +543,8 @@ class _$_ShoppingCartAddItemEvent extends _ShoppingCartAddItemEvent
         addItem,
     TResult Function(ShoppingCartItemEntity cartItem, int quantity)? updateItem,
     TResult Function(ShoppingCartItemEntity cartItem)? removeItem,
+    TResult Function(ShoppingCartItemEntity cartItem, bool? selected)?
+        toggleItem,
     required TResult orElse(),
   }) {
     if (addItem != null) {
@@ -528,6 +561,7 @@ class _$_ShoppingCartAddItemEvent extends _ShoppingCartAddItemEvent
     required TResult Function(_ShoppingCartAddItemEvent value) addItem,
     required TResult Function(_ShoppingCartUpdateItemEvent value) updateItem,
     required TResult Function(_ShoppingCartRemoveItemEvent value) removeItem,
+    required TResult Function(_ShoppingCartToggleItemEvent value) toggleItem,
   }) {
     return addItem(this);
   }
@@ -540,6 +574,7 @@ class _$_ShoppingCartAddItemEvent extends _ShoppingCartAddItemEvent
     TResult? Function(_ShoppingCartAddItemEvent value)? addItem,
     TResult? Function(_ShoppingCartUpdateItemEvent value)? updateItem,
     TResult? Function(_ShoppingCartRemoveItemEvent value)? removeItem,
+    TResult? Function(_ShoppingCartToggleItemEvent value)? toggleItem,
   }) {
     return addItem?.call(this);
   }
@@ -552,6 +587,7 @@ class _$_ShoppingCartAddItemEvent extends _ShoppingCartAddItemEvent
     TResult Function(_ShoppingCartAddItemEvent value)? addItem,
     TResult Function(_ShoppingCartUpdateItemEvent value)? updateItem,
     TResult Function(_ShoppingCartRemoveItemEvent value)? removeItem,
+    TResult Function(_ShoppingCartToggleItemEvent value)? toggleItem,
     required TResult orElse(),
   }) {
     if (addItem != null) {
@@ -675,6 +711,8 @@ class _$_ShoppingCartUpdateItemEvent extends _ShoppingCartUpdateItemEvent
     required TResult Function(ShoppingCartItemEntity cartItem, int quantity)
         updateItem,
     required TResult Function(ShoppingCartItemEntity cartItem) removeItem,
+    required TResult Function(ShoppingCartItemEntity cartItem, bool? selected)
+        toggleItem,
   }) {
     return updateItem(cartItem, quantity);
   }
@@ -690,6 +728,8 @@ class _$_ShoppingCartUpdateItemEvent extends _ShoppingCartUpdateItemEvent
     TResult? Function(ShoppingCartItemEntity cartItem, int quantity)?
         updateItem,
     TResult? Function(ShoppingCartItemEntity cartItem)? removeItem,
+    TResult? Function(ShoppingCartItemEntity cartItem, bool? selected)?
+        toggleItem,
   }) {
     return updateItem?.call(cartItem, quantity);
   }
@@ -704,6 +744,8 @@ class _$_ShoppingCartUpdateItemEvent extends _ShoppingCartUpdateItemEvent
         addItem,
     TResult Function(ShoppingCartItemEntity cartItem, int quantity)? updateItem,
     TResult Function(ShoppingCartItemEntity cartItem)? removeItem,
+    TResult Function(ShoppingCartItemEntity cartItem, bool? selected)?
+        toggleItem,
     required TResult orElse(),
   }) {
     if (updateItem != null) {
@@ -720,6 +762,7 @@ class _$_ShoppingCartUpdateItemEvent extends _ShoppingCartUpdateItemEvent
     required TResult Function(_ShoppingCartAddItemEvent value) addItem,
     required TResult Function(_ShoppingCartUpdateItemEvent value) updateItem,
     required TResult Function(_ShoppingCartRemoveItemEvent value) removeItem,
+    required TResult Function(_ShoppingCartToggleItemEvent value) toggleItem,
   }) {
     return updateItem(this);
   }
@@ -732,6 +775,7 @@ class _$_ShoppingCartUpdateItemEvent extends _ShoppingCartUpdateItemEvent
     TResult? Function(_ShoppingCartAddItemEvent value)? addItem,
     TResult? Function(_ShoppingCartUpdateItemEvent value)? updateItem,
     TResult? Function(_ShoppingCartRemoveItemEvent value)? removeItem,
+    TResult? Function(_ShoppingCartToggleItemEvent value)? toggleItem,
   }) {
     return updateItem?.call(this);
   }
@@ -744,6 +788,7 @@ class _$_ShoppingCartUpdateItemEvent extends _ShoppingCartUpdateItemEvent
     TResult Function(_ShoppingCartAddItemEvent value)? addItem,
     TResult Function(_ShoppingCartUpdateItemEvent value)? updateItem,
     TResult Function(_ShoppingCartRemoveItemEvent value)? removeItem,
+    TResult Function(_ShoppingCartToggleItemEvent value)? toggleItem,
     required TResult orElse(),
   }) {
     if (updateItem != null) {
@@ -852,6 +897,8 @@ class _$_ShoppingCartRemoveItemEvent extends _ShoppingCartRemoveItemEvent
     required TResult Function(ShoppingCartItemEntity cartItem, int quantity)
         updateItem,
     required TResult Function(ShoppingCartItemEntity cartItem) removeItem,
+    required TResult Function(ShoppingCartItemEntity cartItem, bool? selected)
+        toggleItem,
   }) {
     return removeItem(cartItem);
   }
@@ -867,6 +914,8 @@ class _$_ShoppingCartRemoveItemEvent extends _ShoppingCartRemoveItemEvent
     TResult? Function(ShoppingCartItemEntity cartItem, int quantity)?
         updateItem,
     TResult? Function(ShoppingCartItemEntity cartItem)? removeItem,
+    TResult? Function(ShoppingCartItemEntity cartItem, bool? selected)?
+        toggleItem,
   }) {
     return removeItem?.call(cartItem);
   }
@@ -881,6 +930,8 @@ class _$_ShoppingCartRemoveItemEvent extends _ShoppingCartRemoveItemEvent
         addItem,
     TResult Function(ShoppingCartItemEntity cartItem, int quantity)? updateItem,
     TResult Function(ShoppingCartItemEntity cartItem)? removeItem,
+    TResult Function(ShoppingCartItemEntity cartItem, bool? selected)?
+        toggleItem,
     required TResult orElse(),
   }) {
     if (removeItem != null) {
@@ -897,6 +948,7 @@ class _$_ShoppingCartRemoveItemEvent extends _ShoppingCartRemoveItemEvent
     required TResult Function(_ShoppingCartAddItemEvent value) addItem,
     required TResult Function(_ShoppingCartUpdateItemEvent value) updateItem,
     required TResult Function(_ShoppingCartRemoveItemEvent value) removeItem,
+    required TResult Function(_ShoppingCartToggleItemEvent value) toggleItem,
   }) {
     return removeItem(this);
   }
@@ -909,6 +961,7 @@ class _$_ShoppingCartRemoveItemEvent extends _ShoppingCartRemoveItemEvent
     TResult? Function(_ShoppingCartAddItemEvent value)? addItem,
     TResult? Function(_ShoppingCartUpdateItemEvent value)? updateItem,
     TResult? Function(_ShoppingCartRemoveItemEvent value)? removeItem,
+    TResult? Function(_ShoppingCartToggleItemEvent value)? toggleItem,
   }) {
     return removeItem?.call(this);
   }
@@ -921,6 +974,7 @@ class _$_ShoppingCartRemoveItemEvent extends _ShoppingCartRemoveItemEvent
     TResult Function(_ShoppingCartAddItemEvent value)? addItem,
     TResult Function(_ShoppingCartUpdateItemEvent value)? updateItem,
     TResult Function(_ShoppingCartRemoveItemEvent value)? removeItem,
+    TResult Function(_ShoppingCartToggleItemEvent value)? toggleItem,
     required TResult orElse(),
   }) {
     if (removeItem != null) {
@@ -943,11 +997,208 @@ abstract class _ShoppingCartRemoveItemEvent extends ShoppingCartEvent {
 }
 
 /// @nodoc
+abstract class _$$_ShoppingCartToggleItemEventCopyWith<$Res> {
+  factory _$$_ShoppingCartToggleItemEventCopyWith(
+          _$_ShoppingCartToggleItemEvent value,
+          $Res Function(_$_ShoppingCartToggleItemEvent) then) =
+      __$$_ShoppingCartToggleItemEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ShoppingCartItemEntity cartItem, bool? selected});
+}
+
+/// @nodoc
+class __$$_ShoppingCartToggleItemEventCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$_ShoppingCartToggleItemEvent>
+    implements _$$_ShoppingCartToggleItemEventCopyWith<$Res> {
+  __$$_ShoppingCartToggleItemEventCopyWithImpl(
+      _$_ShoppingCartToggleItemEvent _value,
+      $Res Function(_$_ShoppingCartToggleItemEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? cartItem = null,
+    Object? selected = freezed,
+  }) {
+    return _then(_$_ShoppingCartToggleItemEvent(
+      cartItem: null == cartItem
+          ? _value.cartItem
+          : cartItem // ignore: cast_nullable_to_non_nullable
+              as ShoppingCartItemEntity,
+      selected: freezed == selected
+          ? _value.selected
+          : selected // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ShoppingCartToggleItemEvent extends _ShoppingCartToggleItemEvent
+    with DiagnosticableTreeMixin {
+  const _$_ShoppingCartToggleItemEvent({required this.cartItem, this.selected})
+      : super._();
+
+  @override
+  final ShoppingCartItemEntity cartItem;
+  @override
+  final bool? selected;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ShoppingCartEvent.toggleItem(cartItem: $cartItem, selected: $selected)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ShoppingCartEvent.toggleItem'))
+      ..add(DiagnosticsProperty('cartItem', cartItem))
+      ..add(DiagnosticsProperty('selected', selected));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ShoppingCartToggleItemEvent &&
+            (identical(other.cartItem, cartItem) ||
+                other.cartItem == cartItem) &&
+            (identical(other.selected, selected) ||
+                other.selected == selected));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, cartItem, selected);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ShoppingCartToggleItemEventCopyWith<_$_ShoppingCartToggleItemEvent>
+      get copyWith => __$$_ShoppingCartToggleItemEventCopyWithImpl<
+          _$_ShoppingCartToggleItemEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() fetch,
+    required TResult Function(ProductEntity item, int quantity,
+            ProductVariantEntity? selectedVariant)
+        addItem,
+    required TResult Function(ShoppingCartItemEntity cartItem, int quantity)
+        updateItem,
+    required TResult Function(ShoppingCartItemEntity cartItem) removeItem,
+    required TResult Function(ShoppingCartItemEntity cartItem, bool? selected)
+        toggleItem,
+  }) {
+    return toggleItem(cartItem, selected);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? fetch,
+    TResult? Function(ProductEntity item, int quantity,
+            ProductVariantEntity? selectedVariant)?
+        addItem,
+    TResult? Function(ShoppingCartItemEntity cartItem, int quantity)?
+        updateItem,
+    TResult? Function(ShoppingCartItemEntity cartItem)? removeItem,
+    TResult? Function(ShoppingCartItemEntity cartItem, bool? selected)?
+        toggleItem,
+  }) {
+    return toggleItem?.call(cartItem, selected);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetch,
+    TResult Function(ProductEntity item, int quantity,
+            ProductVariantEntity? selectedVariant)?
+        addItem,
+    TResult Function(ShoppingCartItemEntity cartItem, int quantity)? updateItem,
+    TResult Function(ShoppingCartItemEntity cartItem)? removeItem,
+    TResult Function(ShoppingCartItemEntity cartItem, bool? selected)?
+        toggleItem,
+    required TResult orElse(),
+  }) {
+    if (toggleItem != null) {
+      return toggleItem(cartItem, selected);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ShoppingCartInitialEvent value) initial,
+    required TResult Function(_ShoppingCartFetchEvent value) fetch,
+    required TResult Function(_ShoppingCartAddItemEvent value) addItem,
+    required TResult Function(_ShoppingCartUpdateItemEvent value) updateItem,
+    required TResult Function(_ShoppingCartRemoveItemEvent value) removeItem,
+    required TResult Function(_ShoppingCartToggleItemEvent value) toggleItem,
+  }) {
+    return toggleItem(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ShoppingCartInitialEvent value)? initial,
+    TResult? Function(_ShoppingCartFetchEvent value)? fetch,
+    TResult? Function(_ShoppingCartAddItemEvent value)? addItem,
+    TResult? Function(_ShoppingCartUpdateItemEvent value)? updateItem,
+    TResult? Function(_ShoppingCartRemoveItemEvent value)? removeItem,
+    TResult? Function(_ShoppingCartToggleItemEvent value)? toggleItem,
+  }) {
+    return toggleItem?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ShoppingCartInitialEvent value)? initial,
+    TResult Function(_ShoppingCartFetchEvent value)? fetch,
+    TResult Function(_ShoppingCartAddItemEvent value)? addItem,
+    TResult Function(_ShoppingCartUpdateItemEvent value)? updateItem,
+    TResult Function(_ShoppingCartRemoveItemEvent value)? removeItem,
+    TResult Function(_ShoppingCartToggleItemEvent value)? toggleItem,
+    required TResult orElse(),
+  }) {
+    if (toggleItem != null) {
+      return toggleItem(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ShoppingCartToggleItemEvent extends ShoppingCartEvent {
+  const factory _ShoppingCartToggleItemEvent(
+      {required final ShoppingCartItemEntity cartItem,
+      final bool? selected}) = _$_ShoppingCartToggleItemEvent;
+  const _ShoppingCartToggleItemEvent._() : super._();
+
+  ShoppingCartItemEntity get cartItem;
+  bool? get selected;
+  @JsonKey(ignore: true)
+  _$$_ShoppingCartToggleItemEventCopyWith<_$_ShoppingCartToggleItemEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ShoppingCartState {
   ShoppingCartStatus get status => throw _privateConstructorUsedError;
   List<ShoppingCartItemGroupEntity> get items =>
       throw _privateConstructorUsedError;
-  Set<String> get selectedItem => throw _privateConstructorUsedError;
+  Set<String> get selectedCartItemIds => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ShoppingCartStateCopyWith<ShoppingCartState> get copyWith =>
@@ -963,7 +1214,7 @@ abstract class $ShoppingCartStateCopyWith<$Res> {
   $Res call(
       {ShoppingCartStatus status,
       List<ShoppingCartItemGroupEntity> items,
-      Set<String> selectedItem});
+      Set<String> selectedCartItemIds});
 }
 
 /// @nodoc
@@ -981,7 +1232,7 @@ class _$ShoppingCartStateCopyWithImpl<$Res, $Val extends ShoppingCartState>
   $Res call({
     Object? status = null,
     Object? items = null,
-    Object? selectedItem = null,
+    Object? selectedCartItemIds = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -992,9 +1243,9 @@ class _$ShoppingCartStateCopyWithImpl<$Res, $Val extends ShoppingCartState>
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
               as List<ShoppingCartItemGroupEntity>,
-      selectedItem: null == selectedItem
-          ? _value.selectedItem
-          : selectedItem // ignore: cast_nullable_to_non_nullable
+      selectedCartItemIds: null == selectedCartItemIds
+          ? _value.selectedCartItemIds
+          : selectedCartItemIds // ignore: cast_nullable_to_non_nullable
               as Set<String>,
     ) as $Val);
   }
@@ -1011,7 +1262,7 @@ abstract class _$$_ShoppingCartStateCopyWith<$Res>
   $Res call(
       {ShoppingCartStatus status,
       List<ShoppingCartItemGroupEntity> items,
-      Set<String> selectedItem});
+      Set<String> selectedCartItemIds});
 }
 
 /// @nodoc
@@ -1027,7 +1278,7 @@ class __$$_ShoppingCartStateCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? items = null,
-    Object? selectedItem = null,
+    Object? selectedCartItemIds = null,
   }) {
     return _then(_$_ShoppingCartState(
       status: null == status
@@ -1038,9 +1289,9 @@ class __$$_ShoppingCartStateCopyWithImpl<$Res>
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<ShoppingCartItemGroupEntity>,
-      selectedItem: null == selectedItem
-          ? _value._selectedItem
-          : selectedItem // ignore: cast_nullable_to_non_nullable
+      selectedCartItemIds: null == selectedCartItemIds
+          ? _value._selectedCartItemIds
+          : selectedCartItemIds // ignore: cast_nullable_to_non_nullable
               as Set<String>,
     ));
   }
@@ -1053,9 +1304,9 @@ class _$_ShoppingCartState extends _ShoppingCartState
   const _$_ShoppingCartState(
       {this.status = ShoppingCartStatus.initial,
       final List<ShoppingCartItemGroupEntity> items = const [],
-      final Set<String> selectedItem = const {}})
+      final Set<String> selectedCartItemIds = const {}})
       : _items = items,
-        _selectedItem = selectedItem,
+        _selectedCartItemIds = selectedCartItemIds,
         super._();
 
   @override
@@ -1070,18 +1321,19 @@ class _$_ShoppingCartState extends _ShoppingCartState
     return EqualUnmodifiableListView(_items);
   }
 
-  final Set<String> _selectedItem;
+  final Set<String> _selectedCartItemIds;
   @override
   @JsonKey()
-  Set<String> get selectedItem {
-    if (_selectedItem is EqualUnmodifiableSetView) return _selectedItem;
+  Set<String> get selectedCartItemIds {
+    if (_selectedCartItemIds is EqualUnmodifiableSetView)
+      return _selectedCartItemIds;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(_selectedItem);
+    return EqualUnmodifiableSetView(_selectedCartItemIds);
   }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ShoppingCartState(status: $status, items: $items, selectedItem: $selectedItem)';
+    return 'ShoppingCartState(status: $status, items: $items, selectedCartItemIds: $selectedCartItemIds)';
   }
 
   @override
@@ -1091,7 +1343,7 @@ class _$_ShoppingCartState extends _ShoppingCartState
       ..add(DiagnosticsProperty('type', 'ShoppingCartState'))
       ..add(DiagnosticsProperty('status', status))
       ..add(DiagnosticsProperty('items', items))
-      ..add(DiagnosticsProperty('selectedItem', selectedItem));
+      ..add(DiagnosticsProperty('selectedCartItemIds', selectedCartItemIds));
   }
 
   @override
@@ -1102,7 +1354,7 @@ class _$_ShoppingCartState extends _ShoppingCartState
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality().equals(other._items, _items) &&
             const DeepCollectionEquality()
-                .equals(other._selectedItem, _selectedItem));
+                .equals(other._selectedCartItemIds, _selectedCartItemIds));
   }
 
   @override
@@ -1110,7 +1362,7 @@ class _$_ShoppingCartState extends _ShoppingCartState
       runtimeType,
       status,
       const DeepCollectionEquality().hash(_items),
-      const DeepCollectionEquality().hash(_selectedItem));
+      const DeepCollectionEquality().hash(_selectedCartItemIds));
 
   @JsonKey(ignore: true)
   @override
@@ -1124,7 +1376,7 @@ abstract class _ShoppingCartState extends ShoppingCartState {
   const factory _ShoppingCartState(
       {final ShoppingCartStatus status,
       final List<ShoppingCartItemGroupEntity> items,
-      final Set<String> selectedItem}) = _$_ShoppingCartState;
+      final Set<String> selectedCartItemIds}) = _$_ShoppingCartState;
   const _ShoppingCartState._() : super._();
 
   @override
@@ -1132,7 +1384,7 @@ abstract class _ShoppingCartState extends ShoppingCartState {
   @override
   List<ShoppingCartItemGroupEntity> get items;
   @override
-  Set<String> get selectedItem;
+  Set<String> get selectedCartItemIds;
   @override
   @JsonKey(ignore: true)
   _$$_ShoppingCartStateCopyWith<_$_ShoppingCartState> get copyWith =>

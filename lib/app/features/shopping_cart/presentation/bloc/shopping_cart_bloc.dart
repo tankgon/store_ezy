@@ -7,20 +7,13 @@ part 'shopping_cart_event.dart';
 part 'shopping_cart_state.dart';
 
 class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
-  // ShoppingCartBloc() : super(const ShoppingCartState()) {
-  //   on<ShoppingCartInitialEvent>(_onInitial);
-  //   on<ShoppingCartFetchEvent>(_onFetch);
-  //   on<ShoppingCartAddItemEvent>(_onAddItem);
-  //   on<ShoppingCartUpdateItemEvent>(_onUpdateItem);
-  //   on<ShoppingCartRemoveItemEvent>(_onRemoveItem);
-  // }
-
   ShoppingCartBloc() : super(const ShoppingCartState()) {
     on<_ShoppingCartInitialEvent>(_onInitial);
     on<_ShoppingCartFetchEvent>(_onFetch);
     on<_ShoppingCartAddItemEvent>(_onAddItem);
     on<_ShoppingCartUpdateItemEvent>(_onUpdateItem);
     on<_ShoppingCartRemoveItemEvent>(_onRemoveItem);
+    on<_ShoppingCartToggleItemEvent>(_onSelectItem);
   }
 
   final ShoppingCartRepo _repo = getIt();
@@ -91,5 +84,40 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
       (previousValue, element) =>
           previousValue + element.productCartList.length,
     );
+  }
+
+  FutureOr<void> _onSelectItem(
+    _ShoppingCartToggleItemEvent event,
+    Emitter<ShoppingCartState> emit,
+  ) {
+    final itemId = event.cartItem.id;
+    if (itemId == null) {
+      return null;
+    }
+    final selectedCartItemIdsRs = {...state.selectedCartItemIds};
+
+    final isSelected = event.selected ?? isCartItemIdSelected(itemId);
+    if (isSelected) {
+      selectedCartItemIdsRs.remove(itemId);
+    } else {
+      selectedCartItemIdsRs.add(itemId);
+    }
+
+    emit(
+      state.copyWith(
+        selectedCartItemIds: selectedCartItemIdsRs,
+      ),
+    );
+  }
+
+  bool isCartItemSelected(ShoppingCartItemEntity item) {
+    return isCartItemIdSelected(item.id);
+  }
+
+  bool isCartItemIdSelected(String? id) {
+    if (id == null) {
+      return false;
+    }
+    return state.selectedCartItemIds.contains(id);
   }
 }

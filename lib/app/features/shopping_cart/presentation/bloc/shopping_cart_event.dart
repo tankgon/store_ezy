@@ -22,4 +22,9 @@ class ShoppingCartEvent with _$ShoppingCartEvent {
   const factory ShoppingCartEvent.removeItem({
     required ShoppingCartItemEntity cartItem,
   }) = _ShoppingCartRemoveItemEvent;
+
+  const factory ShoppingCartEvent.toggleItem({
+    required ShoppingCartItemEntity cartItem,
+    bool? selected,
+  }) = _ShoppingCartToggleItemEvent;
 }
