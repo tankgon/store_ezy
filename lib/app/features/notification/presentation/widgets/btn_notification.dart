@@ -10,14 +10,13 @@ class NotificationBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState>(
-      listenWhen: (previous, current) => previous.data.user?.userID != current.data.user?.userID,
+      listenWhen: (previous, current) =>
+          previous.data.user?.userID != current.data.user?.userID,
       listener: (context, state) {
         if (state is AuthenticatedState) {}
       },
       builder: (context, state) {
-        // if (state is! AuthenticatedState) {
-        //   return const SizedBox.shrink();
-        // }
+        final notiCount = 0;
         return BadgedCount(
           icon: Icon(
             PhosphorIcons.bell,
@@ -25,9 +24,14 @@ class NotificationBtn extends StatelessWidget {
           ),
           badgeBorderColor: badgeBorderColor,
           padding: padding,
-          count: 9,
+          count: notiCount,
           onPressed: () {
-            context.pushRoute(const NotificationMainRoute());
+            context.read<AuthBloc>().checkLoginAction(
+              context,
+              onLogin: (user) {
+                context.pushRoute(const NotificationMainRoute());
+              },
+            );
           },
         );
       },

@@ -15,26 +15,22 @@ class UserOrderPage extends StatelessWidget {
         return BlocListener<UserOrderCubit, UserOrderState>(
           listener: _onStateChanged,
           child: Scaffold(
-            body: NestedScrollView(
-              headerSliverBuilder: (context, innerBoxIsScrolled) {
-                return [
-                  AppAppBarSliver(
-                    title: LocaleKeys.userOrder_Orders.tr(),
-                    args: AppBarArgs(
-                      actions: [
-                        AppButtonIcon(
-                          icon: PhosphorIcons.magnifying_glass,
-                          onPressed: () {},
-                        ),
-                        const ShoppingCartBtn(),
-                        Gaps.hGap4,
-                      ].withDivider(Gaps.hGap4, showLast: true),
-                    ),
+            appBar: AppAppBar(
+              title: 'Đơn hàng'.tr(),
+              args: AppBarArgs(
+                centerTitle: false,
+                elevation: 0,
+                actions: [
+                  AppButtonIcon(
+                    icon: PhosphorIcons.magnifying_glass,
+                    onPressed: () {},
                   ),
-                ];
-              },
-              body: const UserOrderBody(),
+                  const ShoppingCartBtn(),
+                  Gaps.hGap4,
+                ].withDivider(Gaps.hGap4, showLast: true),
+              ),
             ),
+            body: const UserOrderBody(),
           ),
         );
       }),
@@ -64,7 +60,8 @@ class _PageBodyLoading extends StatelessWidget {
         // if (state.status == ItemDetailStatus.error) {
         //   return SimpleErrorText(error: state.errorMsg ?? '');
         // }
-        final isLoading = state.status == ItemStatus.loading || state.status == ItemStatus.initial;
+        final isLoading = state.status == ItemStatus.loading ||
+            state.status == ItemStatus.initial;
 
         return child;
       },
