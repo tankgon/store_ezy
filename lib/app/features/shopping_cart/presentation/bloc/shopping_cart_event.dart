@@ -1,38 +1,25 @@
 part of 'shopping_cart_bloc.dart';
 
-@immutable
-abstract class ShoppingCartEvent {}
+@freezed
+class ShoppingCartEvent with _$ShoppingCartEvent {
+  const ShoppingCartEvent._();
 
-class ShoppingCartInitialEvent extends ShoppingCartEvent {}
+  const factory ShoppingCartEvent.initial() = _ShoppingCartInitialEvent;
 
-class ShoppingCartFetchEvent extends ShoppingCartEvent {}
+  const factory ShoppingCartEvent.fetch() = _ShoppingCartFetchEvent;
 
-class ShoppingCartAddItemEvent extends ShoppingCartEvent {
-  ShoppingCartAddItemEvent({
-    required this.item,
-    required this.quantity,
-    this.selectedVariant,
-  });
+  const factory ShoppingCartEvent.addItem({
+    required ProductEntity item,
+    required int quantity,
+    ProductVariantEntity? selectedVariant,
+  }) = _ShoppingCartAddItemEvent;
 
-  final ProductEntity item;
-  final ProductVariantEntity? selectedVariant;
-  final int quantity;
-}
+  const factory ShoppingCartEvent.updateItem({
+    required ShoppingCartItemEntity cartItem,
+    required int quantity,
+  }) = _ShoppingCartUpdateItemEvent;
 
-class ShoppingCartUpdateItemEvent extends ShoppingCartEvent {
-  ShoppingCartUpdateItemEvent({
-    required this.cartItem,
-    required this.quantity,
-  });
-
-  final ShoppingCartItemEntity cartItem;
-  final int quantity;
-}
-
-class ShoppingCartRemoveItemEvent extends ShoppingCartEvent {
-  ShoppingCartRemoveItemEvent({
-    required this.cartItem,
-  });
-
-  final ShoppingCartItemEntity cartItem;
+  const factory ShoppingCartEvent.removeItem({
+    required ShoppingCartItemEntity cartItem,
+  }) = _ShoppingCartRemoveItemEvent;
 }

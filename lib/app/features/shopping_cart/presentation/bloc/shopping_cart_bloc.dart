@@ -2,20 +2,28 @@ import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/product/domain/entity/product_entity.dart';
 import 'package:mulstore/app/features/shopping_cart/seft.dart';
 
+part 'shopping_cart_bloc.freezed.dart';
 part 'shopping_cart_event.dart';
 part 'shopping_cart_state.dart';
 
 class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
+  // ShoppingCartBloc() : super(const ShoppingCartState()) {
+  //   on<ShoppingCartInitialEvent>(_onInitial);
+  //   on<ShoppingCartFetchEvent>(_onFetch);
+  //   on<ShoppingCartAddItemEvent>(_onAddItem);
+  //   on<ShoppingCartUpdateItemEvent>(_onUpdateItem);
+  //   on<ShoppingCartRemoveItemEvent>(_onRemoveItem);
+  // }
+
   ShoppingCartBloc() : super(const ShoppingCartState()) {
-    on<ShoppingCartInitialEvent>(_onInitial);
-    on<ShoppingCartFetchEvent>(_onFetch);
-    on<ShoppingCartAddItemEvent>(_onAddItem);
-    on<ShoppingCartUpdateItemEvent>(_onUpdateItem);
-    on<ShoppingCartRemoveItemEvent>(_onRemoveItem);
+    on<_ShoppingCartInitialEvent>(_onInitial);
+    on<_ShoppingCartFetchEvent>(_onFetch);
+    on<_ShoppingCartAddItemEvent>(_onAddItem);
+    on<_ShoppingCartUpdateItemEvent>(_onUpdateItem);
+    on<_ShoppingCartRemoveItemEvent>(_onRemoveItem);
   }
 
   final ShoppingCartRepo _repo = getIt();
-
   Future<void> _fetchData(Emitter<ShoppingCartState> emit) async {
     final shoppingCartList = await _repo.getShoppingCartList();
     emit(
@@ -27,7 +35,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
   }
 
   FutureOr<void> _onInitial(
-    ShoppingCartInitialEvent event,
+    _ShoppingCartInitialEvent event,
     Emitter<ShoppingCartState> emit,
   ) {
     emit(state.copyWith(status: ShoppingCartStatus.loading));
@@ -35,14 +43,14 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
   }
 
   Future<FutureOr<void>> _onFetch(
-    ShoppingCartFetchEvent event,
+    _ShoppingCartFetchEvent event,
     Emitter<ShoppingCartState> emit,
   ) async {
     await _fetchData(emit);
   }
 
   FutureOr<void> _onAddItem(
-    ShoppingCartAddItemEvent event,
+    _ShoppingCartAddItemEvent event,
     Emitter<ShoppingCartState> emit,
   ) async {
     final item = event.item;
@@ -55,7 +63,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
   }
 
   FutureOr<void> _onRemoveItem(
-    ShoppingCartRemoveItemEvent event,
+    _ShoppingCartRemoveItemEvent event,
     Emitter<ShoppingCartState> emit,
   ) async {
     final item = event.cartItem;
@@ -66,7 +74,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
   }
 
   FutureOr<void> _onUpdateItem(
-    ShoppingCartUpdateItemEvent event,
+    _ShoppingCartUpdateItemEvent event,
     Emitter<ShoppingCartState> emit,
   ) async {
     final item = event.cartItem;

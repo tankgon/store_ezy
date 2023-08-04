@@ -23,7 +23,7 @@ class AuthListener extends StatelessWidget {
   void _onAuthStateChange(BuildContext context, AuthState state) {
     if (state is AuthenticatedState) {
       context.read<ShoppingCartBloc>().add(
-            ShoppingCartFetchEvent(),
+            const ShoppingCartEvent.fetch(),
           );
       if (!state.isRefresh) {
         // ToastUtils.showToast(

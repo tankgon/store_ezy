@@ -7,30 +7,13 @@ enum ShoppingCartStatus {
   error,
 }
 
-@immutable
-class ShoppingCartState extends Equatable {
-  const ShoppingCartState({
-    this.status = ShoppingCartStatus.initial,
-    this.items = const [],
-    this.selectedItem = const {},
-  });
+@freezed
+class ShoppingCartState with _$ShoppingCartState {
+  const ShoppingCartState._();
 
-  final ShoppingCartStatus status;
-  final List<ShoppingCartItemGroupEntity> items;
-  final Set<String> selectedItem;
-
-  @override
-  List<Object> get props => [status, items, selectedItem];
-
-  ShoppingCartState copyWith({
-    ShoppingCartStatus? status,
-    List<ShoppingCartItemGroupEntity>? items,
-    Set<String>? selectedItem,
-  }) {
-    return ShoppingCartState(
-      status: status ?? this.status,
-      items: items ?? this.items,
-      selectedItem: selectedItem ?? this.selectedItem,
-    );
-  }
+  const factory ShoppingCartState({
+    @Default(ShoppingCartStatus.initial) ShoppingCartStatus status,
+    @Default([]) List<ShoppingCartItemGroupEntity> items,
+    @Default({}) Set<String> selectedItem,
+  }) = _ShoppingCartState;
 }

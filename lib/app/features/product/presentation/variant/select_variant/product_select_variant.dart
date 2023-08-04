@@ -71,7 +71,7 @@ class ProductSelectVariantPopup extends StatelessWidget {
 
   void addToCart(BuildContext context, ProductVariantEntity selectVariant) {
     final result = context.read<ShoppingCartBloc>().add(
-          ShoppingCartAddItemEvent(
+          ShoppingCartEvent.addItem(
             item: product,
             selectedVariant: selectVariant,
             quantity: context.read<ProductSelectVariantCubit>().state.quantity,

@@ -49,7 +49,7 @@ class ShoppingCartItem extends StatelessWidget {
     return AppCartItemCounterSubmitCallBack(
       onValueSubmit: (quantity) {
         context.read<ShoppingCartBloc>().add(
-              ShoppingCartUpdateItemEvent(
+              ShoppingCartEvent.updateItem(
                 cartItem: cartItem,
                 quantity: quantity,
               ),
@@ -61,7 +61,7 @@ class ShoppingCartItem extends StatelessWidget {
           content: 'Xóa mặt hàng này ra khỏi giỏ?',
           delete: () {
             context.read<ShoppingCartBloc>().add(
-                  ShoppingCartRemoveItemEvent(
+                  ShoppingCartEvent.removeItem(
                     cartItem: cartItem,
                   ),
                 );

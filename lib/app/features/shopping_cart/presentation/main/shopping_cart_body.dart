@@ -11,7 +11,7 @@ class ShoppingCartBody extends StatelessWidget {
     return AppPullDownRefresh(
       refresh: () {
         context.read<ShoppingCartBloc>().add(
-              ShoppingCartFetchEvent(),
+              const ShoppingCartEvent.fetch(),
             );
       },
       child: Column(
