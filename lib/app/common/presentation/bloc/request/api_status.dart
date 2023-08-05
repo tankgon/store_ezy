@@ -11,7 +11,7 @@ class ApiStatus with _$ApiStatus {
   const factory ApiStatus.loading() = _Loading;
   const factory ApiStatus.refreshing() = _Refreshing;
   const factory ApiStatus.done() = _Done;
-  const factory ApiStatus.error(Object error) = _Error;
+  const factory ApiStatus.error(Object? error) = _Error;
 
   ApiStatus toPending() => maybeMap(
         initial: (_) => const ApiStatus.loading(),

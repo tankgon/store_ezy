@@ -4,7 +4,13 @@ import 'package:mulstore/all_file/all_file.dart';
 //TODO: demo
 // _demo() {
 //   final selectItem = await BottomSheetUtils.showMaterial(context: context, child: SelectItemPopup<AddressEntity>(
-//     fetchListData: repo.getData(offset, limit),
+//     searchListData: (offset, limit, search) {
+//       return addressRepo.getAddressListSearch(
+//         limit: limit,
+//         offset: offset,
+//         search: search,
+//       );
+//     },
 //   );
 //   print(selectItem?.name)
 // }
@@ -12,12 +18,16 @@ import 'package:mulstore/all_file/all_file.dart';
 class SelectItemPopup<T> extends StatelessWidget {
   const SelectItemPopup({
     super.key,
-    required this.fetchListData,
+    required this.searchListData,
     required this.itemToString,
     this.itemBuilder,
   });
 
-  final PagingListFetchFunc<T> fetchListData;
+  final Future<List<T>> Function(
+    int offset,
+    int limit,
+    String search,
+  ) searchListData;
   final String Function(T item) itemToString;
   final ItemWidgetBuilder<T>? itemBuilder;
 
@@ -37,7 +47,13 @@ class SelectItemPopup<T> extends StatelessWidget {
         ),
       ),
       body: PagingList<T>(
-        fetchListData: fetchListData,
+        fetchListData: (offset, limit) {
+          return searchListData(
+            offset,
+            limit,
+            'searchValue',
+          ); // put input search value here
+        },
         itemBuilder: itemBuilder ??
             (context, item, index) {
               return AppTileText(

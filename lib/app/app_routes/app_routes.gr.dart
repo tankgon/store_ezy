@@ -177,9 +177,7 @@ abstract class $AppAutoRoute extends _i24.RootStackRouter {
         child: _i14.CrudAddressPage(
           key: args.key,
           initialAddress: args.initialAddress,
-          addAddressFuture: args.addAddressFuture,
-          updateAddressFuture: args.updateAddressFuture,
-          removeAddressFuture: args.removeAddressFuture,
+          type: args.type,
         ),
       );
     },
@@ -563,21 +561,14 @@ class CrudAddressRoute extends _i24.PageRouteInfo<CrudAddressRouteArgs> {
   CrudAddressRoute({
     _i26.Key? key,
     _i28.UserAddressEntity? initialAddress,
-    _i25.Future<_i28.UserAddressEntity> Function(_i28.UserAddressEntity)?
-        addAddressFuture,
-    _i25.Future<_i28.UserAddressEntity> Function(_i28.UserAddressEntity)?
-        updateAddressFuture,
-    _i25.Future<_i28.UserAddressEntity> Function(_i28.UserAddressEntity)?
-        removeAddressFuture,
+    _i14.CrudAddressType type = _i14.CrudAddressType.add,
     List<_i24.PageRouteInfo>? children,
   }) : super(
           CrudAddressRoute.name,
           args: CrudAddressRouteArgs(
             key: key,
             initialAddress: initialAddress,
-            addAddressFuture: addAddressFuture,
-            updateAddressFuture: updateAddressFuture,
-            removeAddressFuture: removeAddressFuture,
+            type: type,
           ),
           initialChildren: children,
         );
@@ -592,27 +583,18 @@ class CrudAddressRouteArgs {
   const CrudAddressRouteArgs({
     this.key,
     this.initialAddress,
-    this.addAddressFuture,
-    this.updateAddressFuture,
-    this.removeAddressFuture,
+    this.type = _i14.CrudAddressType.add,
   });
 
   final _i26.Key? key;
 
   final _i28.UserAddressEntity? initialAddress;
 
-  final _i25.Future<_i28.UserAddressEntity> Function(_i28.UserAddressEntity)?
-      addAddressFuture;
-
-  final _i25.Future<_i28.UserAddressEntity> Function(_i28.UserAddressEntity)?
-      updateAddressFuture;
-
-  final _i25.Future<_i28.UserAddressEntity> Function(_i28.UserAddressEntity)?
-      removeAddressFuture;
+  final _i14.CrudAddressType type;
 
   @override
   String toString() {
-    return 'CrudAddressRouteArgs{key: $key, initialAddress: $initialAddress, addAddressFuture: $addAddressFuture, updateAddressFuture: $updateAddressFuture, removeAddressFuture: $removeAddressFuture}';
+    return 'CrudAddressRouteArgs{key: $key, initialAddress: $initialAddress, type: $type}';
   }
 }
 

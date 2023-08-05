@@ -39,12 +39,7 @@ class ReceiveAddressBody extends StatelessWidget {
             label: 'Thêm địa chỉ'.tr(),
             onPressed: () {
               context.pushRoute(
-                CrudAddressRoute(
-                  addAddressFuture: (item) {
-                    context.read<ReceiveAddressCubit>().addItem(item);
-                    return Future.value(item);
-                  },
-                ),
+                CrudAddressRoute(),
               );
             },
           ).pxDefault()

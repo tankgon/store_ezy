@@ -22,7 +22,7 @@ mixin _$ApiStatus {
     required TResult Function() loading,
     required TResult Function() refreshing,
     required TResult Function() done,
-    required TResult Function(Object error) error,
+    required TResult Function(Object? error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,7 +31,7 @@ mixin _$ApiStatus {
     TResult? Function()? loading,
     TResult? Function()? refreshing,
     TResult? Function()? done,
-    TResult? Function(Object error)? error,
+    TResult? Function(Object? error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +40,7 @@ mixin _$ApiStatus {
     TResult Function()? loading,
     TResult Function()? refreshing,
     TResult Function()? done,
-    TResult Function(Object error)? error,
+    TResult Function(Object? error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -132,7 +132,7 @@ class _$_Initial extends _Initial {
     required TResult Function() loading,
     required TResult Function() refreshing,
     required TResult Function() done,
-    required TResult Function(Object error) error,
+    required TResult Function(Object? error) error,
   }) {
     return initial();
   }
@@ -144,7 +144,7 @@ class _$_Initial extends _Initial {
     TResult? Function()? loading,
     TResult? Function()? refreshing,
     TResult? Function()? done,
-    TResult? Function(Object error)? error,
+    TResult? Function(Object? error)? error,
   }) {
     return initial?.call();
   }
@@ -156,7 +156,7 @@ class _$_Initial extends _Initial {
     TResult Function()? loading,
     TResult Function()? refreshing,
     TResult Function()? done,
-    TResult Function(Object error)? error,
+    TResult Function(Object? error)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -252,7 +252,7 @@ class _$_Loading extends _Loading {
     required TResult Function() loading,
     required TResult Function() refreshing,
     required TResult Function() done,
-    required TResult Function(Object error) error,
+    required TResult Function(Object? error) error,
   }) {
     return loading();
   }
@@ -264,7 +264,7 @@ class _$_Loading extends _Loading {
     TResult? Function()? loading,
     TResult? Function()? refreshing,
     TResult? Function()? done,
-    TResult? Function(Object error)? error,
+    TResult? Function(Object? error)? error,
   }) {
     return loading?.call();
   }
@@ -276,7 +276,7 @@ class _$_Loading extends _Loading {
     TResult Function()? loading,
     TResult Function()? refreshing,
     TResult Function()? done,
-    TResult Function(Object error)? error,
+    TResult Function(Object? error)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -373,7 +373,7 @@ class _$_Refreshing extends _Refreshing {
     required TResult Function() loading,
     required TResult Function() refreshing,
     required TResult Function() done,
-    required TResult Function(Object error) error,
+    required TResult Function(Object? error) error,
   }) {
     return refreshing();
   }
@@ -385,7 +385,7 @@ class _$_Refreshing extends _Refreshing {
     TResult? Function()? loading,
     TResult? Function()? refreshing,
     TResult? Function()? done,
-    TResult? Function(Object error)? error,
+    TResult? Function(Object? error)? error,
   }) {
     return refreshing?.call();
   }
@@ -397,7 +397,7 @@ class _$_Refreshing extends _Refreshing {
     TResult Function()? loading,
     TResult Function()? refreshing,
     TResult Function()? done,
-    TResult Function(Object error)? error,
+    TResult Function(Object? error)? error,
     required TResult orElse(),
   }) {
     if (refreshing != null) {
@@ -491,7 +491,7 @@ class _$_Done extends _Done {
     required TResult Function() loading,
     required TResult Function() refreshing,
     required TResult Function() done,
-    required TResult Function(Object error) error,
+    required TResult Function(Object? error) error,
   }) {
     return done();
   }
@@ -503,7 +503,7 @@ class _$_Done extends _Done {
     TResult? Function()? loading,
     TResult? Function()? refreshing,
     TResult? Function()? done,
-    TResult? Function(Object error)? error,
+    TResult? Function(Object? error)? error,
   }) {
     return done?.call();
   }
@@ -515,7 +515,7 @@ class _$_Done extends _Done {
     TResult Function()? loading,
     TResult Function()? refreshing,
     TResult Function()? done,
-    TResult Function(Object error)? error,
+    TResult Function(Object? error)? error,
     required TResult orElse(),
   }) {
     if (done != null) {
@@ -575,7 +575,7 @@ abstract class _$$_ErrorCopyWith<$Res> {
   factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
       __$$_ErrorCopyWithImpl<$Res>;
   @useResult
-  $Res call({Object error});
+  $Res call({Object? error});
 }
 
 /// @nodoc
@@ -588,10 +588,10 @@ class __$$_ErrorCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = null,
+    Object? error = freezed,
   }) {
     return _then(_$_Error(
-      null == error ? _value.error : error,
+      freezed == error ? _value.error : error,
     ));
   }
 }
@@ -602,7 +602,7 @@ class _$_Error extends _Error {
   const _$_Error(this.error) : super._();
 
   @override
-  final Object error;
+  final Object? error;
 
   @override
   String toString() {
@@ -634,7 +634,7 @@ class _$_Error extends _Error {
     required TResult Function() loading,
     required TResult Function() refreshing,
     required TResult Function() done,
-    required TResult Function(Object error) error,
+    required TResult Function(Object? error) error,
   }) {
     return error(this.error);
   }
@@ -646,7 +646,7 @@ class _$_Error extends _Error {
     TResult? Function()? loading,
     TResult? Function()? refreshing,
     TResult? Function()? done,
-    TResult? Function(Object error)? error,
+    TResult? Function(Object? error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -658,7 +658,7 @@ class _$_Error extends _Error {
     TResult Function()? loading,
     TResult Function()? refreshing,
     TResult Function()? done,
-    TResult Function(Object error)? error,
+    TResult Function(Object? error)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -709,10 +709,10 @@ class _$_Error extends _Error {
 }
 
 abstract class _Error extends ApiStatus {
-  const factory _Error(final Object error) = _$_Error;
+  const factory _Error(final Object? error) = _$_Error;
   const _Error._() : super._();
 
-  Object get error;
+  Object? get error;
   @JsonKey(ignore: true)
   _$$_ErrorCopyWith<_$_Error> get copyWith =>
       throw _privateConstructorUsedError;
