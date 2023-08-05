@@ -61,8 +61,17 @@ class _AppCheckBoxState extends State<AppCheckBox> {
 
   @override
   void initState() {
-    isChecked = widget.initialValue ?? (widget.tristate ? null : false) ?? false;
+    isChecked =
+        widget.initialValue ?? (widget.tristate ? null : false) ?? false;
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(AppCheckBox oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.initialValue != null) {
+      isChecked = widget.initialValue!;
+    }
   }
 
   @override
@@ -79,6 +88,7 @@ class _AppCheckBoxState extends State<AppCheckBox> {
       return Opacity(
         opacity: widget.enabled == false ? 0.5 : 1,
         child: Checkbox(
+          key: widget.key,
           value: isChecked,
           visualDensity: widget.visualDensity,
           tristate: widget.tristate,
@@ -93,6 +103,7 @@ class _AppCheckBoxState extends State<AppCheckBox> {
     }
 
     return CheckboxListTile(
+      key: widget.key,
       enabled: widget.enabled,
       value: isChecked,
       tristate: widget.tristate,

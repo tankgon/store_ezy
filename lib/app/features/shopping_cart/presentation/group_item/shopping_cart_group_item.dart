@@ -13,13 +13,28 @@ class ShoppingCartGroupItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
       builder: (context, state) {
-        final items = state.items;
         return Column(
           children: [
             Row(
               children: [
-                AppCheckBox(
-                  onChanged: (value) {},
+                Builder(
+                  builder: (context) {
+                    final isGroupSelected =
+                        context.read<ShoppingCartBloc>().isSellerSelected(
+                              sellerId: item.distributor.id,
+                            );
+                    return AppCheckBox(
+                      key: ObjectKey(item.distributor),
+                      initialValue: isGroupSelected,
+                      onChanged: (value) {
+                        context.read<ShoppingCartBloc>().add(
+                              ShoppingCartEvent.toggleSeller(
+                                distributorEntity: item.distributor,
+                              ),
+                            );
+                      },
+                    );
+                  },
                 ),
                 '${item.distributor.name}'
                     .text
@@ -28,6 +43,7 @@ class ShoppingCartGroupItem extends StatelessWidget {
                     .make()
                     .expand(),
                 '${item.productCartList.length} sản phẩm'
+                    .tr()
                     .text
                     .colorDark(context)
                     .make(),

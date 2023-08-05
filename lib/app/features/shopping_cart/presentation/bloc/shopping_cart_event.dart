@@ -27,4 +27,9 @@ class ShoppingCartEvent with _$ShoppingCartEvent {
     required ShoppingCartItemEntity cartItem,
     bool? selected,
   }) = _ShoppingCartToggleItemEvent;
+
+  const factory ShoppingCartEvent.toggleSeller({
+    required DistributorEntity distributorEntity,
+    bool? selected,
+  }) = _ShoppingCartToggleSellerEvent;
 }

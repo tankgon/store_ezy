@@ -1,4 +1,6 @@
 import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/common/presentation/bloc/request/api_status.dart';
+import 'package:mulstore/app/features/distributor/domain/entity/distributor_entity.dart';
 import 'package:mulstore/app/features/product/domain/entity/product_entity.dart';
 import 'package:mulstore/app/features/shopping_cart/seft.dart';
 
@@ -13,15 +15,17 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     on<_ShoppingCartAddItemEvent>(_onAddItem);
     on<_ShoppingCartUpdateItemEvent>(_onUpdateItem);
     on<_ShoppingCartRemoveItemEvent>(_onRemoveItem);
-    on<_ShoppingCartToggleItemEvent>(_onSelectItem);
+    on<_ShoppingCartToggleItemEvent>(_onToggleCartItem);
+    on<_ShoppingCartToggleSellerEvent>(_onToggleSeller);
   }
 
   final ShoppingCartRepo _repo = getIt();
+
   Future<void> _fetchData(Emitter<ShoppingCartState> emit) async {
     final shoppingCartList = await _repo.getShoppingCartList();
     emit(
       state.copyWith(
-        status: ShoppingCartStatus.loaded,
+        status: const ApiStatus.done(),
         items: shoppingCartList,
       ),
     );
@@ -31,7 +35,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     _ShoppingCartInitialEvent event,
     Emitter<ShoppingCartState> emit,
   ) {
-    emit(state.copyWith(status: ShoppingCartStatus.loading));
+    emit(state.copyWith(status: state.status.toPending()));
     _fetchData(emit);
   }
 
@@ -86,7 +90,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     );
   }
 
-  FutureOr<void> _onSelectItem(
+  FutureOr<void> _onToggleCartItem(
     _ShoppingCartToggleItemEvent event,
     Emitter<ShoppingCartState> emit,
   ) {
@@ -110,6 +114,35 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     );
   }
 
+  FutureOr<void> _onToggleSeller(
+    _ShoppingCartToggleSellerEvent event,
+    Emitter<ShoppingCartState> emit,
+  ) {
+    final distributorId = event.distributorEntity.id;
+    if (distributorId == null) {
+      return null;
+    }
+
+    final sellerItemIds = getSellerGroupCartItemsId(distributorId);
+    if (sellerItemIds.isEmpty) {
+      return null;
+    }
+
+    final selectedCartItemIdsRs = {...state.selectedCartItemIds};
+    final isSelected =
+        event.selected ?? isSellerSelected(sellerId: distributorId);
+    if (isSelected) {
+      selectedCartItemIdsRs.removeAll(sellerItemIds);
+    } else {
+      selectedCartItemIdsRs.addAll(sellerItemIds);
+    }
+    emit(
+      state.copyWith(
+        selectedCartItemIds: selectedCartItemIdsRs,
+      ),
+    );
+  }
+
   bool isCartItemSelected(ShoppingCartItemEntity item) {
     return isCartItemIdSelected(item.id);
   }
@@ -119,5 +152,31 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
       return false;
     }
     return state.selectedCartItemIds.contains(id);
+  }
+
+  bool isSellerSelected({String? sellerId}) {
+    if (sellerId == null) {
+      return false;
+    }
+    final sellerGroupCartItems = getSellerGroupCartItems(sellerId);
+    return sellerGroupCartItems?.productCartList.every((element) {
+          return isCartItemIdSelected(element.id);
+        }) ??
+        false;
+  }
+
+  ShoppingCartItemGroupEntity? getSellerGroupCartItems(String sellerId) {
+    return state.items.find(
+      (item) => item.distributor.id == sellerId,
+    );
+  }
+
+  List<String> getSellerGroupCartItemsId(String sellerId) {
+    return getSellerGroupCartItems(sellerId)
+            ?.productCartList
+            .map((item) => item.id)
+            .filterNotNull()
+            .toList() ??
+        [];
   }
 }

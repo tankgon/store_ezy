@@ -19,7 +19,7 @@ class ShoppingCartPage extends StatelessWidget {
       body: BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
         builder: (context, state) {
           return AppLoading(
-            isLoading: state.status == ShoppingCartStatus.loading,
+            isLoading: state.status.isLoading,
             child: const ShoppingCartBody(),
           );
         },
