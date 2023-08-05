@@ -8,11 +8,13 @@ class BottomSheetUtils {
     required Widget child,
     bool? enableDrag,
     bool? isScrollControlled,
+    BoxConstraints? constraints,
   }) {
     return showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
       isScrollControlled: isScrollControlled ?? true,
+      constraints: constraints,
       // constraints: BoxConstraints(
       //   maxHeight: MediaQuery.of(context).size.height - MediaQueryData.fromWindow(window).padding.top,
       // ),

@@ -9,7 +9,7 @@ bricks:
 
 # Feature Brick
 # Create:
-# mason make feature_brick --feature_name loyalty_board --folder_name board --state_management cubit
+# mason make feature_brick --feature_name select_item_popup --folder_name select_item_popup --state_management cubit
 
 # Feature Core Brick
 # Create:
