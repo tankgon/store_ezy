@@ -6,15 +6,9 @@ import 'package:mulstore/app/features/product/data/ms/model/ms_product_model.dar
 import 'package:mulstore/app/features/product/domain/entity/product_entity.dart';
 import 'package:mulstore/app/features/product/domain/repo/product_repo.dart';
 
-// Chim ung
 class MsProductRepo extends ProductRepo {
-  MsProductRepo({MsProductApi? productApi, MsAppSettingRepo? settingRepo}) {
-    _api = productApi ?? getIt();
-    _settingRepo = settingRepo ?? getIt();
-  }
-
-  late final MsProductApi _api;
-  late final MsAppSettingRepo _settingRepo;
+  final MsProductApi _api = getIt();
+  final MsAppSettingRepo _settingRepo = getIt();
 
   ProductEntity _convertProduct(MsProduct product) {
     return product.toEntity();
@@ -78,7 +72,7 @@ class MsProductRepo extends ProductRepo {
   Future<ProductEntity> getProductDetail({
     required String? id,
   }) async {
-    if (id == null) throw Exception('id must not be null');
+    if (id == null) throw Exception('Không có id sản phẩm');
     final product = await _api.getProductDetail(
       productID: id,
     );

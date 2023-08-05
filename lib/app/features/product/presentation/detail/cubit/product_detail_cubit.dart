@@ -12,20 +12,24 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
     ProductEntity? item,
   }) : super(ProductDetailState(product: item));
 
-  final ProductRepo productRepo = getIt<ProductRepo>();
+  final ProductRepo productRepo = getIt();
 
-  void loadData() {
+  Future<void> loadData() async {
     emit(state.copyWith(status: state.status.toPending()));
 
-    productRepo
-        .getProductDetail(
-      id: state.product?.id,
-    )
-        .then((value) {
-      emit(state.copyWith(status: const ApiStatus.done(), product: value));
-    }).catchError((Object e) {
+    try {
+      final productEntity = await productRepo.getProductDetail(
+        id: state.product?.id,
+      );
+      emit(
+        state.copyWith(
+          status: const ApiStatus.done(),
+          product: productEntity,
+        ),
+      );
+    } catch (e) {
       emit(state.copyWith(status: ApiStatus.error(e)));
-    });
+    }
   }
 
   Future<List<ProductEntity>> fetchSameDistributor(int offset, int limit) {

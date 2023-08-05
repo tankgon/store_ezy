@@ -9,8 +9,8 @@ bricks:
 
 # Feature Brick
 # Create:
-# mason make feature_brick --feature_name product_rating --folder_name product_rating --state_management cubit
+# mason make feature_brick --feature_name loyalty_board --folder_name board --state_management cubit
 
 # Feature Core Brick
 # Create:
-# mason make feature_core_brick --feature_name about --state_management cubit
+# mason make feature_core_brick --feature_name loyalty --state_management cubit

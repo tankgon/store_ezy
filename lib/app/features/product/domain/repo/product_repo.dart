@@ -1,10 +1,6 @@
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/product/domain/entity/product_entity.dart';
 
-// Chim canh cut
-// Chim ung
-
-// Class con Chim
 abstract class ProductRepo {
   Future<List<ProductEntity>> getProductList({
     int? limit,

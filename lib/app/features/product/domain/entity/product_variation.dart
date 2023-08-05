@@ -30,6 +30,16 @@ class ProductVariantEntity {
   final List<ProductVariantAttributeEntity>? variantValueList;
 
   final Object? object;
+
+  num getPrice() {
+    if (price != null) {
+      return num.tryParse(price!) ?? 0;
+    }
+    if (listedPrice != null) {
+      return num.tryParse(price!) ?? 0;
+    }
+    return 0;
+  }
 }
 
 class ProductVariantAttributeEntity {

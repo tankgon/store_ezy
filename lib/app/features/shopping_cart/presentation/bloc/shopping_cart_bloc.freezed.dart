@@ -1482,7 +1482,7 @@ abstract class _ShoppingCartToggleSellerEvent extends ShoppingCartEvent {
 /// @nodoc
 mixin _$ShoppingCartState {
   ApiStatus get status => throw _privateConstructorUsedError;
-  List<ShoppingCartItemGroupEntity> get items =>
+  List<ShoppingCartItemGroupEntity> get itemGroups =>
       throw _privateConstructorUsedError;
   Set<String> get selectedCartItemIds => throw _privateConstructorUsedError;
 
@@ -1499,7 +1499,7 @@ abstract class $ShoppingCartStateCopyWith<$Res> {
   @useResult
   $Res call(
       {ApiStatus status,
-      List<ShoppingCartItemGroupEntity> items,
+      List<ShoppingCartItemGroupEntity> itemGroups,
       Set<String> selectedCartItemIds});
 
   $ApiStatusCopyWith<$Res> get status;
@@ -1519,7 +1519,7 @@ class _$ShoppingCartStateCopyWithImpl<$Res, $Val extends ShoppingCartState>
   @override
   $Res call({
     Object? status = null,
-    Object? items = null,
+    Object? itemGroups = null,
     Object? selectedCartItemIds = null,
   }) {
     return _then(_value.copyWith(
@@ -1527,9 +1527,9 @@ class _$ShoppingCartStateCopyWithImpl<$Res, $Val extends ShoppingCartState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ApiStatus,
-      items: null == items
-          ? _value.items
-          : items // ignore: cast_nullable_to_non_nullable
+      itemGroups: null == itemGroups
+          ? _value.itemGroups
+          : itemGroups // ignore: cast_nullable_to_non_nullable
               as List<ShoppingCartItemGroupEntity>,
       selectedCartItemIds: null == selectedCartItemIds
           ? _value.selectedCartItemIds
@@ -1557,7 +1557,7 @@ abstract class _$$_ShoppingCartStateCopyWith<$Res>
   @useResult
   $Res call(
       {ApiStatus status,
-      List<ShoppingCartItemGroupEntity> items,
+      List<ShoppingCartItemGroupEntity> itemGroups,
       Set<String> selectedCartItemIds});
 
   @override
@@ -1576,7 +1576,7 @@ class __$$_ShoppingCartStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
-    Object? items = null,
+    Object? itemGroups = null,
     Object? selectedCartItemIds = null,
   }) {
     return _then(_$_ShoppingCartState(
@@ -1584,9 +1584,9 @@ class __$$_ShoppingCartStateCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ApiStatus,
-      items: null == items
-          ? _value._items
-          : items // ignore: cast_nullable_to_non_nullable
+      itemGroups: null == itemGroups
+          ? _value._itemGroups
+          : itemGroups // ignore: cast_nullable_to_non_nullable
               as List<ShoppingCartItemGroupEntity>,
       selectedCartItemIds: null == selectedCartItemIds
           ? _value._selectedCartItemIds
@@ -1602,22 +1602,22 @@ class _$_ShoppingCartState extends _ShoppingCartState
     with DiagnosticableTreeMixin {
   const _$_ShoppingCartState(
       {this.status = const ApiStatus.initial(),
-      final List<ShoppingCartItemGroupEntity> items = const [],
+      final List<ShoppingCartItemGroupEntity> itemGroups = const [],
       final Set<String> selectedCartItemIds = const {}})
-      : _items = items,
+      : _itemGroups = itemGroups,
         _selectedCartItemIds = selectedCartItemIds,
         super._();
 
   @override
   @JsonKey()
   final ApiStatus status;
-  final List<ShoppingCartItemGroupEntity> _items;
+  final List<ShoppingCartItemGroupEntity> _itemGroups;
   @override
   @JsonKey()
-  List<ShoppingCartItemGroupEntity> get items {
-    if (_items is EqualUnmodifiableListView) return _items;
+  List<ShoppingCartItemGroupEntity> get itemGroups {
+    if (_itemGroups is EqualUnmodifiableListView) return _itemGroups;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_items);
+    return EqualUnmodifiableListView(_itemGroups);
   }
 
   final Set<String> _selectedCartItemIds;
@@ -1632,7 +1632,7 @@ class _$_ShoppingCartState extends _ShoppingCartState
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ShoppingCartState(status: $status, items: $items, selectedCartItemIds: $selectedCartItemIds)';
+    return 'ShoppingCartState(status: $status, itemGroups: $itemGroups, selectedCartItemIds: $selectedCartItemIds)';
   }
 
   @override
@@ -1641,7 +1641,7 @@ class _$_ShoppingCartState extends _ShoppingCartState
     properties
       ..add(DiagnosticsProperty('type', 'ShoppingCartState'))
       ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('items', items))
+      ..add(DiagnosticsProperty('itemGroups', itemGroups))
       ..add(DiagnosticsProperty('selectedCartItemIds', selectedCartItemIds));
   }
 
@@ -1651,7 +1651,8 @@ class _$_ShoppingCartState extends _ShoppingCartState
         (other.runtimeType == runtimeType &&
             other is _$_ShoppingCartState &&
             (identical(other.status, status) || other.status == status) &&
-            const DeepCollectionEquality().equals(other._items, _items) &&
+            const DeepCollectionEquality()
+                .equals(other._itemGroups, _itemGroups) &&
             const DeepCollectionEquality()
                 .equals(other._selectedCartItemIds, _selectedCartItemIds));
   }
@@ -1660,7 +1661,7 @@ class _$_ShoppingCartState extends _ShoppingCartState
   int get hashCode => Object.hash(
       runtimeType,
       status,
-      const DeepCollectionEquality().hash(_items),
+      const DeepCollectionEquality().hash(_itemGroups),
       const DeepCollectionEquality().hash(_selectedCartItemIds));
 
   @JsonKey(ignore: true)
@@ -1674,14 +1675,14 @@ class _$_ShoppingCartState extends _ShoppingCartState
 abstract class _ShoppingCartState extends ShoppingCartState {
   const factory _ShoppingCartState(
       {final ApiStatus status,
-      final List<ShoppingCartItemGroupEntity> items,
+      final List<ShoppingCartItemGroupEntity> itemGroups,
       final Set<String> selectedCartItemIds}) = _$_ShoppingCartState;
   const _ShoppingCartState._() : super._();
 
   @override
   ApiStatus get status;
   @override
-  List<ShoppingCartItemGroupEntity> get items;
+  List<ShoppingCartItemGroupEntity> get itemGroups;
   @override
   Set<String> get selectedCartItemIds;
   @override

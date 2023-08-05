@@ -1,4 +1,5 @@
 import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/shopping_cart/seft.dart';
 
 class ShoppingCartBottomBar extends StatelessWidget {
   const ShoppingCartBottomBar({super.key});
@@ -58,8 +59,12 @@ class _TotalPriceSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             LocaleKeys.shoppingCart_TotalPrice.tr().text.make(),
-            AppPrice(
-              price: '1000000',
+            BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
+              builder: (context, state) {
+                return AppPrice(
+                  price: context.read<ShoppingCartBloc>().getTotalPrice(),
+                );
+              },
             ),
           ].withDivider(Gaps.vGap4),
         ).expand(),

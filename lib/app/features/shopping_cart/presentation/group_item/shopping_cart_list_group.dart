@@ -8,7 +8,7 @@ class ShoppingCartListGroup extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
       builder: (context, state) {
-        final items = state.items;
+        final items = state.itemGroups;
         if (items.isEmpty) {
           return 'Không có sản phẩm nào trong giỏ hàng'
               .tr()

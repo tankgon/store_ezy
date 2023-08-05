@@ -1,6 +1,10 @@
+import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:mulstore/app/features/distributor/domain/entity/distributor_entity.dart';
 import 'package:mulstore/app/features/product/self.dart';
 
+part 'shopping_cart_base_entity.g.dart';
+
+@CopyWith()
 class ShoppingCartItemGroupEntity {
   ShoppingCartItemGroupEntity({
     required this.id,

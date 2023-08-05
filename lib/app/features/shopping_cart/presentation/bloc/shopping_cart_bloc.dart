@@ -26,7 +26,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     emit(
       state.copyWith(
         status: const ApiStatus.done(),
-        items: shoppingCartList,
+        itemGroups: shoppingCartList,
       ),
     );
   }
@@ -83,7 +83,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
   }
 
   int get totalQuantity {
-    return state.items.fold<int>(
+    return state.itemGroups.fold<int>(
       0,
       (previousValue, element) =>
           previousValue + element.productCartList.length,
@@ -143,6 +143,37 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     );
   }
 
+  String getTotalPrice() {
+    final selectedItemsList = getSelectedItemsList();
+    final totalPrice = selectedItemsList.fold<num>(
+      0,
+      (previousValue, element) {
+        return previousValue +
+            element.productCartList.fold<num>(
+              0,
+              (previousValue, element) {
+                return previousValue +
+                    (element.quantity * (element.variant?.getPrice() ?? 0));
+              },
+            );
+      },
+    );
+
+    return totalPrice.toStringAsFixed(2);
+  }
+
+  List<ShoppingCartItemGroupEntity> getSelectedItemsList() {
+    return state.itemGroups
+        .map(
+          (item) => item.copyWith(
+            productCartList: item.productCartList
+                .where((element) => isCartItemIdSelected(element.id))
+                .toList(),
+          ),
+        )
+        .toList();
+  }
+
   bool isCartItemSelected(ShoppingCartItemEntity item) {
     return isCartItemIdSelected(item.id);
   }
@@ -166,7 +197,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
   }
 
   ShoppingCartItemGroupEntity? getSellerGroupCartItems(String sellerId) {
-    return state.items.find(
+    return state.itemGroups.find(
       (item) => item.distributor.id == sellerId,
     );
   }

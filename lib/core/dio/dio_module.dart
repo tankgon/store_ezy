@@ -36,8 +36,8 @@ class DioModule {
       _dio!.interceptors.add(PrettyDioLogger(
         request: true,
         requestHeader: false,
-        requestBody: true,
-        responseBody: true,
+        requestBody: false,
+        responseBody: false,
       ));
     }
 

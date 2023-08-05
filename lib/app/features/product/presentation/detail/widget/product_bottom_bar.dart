@@ -39,7 +39,7 @@ class ProductBottomBar extends StatelessWidget {
               children: [
                 const Icon(PhosphorIcons.shopping_cart),
                 Gaps.hGap8,
-                LocaleKeys.product_Buy.tr().text.semiBold.make(),
+                'Chọn mua'.tr().text.semiBold.make(),
               ],
             ),
           ).expand(),
