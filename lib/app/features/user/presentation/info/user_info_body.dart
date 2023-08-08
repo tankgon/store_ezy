@@ -43,7 +43,13 @@ class UserInfoBody extends StatelessWidget {
                       color: Colors.blue,
                     ),
                     title: 'Tài khoản'.tr(),
-                    onPressed: () {},
+                    onPressed: () {
+                      context.pushRoute(
+                        ReceiveAddressRoute(
+                          user: user,
+                        ),
+                      );
+                    },
                   ),
                   AppTileText(
                     leading: const Icon(
