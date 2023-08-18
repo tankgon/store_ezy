@@ -4,6 +4,9 @@ import 'package:mulstore/app/features/auth/self.dart';
 import 'package:mulstore/app/features/user/domain/entity/user_base_entity.dart';
 import 'package:mulstore/app/features/user/presentation/info/cubit/user_info_cubit.dart';
 
+import '../../domain/entity/user_fake.dart';
+import '../detail_account/detail_account_page.dart';
+
 class UserInfoBody extends StatelessWidget {
   const UserInfoBody({super.key});
 
@@ -44,9 +47,10 @@ class UserInfoBody extends StatelessWidget {
                     ),
                     title: 'Tài khoản'.tr(),
                     onPressed: () {
-                      context.pushRoute(
-                        ReceiveAddressRoute(
-                          user: user,
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              ReceiveDetailAccountPage(user: thanh),
                         ),
                       );
                     },

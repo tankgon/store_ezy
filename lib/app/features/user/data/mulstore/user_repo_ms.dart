@@ -1,6 +1,7 @@
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/user/data/mulstore/api/user_api_ms.dart';
 import 'package:mulstore/app/features/user/domain/entity/user_base_entity.dart';
+import 'package:mulstore/app/features/user/domain/entity/user_fake.dart';
 import 'package:mulstore/app/features/user/domain/repo/user_repo.dart';
 
 class UserRepoMS implements UserRepo {
@@ -18,4 +19,12 @@ class UserRepoMS implements UserRepo {
     }
     return rs.toEntity();
   }
+  
+  @override
+  Future<List<UserEntityT>> getListPhone({int? limit, int? offset}) {
+    // TODO: implement getListPhone
+    throw UnimplementedError();
+  }
+
+
 }
