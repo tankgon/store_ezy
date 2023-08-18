@@ -4,8 +4,7 @@ import 'package:mulstore/app/features/auth/self.dart';
 import 'package:mulstore/app/features/user/domain/entity/user_base_entity.dart';
 import 'package:mulstore/app/features/user/presentation/info/cubit/user_info_cubit.dart';
 
-import '../../domain/entity/user_fake.dart';
-import '../detail_account/detail_account_page.dart';
+import 'package:mulstore/app/features/user/presentation/detail_account/detail_account_page.dart';
 
 class UserInfoBody extends StatelessWidget {
   const UserInfoBody({super.key});
@@ -50,7 +49,7 @@ class UserInfoBody extends StatelessWidget {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) =>
-                              ReceiveDetailAccountPage(user: thanh),
+                              ReceiveDetailAccountPage(user: UserEntity.demo()),
                         ),
                       );
                     },

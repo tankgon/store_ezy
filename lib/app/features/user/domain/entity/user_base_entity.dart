@@ -11,12 +11,23 @@ class UserEntity {
     this.fullName,
     this.avatar,
     this.receiveAddressList,
+    this.phoneList,
+    this.addressList,
   });
 
   final String? userID;
   final String? userName;
   final String? fullName;
   final String? avatar;
+  final List<UserPhoneEntity>? phoneList;
+  final List<UserAddressEntity>? addressList;
+
+  static UserEntity demo() => UserEntity(
+        userID: 'userID',
+        userName: 'userName',
+        fullName: 'fullName',
+        avatar: 'avatar',
+      );
 
   final List<UserAddressEntity>? receiveAddressList;
 
@@ -34,6 +45,18 @@ class UserEntity {
       _$UserEntityFromJson(json);
 
   Map<String, dynamic> toJson() => _$UserEntityToJson(this);
+}
+
+class UserPhoneEntity {
+  UserPhoneEntity({this.phone, this.countryCode});
+
+  static UserPhoneEntity demo() => UserPhoneEntity(
+        phone: 'phone',
+        countryCode: 'countryCode',
+      );
+
+  String? phone;
+  String? countryCode;
 }
 
 enum AddressForType { receive, office, other }
@@ -59,6 +82,9 @@ enum AddressType {
 
 @JsonSerializable()
 class UserAddressEntity {
+
+  factory UserAddressEntity.fromJson(Map<String, dynamic> json) =>
+      _$UserAddressEntityFromJson(json);
   const UserAddressEntity({
     this.object,
     this.id,
@@ -90,7 +116,4 @@ class UserAddressEntity {
       [fullName, phone].joinWithoutNullEmpty('  |  ');
 
   Map<String, dynamic> toJson() => _$UserAddressEntityToJson(this);
-
-  factory UserAddressEntity.fromJson(Map<String, dynamic> json) =>
-      _$UserAddressEntityFromJson(json);
 }
