@@ -1,29 +1,33 @@
 import 'package:flutter/cupertino.dart';
 import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/user/presentation/detail_account/widget/hide_button.dart';
 
 @RoutePage()
-class NameInfo extends StatelessWidget {
-  const NameInfo({
-    super.key,
-    required this.name,
-  });
+class NameInfo extends StatefulWidget {
+  const NameInfo({super.key, required this.name});
 
   final String name;
 
   @override
+  State<NameInfo> createState() => _NameInfoState();
+}
+
+class _NameInfoState extends State<NameInfo> {
+  bool isVisible = false;
+  @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: AppAppBar(
-          title: 'Tên người dùng'.tr(),
-        ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
+      appBar: AppAppBar(
+        title: 'Tên người dùng'.tr(),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Focus(
+            child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: TextFormField(
-                initialValue: name,
+                initialValue: widget.name,
                 decoration: InputDecoration(
                   suffixIcon: IconButton(
                     color: Colors.black,
@@ -33,32 +37,15 @@ class NameInfo extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              width: size.width,
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: AppButton(
-                        label: 'Hủy'.tr(),
-                        isEnable: false,
-                        onPressed: () {},
-                      ).pr8(),
-                    ),
-                    Expanded(
-                      child: AppButton(
-                        label: 'Lưu thay đổi'.tr(),
-                        onPressed: () {},
-                      ).pl8(),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ));
+            onFocusChange: (hasFocus) {
+              setState(() {
+                isVisible = hasFocus;
+              });
+            },
+          ),
+          HideButton(isVisible: !isVisible),
+        ],
+      ),
+    );
   }
 }

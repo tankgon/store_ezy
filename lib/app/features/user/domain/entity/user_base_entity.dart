@@ -12,17 +12,21 @@ class UserEntity {
     this.avatar,
     this.receiveAddressList,
     this.phoneList,
+    this.emailList,
     this.addressList,
   });
+  factory UserEntity.fromJson(Map<String, dynamic> json) =>
+      _$UserEntityFromJson(json);
 
   final String? userID;
   final String? userName;
   final String? fullName;
   final String? avatar;
   final List<UserPhoneEntity>? phoneList;
+  final List<UserEmailEntity>? emailList;
   final List<UserAddressEntity>? addressList;
 
-  static UserEntity demo() => UserEntity(
+  static UserEntity demo() => const UserEntity(
         userID: 'userID',
         userName: 'userName',
         fullName: 'fullName',
@@ -41,9 +45,6 @@ class UserEntity {
   String? get avatarImg =>
       'https://upload.wikimedia.org/wikipedia/commons/c/c3/LEONARDO.JPG';
 
-  factory UserEntity.fromJson(Map<String, dynamic> json) =>
-      _$UserEntityFromJson(json);
-
   Map<String, dynamic> toJson() => _$UserEntityToJson(this);
 }
 
@@ -51,12 +52,22 @@ class UserPhoneEntity {
   UserPhoneEntity({this.phone, this.countryCode});
 
   static UserPhoneEntity demo() => UserPhoneEntity(
-        phone: 'phone',
+        phone: '4353467568',
         countryCode: 'countryCode',
       );
 
   String? phone;
   String? countryCode;
+}
+
+class UserEmailEntity {
+  UserEmailEntity({required this.email});
+
+  static UserEmailEntity demo() => UserEmailEntity(
+        email: 'nguyenphucthanh@gmail.com',
+      );
+
+  String email;
 }
 
 enum AddressForType { receive, office, other }
@@ -82,9 +93,6 @@ enum AddressType {
 
 @JsonSerializable()
 class UserAddressEntity {
-
-  factory UserAddressEntity.fromJson(Map<String, dynamic> json) =>
-      _$UserAddressEntityFromJson(json);
   const UserAddressEntity({
     this.object,
     this.id,
@@ -93,6 +101,9 @@ class UserAddressEntity {
     this.fullAddress,
     this.addressType,
   });
+
+  factory UserAddressEntity.fromJson(Map<String, dynamic> json) =>
+      _$UserAddressEntityFromJson(json);
 
   final String? id;
   final String? fullName;

@@ -6,17 +6,17 @@ import 'package:mulstore/app/features/user/presentation/detail_account/widget/hi
 import 'package:mulstore/app/features/user/self.dart';
 
 @RoutePage()
-class PhoneInfo extends StatefulWidget {
-  const PhoneInfo({super.key, this.padding, required this.fetchListData});
+class EmailInfo extends StatefulWidget {
+  const EmailInfo({super.key, this.padding, required this.fetchListData});
 
   final EdgeInsets? padding;
-  final PagingListFetchFunc<UserPhoneEntity> fetchListData;
+  final PagingListFetchFunc<UserEmailEntity> fetchListData;
 
   @override
-  State<PhoneInfo> createState() => _PhoneInfoState();
+  State<EmailInfo> createState() => _EmailInfoState();
 }
 
-class _PhoneInfoState extends State<PhoneInfo> {
+class _EmailInfoState extends State<EmailInfo> {
   bool isVisible = true;
   @override
   Widget build(BuildContext context) {
@@ -28,11 +28,11 @@ class _PhoneInfoState extends State<PhoneInfo> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            PagingList<UserPhoneEntity>(
+            PagingList<UserEmailEntity>(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, item, index) => AppPhoneTile(
-                title: item.phone,
+                title: item.email,
                 onPressed: () {},
               ),
               padding: widget.padding ??
@@ -43,7 +43,7 @@ class _PhoneInfoState extends State<PhoneInfo> {
             Visibility(
               visible: isVisible,
               child: AppAddPhoneTile(
-                title: 'Thêm số điện thoại'.tr(),
+                title: 'Thêm email'.tr(),
                 onPressed: () {
                   setState(() {
                     isVisible = !isVisible;
