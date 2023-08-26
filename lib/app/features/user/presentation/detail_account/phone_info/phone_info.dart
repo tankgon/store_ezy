@@ -5,11 +5,12 @@ import 'package:mulstore/app/features/user/presentation/detail_account/widget/ap
 import 'package:mulstore/app/features/user/presentation/detail_account/widget/hide_button.dart';
 import 'package:mulstore/app/features/user/self.dart';
 
+
 @RoutePage()
 class PhoneInfo extends StatefulWidget {
-  const PhoneInfo({super.key, this.padding, required this.fetchListData});
+  // TODO: Edit page name UserPhoneInfoPage
+  const PhoneInfo({super.key, required this.fetchListData});
 
-  final EdgeInsets? padding;
   final PagingListFetchFunc<UserPhoneEntity> fetchListData;
 
   @override
@@ -18,6 +19,7 @@ class PhoneInfo extends StatefulWidget {
 
 class _PhoneInfoState extends State<PhoneInfo> {
   bool isVisible = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,9 +37,11 @@ class _PhoneInfoState extends State<PhoneInfo> {
                 title: item.phone,
                 onPressed: () {},
               ),
-              padding: widget.padding ??
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              separatorBuilder: (context, index) => const SizedBox(width: 8),
+              padding: const EdgeInsets.symmetric(
+                horizontal: Dimens.pad_default,
+                vertical: Dimens.pad_XS2,
+              ),
+              separatorBuilder: (context, index) => Gaps.hGap8,
               fetchListData: widget.fetchListData,
             ),
             Visibility(
@@ -72,7 +76,7 @@ class _PhoneInfoState extends State<PhoneInfo> {
                 ),
               ),
             ),
-            HideButton(isVisible: isVisible),
+            UserEditBottomBar(),
           ],
         ),
       ),

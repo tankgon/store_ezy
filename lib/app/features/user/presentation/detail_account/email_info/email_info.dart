@@ -72,7 +72,7 @@ class _EmailInfoState extends State<EmailInfo> {
                 ),
               ),
             ),
-            HideButton(isVisible: isVisible),
+            UserEditBottomBar(),
           ],
         ),
       ),
