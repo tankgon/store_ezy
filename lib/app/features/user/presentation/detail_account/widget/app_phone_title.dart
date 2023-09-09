@@ -11,6 +11,7 @@ class AppPhoneTile extends StatelessWidget {
     this.onPressed,
     this.padding,
     this.num,
+    this.onPressedDelete,
   });
 
   const AppPhoneTile.semiBold({
@@ -22,6 +23,7 @@ class AppPhoneTile extends StatelessWidget {
     this.onPressed,
     this.padding,
     this.num,
+    this.onPressedDelete,
   });
 
   final Widget? leading;
@@ -29,6 +31,7 @@ class AppPhoneTile extends StatelessWidget {
   final FontWeight? titleFontWeight;
   final String? subtitle;
   final VoidCallback? onPressed;
+  final VoidCallback? onPressedDelete;
   final EdgeInsetsGeometry? padding;
   final int? num;
 
@@ -63,10 +66,8 @@ class AppPhoneTile extends StatelessWidget {
                   color: Colors.blue,
                 ),
               ),
-
-    
             CardCupertinoEffect(
-              onPressed: onPressed,
+              onPressed: onPressedDelete,
               child: const Icon(
                 PhosphorIcons.trash,
                 color: Colors.blue,

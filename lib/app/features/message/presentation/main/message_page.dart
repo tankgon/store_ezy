@@ -13,9 +13,24 @@ class MessagePage extends StatelessWidget {
       child: DefaultStatusConsumer<MessageCubit, MessageState>(
         child: Scaffold(
           appBar: AppAppBar(
-            title: 'Tin Nhắn',
+            title: 'Tin nhắn'.tr(),
+            args: AppBarArgs(
+              centerTitle: false,
+              elevation: 0,
+              actions: [
+                AppButtonIcon(
+                  icon: PhosphorIcons.magnifying_glass,
+                  onPressed: () {},
+                ),
+                AppButtonIcon(
+                  icon: PhosphorIcons.note_pencil,
+                  onPressed: () {},
+                ),
+                Gaps.hGap4,
+              ].withDivider(Gaps.hGap4, showLast: true),
+            ),
           ),
-          body: MessageBody(),
+          body: const MessageBody(),
         ),
       ),
     );
@@ -23,13 +38,16 @@ class MessagePage extends StatelessWidget {
 
   void _onStateChanged(BuildContext context, MessageState state) {
     if (state.status == ItemStatus.error) {
-      DialogUtils.showMaterialDialog(context: context, content: context.getAppErrorMsg(state.error));
+      DialogUtils.showMaterialDialog(
+        context: context,
+        content: context.getAppErrorMsg(state.error),
+      );
     }
   }
 }
 
 class _PageBodyLoading extends StatelessWidget {
-  const _PageBodyLoading({super.key, required this.child});
+  const _PageBodyLoading({required this.child});
 
   final Widget child;
 
@@ -40,7 +58,8 @@ class _PageBodyLoading extends StatelessWidget {
         // if (state.status == ItemDefaultStatus.error) {
         //   return SimpleErrorText(error: state.error ?? '');
         // }
-        final isLoading = state.status == ItemStatus.loading || state.status == ItemStatus.initial;
+        final isLoading = state.status == ItemStatus.loading ||
+            state.status == ItemStatus.initial;
 
         return child;
       },

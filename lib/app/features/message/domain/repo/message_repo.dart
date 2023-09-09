@@ -1,1 +1,3 @@
-abstract class MessageRepo {}
+abstract class MessageRepo {
+  
+}

@@ -1,8 +1,8 @@
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/user/domain/entity/user_base_entity.dart';
-import 'package:mulstore/app/features/user/presentation/detail_account/account_info/name_info.dart';
-import 'package:mulstore/app/features/user/presentation/detail_account/email_info/email_info.dart';
-import 'package:mulstore/app/features/user/presentation/detail_account/phone_info/phone_info.dart';
+import 'package:mulstore/app/features/user/presentation/detail_account/user_account%20_info/user_account%20_info_page.dart';
+import 'package:mulstore/app/features/user/presentation/detail_account/user_email_info/user_email_info_page.dart';
+import 'package:mulstore/app/features/user/presentation/detail_account/user_phone_info/user_phone_info_page.dart';
 import 'package:mulstore/app/features/user/presentation/detail_account/widget/app_info_account_tile.dart';
 
 class ReceiveDetailAccountBody extends StatelessWidget {
@@ -20,7 +20,8 @@ class ReceiveDetailAccountBody extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => NameInfo(name: user.userName ?? ''),
+                builder: (context) =>
+                    UserAccountInfoPage(name: user.userName ?? ''),
               ),
             );
           },
@@ -36,7 +37,7 @@ class ReceiveDetailAccountBody extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => PhoneInfo(
+                builder: (context) => UserPhoneInfoPage(
                   fetchListData: (page, pageSize) {
                     return Future.value(
                       List.generate(5, (index) => index)
@@ -55,7 +56,7 @@ class ReceiveDetailAccountBody extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => EmailInfo(
+                builder: (context) => UserEmailInfoPage(
                   fetchListData: (page, pageSize) {
                     return Future.value(
                       List.generate(5, (index) => index)

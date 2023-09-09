@@ -2,22 +2,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:mulstore/all_file/all_file.dart';
 import 'package:mulstore/app/features/user/presentation/detail_account/widget/app_add_phone_title.dart';
 import 'package:mulstore/app/features/user/presentation/detail_account/widget/app_phone_title.dart';
-import 'package:mulstore/app/features/user/presentation/detail_account/widget/hide_button.dart';
+import 'package:mulstore/app/features/user/presentation/detail_account/widget/user_edit_bottom_bar.dart';
 import 'package:mulstore/app/features/user/self.dart';
 
 @RoutePage()
-class EmailInfo extends StatefulWidget {
-  const EmailInfo({super.key, this.padding, required this.fetchListData});
+class UserPhoneInfoPage extends StatefulWidget {
+  const UserPhoneInfoPage({super.key, required this.fetchListData});
 
-  final EdgeInsets? padding;
-  final PagingListFetchFunc<UserEmailEntity> fetchListData;
+  final PagingListFetchFunc<UserPhoneEntity> fetchListData;
 
   @override
-  State<EmailInfo> createState() => _EmailInfoState();
+  State<UserPhoneInfoPage> createState() => _UserPhoneInfoPageState();
 }
 
-class _EmailInfoState extends State<EmailInfo> {
+class _UserPhoneInfoPageState extends State<UserPhoneInfoPage> {
   bool isVisible = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,22 +28,31 @@ class _EmailInfoState extends State<EmailInfo> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            PagingList<UserEmailEntity>(
+            PagingList<UserPhoneEntity>(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, item, index) => AppPhoneTile(
-                title: item.email,
+                title: item.phone,
                 onPressed: () {},
+                onPressedDelete: () {
+                  DialogUtils.showMaterialDialog(
+                    context: context,
+                    content: 'Xóa số điện thoại?',
+                    delete: () {},
+                  );
+                },
               ),
-              padding: widget.padding ??
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              separatorBuilder: (context, index) => const SizedBox(width: 8),
+              padding: const EdgeInsets.symmetric(
+                horizontal: Dimens.pad_default,
+                vertical: Dimens.pad_XS2,
+              ),
+              separatorBuilder: (context, index) => Gaps.hGap8,
               fetchListData: widget.fetchListData,
             ),
             Visibility(
               visible: isVisible,
               child: AppAddPhoneTile(
-                title: 'Thêm email'.tr(),
+                title: 'Thêm số điện thoại'.tr(),
                 onPressed: () {
                   setState(() {
                     isVisible = !isVisible;
@@ -56,7 +65,6 @@ class _EmailInfoState extends State<EmailInfo> {
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: TextFormField(
-                  // obscuringCharacter: 'thanh',
                   decoration: InputDecoration(
                     hintText: 'Nhập số',
                     suffixIcon: IconButton(
@@ -72,9 +80,11 @@ class _EmailInfoState extends State<EmailInfo> {
                 ),
               ),
             ),
-            UserEditBottomBar(),
           ],
         ),
+      ),
+      bottomNavigationBar: const AppBottomBar(
+        child: UserEditBottomBar(),
       ),
     );
   }
