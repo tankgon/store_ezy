@@ -22,6 +22,9 @@ class ReceiveDetailAccountPage extends StatelessWidget {
         child: Scaffold(
           appBar: AppAppBar(
             title: 'Tài khoản'.tr(),
+            args: const AppBarArgs(
+              elevation: 0,
+            ),
           ),
           body: ReceiveDetailAccountBody(
             user: UserEntity.demo(),

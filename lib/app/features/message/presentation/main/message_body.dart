@@ -1,4 +1,5 @@
 import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/message/presentation/chat_message/chat_message_page.dart';
 import 'package:mulstore/app/features/message/presentation/widget/app_tile_text.dart';
 
 class MessageBody extends StatelessWidget {
@@ -6,21 +7,30 @@ class MessageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const AppScrollBody(
+    return AppScrollBody(
       child: Column(
         children: [
           AppTileTextChat.semiBold(
-            leading: AppAvatar(
+            leading: const AppAvatar(
               height: Dimens.ic_XL6,
               src: 'assets/icons/app/app_logo_name.png',
             ),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const ChatMessage(
+                    name: 'Minh Châu',
+                  ),
+                ),
+              );
+            },
             time: '12:00',
             title: 'Minh Châu',
             quantity: '2',
             subtitle:
                 'Vui lòng xem báo cáo sản phẩm qua chứng từ được cung cấp',
           ),
-          AppTileTextChat.semiBold(
+          const AppTileTextChat.semiBold(
             leading: AppAvatar(
               height: Dimens.ic_XL6,
               src: 'assets/icons/app/app_logo_name.png',
@@ -31,7 +41,7 @@ class MessageBody extends StatelessWidget {
             subtitle:
                 'Vui lòng xem báo cáo sản phẩm qua chứng từ được cung cấp',
           ),
-          AppTileTextChat.semiBold(
+          const AppTileTextChat.semiBold(
             leading: AppAvatar(
               height: Dimens.ic_XL6,
               src: 'assets/icons/app/app_logo_name.png',

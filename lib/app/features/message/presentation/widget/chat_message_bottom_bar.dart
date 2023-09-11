@@ -1,14 +1,19 @@
 import 'package:mulstore/all_file/all_file.dart';
 
-class SearchMessage extends StatelessWidget {
-  const SearchMessage({super.key});
+class ChatMessageBottomBar extends StatelessWidget {
+  const ChatMessageBottomBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppAppBar(
-        title: SizedBox(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Assets.icons.app.cameraLogoSvg.svg(),
+        Assets.icons.app.imageLogoSvg.svg(),
+        Assets.icons.app.micLogoSvg.svg(),
+        SizedBox(
           height: 42,
+          width: 187,
           child: IgnorePointer(
             child: AppTextField(
               textInputAction: TextInputAction.search,
@@ -26,23 +31,14 @@ class SearchMessage extends StatelessWidget {
                       BorderSide.none,
                 ),
                 // contentPadding: EdgeInsets.zero,
-                hintText: 'Nhà cung cấp, mã đơn, tên sản phẩm',
-                prefixIcon: const Icon(PhosphorIcons.magnifying_glass).pl4(),
+                hintText: 'Soạn tin nhắn',
+                suffixIcon: Assets.icons.app.emutionLogoSvg.svg(),
               ),
             ),
           ),
         ),
-        args: const AppBarArgs(
-          elevation: 0,
-        ),
-      ),
-      body: const SafeArea(
-        child: Align(
-          child: AppImg(
-            'assets/icons/app/search_mes_logo.jpg',
-          ),
-        ),
-      ),
+        Assets.icons.app.flyLogoSvg.svg(),
+      ].withDivider(Gaps.hGap8),
     );
   }
 }

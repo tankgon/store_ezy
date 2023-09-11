@@ -47,6 +47,30 @@ class $AssetsIconsAppGen {
   SvgGenImage get appLogoNameSvg =>
       const SvgGenImage('assets/icons/app/app_logo_name.svg');
 
+  /// File path: assets/icons/app/phone_logo.svg
+  SvgGenImage get phoneLogoSvg =>
+      const SvgGenImage('assets/icons/app/phone_logo.svg');
+
+  /// File path: assets/icons/app/camera_logo.svg
+  SvgGenImage get cameraLogoSvg =>
+      const SvgGenImage('assets/icons/app/camera_logo.svg');
+
+  /// File path: assets/icons/app/image_logo.svg
+  SvgGenImage get imageLogoSvg =>
+      const SvgGenImage('assets/icons/app/image_logo.svg');
+
+  /// File path: assets/icons/app/mic_logo.svg
+  SvgGenImage get micLogoSvg =>
+      const SvgGenImage('assets/icons/app/mic_logo.svg');
+
+  /// File path: assets/icons/app/emotion_logo.svg
+  SvgGenImage get emutionLogoSvg =>
+      const SvgGenImage('assets/icons/app/emotion_logo.svg');
+
+  /// File path: assets/icons/app/fly_logo.svg
+  SvgGenImage get flyLogoSvg =>
+      const SvgGenImage('assets/icons/app/fly_logo.svg');      
+      
   /// File path: assets/icons/app/splash.png
   AssetGenImage get splash =>
       const AssetGenImage('assets/icons/app/splash.png');

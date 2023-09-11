@@ -95,10 +95,6 @@ class AppTileTextChat extends StatelessWidget {
                   ),
                 ].withDivider(Gaps.vGap4),
               ).expand(),
-              if (onPressed != null)
-                const Icon(
-                  PhosphorIcons.caret_right,
-                ),
             ].withDivider(Gaps.hGap12),
           ),
         ),
