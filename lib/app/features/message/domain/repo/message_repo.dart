@@ -1,8 +1,8 @@
+import 'package:mulstore/app/features/message/domain/entity/message_base_entity.dart';
+
 abstract class MessageRepo {
-  //   Future<List<ProductEntity>> getProductList({
-  //   int? limit,
-  //   int? offset,
-  //   ProductListType? type,
-  //   ProductListShowType? showType,
-  // });
+  Future<List<MessageBaseEntity>> getMessageList({
+    int? limit,
+    int? offset,
+  });
 }

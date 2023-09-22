@@ -28,50 +28,34 @@ class ReceiveDetailAccountBody extends StatelessWidget {
         ),
         AppDetailAccountTile(
           title: 'Địa chỉ'.tr(),
-          num: user.addressList?.length ?? 0,
+          num: user.addressList?.length,
           onPressed: () {},
         ),
         AppDetailAccountTile(
           title: 'Số điện thoại'.tr(),
-          num: user.phoneList?.length ?? 0,
+          num: 5,
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => UserPhoneInfoPage(
-                  fetchListData: (page, pageSize) {
-                    return Future.value(
-                      List.generate(5, (index) => index)
-                          .map((e) => UserPhoneEntity.demo())
-                          .toList(),
-                    );
-                  },
-                ),
+                builder: (context) => const UserPhoneInfoPage(),
               ),
             );
           },
         ),
         AppDetailAccountTile(
           title: 'Email'.tr(),
-          num: user.emailList?.length ?? 0,
+          num: 5,
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => UserEmailInfoPage(
-                  fetchListData: (page, pageSize) {
-                    return Future.value(
-                      List.generate(5, (index) => index)
-                          .map((e) => UserEmailEntity.demo())
-                          .toList(),
-                    );
-                  },
-                ),
+                builder: (context) => const UserEmailInfoPage(),
               ),
             );
           },
         ),
         AppDetailAccountTile(
           title: 'Url'.tr(),
-          num: 4,
+          num: user.emailList?.length,
           onPressed: () {},
         ),
       ].withDivider(const AppDivider.thin().pxDefault()),

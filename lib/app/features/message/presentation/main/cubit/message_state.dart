@@ -3,23 +3,23 @@ part of 'message_cubit.dart';
 class MessageState extends RequestState {
   const MessageState({
     super.status = ItemStatus.initial,
-    required this.item,
+    required this.message,
     super.error,
   });
 
-  final dynamic item;
+  final MessageBaseEntity message;
 
   @override
-  List<Object?> get props => [status, item, error];
+  List<Object?> get props => [status, message, error];
 
   MessageState copyWith({
     ItemStatus? status,
-    dynamic? item,
+    MessageBaseEntity? message,
     Object? error,
   }) {
     return MessageState(
       status: status ?? this.status,
-      item: item ?? this.item,
+      message: message ?? this.message,
       error: error ?? this.error,
     );
   }

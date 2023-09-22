@@ -261,8 +261,6 @@ abstract class $AppAutoRoute extends _i28.RootStackRouter {
         routeData: routeData,
         child: _i23.UserEmailInfoPage(
           key: args.key,
-          padding: args.padding,
-          fetchListData: args.fetchListData,
         ),
       );
     },
@@ -272,7 +270,6 @@ abstract class $AppAutoRoute extends _i28.RootStackRouter {
         routeData: routeData,
         child: _i24.UserPhoneInfoPage(
           key: args.key,
-          fetchListData: args.fetchListData,
         ),
       );
     },

@@ -20,7 +20,7 @@ class UserRepoMS implements UserRepo {
   }
 
   @override
-  Future<List<UserPhoneEntity>> getListPhone({int? limit, int? offset}) {
+  Future<List<UserPhoneEntity>> getListPhone({int? limit, int? offset}) async {
     return Future.value(
       List.generate(5, (index) => UserPhoneEntity.demo()).toList(),
     );

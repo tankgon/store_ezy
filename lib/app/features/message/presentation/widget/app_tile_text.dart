@@ -93,7 +93,7 @@ class AppTileTextChat extends StatelessWidget {
                         )
                     ].withDivider(Gaps.hGap2),
                   ),
-                ].withDivider(Gaps.vGap4),
+                ].withDivider(Gaps.vGap2),
               ).expand(),
             ].withDivider(Gaps.hGap12),
           ),

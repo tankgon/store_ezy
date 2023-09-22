@@ -1,10 +1,12 @@
 import 'package:mulstore/all_file/all_file.dart';
+import 'package:mulstore/app/features/message/presentation/chat_message/chat_message_body.dart';
 import 'package:mulstore/app/features/message/presentation/widget/chat_message_bottom_bar.dart';
 
 class ChatMessage extends StatelessWidget {
-  const ChatMessage({super.key, required this.name});
+  const ChatMessage({super.key, required this.name, required this.srcImage});
 
-  final String name;
+  final String? name;
+  final String? srcImage;
 
   @override
   Widget build(BuildContext context) {
@@ -15,24 +17,24 @@ class ChatMessage extends StatelessWidget {
       appBar: AppAppBar(
         title: Row(
           children: [
-            const AppAvatar(
+            AppAvatar(
               height: Dimens.ic_XL3,
-              src: 'assets/icons/app/app_logo_name.png',
+              src: srcImage,
             ),
-            Gaps.hGap4,
-            Text(name)
+            Gaps.hGap10,
+            Text(name ?? '')
                 .text
                 .titleMedium(context)
                 .fontWeight(FontWeight.w600)
-                .maxLines(1)
+                .maxLines(2)
                 .ellipsis
                 .make()
-                .minHeight(24),
+                .minHeight(20),
           ],
         ),
         args: AppBarArgs(
           centerTitle: false,
-          elevation: 0,
+          elevation: .5,
           actions: [
             Assets.icons.app.phoneLogoSvg.svg().objectCenter(),
             AppButtonIcon(
@@ -43,9 +45,7 @@ class ChatMessage extends StatelessWidget {
           ].withDivider(Gaps.hGap4, showLast: true),
         ),
       ),
-      body: SafeArea(
-        child: Container(),
-      ),
+      body: const ChatMessageBody(),
     );
   }
 }

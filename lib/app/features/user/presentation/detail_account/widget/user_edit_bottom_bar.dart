@@ -24,7 +24,7 @@ class UserEditBottomBar extends StatelessWidget {
           child: 'Lưu thay đổi'.tr().textAuto.maxLines(1).make(),
           onPressed: () {},
         ).expand(),
-      ].withDivider(Gaps.hGap8),
+      ].withDivider(Gaps.hGap10),
     );
   }
 }

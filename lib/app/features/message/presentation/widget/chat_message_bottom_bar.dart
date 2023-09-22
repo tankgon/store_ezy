@@ -36,7 +36,7 @@ class ChatMessageBottomBar extends StatelessWidget {
               ),
             ),
           ),
-        ),
+        ).expand(),
         Assets.icons.app.flyLogoSvg.svg(),
       ].withDivider(Gaps.hGap8),
     );
